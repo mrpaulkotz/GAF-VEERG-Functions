@@ -1,0 +1,676 @@
+/*
+============================================================================
+============================================================================
+============================================================================
+Equations For Dairy
+Excel module name: Equations_Dairy
+============================================================================
+============================================================================
+============================================================================
+*/
+
+
+VEERG_X_X_X_X__X_XXXXXXXX
+  =LAMBDA(
+    XXX,XXX,XXX,
+    (XXX * XXX * XXX)
+  )
+;
+
+XXXXXX_Title
+  =LAMBDA("XXXX");
+
+XXXXXX_Source
+  =LAMBDA("XXXX");
+
+XXXXXX_NIRReference
+  =LAMBDA("XXXX");
+
+XXXXXX_ReadableEquation
+  =LAMBDA("XXXX");
+
+XXXXXX_Variables
+  =LAMBDA(
+    MAKEARRAY(2, 2, 
+      LAMBDA(r,c, 
+        INDEX({
+          "XXXX", "XXXX";
+          "XXXX", "XXXX";
+        }, r, c)
+      )
+    )
+  );
+
+/*
+======================================
+======================================
+Source: VEERG
+VEERG
+======================================
+======================================
+*/
+
+
+/*
+======================================
+3.3: Dairy
+======================================
+3.3.1 Method 1 — Enteric Methane Dairy
+======================================
+*/
+
+/* 
+--------------------------------------
+VEERG_3_3_1__1_EntericMethane
+Total annual emissions from enteric methane in dairy cattle
+Menteric: Total annual methane production (kgCH4)
+GWP : Global warming potential of methane to convert tCH4 to tCO2e
+--------------------------------------
+*/
+
+
+
+
+
+/*
+======================================
+4.3: Dairy
+======================================
+4.3.1.3 Method 1 — Manure Direct N2O Dairy
+======================================
+*/
+
+/* 
+--------------------------------------
+VEERG_4_3_1_3__1_NO2DirectMMS
+The total annual direct nitrous oxide emissions 
+from manure management systems
+FNj : Seasonal faecal nitrogen in each manure management system
+UNjm : Seasonal urinary nitrogen in each manure management system
+EFm : Nitrous oxide emission factor for each manure management system
+Cg :  factor to convert elemental mass of N2O to molecular mass
+--------------------------------------
+*/
+
+VEERG_4_3_1_3__1_NO2DirectMMS
+  =LAMBDA(
+    FNjm,EFm,Cg,UNjm,
+     ((FNjm * EFm * Cg) + (UNjm * EFm * Cg)) * 10 ^ -3
+   )
+;
+
+VEERG_4_3_1_3__1_NO2DirectMMS_Title
+  =LAMBDA("The total annual direct nitrous oxide emissions from manure management systems (E)");
+
+VEERG_4_3_1_3__1_NO2DirectMMS_Source
+  =LAMBDA("VEERG 2026: 4.3.1.3, Equation (1)");
+
+VEERG_4_3_1_3__1_NO2DirectMMS_NIRReference
+  =LAMBDA("National Inventory Report Volume 1, 2023: Equation 3.B.1a_10c");
+
+VEERG_4_3_1_3__1_NO2DirectMMS_ReadableEquation
+  =LAMBDA("((FNjm x EFm x Cg) + (UNjm x EFm x Cg)) x 10 ^ -3");
+
+VEERG_4_3_1_3__1_NO2DirectMMS_Variables
+  =LAMBDA(
+    MAKEARRAY(4, 2, 
+      LAMBDA(r,c, 
+        INDEX({
+          "FNjm", "Seasonal faecal nitrogen in each manure management system";
+          "EFm", "Seasonal urinary nitrogen in each manure management system";
+          "Cg", "Nitrous oxide emission factor for each manure management system";
+          "UNjm", "Factor to convert elemental mass of N2O to molecular mass";
+        }, r, c)
+      )
+    )
+  );
+
+/*
+--------------------------------------
+VEERG_4_3_1_3__2_FaecalN2OMMS
+Faecal nitrogen in each MMS
+AFj : Total faecal nitrogen excreted
+MMSjm : Manure management system
+--------------------------------------
+*/
+
+VEERG_4_3_1_3__2_FaecalN2OMMS
+  =LAMBDA(
+    AFj,MMSjm,
+    AFj * MMSjm
+   )
+;
+
+VEERG_4_3_1_3__2_FaecalN2OMMS_Title
+  =LAMBDA("Faecal nitrogen in each manure management system (FN)");
+
+VEERG_4_3_1_3__2_FaecalN2OMMS_Source
+  =LAMBDA("VEERG 2026: 4.3.1.3, Equation (2)");
+
+VEERG_4_3_1_3__2_FaecalN2OMMS_NIRReference
+  =LAMBDA("National Inventory Report Volume 1, 2023: Equation 3.B.1a_9a");
+
+VEERG_4_3_1_3__2_FaecalN2OMMS_ReadableEquation
+  =LAMBDA("AFj x MMSjm");
+
+VEERG_4_3_1_3__2_FaecalN2OMMS_Variables
+  =LAMBDA(
+    MAKEARRAY(2, 2, 
+      LAMBDA(r,c, 
+        INDEX({
+          "AFj", "Total faecal nitrogen excreted";
+          "MMSjm", "Manure management system";
+        }, r, c)
+      )
+    )
+  );
+
+/*
+--------------------------------------
+VEERG_4_3_1_3__3a_FaecalNitrogenExcretedGTOne
+Faecal nitrogen excreted by dairy cattle >1 year old
+Nj = Number of dairy cattle in each class
+Fj = Nitrogen excreted in faeces
+Dj = Duration of stay on the farm (days)
+--------------------------------------
+*/
+
+VEERG_4_3_1_3__3a_FaecalNitrogenExcretedGTOne
+  =LAMBDA(
+    Nj,Fj,Dj,
+    (Nj * Fj * Dj)
+  )
+;
+
+VEERG_4_3_1_3__3a_FaecalNitrogenExcretedGTOne_Title
+  =LAMBDA("Faecal nitrogen excreted by dairy cattle >1 year old");
+
+VEERG_4_3_1_3__3a_FaecalNitrogenExcretedGTOne_Source
+  =LAMBDA("VEERG 2026: 4.3.1.3, Equation (3a)");
+
+VEERG_4_3_1_3__3a_FaecalNitrogenExcretedGTOne_NIRReference
+  =LAMBDA("National Inventory Report Volume 1, 2023: Equation 3.B.1a_8a");
+
+VEERG_4_3_1_3__3a_FaecalNitrogenExcretedGTOne_ReadableEquation
+  =LAMBDA("Nj x Fj x Dj");
+
+VEERG_4_3_1_3__3a_FaecalNitrogenExcretedGTOne_Variables
+  =LAMBDA(
+    MAKEARRAY(3, 2, 
+      LAMBDA(r,c, 
+        INDEX({
+          "Nj", "Number of dairy cattle in each class";
+          "Fj", "Nitrogen excreted in faeces";
+          "Dj", "Duration of stay on the farm (days)";
+        }, r, c)
+      )
+    )
+  );
+/*
+--------------------------------------
+VEERG_4_3_1_3__3b_FaecalNitrogenExcretedLTOne
+Faecal nitrogen excreted by dairy cattle <1 year old
+Nj = Number of dairy cattle in each class
+Fj = Nitrogen excreted in faeces
+FPWj=3,5 = Nitrogen excreted in faeces of pre-weaned heifer and bulls calves
+Dj = Duration of stay on the farm (days)
+DPWj = Duration of stay of pre-weaned heifer and bull calves on the farm
+--------------------------------------
+*/
+
+VEERG_4_3_1_3__3b_FaecalNitrogenExcretedLTOne
+  =LAMBDA(
+    Nj,Fj,Dj,FPWj,DPWj,
+    (Nj * Fj * Dj) + (Nj * FPWj * DPWj)
+   )
+;
+
+VEERG_4_3_1_3__3b_FaecalNitrogenExcretedLTOne_Title
+  =LAMBDA("Total faecal nitrogen excreted (AF)");
+
+VEERG_4_3_1_3__3b_FaecalNitrogenExcretedLTOne_Source
+  =LAMBDA("VEERG 2026: 4.3.1.3, Equation (3b)");
+
+VEERG_4_3_1_3__3b_FaecalNitrogenExcretedLTOne_NIRReference
+  =LAMBDA("National Inventory Report Volume 1, 2023: Equation 3.B.1a_8a");
+
+VEERG_4_3_1_3__3b_FaecalNitrogenExcretedLTOne_ReadableEquation
+  =LAMBDA("(Nj x Fj x Dj) + (Nj x FPWj x DPWj)");
+
+VEERG_4_3_1_3__3b_FaecalNitrogenExcretedLTOne_Variables
+  =LAMBDA(
+    MAKEARRAY(5, 2, 
+      LAMBDA(r,c, 
+        INDEX({
+          "Nj", "Number of dairy cattle in each class";
+          "Fj", "Nitrogen excreted in faeces";
+          "FPWj=3,5", "Nitrogen excreted in faeces of pre-weaned heifer and bulls calves";
+          "Dj", "Duration of stay on the farm (days)";
+          "DPWj", "Duration of stay of pre-weaned heifer and bull calves on the farm"
+        }, r, c)
+      )
+    )
+  );
+
+/*
+--------------------------------------
+VEERG_4_3_1_3__4_NitrogenExcretedInFaeces
+Nitrogen excreted in faeces
+CPIj : Crude protein intake
+DMDj : Dry matter digestibility (fraction)
+MEj: Metabolised energy
+Ij : Dry matter intake
+1 / 6.25 = Factor for converting crude protein into nitrogen
+--------------------------------------
+*/
+
+VEERG_4_3_1_3__4_NitrogenExcretedInFaeces
+  =LAMBDA(
+    CPIj,DMDj,MEj,Ij,
+    (0.3 * (CPIj * (1 - (DMDj + 0.1))) + 0.105 * (MEj * Ij * 0.008) + (0.0152 * Ij)) * (1 / 6.25)
+   )
+;
+
+VEERG_4_3_1_3__4_NitrogenExcretedInFaeces_Title
+  =LAMBDA("Nitrogen excreted in faeces (F)");
+
+VEERG_4_3_1_3__4_NitrogenExcretedInFaeces_Source
+  =LAMBDA("VEERG 2026: 4.3.1.3, Equation (4)");
+
+VEERG_4_3_1_3__4_NitrogenExcretedInFaeces_NIRReference
+  =LAMBDA("National Inventory Report Volume 1, 2023: Equation 3.B.1a_6");
+
+VEERG_4_3_1_3__4_NitrogenExcretedInFaeces_ReadableEquation
+  =LAMBDA("F = (0.3 x (CPIj x (1 - (DMDj + 0.1))) + 0.105 x (MEj x Ij x 0.008) + (0.0152 x Ij)) x (1 / 6.25)");
+
+VEERG_4_3_1_3__4_NitrogenExcretedInFaeces_Variables
+  =LAMBDA(
+    MAKEARRAY(5, 2, 
+      LAMBDA(r,c, 
+        INDEX({
+          "CPIj", ""Crude protein intake";
+          "DMDj", ""Dry matter digestibility (fraction)";
+          "MEj", "Metabolised energy";
+          "Ij", "Dry matter intake";
+          "1 / 6.25", "Factor for converting crude protein into nitrogen";
+        }, r, c)
+      )
+    )
+  );
+
+/*
+--------------------------------------
+VEERG_4_3_1_3__5_MetabolisableEnergy
+Metabolisable energy
+DMDj : Dry matter digestibility (fraction)
+--------------------------------------
+*/
+
+VEERG_4_3_1_3__5_MetabolisableEnergy
+  =LAMBDA(
+    DMDj,
+    0.1604 * (DMDj * 100) - 1.037
+  )
+;
+
+VEERG_4_3_1_3__5_MetabolisableEnergy_Title
+  =LAMBDA("Metabolisable energy (ME)");
+
+VEERG_4_3_1_3__5_MetabolisableEnergy_Source
+  =LAMBDA("VEERG 2026: 4.3.1.3, Equation (XXX)");
+
+VEERG_4_3_1_3__5_MetabolisableEnergy_NIRReference
+  =LAMBDA("National Inventory Report Volume 1, 2023: Equation (XX)");
+
+VEERG_4_3_1_3__5_MetabolisableEnergy_ReadableEquation
+  =LAMBDA("ME = 0.1604 x (DMDj x 100) - 1.037");
+
+VEERG_4_3_1_3__5_MetabolisableEnergy_Variables
+  =LAMBDA(
+    MAKEARRAY(1, 2, 
+      LAMBDA(r,c, 
+        INDEX({
+          "DMDj : Dry matter digestibility (fraction)";
+        }, r, c)
+      )
+    )
+  );
+
+/*
+--------------------------------------
+VEERG_4_3_1_3__6_CrudeProteinIntake
+Crude protein intake of dairy cattle
+Ij = Dry matter intake of feed
+CPj = crude protein content of feed intake
+--------------------------------------
+*/
+
+VEERG_4_3_1_3__6_CrudeProteinIntake
+  =LAMBDA(
+    Ij,CPj,
+    Ij * CPj
+  )
+;
+
+VEERG_4_3_1_3__6_CrudeProteinIntake_Title
+  =LAMBDA("Crude protein intake of dairy cattle (CPIj)");
+
+VEERG_4_3_1_3__6_CrudeProteinIntake_Source
+  =LAMBDA("VEERG 2026: 4.3.1.3, Equation (8)");
+
+VEERG_4_3_1_3__6_CrudeProteinIntake_NIRReference
+  =LAMBDA("National Inventory Report Volume 1, 2023: Equation 3.B.1a_4");
+
+VEERG_4_3_1_3__6_CrudeProteinIntake_ReadableEquation
+  =LAMBDA("CPIj = Ij x CPj");
+
+VEERG_4_3_1_3__6_CrudeProteinIntake_Variables
+  =LAMBDA(
+    MAKEARRAY(2, 2, 
+      LAMBDA(r,c, 
+        INDEX({
+          "Ij", "Dry matter intake of feed";
+          "CPj", "crude protein content of feed intake";
+        }, r, c)
+      )
+    )
+  );
+
+/*
+--------------------------------------
+VEERG_4_3_1_3__8_UrinaryNitrogenMMS
+Urinary nitrogen in each MMS
+AUj : Total urinary nitrogen excreted
+MMSjm : Manure management system
+--------------------------------------
+*/
+
+VEERG_4_3_1_3__8_UrinaryNitrogenMMS
+  =LAMBDA(
+    AUj,MMSjm,
+    AUj * MMSjm
+  )
+;
+
+VEERG_4_3_1_3__8_UrinaryNitrogenMMS_Title
+  =LAMBDA("Urinary nitrogen in each MMS (UNjMMS)");
+
+VEERG_4_3_1_3__8_UrinaryNitrogenMMS_Source
+  =LAMBDA("VEERG 2026: 4.3.1.3, Equation (2)");
+
+VEERG_4_3_1_3__8_UrinaryNitrogenMMS_NIRReference
+  =LAMBDA("National Inventory Report Volume 1, 2023: Equation 3.B.1a_9a");
+
+VEERG_4_3_1_3__8_UrinaryNitrogenMMS_ReadableEquation
+  =LAMBDA("UNjmms = AUj x MMSjm");
+
+VEERG_4_3_1_3__8_UrinaryNitrogenMMS_Variables
+  =LAMBDA(
+    MAKEARRAY(2, 2, 
+      LAMBDA(r,c, 
+        INDEX({
+          "AUj", "Total urinary nitrogen excreted";
+          "MMSjm", "Manure management system";
+        }, r, c)
+      )
+    )
+  );
+
+/*
+--------------------------------------
+VEERG_4_3_1_3__9a_UrinaryNitrogenExcretedGTOne
+Urinary nitrogen excreted by dairy cattle >1 year old
+Nj = Number of dairy cattle in each class
+Uj = Nitrogen excreted in urine
+Dj = Duration of stay on the farm (days)
+--------------------------------------
+*/
+
+VEERG_4_3_1_3__9a_UrinaryNitrogenExcretedGTOne
+  =LAMBDA(
+    Nj,Uj,Dj,
+    (Nj * Uj * Dj)
+  )
+;
+
+VEERG_4_3_1_3__9a_UrinaryNitrogenExcretedGTOne_Title
+  =LAMBDA("Urinary nitrogen excreted by dairy cattle >1 year old");
+
+VEERG_4_3_1_3__9a_UrinaryNitrogenExcretedGTOne_Source
+  =LAMBDA("VEERG 2026: 4.3.1.3, Equation (9a)");
+
+VEERG_4_3_1_3__9a_UrinaryNitrogenExcretedGTOne_NIRReference
+  =LAMBDA("National Inventory Report Volume 1, 2023: Equation 3.B.1a_8b");
+
+VEERG_4_3_1_3__9a_UrinaryNitrogenExcretedGTOne_ReadableEquation
+  =LAMBDA("AUj=1,2,4 = (Nj=1,2,4 x Uj=1,2,4 x Dj=1,2,4)");
+
+VEERG_4_3_1_3__9a_UrinaryNitrogenExcretedGTOne_Variables
+  =LAMBDA(
+    MAKEARRAY(3, 2, 
+      LAMBDA(r,c, 
+        INDEX({
+          "Nj", "Number of dairy cattle in each class";
+          "Uj", "Nitrogen excreted in urine";
+          "Dj", "Duration of stay on the farm (days)";
+        }, r, c)
+      )
+    )
+  );
+
+/*
+--------------------------------------
+VEERG_4_3_1_3__9b_UrinaryNitrogenExcretedLTOne
+Urinary nitrogen excreted by dairy cattle <1 year old
+Nj = Number of dairy cattle in each class
+Uj = Nitrogen excreted in urine
+UPWj=3,5 = Nitrogen excreted in urine of pre-weaned heifer and bulls calves
+Dj = Duration of stay on the farm (days)
+DPWj = Duration of stay of pre-weaned heifer and bull calves on the farm
+--------------------------------------
+*/
+
+VEERG_4_3_1_3__9b_UrinaryNitrogenExcretedLTOne
+  =LAMBDA(
+    Nj,Uj,D,UPWj,DPWj,
+    (Nj * Uj * Dj) + (Nj * UPWj * DPWj)
+  )
+;
+
+VEERG_4_3_1_3__9b_UrinaryNitrogenExcretedLTOne_Title
+  =LAMBDA("Urinary nitrogen excreted by dairy cattle <1 year old");
+
+VEERG_4_3_1_3__9b_UrinaryNitrogenExcretedLTOne_Source
+  =LAMBDA("VEERG 2026: 4.3.1.3, Equation (9b)");
+
+VEERG_4_3_1_3__9b_UrinaryNitrogenExcretedLTOne_NIRReference
+  =LAMBDA("National Inventory Report Volume 1, 2023: Equation 3.B.1a_8b");
+
+VEERG_4_3_1_3__9b_UrinaryNitrogenExcretedLTOne_ReadableEquation
+  =LAMBDA("AUj=3,5 = (Nj=3,5 x Uj=3,5 x Dj=3,5) + (Nj=3,5 x UPWj=3,5 x DPWj=3,5)");
+
+VEERG_4_3_1_3__9b_UrinaryNitrogenExcretedLTOne_Variables
+  =LAMBDA(
+    MAKEARRAY(5, 2, 
+      LAMBDA(r,c, 
+        INDEX({
+          "Nj", "Number of dairy cattle in each class";
+          "Uj", "Nitrogen excreted in urine";
+          "UPWj=3,5", "Nitrogen excreted in urine of pre-weaned heifer and bulls calves";
+          "Dj", "Duration of stay on the farm (days)";
+          "DPWj", "Duration of stay of pre-weaned heifer and bull calves on the farm";
+        }, r, c)
+      )
+    )
+  );
+
+/*
+--------------------------------------
+VEERG_4_3_1_3__10_NitrogenExcretedInUrine
+Nitrogen excreted in urine for of dairy cattle 
+>1 year old and weaned cattle <1 year old
+CPIj : Crude protein intake
+NRj : Nitrogen retained in the body
+Fj : Nitrogen excreted in faeces
+Wj : Liveweight
+--------------------------------------
+*/
+
+VEERG_4_3_1_3__10_NitrogenExcretedInUrine
+  =LAMBDA(
+    CPIj,NRj,Fj,Wj,
+    (CPIj / 6.25) - NRj - Fj - ((1.1 * 10 ^ -4 * (Wj ^ 0.75)) / 6.25)
+  )
+;
+
+VEERG_4_3_1_3__10_NitrogenExcretedInUrine_Title
+  =LAMBDA("Nitrogen excreted in urine for of dairy cattle >1 year old and weaned cattle <1 year old");
+
+VEERG_4_3_1_3__10_NitrogenExcretedInUrine_Source
+  =LAMBDA("VEERG 2026: 4.3.1.3, Equation (4)");
+
+VEERG_4_3_1_3__10_NitrogenExcretedInUrine_NIRReference
+  =LAMBDA("National Inventory Report Volume 1, 2023: Equation 3.B.1a_6");
+
+VEERG_4_3_1_3__10_NitrogenExcretedInUrine_ReadableEquation
+  =LAMBDA("U = (CPIj / 6.25) - NRj - Fj - ((1.1 x 10 ^ -4 x (Wj ^ 0.75)) / 6.25)");
+
+VEERG_4_3_1_3__10_NitrogenExcretedInUrine_Variables
+  =LAMBDA(
+    MAKEARRAY(4, 2, 
+      LAMBDA(r,c, 
+        INDEX({
+          "CPIj", "Crude protein intake";
+          "NRj", "Nitrogen retained in the body";
+          "Fj", "Nitrogen excreted in faeces";
+          "Wj", "Liveweight";
+        }, r, c)
+      )
+    )
+  );
+
+/*
+--------------------------------------
+VEERG_4_3_1_3__11_NitrogenRetainedInTheBody
+Nitrogen retained in the body
+MPj = Milk production in kg per head per day
+Lj = Intake relative to maintenance
+Zj : Relative size
+LWGj : Liveweight gain
+MC = conversion factor for milk in litres to kg
+--------------------------------------
+*/
+
+VEERG_4_3_1_3__11_NitrogenRetainedInTheBody
+  =LAMBDA(
+    MPj,MC,Lj,Zj,LWGj,
+    ((0.032 * MPj * MC) / 6.38) + ((0.212 - 0.008 * (Lj - 2) - ((0.14 - 0.008 * (Lj - 2)) / (1 + EXP(-6 * (Zj - 0.4))))) * (LWGj * 0.92)) * (1 / 6.25)
+  )
+;
+
+XXXXXX_Title
+  =LAMBDA("XXXX");
+
+XXXXXX_Source
+  =LAMBDA("XXXX");
+
+XXXXXX_NIRReference
+  =LAMBDA("XXXX");
+
+XXXXXX_ReadableEquation
+  =LAMBDA("XXXX");
+
+XXXXXX_Variables
+  =LAMBDA(
+    MAKEARRAY(2, 2, 
+      LAMBDA(r,c, 
+        INDEX({
+          "XXXX", "XXXX";
+          "XXXX", "XXXX";
+        }, r, c)
+      )
+    )
+  );
+
+/*
+--------------------------------------
+VEERG_4_3_1_3__12_IntakeRelativeToMaintenance
+Intake relative to maintenance
+Ij = Dry matter intake of feed
+Wj = Liveweight (kg)
+LWG = Liveweight gain for maintenance
+MRj = increase in metabolic rate when producing milk 
+MIj = The additional intake required for milk production
+--------------------------------------
+*/
+
+VEERG_4_3_1_3__12_IntakeRelativeToMaintenance
+  =LAMBDA(
+    Ij,Wj,MRj,Mij,
+    Ij / (((1.185 + 0.00454 * Wj - 0.0000026 * (Wj ^ 2)) ^ 2) * MRj * Mij)
+  )
+;
+
+XXXXXX_Title
+  =LAMBDA("XXXX");
+
+XXXXXX_Source
+  =LAMBDA("XXXX");
+
+XXXXXX_NIRReference
+  =LAMBDA("XXXX");
+
+XXXXXX_ReadableEquation
+  =LAMBDA("XXXX");
+
+XXXXXX_Variables
+  =LAMBDA(
+    MAKEARRAY(2, 2, 
+      LAMBDA(r,c, 
+        INDEX({
+          "XXXX", "XXXX";
+          "XXXX", "XXXX";
+        }, r, c)
+      )
+    )
+  );
+
+/*
+--------------------------------------
+VEERG_4_3_1_3__13_RelativeSize
+Relative size of each livestock class
+W : Liveweight
+SRW : Standard reference weight
+--------------------------------------
+*/
+
+VEERG_4_3_1_3__13_RelativeSize
+  =LAMBDA(
+    Wj,SRWj,
+    Wj / SRWj
+  )
+;
+
+XXXXXX_Title
+  =LAMBDA("XXXX");
+
+XXXXXX_Source
+  =LAMBDA("XXXX");
+
+XXXXXX_NIRReference
+  =LAMBDA("XXXX");
+
+XXXXXX_ReadableEquation
+  =LAMBDA("XXXX");
+
+XXXXXX_Variables
+  =LAMBDA(
+    MAKEARRAY(2, 2, 
+      LAMBDA(r,c, 
+        INDEX({
+          "XXXX", "XXXX";
+          "XXXX", "XXXX";
+        }, r, c)
+      )
+    )
+  );

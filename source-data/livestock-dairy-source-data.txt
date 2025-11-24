@@ -1,0 +1,273 @@
+/*
+============================================================================
+============================================================================
+============================================================================
+Source data For Dairy
+Excel module name: SourceData_Livestock_Dairy
+============================================================================
+============================================================================
+============================================================================
+*/
+
+/*
+======================================
+======================================
+Source: National Inventory Report 2023 Volume 1
+NIR_2023_Vol1
+======================================
+======================================
+*/
+
+/* 
+--------------------------------------
+NIR_2023_Vol1_Dairy_3_B_1_a_AshContent
+A = ash content expressed as a fraction
+--------------------------------------
+*/
+
+NIR_2023_Vol1_Dairy_3_B_1_a_AshContent_Title
+  =LAMBDA("A = ash content expressed as a fraction");
+
+NIR_2023_Vol1_Dairy_3_B_1_a_AshContent_Unit
+  =LAMBDA("fraction");
+
+NIR_2023_Vol1_Dairy_3_B_1_a_AshContent_Source
+  =LAMBDA("Equation 3.B.1a_2");
+
+NIR_2023_Vol1_Dairy_3_B_1_a_AshContent_Data
+  =LAMBDA(0.8);
+
+/* 
+--------------------------------------
+NIR_2023_Vol1_Dairy_3_B_1_a_EmissionsPotential
+B0 = emissions potential
+--------------------------------------
+*/
+
+NIR_2023_Vol1_Dairy_3_B_1_a_EmissionsPotential_Title
+  =LAMBDA("B0 = emissions potential");
+
+NIR_2023_Vol1_Dairy_3_B_1_a_EmissionsPotential_Unit
+  =LAMBDA("m3 CH4/kg VS");
+
+NIR_2023_Vol1_Dairy_3_B_1_a_EmissionsPotential_Source
+  =LAMBDA("Equation 3.B.1a_2");
+
+NIR_2023_Vol1_Dairy_3_B_1_a_EmissionsPotential_Data
+  =LAMBDA(0.24);
+
+
+/*
+======================================
+======================================
+Source: National Inventory Report 2023 Volume 1
+NIR_2023_Vol2
+======================================
+======================================
+*/
+
+
+/* 
+--------------------------------------
+NIR_2023_Vol2_A5_5_1_1_DairyCattleLiveWeight
+Table A5.5.1.1 Dairy cattle – Liveweight (kg)
+--------------------------------------
+*/
+
+NIR_2023_Vol2_A5_5_1_1_DairyCattleLiveWeight_Title
+  =LAMBDA("Table A5.5.1.1 Dairy cattle – Liveweight");
+
+NIR_2023_Vol2_A5_5_1_1_DairyCattleLiveWeight_Unit
+  =LAMBDA("kg");
+
+NIR_2023_Vol2_A5_5_1_1_DairyCattleLiveWeight_Source
+  =LAMBDA("National Inventory Report 2023 Volume 2: Table A5.5.1.1");
+
+NIR_2023_Vol2_A5_5_1_1_DairyCattleLiveWeight_Data
+  =LAMBDA(
+    MAKEARRAY(2, 6, 
+      LAMBDA(r,c, 
+        INDEX({
+          "Time period", "Milking Cows", "Heifers >1", "Heifers <1 (weaned)", "Bulls >1", "Bulls <1 (weaned)";
+          "2020–2023", 550, 370, 179, 600, 225
+        }, r, c)
+      )
+    )
+  );
+
+/* 
+--------------------------------------
+NIR_2023_Vol2_A5_5_1_2_DairyCattleLiveWeightGain
+Table A5.5.1.2 Dairy cattle – Liveweight gain (kg/day)
+--------------------------------------
+*/
+
+NIR_2023_Vol2_A5_5_1_2_DairyCattleLiveWeightGain_Title
+  =LAMBDA("Table A5.5.1.2 Dairy cattle – Liveweight gain");
+
+NIR_2023_Vol2_A5_5_1_2_DairyCattleLiveWeightGain_Unit
+  =LAMBDA("kg/day");
+
+NIR_2023_Vol2_A5_5_1_2_DairyCattleLiveWeightGain_Source
+  =LAMBDA("National Inventory Report 2023 Volume 2: Table A5.5.1.2");
+
+NIR_2023_Vol2_A5_5_1_2_DairyCattleLiveWeightGain_Data
+  =LAMBDA(
+    MAKEARRAY(2, 6, 
+      LAMBDA(r,c, 
+        INDEX({
+          "Time period", "Milking Cows", "Heifers >1", "Heifers <1 (weaned)", "Bulls >1", "Bulls <1 (weaned)";
+          "2020–2023", 0.016, 0.6, 0.57, 0.1, 0.8
+        }, r, c)
+      )
+    )
+  );
+
+/* 
+--------------------------------------
+NIR_2023_Vol2_A5_5_1_3_DairyCattleStandardReferenceWeights
+Table A5.5.1.3 Dairy cattle – Standard reference weights (kg)
+--------------------------------------
+*/
+
+NIR_2023_Vol2_A5_5_1_3_DairyCattleStandardReferenceWeight_Title
+  =LAMBDA("Table A5.5.1.3 Dairy cattle – Standard reference weights");
+
+NIR_2023_Vol2_A5_5_1_3_DairyCattleStandardReferenceWeight_Unit
+  =LAMBDA("kg");
+
+NIR_2023_Vol2_A5_5_1_3_DairyCattleStandardReferenceWeight_Source
+  =LAMBDA("National Inventory Report 2023 Volume 2: Table A5.5.1.3");
+
+NIR_2023_Vol2_A5_5_1_3_DairyCattleStandardReferenceWeight_Data
+  =LAMBDA(
+    MAKEARRAY(2, 6, 
+      LAMBDA(r,c, 
+        INDEX({
+          "Time period", "Milking Cows", "Heifers >1", "Heifers <1 (weaned)", "Bulls >1", "Bulls <1 (weaned)";
+          "2020–2023", 590, 590, 590, 770, 770
+        }, r, c)
+      )
+    )
+  );
+
+/* 
+--------------------------------------
+NIR_2023_Vol2_A5_5_1_4_DairyCattleDMDAndCP
+Table A5.5.1.4 Dairy cattle – Dry matter digestibility and crude protein content of feed intake (per cent)
+--------------------------------------
+*/
+
+NIR_2023_Vol2_A5_5_1_4_DairyCattleDMDAndCP_Title
+  =LAMBDA("Table A5.5.1.4 Dairy cattle – Dry matter digestibility and crude protein content of feed intake");
+
+NIR_2023_Vol2_A5_5_1_4_DairyCattleDMDAndCP_Unit
+  =LAMBDA("per cent");
+
+NIR_2023_Vol2_A5_5_1_4_DairyCattleDMDAndCP_Source
+  =LAMBDA("National Inventory Report 2023 Volume 2: Table A5.5.1.4");
+
+NIR_2023_Vol2_A5_5_1_4_DairyCattleDMDAndCP_Data
+  =LAMBDA(
+    MAKEARRAY(2, 3, 
+      LAMBDA(r,c, 
+        INDEX({
+          "State", "DMD", "CP";
+          "All", 75, 20
+        }, r, c)
+      )
+    )
+  );
+
+/* 
+--------------------------------------
+NIR_2023_Vol2_A5_5_1_5_DairyCattlePreWeanedData
+Table A5.5.1.5 Dairy cattle – Data for pre-weaned calves
+--------------------------------------
+*/
+
+NIR_2023_Vol2_A5_5_1_5_DairyCattlePreWeanedData_Title
+  =LAMBDA("Table A5.5.1.5 Dairy cattle – Data for pre-weaned calves");
+
+NIR_2023_Vol2_A5_5_1_5_DairyCattlePreWeanedData_Unit
+  =LAMBDA("kg/day");
+
+NIR_2023_Vol2_A5_5_1_5_DairyCattlePreWeanedData_Source
+  =LAMBDA("National Inventory Report 2023 Volume 2: Table A5.5.1.5");
+
+NIR_2023_Vol2_A5_5_1_5_DairyCattlePreWeanedData_Data
+  =LAMBDA(
+    MAKEARRAY(3, 6, 
+      LAMBDA(r,c, 
+        INDEX({
+          "Date range", "Class", "CH4 production", "Volatile solids", "Faecal N", "Urinary N";
+          "2005+", "Heifers<1", 0.0176, 0.2685, 0.0055, 0.0082;
+          "All years", "Bulls<1", 0.0204, 0.3003, 0.0050, 0.0042
+        }, r, c)
+      )
+    )
+  );
+
+/* 
+--------------------------------------
+NIR_2023_Vol2_A5_5_1_7_DairyCattleMCFsForMMS
+Table A5.5.1.7 Dairy cattle – MCFs
+--------------------------------------
+*/
+
+NIR_2023_Vol2_A5_5_1_7_DairyCattleMCFsForMMS_Title
+  =LAMBDA("Table A5.5.1.7 Dairy cattle – MCFs");
+
+NIR_2023_Vol2_A5_5_1_7_DairyCattleMCFsForMMS_Unit
+  =LAMBDA("");
+
+NIR_2023_Vol2_A5_5_1_7_DairyCattleMCFsForMMS_Source
+  =LAMBDA("National Inventory Report 2023 Volume 2: Table A5.5.1.7");
+
+NIR_2023_Vol2_A5_5_1_7_DairyCattleMCFsForMMS_Data
+  =LAMBDA(
+    MAKEARRAY(6, 9, 
+      LAMBDA(r,c, 
+        INDEX({
+          "MMS","ACT","NSW","NT","QLD","SA","TAS","VIC","WA";
+          "Pasture",0.01,0.01,0.02,0.01,0.01,0.01,0.01,0.01;
+          "Anaerobic lagoon",0.72,0.76,0.8,0.78,0.74,0.69,0.73,0.76;
+          "Sump and dispersal systems (b)",0.005,0.005,0.01,0.005,0.005,0.001,0.005,0.005;
+          "Drains to paddocks (c)",0.15,0.18,0.50,0.24,0.17,0.13,0.17,0.18;
+          "Solid Storage",0.02,0.02,0.02,0.02,0.02,0.02,0.02,0.02
+        }, r, c)
+      )
+    )
+  );
+
+/* 
+--------------------------------------
+NIR_2023_Vol2_A5_5_1_9_DairyCattleNO2EFAndFracN
+Table A5.5.1.9 Dairy cattle – Nitrous oxide EFs and fraction of N volatilised by MMS
+--------------------------------------
+*/
+
+NIR_2023_Vol2_A5_5_1_9_DairyCattleNO2EFAndFracN_Title
+  =LAMBDA("Table A5.5.1.9 Dairy cattle – Nitrous oxide EFs and fraction of N volatilised by MMS");
+
+NIR_2023_Vol2_A5_5_1_9_DairyCattleNO2EFAndFracN_Unit
+  =LAMBDA("kg N2O-N/kg N excreted");
+
+NIR_2023_Vol2_A5_5_1_9_DairyCattleNO2EFAndFracN_Source
+  =LAMBDA("National Inventory Report 2023 Volume 2: Table A5.5.1.9");
+
+NIR_2023_Vol2_A5_5_1_9_DairyCattleNO2EFAndFracN_Data
+  =LAMBDA(
+    MAKEARRAY(6, 3, 
+      LAMBDA(r,c, 
+        INDEX({
+          "MMS","EF (kg N2O-N/kg N excreted)","FracGASMm (kg N2O-N/kg N excreted)";
+          "Void at Pasture",0,0;
+          "Anaerobic lagoon",0,0.35;
+          "Daily Spread – Sump and Dispersal",0,0.07;
+          "Daily Spread – Drains to Paddock",0,0.2;
+          "Solid Storage",0.005,0.3
+        }, r, c)
+      )
+    )
+  );

@@ -1,0 +1,57 @@
+/*
+============================================================================
+============================================================================
+Source data that is common across all enterprise types
+Excel module name: SourceData_Common
+============================================================================
+============================================================================
+*/
+
+/*
+======================================
+======================================
+Source: National Inventory Report 2023 Volume 1
+NIR_2023_Vol1
+======================================
+======================================
+*/
+
+/* 
+--------------------------------------
+SourceData_Common_DensityOfMethane
+ρ = density of methane (0.6784 kg/m3) – 
+Taken from the National Greenhouse and Energy Reporting 
+(Measurement) Determination 2008
+--------------------------------------
+*/
+
+SourceData_Common_DensityOfMethane_Title
+  =LAMBDA("ρ = density of methane");
+
+SourceData_Common_DensityOfMethane_Unit
+  =LAMBDA("kg/m3");
+
+SourceData_Common_DensityOfMethane_Source
+  =LAMBDA("National Inventory Report 2023 Volume 1: Equations 3.B.1a_2, 3.B.1c_2, 3.B.3_1, 3.B.4g_2");
+
+SourceData_Common_DensityOfMethane_Data
+  =LAMBDA(0.6784);
+
+/* 
+--------------------------------------
+SourceData_Common_ConvertN2oElementalToMolecular
+Cg = 44/28 factor to convert elemental mass of N2O to molecular mass
+--------------------------------------
+*/
+
+SourceData_Common_ConvertN2oElementalToMolecular_Title
+  =LAMBDA("Factor to convert elemental mass of N2O to molecular mass");
+
+SourceData_Common_ConvertN2oElementalToMolecular_Unit
+  =LAMBDA("factor");
+
+SourceData_Common_ConvertN2oElementalToMolecular_Source
+  =LAMBDA("National Inventory Report 2023 Volume 1");
+
+SourceData_Common_ConvertN2oElementalToMolecular_Data
+  =LAMBDA(44/28);
