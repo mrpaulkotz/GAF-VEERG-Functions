@@ -568,25 +568,28 @@ VEERG_4_3_1_3__11_NitrogenRetainedInTheBody
   )
 ;
 
-XXXXXX_Title
-  =LAMBDA("XXXX");
+VEERG_4_3_1_3__11_NitrogenRetainedInTheBody_Title
+  =LAMBDA("Nitrogen retained in the body (NRj)");
 
-XXXXXX_Source
-  =LAMBDA("XXXX");
+VEERG_4_3_1_3__11_NitrogenRetainedInTheBody_Source
+  =LAMBDA("VEERG 2026: 4.3.1.3, Equation(11)");
 
-XXXXXX_NIRReference
-  =LAMBDA("XXXX");
+VEERG_4_3_1_3__11_NitrogenRetainedInTheBody_NIRReference
+  =LAMBDA("National Inventory Report Volume 1, 2023: Equation 3.B.1a_5");
 
-XXXXXX_ReadableEquation
-  =LAMBDA("XXXX");
+VEERG_4_3_1_3__11_NitrogenRetainedInTheBody_ReadableEquation
+  =LAMBDA("NRj = ((0.032 x MPj x MC) / 6.38) + ((0.212 - 0.008 x (Lj - 2) - ((0.14 - 0.008 x (Lj - 2)) / (1 + EXP(-6 x (Zj - 0.4))))) x (LWGj x 0.92)) x (1 / 6.25)");
 
-XXXXXX_Variables
+VEERG_4_3_1_3__11_NitrogenRetainedInTheBody_Variables
   =LAMBDA(
-    MAKEARRAY(2, 2, 
+    MAKEARRAY(5, 2, 
       LAMBDA(r,c, 
         INDEX({
-          "XXXX", "XXXX";
-          "XXXX", "XXXX";
+          "MPj", "Milk production in kg per head per day"; 
+          "Lj", "Intake relative to maintenance";
+          "Zj", "Relative size";
+          "LWGj", "Liveweight gain";
+          "MC", "conversion factor for milk in litres to kg";
         }, r, c)
       )
     )
@@ -611,25 +614,28 @@ VEERG_4_3_1_3__12_IntakeRelativeToMaintenance
   )
 ;
 
-XXXXXX_Title
-  =LAMBDA("XXXX");
+VEERG_4_3_1_3__12_IntakeRelativeToMaintenance_Title
+  =LAMBDA("Intake relative to maintenance (L)");
 
-XXXXXX_Source
-  =LAMBDA("XXXX");
+VEERG_4_3_1_3__12_IntakeRelativeToMaintenance_Source
+  =LAMBDA("VEERG 2026: 4.3.1.3, Equation (12)");
 
-XXXXXX_NIRReference
-  =LAMBDA("XXXX");
+VEERG_4_3_1_3__12_IntakeRelativeToMaintenance_NIRReference
+  =LAMBDA("National Inventory Report Volume 1, 2023: Equation 3.A.1a_1 and Equation 3.B.1a_5");
 
-XXXXXX_ReadableEquation
-  =LAMBDA("XXXX");
+VEERG_4_3_1_3__12_IntakeRelativeToMaintenance_ReadableEquation
+  =LAMBDA("Lj = Ij / (((1.185 + 0.00454 x Wj - 0.0000026 x (Wj ^ 2)) ^ 2) x MRj x Mij)");
 
-XXXXXX_Variables
+VEERG_4_3_1_3__12_IntakeRelativeToMaintenance_Variables
   =LAMBDA(
-    MAKEARRAY(2, 2, 
+    MAKEARRAY(5, 2, 
       LAMBDA(r,c, 
         INDEX({
-          "XXXX", "XXXX";
-          "XXXX", "XXXX";
+          "Ij", "Dry matter intake of feed";
+          "Wj", "Liveweight (kg)";
+          "LWG", "Liveweight gain for maintenance";
+          "MRj", "increase in metabolic rate when producing milk";
+          "MIj", "The additional intake required for milk production";
         }, r, c)
       )
     )
@@ -651,25 +657,25 @@ VEERG_4_3_1_3__13_RelativeSize
   )
 ;
 
-XXXXXX_Title
-  =LAMBDA("XXXX");
+VEERG_4_3_1_3__13_RelativeSize_Title
+  =LAMBDA("Relative size of each livestock class (Zj)");
 
-XXXXXX_Source
-  =LAMBDA("XXXX");
+VEERG_4_3_1_3__13_RelativeSize_Source
+  =LAMBDA("VEERG 2026: 4.3.1.3, Equation (XXX)");
 
-XXXXXX_NIRReference
-  =LAMBDA("XXXX");
+VEERG_4_3_1_3__13_RelativeSize_NIRReference
+  =LAMBDA("National Inventory Report Volume 1, 2023: Equation XXXX");
 
-XXXXXX_ReadableEquation
-  =LAMBDA("XXXX");
+VEERG_4_3_1_3__13_RelativeSize_ReadableEquation
+  =LAMBDA("Zj = Wj / SRWj");
 
-XXXXXX_Variables
+VEERG_4_3_1_3__13_RelativeSize_Variables
   =LAMBDA(
     MAKEARRAY(2, 2, 
       LAMBDA(r,c, 
         INDEX({
-          "XXXX", "XXXX";
-          "XXXX", "XXXX";
+          "Wj", "Liveweight";
+          "SRWj", "Standard reference weight";
         }, r, c)
       )
     )
