@@ -1,0 +1,116 @@
+/*
+============================================================================
+4.3: Dairy
+============================================================================
+4.3.1.6 Method 1 — Manure N2O Leaching and runoff
+============================================================================
+*/
+
+/* 
+--------------------------------------
+VEERG_4_3_1_6__1_NO2LeachingAndRunoffMMS
+Annual emissions from leaching and run off from each manure management system
+EN2Oleach
+t N2O
+EN2Oleach=(MNleach * EFleach * Cg) * 10^-3
+NMleach : mass of N leached and run off from each MMS : kg N
+EFleach : Inorganic fertiliser emission factor for the selected production system : kg N2O-N/kg N
+Cg :  factor to convert elemental mass of N2O to molecular mass
+--------------------------------------
+*/
+VEERG_4_3_1_6__1a_NO2LeachingAndRunoffMMSGWP
+  =LAMBDA(
+    EN2Oleach,GWPN2O,
+     (EN2Oleach * GWPN2O)
+   );
+
+
+VEERG_4_3_1_6__1_NO2LeachingAndRunoffMMS
+  =LAMBDA(
+    MNleach, EFleach, Cg,
+     (MNleach * EFleach * Cg) * 10^-3
+   );
+
+VEERG_4_3_1_6__1_NO2LeachingAndRunoffMMS_Title
+  =LAMBDA("Annual emissions from leaching and run off from each manure management system");
+
+VEERG_4_3_1_6__1_NO2LeachingAndRunoffMMS_Variable
+  =LAMBDA("EN2Oleach");
+
+VEERG_4_3_1_6__1_NO2LeachingAndRunoffMMS_Unit
+  =LAMBDA("t N2O");
+
+VEERG_4_3_1_6__1_NO2LeachingAndRunoffMMS_Source
+  =LAMBDA("VEERG 2026: 4.3.1.6, Equation (1)");
+
+VEERG_4_3_1_6__1_NO2LeachingAndRunoffMMS_NIRReference
+  =LAMBDA("National Inventory Report Volume 1, 2023: Equation 3.B.5a_4");
+
+VEERG_4_3_1_6__1_NO2LeachingAndRunoffMMS_ReadableEquation
+  =LAMBDA("(EN2Oleach = MNleach * EFleach * Cg) * 10^-3");
+
+VEERG_4_3_1_6__1_NO2LeachingAndRunoffMMS_Arguments
+  =LAMBDA(
+    MAKEARRAY(3, 2, 
+      LAMBDA(r,c, 
+        INDEX({
+          "MNleach","mass of N leached and run off from each MMS : kg N";
+          "EFleach","Inorganic fertiliser emission factor for the selected production system : kg N2O-N/kg N";
+          "Cg","factor to convert elemental mass of N2O to molecular mass",""
+        }, r, c)
+      )
+    )
+  );
+
+  /* 
+--------------------------------------
+VEERG_4_3_1_6__2_NLostFromSolidStorage
+The mass of nitrogen lost to leaching and runoff from solid storage systems
+MNleach
+kg N
+MNNleach = (FNjm=4 + UNjm=4) * FracWETi * FracLEACHms
+FNj : Seasonal faecal nitrogen in each manure management system : kg N
+UNjm : Seasonal urinary nitrogen in each manure management system : kg N
+FracWETi : Fraction of N available for leaching and runoff in climate zone : fraction
+FracLEACHms : Fraction of N lost through leaching and runoff : fraction
+--------------------------------------
+*/
+
+VEERG_4_3_1_6__2_NLostFromSolidStorage
+  =LAMBDA(
+    FNjm, UNjm, FracWETi, FracLEACHms,
+    (FNjm + UNjm) * FracWETi * FracLEACHms
+  )
+;
+
+VEERG_4_3_1_6__2_NLostFromSolidStorage_Title
+  =LAMBDA("The mass of nitrogen lost to leaching and runoff from solid storage systems");
+
+VEERG_4_3_1_6__2_NLostFromSolidStorage_Variable
+  =LAMBDA("MNleach");
+
+VEERG_4_3_1_6__2_NLostFromSolidStorage_Unit
+  =LAMBDA("kg N");
+
+VEERG_4_3_1_6__2_NLostFromSolidStorage_Source
+  =LAMBDA("VEERG 2026: 4.3.1.6, Equation (2)");
+
+VEERG_4_3_1_6__2_NLostFromSolidStorage_NIRReference
+  =LAMBDA("National Inventory Report Volume 1, 2023: 3.B.5a_3");
+
+VEERG_4_3_1_6__2_NLostFromSolidStorage_ReadableEquation
+  =LAMBDA("MNNleach = (FNjm=4 + UNjm=4) * FracWETi * FracLEACHms");
+
+VEERG_4_3_1_6__2_NLostFromSolidStorage_Arguments
+  =LAMBDA(
+    MAKEARRAY(4, 3, 
+      LAMBDA(r,c, 
+        INDEX({
+          "FNjm=4","Seasonal faecal nitrogen in each manure management system","kg N";
+          "UNjm=4","Seasonal urinary nitrogen in each manure management system","kg N";
+          "FracWETi","Fraction of N available for leaching and runoff in climate zone","fraction";
+          "FracLEACHms","Fraction of N lost through leaching and runoff","fraction"
+        }, r, c)
+      )
+    )
+  );

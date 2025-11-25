@@ -1,0 +1,358 @@
+/*
+======================================
+3.3: Dairy
+======================================
+3.3.1 Method 1 — Enteric Methane Dairy
+======================================
+*/
+
+/* 
+--------------------------------------
+VEERG_3_3_1__1_EntericMethane
+Total annual emissions from enteric methane in dairy cattle
+Menteric: Total annual methane production (kgCH4)
+GWP : Global warming potential of methane to convert tCH4 to tCO2e
+--------------------------------------
+*/
+
+
+VEERG_3_3_1__1_EntericMethane
+  =LAMBDA(
+    Menteric,GWPCH4,
+    (Menteric * GWPCH4 * 10 ^ - 3)
+  )
+;
+
+VEERG_3_3_1__1_EntericMethane_Title
+  =LAMBDA("Total annual emissions from enteric methane in dairy cattle");
+
+VEERG_3_3_1__1_EntericMethane_Variable
+  =LAMBDA("Etotal");
+
+VEERG_3_3_1__1_EntericMethane_Unit
+  =LAMBDA("t CH4");
+
+VEERG_3_3_1__1_EntericMethane_Source
+  =LAMBDA("VEERG 2026: 3.3.1, Equation (1)");
+
+VEERG_3_3_1__1_EntericMethane_NIRReference
+  =LAMBDA("National Inventory Report Volume 1, 2023: Equation 3.A.1a_4");
+
+VEERG_3_3_1__1_EntericMethane_ReadableEquation
+  =LAMBDA("Etotal = Menteric * GWPCH4 * 10 ^ - 3");
+
+VEERG_3_3_1__1_EntericMethane_Arguments
+  =LAMBDA(
+    MAKEARRAY(2, 3, 
+      LAMBDA(r,c, 
+        INDEX({
+          "Menteric", "Total annual methane production", "kgCH4";
+          "GWPCH4", "Global warming potential of methane to convert tCH4 to CO2e", "dimensionless"
+        }, r, c)
+      )
+    )
+  );
+
+/* 
+--------------------------------------
+VEERG_3_3_1__2a_MethaneProductionGTOne
+Annual methane production for all classes of dairy cattle > 1 year
+Nj : Number of dairy cattle in each class : head
+Mj=1,2,4 : Daily methane production od dairy cattle older than 12 months : kgCH4/head/day
+D : Duration of stay on the farm : days
+--------------------------------------
+*/
+
+VEERG_3_3_1__2a_MethaneProductionGTOne
+  =LAMBDA(
+    Nj, Mj, Dj,
+    (Nj*Mj*Dj)
+  )
+;
+
+VEERG_3_3_1__2a_MethaneProductionGTOne_Title
+  =LAMBDA("Annual methane production for all classes of dairy cattle > 1 year");
+
+VEERG_3_3_1__2a_MethaneProductionGTOne_Unit
+  =LAMBDA("kg CH4/time period");
+
+VEERG_3_3_1__2a_MethaneProductionGTOne_Variable
+  =LAMBDA("Menteric");
+
+VEERG_3_3_1__2a_MethaneProductionGTOne_Source
+  =LAMBDA("VEERG 2026: 3.3.1, Equation (2a)");
+
+VEERG_3_3_1__2a_MethaneProductionGTOne_NIRReference
+  =LAMBDA("National Inventory Report Volume 1, 2023: Equation 3.A.1a_4");
+
+VEERG_3_3_1__2a_MethaneProductionGTOne_ReadableEquation
+  =LAMBDA("Menteric = (Nj*Mj*Dj)");
+
+VEERG_3_3_1__2a_MethaneProductionGTOne_Arguments
+  =LAMBDA(
+    MAKEARRAY(2, 3, 
+      LAMBDA(r,c, 
+        INDEX({
+          "Nj","Number of dairy cattle in each class","head";
+          "Mj=1,2,4","Daily methane production of dairy cattle older than 12 months","kgCH4/head/day";
+          "D","Duration of stay on the farm","days"
+        }, r, c)
+      )
+    )
+  );
+
+/* 
+--------------------------------------
+VEERG_3_3_1__2b_MethaneProductionLTOne
+Annual methane production for all classes of dairy cattle < 1 year
+Nj : Number of dairy cattle in each class : head
+Mj=3,5 : Daily methane production of dairy cattle less than 12 months : kgCH4/head/day
+Dj=3,5 : Duration of stay on the farm : days
+MPWj=3,5 : Daily methane production of pre-weaned heifer and bulls calves: kgCH4 / head / day
+DPWj=3,5 : Duration of stay of pre - weaned heifer and bull calves on the farm : days
+--------------------------------------
+*/
+
+VEERG_3_3_1__2b_MethaneProductionLTOne
+  =LAMBDA(
+    Nj, Mj, Dj, MPWj, DPWj,
+    (Nj*Mj*Dj)+(Nj*MPWj*DPWj)
+  )
+;
+
+VEERG_3_3_1__2b_MethaneProductionLTOne_Title
+  =LAMBDA("Annual methane production for all classes of dairy cattle < 1 year");
+
+VEERG_3_3_1__2b_MethaneProductionLTOne_Unit
+  =LAMBDA("kg CH4 / time period");
+
+VEERG_3_3_1__2b_MethaneProductionLTOne_Variable
+  =LAMBDA("Menteric");
+
+VEERG_3_3_1__2b_MethaneProductionLTOne_Source
+  =LAMBDA("VEERG 2026: 3.3.1, Equation (2b)");
+
+VEERG_3_3_1__2b_MethaneProductionLTOne_NIRReference
+  =LAMBDA("National Inventory Report Volume 1, 2023: Equation 3.A.1a_4");
+
+VEERG_3_3_1__2b_MethaneProductionLTOne_ReadableEquation
+  =LAMBDA("Menteric = (Nj*Mj*Dj)+(Nj*MPWj*DPWj)");
+
+VEERG_3_3_1__2b_MethaneProductionLTOne_Arguments
+  =LAMBDA(
+    MAKEARRAY(2, 3, 
+      LAMBDA(r,c, 
+        INDEX({
+          "Nj","Number of dairy cattle in each class","head";
+          "Mj=3,5","Daily methane production of dairy cattle less than 12 months","kgCH4/head/day";
+          "Dj=3,5","Duration of stay on the farm","days";
+          "MPWj=3,5","Daily methane production of pre-weaned heifer and bulls calves","kgCH4 / head / day";
+          "DPWj=3,5","Duration of stay of pre - weaned heifer and bull calves on the farm","days"
+        }, r, c)
+      )
+    )
+  );
+
+/* 
+--------------------------------------
+VEERG_3_3_1__3_DailyMethaneProduction
+Daily production of enteric methane
+Me = 20.7 * Ij * 10 ^ - 3
+Ij : Dry matter feed intake : kg DM / head / day
+--------------------------------------
+*/
+
+VEERG_3_3_1__3_DailyMethaneProduction
+  =LAMBDA(
+    Ij,
+    (20.7 * Ij * 10 ^ - 3)
+  )
+;
+
+VEERG_3_3_1__3_DailyMethaneProduction_Title
+  =LAMBDA("Daily production of enteric methane");
+
+VEERG_3_3_1__3_DailyMethaneProduction_Unit
+  =LAMBDA("kgCH4/head/day");
+
+VEERG_3_3_1__3_DailyMethaneProduction_Variable
+  =LAMBDA("Me");
+
+VEERG_3_3_1__3_DailyMethaneProduction_Source
+  =LAMBDA("VEERG 2026: 3.3.1, Equation (3)");
+
+VEERG_3_3_1__3_DailyMethaneProduction_NIRReference
+  =LAMBDA("National Inventory Report Volume 1, 2023: 3.A.1a_2");
+
+VEERG_3_3_1__3_DailyMethaneProduction_ReadableEquation
+  =LAMBDA("Me = 20.7 * Ij * 10 ^ - 3");
+
+VEERG_3_3_1__3_DailyMethaneProduction_Arguments
+  =LAMBDA(
+    MAKEARRAY(1, 3, 
+      LAMBDA(r,c, 
+        INDEX({
+          "Ij", "Dry matter feed intake","kg DM / head / day"
+        }, r, c)
+      )
+    )
+  );
+
+/* 
+--------------------------------------
+VEERG_3_3_1__4_FeedIntake
+Feed intake from liveweight and liveweight gain (Ij)
+Ij = (1.185 + 0.00454*Wj + 0.0000026*Wj^2 + 0.315*LWGj)^2 * MRj + MIj
+Wj : Liveweight : kg
+LWGj : Liveweight gain : kg / head / day
+MRj : increase in metabolic rate when producing milk expressed as a fraction : fraction
+MIj : additional intake required for milk production : kg DM / head / day
+-------------------------------
+*/
+
+VEERG_3_3_1__4_FeedIntake
+  =LAMBDA(
+    Ij, Wj, LWGj, MRj, MIj,
+    (1.185 + 0.00454*Wj + 0.0000026*Wj^2 + 0.315*LWGj)^2 * MRj + MIj
+  )
+;
+
+VEERG_3_3_1__4_FeedIntake_Title
+  =LAMBDA("Feed intake from liveweight and liveweight gain");
+
+VEERG_3_3_1__4_FeedIntake_Unit
+  =LAMBDA("kg DM/head/day");
+
+VEERG_3_3_1__4_FeedIntake_Variable
+  =LAMBDA("Ij");
+
+VEERG_3_3_1__4_FeedIntake_Source
+  =LAMBDA("VEERG 2026: 3.3.1, Equation (4)");
+
+VEERG_3_3_1__4_FeedIntake_NIRReference
+  =LAMBDA("National Inventory Report Volume 1, 2023: 3.A.1a_1");
+
+VEERG_3_3_1__4_FeedIntake_ReadableEquation
+  =LAMBDA("Ij = (1.185 + 0.00454*Wj + 0.0000026*Wj^2 + 0.315*LWGj)^2 * MRj + MIj");
+
+VEERG_3_3_1__4_FeedIntake_Arguments
+  =LAMBDA(
+    MAKEARRAY(4, 3, 
+      LAMBDA(r,c, 
+        INDEX({
+          "Wj","Liveweight","kg";
+          "LWGj","Liveweight gain","kg / head / day";
+          "MRj","increase in metabolic rate when producing milk expressed as a fraction","fraction";
+          "MIj","additional intake required for milk production","kg DM / head / day"
+        }, r, c)
+      )
+    )
+  );
+
+/* 
+--------------------------------------
+VEERG_3_3_1__5_AdditionalIntakeForMilkProduction
+The additional intake required for milk production Mij
+Mij = (MPj * 1.03 * NE) / (GEC * k * qmj)
+MPj : milk production : L / head / day
+NE : net energy : MJ net energy / kg milk
+GEC : gross energy content : MJ / kgDM
+k : Efficiency of use of metabolizable energy for milk production : Fraction
+qmj : Metabolisability of the diet : Fraction
+1.03 : conversion from litres to kg : Decimal
+--------------------------------------
+*/
+
+/*
+VEERG_3_3_1__5_AdditionalIntakeForMilkProduction
+  =LAMBDA(
+    Mij, MPj, NE, GEC, k, qmj,
+    (MPj * 1.03 * NE) / (GEC * k * qmj)
+  )
+;
+
+VEERG_3_3_1__5_AdditionalIntakeForMilkProduction_Title
+  =LAMBDA("The additional intake required for milk production");
+
+VEERG_3_3_1__5_AdditionalIntakeForMilkProduction_Unit
+  =LAMBDA("kg DM / head / day");
+
+VEERG_3_3_1__5_AdditionalIntakeForMilkProduction_Variable
+  =LAMBDA("Mij");
+
+VEERG_3_3_1__5_AdditionalIntakeForMilkProduction_Source
+  =LAMBDA("VEERG 2026: 3.3.1, Equation (5)");
+
+VEERG_3_3_1__5_AdditionalIntakeForMilkProduction_NIRReference
+  =LAMBDA("National Inventory Report Volume 1, 2023: 3.A.1a_2");
+
+VEERG_3_3_1__5_AdditionalIntakeForMilkProduction_ReadableEquation
+  =LAMBDA("Mij = (MPj * 1.03 * NE) / (GEC * k * qmj)");
+
+VEERG_3_3_1__5_AdditionalIntakeForMilkProduction_Arguments
+  =LAMBDA(
+    MAKEARRAY(6, 3, 
+      LAMBDA(r,c, 
+        INDEX({
+          "MPj","milk production","L / head / day";
+          "NE","net energy","MJ net energy / kg milk";
+          "GEC","gross energy content","MJ / kgDM";
+          "k","Efficiency of use of metabolizable energy for milk production","Fraction";
+          "qmj","Metabolisability of the diet","Fraction";
+          "1.03","conversion from litres to kg","Decimal"
+        }, r, c)
+      )
+    )
+  );
+*/
+
+/* 
+--------------------------------------
+VEERG_3_3_1__5a_ConvertMilkSolidsToLitres
+Milk solids converted to litres
+MPj = MSj / (0.01 * (FCj + PCj)) 
+MSj : Daily production of milk solids : kg MS/head/day
+FCj : Fat content in fat and protein corrected milk : per cent
+PCj : protein content in fat and protein corrected milk : per cent
+--------------------------------------
+*/
+
+/*
+VEERG_3_3_1__5a_ConvertMilkSolidsToLitres
+  =LAMBDA(
+    MSj, FCj, PCj,
+    MSj / (0.01 * (FCj + PCj))
+  )
+;
+
+VEERG_3_3_1__5a_ConvertMilkSolidsToLitres_Title
+  =LAMBDA("Milk solids converted to litres");
+
+VEERG_3_3_1__5a_ConvertMilkSolidsToLitres_Unit
+  =LAMBDA("litres/head/day");
+
+VEERG_3_3_1__5a_ConvertMilkSolidsToLitres_Variable
+  =LAMBDA("MPj");
+
+VEERG_3_3_1__5a_ConvertMilkSolidsToLitres_Source
+  =LAMBDA("VEERG 2026: 3.3.1, Equation (5a)");
+
+VEERG_3_3_1__5a_ConvertMilkSolidsToLitres_NIRReference
+  =LAMBDA("National Inventory Report Volume 1, 2023: N/A");
+
+VEERG_3_3_1__5a_ConvertMilkSolidsToLitres_ReadableEquation
+  =LAMBDA("MPj = MSj / (0.01 * (FCj + PCj)) ");
+
+VEERG_3_3_1__5a_ConvertMilkSolidsToLitres_Arguments
+  =LAMBDA(
+    MAKEARRAY(3, 3, 
+      LAMBDA(r,c, 
+        INDEX({
+          "MSj","Daily production of milk solids","kg MS/head/day";
+          "FCj","Fat content in fat and protein corrected milk","per cent";
+          "PCj","protein content in fat and protein corrected milk","per cent"
+        }, r, c)
+      )
+    )
+  );
+*/

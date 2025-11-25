@@ -1,0 +1,72 @@
+/*
+============================================================================
+National Inventory Report 2023 reference:
+Urine and dung deposited by grazing animals (3.D.a.3)
+============================================================================
+*/
+
+
+/* 
+--------------------------------------
+VEERG_COMMON_LIVESTOCK_AGSOILS_URINE_DUNG_DEPOSITED_N2ODIRECT
+Nitrous oxide production from urine and dung deposited by grazing animals on pasture,
+range and paddock
+EN2Odir
+t N2O
+EN2Odir = ((AFjm=14 * EFPRP * CgN2O) + (AUjm=14 * EFPRP * CgN2O)) * 10^-3
+AFjm : mass of N in dung deposited on pasture, range and paddock : kg N
+AUjm : mass of N in urine deposited on pasture, range and paddock : kg N
+EFPRP : direct N2O emission factor for pasture, range and paddock : kg N2O-N/kg N
+CgN2O : factor to convert elemental mass of N2O to molecular mass
+--------------------------------------
+*/
+
+COMMON_LIVESTOCK_AGSOILS_URINE_DUNG_DEPOSITED_N2ODIRECT_GWP
+ =LAMBDA(
+    EN2Odir,GWPN2O,
+     (EN2Odir * GWPN2O)
+   );
+
+COMMON_LIVESTOCK_AGSOILS_URINE_DUNG_DEPOSITED_N2ODIRECT
+  =LAMBDA(
+    AFjm, AUjm, EFPRP, CgN2O,
+    ((AFjm * EFPRP * CgN2O) + (AUjm * EFPRP * CgN2O)) * 10^-3
+  )
+;
+
+COMMON_LIVESTOCK_AGSOILS_URINE_DUNG_DEPOSITED_N2ODIRECT_Title
+  =LAMBDA("Nitrous oxide production from urine and dung deposited by grazing animals on pasture, range and paddock");
+
+COMMON_LIVESTOCK_AGSOILS_URINE_DUNG_DEPOSITED_N2ODIRECT_Variable
+  =LAMBDA("EN2Odir");
+
+COMMON_LIVESTOCK_AGSOILS_URINE_DUNG_DEPOSITED_N2ODIRECT_Unit
+  =LAMBDA("t N2O");
+
+  /*
+COMMON_LIVESTOCK_AGSOILS_URINE_DUNG_DEPOSITED_N2ODIRECT_Source
+  =LAMBDA("VEERG 2026: XXXXX, Equation (X)");
+  */
+
+COMMON_LIVESTOCK_AGSOILS_URINE_DUNG_DEPOSITED_N2ODIRECT_NIRReference
+  =LAMBDA("National Inventory Report Volume 1, 2023: 3.D.a.3");
+
+COMMON_LIVESTOCK_AGSOILS_URINE_DUNG_DEPOSITED_N2ODIRECT_ReadableEquation
+  =LAMBDA("EN2Odir = ((AFjm=14 * EFPRP * CgN2O) + (AUjm=14 * EFPRP * CgN2O)) * 10^-3");
+
+COMMON_LIVESTOCK_AGSOILS_URINE_DUNG_DEPOSITED_N2ODIRECT_Arguments
+  =LAMBDA(
+    MAKEARRAY(4, 3, 
+      LAMBDA(r,c, 
+        INDEX({
+          "AFjm","mass of N in dung deposited on pasture, range and paddock","kg N";
+          "AUjm","mass of N in urine deposited on pasture, range and paddock","kg N";
+          "EFPRP","direct N2O emission factor for pasture, range and paddock","kg N2O-N/kg N";
+          "CgN2O","factor to convert elemental mass of N2O to molecular mass",""
+        }, r, c)
+      )
+    )
+  );
+
+
+

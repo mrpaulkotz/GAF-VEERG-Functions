@@ -1,0 +1,112 @@
+/*
+============================================================================
+4.3: Dairy
+============================================================================
+4.3.1.5 Method 1 — Manure N2O Atmospheric Deposition
+============================================================================
+*/
+
+/* 
+--------------------------------------
+VEERG_4_3_1_5__1_NO2AtmosphericDepositionMMS
+Annual atmospheric deposition emissions from manure management systems
+EN2OMMSAD = MNatmos * EFN2O * Cg * 10^(-3)
+MNatmos : mass of N volatilised from MMS : kg N
+EFN2O : inorganic fertiliser emission factor for production system : kg N2O-N/kg N
+Cg :  factor to convert elemental mass of N2O to molecular mass
+--------------------------------------
+*/
+VEERG_4_3_1_5__1a_NO2AtmosphericDepositionMMSGWP
+  =LAMBDA(
+    EN2OMMSAD,GWPN2O,
+     (EN2OMMSAD * GWPN2O)
+   );
+
+
+VEERG_4_3_1_5__1_NO2AtmosphericDepositionMMS
+  =LAMBDA(
+    MNatmos, EFN2O, Cg,
+     MNatmos * EFN2O * Cg * 10 ^-3
+   );
+
+VEERG_4_3_1_5__1_NO2AtmosphericDepositionMMS_Title
+  =LAMBDA("Annual atmospheric deposition emissions from manure management systems");
+
+VEERG_4_3_1_5__1_NO2AtmosphericDepositionMMS_Variable
+  =LAMBDA("EN2OMMSAD");
+
+VEERG_4_3_1_5__1_NO2AtmosphericDepositionMMS_Unit
+  =LAMBDA("t N2O");
+
+VEERG_4_3_1_5__1_NO2AtmosphericDepositionMMS_Source
+  =LAMBDA("VEERG 2026: 4.3.1.5, Equation (1)");
+
+VEERG_4_3_1_5__1_NO2AtmosphericDepositionMMS_NIRReference
+  =LAMBDA("National Inventory Report Volume 1, 2023: Equation 3.B.5a_2");
+
+VEERG_4_3_1_5__1_NO2AtmosphericDepositionMMS_ReadableEquation
+  =LAMBDA("EN2OMMSAD = MNatmos * EFN2O * Cg * 10 ^-3");
+
+VEERG_4_3_1_5__1_NO2AtmosphericDepositionMMS_Arguments
+  =LAMBDA(
+    MAKEARRAY(3, 2, 
+      LAMBDA(r,c, 
+        INDEX({
+          "MNatmos","mass of N volatilised from MMS : kg N";
+          "EFN2O","inorganic fertiliser emission factor for production system : kg N2O-N/kg N";
+          "Cg","factor to convert elemental mass of N2O to molecular mass"
+        }, r, c)
+      )
+    )
+  );
+
+/* 
+--------------------------------------
+VEERG_4_3_1_5__2_TotalNitrogenVolatilisedMMS
+Total of nitrogen volatilised from MMS
+MNATMOS
+kg N
+MNATMOS= (FNjm * FracGASMm) + (UNjm * FracGASMm)	
+FNj : Seasonal faecal nitrogen in each manure management system : kg N
+FracGASMm : fraction of N volatised from MMS : Fraction
+UNjm : Seasonal urinary nitrogen in each manure management system : kg N
+--------------------------------------
+*/
+
+VEERG_4_3_1_5__2_TotalNitrogenVolatilisedMMS
+  =LAMBDA(
+    FNjm, FracGASMm, UNjm,
+    (FNjm * FracGASMm) + (UNjm * FracGASMm)
+  )
+;
+
+VEERG_4_3_1_5__2_TotalNitrogenVolatilisedMMS_Title
+  =LAMBDA("Total of nitrogen volatilised from MMS");
+
+VEERG_4_3_1_5__2_TotalNitrogenVolatilisedMMS_Variable
+  =LAMBDA("MNATMOS");
+
+VEERG_4_3_1_5__2_TotalNitrogenVolatilisedMMS_Unit
+  =LAMBDA("kg N");
+
+VEERG_4_3_1_5__2_TotalNitrogenVolatilisedMMS_Source
+  =LAMBDA("VEERG 2026: 4.3.1.5, Equation (2)");
+
+VEERG_4_3_1_5__2_TotalNitrogenVolatilisedMMS_NIRReference
+  =LAMBDA("National Inventory Report Volume 1, 2023: 3.B.5a_1");
+
+VEERG_4_3_1_5__2_TotalNitrogenVolatilisedMMS_ReadableEquation
+  =LAMBDA("MNATMOS= (FNjm * FracGASMm) + (UNjm * FracGASMm)");
+
+VEERG_4_3_1_5__2_TotalNitrogenVolatilisedMMS_Arguments
+  =LAMBDA(
+    MAKEARRAY(3, 3, 
+      LAMBDA(r,c, 
+        INDEX({
+          "FNjm","Seasonal faecal nitrogen in each manure management system","kg N";
+          "FracGASMm","fraction of N volatised from MMS","Fraction";
+          "UNjm","Seasonal urinary nitrogen in each manure management system","kg N"
+        }, r, c)
+      )
+    )
+  );
