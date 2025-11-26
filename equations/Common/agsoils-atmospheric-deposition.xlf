@@ -1,0 +1,112 @@
+/*
+============================================================================
+National Inventory Report 2023 reference:
+Agricultural soils: Atmospheric deposition (3.D.b.1)
+============================================================================
+*/
+
+/* 
+--------------------------------------
+COMMON_LIVESTOCK_AGSOILS_ATMOSPHERIC_DEPOSITION
+Atmospheric deposition emissions from urine and dung deposited by grazing animals on pasture,
+range and paddock
+EN2Oad
+t N2O
+EN2Oad = Mvolm * EFad * CgN2O * 10^-3
+Mvolm :Mmass of nitrogen volatilised from urine and faeces deposited on pasture : kg N
+EFad : Emission factor for atmospheric deposition : kg N2O-N/kg N
+CgN2O : Factor to convert elemental mass of N2O to molecular mass
+--------------------------------------
+*/
+COMMON_LIVESTOCK_AGSOILS_ATMOSPHERIC_DEPOSITION_GWP
+ =LAMBDA(
+    EN2Oad,GWPN2O,
+     (EN2Oad * GWPN2O)
+   );
+
+COMMON_LIVESTOCK_AGSOILS_ATMOSPHERIC_DEPOSITION
+  =LAMBDA(
+    Mvolm,Efad,CgN2O,
+    (Mvolm * Efad * CgN2O * 10^-3)
+  )
+;
+
+COMMON_LIVESTOCK_AGSOILS_ATMOSPHERIC_DEPOSITION_Title
+  =LAMBDA("Atmospheric deposition emissions from urine and dung deposited by grazing animals on pasture, range and paddock");
+
+COMMON_LIVESTOCK_AGSOILS_ATMOSPHERIC_DEPOSITION_Variable
+  =LAMBDA("EN2Oad");
+
+COMMON_LIVESTOCK_AGSOILS_ATMOSPHERIC_DEPOSITION_Unit
+  =LAMBDA("t N2O");
+
+COMMON_LIVESTOCK_AGSOILS_ATMOSPHERIC_DEPOSITION_NIRReference
+  =LAMBDA("National Inventory Report Volume 1, 2023: 3.D.B_4");
+
+COMMON_LIVESTOCK_AGSOILS_ATMOSPHERIC_DEPOSITION_ReadableEquation
+  =LAMBDA("EN2Oad = Mvolm * EFad * CgN2O * 10 ^ - 3");
+
+COMMON_LIVESTOCK_AGSOILS_ATMOSPHERIC_DEPOSITION_Arguments
+  =LAMBDA(
+    MAKEARRAY(3, 3, 
+      LAMBDA(r,c, 
+        INDEX({
+          "Mvolm","Mass of nitrogen volatilised from urine and faeces deposited on pasture","kg N";
+          "EFad","Emission factor for atmospheric deposition","kg N2O-N/kg N";
+          "CgN2O","Factor to convert elemental mass of N2O to molecular mass",""
+        }, r, c)
+      )
+    )
+  );
+
+/* 
+--------------------------------------
+COMMON_LIVESTOCK_AGSOILS_MASS_VOLATILISED
+The mass of nitrogen volatilised
+Mvolm
+kg N
+Mvolm = (MNjm + UNjm + FNjm) * FracGASMsoil
+MNjm : Mass of manure nitrogen applied to soils : kg N
+UNjm : Mass of urine nitrogen excreted on pasture, range and paddock for each dairy cattle class : kg N
+FNjm : Mass of faecal nitrogen excreted on pasture, range and paddock for each dairy cattle class : kg N
+FracGASMsoil : Fraction of nitrogen volatilised from urine and faeces deposited on pasture : (kg NH3-N + NOx-N)/kg N
+
+--------------------------------------
+*/
+
+
+COMMON_LIVESTOCK_AGSOILS_MASS_VOLATILISED
+  =LAMBDA(
+    MNjm, UNjm, FNjm, FracGASMsoil,
+    (MNjm + UNjm + FNjm) * FracGASMsoil
+  )
+;
+
+COMMON_LIVESTOCK_AGSOILS_ATMOSPHERIC_DEPOSITION_Title
+  =LAMBDA("Mass of nitrogen volatilised");
+
+COMMON_LIVESTOCK_AGSOILS_ATMOSPHERIC_DEPOSITION_Variable
+  =LAMBDA("Mvolm");
+
+COMMON_LIVESTOCK_AGSOILS_ATMOSPHERIC_DEPOSITION_Unit
+  =LAMBDA("kg N");
+
+COMMON_LIVESTOCK_AGSOILS_ATMOSPHERIC_DEPOSITION_NIRReference
+  =LAMBDA("National Inventory Report Volume 1, 2023: 3.D.B_2");
+
+COMMON_LIVESTOCK_AGSOILS_ATMOSPHERIC_DEPOSITION_ReadableEquation
+  =LAMBDA("Mvolm = (MNjm + UNjm + FNjm) * FracGASMsoil");
+
+COMMON_LIVESTOCK_AGSOILS_ATMOSPHERIC_DEPOSITION_Arguments
+  =LAMBDA(
+    MAKEARRAY(4, 3, 
+      LAMBDA(r,c, 
+        INDEX({
+          "MNjm","Mass of manure nitrogen applied to soils","kg N";
+          "UNjm","Mass of urine nitrogen excreted on pasture, range and paddock for each dairy cattle class","kg N";
+          "FNjm","Mass of faecal nitrogen excreted on pasture, range and paddock for each dairy cattle class","kg N";
+          "FracGASMsoil","Fraction of nitrogen volatilised from urine and faeces deposited on pasture","(kg NH3-N + NOx-N)/kg N"
+        }, r, c)
+      )
+    )
+  );
