@@ -39,19 +39,22 @@ SourceData_Common_DensityOfMethane_Data
 
 /* 
 --------------------------------------
-SourceData_Common_ConvertN2oElementalToMolecular
+SourceData_Common_ConvertN2oElementalToMolecularCg
 Cg = 44/28 factor to convert elemental mass of N2O to molecular mass
 --------------------------------------
 */
 
-SourceData_Common_ConvertN2oElementalToMolecular_Title
+SourceData_Common_ConvertN2oElementalToMolecularCg_Title
   =LAMBDA("Factor to convert elemental mass of N2O to molecular mass");
 
-SourceData_Common_ConvertN2oElementalToMolecular_Unit
+SourceData_Common_ConvertN2oElementalToMolecularCg_Variable
+  =LAMBDA("CgN2O");
+
+SourceData_Common_ConvertN2oElementalToMolecularCg_Unit
   =LAMBDA("factor");
 
-SourceData_Common_ConvertN2oElementalToMolecular_Source
+SourceData_Common_ConvertN2oElementalToMolecularCg_Source
   =LAMBDA("National Inventory Report 2023 Volume 1");
 
-SourceData_Common_ConvertN2oElementalToMolecular_Data
+SourceData_Common_ConvertN2oElementalToMolecularCg_Data
   =LAMBDA(44/28);

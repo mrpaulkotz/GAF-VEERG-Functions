@@ -263,7 +263,7 @@ qmj : Metabolisability of the diet : Fraction
 --------------------------------------
 */
 
-/*
+
 VEERG_3_3_1__5_AdditionalIntakeForMilkProduction
   =LAMBDA(
     Mij, MPj, NE, GEC, k, qmj,
@@ -304,7 +304,7 @@ VEERG_3_3_1__5_AdditionalIntakeForMilkProduction_Arguments
       )
     )
   );
-*/
+
 
 /* 
 --------------------------------------
@@ -317,7 +317,7 @@ PCj : protein content in fat and protein corrected milk : per cent
 --------------------------------------
 */
 
-/*
+
 VEERG_3_3_1__5a_ConvertMilkSolidsToLitres
   =LAMBDA(
     MSj, FCj, PCj,
@@ -355,4 +355,3 @@ VEERG_3_3_1__5a_ConvertMilkSolidsToLitres_Arguments
       )
     )
   );
-*/
