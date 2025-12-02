@@ -8,7 +8,7 @@
 
 /* 
 --------------------------------------
-VEERG_4_3_1_5__1_NO2AtmosphericDepositionMMS
+VEERG_4_3_1_5__1_MMS_NO2AtmosphericDeposition
 Annual atmospheric deposition emissions from manure management systems
 EN2OMMSAD = MNatmos * EFN2O * Cg * 10^(-3)
 MNatmos : mass of N volatilised from MMS : kg N
@@ -16,38 +16,42 @@ EFN2O : inorganic fertiliser emission factor for production system : kg N2O-N/kg
 Cg :  factor to convert elemental mass of N2O to molecular mass
 --------------------------------------
 */
-VEERG_4_3_1_5__1a_NO2AtmosphericDepositionMMSGWP
+VEERG_4_3_1_5__1a_MMS_NO2AtmosphericDeposition_GWP
   =LAMBDA(
     EN2OMMSAD,GWPN2O,
      (EN2OMMSAD * GWPN2O)
    );
 
 
-VEERG_4_3_1_5__1_NO2AtmosphericDepositionMMS
+VEERG_4_3_1_5__1_MMS_NO2AtmosphericDeposition
   =LAMBDA(
     MNatmos, EFN2O, Cg,
      MNatmos * EFN2O * Cg * 10 ^-3
    );
 
-VEERG_4_3_1_5__1_NO2AtmosphericDepositionMMS_Title
+
+VEERG_4_3_1_5__1_MMS_NO2AtmosphericDeposition_FunctionName
+  =LAMBDA("VEERG_4_3_1_5__1_MMS_NO2AtmosphericDeposition");
+
+VEERG_4_3_1_5__1_MMS_NO2AtmosphericDeposition_Title
   =LAMBDA("Annual atmospheric deposition emissions from manure management systems");
 
-VEERG_4_3_1_5__1_NO2AtmosphericDepositionMMS_Variable
+VEERG_4_3_1_5__1_MMS_NO2AtmosphericDeposition_Variable
   =LAMBDA("EN2OMMSAD");
 
-VEERG_4_3_1_5__1_NO2AtmosphericDepositionMMS_Unit
+VEERG_4_3_1_5__1_MMS_NO2AtmosphericDeposition_Unit
   =LAMBDA("t N2O");
 
-VEERG_4_3_1_5__1_NO2AtmosphericDepositionMMS_Source
+VEERG_4_3_1_5__1_MMS_NO2AtmosphericDeposition_Source
   =LAMBDA("VEERG 2026: 4.3.1.5, Equation (1)");
 
-VEERG_4_3_1_5__1_NO2AtmosphericDepositionMMS_NIRReference
+VEERG_4_3_1_5__1_MMS_NO2AtmosphericDeposition_NIRReference
   =LAMBDA("National Inventory Report Volume 1, 2023: Equation 3.B.5a_2");
 
-VEERG_4_3_1_5__1_NO2AtmosphericDepositionMMS_ReadableEquation
+VEERG_4_3_1_5__1_MMS_NO2AtmosphericDeposition_ReadableEquation
   =LAMBDA("EN2OMMSAD = MNatmos * EFN2O * Cg * 10 ^-3");
 
-VEERG_4_3_1_5__1_NO2AtmosphericDepositionMMS_Arguments
+VEERG_4_3_1_5__1_MMS_NO2AtmosphericDeposition_Arguments
   =LAMBDA(
     MAKEARRAY(3, 2, 
       LAMBDA(r,c, 
@@ -79,6 +83,9 @@ VEERG_4_3_1_5__2_TotalNitrogenVolatilisedMMS
     (FNjm * FracGASMm) + (UNjm * FracGASMm)
   )
 ;
+
+VEERG_4_3_1_5__2_TotalNitrogenVolatilisedMMS_FunctionName
+  =LAMBDA("VEERG_4_3_1_5__2_TotalNitrogenVolatilisedMMS");
 
 VEERG_4_3_1_5__2_TotalNitrogenVolatilisedMMS_Title
   =LAMBDA("Total of nitrogen volatilised from MMS");

@@ -31,6 +31,9 @@ VEERG_4_3_1_6__1_NO2LeachingAndRunoffMMS
      (MNleach * EFleach * Cg) * 10^-3
    );
 
+VEERG_4_3_1_6__1_NO2LeachingAndRunoffMMS_FunctionName
+  =LAMBDA("VEERG_4_3_1_6__1_NO2LeachingAndRunoffMMS");
+
 VEERG_4_3_1_6__1_NO2LeachingAndRunoffMMS_Title
   =LAMBDA("Annual emissions from leaching and run off from each manure management system");
 
@@ -82,6 +85,9 @@ VEERG_4_3_1_6__2_NLostFromSolidStorage
     (FNjm + UNjm) * FracWETi * FracLEACHms
   )
 ;
+
+VEERG_4_3_1_6__2_NLostFromSolidStorage_FunctionName
+  =LAMBDA("VEERG_4_3_1_6__2_NLostFromSolidStorage");
 
 VEERG_4_3_1_6__2_NLostFromSolidStorage_Title
   =LAMBDA("The mass of nitrogen lost to leaching and runoff from solid storage systems");

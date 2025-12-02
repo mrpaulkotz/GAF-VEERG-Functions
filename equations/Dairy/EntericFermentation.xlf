@@ -23,6 +23,9 @@ VEERG_3_3_1__1_EntericMethane
   )
 ;
 
+VEERG_3_3_1__1_EntericMethane_FunctionName
+  =LAMBDA("VEERG_3_3_1__1_EntericMethane");
+
 VEERG_3_3_1__1_EntericMethane_Title
   =LAMBDA("Total annual emissions from enteric methane in dairy cattle");
 
@@ -69,6 +72,9 @@ VEERG_3_3_1__2a_MethaneProductionGTOne
     (Nj*Mj*Dj)
   )
 ;
+
+VEERG_3_3_1__2a_MethaneProductionGTOne_FunctionName
+  =LAMBDA("VEERG_3_3_1__2a_MethaneProductionGTOne");
 
 VEERG_3_3_1__2a_MethaneProductionGTOne_Title
   =LAMBDA("Annual methane production for all classes of dairy cattle > 1 year");
@@ -120,6 +126,9 @@ VEERG_3_3_1__2b_MethaneProductionLTOne
   )
 ;
 
+VEERG_3_3_1__2b_MethaneProductionLTOne_FunctionName
+  =LAMBDA("VEERG_3_3_1__2b_MethaneProductionLTOne");
+
 VEERG_3_3_1__2b_MethaneProductionLTOne_Title
   =LAMBDA("Annual methane production for all classes of dairy cattle < 1 year");
 
@@ -169,6 +178,10 @@ VEERG_3_3_1__3_DailyMethaneProduction
   )
 ;
 
+
+VEERG_3_3_1__3_DailyMethaneProduction_FunctionName
+  =LAMBDA("VEERG_3_3_1__3_DailyMethaneProduction");
+
 VEERG_3_3_1__3_DailyMethaneProduction_Title
   =LAMBDA("Daily production of enteric methane");
 
@@ -216,6 +229,9 @@ VEERG_3_3_1__4_FeedIntake
     (1.185 + 0.00454*Wj + 0.0000026*Wj^2 + 0.315*LWGj)^2 * MRj + MIj
   )
 ;
+
+VEERG_3_3_1__4_FeedIntake_FunctionName
+  =LAMBDA("VEERG_3_3_1__4_FeedIntake");
 
 VEERG_3_3_1__4_FeedIntake_Title
   =LAMBDA("Feed intake from liveweight and liveweight gain");
@@ -271,6 +287,9 @@ VEERG_3_3_1__5_AdditionalIntakeForMilkProduction
   )
 ;
 
+VEERG_3_3_1__5_AdditionalIntakeForMilkProduction_FunctionName
+  =LAMBDA("VEERG_3_3_1__5_AdditionalIntakeForMilkProduction");
+
 VEERG_3_3_1__5_AdditionalIntakeForMilkProduction_Title
   =LAMBDA("The additional intake required for milk production");
 
@@ -324,6 +343,9 @@ VEERG_3_3_1__5a_ConvertMilkSolidsToLitres
     MSj / (0.01 * (FCj + PCj))
   )
 ;
+
+VEERG_3_3_1__5a_ConvertMilkSolidsToLitres_FunctionName
+  =LAMBDA("VEERG_3_3_1__5a_ConvertMilkSolidsToLitres");
 
 VEERG_3_3_1__5a_ConvertMilkSolidsToLitres_Title
   =LAMBDA("Milk solids converted to litres");

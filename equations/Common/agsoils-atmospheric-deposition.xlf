@@ -61,8 +61,8 @@ COMMON_LIVESTOCK_AGSOILS_ATMOSPHERIC_DEPOSITION_Arguments
 
 /* 
 --------------------------------------
-COMMON_LIVESTOCK_AGSOILS_MASS_VOLATILISED
-The mass of nitrogen volatilised
+COMMON_LIVESTOCK_AGSOILS_MASS_VOLATILISED_ANIMAL_WASTE
+The mass of nitrogen volatilised from manure, urine and faeces deposited on soils
 Mvolm
 kg N
 Mvolm = (MNjm + UNjm + FNjm) * FracGASMsoil
@@ -75,29 +75,29 @@ FracGASMsoil : Fraction of nitrogen volatilised from urine and faeces deposited 
 */
 
 
-COMMON_LIVESTOCK_AGSOILS_MASS_VOLATILISED
+COMMON_LIVESTOCK_AGSOILS_MASS_VOLATILISED_ANIMAL_WASTE
   =LAMBDA(
     MNjm, UNjm, FNjm, FracGASMsoil,
     (MNjm + UNjm + FNjm) * FracGASMsoil
   )
 ;
 
-COMMON_LIVESTOCK_AGSOILS_MASS_VOLATILISED_Title
-  =LAMBDA("Mass of nitrogen volatilised");
+COMMON_LIVESTOCK_AGSOILS_MASS_VOLATILISED_ANIMAL_WASTE_Title
+  =LAMBDA("Mass of nitrogen volatilised from manure, urine and faeces deposited on soils");
 
-COMMON_LIVESTOCK_AGSOILS_MASS_VOLATILISED_Variable
+COMMON_LIVESTOCK_AGSOILS_MASS_VOLATILISED_ANIMAL_WASTE_Variable
   =LAMBDA("Mvolm");
 
-COMMON_LIVESTOCK_AGSOILS_MASS_VOLATILISED_Unit
+COMMON_LIVESTOCK_AGSOILS_MASS_VOLATILISED_ANIMAL_WASTE_Unit
   =LAMBDA("kg N");
 
-COMMON_LIVESTOCK_AGSOILS_MASS_VOLATILISED_NIRReference
+COMMON_LIVESTOCK_AGSOILS_MASS_VOLATILISED_ANIMAL_WASTE_NIRReference
   =LAMBDA("National Inventory Report Volume 1, 2023: 3.D.B_2");
 
-COMMON_LIVESTOCK_AGSOILS_MASS_VOLATILISED_ReadableEquation
+COMMON_LIVESTOCK_AGSOILS_MASS_VOLATILISED_ANIMAL_WASTE_ReadableEquation
   =LAMBDA("Mvolm = (MNjm + UNjm + FNjm) * FracGASMsoil");
 
-COMMON_LIVESTOCK_AGSOILS_MASS_VOLATILISED_Arguments
+COMMON_LIVESTOCK_AGSOILS_MASS_VOLATILISED_ANIMAL_WASTE_Arguments
   =LAMBDA(
     MAKEARRAY(4, 3, 
       LAMBDA(r,c, 
@@ -106,6 +106,54 @@ COMMON_LIVESTOCK_AGSOILS_MASS_VOLATILISED_Arguments
           "UNjm","Mass of urine nitrogen excreted on pasture, range and paddock for each dairy cattle class","kg N";
           "FNjm","Mass of faecal nitrogen excreted on pasture, range and paddock for each dairy cattle class","kg N";
           "FracGASMsoil","Fraction of nitrogen volatilised from urine and faeces deposited on pasture","(kg NH3-N + NOx-N)/kg N"
+        }, r, c)
+      )
+    )
+  );
+
+
+/* 
+--------------------------------------
+COMMON_LIVESTOCK_AGSOILS_MASS_VOLATILISED_SYNTHETIC_FERTILISER
+The mass of nitrogen volatilised from inorganic fertiliser applied to soils
+Mvolinorganic
+kg N
+Mvolinorganic = MNf * FracGASFf
+MNf :Mass of nitrogen in inorganic fertiliser applied : kg N
+FracGASFf : Fraction of inorganic fertiliser that volatilises : (kg NH3–N + NOx–N)/kg N
+--------------------------------------
+*/
+
+
+COMMON_LIVESTOCK_AGSOILS_MASS_VOLATILISED_SYNTHETIC_FERTILISER
+  =LAMBDA(
+    MNf, FracGASFf,
+    MNf * FracGASFf
+  )
+;
+
+COMMON_LIVESTOCK_AGSOILS_MASS_VOLATILISED_SYNTHETIC_FERTILISER_Title
+  =LAMBDA("Mass of nitrogen volatilised from synthetic fertiliser deposited on soils");
+
+COMMON_LIVESTOCK_AGSOILS_MASS_VOLATILISED_SYNTHETIC_FERTILISER_Variable
+  =LAMBDA("Mvolinorganic");
+
+COMMON_LIVESTOCK_AGSOILS_MASS_VOLATILISED_SYNTHETIC_FERTILISER_Unit
+  =LAMBDA("kg N");
+
+COMMON_LIVESTOCK_AGSOILS_MASS_VOLATILISED_SYNTHETIC_FERTILISER_NIRReference
+  =LAMBDA("National Inventory Report Volume 1, 2023: 3.D.B_1");
+
+COMMON_LIVESTOCK_AGSOILS_MASS_VOLATILISED_SYNTHETIC_FERTILISER_ReadableEquation
+  =LAMBDA("Mvolinorganic = MNf * FracGASFf");
+
+COMMON_LIVESTOCK_AGSOILS_MASS_VOLATILISED_SYNTHETIC_FERTILISER_Arguments
+  =LAMBDA(
+    MAKEARRAY(2, 3, 
+      LAMBDA(r,c, 
+        INDEX({
+          "MNf","Mass of nitrogen in inorganic fertiliser applied","kg N";
+          "FracGASFf","Fraction of inorganic fertiliser that volatilises","(kg NH3–N + NOx–N)/kg N"
         }, r, c)
       )
     )

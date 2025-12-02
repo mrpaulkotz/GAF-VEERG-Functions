@@ -8,7 +8,7 @@
 
 /* 
 --------------------------------------
-VEERG_4_3_1_3__1_NO2DirectMMS
+VEERG_4_3_1_3__1_MMS_N2O_Direct
 The total annual direct nitrous oxide emissions 
 from manure management systems
 FNj : Seasonal faecal nitrogen in each manure management system
@@ -18,32 +18,41 @@ Cg :  factor to convert elemental mass of N2O to molecular mass
 --------------------------------------
 */
 
-VEERG_4_3_1_3__1_NO2DirectMMS
+VEERG_4_3_1_3__1a_MMS_N2O_Direct_GWP
+  =LAMBDA(
+    E,GWPN2O,
+     (E * GWPN2O)
+   );
+
+VEERG_4_3_1_3__1_MMS_N2O_Direct
   =LAMBDA(
     FNjm,EFm,Cg,UNjm,
      ((FNjm * EFm * Cg) + (UNjm * EFm * Cg)) * 10 ^ -3
    )
 ;
 
-VEERG_4_3_1_3__1_NO2DirectMMS_Title
+VEERG_4_3_1_3__1_MMS_N2O_Direct_FunctionName
+  =LAMBDA("VEERG_4_3_1_3__1_MMS_N2O_Direct");
+
+VEERG_4_3_1_3__1_MMS_N2O_Direct_Title
   =LAMBDA("The total annual direct nitrous oxide emissions from manure management systems");
 
-VEERG_4_3_1_3__1_NO2DirectMMS_Variable
+VEERG_4_3_1_3__1_MMS_N2O_Direct_Variable
   =LAMBDA("E");
 
-VEERG_4_3_1_3__1_NO2DirectMMS_Unit
-  =LAMBDA("t CO@e");
+VEERG_4_3_1_3__1_MMS_N2O_Direct_Unit
+  =LAMBDA("t CO2e");
 
-VEERG_4_3_1_3__1_NO2DirectMMS_Source
+VEERG_4_3_1_3__1_MMS_N2O_Direct_Source
   =LAMBDA("VEERG 2026: 4.3.1.3, Equation (1)");
 
-VEERG_4_3_1_3__1_NO2DirectMMS_NIRReference
+VEERG_4_3_1_3__1_MMS_N2O_Direct_NIRReference
   =LAMBDA("National Inventory Report Volume 1, 2023: Equation 3.B.1a_10c");
 
-VEERG_4_3_1_3__1_NO2DirectMMS_ReadableEquation
+VEERG_4_3_1_3__1_MMS_N2O_Direct_ReadableEquation
   =LAMBDA("E = ((FNjm x EFm x Cg) + (UNjm x EFm x Cg)) x 10 ^ -3");
 
-VEERG_4_3_1_3__1_NO2DirectMMS_Arguments
+VEERG_4_3_1_3__1_MMS_N2O_Direct_Arguments
   =LAMBDA(
     MAKEARRAY(4, 2, 
       LAMBDA(r,c, 
@@ -72,6 +81,9 @@ VEERG_4_3_1_3__2_FaecalN2OMMS
     AFj * MMSjm
    )
 ;
+
+VEERG_4_3_1_3__2_FaecalN2OMMS_FunctionName
+  =LAMBDA("VEERG_4_3_1_3__2_FaecalN2OMMS");
 
 VEERG_4_3_1_3__2_FaecalN2OMMS_Title
   =LAMBDA("Faecal nitrogen in each manure management system");
@@ -119,6 +131,9 @@ VEERG_4_3_1_3__3a_FaecalNitrogenExcretedGTOne
     (Nj * Fj * Dj)
   )
 ;
+
+VEERG_4_3_1_3__3a_FaecalNitrogenExcretedGTOne_FunctionName
+  =LAMBDA("VEERG_4_3_1_3__3a_FaecalNitrogenExcretedGTOne");
 
 VEERG_4_3_1_3__3a_FaecalNitrogenExcretedGTOne_Title
   =LAMBDA("Faecal nitrogen excreted by dairy cattle >1 year old");
@@ -168,6 +183,9 @@ VEERG_4_3_1_3__3b_FaecalNitrogenExcretedLTOne
     (Nj * Fj * Dj) + (Nj * FPWj * DPWj)
    )
 ;
+
+VEERG_4_3_1_3__3b_FaecalNitrogenExcretedLTOne_FunctionName
+  =LAMBDA("VEERG_4_3_1_3__3b_FaecalNitrogenExcretedLTOne");
 
 VEERG_4_3_1_3__3b_FaecalNitrogenExcretedLTOne_Title
   =LAMBDA("Total faecal nitrogen excreted (AFj=3,5)");
@@ -221,6 +239,9 @@ VEERG_4_3_1_3__4_NitrogenExcretedInFaeces
    )
 ;
 
+VEERG_4_3_1_3__4_NitrogenExcretedInFaeces_FunctionName
+  =LAMBDA("VEERG_4_3_1_3__4_NitrogenExcretedInFaeces");
+
 VEERG_4_3_1_3__4_NitrogenExcretedInFaeces_Title
   =LAMBDA("Nitrogen excreted in faeces");
 
@@ -269,6 +290,9 @@ VEERG_4_3_1_3__5_MetabolisableEnergy
   )
 ;
 
+VEERG_4_3_1_3__5_MetabolisableEnergy_FunctionName
+  =LAMBDA("VEERG_4_3_1_3__5_MetabolisableEnergy");
+
 VEERG_4_3_1_3__5_MetabolisableEnergy_Title
   =LAMBDA("Metabolisable energy");
 
@@ -313,6 +337,9 @@ VEERG_4_3_1_3__6_CrudeProteinIntake
     Ij * CPj
   )
 ;
+
+VEERG_4_3_1_3__6_CrudeProteinIntake_FunctionName
+  =LAMBDA("VEERG_4_3_1_3__6_CrudeProteinIntake");
 
 VEERG_4_3_1_3__6_CrudeProteinIntake_Title
   =LAMBDA("Crude protein intake of dairy cattle");
@@ -360,6 +387,9 @@ VEERG_4_3_1_3__8_UrinaryNitrogenMMS
   )
 ;
 
+VEERG_4_3_1_3__8_UrinaryNitrogenMMS_FunctionName
+  =LAMBDA("VEERG_4_3_1_3__8_UrinaryNitrogenMMS");
+
 VEERG_4_3_1_3__8_UrinaryNitrogenMMS_Title
   =LAMBDA("Urinary nitrogen in each MMS");
 
@@ -406,6 +436,9 @@ VEERG_4_3_1_3__9a_UrinaryNitrogenExcretedGTOne
     (Nj * Uj * Dj)
   )
 ;
+
+VEERG_4_3_1_3__9a_UrinaryNitrogenExcretedGTOne_FunctionName
+  =LAMBDA("VEERG_4_3_1_3__9a_UrinaryNitrogenExcretedGTOne");
 
 VEERG_4_3_1_3__9a_UrinaryNitrogenExcretedGTOne_Title
   =LAMBDA("Urinary nitrogen excreted by dairy cattle >1 year old");
@@ -456,6 +489,9 @@ VEERG_4_3_1_3__9b_UrinaryNitrogenExcretedLTOne
     (Nj * Uj * Dj) + (Nj * UPWj * DPWj)
   )
 ;
+
+VEERG_4_3_1_3__9b_UrinaryNitrogenExcretedLTOne_FunctionName
+  =LAMBDA("VEERG_4_3_1_3__9b_UrinaryNitrogenExcretedLTOne");
 
 VEERG_4_3_1_3__9b_UrinaryNitrogenExcretedLTOne_Title
   =LAMBDA("Urinary nitrogen excreted by dairy cattle <1 year old");
@@ -509,6 +545,9 @@ VEERG_4_3_1_3__10_NitrogenExcretedInUrine
   )
 ;
 
+VEERG_4_3_1_3__10_NitrogenExcretedInUrine_FunctionName
+  =LAMBDA("VEERG_4_3_1_3__10_NitrogenExcretedInUrine");
+
 VEERG_4_3_1_3__10_NitrogenExcretedInUrine_Title
   =LAMBDA("Nitrogen excreted in urine for of dairy cattle >1 year old and weaned cattle <1 year old");
 
@@ -559,6 +598,9 @@ VEERG_4_3_1_3__11_NitrogenRetainedInTheBody
     ((0.032 * MPj * MC) / 6.38) + ((0.212 - 0.008 * (Lj - 2) - ((0.14 - 0.008 * (Lj - 2)) / (1 + EXP(-6 * (Zj - 0.4))))) * (LWGj * 0.92)) * (1 / 6.25)
   )
 ;
+
+VEERG_4_3_1_3__11_NitrogenRetainedInTheBody_FunctionName
+  =LAMBDA("VEERG_4_3_1_3__11_NitrogenRetainedInTheBody");
 
 VEERG_4_3_1_3__11_NitrogenRetainedInTheBody_Title
   =LAMBDA("Nitrogen retained in the body");
@@ -612,6 +654,9 @@ VEERG_4_3_1_3__12_IntakeRelativeToMaintenance
   )
 ;
 
+VEERG_4_3_1_3__12_IntakeRelativeToMaintenance_FunctionName
+  =LAMBDA("VEERG_4_3_1_3__12_IntakeRelativeToMaintenance");
+
 VEERG_4_3_1_3__12_IntakeRelativeToMaintenance_Title
   =LAMBDA("Intake relative to maintenance");
 
@@ -660,6 +705,9 @@ VEERG_4_3_1_3__13_RelativeSize
     Wj / SRWj
   )
 ;
+
+VEERG_4_3_1_3__13_RelativeSize_FunctionName
+  =LAMBDA("VEERG_4_3_1_3__13_RelativeSize");
 
 VEERG_4_3_1_3__13_RelativeSize_Title
   =LAMBDA("Relative size of each livestock class");

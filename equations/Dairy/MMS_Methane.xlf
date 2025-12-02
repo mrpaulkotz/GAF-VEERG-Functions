@@ -1,0 +1,278 @@
+/*
+============================================================================
+4.3: Dairy
+============================================================================
+4.3.1.1 Method 1 — Manure Methane
+============================================================================
+*/
+
+/* 
+--------------------------------------
+VEERG_4_3_1_1__1_MMS_Methane
+Total methane production from manure management
+EtotalCH4 = AMmanure * 10 ^ - 3
+AMmanure : Annual methane production : kg CH4
+--------------------------------------
+*/
+VEERG_4_3_1_1__1a_MMS_Methane_GWP
+  =LAMBDA(
+    EtotalCH4,GWPCH4,
+     (EtotalCH4 * GWPCH4)
+   );
+
+
+VEERG_4_3_1_1__1_MMS_Methane
+  =LAMBDA(
+    AMmanure,
+     AMmanure * 10 ^ - 3
+   );
+
+
+VEERG_4_3_1_1__1_MMS_Methane_FunctionName
+  =LAMBDA("VEERG_4_3_1_1__1_MMS_Methane");
+
+VEERG_4_3_1_1__1_MMS_Methane_Title
+  =LAMBDA("Total methane production from manure management");
+
+VEERG_4_3_1_1__1_MMS_Methane_Variable
+  =LAMBDA("EtotalCH4");
+
+VEERG_4_3_1_1__1_MMS_Methane_Unit
+  =LAMBDA("t CH4");
+
+VEERG_4_3_1_1__1_MMS_Methane_Source
+  =LAMBDA("VEERG 2026: 4.3.1.1, Equation (1)");
+
+VEERG_4_3_1_1__1_MMS_Methane_NIRReference
+  =LAMBDA("National Inventory Report Volume 1, 2023: Equation 3.B.1a_3");
+
+VEERG_4_3_1_1__1_MMS_Methane_ReadableEquation
+  =LAMBDA("ECH4 = AMmanure * 10 ^-3");
+
+VEERG_4_3_1_1__1_MMS_Methane_Arguments
+  =LAMBDA(
+    MAKEARRAY(1, 2, 
+      LAMBDA(r,c, 
+        INDEX({
+          "AMmanure","Annual methane production","kg CH4"
+        }, r, c)
+      )
+    )
+  );
+
+/* 
+--------------------------------------
+VEERG_4_3_1_1__1b_MethaneProductionGTOne
+Annual methane production for all classes of dairy cattle > 1 year
+AMmanure = (Nj*Mj*Dj)
+Nj : Number of dairy cattle in each class : head
+Mj : Methane production from manure of weaned dairy cattle in each class in each : kg / head / day
+Dj : Duration of the stay on the farm : days
+--------------------------------------
+*/
+
+VEERG_4_3_1_1__1b_MethaneProductionGTOne
+  =LAMBDA(
+    Nj,Mj,Dj,
+     (Nj*Mj*Dj)
+   );
+
+
+VEERG_4_3_1_1__1b_MethaneProductionGTOne_FunctionName
+  =LAMBDA("VEERG_4_3_1_1__1b_MethaneProductionGTOne");
+
+VEERG_4_3_1_1__1b_MethaneProductionGTOne_Title
+  =LAMBDA("Annual methane production for all classes of dairy cattle > 1 year");
+
+VEERG_4_3_1_1__1b_MethaneProductionGTOne_Variable
+  =LAMBDA("AMmanure");
+
+VEERG_4_3_1_1__1b_MethaneProductionGTOne_Unit
+  =LAMBDA("kg CH4");
+
+VEERG_4_3_1_1__1b_MethaneProductionGTOne_Source
+  =LAMBDA("VEERG 2026: 4.3.1.1, Equation (1)");
+
+VEERG_4_3_1_1__1b_MethaneProductionGTOne_NIRReference
+  =LAMBDA("National Inventory Report Volume 1, 2023: Equation 3.B.1a_3");
+
+VEERG_4_3_1_1__1b_MethaneProductionGTOne_ReadableEquation
+  =LAMBDA("AMmanure = (Nj*Mj*Dj)");
+
+VEERG_4_3_1_1__1b_MethaneProductionGTOne_Arguments
+  =LAMBDA(
+    MAKEARRAY(3, 2, 
+      LAMBDA(r,c, 
+        INDEX({
+          "Nj","Number of dairy cattle in each class","head";
+          "Mj","Methane production from manure of weaned dairy cattle in each class in each","kg / head / day";
+          "Dj","Duration of the stay on the farm","days"
+        }, r, c)
+      )
+    )
+  );
+
+/* 
+--------------------------------------
+VEERG_4_3_1_1__1c_MethaneProductionLTOne
+Annual methane production for all classes of dairy cattle < 1 year
+AMmanure = (Nj*Mj*Dj)+(Nj*MPWj*DPWj)
+Nj : Number of dairy cattle in each class : head
+Mj : Methane production from manure of weaned dairy cattle in each class in each : kg / head / day
+Dj : Duration of the stay on the farm : days
+MPWj : Methane production from manure of pre-weaned dairy cattle in each class in each : kg / head / day
+DPWj : Duration of the stay on the farm for pre-weaned dairy cattle : days
+--------------------------------------
+*/
+
+VEERG_4_3_1_1__1c_MethaneProductionLTOne
+  =LAMBDA(
+    Nj, Mj, Dj, MPWj, DPWj,
+     (Nj*Mj*Dj)+(Nj*MPWj*DPWj)
+   );
+
+
+VEERG_4_3_1_1__1c_MethaneProductionLTOne_FunctionName
+  =LAMBDA("VEERG_4_3_1_1__1c_MethaneProductionLTOne");
+
+VEERG_4_3_1_1__1c_MethaneProductionLTOne_Title
+  =LAMBDA("Annual methane production for all classes of dairy cattle < 1 year");
+
+VEERG_4_3_1_1__1c_MethaneProductionLTOne_Variable
+  =LAMBDA("AMmanure");
+
+VEERG_4_3_1_1__1c_MethaneProductionLTOne_Unit
+  =LAMBDA("kg CH4");
+
+VEERG_4_3_1_1__1c_MethaneProductionLTOne_Source
+  =LAMBDA("VEERG 2026: 4.3.1.1, Equation (1)");
+
+VEERG_4_3_1_1__1c_MethaneProductionLTOne_NIRReference
+  =LAMBDA("National Inventory Report Volume 1, 2023: Equation 3.B.1a_3");
+
+VEERG_4_3_1_1__1c_MethaneProductionLTOne_ReadableEquation
+  =LAMBDA("AMmanure = (Nj*Mj*Dj)+(Nj*MPWj*DPWj)");
+
+VEERG_4_3_1_1__1c_MethaneProductionLTOne_Arguments
+  =LAMBDA(
+    MAKEARRAY(5, 2, 
+      LAMBDA(r,c, 
+        INDEX({
+          "Nj","Number of dairy cattle in each class","head";
+          "Mj","Methane production from manure of weaned dairy cattle in each class in each","kg / head / day";
+          "Dj","Duration of the stay on the farm","days";
+          "MPWj","Methane production from manure of pre-weaned dairy cattle in each class in each","kg / head / day";
+          "DPWj","Duration of the stay on the farm for pre-weaned dairy cattle","days"
+        }, r, c)
+      )
+    )
+  );
+
+/* 
+--------------------------------------
+VEERG_4_3_1_1__2_MethaneFromManureProduction
+Methane from manure production
+Mmj=VSj*Bo*MMSjm*MCFim*p
+VSj : Daily volatile solids production per head for dairy cattle : kg/head/day
+Bo : Emissions potential : m3 CH4/kgVS
+MMSjm : fraction of waste from each class in each management system : fraction
+MCFim : methane conversion factor for climate zone and MMS : 
+p : density of methane : kg/m3 
+--------------------------------------
+*/
+
+VEERG_4_3_1_1__2_MethaneFromManureProduction
+  =LAMBDA(
+    Nj, Mj, Dj, MPWj, DPWj,
+     (Nj*Mj*Dj)+(Nj*MPWj*DPWj)
+   );
+
+
+VEERG_4_3_1_1__2_MethaneFromManureProduction_FunctionName
+  =LAMBDA("VEERG_4_3_1_1__2_MethaneFromManureProduction");
+
+VEERG_4_3_1_1__2_MethaneFromManureProduction_Title
+  =LAMBDA("Methane from manure production");
+
+VEERG_4_3_1_1__2_MethaneFromManureProduction_Variable
+  =LAMBDA("Mmj");
+
+VEERG_4_3_1_1__2_MethaneFromManureProduction_Unit
+  =LAMBDA("kg / head / day");
+
+VEERG_4_3_1_1__2_MethaneFromManureProduction_Source
+  =LAMBDA("VEERG 2026: 4.3.1.1, Equation (2)");
+
+VEERG_4_3_1_1__2_MethaneFromManureProduction_NIRReference
+  =LAMBDA("National Inventory Report Volume 1, 2023: Equation 3.B.1a_2");
+
+VEERG_4_3_1_1__2_MethaneFromManureProduction_ReadableEquation
+  =LAMBDA("Mmj=VSj*Bo*MMSjm*MCFim*p");
+
+VEERG_4_3_1_1__2_MethaneFromManureProduction_Arguments
+  =LAMBDA(
+    MAKEARRAY(5, 2, 
+      LAMBDA(r,c, 
+        INDEX({
+          "VSj","Daily volatile solids production per head for dairy cattle","kg/head/day";
+          "Bo","Emissions potential","m3 CH4/kgVS";
+          "MMSjm","fraction of waste from each class in each management system","fraction";
+          "MCFim","methane conversion factor for climate zone and MMS","";
+          "p","density of methane","kg/m3 "
+        }, r, c)
+      )
+    )
+  );
+
+  /* 
+--------------------------------------
+VEERG_4_3_1_1__3_VolatileSolids
+Volatile solids in manure
+VSj=(Ij*(1-DMDj)+(0.04*Ij))*(1-A)
+Ij : Dry matter feed intake : kgDM/head/day
+DMDj : Dry matter digestibility : fraction 
+A : Ash content of feed intake : fraction
+
+--------------------------------------
+*/
+
+VEERG_4_3_1_1__3_VolatileSolids
+  =LAMBDA(
+    Ij, DMDj, A,
+     (Ij*(1-DMDj)+(0.04*Ij))*(1-A)
+   );
+
+
+VEERG_4_3_1_1__3_VolatileSolids_FunctionName
+  =LAMBDA("VEERG_4_3_1_1__3_VolatileSolids");
+
+VEERG_4_3_1_1__3_VolatileSolids_Title
+  =LAMBDA("Volatile solids in manure");
+
+VEERG_4_3_1_1__3_VolatileSolids_Variable
+  =LAMBDA("VSj");
+
+VEERG_4_3_1_1__3_VolatileSolids_Unit
+  =LAMBDA("kg / head / day");
+
+VEERG_4_3_1_1__3_VolatileSolids_Source
+  =LAMBDA("VEERG 2026: 4.3.1.1, Equation (3)");
+
+VEERG_4_3_1_1__3_VolatileSolids_NIRReference
+  =LAMBDA("National Inventory Report Volume 1, 2023: Equation 3.B.1a_2");
+
+VEERG_4_3_1_1__3_VolatileSolids_ReadableEquation
+  =LAMBDA("VSj=(Ij*(1-DMDj)+(0.04*Ij))*(1-A)");
+
+VEERG_4_3_1_1__3_VolatileSolids_Arguments
+  =LAMBDA(
+    MAKEARRAY(5, 2, 
+      LAMBDA(r,c, 
+        INDEX({
+          "Ij","Dry matter feed intake","kgDM/head/day";
+          "DMDj","Dry matter digestibility","fraction";
+          "A","Ash content of feed intake","fraction"
+        }, r, c)
+      )
+    )
+  );
