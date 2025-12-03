@@ -1,0 +1,40 @@
+
+/*
+This function is a common function found in Cropping/Agsoils_UrineAndDungDeposited.xlf
+*/
+
+VEERG_4_3_1_9__1_UrineAndDungDeposited_GWP
+  =LAMBDA(
+    EN2Odir,GWPN2O, Cropping.Agsoils_UrineAndDungDeposited_GWP(EN2Odir,GWPN2O)
+  );
+
+VEERG_4_3_1_9__1_UrineAndDungDeposited
+  =LAMBDA(
+    AFjm, AUjm, EFPRP, CgN2O, Cropping.Agsoils_UrineAndDungDeposited(AFjm, AUjm, EFPRP, CgN2O)
+  );
+
+VEERG_4_3_1_9__1_UrineAndDungDeposited_FunctionName
+  =LAMBDA("VEERG_4_3_1_9__1_UrineAndDungDeposited");
+
+VEERG_4_3_1_9__1_UrineAndDungDeposited_Title
+  =LAMBDA(Cropping.Agsoils_UrineAndDungDeposited_Title());
+
+ VEERG_4_3_1_9__1_UrineAndDungDeposited_Variable
+  =LAMBDA(Cropping.Agsoils_UrineAndDungDeposited_Variable());
+
+VEERG_4_3_1_9__1_UrineAndDungDeposited_Unit
+  =LAMBDA(Cropping.Agsoils_UrineAndDungDeposited_Unit());
+
+VEERG_4_3_1_9__1_UrineAndDungDeposited_Source
+  =LAMBDA("VEERG 2026: 4.3.1.9, Equation (1)");
+
+VEERG_4_3_1_9__1_UrineAndDungDeposited_NIRReference
+  =LAMBDA(Cropping.Agsoils_UrineAndDungDeposited_NIRReference());
+
+ VEERG_4_3_1_9__1_UrineAndDungDeposited_ReadableEquation
+  =LAMBDA(Cropping.Agsoils_UrineAndDungDeposited_ReadableEquation());
+
+ VEERG_4_3_1_9__1_UrineAndDungDeposited_Arguments
+  =LAMBDA(Cropping.Agsoils_UrineAndDungDeposited_Arguments());
+
+ 

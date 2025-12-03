@@ -1,41 +1,41 @@
 
 /*
-This function is a common function found in agricultural-soils/agsoils-urine-dung-deposited.xlf
+This function is a common function found in Cropping/Agsoils_AtmosphericDeposition.xlf
 */
 
 VEERG_4_3_1_10__1_AtmosphericDeposition_GWP
   =LAMBDA(
-    EN2Oad,GWPN2O, Common.COMMON_LIVESTOCK_AGSOILS_ATMOSPHERIC_DEPOSITION_GWP(EN2Oad,GWPN2O)
+    EN2Oad,GWPN2O, Cropping.Agsoils_AtmosphericDeposition_GWP(EN2Oad,GWPN2O)
   );
 
 VEERG_4_3_1_10__1_AtmosphericDeposition
   =LAMBDA(
-    Mvolm,Efad,CgN2O, Common.COMMON_LIVESTOCK_AGSOILS_ATMOSPHERIC_DEPOSITION(Mvolm,Efad,CgN2O)
+    Mvolm,Efad,CgN2O, Cropping.Agsoils_AtmosphericDeposition(Mvolm,Efad,CgN2O)
   );
 
 VEERG_4_3_1_10__1_AtmosphericDeposition_FunctionName
   =LAMBDA("VEERG_4_3_1_10__1_AtmosphericDeposition");
 
 VEERG_4_3_1_10__1_AtmosphericDeposition_Title
-  =LAMBDA(Common.COMMON_LIVESTOCK_AGSOILS_ATMOSPHERIC_DEPOSITION_Title());
+  =LAMBDA(Cropping.Agsoils_AtmosphericDeposition_Title());
 
  VEERG_4_3_1_10__1_AtmosphericDeposition_Variable
-  =LAMBDA(Common.COMMON_LIVESTOCK_AGSOILS_ATMOSPHERIC_DEPOSITION_Variable());
+  =LAMBDA(Cropping.Agsoils_AtmosphericDeposition_Variable());
 
 VEERG_4_3_1_10__1_AtmosphericDeposition_Unit
-  =LAMBDA(Common.COMMON_LIVESTOCK_AGSOILS_ATMOSPHERIC_DEPOSITION_Unit());
+  =LAMBDA(Cropping.Agsoils_AtmosphericDeposition_Unit());
 
 VEERG_4_3_1_10__1_AtmosphericDeposition_Source
   =LAMBDA("VEERG 2026: 4.3.1.10, Equation (1)");
 
 VEERG_4_3_1_10__1_AtmosphericDeposition_NIRReference
-  =LAMBDA(Common.COMMON_LIVESTOCK_AGSOILS_ATMOSPHERIC_DEPOSITION_NIRReference());
+  =LAMBDA(Cropping.Agsoils_AtmosphericDeposition_NIRReference());
 
  VEERG_4_3_1_10__1_AtmosphericDeposition_ReadableEquation
-  =LAMBDA(Common.COMMON_LIVESTOCK_AGSOILS_ATMOSPHERIC_DEPOSITION_ReadableEquation());
+  =LAMBDA(Cropping.Agsoils_AtmosphericDeposition_ReadableEquation());
 
  VEERG_4_3_1_10__1_AtmosphericDeposition_Arguments
-  =LAMBDA(Common.COMMON_LIVESTOCK_AGSOILS_ATMOSPHERIC_DEPOSITION_Arguments());
+  =LAMBDA(Cropping.Agsoils_AtmosphericDeposition_Arguments());
 
 /* 
 --------------------------------------  

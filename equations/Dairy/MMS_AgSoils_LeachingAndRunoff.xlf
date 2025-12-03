@@ -1,0 +1,42 @@
+
+/*
+This function is a common function found in Cropping/Agsoils_LeachingAndRunoff.xlf
+*/
+
+VEERG_4_3_1_12__1_LeachingAndRunoff_GWP
+  =LAMBDA(
+    EN2Oleach,GWPN2O, Cropping.Agsoils_LeachingAndRunoff_GWP(EN2Oleach,GWPN2O)
+  );
+
+VEERG_4_3_1_12__1_LeachingAndRunoff
+  =LAMBDA(
+    Mleach,EFleach,CgN2O, Cropping.Agsoils_LeachingAndRunoff(Mleach,EFleach,CgN2O)
+  );
+
+VEERG_4_3_1_12__1_LeachingAndRunoff_FunctionName
+  =LAMBDA("VEERG_4_3_1_12__1_LeachingAndRunoff");
+
+VEERG_4_3_1_12__1_LeachingAndRunoff_Title
+  =LAMBDA(Cropping.Agsoils_LeachingAndRunoff_Title());
+
+ VEERG_4_3_1_12__1_LeachingAndRunoff_Variable
+  =LAMBDA(Cropping.Agsoils_LeachingAndRunoff_Variable());
+
+VEERG_4_3_1_12__1_LeachingAndRunoff_Unit
+  =LAMBDA(Cropping.Agsoils_LeachingAndRunoff_Unit());
+
+VEERG_4_3_1_12__1_LeachingAndRunoff_Source
+  =LAMBDA("VEERG 2026: 4.3.1.12, Equation (1)");
+
+VEERG_4_3_1_12__1_LeachingAndRunoff_NIRReference
+  =LAMBDA(Cropping.Agsoils_LeachingAndRunoff_NIRReference());
+
+ VEERG_4_3_1_12__1_LeachingAndRunoff_ReadableEquation
+  =LAMBDA(Cropping.Agsoils_LeachingAndRunoff_ReadableEquation());
+
+ VEERG_4_3_1_12__1_LeachingAndRunoff_Arguments
+  =LAMBDA(Cropping.Agsoils_LeachingAndRunoff_Arguments());
+
+/* 
+--------------------------------------  
+*/
