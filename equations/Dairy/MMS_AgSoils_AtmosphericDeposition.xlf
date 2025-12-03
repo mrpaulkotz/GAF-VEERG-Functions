@@ -1,41 +1,41 @@
 
 /*
-This function is a common function found in Cropping/Agsoils_AtmosphericDeposition.xlf
+This function is a common function found in Common/Agsoils/Agsoils_AtmosphericDeposition.xlf
 */
 
 VEERG_4_3_1_10__1_AtmosphericDeposition_GWP
   =LAMBDA(
-    EN2Oad,GWPN2O, Cropping.Agsoils_AtmosphericDeposition_GWP(EN2Oad,GWPN2O)
+    EN2Oad,GWPN2O, Common_Agsoils_AtmosphericDeposition.Agsoils_AtmosphericDeposition_GWP(EN2Oad,GWPN2O)
   );
 
 VEERG_4_3_1_10__1_AtmosphericDeposition
   =LAMBDA(
-    Mvolm,Efad,CgN2O, Cropping.Agsoils_AtmosphericDeposition(Mvolm,Efad,CgN2O)
+    Mvolm,Efad,CgN2O, Common_Agsoils_AtmosphericDeposition.Agsoils_AtmosphericDeposition(Mvolm,Efad,CgN2O)
   );
 
 VEERG_4_3_1_10__1_AtmosphericDeposition_FunctionName
   =LAMBDA("VEERG_4_3_1_10__1_AtmosphericDeposition");
 
 VEERG_4_3_1_10__1_AtmosphericDeposition_Title
-  =LAMBDA(Cropping.Agsoils_AtmosphericDeposition_Title());
+  =LAMBDA(Common_Agsoils_AtmosphericDeposition.Agsoils_AtmosphericDeposition_Title());
 
  VEERG_4_3_1_10__1_AtmosphericDeposition_Variable
-  =LAMBDA(Cropping.Agsoils_AtmosphericDeposition_Variable());
+  =LAMBDA(Common_Agsoils_AtmosphericDeposition.Agsoils_AtmosphericDeposition_Variable());
 
 VEERG_4_3_1_10__1_AtmosphericDeposition_Unit
-  =LAMBDA(Cropping.Agsoils_AtmosphericDeposition_Unit());
+  =LAMBDA(Common_Agsoils_AtmosphericDeposition.Agsoils_AtmosphericDeposition_Unit());
 
 VEERG_4_3_1_10__1_AtmosphericDeposition_Source
   =LAMBDA("VEERG 2026: 4.3.1.10, Equation (1)");
 
 VEERG_4_3_1_10__1_AtmosphericDeposition_NIRReference
-  =LAMBDA(Cropping.Agsoils_AtmosphericDeposition_NIRReference());
+  =LAMBDA(Common_Agsoils_AtmosphericDeposition.Agsoils_AtmosphericDeposition_NIRReference());
 
  VEERG_4_3_1_10__1_AtmosphericDeposition_ReadableEquation
-  =LAMBDA(Cropping.Agsoils_AtmosphericDeposition_ReadableEquation());
+  =LAMBDA(Common_Agsoils_AtmosphericDeposition.Agsoils_AtmosphericDeposition_ReadableEquation());
 
  VEERG_4_3_1_10__1_AtmosphericDeposition_Arguments
-  =LAMBDA(Cropping.Agsoils_AtmosphericDeposition_Arguments());
+  =LAMBDA(Common_Agsoils_AtmosphericDeposition.Agsoils_AtmosphericDeposition_Arguments());
 
 /* 
 --------------------------------------  
@@ -43,29 +43,29 @@ VEERG_4_3_1_10__1_AtmosphericDeposition_NIRReference
 
 VEERG_4_3_1_10__2_MassVolatilisedAnimalWaste
   =LAMBDA(
-    MNjm, UNjm, FNjm, FracGASMsoil, Common.COMMON_LIVESTOCK_AGSOILS_MASS_VOLATILISED_ANIMAL_WASTE(MNjm, UNjm, FNjm, FracGASMsoil)
+    MNjm, UNjm, FNjm, FracGASMsoil, Common_Agsoils_AtmosphericDeposition.Agsoils_MassVolatilisedAnimalWaste(MNjm, UNjm, FNjm, FracGASMsoil)
   );
 
 VEERG_4_3_1_10__2_MassVolatilisedAnimalWaste_FunctionName
   =LAMBDA("VEERG_4_3_1_10__2_MassVolatilisedAnimalWaste");
 
 VEERG_4_3_1_10__2_MassVolatilisedAnimalWaste_Title
-  =LAMBDA(Common.COMMON_LIVESTOCK_AGSOILS_MASS_VOLATILISED_ANIMAL_WASTE_Title());
+  =LAMBDA(Common_Agsoils_AtmosphericDeposition.Agsoils_MassVolatilisedAnimalWaste_Title());
 
  VEERG_4_3_1_10__2_MassVolatilisedAnimalWaste_Variable
-  =LAMBDA(Common.COMMON_LIVESTOCK_AGSOILS_MASS_VOLATILISED_ANIMAL_WASTE_Variable());
+  =LAMBDA(Common_Agsoils_AtmosphericDeposition.Agsoils_MassVolatilisedAnimalWaste_Variable());
 VEERG_4_3_1_10__2_MassVolatilisedAnimalWaste_Unit
-  =LAMBDA(Common.COMMON_LIVESTOCK_AGSOILS_MASS_VOLATILISED_ANIMAL_WASTE_Unit());
+  =LAMBDA(Common_Agsoils_AtmosphericDeposition.Agsoils_MassVolatilisedAnimalWaste_Unit());
 
 VEERG_4_3_1_10__2_MassVolatilisedAnimalWaste_Source
   =LAMBDA("VEERG 2026: 4.3.1.10, Equation (2)");
 
 VEERG_4_3_1_10__2_MassVolatilisedAnimalWaste_NIRReference
-  =LAMBDA(Common.COMMON_LIVESTOCK_AGSOILS_MASS_VOLATILISED_ANIMAL_WASTE_NIRReference());
+  =LAMBDA(Common_Agsoils_AtmosphericDeposition.Agsoils_MassVolatilisedAnimalWaste_NIRReference());
 
  VEERG_4_3_1_10__2_MassVolatilisedAnimalWaste_ReadableEquation
-  =LAMBDA(Common.COMMON_LIVESTOCK_AGSOILS_MASS_VOLATILISED_ANIMAL_WASTE_ReadableEquation());
+  =LAMBDA(Common_Agsoils_AtmosphericDeposition.Agsoils_MassVolatilisedAnimalWaste_ReadableEquation());
 
  VEERG_4_3_1_10__2_MassVolatilisedAnimalWaste_Arguments
-  =LAMBDA(Common.COMMON_LIVESTOCK_AGSOILS_MASS_VOLATILISED_ANIMAL_WASTE_Arguments());
+  =LAMBDA(Common_Agsoils_AtmosphericDeposition.Agsoils_MassVolatilisedAnimalWaste_Arguments());
  
