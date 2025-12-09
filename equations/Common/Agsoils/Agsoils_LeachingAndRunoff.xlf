@@ -7,7 +7,7 @@ Agricultural soils: Leaching and Runoff (3.D.b.2)
 
 /* 
 --------------------------------------
-Agsoils_LeachingAndRunoff
+AgSoils_LeachingAndRunoff
 Leaching and runoff emissions from crop residue,
 inorganic and organic fertiliser applied to soil,
 urine and dung deposited on pasture
@@ -17,35 +17,35 @@ EFleach : Emission factor for leaching and runoff : kg N2O-N/kg N
 CgN2O : Factor to convert elemental mass of N2O to molecular mass
 --------------------------------------
 */
-Agsoils_LeachingAndRunoff_GWP
+AgSoils_LeachingAndRunoff_GWP
  =LAMBDA(
     EN2Oleach,GWPN2O,
      (EN2Oleach * GWPN2O)
    );
 
-Agsoils_LeachingAndRunoff
+AgSoils_LeachingAndRunoff
   =LAMBDA(
     Mleach,EFleach,CgN2O,
     (Mleach * EFleach * CgN2O * 10^-3)
   )
 ;
 
-Agsoils_LeachingAndRunoff_Title
+AgSoils_LeachingAndRunoff_Title
   =LAMBDA("Leaching and runoff emissions from crop residue,inorganic and organic fertiliser applied to soil, urine and dung deposited on pasture");
 
-Agsoils_LeachingAndRunoff_Variable
+AgSoils_LeachingAndRunoff_Variable
   =LAMBDA("EN2Oleach");
 
-Agsoils_LeachingAndRunoff_Unit
+AgSoils_LeachingAndRunoff_Unit
   =LAMBDA("t N2O");
 
-Agsoils_LeachingAndRunoff_NIRReference
+AgSoils_LeachingAndRunoff_NIRReference
   =LAMBDA("National Inventory Report Volume 1, 2023: 3.D.B_10");
 
-Agsoils_LeachingAndRunoff_ReadableEquation
+AgSoils_LeachingAndRunoff_ReadableEquation
   =LAMBDA("EN2Oleach = Mleach * EFleach * CgN2O * 10 ^ - 3");
 
-Agsoils_LeachingAndRunoff_Arguments
+AgSoils_LeachingAndRunoff_Arguments
   =LAMBDA(
     MAKEARRAY(3, 3, 
       LAMBDA(r,c, 
@@ -60,7 +60,7 @@ Agsoils_LeachingAndRunoff_Arguments
 
 /* 
 --------------------------------------
-Agsoils_MassAnimalWasteNLost
+AgSoils_MassAnimalWasteNLost
 Mass of nitrogen lost from manure, urine and dung to leaching and runoff
 Mleachanimalwaste=(MNjm+UNjm+FNjm)*FracWET*FracLEACH
 Mleachanimalwaste
@@ -73,29 +73,29 @@ FracLEACH : Fraction of N that is lost through leaching and runoff : fraction
 --------------------------------------
 */
 
-Agsoils_MassAnimalWasteNLost
+AgSoils_MassAnimalWasteNLost
   =LAMBDA(
     MNjm,UNjm,FNjm,FracWET,FracLEACH,
     (MNjm+UNjm+FNjm)*FracWET*FracLEACH
   )
 ;
 
-Agsoils_MassAnimalWasteNLost_Title
+AgSoils_MassAnimalWasteNLost_Title
   =LAMBDA("Mass of nitrogen lost from manure, urine and dung to leaching and runoff");
 
-Agsoils_MassAnimalWasteNLost_Variable
+AgSoils_MassAnimalWasteNLost_Variable
   =LAMBDA("Mleachanimalwaste");
 
-Agsoils_MassAnimalWasteNLost_Unit
+AgSoils_MassAnimalWasteNLost_Unit
   =LAMBDA("kg N");
 
-Agsoils_MassAnimalWasteNLost_NIRReference
+AgSoils_MassAnimalWasteNLost_NIRReference
   =LAMBDA("National Inventory Report Volume 1, 2023: 3.D.B_6");
 
-Agsoils_MassAnimalWasteNLost_ReadableEquation
+AgSoils_MassAnimalWasteNLost_ReadableEquation
   =LAMBDA("Mleachanimalwaste=(MNjm+UNjm+FNjm)*FracWET*FracLEACH");
 
-Agsoils_MassAnimalWasteNLost_Arguments
+AgSoils_MassAnimalWasteNLost_Arguments
   =LAMBDA(
     MAKEARRAY(3, 3, 
       LAMBDA(r,c, 
@@ -112,7 +112,7 @@ Agsoils_MassAnimalWasteNLost_Arguments
 
 /* 
 --------------------------------------
-Agsoils_MassInorganicFertiliserNLost
+AgSoils_MassInorganicFertiliserNLost
 Mleachinorganic
 Mleachinorganic = M * FracWET * FracLEACH
 M : Mass of nitrogen in inorganic fertiliser applied to soils : kg N
@@ -121,29 +121,29 @@ FracLEACH : Fraction of nitrogen that is lost through leaching and runoff : frac
 --------------------------------------
 */
 
-Agsoils_MassInorganicFertiliserNLost
+AgSoils_MassInorganicFertiliserNLost
   =LAMBDA(
     M, FracWET, FracLEACH,
     M * FracWET * FracLEACH
   )
 ;
 
-Agsoils_MassInorganicFertiliserNLost_Title
+AgSoils_MassInorganicFertiliserNLost_Title
   =LAMBDA("Mass of nitrogen lost from inorganic fertiliser to leaching and runoff");
 
-Agsoils_MassInorganicFertiliserNLost_Variable
+AgSoils_MassInorganicFertiliserNLost_Variable
   =LAMBDA("Mleachinorganic");
 
-Agsoils_MassInorganicFertiliserNLost_Unit
+AgSoils_MassInorganicFertiliserNLost_Unit
   =LAMBDA("kg N");
 
-Agsoils_MassInorganicFertiliserNLost_NIRReference
+AgSoils_MassInorganicFertiliserNLost_NIRReference
   =LAMBDA("National Inventory Report Volume 1, 2023: 3.D.B_5");
 
-Agsoils_MassInorganicFertiliserNLost_ReadableEquation
+AgSoils_MassInorganicFertiliserNLost_ReadableEquation
   =LAMBDA("Mleachinorganic = M * FracWET * FracLEACH");
 
-Agsoils_MassInorganicFertiliserNLost_Arguments
+AgSoils_MassInorganicFertiliserNLost_Arguments
   =LAMBDA(
     MAKEARRAY(3, 3, 
       LAMBDA(r,c, 
@@ -158,7 +158,7 @@ Agsoils_MassInorganicFertiliserNLost_Arguments
 
 /* 
 --------------------------------------
-Agsoils_MassCropResidueNLost
+AgSoils_MassCropResidueNLost
 Mleachresidue
 Mleachresidue = M * FracWET * FracLEACH
 M : Mass of nitrogen in crop residue applied to soils : kg N
@@ -167,29 +167,29 @@ FracLEACH : Fraction of nitrogen that is lost through leaching and runoff : frac
 --------------------------------------
 */
 
-Agsoils_MassCropResidueNLost
+AgSoils_MassCropResidueNLost
   =LAMBDA(
     M, FracWET, FracLEACH,
     M * FracWET * FracLEACH
   )
 ;
 
-Agsoils_MassCropResidueNLost_Title
+AgSoils_MassCropResidueNLost_Title
   =LAMBDA("Mass of nitrogen lost from crop residue to leaching and runoff");
 
-Agsoils_MassCropResidueNLost_Variable
+AgSoils_MassCropResidueNLost_Variable
   =LAMBDA("Mleachresidue");
 
-Agsoils_MassCropResidueNLost_Unit
+AgSoils_MassCropResidueNLost_Unit
   =LAMBDA("kg N");
 
-Agsoils_MassCropResidueNLost_NIRReference
+AgSoils_MassCropResidueNLost_NIRReference
   =LAMBDA("National Inventory Report Volume 1, 2023: 3.D.B_8");
 
-Agsoils_MassCropResidueNLost_ReadableEquation
+AgSoils_MassCropResidueNLost_ReadableEquation
   =LAMBDA("Mleachresidue = M * FracWET * FracLEACH");
 
-Agsoils_MassCropResidueNLost_Arguments
+AgSoils_MassCropResidueNLost_Arguments
   =LAMBDA(
     MAKEARRAY(3, 3, 
       LAMBDA(r,c, 

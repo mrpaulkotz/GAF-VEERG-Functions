@@ -595,7 +595,9 @@ MC = conversion factor for milk in litres to kg
 VEERG_4_3_1_3__11_NitrogenRetainedInTheBody
   =LAMBDA(
     MPj,MC,Lj,Zj,LWGj,
-    ((0.032 * MPj * MC) / 6.38) + ((0.212 - 0.008 * (Lj - 2) - ((0.14 - 0.008 * (Lj - 2)) / (1 + EXP(-6 * (Zj - 0.4))))) * (LWGj * 0.92)) * (1 / 6.25)
+    ((0.032 * MPj * MC) / 6.38) + ((0.212 - 0.008 * (Lj - 2) - ((0.14 - 0.008 * (Lj - 2)) / 
+    (1 + EXP(-6 * (Zj - 0.4))))) * (LWGj * 0.92)) 
+    * (1 / 6.25)
   )
 ;
 

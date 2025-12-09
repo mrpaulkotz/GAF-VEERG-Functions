@@ -21,35 +21,35 @@ CgN2O : factor to convert elemental mass of N2O to molecular mass
 --------------------------------------
 */
 
-Agsoils_UrineAndDungDeposited_GWP
+AgSoils_UrineAndDungDeposited_GWP
  =LAMBDA(
     EN2Odir,GWPN2O,
      (EN2Odir * GWPN2O)
    );
 
-Agsoils_UrineAndDungDeposited
+AgSoils_UrineAndDungDeposited
   =LAMBDA(
     AFjm, AUjm, EFPRP, CgN2O,
     ((AFjm * EFPRP * CgN2O) + (AUjm * EFPRP * CgN2O)) * 10^-3
   )
 ;
 
-Agsoils_UrineAndDungDeposited_Title
+AgSoils_UrineAndDungDeposited_Title
   =LAMBDA("Nitrous oxide production from urine and dung deposited by grazing animals on pasture, range and paddock");
 
-Agsoils_UrineAndDungDeposited_Variable
+AgSoils_UrineAndDungDeposited_Variable
   =LAMBDA("EN2Odir");
 
-Agsoils_UrineAndDungDeposited_Unit
+AgSoils_UrineAndDungDeposited_Unit
   =LAMBDA("t N2O");
 
-Agsoils_UrineAndDungDeposited_NIRReference
+AgSoils_UrineAndDungDeposited_NIRReference
   =LAMBDA("National Inventory Report Volume 1, 2023: 3.D.a.3");
 
-Agsoils_UrineAndDungDeposited_ReadableEquation
+AgSoils_UrineAndDungDeposited_ReadableEquation
   =LAMBDA("EN2Odir = ((AFjm=14 * EFPRP * CgN2O) + (AUjm=14 * EFPRP * CgN2O)) * 10^-3");
 
-Agsoils_UrineAndDungDeposited_Arguments
+AgSoils_UrineAndDungDeposited_Arguments
   =LAMBDA(
     MAKEARRAY(4, 3, 
       LAMBDA(r,c, 
