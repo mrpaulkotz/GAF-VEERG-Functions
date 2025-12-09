@@ -19,14 +19,14 @@ NIR_2023_Vol1
 /* 
 --------------------------------------
 SourceData_Common_DensityOfMethane
-ρ = density of methane (0.6784 kg/m3) – 
+p = density of methane (0.6784 kg/m3)
 Taken from the National Greenhouse and Energy Reporting 
 (Measurement) Determination 2008
 --------------------------------------
 */
 
 SourceData_Common_DensityOfMethane_Title
-  =LAMBDA("ρ = density of methane");
+  =LAMBDA("p = density of methane");
 
 SourceData_Common_DensityOfMethane_Unit
   =LAMBDA("kg/m3");
@@ -35,7 +35,7 @@ SourceData_Common_DensityOfMethane_Source
   =LAMBDA("National Inventory Report 2023 Volume 1: Equations 3.B.1a_2, 3.B.1c_2, 3.B.3_1, 3.B.4g_2");
 
 SourceData_Common_DensityOfMethane_Data
-  =LAMBDA(10);
+  =LAMBDA(0.6784);
 
 /* 
 --------------------------------------
