@@ -271,3 +271,112 @@ NIR_2023_Vol2_A5_5_1_9_DairyCattleNO2EFAndFracN_Data
       )
     )
   );
+
+  /* 
+--------------------------------------
+SourceData_Dairy_Symbols_Livestock_Dairy_StateTerritory
+Table 5.2 Symbols used in algorithms for dairy cattle
+--------------------------------------
+*/
+
+SourceData_Dairy_Symbols_Livestock_Dairy_StateTerritory_Title
+  =LAMBDA("Table 5.2 Symbols used in algorithms for dairy cattle - State/Territory (i)");
+
+SourceData_Dairy_Symbols_Livestock_Dairy_StateTerritory_Variable
+  =LAMBDA("s");
+
+SourceData_Dairy_Symbols_Livestock_Dairy_StateTerritory_Unit
+  =LAMBDA("");
+
+SourceData_Dairy_Symbols_Livestock_Dairy_StateTerritory_Source
+  =LAMBDA("National Inventory Report 2023 Volume 1");
+
+SourceData_Dairy_Symbols_Livestock_Dairy_StateTerritory_Data
+  =LAMBDA(
+    MAKEARRAY(9, 2, 
+      LAMBDA(r,c, 
+        INDEX({
+          "Symbol", "State/ territory (i)";
+            1, "ACT";
+            2, "Northern Territory";
+            3, "NSW";
+            4, "Queensland";
+            5, "Tasmania";
+            6, "South Australia";
+            7, "Victoria";
+            8, "Western Australia"
+        }, r, c)
+      )
+    )
+  );
+
+/* 
+--------------------------------------
+SourceData_Dairy_Symbols_Livestock_Dairy_DairyCattleClasses
+Table 5.2 Symbols used in algorithms for dairy cattle
+--------------------------------------
+*/
+
+SourceData_Dairy_Symbols_Livestock_Dairy_DairyCattleClasses_Title
+  =LAMBDA("Table 5.2 Symbols used in algorithms for dairy cattle - Dairy cattle classes (j)");
+
+SourceData_Dairy_Symbols_Livestock_Dairy_DairyCattleClasses_Variable
+  =LAMBDA("j");
+
+SourceData_Dairy_Symbols_Livestock_Dairy_DairyCattleClasses_Unit
+  =LAMBDA("");
+
+SourceData_Dairy_Symbols_Livestock_Dairy_DairyCattleClasses_Source
+  =LAMBDA("National Inventory Report 2023 Volume 1");
+
+SourceData_Dairy_Symbols_Livestock_Dairy_DairyCattleClasses_Data
+  =LAMBDA(
+    MAKEARRAY(6, 3, 
+      LAMBDA(r,c, 
+        INDEX({
+          "Symbol", "State/ territory (i)", "";
+            1, "Milking cows", "Milking cows (1)";
+            2, "Heifers > 1 year", "Heifers > 1 year (2)";
+            3, "Heifers < 1 year", "Heifers < 1 year (3)";
+            4, "Bulls > 1 year", "Bulls > 1 year (4)";
+            5, "Bulls < 1 year", "Bulls < 1 year (5)"
+        }, r, c)
+      )
+    )
+  );
+
+
+/* 
+--------------------------------------
+  SourceData_Dairy_AllocationOfWasteToMMS
+Table A5.5.1.8 Dairy cattle – Allocation of waste to MMS – Milking cows (per cent)
+--------------------------------------
+*/
+
+SourceData_Dairy_AllocationOfWasteToMMS_Title
+  =LAMBDA("Table A5.5.1.8 Dairy cattle – Allocation of waste to MMS – Milking cows (per cent)");
+
+SourceData_Dairy_AllocationOfWasteToMMS_Variable
+  =LAMBDA("");
+
+SourceData_Dairy_AllocationOfWasteToMMS_Unit
+  =LAMBDA("percent");
+
+SourceData_Dairy_AllocationOfWasteToMMS_Source
+  =LAMBDA("National Inventory Report 2023 Volume 2 Table A5.5.1.8");
+
+SourceData_Dairy_AllocationOfWasteToMMS_Data
+  =LAMBDA(
+    MAKEARRAY(6, 10, 
+      LAMBDA(r,c, 
+        INDEX({
+          "MMSSymbol", "MMS", "ACT", "NSW", "NT", "QLD", "SA", "TAS", "VIC", "WA";
+            "14", "Pasture", 78.6, 78.6, 78.7, 78.7, 80.5, 86.5, 83.9, 79.9;
+            "1", "Anaerobic lagoon", 9.0, 9.0, 7.3, 7.3, 10.4, 8.4, 10.8, 10.0;
+            "3a", "Daily Spread: Sump and dispersal", 2.0, 2.0, 3.3, 3.3, 1.4, 2.4, 0.9, 1.9;
+            "3b", "Daily Spread: Drains to paddocks", 1.9, 1.9, 2.4, 2.4, 0.8, 0.8, 0.2, 0.9;
+            "4", "Solid Storage", 8.4, 8.4, 8.4, 8.4, 6.9, 2.0, 4.2, 7.4
+        }, r, c)
+      )
+    )
+  );

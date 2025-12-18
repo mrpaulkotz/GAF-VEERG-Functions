@@ -1,0 +1,122 @@
+/*
+============================================================================
+============================================================================
+Source data that is common across all livestock types
+Excel module name: SourceData_Livestock_Common
+============================================================================
+============================================================================
+*/
+
+/*
+======================================
+======================================
+Source: National Inventory Report 2023 Volume 1
+NIR_2023_Vol1
+======================================
+======================================
+*/
+
+/* 
+--------------------------------------
+SourceData_Livestock_Common_FracWETMMS
+FracWETMMSi = Fraction of N available for leaching and runoff
+(Table A5.5.10.2 is referenced in NIR but 1 is used)
+--------------------------------------
+*/
+
+SourceData_Livestock_Common_FracWETMMS_Title
+  =LAMBDA("Fraction of N available for leaching and runoff");
+
+SourceData_Livestock_Common_FracWETMMS_Unit
+  =LAMBDA("Fraction");
+
+SourceData_Livestock_Common_FracWETMMS_Source
+  =LAMBDA("National Inventory Report 2023 Volume 1: Equations 3.B.5a_3, 3.B.5c_3, 3.B.5d_3");
+
+SourceData_Livestock_Common_FracWETMMS_Data
+  =LAMBDA(1);
+
+/* 
+--------------------------------------
+SourceData_Livestock_Common_FracLEACH_MS
+FracLEACH_MS = 0.02 (Gg N/Gg applied) (CS EF, source IPCC (2019)) 
+fraction of N lost through leaching and runoff
+--------------------------------------
+*/
+
+SourceData_Livestock_Common_FracLEACH_MS_Title
+  =LAMBDA("Fraction of N lost through leaching and runoff");
+
+SourceData_Livestock_Common_FracLEACH_MS_Unit
+  =LAMBDA("Fraction");
+
+SourceData_Livestock_Common_FracLEACH_MS_Source
+  =LAMBDA("National Inventory Report 2023 Volume 1: Equations 3.B.5a_3, 3.B.5c_3, 3.B.5d_3");
+
+SourceData_Livestock_Common_FracLEACH_MS_Data
+  =LAMBDA(
+    MAKEARRAY(8, 2, 
+      LAMBDA(r,c, 
+        INDEX({
+          "Production system", "Emission factor";
+            "Irrigated pasture", 0.0059;
+            "Irrigated crop", 0.007;
+            "Non-irrigated pasture", 0.0018;
+            "Non-irrigated crop", 0.0041;
+            "Sugar cane", 0.0199;
+            "Cotton", 0.0053;
+            "Horticulture", 0.0064
+        }, r, c)
+      )
+    )
+  );
+
+
+/* 
+--------------------------------------
+SourceData_Livestock_Common_SymbolsMMS
+Table 5.12 Additional symbols used in algorithms for manure related emissions
+--------------------------------------
+*/
+
+SourceData_Livestock_Common_SymbolsMMS_Title
+  =LAMBDA("Table 5.12 Additional symbols used in algorithms for manure related emissions");
+
+SourceData_Livestock_Common_SymbolsMMS_Vairable
+  =LAMBDA("MMS");
+
+SourceData_Livestock_Common_SymbolsMMS_Unit
+  =LAMBDA("");
+
+SourceData_Livestock_Common_SymbolsMMS_Source
+  =LAMBDA("National Inventory Report 2023 Volume 1: Table 5.12");
+
+SourceData_Livestock_Common_SymbolsMMS_Data
+  =LAMBDA(
+    MAKEARRAY(15, 3, 
+      LAMBDA(r,c, 
+        INDEX({
+          "Symbol", "Manure management system", "";
+            "1", "Anaerobic lagoon", "Anaerobic lagoon (1)";
+            "2", "Liquid systems", "Liquid systems (2)";
+            "3", "Daily spread", "Daily spread (3)";
+            "3a", "Sump and dispersal system", "Sump and dispersal system (3a)";
+            "3b", "Drains to paddock", "Drains to paddock (3b)";
+            "4", "Solid storage", "Solid storage (4)";
+            "5", "Drylot (feed pad)", "Drylot (feed pad) (5)";
+            "6", "Composting (passive windrow)", "Composting (passive windrow) (6)";
+            "7", "Digester / covered lagoons", "Digester / covered lagoons (7)";
+            "8", "Deep litter", "Deep litter (8)";
+            "9", "Pit storage", "Pit storage (9)";
+            "10", "Poultry manure with bedding", "Poultry manure with bedding (10)";
+            "11", "Poultry manure without bedding", "Poultry manure without bedding (11)";
+            "11a", "Belt manure removal", "Belt manure removal (11a)";
+            "11b", "Manure stored in house", "Manure stored in house (11b)";
+            "12", "Direct processing", "Direct processing (12)";
+            "13", "Direct application", "Direct application (13)";
+            "14", "Pasture range and paddock", "Pasture range and paddock (14)"
+        }, r, c)
+      )
+    )
+  );
+

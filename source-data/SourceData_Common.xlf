@@ -58,3 +58,33 @@ SourceData_Common_ConvertN2oElementalToMolecularCg_Source
 
 SourceData_Common_ConvertN2oElementalToMolecularCg_Data
   =LAMBDA(44/28);
+
+
+/* 
+--------------------------------------
+SourceData_Common_AustralianStatesTerritories
+--------------------------------------
+*/
+
+SourceData_Common_AustralianStatesTerritories_Title
+  =LAMBDA("Australian states and territories");
+
+SourceData_Common_AustralianStatesTerritories_Variable
+  =LAMBDA("");
+
+SourceData_Common_AustralianStatesTerritories_Unit
+  =LAMBDA("");
+
+SourceData_Common_AustralianStatesTerritories_Source
+  =LAMBDA("");
+
+SourceData_Common_AustralianStatesTerritories_Data
+   =LAMBDA(
+    MAKEARRAY(1, 8, 
+      LAMBDA(r,c, 
+        INDEX({
+          "ACT", "NSW", "NT", "QLD", "SA", "TAS", "VIC", "WA"
+        }, r, c)
+      )
+    )
+  );
