@@ -54,9 +54,9 @@ Fertiliser_Products_Description
 Fertiliser_Products_Source
 =LAMBDA(("XXXXXXX"));
 
-Fertiliser_Products_Data
+Fertiliser_Products_Data1
 =LAMBDA(
-  MAKEARRAY(51, 20,
+  MAKEARRAY(30, 20,
     LAMBDA(r,c,
       INDEX({
         "Product", "Ingredient 1", "Ingredient 1 percent", "Ingredient 1 source", "Ingredient 2", "Ingredient 2 percent", "Ingredient 2 source", "Ingredient 3", "Ingredient 3 percent", "Ingredient 3 source", "Ingredient 4", "Ingredient 4 percent", "Ingredient 4 source", "Ingredient 5", "Ingredient 5 percent", "Ingredient 5 source", "Ingredient 6", "Ingredient 6 percent", "Ingredient 6 source", "Product info link";
@@ -88,7 +88,15 @@ Fertiliser_Products_Data
         "Granulock SS", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "Incitec Pivot Fertilisers";
         "Granulock Z", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "Incitec Pivot Fertilisers";
         "Green Urea NV", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "Incitec Pivot Fertilisers";
-        "Gypsum Sulphur", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "Gypsum Incitec Pivot Fertilisers";
+        "Gypsum Sulphur", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "Gypsum Incitec Pivot Fertilisers"
+      }, r, c)
+)));
+
+Fertiliser_Products_Data2
+=LAMBDA(
+  MAKEARRAY(30, 20,
+    LAMBDA(r,c,
+      INDEX({
         "Invigor8 0-37-37", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "Genesis AG";
         "Manganese Sulphate", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "Incitec Pivot Fertilisers";
         "MAP", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "Incitec Pivot Fertilisers";
@@ -100,8 +108,88 @@ Fertiliser_Products_Data
         "Microsol 25-5-10", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "Rigbytaylor Microsol Range";
         "Microsol 28-0-14", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "Rigbytaylor Microsol Range";
         "Mono Potassium Phosphate MKP", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "Swancrop";
-        "Muriate Of Potash MOP", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "MountCompass Fertilisers Blends"
+        "Muriate Of Potash MOP", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "MountCompass Fertilisers Blends";
+        "NitroPlus", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "AgroStock Group Nitro Plus";
+        "NutraGold", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "Swancrop";
+        "Pro Performance 18-3-6", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "Pro Turf Formula";
+        "SOA", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "MountCompass Fertilisers Blends";
+        "SSP", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "Impact fertilisers";
+        "Super Phos", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "CSBP Super PHOS";
+        "Super SR Extra", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "CSBP Super Potash";
+        "SuPerfect", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "Incitec Pivot Fertilisers";
+        "SuperPasture Potash 5:1", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "CSBP Super Potash";
+        "Trace-it Mn", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "Campbells fertilisers Australia";
+        "UniSZon", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "WengfuAustralia uniSZon";
+        "Urea", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "ProductCard_Adelaide_web.pdf (incitecpivotfertilisers.com.au)";
+        "Wengfu Slam Granular", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "Straights (wengfu.com.au)";
+        "Yara FlowPhos 10", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "Crop Nutrition Solutions (Yara Australia)";
+        "Yara FlowPhos 13Z", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "Crop Nutrition Solutions (Yara Australia)";
+        "Yara FlowPhos 15", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "Crop Nutrition Solutions (Yara Australia)";
+        "Yara FlowPhos KZ", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "Crop Nutrition Solutions (Yara Australia)";
+        "Yara KeyPro Trace", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "Crop Nutrition Solutions (Yara Australia)"
       }, r, c)
-)))
+)));
+
+Fertiliser_Products_Data3
+=LAMBDA(
+  MAKEARRAY(30, 20,
+    LAMBDA(r,c,
+      INDEX({
+        "Yara KeyPro Zinc", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "Crop Nutrition Solutions (Yara Australia)";
+        "Yara K-Flow 0-0-15", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "Crop Nutrition Solutions (Yara Australia)";
+        "Yara K-Flow 0-14-30", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "Crop Nutrition Solutions (Yara Australia)";
+        "Yara K-Flow 0-7-36", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "Crop Nutrition Solutions (Yara Australia)";
+        "Yara K-Flow 13-0-7", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "Crop Nutrition Solutions (Yara Australia)";
+        "Yara K-Flow 4-0-12", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "Crop Nutrition Solutions (Yara Australia)";
+        "Yara Liquids MICRO-SUL", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "Crop Nutrition Solutions (Yara Australia)";
+        "Yara Liquids N24", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "Crop Nutrition Solutions (Yara Australia)";
+        "Yara Liquids N25", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "Crop Nutrition Solutions (Yara Australia)";
+        "Yara Liquids N26", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "Crop Nutrition Solutions (Yara Australia)";
+        "Yara Liquids N42", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "Crop Nutrition Solutions (Yara Australia)";
+        "Yara Liquids N-CAL 15+18Ca", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "Crop Nutrition Solutions (Yara Australia)";
+        "Yara Liquids N-CAL 20+10Ca+B", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "Crop Nutrition Solutions (Yara Australia)";
+        "Yara Liquids N-CAL 35+6Ca", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "Crop Nutrition Solutions (Yara Australia)";
+        "Yara Liquids N-FOL 24", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "Crop Nutrition Solutions (Yara Australia)";
+        "Yara Liquids N-FOL 24+TE", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "Crop Nutrition Solutions (Yara Australia)";
+        "Yara Liquids P-FOL Zinc", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "Crop Nutrition Solutions (Yara Australia)";
+        "Yara Liquids SULSA 11-0-0+12S", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "Crop Nutrition Solutions (Yara Australia)";
+        "Yara Liquids SULSA 24-3-0+6S", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "Crop Nutrition Solutions (Yara Australia)";
+        "Yara Liquids SULSA 27-0-0+7S", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "Crop Nutrition Solutions (Yara Australia)";
+        "Yara Liquids SULSA 36-0-0+3S", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "Crop Nutrition Solutions (Yara Australia)";
+        "YaraLiva CALCINIT B", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "Crop Nutrition Solutions (Yara Australia)";
+        "YaraLiva NITRABOR", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "YaraLiva NITRABOR | Yara Australia";
+        "YaraLiva TROPICOTE", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "Crop Nutrition Solutions (Yara Australia)";
+        "YaraMila Complex", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "Crop Nutrition Solutions (Yara Australia)";
+        "YaraMila Complex 17-5-10(4)", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "Crop Nutrition Solutions (Yara Australia)";
+        "YaraMila Complex 21-7-3(4)", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "Crop Nutrition Solutions (Yara Australia)";
+        "YaraMila UNIVERSAL", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "Crop Nutrition Solutions (Yara Australia)";
+        "YaraRega 13-2-21", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "Crop Nutrition Solutions (Yara Australia)";
+        "YaraVita BORTRAC", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "Crop Nutrition Solutions (Yara Australia)"
+      }, r, c)
+)));
+
+Fertiliser_Products_Data4
+=LAMBDA(
+  MAKEARRAY(16, 20,
+    LAMBDA(r,c,
+      INDEX({
+        "YaraVita BRASSITREL DF", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "Crop Nutrition Solutions (Yara Australia)";
+        "YaraVita BRASSITREL PRO", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "Crop Nutrition Solutions (Yara Australia)";
+        "YaraVita BUD BUILDER FL", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "Crop Nutrition Solutions (Yara Australia)";
+        "YaraVita FRUTREL", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "Crop Nutrition Solutions (Yara Australia)";
+        "YaraVita GLYTREL ZnP", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "Crop Nutrition Solutions (Yara Australia)";
+        "YaraVita GRAMITREL", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "Crop Nutrition Solutions (Yara Australia)";
+        "YaraVita KOMBIPHOS", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "Crop Nutrition Solutions (Yara Australia)";
+        "YaraVita MANGZINC", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "Crop Nutrition Solutions (Yara Australia)";
+        "YaraVita MOLYTRAC", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "Crop Nutrition Solutions (Yara Australia)";
+        "YaraVita SENIPHOS", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "Crop Nutrition Solutions (Yara Australia)";
+        "YaraVita ZINTRAC", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "Crop Nutrition Solutions (Yara Australia)";
+        "Zinc Sulphate Monohydrate", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "Incitec Pivot Fertilisers";
+        "Zincsol", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "Sulfate Zincsol";
+        "ZincStar", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "Impact fertilisers";
+        "ZMC-1", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "Kemgro ZMC-1";
+        "Zn 7000", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "Rutec Zn 7000"
+      }, r, c)
+)));
 
 
