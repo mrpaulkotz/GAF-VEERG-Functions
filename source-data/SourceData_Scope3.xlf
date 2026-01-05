@@ -1,0 +1,28 @@
+Scope3_FertiliserChemicalCompounds_Title
+=LAMBDA(("Fertiliser chemical compound scope 3"));
+
+Scope3_FertiliserChemicalCompounds_Data
+=LAMBDA(
+  MAKEARRAY(18, 4,
+    LAMBDA(r,c,
+      INDEX({
+        "Chemical compound", "Location not specified", "Rest of world", "China";
+        "Urea",1.7904, 1.6579, 2.7872;
+        "Monoammonium phosphate (MAP)", 0.956, 0.9133, 1.2742;
+        "Diammonium Phosphate (DAP)", 0.8662, 0.203, 0.303;
+        "Urea-Ammonium Nitrate (UAN)",1.909, 1.7859, 2.8389;
+        "Ammonium Nitrate (AN)", 2.4608, 2.05, 3.05;
+        "Calcium Ammonium Nitrate (CAN)", 2.3369, 2.06, 3.06;
+        "Single Superphosphate (SSP)", 107, 207, 307;
+        "Sulphate of Ammonia (SOA)", 108, 208, 308;
+        "Muriate of Potash (MOP)", 109, 209, 309;
+        "Nitrogen - Generic", 110, 210, 310;
+        "Nitrogen - Nitrate", 111, 211, 311;
+        "Nitrogen - Ammoniacal", 112, 212, 312;
+        "Phosphorus - Generic", 114, 214, 314;
+        "Potassium - Generic", 115, 215, 315;
+        "Sulfur - Generic", 116, 216, 316;
+        "Zinc - Generic", 117, 217, 317;
+        "Calcium - Generic", 118, 218, 318
+      }, r, c)
+)))

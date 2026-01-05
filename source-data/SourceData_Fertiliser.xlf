@@ -1,0 +1,107 @@
+/*
+============================================================================
+Fertiliser chemical compounds
+============================================================================
+*/
+
+Fertiliser_ChemicalCompoundElements_Title
+=LAMBDA(("Fertiliser chemical compounds"));
+
+Fertiliser_ChemicalCompoundElements_Description
+=LAMBDA(("Chemical compounds used in fertilisers, along with their elemental composition"));
+
+Fertiliser_ChemicalCompoundElements_Source
+=LAMBDA(("XXXXXXX"));
+
+Fertiliser_ChemicalCompoundElements_Data
+=LAMBDA(
+  MAKEARRAY(18, 7,
+    LAMBDA(r,c,
+      INDEX({
+        "Chemical compound", "N", "P", "K", "S", "Urea", "N type";
+        "Urea", 0.46, 0, 0, 0, 1, "Urea";
+        "Monoammonium phosphate (MAP)", 0.11, 0.219, 0, 0, 0, "Other";
+        "Diammonium Phosphate (DAP)", 0.18, 0.2, 0, 0, 0, "Other";
+        "Urea-Ammonium Nitrate (UAN)", 0.32, 0, 0, 0, 0.35, "Urea";
+        "Ammonium Nitrate (AN)", 0.35, 0, 0, 0, 0, "Ammonium-nitrate";
+        "Calcium Ammonium Nitrate (CAN)", 0.265, 0, 0, 0, 0, "Ammonium-nitrate";
+        "Single Superphosphate (SSP)", 0, 0.088, 0, 0.11, 0, "No Nitrogen";
+        "Sulphate of Ammonia (SOA)", 0.21, 0, 0, 0.24, 0, "Ammonium";
+        "Muriate of Potash (MOP)", 0, 0, 0.6, 0, 0, "No Nitrogen";
+        "Nitrogen - Generic", 1, 0, 0, 0, 0, "Other";
+        "Nitrogen - Nitrate", 0.226, 0, 0, 0, 0, "Nitrate";
+        "Nitrogen - Ammoniacal", 0.82, 0, 0, 0, 0, "Ammonium";
+        "Phosphorus - Generic", 0, 1, 0, 0, 0, "No Nitrogen";
+        "Potassium - Generic", 0, 0, 1, 0, 0, "No Nitrogen";
+        "Sulfur - Generic", 0, 0, 0, 1, 0, "No Nitrogen";
+        "Zinc - Generic", 0, 0, 0, 0, 0, "No Nitrogen";
+        "Calcium - Generic", 0, 0, 0, 0, 0, "No Nitrogen"
+      }, r, c)
+)));
+
+/*
+============================================================================
+Fertiliser products
+============================================================================
+*/
+
+Fertiliser_Products_Title
+=LAMBDA(("Fertiliser products"));
+
+Fertiliser_Products_Description
+=LAMBDA(("Popular fertiliser products used in Australia, along with their chemical compound composition"));
+
+Fertiliser_Products_Source
+=LAMBDA(("XXXXXXX"));
+
+Fertiliser_Products_Data
+=LAMBDA(
+  MAKEARRAY(51, 20,
+    LAMBDA(r,c,
+      INDEX({
+        "Product", "Ingredient 1", "Ingredient 1 percent", "Ingredient 1 source", "Ingredient 2", "Ingredient 2 percent", "Ingredient 2 source", "Ingredient 3", "Ingredient 3 percent", "Ingredient 3 source", "Ingredient 4", "Ingredient 4 percent", "Ingredient 4 source", "Ingredient 5", "Ingredient 5 percent", "Ingredient 5 source", "Ingredient 6", "Ingredient 6 percent", "Ingredient 6 source", "Product info link";
+        "75% MAP 25% MOP", "Monoammonium phosphate (MAP)", 0.75, "Location not specified", "Muriate of Potash (MOP)", 0.25, "Rest of world", "", "", "", "", "", "", "", "", "", "", "", "", "";
+        "75% Urea 25% MOP", "Urea", 0.75, "Location not specified", "Muriate of Potash (MOP)", 0.25, "Location not specified", "", "", "", "", "", "", "", "", "", "", "", "", "";
+        "80% Urea 20% MAP", "Urea-Ammonium Nitrate (UAN)", 0.8, "China", "Monoammonium phosphate (MAP)", 0.2, "Rest of world", "", "", "", "", "", "", "", "", "", "", "", "", "";
+        "Activate N", "Nitrogen - Ammoniacal", 0.071, "Rest of world", "Nitrogen - Nitrate", 0.006, "Rest of world", "Nitrogen - Ureic", 0.093, "Location not specified", "Phosphorus - Generic", 0.01, "Location not specified", "Potassium - Generic", 0.04, "Location not specified", "Sulfur - Generic", 0.82, "Location not specified", "Active N (Lawnpride.com.au)";
+        "Activist Max Zinc", "Nitrogen - Generic", 0.07, "Location not specified", "Zinc - Generic", 0.7, "Location not specified", "", "", "", "", "", "", "", "", "", "", "", "", "ACTIVIST-MAX.pdf (agrichem.com.au)";
+        "Agflow", "Nitrogen - Generic", 0.129, "Location not specified", "Phosphorus - Generic", 0.177, "Location not specified", "Sulfur - Generic", 0.06, "Location not specified", "", "", "", "", "", "", "", "", "", "CSBP High / Maintenance S";
+        "Agflow Boost", "Nitrogen - Generic", 0.121, "Location not specified", "Phosphorus - Generic", 0.198, "Location not specified", "Sulfur - Generic", 0.041, "Location not specified", "", "", "", "", "", "", "", "", "", "CSBP High / Maintenance S";
+        "Agflow Boost Extra", "Nitrogen - Generic", 0.12, "Location not specified", "Phosphorus - Generic", 0.197, "Location not specified", "Sulfur - Generic", 0.04, "Location not specified", "", "", "", "", "", "", "", "", "", "CSBP High / Maintenance S";
+        "AgNP", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "CSBP High / Maintenance S";
+        "AllStar", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "Summit Fertilizers";
+        "Ammo 36", "Urea", 0.4, "Location not specified", "Sulphate of Ammonia (SOA)", 0.6, "Location not specified", "", "", "", "", "", "", "", "", "", "", "", "", "Ravensdown";
+        "Apex GaIXe Low P 21-1-6", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "Baileys controlled release fertilisers";
+        "Big N", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "Big N Anhydrous ammonia NH3";
+        "Big Phos", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "CSBP Fertilisers Pulse and Lupins";
+        "Campbells Quick-N", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "Quick - N | Campbells Fertilisers Australia";
+        "CK 55 Ameliorant", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "Pacific Fertilisers Crop King";
+        "Crop Booster Plus", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "SL TEC Fertilisers Crop Booster Plus";
+        "DAP", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "MountCompass Fertilisers Blends";
+        "DAPSZC", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "Summit Fertilizers";
+        "Easy N Bulk", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "Incitec Pivot Fertilisers";
+        "Entec Urea", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "Nuturf Urea Granular";
+        "Ezyflow Nano Calbud", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "EzyFlow Nano Calbud | Loveland (lovelandagriproducts.com.au)";
+        "Flexi-N NI only", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "Ravensdown";
+        "Glytrel ZnP 0-7-0", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "YaraVita Glytrel ZnP";
+        "Gran-Am", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "Incitec Pivot Fertilisers";
+        "Granulock SS", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "Incitec Pivot Fertilisers";
+        "Granulock Z", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "Incitec Pivot Fertilisers";
+        "Green Urea NV", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "Incitec Pivot Fertilisers";
+        "Gypsum Sulphur", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "Gypsum Incitec Pivot Fertilisers";
+        "Invigor8 0-37-37", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "Genesis AG";
+        "Manganese Sulphate", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "Incitec Pivot Fertilisers";
+        "MAP", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "Incitec Pivot Fertilisers";
+        "MAP Impact", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "Impact fertilisers";
+        "MAPSZC", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "Summit Fertilizers";
+        "Maximum N-Pact 29-0-0", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "Maximum N-Pact | Loveland (lovelandagriproducts.com.au)";
+        "Microsol 12-6-44", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "Rigbytaylor Microsol Range";
+        "Microsol 16-32-16", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "Rigbytaylor Microsol Range";
+        "Microsol 25-5-10", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "Rigbytaylor Microsol Range";
+        "Microsol 28-0-14", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "Rigbytaylor Microsol Range";
+        "Mono Potassium Phosphate MKP", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "Swancrop";
+        "Muriate Of Potash MOP", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "MountCompass Fertilisers Blends"
+      }, r, c)
+)))
+
+

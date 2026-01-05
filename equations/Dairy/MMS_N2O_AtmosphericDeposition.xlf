@@ -70,7 +70,7 @@ VEERG_4_3_1_5__2_TotalNitrogenVolatilisedMMS
 Total of nitrogen volatilised from MMS
 MNATMOS
 kg N
-MNATMOS= (FNjm * FracGASMm) + (UNjm * FracGASMm)	
+MNATMOS= (FNjm * FracGASMm) + (UNjm * FracGASMm) 
 FNj : Seasonal faecal nitrogen in each manure management system : kg N
 FracGASMm : fraction of N volatised from MMS : Fraction
 UNjm : Seasonal urinary nitrogen in each manure management system : kg N

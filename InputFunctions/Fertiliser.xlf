@@ -1,0 +1,189 @@
+Fertiliser_FertiliserProductLookup
+=LAMBDA(Product, ProductAttribute, ProductArray, ProductArrayColumn, ProductArrayHeaders,
+  IFERROR(
+    INDEX(
+      ProductArray,  /* adjust last col to your actual last data column */
+      XMATCH(TRIM(Product), ProductArrayColumn, 0),
+      XMATCH(TRIM(ProductAttribute), ProductArrayHeaders, 0)
+    ),
+    ""
+  )
+);
+
+
+
+Fertiliser_GetChemicalCompoundAppliedPerIngredient
+=LAMBDA(
+  ChemicalCompound,
+  AmountApplied,
+  ProductIngredient,
+  ProductIngredientPercent,
+  SUMPRODUCT(
+    AmountApplied,
+    IF(
+      (
+        ProductIngredient = ChemicalCompound
+      ) * ISNUMBER(
+        ProductIngredientPercent
+      ),
+      ProductIngredientPercent,
+      0
+    )
+  )
+);
+
+Fertiliser_TotalChemicalCompoundAppliedAllIngredients
+=LAMBDA(
+  ChemicalCompound,
+  AmountApplied,
+  ProductIngredient1,
+  ProductIngredientPercent1,
+  ProductIngredient2,
+  ProductIngredientPercent2,
+  ProductIngredient3,
+  ProductIngredientPercent3,
+  ProductIngredient4,
+  ProductIngredientPercent4,
+  ProductIngredient5,
+  ProductIngredientPercent5,
+  ProductIngredient6,
+  ProductIngredientPercent6,
+  Fertiliser_GetChemicalCompoundAppliedPerIngredient(
+    ChemicalCompound,
+    AmountApplied,
+    ProductIngredient1,
+    ProductIngredientPercent1
+  ) + Fertiliser_GetChemicalCompoundAppliedPerIngredient(
+    ChemicalCompound,
+    AmountApplied,
+    ProductIngredient2,
+    ProductIngredientPercent2
+  ) + Fertiliser_GetChemicalCompoundAppliedPerIngredient(
+    ChemicalCompound,
+    AmountApplied,
+    ProductIngredient3,
+    ProductIngredientPercent3
+  ) + Fertiliser_GetChemicalCompoundAppliedPerIngredient(
+    ChemicalCompound,
+    AmountApplied,
+    ProductIngredient4,
+    ProductIngredientPercent4
+  ) + Fertiliser_GetChemicalCompoundAppliedPerIngredient(
+    ChemicalCompound,
+    AmountApplied,
+    ProductIngredient5,
+    ProductIngredientPercent5
+  ) + Fertiliser_GetChemicalCompoundAppliedPerIngredient(
+    ChemicalCompound,
+    AmountApplied,
+    ProductIngredient6,
+    ProductIngredientPercent6
+  )
+);
+
+Fertiliser_GetChemicalCompoundBySourcePerIngredient
+=LAMBDA(
+  AmountApplied,
+  ChemicalCompound,
+  ProductIngredient,
+  ProductIngredientPercent,
+  ProductIngredientSource,
+  Source,
+  SUMPRODUCT(
+    AmountApplied,
+    IF(
+      (
+        ProductIngredient = ChemicalCompound
+      ) *(
+        ProductIngredientSource = Source
+      ) * ISNUMBER(
+        ProductIngredientPercent
+      ),
+      ProductIngredientPercent,
+      0
+    )
+  )
+);
+
+Fertiliser_TotalChemicalCompoundtAppliedBySourceAllIngredients
+=LAMBDA(
+  ChemicalCompound,
+  Source,
+  AmountApplied,
+  ProductIngredient1,
+  ProductIngredientPercent1,
+  ProductIngredient1Source,
+  ProductIngredient2,
+  ProductIngredientPercent2,
+  ProductIngredient2Source,
+  ProductIngredient3,
+  ProductIngredientPercent3,
+  ProductIngredient3Source,
+  ProductIngredient4,
+  ProductIngredientPercent4,
+  ProductIngredient4Source,
+  ProductIngredient5,
+  ProductIngredientPercent5,
+  ProductIngredient5Source,
+  ProductIngredient6,
+  ProductIngredientPercent6,
+  ProductIngredient6Source,
+  Fertiliser_GetChemicalCompoundBySourcePerIngredient(
+    AmountApplied,
+    ChemicalCompound,
+    ProductIngredient1,
+    ProductIngredientPercent1,
+    ProductIngredient1Source,
+    Source
+  ) + Fertiliser_GetChemicalCompoundBySourcePerIngredient(
+    AmountApplied,
+    ChemicalCompound,
+    ProductIngredient2,
+    ProductIngredientPercent2,
+    ProductIngredient2Source,
+    Source
+  ) + Fertiliser_GetChemicalCompoundBySourcePerIngredient(
+    AmountApplied,
+    ChemicalCompound,
+    ProductIngredient3,
+    ProductIngredientPercent3,
+    ProductIngredient3Source,
+    Source
+  ) + Fertiliser_GetChemicalCompoundBySourcePerIngredient(
+    AmountApplied,
+    ChemicalCompound,
+    ProductIngredient4,
+    ProductIngredientPercent4,
+    ProductIngredient4Source,
+    Source
+  ) + Fertiliser_GetChemicalCompoundBySourcePerIngredient(
+    AmountApplied,
+    ChemicalCompound,
+    ProductIngredient5,
+    ProductIngredientPercent5,
+    ProductIngredient5Source,
+    Source
+  ) + Fertiliser_GetChemicalCompoundBySourcePerIngredient(
+    AmountApplied,
+    ChemicalCompound,
+    ProductIngredient6,
+    ProductIngredientPercent6,
+    ProductIngredient6Source,
+    Source
+  )
+);
+
+Fertiliser_GetScope3EF
+=LAMBDA(
+    ChemicalCompound, Scope3Array, ChemicalCompoundColumn, Source, SourceRow,
+    INDEX(Scope3Array,
+       MATCH(ChemicalCompound, ChemicalCompoundColumn, 0),
+       MATCH(Source, SourceRow, 0)
+    )
+);
+
+Fertiliser_GetChemicalCompoundElementFraction
+=LAMBDA(
+    ChemicalCompound, ChemicalCompoundArray, ChemicalCompoundColumn,
+    VLOOKUP(ChemicalCompound, ChemicalCompoundArray, COLUMN(ChemicalCompoundColumn), FALSE)
+)
