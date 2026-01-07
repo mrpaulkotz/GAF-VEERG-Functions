@@ -1,0 +1,40 @@
+Fuel_GetFuelAttribute
+=LAMBDA(
+    LookupValue, LookupArray, ReturnArray,
+    XLOOKUP(LookupValue, LookupArray, ReturnArray, "")
+);
+
+Fuel_GetFuelAttributeNumber
+=LAMBDA(
+    LookupValue, LookupArray, ReturnArray,
+    IF(ISNUMBER(
+        XLOOKUP(LookupValue, LookupArray, ReturnArray, "")
+    ), XLOOKUP(LookupValue, LookupArray, ReturnArray, ""), 0)
+);
+
+Fuel_GetTransportFuelString
+=LAMBDA(
+    Cell,
+    LEFT(Cell, FIND(", ",Cell) -1)
+);
+
+Fuel_GetStationaryFuelString
+=LAMBDA(
+    Cell,
+    RIGHT(Cell,LEN(Cell)-FIND(", ",Cell))
+);
+
+Fuel_TotalConsumption
+= LAMBDA(
+    FuelConsumptionArray, FuelUseArray, FuelUse, FuelTypeArray, FuelType,
+    IFERROR(
+    SUM(
+      FILTER(
+        FuelConsumptionArray,
+        (FuelTypeArray = FuelType) * 
+        (FuelUseArray = FuelUse)
+      )
+    ),
+    0
+  )
+);

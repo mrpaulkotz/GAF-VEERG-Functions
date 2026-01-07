@@ -1,0 +1,183 @@
+/*
+======================================
+8: Fuel Use
+======================================
+8.1 Fuel Use - Transport fuel
+======================================
+*/
+
+
+VEERG_8_FuelCombustion
+  =LAMBDA(
+    Q, EC, EF,
+    Q * EC * EF * 10 ^ - 3
+  )
+;
+
+/* 
+--------------------------------------
+VEERG_8_1_1_1__1_FuelCombustionTransport
+Emissions for each GHG from the combustion of fuels for transport energy purposes
+Q : Amount of fuel type q combusted for transport energy purposes : kL
+EC : energy content factor for transport energy purposes : GJ/kL
+EF : Scope 1 emission factor for transport energy purposes for each greenhouse gas : kg CO2e / GJ
+--------------------------------------
+*/
+
+
+VEERG_8_1_1_1__1_FuelCombustionTransport
+  =LAMBDA(
+    Q, EC, EF,
+    VEERG_8_FuelCombustion(Q, EC, EF)
+  )
+;
+
+VEERG_8_1_1_1__1_FuelCombustionTransport_FunctionName
+  =LAMBDA("VEERG_8_1_1_1__1_FuelCombustionTransport");
+
+VEERG_8_1_1_1__1_FuelCombustionTransport_Title
+  =LAMBDA("Emissions for each GHG from the combustion of fuels for transport energy purposes");
+
+VEERG_8_1_1_1__1_FuelCombustionTransport_Variable
+  =LAMBDA("E");
+
+VEERG_8_1_1_1__1_FuelCombustionTransport_Unit
+  =LAMBDA("t CO2-e");
+
+VEERG_8_1_1_1__1_FuelCombustionTransport_Source
+  =LAMBDA("VEERG 2026: 8.1.1.1, Equation (1)");
+
+VEERG_8_1_1_1__1_FuelCombustionTransport_NIRReference
+  =LAMBDA("Australian National Greenhouse Accounts Factors 2025 - 2.3 Estimating emissions from transport fuels");
+
+VEERG_8_1_1_1__1_FuelCombustionTransport_ReadableEquation
+  =LAMBDA("E = Q * EC * EF * 10 ^ - 3");
+
+VEERG_8_1_1_1__1_FuelCombustionTransport_Arguments
+  =LAMBDA(
+    MAKEARRAY(7, 3, 
+      LAMBDA(r,c, 
+        INDEX({
+          "Qq", "Amount of fuel type q combusted for transport energy purposes", "kL";
+          "ECTrans,q", "Energy content factor for transport energy purposes", "GJ/kL";
+          "EFTrans,1,q", "Scope 1 emission factor for transport energy purposes for each greenhouse gas", "kg CO2e / GJ";
+          "q", "Fuel type", "";
+          "Trans", "Transport combustion", "";
+          "g", "Greenhouse gas", "";
+          "1", "Scope 1", ""
+        }, r, c)
+      )
+    )
+  );
+
+/* 
+--------------------------------------
+VEERG_8_2_1_1__1_FuelCombustionStationary
+Emissions for each GHG from the stationary combustion of fuels
+Q : Amount of fuel type q used for stationary combustion operations : kL
+EC : Energy content factor for stationary combustion operations : GJ/kL
+EF : Scope 1 emission factor for stationary combustion for each greenhouse gas : kg CO2e / GJ
+--------------------------------------
+*/
+
+
+VEERG_8_2_1_1__1_FuelCombustionStationary
+  =LAMBDA(
+    Q, EC, EF,
+    VEERG_8_FuelCombustion(Q, EC, EF)
+  )
+;
+
+VEERG_8_2_1_1__1_FuelCombustionStationary_FunctionName
+  =LAMBDA("VEERG_8_2_1_1__1_FuelCombustionStationary");
+
+VEERG_8_2_1_1__1_FuelCombustionStationary_Title
+  =LAMBDA("Emissions for each GHG from the stationary combustion of fuels");
+
+VEERG_8_2_1_1__1_FuelCombustionStationary_Variable
+  =LAMBDA("E");
+
+VEERG_8_2_1_1__1_FuelCombustionStationary_Unit
+  =LAMBDA("t CO2-e");
+
+VEERG_8_2_1_1__1_FuelCombustionStationary_Source
+  =LAMBDA("VEERG 2026: 8.2.1.1, Equation (1)");
+
+VEERG_8_2_1_1__1_FuelCombustionStationary_NIRReference
+  =LAMBDA("Australian National Greenhouse Accounts Factors 2025 - 2.2 Estimating emissions from stationary energy sources - Calculating emissions from stationary combustion of liquid fuels");
+
+VEERG_8_2_1_1__1_FuelCombustionStationary_ReadableEquation
+  =LAMBDA("E = Q * EC * EF * 10 ^ - 3");
+
+VEERG_8_2_1_1__1_FuelCombustionStationary_Arguments
+  =LAMBDA(
+    MAKEARRAY(7, 3, 
+      LAMBDA(r,c, 
+        INDEX({
+          "Qq", "Amount of fuel type q used for stationary combustion operations", "kL";
+          "ECSC,q", "Energy content factor for stationary combustion operations", "GJ/kL";
+          "EFSC,1,q", "Scope 1 emission factor for stationary combustion for each greenhouse gas", "kg CO2e / GJ";
+          "q", "Fuel type", "";
+          "SC", "Stationary combustion", "";
+          "g", "Greenhouse gas", "";
+          "1", "Scope 1", ""
+        }, r, c)
+      )
+    )
+  );
+
+  /* 
+--------------------------------------
+VEERG_8_2_1_1__2_FuelCombustionGeneric
+Emissions for each GHG from generic fuel combustion where the usage is not known
+Q : Amount of fuel type q used for generic combustion operations : kL
+EC : Energy content factor for generic combustion operations : GJ/kL
+EF : Scope 1 emission factor for generic combustion for each greenhouse gas : kg CO2e / GJ
+--------------------------------------
+*/
+
+
+VEERG_8_X_FuelCombustionGeneric
+  =LAMBDA(
+    Q, EC, EF,
+    VEERG_8_FuelCombustion(Q, EC, EF)
+  )
+;
+
+VEERG_8_X_FuelCombustionGeneric_FunctionName
+  =LAMBDA("VEERG_8_X_FuelCombustionGeneric");
+
+VEERG_8_X_FuelCombustionGeneric_Title
+  =LAMBDA("Emissions for each GHG from the generic combustion of fuels");
+
+VEERG_8_X_FuelCombustionGeneric_Variable
+  =LAMBDA("E");
+
+VEERG_8_X_FuelCombustionGeneric_Unit
+  =LAMBDA("t CO2-e");
+
+VEERG_8_X_FuelCombustionGeneric_Source
+  =LAMBDA("Uses VEERG 2026: 8.1.1.1, Equation (1), 8.2.1.1, Equation (1) and everages the Australian National Greenhouse Accounts Factors 2025 for transport and stationary fuel combustion");
+
+VEERG_8_X_FuelCombustionGeneric_NIRReference
+  =LAMBDA("Australian National Greenhouse Accounts Factors 2025 - 2.2 Estimating emissions from generic energy sources - Calculating emissions from generic combustion of liquid fuels and 2.3 Estimating emissions from transport fuels");
+
+VEERG_8_X_FuelCombustionGeneric_ReadableEquation
+  =LAMBDA("E = Q * EC * EF * 10 ^ - 3");
+
+VEERG_8_X_FuelCombustionGeneric_Arguments
+  =LAMBDA(
+    MAKEARRAY(7, 3, 
+      LAMBDA(r,c, 
+        INDEX({
+          "Qq", "Amount of fuel type q used for generic combustion operations", "kL";
+          "ECGC,q", "Energy content factor for generic combustion operations", "GJ/kL";
+          "EFGC,1,q", "Scope 1 emission factor for generic combustion for each greenhouse gas", "kg CO2e / GJ";
+          "q", "Fuel type", "";
+          "GC", "Generic combustion", "";
+          "g", "Greenhouse gas", "";
+          "1", "Scope 1", ""
+        }, r, c)
+      )
+    )
+  );

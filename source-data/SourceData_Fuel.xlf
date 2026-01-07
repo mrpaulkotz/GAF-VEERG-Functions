@@ -1,0 +1,94 @@
+/*
+============================================================================
+Fuel scope 1 emission factors - Stationary
+============================================================================
+*/
+
+Fuel_Scope1EmissionFactorsStationary_Title
+=LAMBDA(("Fuel scope 1 emission factors - Stationary"));
+
+Fuel_Scope1EmissionFactorsStationary_Description
+=LAMBDA(("Direct (Scope 1) and indirect (scope 3) emission factors for the consumption of liquid fuels, including certain petroleum based products for stationary energy purposes."));
+
+Fuel_Scope1EmissionFactorsStationary_Source
+=LAMBDA(("Australian National Greenhouse Accounts Factors 2025 - Table 8"));
+
+Fuel_Scope1EmissionFactorsStationary_Data
+=LAMBDA(
+  MAKEARRAY(25, 8,
+    LAMBDA(r,c,
+      INDEX({
+        "Fuel combusted", "Energy Content Factor (GJ per unit of fuel)", "Fuel unit", "Scope 1 Emission Factor (kg CO2 - e / GJ) CO2", "Scope 1 Emission Factor (kg CO2 - e / GJ) CH4", "Scope 1 Emission Factor (kg CO2 - e / GJ) N2O", "Scope 1 Emission Factor (kg CO2 - e / GJ) Combined gases", "Scope 3 Emission Factor (kg CO2 - e / GJ)";
+        "Petroleum based oils (other than petroleum based oil used as fuel), e.g. lubricants", 38.8, "kl", 13.9, 0.0, 0.0, 13.9, 18.0;
+        "Petroleum based greases", 38.8, "kl", 3.5, 0.0, 0.0, 3.5, 18.0;
+        "Crude oil including crude oil condensates", 45.3, "t", 69.6, 0.08, 0.2, 69.88, "NE";
+        "Other natural gas liquids", 46.5, "t", 61.0, 0.08, 0.2, 61.28, "NE";
+        "Automotive gasoline / petrol (other than for use as fuel in an aircraft)", 34.2, "kL", 67.4, 0.2, 0.2, 67.80, 17.2;
+        "Aviation gasoline", 33.1, "kL", 67, 0.2, 0.2, 67.40, 18.0;
+        "Kerosene (other than for use as fuel in an aircraft)", 37.5, "kL", 68.9, 0.01, 0.2, 69.11, 18.0;
+        "Aviation turbine fuel / kerosene", 36.8, "kL", 69.6, 0.02, 0.2, 69.82, 18.0;
+        "Heating oil", 37.3, "kL", 69.5, 0.03, 0.2, 69.73, 18.0;
+        "Diesel oil", 38.6, "kL", 69.9, 0.1, 0.2, 70.20, 17.3;
+        "Fuel oil", 39.7, "kL", 73.6, 0.04, 0.2, 73.84, 18.0;
+        "Liquefied aromatic hydrocarbons", 34.4, "kL", 69.7, 0.03, 0.2, 69.93, 18.0;
+        "Solvents: mineral turpentine or white spirits", 34.4, "kL", 69.7, 0.03, 0.2, 69.93, 18.0;
+        "Liquefied petroleum gas (LPG)", 25.7, "kL", 60.2, 0.2, 0.2, 60.60, 20.2;
+        "Naphtha", 31.4, "kL", 69.8, 0.01, 0.01, 69.82, 18.0;
+        "Petroleum coke", 34.2, "t", 92.6, 0.08, 0.2, 92.88, 18.0;
+        "Refinery gas and liquids", 42.9, "t", 54.7, 0.03, 0.03, 54.76, 18.0;
+        "Refinery coke", 34.2, "t", 92.6, 0.08, 0.2, 92.88, 18.0;
+        "Petroleum based products other than mentioned in the items above", 34.4, "kL", 69.8, 0.02, 0.1, 69.92, 18.0;
+        "Biodiesel", 34.6, "kL", 0.0, 0.08, 0.2, 0.28, "NE";
+        "Ethanol for use as a fuel in an internal combustion engine", 23.4, "kL", 0.0, 0.08, 0.2, 0.28, "NE";
+        "Biofuels other than those mentioned in the items above and below", 23.4, "kL", 0.0, 0.08, 0.2, 0.28, "NE";
+        "Renewable aviation kerosene", 36.8, "kL", 0.0, 0.02, 0.2, 0.22, "NE";
+        "Renewable diesel", 38.6, "kL", 0.0, 0.1, 0.2, 0.30, "NE"
+      }, r, c)
+)));
+
+/*
+============================================================================
+Fuel scope 1 emission factors - Transport
+============================================================================
+*/
+
+Fuel_Scope1EmissionFactorsTransport_Title
+=LAMBDA(("Fuel scope 1 emission factors - Transport"));
+
+Fuel_Scope1EmissionFactorsTransport_Description
+=LAMBDA(("Direct (scope 1) and indirect (scope 3) emission factors for the consumption of transport fuels in different transport equipment"));
+
+Fuel_Scope1EmissionFactorsTransport_Source
+=LAMBDA(("Australian National Greenhouse Accounts Factors 2025 - Table 9"));
+
+Fuel_Scope1EmissionFactorsTransport_Data
+=LAMBDA(
+  MAKEARRAY(22, 9,
+    LAMBDA(r,c,
+      INDEX({
+        "Transport type", "Fuel combusted", "Energy Content Factor(GJ per unit of fuel)", "Fuel unit", "Scope 1 Emission Factor (kg CO2 - e / GJ) CO2", "Scope 1 Emission Factor (kg CO2 - e / GJ) CH4", "Scope 1 Emission Factor (kg CO2 - e / GJ) N2O", "Scope 1 Emission Factor (kg CO2 - e / GJ) Combined gases", "Scope 3 Emission Factor (kg CO2 - e / GJ)";
+        "Cars and light commercial vehicles", "Gasoline", 34.2, "kl", 67.4, 0.02, 0.2, 67.62, 17.2;
+        "Cars and light commercial vehicles", "Diesel oil", 38.6, "kl", 69.9, 0.01, 0.5, 70.41, 17.3;
+        "Cars and light commercial vehicles", "Liquefied petroleum gas (LPG)", 26.2, "kl", 60.2, 0.5, 0.3, 61.00, 20.2;
+        "Cars and light commercial vehicles", "Fuel oil", 39.7, "kl", 73.6, 0.08, 0.5, 74.18, 18.0;
+        "Cars and light commercial vehicles", "Ethanol", 23.4, "kl", 0.0, 0.2, 0.2, 0.4, "NE";
+        "Cars and light commercial vehicles", "Biodiesel", 34.6, "kl", 0.0, 0.8, 1.7, 2.5, "NE";
+        "Cars and light commercial vehicles", "Renewable diesel", 38.6, "kl", 0.0, 0.01, 0.5, 0.51, "NE";
+        "Cars and light commercial vehicles", "Other biofuels", 23.4, "kl", 0.0, 0.8, 1.7, 2.5, "NE";
+        "Light duty vehicles", "Compressed natural gas", 0.0393, "m3", 51.4, 7.3, 0.3, 59.0, 18.0;
+        "Light duty vehicles", "Liquefied natural gas", 25.3, "kl", 51.4, 7.3, 0.3, 59.0, 18.0;
+        "Heavy duty vehicles", "Compressed natural gas", 0.0393, "m3", 51.4, 2.8, 0.3, 54.5, 18.0;
+        "Heavy duty vehicles", "Liquefied natural gas", 25.3, "kl", 51.4, 2.8, 0.3, 54.5, 18.0;
+        "Heavy duty vehicles", "Diesel oil - Euro iv or higher", 38.6, "kl", 69.9, 0.07, 0.4, 70.37, 17.3;
+        "Heavy duty vehicles", "Diesel oil - Euro iii", 38.6, "kl", 69.9, 0.1, 0.4, 70.4, 17.3;
+        "Heavy duty vehicles", "Diesel oil - Euro i", 38.6, "kl", 69.9, 0.2, 0.4, 70.5, 17.3;
+        "Heavy duty vehicles", "Renewable diesel – Euro iv or higher", 38.6, "kl", 0.0, 0.07, 0.4, 0.47, "NE";
+        "Heavy duty vehicles", "Renewable diesel – Euro iii", 38.6, "kl", 0.0, 0.1, 0.4, 0.5, "NE";
+        "Heavy duty vehicles", "Renewable diesel – Euro i", 38.6, "kl", 0.0, 0.2, 0.4, 0.6, "NE";
+        "Aviation", "Gasoline for use as fuel in an aircraft", 33.1, "kl", 67.0, 0.06, 0.6, 67.66, 18.0;
+        "Aviation", "Kerosene for use as fuel in an aircraft", 36.8, "kl", 69.6, 0.01, 0.6, 70.21, 18.0;
+        "Aviation", "Renewable aviation kerosene", 36.8, "kl", 0.0, 0.01, 0.6, 0.61, "NE"
+      }, r, c)
+)));
+
+
