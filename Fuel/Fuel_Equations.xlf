@@ -58,8 +58,8 @@ VEERG_8_1_1_1__1_FuelCombustionTransport_Arguments
     MAKEARRAY(7, 3, 
       LAMBDA(r,c, 
         INDEX({
-          "Qq", "Amount of fuel type q combusted for transport energy purposes", "kL";
-          "ECTrans,q", "Energy content factor for transport energy purposes", "GJ/kL";
+          "Qq", "Amount of fuel type q combusted for transport energy purposes", "Varies based on fuel type: kL, m3, GJ";
+          "ECTrans,q", "Energy content factor for transport energy purposes", "GJ / unit of fuel";
           "EFTrans,1,q", "Scope 1 emission factor for transport energy purposes for each greenhouse gas", "kg CO2e / GJ";
           "q", "Fuel type", "";
           "Trans", "Transport combustion", "";
@@ -114,8 +114,8 @@ VEERG_8_2_1_1__1_FuelCombustionStationary_Arguments
     MAKEARRAY(7, 3, 
       LAMBDA(r,c, 
         INDEX({
-          "Qq", "Amount of fuel type q used for stationary combustion operations", "kL";
-          "ECSC,q", "Energy content factor for stationary combustion operations", "GJ/kL";
+          "Qq", "Amount of fuel type q used for stationary combustion operations", "Varies based on fuel type: kL, m3, GJ";
+          "ECSC,q", "Energy content factor for stationary combustion operations", "GJ / unit of fuel";
           "EFSC,1,q", "Scope 1 emission factor for stationary combustion for each greenhouse gas", "kg CO2e / GJ";
           "q", "Fuel type", "";
           "SC", "Stationary combustion", "";
@@ -170,8 +170,8 @@ VEERG_8_X_FuelCombustionGeneric_Arguments
     MAKEARRAY(7, 3, 
       LAMBDA(r,c, 
         INDEX({
-          "Qq", "Amount of fuel type q used for generic combustion operations", "kL";
-          "ECGC,q", "Energy content factor for generic combustion operations", "GJ/kL";
+          "Qq", "Amount of fuel type q used for generic combustion operations", "Varies based on fuel type: kL, m3, GJ";
+          "ECGC,q", "Energy content factor for generic combustion operations", "GJ / unit of fuel";
           "EFGC,1,q", "Scope 1 emission factor for generic combustion for each greenhouse gas", "kg CO2e / GJ";
           "q", "Fuel type", "";
           "GC", "Generic combustion", "";

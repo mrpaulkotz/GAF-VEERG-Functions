@@ -80,10 +80,18 @@ SourceData_Common_AustralianStatesTerritories_Source
 
 SourceData_Common_AustralianStatesTerritories_Data
    =LAMBDA(
-    MAKEARRAY(1, 8, 
+    MAKEARRAY(9, 3, 
       LAMBDA(r,c, 
         INDEX({
-          "ACT", "NSW", "NT", "QLD", "SA", "TAS", "VIC", "WA"
+          "State/Territory", "Common Name", "Abbreviation";
+          "New South Wales", "New South Wales", "NSW";
+          "Australian Capital Territory", "ACT", "ACT";
+          "Victoria", "Victoria", "VIC";
+          "Queensland", "Queensland", "QLD";
+          "South Australia", "South Australia", "SA";
+          "Western Australia", "Western Australia", "WA";
+          "Tasmania", "Tasmania", "TAS";
+          "Northern Territory", "Northern Territory", "NT"
         }, r, c)
       )
     )

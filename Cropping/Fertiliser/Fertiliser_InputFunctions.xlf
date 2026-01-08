@@ -184,6 +184,9 @@ Fertiliser_GetScope3EF
 
 Fertiliser_GetChemicalCompoundElementFraction
 =LAMBDA(
-    ChemicalCompound, ChemicalCompoundArray, ChemicalCompoundColumn,
-    VLOOKUP(ChemicalCompound, ChemicalCompoundArray, COLUMN(ChemicalCompoundColumn), FALSE)
+    ChemicalCompound, Element, ChemicalCompoundArray, ChemicalCompoundColumn, ElementRow,
+    INDEX(ChemicalCompoundArray,
+      MATCH(ChemicalCompound, ChemicalCompoundColumn, 0),
+      MATCH(Element, ElementRow, 0)
+    )
 )

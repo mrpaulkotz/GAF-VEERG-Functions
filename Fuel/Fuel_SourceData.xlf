@@ -1,0 +1,196 @@
+/*
+============================================================================
+Fuel scope 1 emission factors - Stationary gaseous fuels
+============================================================================
+*/
+
+Fuel_Scope1EmissionFactorsStationaryGaseous_Title
+=LAMBDA(("Fuel scope 1 emission factors - Stationary gaseous fuels"));
+
+Fuel_Scope1EmissionFactorsStationaryGaseous_Description
+=LAMBDA(("Direct (Scope 1) emission factors for the consumption of gaseous fuels including liquefied natural gas  "));
+
+Fuel_Scope1EmissionFactorsStationaryGaseous_Source
+=LAMBDA(("Australian National Greenhouse Accounts Factors 2025 - Table 5"));
+
+Fuel_Scope1EmissionFactorsStationaryGaseous_Data
+=LAMBDA(
+  MAKEARRAY(19, 7,
+    LAMBDA(r,c,
+      INDEX({
+        "Fuel combusted", "Energy Content Factor (GJ per unit of fuel)", "Fuel unit", "Scope 1 Emission Factor (kg CO2 - e / GJ) CO2", "Scope 1 Emission Factor (kg CO2 - e / GJ) CH4", "Scope 1 Emission Factor (kg CO2 - e / GJ) N2O", "Scope 1 Emission Factor (kg CO2 - e / GJ) Combined gases";
+        "Natural gas distributed in a pipeline", 0.0393, "m3", 51.4, 0.1, 0.03, 51.53;
+        "Coal seam methane that is captured for combustion", 0.0377, "m3", 51.4, 0.2, 0.03, 51.63;
+        "Coal mine waste gas that is captured for combustion", 0.0377, "m3", 51.9, 4.6, 0.3, 56.8;
+        "Compressed natural gas(reverting to standard conditions)", 0.0393, "m3", 51.4, 0.1, 0.03, 51.53;
+        "Unprocessed natural gas", 0.0393, "m3", 51.4, 0.1, 0.03, 51.53;
+        "Ethane", 0.0629, "m3", 56.5, 0.03, 0.03, 56.56;
+        "Coke oven gas", 0.0181, "m3", 37.0, 0.03, 0.05, 37.08;
+        "Blast furnace gas", 0.0040, "m3", 234.0, 0.03, 0.02, 234.05;
+        "Town gas", 0.0390, "m3", 60.2, 0.04, 0.03, 60.27;
+        "Liquefied natural gas", 25.3, "kL", 51.4, 0.1, 0.03, 51.53;
+        "Gaseous fossil fuels other than those mentioned in the items above", 0.0390, "m3", 51.4, 0.1, 0.03, 51.53;
+        "Landfill biogas that is captured for combustion (methane only)", 0.0377, "m3", 0.0, 6.4, 0.03, 6.43;
+        "Sludge biogas that is captured for combustion (methane only)", 0.0377, "m3", 0.0, 6.4, 0.03, 6.43;
+        "A biogas that is captured for combustion, other than those mentioned in the items above", 0.0370, "m3", 0.0, 6.4, 0.03, 6.43;
+        "Biomethane", 0.0393, "m3", 0.0, 0.1, 0.03, 0.13;
+        "Hydrogen", 0.0122, "m3", 0.0, 0.0, 0.5, 0.5;
+        "Natural gas distributed in a pipeline - Gigajoules", 1, "GJ", 51.4, 0.1, 0.03, 51.53;
+        "Town gas - Gigajoules", 1, "GJ", 60.2, 0.04, 0.03, 60.27
+      }, r, c)
+)));
+
+Fuel_Scope1EmissionFactorsStationaryGaseous_Variation
+=LAMBDA(("VARIATION OF SOURCE DATA: 'Natural gas distributed in a pipeline - Gigajoules' and 'Town gas - Gigajoules' were added, each with an energy content factor of 1 GJ per unit of fuel. This is for users who have fuel consumption data in GJ rather than m3."));
+
+
+/*
+============================================================================
+Fuel scope 3 emission factors - Stationary gaseous fuels
+============================================================================
+*/
+
+Fuel_Scope3EmissionFactorsStationaryGaseous_Title
+=LAMBDA(("Fuel scope 3 emission factors - Stationary gaseous fuels"));
+
+Fuel_Scope3EmissionFactorsStationaryGaseous_Description
+=LAMBDA(("Indirect (Scope 3) emission factors for the consumption of natural gas."));
+
+Fuel_Scope3EmissionFactorsStationaryGaseous_Source
+=LAMBDA(("Australian National Greenhouse Accounts Factors 2025 - Table 6"));
+
+Fuel_Scope3EmissionFactorsStationaryGaseous_Data
+=LAMBDA(
+  MAKEARRAY(9, 3,
+    LAMBDA(r,c,
+      INDEX({
+        "State or territory", "Scope 3 Emission Factors for Natural Gas (kg CO2 - e / GJ) Metro", "Scope 3 Emission Factors for Natural Gas (kg CO2 - e / GJ) Non - Metro";
+        "New South Wales", 13.1, 14.0;
+        "ACT", 13.1, 14.0;
+        "Victoria", 4.0, 4.0;
+        "Queensland", 8.8, 7.9;
+        "South Australia", 10.7, 10.6;
+        "Western Australia", 4.1, 4.0;
+        "Tasmania", 4.0, 4.0;
+        "Northern Territory", 4.1, 4.0
+      }, r, c)
+)));
+
+Fuel_Scope3EmissionFactorsStationaryGaseous_Variation
+=LAMBDA(("VARIATION OF SOURCE DATA: NSW and ACT split into separate rows. 'C' Values for Tasmania and Northern Territory replaced with those for Victoria and Western Australia respectively. (See appendices)"));
+
+Fuel_Scope3EmissionFactorsStationaryGaseous_Appendices
+=LAMBDA(
+  MAKEARRAY(12, 2,
+    LAMBDA(r,c,
+      INDEX({
+        "-", "As Scope 3 factors are calculated at the point where natural gas is delivered to end users, it is necessary to calculate consumption at each of the load centres.";
+        "", "Gas reaches end users either from the metro distribution networks or direct from the high - pressure distribution pipelines.";
+        "", "Households and commercial users tend to be served by the former, and electricity generators and large industrial plants from the latter.";
+        "-", "Metro is defined as located on or east of the dividing range in NSW, including Canberra and Queanbeyan, Melbourne, Brisbane, Adelaide or Perth.";
+        "", "Otherwise, the non - metro factor should be used.";
+        "-", "Factors are calculated for all natural gas distributed in a pipeline which may include coal seam methane.";
+        "-", "Table 6 is not applicable to ethane. See Table 7 Indirect (Scope 3) emissions from the consumption of ethane.";
+        "-", "C = Confidential. Scope 3 emission factors for Tasmania and the Northern Territory are not available due to confidentiality constraints that arise";
+        "", "from the use of a limited number of NGER data inputs. It is suggested that for Tasmania the use of the Victorian emission factors is appropriate,";
+        "", "while for Northern Territory the use of the Western Australian emission factors is appropriate.";
+        "-", "Scope 3 emission factors do not include fugitive emission leakage from low pressure natural gas distribution pipeline networks while those from high pressure";
+        "", "gas networks are considered negligible."
+      }, r, c)
+)));
+
+
+/*
+============================================================================
+Fuel scope 1 and 3 emission factors - Stationary liquid fuels
+============================================================================
+*/
+
+Fuel_Scope1Scope3EmissionFactorsStationaryLiquid_Title
+=LAMBDA(("Fuel scope 1 and 3 emission factors - Stationary liquid fuels"));
+
+Fuel_Scope1Scope3EmissionFactorsStationaryLiquid_Description
+=LAMBDA(("Direct (Scope 1) and indirect (scope 3) emission factors for the consumption of liquid fuels, including certain petroleum based products for stationary energy purposes."));
+
+Fuel_Scope1Scope3EmissionFactorsStationaryLiquid_Source
+=LAMBDA(("Australian National Greenhouse Accounts Factors 2025 - Table 8"));
+
+Fuel_Scope1Scope3EmissionFactorsStationaryLiquid_Data
+=LAMBDA(
+  MAKEARRAY(25, 8,
+    LAMBDA(r,c,
+      INDEX({
+        "Fuel combusted", "Energy Content Factor (GJ per unit of fuel)", "Fuel unit", "Scope 1 Emission Factor (kg CO2 - e / GJ) CO2", "Scope 1 Emission Factor (kg CO2 - e / GJ) CH4", "Scope 1 Emission Factor (kg CO2 - e / GJ) N2O", "Scope 1 Emission Factor (kg CO2 - e / GJ) Combined gases", "Scope 3 Emission Factor (kg CO2 - e / GJ)";
+        "Petroleum based oils (other than petroleum based oil used as fuel), e.g. lubricants", 38.8, "kl", 13.9, 0.0, 0.0, 13.9, 18.0;
+        "Petroleum based greases", 38.8, "kl", 3.5, 0.0, 0.0, 3.5, 18.0;
+        "Crude oil including crude oil condensates", 45.3, "t", 69.6, 0.08, 0.2, 69.88, "NE";
+        "Other natural gas liquids", 46.5, "t", 61.0, 0.08, 0.2, 61.28, "NE";
+        "Automotive gasoline / petrol (other than for use as fuel in an aircraft)", 34.2, "kL", 67.4, 0.2, 0.2, 67.80, 17.2;
+        "Aviation gasoline", 33.1, "kL", 67, 0.2, 0.2, 67.40, 18.0;
+        "Kerosene (other than for use as fuel in an aircraft)", 37.5, "kL", 68.9, 0.01, 0.2, 69.11, 18.0;
+        "Aviation turbine fuel / kerosene", 36.8, "kL", 69.6, 0.02, 0.2, 69.82, 18.0;
+        "Heating oil", 37.3, "kL", 69.5, 0.03, 0.2, 69.73, 18.0;
+        "Diesel oil", 38.6, "kL", 69.9, 0.1, 0.2, 70.20, 17.3;
+        "Fuel oil", 39.7, "kL", 73.6, 0.04, 0.2, 73.84, 18.0;
+        "Liquefied aromatic hydrocarbons", 34.4, "kL", 69.7, 0.03, 0.2, 69.93, 18.0;
+        "Solvents: mineral turpentine or white spirits", 34.4, "kL", 69.7, 0.03, 0.2, 69.93, 18.0;
+        "Liquefied petroleum gas (LPG)", 25.7, "kL", 60.2, 0.2, 0.2, 60.60, 20.2;
+        "Naphtha", 31.4, "kL", 69.8, 0.01, 0.01, 69.82, 18.0;
+        "Petroleum coke", 34.2, "t", 92.6, 0.08, 0.2, 92.88, 18.0;
+        "Refinery gas and liquids", 42.9, "t", 54.7, 0.03, 0.03, 54.76, 18.0;
+        "Refinery coke", 34.2, "t", 92.6, 0.08, 0.2, 92.88, 18.0;
+        "Petroleum based products other than mentioned in the items above", 34.4, "kL", 69.8, 0.02, 0.1, 69.92, 18.0;
+        "Biodiesel", 34.6, "kL", 0.0, 0.08, 0.2, 0.28, "NE";
+        "Ethanol for use as a fuel in an internal combustion engine", 23.4, "kL", 0.0, 0.08, 0.2, 0.28, "NE";
+        "Biofuels other than those mentioned in the items above and below", 23.4, "kL", 0.0, 0.08, 0.2, 0.28, "NE";
+        "Renewable aviation kerosene", 36.8, "kL", 0.0, 0.02, 0.2, 0.22, "NE";
+        "Renewable diesel", 38.6, "kL", 0.0, 0.1, 0.2, 0.30, "NE"
+      }, r, c)
+)));
+
+/*
+============================================================================
+Fuel scope 1 and 3 emission factors - Transport
+============================================================================
+*/
+
+Fuel_Scope1Scope3EmissionFactorsTransport_Title
+=LAMBDA(("Fuel scope 1 and 3 emission factors - Transport"));
+
+Fuel_Scope1Scope3EmissionFactorsTransport_Description
+=LAMBDA(("Direct (scope 1) and indirect (scope 3) emission factors for the consumption of transport fuels in different transport equipment"));
+
+Fuel_Scope1Scope3EmissionFactorsTransport_Source
+=LAMBDA(("Australian National Greenhouse Accounts Factors 2025 - Table 9"));
+
+Fuel_Scope1Scope3EmissionFactorsTransport_Data
+=LAMBDA(
+  MAKEARRAY(22, 9,
+    LAMBDA(r,c,
+      INDEX({
+        "Transport type", "Fuel combusted", "Energy Content Factor(GJ per unit of fuel)", "Fuel unit", "Scope 1 Emission Factor (kg CO2 - e / GJ) CO2", "Scope 1 Emission Factor (kg CO2 - e / GJ) CH4", "Scope 1 Emission Factor (kg CO2 - e / GJ) N2O", "Scope 1 Emission Factor (kg CO2 - e / GJ) Combined gases", "Scope 3 Emission Factor (kg CO2 - e / GJ)";
+        "Cars and light commercial vehicles", "Gasoline", 34.2, "kl", 67.4, 0.02, 0.2, 67.62, 17.2;
+        "Cars and light commercial vehicles", "Diesel oil", 38.6, "kl", 69.9, 0.01, 0.5, 70.41, 17.3;
+        "Cars and light commercial vehicles", "Liquefied petroleum gas (LPG)", 26.2, "kl", 60.2, 0.5, 0.3, 61.00, 20.2;
+        "Cars and light commercial vehicles", "Fuel oil", 39.7, "kl", 73.6, 0.08, 0.5, 74.18, 18.0;
+        "Cars and light commercial vehicles", "Ethanol", 23.4, "kl", 0.0, 0.2, 0.2, 0.4, "NE";
+        "Cars and light commercial vehicles", "Biodiesel", 34.6, "kl", 0.0, 0.8, 1.7, 2.5, "NE";
+        "Cars and light commercial vehicles", "Renewable diesel", 38.6, "kl", 0.0, 0.01, 0.5, 0.51, "NE";
+        "Cars and light commercial vehicles", "Other biofuels", 23.4, "kl", 0.0, 0.8, 1.7, 2.5, "NE";
+        "Light duty vehicles", "Compressed natural gas", 0.0393, "m3", 51.4, 7.3, 0.3, 59.0, 18.0;
+        "Light duty vehicles", "Liquefied natural gas", 25.3, "kl", 51.4, 7.3, 0.3, 59.0, 18.0;
+        "Heavy duty vehicles", "Compressed natural gas", 0.0393, "m3", 51.4, 2.8, 0.3, 54.5, 18.0;
+        "Heavy duty vehicles", "Liquefied natural gas", 25.3, "kl", 51.4, 2.8, 0.3, 54.5, 18.0;
+        "Heavy duty vehicles", "Diesel oil - Euro iv or higher", 38.6, "kl", 69.9, 0.07, 0.4, 70.37, 17.3;
+        "Heavy duty vehicles", "Diesel oil - Euro iii", 38.6, "kl", 69.9, 0.1, 0.4, 70.4, 17.3;
+        "Heavy duty vehicles", "Diesel oil - Euro i", 38.6, "kl", 69.9, 0.2, 0.4, 70.5, 17.3;
+        "Heavy duty vehicles", "Renewable diesel – Euro iv or higher", 38.6, "kl", 0.0, 0.07, 0.4, 0.47, "NE";
+        "Heavy duty vehicles", "Renewable diesel – Euro iii", 38.6, "kl", 0.0, 0.1, 0.4, 0.5, "NE";
+        "Heavy duty vehicles", "Renewable diesel – Euro i", 38.6, "kl", 0.0, 0.2, 0.4, 0.6, "NE";
+        "Aviation", "Gasoline for use as fuel in an aircraft", 33.1, "kl", 67.0, 0.06, 0.6, 67.66, 18.0;
+        "Aviation", "Kerosene for use as fuel in an aircraft", 36.8, "kl", 69.6, 0.01, 0.6, 70.21, 18.0;
+        "Aviation", "Renewable aviation kerosene", 36.8, "kl", 0.0, 0.01, 0.6, 0.61, "NE"
+      }, r, c)
+)));
+
+

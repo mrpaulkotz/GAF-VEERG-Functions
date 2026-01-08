@@ -1,0 +1,36 @@
+/*
+============================================================================
+Indirect (scope 2 and scope 3) location-based emission factors associated with the consumption and losses of purchased or acquired electricity 
+============================================================================
+*/
+
+Electricity_Scope2Scope3LocationBased_Title
+=LAMBDA(("Electricity scope 2 and scope 3 location-based emission factors"));
+
+Electricity_Scope2LocationBased_Description
+=LAMBDA(("Indirect (scope 2 and scope 3) location-based emission factors associated with the consumption and losses of purchased or acquired electricity"));
+
+Electricity_Scope2Scope3LocationBased_Source
+=LAMBDA(("Australian National Greenhouse Accounts Factors 2025 - Table 1"));
+
+Electricity_Scope2Scope3LocationBased_Data
+=LAMBDA(
+  MAKEARRAY(10, 3,
+    LAMBDA(r,c,
+      INDEX({
+        "State, Territory or grid description", "Scope 2 Emission Factors (kg CO2-e/kWh)", "Scope 3 Emission Factors (kg CO2-e/kWh)";
+        "New South Wales", 0.64, 0.03;
+        "ACT", 0.64, 0.03;
+        "Victoria", 0.78, 0.09;
+        "Queensland", 0.67, 0.09;
+        "South Australia", 0.22, 0.04;
+        "Western Australia - South West Interconnected System (SWIS)", 0.50, 0.06;
+        "Western Australia - North Western Interconnected System (NWIS)", 0.56, 0.09;
+        "Tasmania", 0.20, 0.03;
+        "Northern Territory - Darwin Katherine Interconnected System (DKIS)", 0.56, 0.09;
+        "National", 0.62, 0.07
+      }, r, c)
+)));
+
+Electricity_Scope2Scope3LocationBased_Variation
+=LAMBDA(("VARIATION OF SOURCE DATA: NSW and ACT split into separate rows."));
