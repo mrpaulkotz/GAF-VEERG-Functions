@@ -34,8 +34,8 @@ NIR_2023_Vol2_A5_5_2_2_PastureBeef_LiveweightGain_Unit
 NIR_2023_Vol2_A5_5_2_2_PastureBeef_LiveweightGain_Source
   =LAMBDA("National Inventory Report 2023 Volume 2 - Table A5.5.2.2");
 
-NIR_2023_Vol2_A5_5_2_2_PastureBeef_LiveweightGain_Notes
-  =LAMBDA("ACT and NSW split. 'NO' replaced with 0.");
+NIR_2023_Vol2_A5_5_2_2_PastureBeef_LiveweightGain_Variation
+  =LAMBDA("VARIATION OF SOURCE DATA: ACT and NSW split. 'NO' replaced with 0.");
 
 NIR_2023_Vol2_A5_5_2_2_PastureBeef_LiveweightGain_Data
   =LAMBDA(

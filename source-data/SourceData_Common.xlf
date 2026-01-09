@@ -96,3 +96,42 @@ SourceData_Common_AustralianStatesTerritories_Data
       )
     )
   );
+
+/* 
+--------------------------------------
+SourceData_Common_WASA4Areas
+--------------------------------------
+*/
+
+SourceData_Common_WASA4Areas_Title
+  =LAMBDA("ABS Statistcal Areas Level 4 - Western Australia");
+
+SourceData_Common_WASA4Areas_Variable
+  =LAMBDA("");
+
+SourceData_Common_WASA4Areas_Unit
+  =LAMBDA("");
+
+SourceData_Common_WASA4Areas_Source
+  =LAMBDA("Australian Bureau of Statistics (ABS) - Statistical Areas Level 2 - 2021 - Shapefile");
+
+SourceData_Common_WASA4Areas_Data
+   =LAMBDA(
+    MAKEARRAY(11, 1, 
+      LAMBDA(r,c, 
+        INDEX({
+          "SA 4 Name";
+          "Bunbury";
+          "Mandurah";
+          "Perth - Inner";
+          "Perth - North East";
+          "Perth - North West";
+          "Perth - South East";
+          "Perth - South West";
+          "Western Australia - Wheat Belt";
+          "Western Australia - Outback (North)";
+          "Western Australia - Outback (South)"
+        }, r, c)
+      )
+    )
+  );

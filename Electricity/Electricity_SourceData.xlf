@@ -15,7 +15,7 @@ Electricity_Scope2Scope3LocationBased_Source
 
 Electricity_Scope2Scope3LocationBased_Data
 =LAMBDA(
-  MAKEARRAY(10, 3,
+  MAKEARRAY(11, 3,
     LAMBDA(r,c,
       INDEX({
         "State, Territory or grid description", "Scope 2 Emission Factors (kg CO2-e/kWh)", "Scope 3 Emission Factors (kg CO2-e/kWh)";
