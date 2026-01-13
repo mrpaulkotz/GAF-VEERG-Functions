@@ -45,12 +45,63 @@ VEERG_10_1_1__1_Scope2Electricity_LocationBased_ReadableEquation
 
 VEERG_10_1_1__1_Scope2Electricity_LocationBased_Arguments
   =LAMBDA(
-    MAKEARRAY(7, 3, 
+    MAKEARRAY(3, 3, 
       LAMBDA(r,c, 
         INDEX({
           "Qelec", "Amount of electricity purchased from the grid", "kWh";
           "EF2,elec", "Location - based Scope 2 emission factor for electricity", "kg CO2e / kWh";
           "2", "Scope 2", ""
+        }, r, c)
+      )
+    )
+  );
+
+/* 
+--------------------------------------
+VEERG_11_9_1_1__1_Scope2Electricity_LocationBased
+Location-based Scope 3 emissions from purchased electricity
+Qelec : Amount of electricity purchased from the grid : kWh
+EF3,elec : Location - based Scope 3 emission factor for electricity : kg CO2e / kWh
+--------------------------------------
+*/
+
+
+VEERG_11_9_1_1__1_Scope3Electricity_LocationBased
+  =LAMBDA(
+    Qelec, EF3elec,
+    Qelec * EF3elec * 10 ^ - 3
+  )
+;
+
+VEERG_11_9_1_1__1_Scope3Electricity_LocationBased_FunctionName
+  =LAMBDA("VEERG_11_9_1_1__1_Scope3Electricity_LocationBased");
+
+VEERG_11_9_1_1__1_Scope3Electricity_LocationBased_Title
+  =LAMBDA("Location-based Scope 3 emissions from purchased electricity");
+
+VEERG_11_9_1_1__1_Scope3Electricity_LocationBased_Variable
+  =LAMBDA("E3elec");
+
+VEERG_11_9_1_1__1_Scope3Electricity_LocationBased_Unit
+  =LAMBDA("t CO2-e");
+
+VEERG_11_9_1_1__1_Scope3Electricity_LocationBased_Source
+  =LAMBDA("VEERG 2026: 11.9.1.1, Equation (1)");
+
+VEERG_11_9_1_1__1_Scope3Electricity_LocationBased_NIRReference
+  =LAMBDA("Australian National Greenhouse Accounts Factors 2025 - 2.2 Estimating emissions from stationary energy sources");
+
+VEERG_11_9_1_1__1_Scope3Electricity_LocationBased_ReadableEquation
+  =LAMBDA("E3,elec = Qelec * EF3,elec * 10 ^ - 3");
+
+VEERG_11_9_1_1__1_Scope3Electricity_LocationBased_Arguments
+  =LAMBDA(
+    MAKEARRAY(3, 3, 
+      LAMBDA(r,c, 
+        INDEX({
+          "Qelec", "Amount of electricity purchased from the grid", "kWh";
+          "EF3,elec", "Location - based Scope 3 emission factor for electricity", "kg CO2e / kWh";
+          "3", "Scope 3", ""
         }, r, c)
       )
     )

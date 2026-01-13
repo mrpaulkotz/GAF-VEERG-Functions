@@ -1,0 +1,177 @@
+/*
+============================================================================
+Appendix 2 Global Warming Potentials: Table 23 Global Warming Potentials
+============================================================================
+*/
+
+Refrigerants_ChemicalGWP_Title
+=LAMBDA(("Global Warming Potentials"));
+
+Refrigerants_ChemicalGWP_Description
+=LAMBDA((""));
+
+Refrigerants_ChemicalGWP_Source
+=LAMBDA(("Australian National Greenhouse Accounts Factors 2025 - Appendix 2 - Table 23"));
+
+Refrigerants_ChemicalGWP_Data
+=LAMBDA(
+  MAKEARRAY(39, 5,
+    LAMBDA(r,c,
+      INDEX({
+        "Gas", "Chemical formula", "Global Warming Potential (AR5)", "Gas - FC name", "Aditional data source";
+        "Carbon dioxide", "CO2", 1, "CO2", "";
+        "Methane", "CH4", 28, "CH4", "";
+        "Nitrous oxide", "N2O", 265, "N2O", "";
+        "Sulphur hexafluoride", "SF6", 23500, "SF6", "";
+        "HFC-23 (R-23)", "CHF3",  12400, "HFC-23", "";
+        "HFC-32 (R-32)", "CH2F2", 677, "HFC-32", "";
+        "HFC-41 (R-41)", "CH3F",  116, "HFC-41", "";
+        "HFC-43-10mee (R-4310mee)", "C5H2F10", 1650, "HFC-43-10mee", "";
+        "HFC-125 (R-125)", "C2HF5",  3170, "HFC-125", "";
+        "HFC-134 (R-134)", "C2H2F4 (CHF2CHF2)",  1120, "HFC-134", "";
+        "HFC-134a (R-134a)", "C2H2F4 (CH2FCF3)", 1300, "HFC-134a", "";
+        "HFC-143 (R-143)", "C2H3F3 (CHF2CH2F)", 328, "HFC-143", "";
+        "HFC-143a (R-143a)", "C2H3F3 (CF3CH3)", 4800, "HFC-143a", "";
+        "HFC-152a (R-152a)", "C2H4F2 (CH3CHF2)", 138, "HFC-152a", "";
+        "HFC-227ea (R-227ea)", "C3HF7", 3350, "HFC-227ea", "";
+        "HFC-236fa (R-236fa)", "C3H2F6", 8060, "HFC-236fa", "";
+        "HFC-245ca (R-245ca)", "C3H3F5", 716, "HFC-245ca", "";
+        "HFC-245fa (R-245fa)", "CHF2CH2CF3", 858, "HFC-245fa", "";
+        "HFC-365mfc (R-365mfc)", "CH3CF2CH2CF3", 804, "HFC-365mfc", "";
+        "HCFC-22 (R-22)", "CHClF2", 1760, "HCFC-22", "";
+        "HCFC-123 (R-123)", "CHCl22CF3", 79, "HCFC-123", "";
+        "HCFC-124 (R-124)", "CHClFCF3", 527, "HCFC-124", "";
+        "HCFC-141b (R-141b)", "CH3CCl2F", 782, "HCFC-141b", "";
+        "HCFC-142b (R-142b)", "CH2CClF2", 1980, "HCFC-142b", "";
+        "HCFC-225ca (R-225ca)", "CHCl2CF2CF3", 127, "HCFC-225ca", "";
+        "HCFC-225cb (R-225cb)", "CHClFCF2CCIF2", 525, "HCFC-225cb", "";
+        "PFC-14 Perfluoromethane (tetrafluoromethane)", "CF4", 6630, "PFC-14", "";
+        "PFC-116 Perfluoroethane (hexafluoroethane)", "C2F6", 11100, "PFC-116", "";
+        "PFC-218 Perfluoropropane", "C3F8", 8900, "PFC-218", "";
+        "PFC-31-10 Perfluorobutane", "C4F10", 9200, "PFC-31-10", "";
+        "PFC-318 Perfluorocyclobutane", "c-C4F8", 9540, "PFC-318", "";
+        "PFC-41-12 Perfluoropentane", "C5F12", 8550, "PFC-41-12", "";
+        "PFC-51-14 Perfluorohexane", "C6F14", 7910, "PFC-51-14", "";
+        "PFC-91-18 Perflunafene", "C10F18", 7190, "PFC-91-18", "";
+        "CFC-12", "CCl2F2", 10200, "CFC-12", "IPCC Global Warming Potential Values v2.0 - (AR5)";
+        "CFC-13", "CClF3", 13900, "CFC-13", "IPCC Global Warming Potential Values v2.0 - (AR5)";
+        "CFC-114", "CClF2CClF2", 8590, "CFC-114", "IPCC Global Warming Potential Values v2.0 - (AR5)";
+        "CFC-115", "CClF2CF3", 7670, "CFC-115", "IPCC Global Warming Potential Values v2.0 - (AR5)"
+      }, r, c)
+)));
+
+Refrigerants_ChemicalGWP_Variation
+=LAMBDA(("VARIATION OF SOURCE DATA: Added 'GAS - FC name' column with truncated gas name to allow matching with other tables. Added extra gases from IPCC Global Warming Potential Values v2.0 - (AR5). Added 'Additional data source' column."));
+
+/*
+============================================================================
+Appendix 2 Global Warming Potentials: Blended refrigerants
+============================================================================
+*/
+
+Refrigerants_ChemicalBlends_Title
+=LAMBDA(("Blended refrigerants (many containing HFCS and/or PFCS)"));
+
+Refrigerants_ChemicalBlends_Description
+=LAMBDA((""));
+
+Refrigerants_ChemicalBlends_Source
+=LAMBDA(("Australian National Greenhouse Accounts Factors 2025 - Appendix 2 - Table 24"));
+
+Refrigerants_ChemicalBlends_Data
+=LAMBDA(
+  MAKEARRAY(51, 3,
+    LAMBDA(r,c,
+      INDEX({
+        "Blend", "Constituents", "Composition (%)";
+        "R-400", "CFC-12/CFC-114", "R-400 can have various proportions of CFC-12 and CFC-114. The exact composition needs to be specified, e.g., R-400 (60/40).";
+        "R-401A", "HCFC-22/HFC-152a/HCFC-124", "(53.0/13.0/34.0)";
+        "R-401B", "HCFC-22/HFC-152a/HCFC-124", "(61.0/11.0/28.0)";
+        "R-401C", "HCFC-22/HFC-152a/HCFC-124", "(33.0/15.0/52.0)";
+        "R-402A", "HFC-125/HC-290/HCFC-22", "(60.0/2.0/38.0)";
+        "R-402B", "HFC-125/HC-290/HCFC-22", "(38.0/2.0/60.0)";
+        "R-403A", "HC-290/HCFC-22/PFC-218", "(5.0/75.0/20.0)";
+        "R-403B", "HC-290/HCFC-22/PFC-218", "(5.0/56.0/39.0)";
+        "R-404A", "HFC-125/HFC-143a/HFC-134a", "(44.0/52.0/4.0)";
+        "R-405A", "HCFC-22/ HFC-152a/HCFC-142b/PFC-318", "(45.0/7.0/5.5/42.5)";
+        "R-406A", "HCFC-22/HC-600a/HCFC-142b", "(55.0/14.0/41.0)";
+        "R-407A", "HFC-32/HFC-125/HFC-134a", "(20.0/40.0/40.0)";
+        "R-407B", "HFC-32/HFC-125/HFC-134a", "(10.0/70.0/20.0)";
+        "R-407C", "HFC-32/HFC-125/HFC-134a", "(23.0/25.0/52.0)";
+        "R-407D", "HFC-32/HFC-125/HFC-134a", "(15.0/15.0/70.0)";
+        "R-407E", "HFC-32/HFC-125/HFC-134a", "(25.0/15.0/60.0)";
+        "R-408A", "HFC-125/HFC-143a/HCFC-22", "(7.0/46.0/47.0)";
+        "R-409A", "HCFC-22/HCFC-124/HCFC-142b", "(60.0/25.0/15.0)";
+        "R-409B", "HCFC-22/HCFC-124/HCFC-142b", "(65.0/25.0/10.0)";
+        "R-410A", "HFC-32/HFC-125", "(50.0/50.0)";
+        "R-410B", "HFC-32/HFC-125", "(45.0/55.0)";
+        "R-411A", "HC-1270/HCFC-22/HFC-152a", "(1.5/87.5/11.0)";
+        "R-411B", "HC-1270/HCFC-22/HFC-152a", "(3.0/94.0/3.0)";
+        "R-411C", "HC-1270/HCFC-22/HFC-152a", "(3.0/95.5/1.5)";
+        "R-412A", "HCFC-22/PFC-218/HCFC-142b", "(70.0/5.0/25.0)";
+        "R-413A", "PFC-218/HFC-134a/HC-600a", "(9.0/88.0/3.0)";
+        "R-414A", "HCFC-22/HCFC-124/HC-600a/HCFC-142b", "(51.0/28.5/4.0/16.5)";
+        "R-414B", "HCFC-22/HCFC-124/HC-600a/HCFC-142b", "(50.0/39.0/1.5/9.5)";
+        "R-415A", "HCFC-22/HFC-152a", "(82.0/18.0)";
+        "R-415B", "HCFC-22/HFC-152a", "(25.0/75.0)";
+        "R-416A", "HFC-134a/HCFC-124/HC-600", "(59.0/39.5/1.5)";
+        "R-417A", "HFC-125/HFC-134a/HC-600", "(46.6/50.0/3.4)";
+        "R-418A", "HC-290/HCFC-22/HFC-152a", "(1.5/96.0/2.5)";
+        "R-419A", "HFC-125/HFC-134a/HE-E170", "(77.0/19.0/4.0)";
+        "R-420A", "HFC-134a/HCFC-142b", "(88.0/12.0)";
+        "R-421A", "HFC-125/HFC-134a", "(58.0/42.0)";
+        "R-422A", "HFC-125/HFC-134a/HC-600a", "(85.1/11.5/3.4)";
+        "R-422B", "HFC-125/HFC-134a/HC-600a", "(55.0/42.0/3.0)";
+        "R-422C", "HFC-125/HFC-134a/HC-600a", "(82.0/15.0/3.0)";
+        "R-500", "CFC-12/HFC-152a", "(73.8/26.2)";
+        "R-501", "HCFC-22/CFC-12", "(75.0/25.0)";
+        "R-502", "HCFC-22/CFC-115", "(48.8/51.2)";
+        "R-503", "HFC-23/CFC-13", "(40.1/59.9)";
+        "R-504", "HFC-32/CFC-115", "(48.2/51.8)";
+        "R-505", "CFC-12/HCFC-31", "(78.0/22.0)";
+        "R-506", "CFC-31/CFC-114", "(55.1/44.9)";
+        "R-507A", "HFC-125/HFC-143a", "(50.0/50.0)";
+        "R-508A", "HFC-23/PFC-116", "(39.0/61.0)";
+        "R-508B", "HFC-23/PFC-116", "(46.0/54.0)";
+        "R-509A", "HCFC-22/PFC-218", "(44.0/56.0)"
+      }, r, c)
+)));
+
+Refrigerants_ChemicalBlends_Variation
+=LAMBDA(("VARIATION OF SOURCE DATA: Fixed typo - changed HC600a to HC-600a for blend R-414B. Fixed typo for blend R-405A - Changed HCFC142b to HCFC-142b."));
+
+
+/*
+============================================================================
+Leakage rates for common refrigeration and air
+============================================================================
+*/
+
+Refrigerants_LeakageRates_Title
+=LAMBDA(("Indicative leakage rates for common refrigeration and air - conditioning equipment"));
+
+Refrigerants_LeakageRates_Description
+=LAMBDA((""));
+
+Refrigerants_LeakageRates_Source
+=LAMBDA(("Australian National Greenhouse Accounts Factors 2025 - Table 10"));
+
+Refrigerants_LeakageRates_Data
+=LAMBDA(
+  MAKEARRAY(81, 2,
+    LAMBDA(r,c,
+      INDEX({
+        "Product", "Annual leakage rate (%)";
+        "Domestic refrigerators", 1.7;
+        "Transport refrigeration", 15.7;
+        "Domestic A/C portable", 2.5;
+        "Domestic A/C split", 3.5;
+        "Domestic A/C packaged", 2.5;
+        "Light vehicle A/C", 6.7;
+        "Heavy vehicle A/C", 10.8
+      }, r, c)
+)));
+
+Refrigerants_LeakageRates_Variation
+=LAMBDA((""));
+

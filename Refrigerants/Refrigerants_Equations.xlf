@@ -1,0 +1,61 @@
+/*
+======================================
+9: Refrigerant Use
+======================================
+9.1 Refrigerant Use
+======================================
+*/
+
+/* 
+--------------------------------------
+VEERG_9_1_1__1_RefrigerantLeaking
+The total emissions of refrigerant leaking during operation (not during installation or disposal)
+GWPR : Global warming potential of refrigerant R : Dimensionless
+chargeRa : Amount of refrigerant R contained in appliance a : kg
+leakageratea : Prcentage of total charge leaked from appliance a each year : Percent
+--------------------------------------
+*/
+
+
+VEERG_9_1_1__1_RefrigerantLeaking
+  =LAMBDA(
+    GWPR, chargeRa, leakageratea,
+    GWPR * chargeRa * (leakageratea/100) * 10 ^ - 3
+  )
+;
+
+VEERG_9_1_1__1_RefrigerantLeaking_FunctionName
+  =LAMBDA("VEERG_9_1_1__1_RefrigerantLeaking");
+
+VEERG_9_1_1__1_RefrigerantLeaking_Title
+  =LAMBDA("The total emissions of refrigerant leaking during operation (not during installation or disposal)");
+
+VEERG_9_1_1__1_RefrigerantLeaking_Variable
+  =LAMBDA("E");
+
+VEERG_9_1_1__1_RefrigerantLeaking_Unit
+  =LAMBDA("t CO2-e");
+
+VEERG_9_1_1__1_RefrigerantLeaking_Source
+  =LAMBDA("VEERG 2026: 9.1.1, Equation (1)");
+
+VEERG_9_1_1__1_RefrigerantLeaking_NIRReference
+  =LAMBDA("Australian National Greenhouse Accounts Factors 2025 - 3.1 Estimating industrial processes emissions - Refrigerant leakage");
+
+VEERG_9_1_1__1_RefrigerantLeaking_ReadableEquation
+  =LAMBDA("GWPR * chargeRa * (leakageratea/100) * 10 ^ - 3");
+
+VEERG_9_1_1__1_RefrigerantLeaking_Arguments
+  =LAMBDA(
+    MAKEARRAY(5, 3, 
+      LAMBDA(r,c, 
+        INDEX({
+          "GWPR", "Global warming potential of refrigerant R", "Dimensionless";
+          "chargeRa", "Amount of refrigerant R contained in appliance a", "kg";
+          "leakageratea", "Prcentage of total charge leaked from appliance a each year", "Percent";
+          "a", "Appliance", "";
+          "R", "Refrigerant", ""
+        }, r, c)
+      )
+    )
+  );

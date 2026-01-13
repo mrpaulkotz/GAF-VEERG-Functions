@@ -1,40 +1,37 @@
 Utility_GetArrayTableRowStartNumber
 =LAMBDA(
-  TableheaderCell,
-  RowsBetweenHeaderandArray,
-  ROW(
-    TableheaderCell
-  ) + RowsBetweenHeaderandArray - 1
+    TableheaderCell,RowsBetweenHeaderandArray,
+    ROW(TableheaderCell) + RowsBetweenHeaderandArray - 1
 );
 
 Utility_GetArrayTableColumnStartNumber
 =LAMBDA(
-  TableheaderCell,
-  COLUMN(
-    TableheaderCell
-  ) - 1
+    TableheaderCell,
+    COLUMN(TableheaderCell)-1
 );
 
 Utility_DisplayArrayInTable
 =LAMBDA(
-  ArrayData,
-  TableheaderCell,
-  RowsBetweenHeaderandArray,
-  IFERROR(
-    INDEX(
-      UNIQUE(
-        ArrayData
-      ),
-      ROW(
-      ) - Utility_GetArrayTableRowStartNumber(
-        TableheaderCell,
-        RowsBetweenHeaderandArray
-      ),
-      COLUMN(
-      ) - Utility_GetArrayTableColumnStartNumber(
-        TableheaderCell
-      )
-    ),
-    ""
-  )
+ ArrayData, TableheaderCell, RowsBetweenHeaderandArray,
+ IFERROR(
+     INDEX(
+            UNIQUE(ArrayData), 
+            ROW()-Utility_GetArrayTableRowStartNumber(TableheaderCell, RowsBetweenHeaderandArray), 
+            COLUMN()-Utility_GetArrayTableColumnStartNumber(TableheaderCell)
+        ), ""
+    )
+);
+
+Utility_LookupValueInTable
+=LAMBDA(
+    LookupValue, LookupArray, ReturnArray,
+    XLOOKUP(LookupValue, LookupArray, ReturnArray, "")
+);
+
+Utility_LookupValueInTableNumber
+=LAMBDA(
+    LookupValue, LookupArray, ReturnArray,
+    IF(ISNUMBER(
+        XLOOKUP(LookupValue, LookupArray, ReturnArray, "")
+    ), XLOOKUP(LookupValue, LookupArray, ReturnArray, ""), 0)
 );
