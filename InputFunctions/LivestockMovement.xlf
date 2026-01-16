@@ -56,17 +56,47 @@ LivestockMovement_GetMovementLiveweightGain
   )
 );
 
+LivestockMovement_DaysMovementToMonthEnd
+=LAMBDA(
+  MovementDate,
+  DATEDIF(MovementDate, EOMONTH(MovementDate, 0), "d")
+);
+
+LivestockMovement_LiveweightGrownDuringMonthPerHead
+=LAMBDA(LivestockClass, MovementDate,
+  IFERROR( 
+    LivestockMovement_GetMovementLiveweightGain(LivestockClass, MovementDate)*
+    LivestockMovement_DaysMovementToMonthEnd(MovementDate)
+  , 0)
+);
+
 LivestockMovement_LiveweightAddedDuringMonth
 = LAMBDA(LivestockClass, MovementDate, WeightAtMovementDate, Head,
 IFERROR(
     Head*
         (
         WeightAtMovementDate+
-        LivestockMovement_GetMovementLiveweightGain(LivestockClass, MovementDate)
-        *
-        DATEDIF(MovementDate, EOMONTH(MovementDate, 0), "d")
+        LivestockMovement_LiveweightGrownDuringMonthPerHead(LivestockClass, MovementDate)
         )
 , 0)
+);
+
+LivestockMovement_LiveweightGrownFromMovementDateTotal
+=LAMBDA(
+  LivestockClass, MovementDate, Head,
+  LivestockMovement_LiveweightGrownDuringMonthPerHead(LivestockClass, MovementDate) *
+  Head
+);
+
+LivestockMovement_LiveweightGrownFromMonthStartPerHead
+=LAMBDA(LivestockClass, Month,
+  LivestockMovement_LiveweightGrownDuringMonthPerHead(LivestockClass, EOMONTH(Month,-1)+1)
+);
+
+LivestockMovement_LiveweightGrownFromMonthStartTotal
+=LAMBDA(LivestockClass, Month, HeadAtStartOfMonth,
+  LivestockMovement_HeadRemainingAtMonthEnd(Month, LivestockClass, HeadAtStartOfMonth) *
+  LivestockMovement_LiveweightGrownFromMonthStartPerHead(LivestockClass, Month)
 );
 
 LivestockMovement_HeadAtEndOfMonth
@@ -93,6 +123,22 @@ LivestockMovement_TotalLiveweightAddedDuringMonth
     SUM(
       FILTER(
         Input_HerdMovement[Total weight gained since joining],
+        (Input_HerdMovement[Date] >= EOMONTH(Month,-1)+1) *
+        (Input_HerdMovement[Date] <= EOMONTH(Month,0)) *
+        (Input_HerdMovement[To] = LivestockClass)
+      )
+    ),
+    0
+  )
+);
+
+LivestockMovement_TotalLiveweightGrownDuringMonth
+= LAMBDA(
+    Month, LivestockClass,
+    IFERROR(
+    SUM(
+      FILTER(
+        Input_HerdMovement[Liveweight grown since joining],
         (Input_HerdMovement[Date] >= EOMONTH(Month,-1)+1) *
         (Input_HerdMovement[Date] <= EOMONTH(Month,0)) *
         (Input_HerdMovement[To] = LivestockClass)
@@ -154,6 +200,46 @@ LivestockMovement_ProportionalAverageLiveweightRemainingAtEndOfMonth
     LivestockMovement_AverageLiveweightRemainingHead(Month, LiveweightAtStart, LiveweightGain)
 );
 
+LivestockMovement_GetLiveweightAtStart
+=LAMBDA(
+  LivestockClass,
+  HLOOKUP(LivestockClass, Range_LivestockStartingValues, 3, FALSE)
+);
+
+LivestockMovement_GetLiveweightAtEnd
+=LAMBDA(
+  LivestockClass,
+  HLOOKUP(LivestockClass, Range_LivestockStartingValues, 4, FALSE)
+);
+
+LivestockMovement_GetGrowthFactor
+=LAMBDA(
+  Month, LivestockClass,  
+  XLOOKUP(
+    Month,
+   CrudeProteinGrowthFactor[Month],
+  INDEX(
+    CrudeProteinGrowthFactor, , 
+    MATCH(LivestockClass, CrudeProteinGrowthFactor[#Headers], 0)
+  )
+));
+
+LivestockMovement_GetDurationOfStay
+=LAMBDA(
+  LivestockClass,
+  HLOOKUP(LivestockClass, Table_DurationOfStay[#All], 2, FALSE)
+);
+
+LivestockMovement_CalculateLiveweightGain
+=LAMBDA(
+  Month, LivestockClass,
+  (
+    (LivestockMovement_GetLiveweightAtEnd(LivestockClass) - 
+    LivestockMovement_GetLiveweightAtStart(LivestockClass))
+    / LivestockMovement_GetDurationOfStay(LivestockClass)
+  )* LivestockMovement_GetGrowthFactor(Month, LivestockClass)
+);
+
 AverageLiveweightEndOfMonth
 =LAMBDA(
   Month, LivestockClass, HeadAtStart, LiveweightAtStart, LiveweightGain,
@@ -169,6 +255,13 @@ AverageLiveweightMonth
     LiveweightAtMonthEnd <=0, LiveweightAtMonthStart,
     TRUE, (LiveweightAtMonthStart+LiveweightAtMonthEnd)/2
   )
+);
+
+LivestockMovement_TotalLiveweightGrownDuringMonthAddedAndRemaining
+=LAMBDA(
+  Month, LivestockClass, HeadAtStart,
+  LivestockMovement_LiveweightGrownFromMonthStartTotal(LivestockClass, Month, HeadAtStart)+
+  LivestockMovement_TotalLiveweightGrownDuringMonth(Month, LivestockClass)
 );
 
 LivestockMovement_CalculateStayDurationToEnd
@@ -212,4 +305,10 @@ LivestockMovement_CalculateProportionCowsCalving
     Births / Head,
     0
   )
+);
+
+LivestockMovement_MovementLiveweightSold
+=LAMBDA(
+  MovementType, Head, Liveweight,
+  IF(MovementType = "Sale", Head*Liveweight, "")
 );

@@ -1,0 +1,244 @@
+/*
+======================================
+5: Fertiliser Use
+======================================
+5.1 Inorganic fertiliser application
+======================================
+*/
+
+/* 
+--------------------------------------
+VEERG_5_1_1_1__1_InorganicFertiliserApplication
+Nitrous oxide emissions from the application of all inorganic fertiliser types f to all production systems
+EN2O
+t CO2-e
+MNjf : mass of nitrogen in inorganic fertiliser type f applied to soils in production system j : kg N
+EFjN2O : emission factor for nitrous oxide for inorganic fertilisers : kg N2O-N/kg N applied
+CgN2O : factor to convert elemental mass of nitrous oxide to molecular mass: dimensionless
+j : production system
+f : inorganic fertiliser type
+GWPN2O : global warming potential for nitrous oxide : t CO2-e / t N2O
+
+--------------------------------------
+*/
+
+VEERG_5_1_1_1__1_InorganicFertiliserApplication_GWP
+ =LAMBDA(
+    EN2O,GWPN2O,
+     (EN2O * GWPN2O)
+   );
+
+VEERG_5_1_1_1__1_InorganicFertiliserApplication
+  =LAMBDA(
+    MNjf, EFjN2O, CgN2O,
+    MNjf * EFjN2O * CgN2O * 10 ^-3
+  )
+;
+
+VEERG_5_1_1_1__1_InorganicFertiliserApplication_FunctionName
+  =LAMBDA("VEERG_5_1_1_1__1_InorganicFertiliserApplication");
+
+VEERG_5_1_1_1__1_InorganicFertiliserApplication_Title
+  =LAMBDA("Nitrous oxide emissions from the application of all inorganic fertiliser types f to all production systems");
+
+VEERG_5_1_1_1__1_InorganicFertiliserApplication_Variable
+  =LAMBDA("EN2O");
+
+VEERG_5_1_1_1__1_InorganicFertiliserApplication_Unit
+  =LAMBDA("t CO2-e");
+
+VEERG_5_1_1_1__1_InorganicFertiliserApplication_Source
+  =LAMBDA("VEERG 2026: 5.1.1.1, Equation (1)");
+
+VEERG_5_1_1_1__1_InorganicFertiliserApplication_NIRReference
+  =LAMBDA("National Inventory Report Volume 1, 2023: Equation 3.D.A_2");
+
+VEERG_5_1_1_1__1_InorganicFertiliserApplication_ReadableEquation
+  =LAMBDA("EN2O = MNjf * EFjN2O * CgN2O * 10 ^ - 3");
+
+VEERG_5_1_1_1__1_InorganicFertiliserApplication_Arguments
+  =LAMBDA(
+    MAKEARRAY(6, 3, 
+      LAMBDA(r,c, 
+        INDEX({
+          "MNjf","Mass of nitrogen in inorganic fertiliser type f applied to soils in production system j","kg N";
+          "EFjN2O","Emission factor for nitrous oxide for inorganic fertilisers","kg N2O-N/kg N applied";
+          "CgN2O","Factor to convert elemental mass of nitrous oxide to molecular mass","";
+          "j","Production system","";
+          "f","Inorganic fertiliser type","";
+          "GWPN2O","Global warming potential for nitrous oxide","t CO2-e / t N2O"
+        }, r, c)
+      )
+    )
+  );
+
+
+/* 
+--------------------------------------
+VEERG_5_1_1_1__2_MassOfNitrogenInInorganicFertiliser
+Mass of nitrogen in inorganic fertiliser applied to soil
+MNjf
+kg N
+TMjf : Total mass of inorganic fertiliser type f applied to production system j : kg
+FNinorganicf : fraction of nitrogen in inorganic fertiliser type f : kg N/kg
+--------------------------------------
+*/
+
+
+VEERG_5_1_1_1__2_MassOfNitrogenInInorganicFertiliser
+  =LAMBDA(
+    TMjf, FNinorganicf,
+    TMjf * FNinorganicf
+  )
+;
+
+VEERG_5_1_1_1__2_MassOfNitrogenInInorganicFertiliser_FunctionName
+  =LAMBDA("VEERG_5_1_1_1__2_MassOfNitrogenInInorganicFertiliser");
+
+VEERG_5_1_1_1__2_MassOfNitrogenInInorganicFertiliser_Title
+  =LAMBDA("Mass of nitrogen in inorganic fertiliser applied to soil");
+
+VEERG_5_1_1_1__2_MassOfNitrogenInInorganicFertiliser_Variable
+  =LAMBDA("MNjf");
+
+VEERG_5_1_1_1__2_MassOfNitrogenInInorganicFertiliser_Unit
+  =LAMBDA("kg N");
+
+VEERG_5_1_1_1__2_MassOfNitrogenInInorganicFertiliser_Source
+  =LAMBDA("VEERG 2026: 5.1.1.1, Equation (2)");
+
+VEERG_5_1_1_1__2_MassOfNitrogenInInorganicFertiliser_NIRReference
+  =LAMBDA("National Inventory Report Volume 1, 2023: Equation 3.D.A_1");
+
+VEERG_5_1_1_1__2_MassOfNitrogenInInorganicFertiliser_ReadableEquation
+  =LAMBDA("MNjf = TMjf * FNinorganicf");
+
+VEERG_5_1_1_1__2_MassOfNitrogenInInorganicFertiliser_Arguments
+  =LAMBDA(
+    MAKEARRAY(5, 3, 
+      LAMBDA(r,c, 
+        INDEX({
+          "TMjf","Total mass of inorganic fertiliser type f applied to production system j","kg";
+          "FNinorganicf","Fraction of nitrogen in inorganic fertiliser type f","kg N/kg";
+          "j","Production system","";
+          "inorganic", "Inorganic fertiliser", "";
+          "f","Fertiliser type",""
+        }, r, c)
+      )
+    )
+  );
+
+/* 
+--------------------------------------
+VEERG_5_1_1_3__1_UreaFertiliserApplication
+Carbon dioxide emissions resulting from the use of inorganic, urea-based fertilisers
+EjfCO2
+t CO2
+MUjf : mass of urea of inorganic fertiliser type f applied to production system j : kg urea
+EFureaCO2 : emission factor for carbon emissions from urea-based fertilisers : kg C/kg urea 
+CgCO2 : factor to convert elemental mass of carbon dioxide to molecular mass : dimensionless
+
+--------------------------------------
+*/
+
+
+VEERG_5_1_1_3__1_UreaFertiliserApplication
+  =LAMBDA(
+    MUjf, EFureaCO2, CgCO2,
+    MUjf * EFureaCO2 * CgCO2 * 10 ^-3
+  )
+;
+
+VEERG_5_1_1_3__1_UreaFertiliserApplication_FunctionName
+  =LAMBDA("VEERG_5_1_1_3__1_UreaFertiliserApplication");
+
+VEERG_5_1_1_3__1_UreaFertiliserApplication_Title
+  =LAMBDA("Carbon dioxide emissions resulting from the use of inorganic, urea-based fertilisers");
+
+VEERG_5_1_1_3__1_UreaFertiliserApplication_Variable
+  =LAMBDA("EjfCO2");
+
+VEERG_5_1_1_3__1_UreaFertiliserApplication_Unit
+  =LAMBDA("t CO2");
+
+VEERG_5_1_1_3__1_UreaFertiliserApplication_Source
+  =LAMBDA("VEERG 2026: 5.1.3.1, Equation (1)");
+
+VEERG_5_1_1_3__1_UreaFertiliserApplication_NIRReference
+  =LAMBDA("National Inventory Report Volume 1, 2023: Equation 3.H_1");
+
+VEERG_5_1_1_3__1_UreaFertiliserApplication_ReadableEquation
+  =LAMBDA("EjfCO2 = MUjf × EFureaCO2 × CgCO2 × 10^-3");
+
+VEERG_5_1_1_3__1_UreaFertiliserApplication_Arguments
+  =LAMBDA(
+    MAKEARRAY(5, 3, 
+      LAMBDA(r,c, 
+        INDEX({
+          "MUjf","Mass of urea of inorganic fertiliser type f applied to production system j","kg urea";
+          "EFureaCO2","Emission factor for carbon emissions from urea-based fertilisers","kg C/kg urea";
+          "CgCO2","Factor to convert elemental mass of carbon dioxide to molecular mass","dimensionless";
+          "j","Production system","";
+          "f","Fertiliser type",""
+        }, r, c)
+      )
+    )
+  );
+
+/* 
+--------------------------------------
+VEERG_5_1_1_3__2_MassOfUreaAppliedToSoils
+Mass of urea applied to soils
+MUjf
+kg urea
+TMjf : the total mass of inorganic fertiliser type f applied to production system j : kg
+FUf : the fraction of urea in fertiliser type f : kg urea/kg
+
+
+--------------------------------------
+*/
+
+
+VEERG_5_1_1_3__2_MassOfUreaAppliedToSoils
+  =LAMBDA(
+    TMjf, FUf,
+    TMjf * FUf
+  )
+;
+
+VEERG_5_1_1_3__2_MassOfUreaAppliedToSoils_FunctionName
+  =LAMBDA("VEERG_5_1_1_3__2_MassOfUreaAppliedToSoils");
+
+VEERG_5_1_1_3__2_MassOfUreaAppliedToSoils_Title
+  =LAMBDA("Mass of urea applied to soils");
+
+VEERG_5_1_1_3__2_MassOfUreaAppliedToSoils_Variable
+  =LAMBDA("MUjf");
+
+VEERG_5_1_1_3__2_MassOfUreaAppliedToSoils_Unit
+  =LAMBDA("kg urea");
+
+VEERG_5_1_1_3__2_MassOfUreaAppliedToSoils_Source
+  =LAMBDA("VEERG 2026: 5.1.3.1, Equation (2)");
+
+VEERG_5_1_1_3__2_MassOfUreaAppliedToSoils_NIRReference
+  =LAMBDA("");
+
+VEERG_5_1_1_3__2_MassOfUreaAppliedToSoils_ReadableEquation
+  =LAMBDA("MUjf = TMjf × FUf");
+
+VEERG_5_1_1_3__2_MassOfUreaAppliedToSoils_Arguments
+  =LAMBDA(
+    MAKEARRAY(4, 3, 
+      LAMBDA(r,c, 
+        INDEX({
+          "TMjf","the total mass of inorganic fertiliser type f applied to production system j", "kg";
+          "FUf","the fraction of urea in fertiliser type f", "kg urea/kg"; 
+          "j","Production system","";
+          "f","Fertiliser type",""
+        }, r, c)
+      )
+    )
+  );
+
+  

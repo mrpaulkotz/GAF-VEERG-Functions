@@ -59,6 +59,80 @@ SourceData_Common_ConvertN2oElementalToMolecularCg_Source
 SourceData_Common_ConvertN2oElementalToMolecularCg_Data
   =LAMBDA(44/28);
 
+/* 
+--------------------------------------
+SourceData_Common_ConvertGasElementalToMolecular
+Factor to convert elemental mass of gas to molecular mass
+--------------------------------------
+*/
+
+SourceData_Common_ConvertGasElementalToMolecular_Title
+  =LAMBDA("Factor to convert elemental mass of gas to molecular mass");
+
+SourceData_Common_ConvertGasElementalToMolecular_Variable
+  =LAMBDA("Cg");
+
+SourceData_Common_ConvertGasElementalToMolecular_Unit
+  =LAMBDA("factor");
+
+SourceData_Common_ConvertGasElementalToMolecular_Source
+  =LAMBDA("XXXXXXX");
+
+SourceData_Common_ConvertGasElementalToMolecular_Data
+  =LAMBDA(
+    MAKEARRAY(8, 4, 
+      LAMBDA(r,c, 
+        INDEX({
+          "Gas", "Conversion factor", "Conversion factor 1", "Conversion factor 2";
+          "CO2", "44/12", 44, 12;
+          "CH4", "16/12", 16, 12;
+          "N2O", "44/28", 44, 28;
+          "Nox", "46/14", 46, 14;
+          "CO", "28/12", 28, 12;
+          "CO2 Lime", "44/12", 44, 12;
+          "NMVOC", "14/12", 14, 12
+        }, r, c)
+      )
+    )
+  );
+
+/* 
+--------------------------------------
+SourceData_Common_GWPN2O
+Global warming potential for greenhouse gases
+--------------------------------------
+*/
+
+SourceData_Common_GWP_Title
+  =LAMBDA("Global warming potential for greenhouse gases");
+
+SourceData_Common_GWP_Variable
+  =LAMBDA("GWPN2O");
+
+SourceData_Common_GWP_Unit
+  =LAMBDA("factor");
+
+SourceData_Common_GWP_Source
+  =LAMBDA("XXXXXXX");
+
+SourceData_Common_GWP_Data
+  =LAMBDA(
+    MAKEARRAY(8, 2, 
+      LAMBDA(r,c, 
+        INDEX({
+          "Gas", "CO2-e factor";
+          "CO2", 1;
+          "CH4", 28;
+          "N2O", 265;
+          "CF4", 6630;
+          "C2F6", 12200;
+          "SF6", 22800;
+          "NF3", 17200
+        }, r, c)
+      )
+    )
+  );
+
 
 /* 
 --------------------------------------

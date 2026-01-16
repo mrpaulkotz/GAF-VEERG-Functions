@@ -1,17 +1,3 @@
-Fuel_GetFuelAttribute
-=LAMBDA(
-    LookupValue, LookupArray, ReturnArray,
-    XLOOKUP(LookupValue, LookupArray, ReturnArray, "")
-);
-
-Fuel_GetFuelAttributeNumber
-=LAMBDA(
-    LookupValue, LookupArray, ReturnArray,
-    IF(ISNUMBER(
-        XLOOKUP(LookupValue, LookupArray, ReturnArray, "")
-    ), XLOOKUP(LookupValue, LookupArray, ReturnArray, ""), 0)
-);
-
 Fuel_GetTransportFuelString
 =LAMBDA(
     Cell,

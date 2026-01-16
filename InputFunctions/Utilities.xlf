@@ -35,3 +35,17 @@ Utility_LookupValueInTableNumber
         XLOOKUP(LookupValue, LookupArray, ReturnArray, "")
     ), XLOOKUP(LookupValue, LookupArray, ReturnArray, ""), 0)
 );
+
+Utility_SplitStringIntoArray
+=LAMBDA(
+    Cell, Delimiter, [CharacterToRemove1], [CharacterToRemove2],
+        FILTERXML(
+        "<t><s>" &
+        SUBSTITUTE(
+            SUBSTITUTE(SUBSTITUTE(Cell,CharacterToRemove1,""),CharacterToRemove2,""),
+            Delimiter,"</s><s>"
+        ) &
+        "</s></t>",
+        "//s"
+    )
+);

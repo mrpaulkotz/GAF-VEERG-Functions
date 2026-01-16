@@ -18,21 +18,21 @@ NIR_2023_Vol1
 
 /* 
 --------------------------------------
-SourceData_Cropping_Common_NO2EFsInorganicFertiliser
+SourceData_Cropping_Common_N2OEFsInorganicFertiliser
 Table 5.21 Nitrous oxide EFs for inorganic fertiliser
 --------------------------------------
 */
 
-SourceData_Cropping_Common_NO2EFsInorganicFertiliser_Title
+SourceData_Cropping_Common_N2OEFsInorganicFertiliser_Title
   =LAMBDA("Nitrous oxide EFs for inorganic fertiliser");
 
-SourceData_Cropping_Common_NO2EFsInorganicFertiliser_Unit
+SourceData_Cropping_Common_N2OEFsInorganicFertiliser_Unit
   =LAMBDA("Gg N2O-N/ Gg N");
 
-SourceData_Cropping_Common_NO2EFsInorganicFertiliser_Source
+SourceData_Cropping_Common_N2OEFsInorganicFertiliser_Source
   =LAMBDA("National Inventory Report 2023 Volume 1: Table 5.21");
 
-SourceData_Cropping_Common_NO2EFsInorganicFertiliser_Data
+SourceData_Cropping_Common_N2OEFsInorganicFertiliser_Data
   =LAMBDA(
     MAKEARRAY(8, 2, 
       LAMBDA(r,c, 
@@ -40,12 +40,31 @@ SourceData_Cropping_Common_NO2EFsInorganicFertiliser_Data
           "Production system", "Emission factor";
             "Irrigated pasture", 0.0059;
             "Irrigated crop", 0.007;
-            "Non-irrigated pasture" 0.0018;
-            "Non-irrigated crop" 0.0041;
-            "Sugar cane" 0.0199;
-            "Cotton" 0.0053;
-            "Horticulture" 0.0064;
+            "Non-irrigated pasture", 0.0018;
+            "Non-irrigated crop", 0.0041;
+            "Sugar cane", 0.0199;
+            "Cotton", 0.0053;
+            "Horticulture", 0.0064
         }, r, c)
       )
     )
   );
+
+/* 
+--------------------------------------
+SourceData_Cropping_Common_UreaCO2EF
+National Inventory Report 2023 Volume 1: Equation 3.H_1
+--------------------------------------
+*/
+
+SourceData_Cropping_Common_UreaCO2EF_Title
+  =LAMBDA("Emission factor for carbon emissions from urea application");
+
+SourceData_Cropping_Common_UreaCO2EF_Unit
+  =LAMBDA("tonne C/tonne urea");
+
+SourceData_Cropping_Common_UreaCO2EF_Source
+  =LAMBDA("National Inventory Report 2023 Volume 1: Equation 3.H_1");
+
+SourceData_Cropping_Common_UreaCO2EF_Data
+  =LAMBDA(0.2);

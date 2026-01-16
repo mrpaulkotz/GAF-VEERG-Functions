@@ -1,0 +1,128 @@
+/*
+======================================
+5: Fertiliser Use
+======================================
+5.2 Organic fertiliser application
+======================================
+*/
+
+/* 
+--------------------------------------
+VEERG_5_2_1_1__1_OrganicFertiliserApplication
+Nitrous oxide emissions from organic fertilisers applied to soils for all organic fertiliser types f and all production systems j
+EN2O
+t CO2-e
+MNSoiljf : mass of nitrogen in organic fertiliser type f applied to soils in production system j : kg N
+EFiN2O : emission factor for direct nitrous oxide emissions from organic fertiliser applied to soils : kg N2O-N/kg N
+CgN2O : factor to convert elemental mass of nitrous oxide to molecular mass: dimensionless
+j : production system
+f : organic fertiliser type
+i : climate zone
+GWPN2O : global warming potential for nitrous oxide : t CO2-e / t N2O
+
+--------------------------------------
+*/
+
+VEERG_5_2_1_1__1_OrganicFertiliserApplication_GWP
+ =LAMBDA(
+    EN2O,GWPN2O,
+     (EN2O * GWPN2O)
+   );
+
+VEERG_5_2_1_1__1_OrganicFertiliserApplication
+  =LAMBDA(
+    MNSoiljf, EFiN2O, CgN2O,
+    MNSoiljf * EFiN2O * CgN2O * 10 ^-3
+  )
+;
+
+VEERG_5_2_1_1__1_OrganicFertiliserApplication_FunctionName
+  =LAMBDA("VEERG_5_2_1_1__1_OrganicFertiliserApplication");
+
+VEERG_5_2_1_1__1_OrganicFertiliserApplication_Title
+  =LAMBDA("Nitrous oxide emissions from organic fertilisers applied to soils for all organic fertiliser types f and all production systems j");
+
+VEERG_5_2_1_1__1_OrganicFertiliserApplication_Variable
+  =LAMBDA("EN2O");
+
+VEERG_5_2_1_1__1_OrganicFertiliserApplication_Unit
+  =LAMBDA("t CO2-e");
+
+VEERG_5_2_1_1__1_OrganicFertiliserApplication_Source
+  =LAMBDA("VEERG 2026: 5.2.1.1, Equation (1)");
+
+VEERG_5_2_1_1__1_OrganicFertiliserApplication_NIRReference
+  =LAMBDA("National Inventory Report Volume 1, 2023: Equation 3.D.A_4");
+
+VEERG_5_2_1_1__1_OrganicFertiliserApplication_ReadableEquation
+  =LAMBDA("EN2O = MNSoiljf * EFiN2O * CgN2O * 10 ^ - 3");
+
+VEERG_5_2_1_1__1_OrganicFertiliserApplication_Arguments
+  =LAMBDA(
+    MAKEARRAY(7, 3, 
+      LAMBDA(r,c, 
+        INDEX({
+          "MNSoiljf", "mass of nitrogen in organic fertiliser type f applied to soils in production system j","kg N";
+          "EFiN2O", "emission factor for direct nitrous oxide emissions from organic fertiliser applied to soils","kg N2O-N/kg N";
+          "CgN2O","Factor to convert elemental mass of nitrous oxide to molecular mass","";
+          "j","Production system","";
+          "f","Organic fertiliser type","";
+          "i","Climate zone","";
+          "GWPN2O","Global warming potential for nitrous oxide","t CO2-e / t N2O"
+        }, r, c)
+      )
+    )
+  );
+
+
+  /* 
+--------------------------------------
+VEERG_5_2_1_1__2_MassOfNInOrganicFertiliser
+Mass of nitrogen in purchased organic fertilisers applied to soils
+MNSoiljf
+kg
+Morganicjf : mass of organic fertiliser type f applied to soils in production system j : kg
+FNorganicf : nitrogen fraction of organic fertiliser type f : kg N/kg
+
+--------------------------------------
+*/
+
+VEERG_5_2_1_1__2_MassOfNInOrganicFertiliser
+  =LAMBDA(
+    MNSoiljf, FNorganicf,
+    MNSoiljf * FNorganicf
+  )
+;
+
+VEERG_5_2_1_1__2_MassOfNInOrganicFertiliser_FunctionName
+  =LAMBDA("VEERG_5_2_1_1__2_MassOfNInOrganicFertiliser");
+
+VEERG_5_2_1_1__2_MassOfNInOrganicFertiliser_Title
+  =LAMBDA("Mass of nitrogen in purchased organic fertilisers applied to soils");
+
+VEERG_5_2_1_1__2_MassOfNInOrganicFertiliser_Variable
+  =LAMBDA("MNSoiljf");
+
+VEERG_5_2_1_1__2_MassOfNInOrganicFertiliser_Unit
+  =LAMBDA("kg");
+
+VEERG_5_2_1_1__2_MassOfNInOrganicFertiliser_Source
+  =LAMBDA("VEERG 2026: 5.2.1.1, Equation (2)");
+
+VEERG_5_2_1_1__2_MassOfNInOrganicFertiliser_NIRReference
+  =LAMBDA("");
+
+VEERG_5_2_1_1__2_MassOfNInOrganicFertiliser_ReadableEquation
+  =LAMBDA("MNSoiljf = Mororganicjf * FNorganicf");
+
+VEERG_5_2_1_1__2_MassOfNInOrganicFertiliser_Arguments
+  =LAMBDA(
+    MAKEARRAY(2, 3, 
+      LAMBDA(r,c, 
+        INDEX({
+          "Mororganicjf", "mass of organic fertiliser type f applied to soils in production system j","kg";
+          "FNorganicf", "nitrogen fraction of organic fertiliser type f","kg N/kg"
+        }, r, c)
+      )
+    )
+  );
