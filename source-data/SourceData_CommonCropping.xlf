@@ -68,3 +68,77 @@ SourceData_Cropping_Common_UreaCO2EF_Source
 
 SourceData_Cropping_Common_UreaCO2EF_Data
   =LAMBDA(0.2);
+
+/* 
+--------------------------------------
+SourceData_Cropping_Common_N2OEFOrganicFertiliser
+National Inventory Report 2023 Volume 1: Equation 3.H_1
+--------------------------------------
+*/
+
+SourceData_Cropping_Common_N2OEFOrganicFertiliser_Title
+  =LAMBDA("The direct nitrous oxide EF from the organic fertiliser when applied to soils");
+
+SourceData_Cropping_Common_N2OEFOrganicFertiliser_Unit
+  =LAMBDA("kg N2O - N / kg N");
+
+SourceData_Cropping_Common_N2OEFOrganicFertiliser_Source
+  =LAMBDA("VEERG 2026: 5.2.2.3 Constant parameters");
+
+SourceData_Cropping_Common_N2OEFOrganicFertiliser_NIRReference
+  =LAMBDA("IPCC 2019 Refinement Volume 4 Table 11.1 [1, p. 11]");
+
+SourceData_Cropping_Common_N2OEFOrganicFertiliser_Data
+  =LAMBDA(
+    MAKEARRAY(3, 2, 
+      LAMBDA(r,c, 
+        INDEX({
+          "Climate zone i", "EF i N2O";
+            "High rainfall", 0.006;
+            "Low rainfall", 0.005
+        }, r, c)
+      )
+    )
+  );
+
+/* 
+--------------------------------------
+SourceData_Cropping_Common_FracGASFfInorganicFertiliser
+VEERG 2026:Table 12.2.2.9
+IPCC 2019 Refinement Volume 4 Table 11.3 [1, p. 11]
+Fraction of inorganic fertiliser f that volatilises as NH3 and NOx
+--------------------------------------
+*/
+
+SourceData_Cropping_Common_FracGASFfInorganicFertiliser_Title
+  =LAMBDA("The direct nitrous oxide EF from the organic fertiliser when applied to soils");
+
+SourceData_Cropping_Common_FracGASFfInorganicFertiliser_Unit
+  =LAMBDA("(kg NH3-N + NOx-N)/kg N");
+
+SourceData_Cropping_Common_FracGASFfInorganicFertiliser_Source
+  =LAMBDA("VEERG 2026:Table 12.2.2.9");
+
+SourceData_Cropping_Common_FracGASFfInorganicFertiliser_NIRReference
+  =LAMBDA("IPCC 2019 Refinement Volume 4 Table 11.3 [1, p. 11]");
+
+SourceData_Cropping_Common_FracGASFfInorganicFertiliser_Data
+  =LAMBDA(
+    MAKEARRAY(6, 3, 
+      LAMBDA(r,c, 
+        INDEX({
+          "Fertiliser type f","FracGASFf", "Basis";
+          "Urea-based fertilisers", 0.15, "Urea";
+          "Ammonium-based fertilisers", 0.08, "Ammonium";
+          "Nitrate-based fertilisers", 0.01, "Nitrate";
+          "Ammonium-nitrate based fertilisers", 0.05, "Ammonium-nitrate";
+          "Other fertilisers", 0.11, "Other"
+        }, r, c)
+      )
+    )
+  );
+
+  SourceData_Cropping_Common_FracGASFfInorganicFertiliser_Variation
+  =LAMBDA(("VARIATION FROM SOURCE DATA: Added extra 'Basis' column with simplified naming to assis with lookups in equations"));
+
+

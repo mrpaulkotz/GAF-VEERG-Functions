@@ -120,34 +120,34 @@ Mvolinorganic
 kg N
 Mvolinorganic = MNf * FracGASFf
 MNf :Mass of nitrogen in inorganic fertiliser applied : kg N
-FracGASFf : Fraction of inorganic fertiliser that volatilises : (kg NH3–N + NOx–N)/kg N
+FracGASFf : Fraction of inorganic fertiliser that volatilises : (kg NH3-N + NOx-N)/kg N
 --------------------------------------
 */
 
 
-Agsois_MassVolatilisedInorganicFertiliser
+Agsoils_MassVolatilisedInorganicFertiliser
   =LAMBDA(
     MNf, FracGASFf,
     MNf * FracGASFf
   )
 ;
 
-Agsois_MassVolatilisedInorganicFertiliser_Title
+Agsoils_MassVolatilisedInorganicFertiliser_Title
   =LAMBDA("Mass of nitrogen volatilised from inorganic fertiliser deposited on soils");
 
-Agsois_MassVolatilisedInorganicFertiliser_Variable
+Agsoils_MassVolatilisedInorganicFertiliser_Variable
   =LAMBDA("Mvolinorganic");
 
-Agsois_MassVolatilisedInorganicFertiliser_Unit
+Agsoils_MassVolatilisedInorganicFertiliser_Unit
   =LAMBDA("kg N");
 
-Agsois_MassVolatilisedInorganicFertiliser_NIRReference
+Agsoils_MassVolatilisedInorganicFertiliser_NIRReference
   =LAMBDA("National Inventory Report Volume 1, 2023: 3.D.B_1");
 
-Agsois_MassVolatilisedInorganicFertiliser_ReadableEquation
+Agsoils_MassVolatilisedInorganicFertiliser_ReadableEquation
   =LAMBDA("Mvolinorganic = MNf * FracGASFf");
 
-Agsois_MassVolatilisedInorganicFertiliser_Arguments
+Agsoils_MassVolatilisedInorganicFertiliser_Arguments
   =LAMBDA(
     MAKEARRAY(2, 3, 
       LAMBDA(r,c, 

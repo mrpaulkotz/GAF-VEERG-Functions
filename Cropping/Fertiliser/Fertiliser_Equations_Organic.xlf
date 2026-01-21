@@ -59,16 +59,16 @@ VEERG_5_2_1_1__1_OrganicFertiliserApplication_ReadableEquation
 
 VEERG_5_2_1_1__1_OrganicFertiliserApplication_Arguments
   =LAMBDA(
-    MAKEARRAY(7, 3, 
+    MAKEARRAY(7, 2, 
       LAMBDA(r,c, 
         INDEX({
-          "MNSoiljf", "mass of nitrogen in organic fertiliser type f applied to soils in production system j","kg N";
-          "EFiN2O", "emission factor for direct nitrous oxide emissions from organic fertiliser applied to soils","kg N2O-N/kg N";
-          "CgN2O","Factor to convert elemental mass of nitrous oxide to molecular mass","";
-          "j","Production system","";
-          "f","Organic fertiliser type","";
-          "i","Climate zone","";
-          "GWPN2O","Global warming potential for nitrous oxide","t CO2-e / t N2O"
+          "MNSoiljf", "mass of nitrogen in organic fertiliser type f applied to soils in production system j : kg N";
+          "EFiN2O", "emission factor for direct nitrous oxide emissions from organic fertiliser applied to soils : kg N2O-N/kg N";
+          "CgN2O","Factor to convert elemental mass of nitrous oxide to molecular mass : dimensionless";
+          "j","Production system";
+          "f","Organic fertiliser type";
+          "i","Climate zone";
+          "GWPN2O","Global warming potential for nitrous oxide : t CO2-e / t N2O"
         }, r, c)
       )
     )
@@ -77,7 +77,7 @@ VEERG_5_2_1_1__1_OrganicFertiliserApplication_Arguments
 
   /* 
 --------------------------------------
-VEERG_5_2_1_1__2_MassOfNInOrganicFertiliser
+VEERG_5_2_1_1__2_MassOfNitrogenInOrganicFertiliser
 Mass of nitrogen in purchased organic fertilisers applied to soils
 MNSoiljf
 kg
@@ -87,41 +87,41 @@ FNorganicf : nitrogen fraction of organic fertiliser type f : kg N/kg
 --------------------------------------
 */
 
-VEERG_5_2_1_1__2_MassOfNInOrganicFertiliser
+VEERG_5_2_1_1__2_MassOfNitrogenInOrganicFertiliser
   =LAMBDA(
-    MNSoiljf, FNorganicf,
-    MNSoiljf * FNorganicf
+    Morganicjf, FNorganicf,
+    Morganicjf * FNorganicf
   )
 ;
 
-VEERG_5_2_1_1__2_MassOfNInOrganicFertiliser_FunctionName
-  =LAMBDA("VEERG_5_2_1_1__2_MassOfNInOrganicFertiliser");
+VEERG_5_2_1_1__2_MassOfNitrogenInOrganicFertiliser_FunctionName
+  =LAMBDA("VEERG_5_2_1_1__2_MassOfNitrogenInOrganicFertiliser");
 
-VEERG_5_2_1_1__2_MassOfNInOrganicFertiliser_Title
+VEERG_5_2_1_1__2_MassOfNitrogenInOrganicFertiliser_Title
   =LAMBDA("Mass of nitrogen in purchased organic fertilisers applied to soils");
 
-VEERG_5_2_1_1__2_MassOfNInOrganicFertiliser_Variable
+VEERG_5_2_1_1__2_MassOfNitrogenInOrganicFertiliser_Variable
   =LAMBDA("MNSoiljf");
 
-VEERG_5_2_1_1__2_MassOfNInOrganicFertiliser_Unit
+VEERG_5_2_1_1__2_MassOfNitrogenInOrganicFertiliser_Unit
   =LAMBDA("kg");
 
-VEERG_5_2_1_1__2_MassOfNInOrganicFertiliser_Source
+VEERG_5_2_1_1__2_MassOfNitrogenInOrganicFertiliser_Source
   =LAMBDA("VEERG 2026: 5.2.1.1, Equation (2)");
 
-VEERG_5_2_1_1__2_MassOfNInOrganicFertiliser_NIRReference
+VEERG_5_2_1_1__2_MassOfNitrogenInOrganicFertiliser_NIRReference
   =LAMBDA("");
 
-VEERG_5_2_1_1__2_MassOfNInOrganicFertiliser_ReadableEquation
-  =LAMBDA("MNSoiljf = Mororganicjf * FNorganicf");
+VEERG_5_2_1_1__2_MassOfNitrogenInOrganicFertiliser_ReadableEquation
+  =LAMBDA("MNSoiljf = Morganicjf * FNorganicf");
 
-VEERG_5_2_1_1__2_MassOfNInOrganicFertiliser_Arguments
+VEERG_5_2_1_1__2_MassOfNitrogenInOrganicFertiliser_Arguments
   =LAMBDA(
-    MAKEARRAY(2, 3, 
+    MAKEARRAY(2, 2, 
       LAMBDA(r,c, 
         INDEX({
-          "Mororganicjf", "mass of organic fertiliser type f applied to soils in production system j","kg";
-          "FNorganicf", "nitrogen fraction of organic fertiliser type f","kg N/kg"
+          "Morganicjf", "mass of organic fertiliser type f applied to soils in production system j : kg";
+          "FNorganicf", "nitrogen fraction of organic fertiliser type f : kg N/kg"
         }, r, c)
       )
     )

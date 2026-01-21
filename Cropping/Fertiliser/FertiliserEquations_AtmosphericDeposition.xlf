@@ -1,0 +1,120 @@
+/*
+======================================
+5: Fertiliser Use
+======================================
+5.4 Atmospheric deposition from fertiliser application
+======================================
+*/
+
+/* 
+--------------------------------------
+VEERG_5_4_1_1__1_AtmosphericDepositionInorganicFertiliser
+ Nitrous oxide emissions from atmospheric deposition from all inorganic fertiliser types f and all production systems j
+ Eadinorganic
+ t N2O
+Mvolinorganicjf , Mass of nitrogen volatised from inorganic fertiliser applied to soils: kg N
+EFadj , emission factor for atmospheric deposition : kg N2O-N/kg N
+--------------------------------------
+*/
+
+VEERG_5_4_1_1__1_AtmosphericDepositionInorganicFertiliser_GWP
+  =LAMBDA(
+    EN2Oad,GWPN2O, Common.AgSoils_AtmosphericDeposition_GWP(EN2Oad,GWPN2O)
+  );
+
+VEERG_5_4_1_1__1_AtmosphericDepositionInorganicFertiliser
+  =LAMBDA(
+    Mvolinorganicjf, EFadj, CgN2O,
+    Common.AgSoils_AtmosphericDeposition(Mvolinorganicjf,EFadj,CgN2O)
+  )
+;
+
+VEERG_5_4_1_1__1_AtmosphericDepositionInorganicFertiliser_FunctionName
+  =LAMBDA("VEERG_5_4_1_1__1_AtmosphericDepositionInorganicFertiliser");
+
+VEERG_5_4_1_1__1_AtmosphericDepositionInorganicFertiliser_Title
+  =LAMBDA("Nitrous oxide emissions from atmospheric deposition from all inorganic fertiliser types f and all production systems j");
+
+VEERG_5_4_1_1__1_AtmosphericDepositionInorganicFertiliser_Variable
+  =LAMBDA("Eadinorganic");
+
+VEERG_5_4_1_1__1_AtmosphericDepositionInorganicFertiliser_Unit
+  =LAMBDA("t N2O");
+
+VEERG_5_4_1_1__1_AtmosphericDepositionInorganicFertiliser_Source
+  =LAMBDA("VEERG 2026: 5.4.1.1, Equation (1)");
+
+VEERG_5_4_1_1__1_AtmosphericDepositionInorganicFertiliser_NIRReference
+  =LAMBDA(Common.AgSoils_AtmosphericDeposition_NIRReference());
+
+VEERG_5_4_1_1__1_AtmosphericDepositionInorganicFertiliser_ReadableEquation
+  =LAMBDA("Eadinorganic = Mvolinorganicjf * EFadj * CgN2O * 10 ^ - 3");
+
+VEERG_5_4_1_1__1_AtmosphericDepositionInorganicFertiliser_Arguments
+  =LAMBDA(
+    MAKEARRAY(6, 2, 
+      LAMBDA(r,c, 
+        INDEX({
+          "Mvolinorganicjf" , "Mass of nitrogen volatised from inorganic fertiliser applied to soils: kg N";
+          "EFadj" , "Emission factor for atmospheric deposition : kg N2O-N/kg N";
+          "CgN2O","Factor to convert elemental mass of nitrous oxide to molecular mass : dimensionless";
+          "j","Production system";
+          "f","Inorganic fertiliser type";
+          "GWPN2O","Global warming potential for nitrous oxide : t CO2-e / t N2O"
+        }, r, c)
+      )
+    )
+  );
+
+
+  /* 
+--------------------------------------
+VEERG_5_4_1_1__2_MassVolatilisedInorganicFertiliser
+Mass of nitrogen volatilised from inorganic fertiliser
+Mvolinorganicjf
+kg N
+MNjf , Mass of nitrogen in inorganic fertiliser applied : kg N
+FracGASFf , Fraction of inorganic fertiliser that volatilises : (kg NH3-N + NOx-N)/kg N 
+
+--------------------------------------
+*/
+
+VEERG_5_4_1_1__2_MassVolatilisedInorganicFertiliser
+  =LAMBDA(
+    MNjf, FracGASFf,
+    Common.AgSoils_MassVolatilisedInorganicFertiliser(MNjf, FracGASFf)
+  )
+;
+
+VEERG_5_4_1_1__2_MassVolatilisedInorganicFertiliser_FunctionName
+  =LAMBDA("VEERG_5_4_1_1__2_MassVolatilisedInorganicFertiliser");
+
+VEERG_5_4_1_1__2_MassVolatilisedInorganicFertiliser_Title
+  =LAMBDA("Mass of nitrogen volatilised from inorganic fertiliser");
+
+VEERG_5_4_1_1__2_MassVolatilisedInorganicFertiliser_Variable
+  =LAMBDA("Mvolinorganicjf");
+
+VEERG_5_4_1_1__2_MassVolatilisedInorganicFertiliser_Unit
+  =LAMBDA("kg N");
+
+VEERG_5_4_1_1__2_MassVolatilisedInorganicFertiliser_Source
+  =LAMBDA("VEERG 2026: 5.4.1.1, Equation (2)");
+
+VEERG_5_4_1_1__2_MassVolatilisedInorganicFertiliser_NIRReference
+  =LAMBDA(Common.AgSoils_MassVolatilisedInorganicFertiliser_NIRReference());
+
+VEERG_5_4_1_1__2_MassVolatilisedInorganicFertiliser_ReadableEquation
+  =LAMBDA("Mvolinorganicjf = MNjf * FracGASFf");
+
+VEERG_5_4_1_1__2_MassVolatilisedInorganicFertiliser_Arguments
+  =LAMBDA(
+    MAKEARRAY(2, 2, 
+      LAMBDA(r,c, 
+        INDEX({
+          "MNjf","Mass of nitrogen in inorganic fertiliser applied : kg N";
+          "FracGASFf","Fraction of inorganic fertiliser that volatilises : (kg NH3-N + NOx-N)/kg N"
+        }, r, c)
+      )
+    )
+  );

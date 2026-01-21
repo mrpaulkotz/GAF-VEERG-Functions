@@ -18,24 +18,24 @@ Fertiliser_ChemicalCompoundElements_Data
   MAKEARRAY(18, 7,
     LAMBDA(r,c,
       INDEX({
-        "Chemical compound", "N", "P", "K", "S", "Urea", "N type";
+        "Chemical compound", "N", "P", "K", "S", "Urea", "Basis";
         "Urea", 0.46, 0, 0, 0, 1, "Urea";
-        "Monoammonium phosphate (MAP)", 0.11, 0.219, 0, 0, 0, "Other";
-        "Diammonium Phosphate (DAP)", 0.18, 0.2, 0, 0, 0, "Other";
-        "Urea-Ammonium Nitrate (UAN)", 0.32, 0, 0, 0, 0.35, "Urea";
+        "Monoammonium phosphate (MAP)", 0.11, 0.219, 0, 0, 0, "Ammonium";
+        "Diammonium Phosphate (DAP)", 0.18, 0.2, 0, 0, 0, "Ammonium";
+        "Urea-Ammonium Nitrate (UAN)", 0.32, 0, 0, 0, 0.35, "Ammonium-nitrate";
         "Ammonium Nitrate (AN)", 0.35, 0, 0, 0, 0, "Ammonium-nitrate";
         "Calcium Ammonium Nitrate (CAN)", 0.265, 0, 0, 0, 0, "Ammonium-nitrate";
-        "Single Superphosphate (SSP)", 0, 0.088, 0, 0.11, 0, "No Nitrogen";
+        "Single Superphosphate (SSP)", 0, 0.088, 0, 0.11, 0, "Other";
         "Sulphate of Ammonia (SOA)", 0.21, 0, 0, 0.24, 0, "Ammonium";
-        "Muriate of Potash (MOP)", 0, 0, 0.6, 0, 0, "No Nitrogen";
-        "Nitrogen - Generic", 1, 0, 0, 0, 0, "Other";
+        "Muriate of Potash (MOP)", 0, 0, 0.6, 0, 0, "Other";
+        "Nitrogen - Generic", 1, 0, 0, 0, 0, "Nitrate";
         "Nitrogen - Nitrate", 0.226, 0, 0, 0, 0, "Nitrate";
         "Nitrogen - Ammoniacal", 0.82, 0, 0, 0, 0, "Ammonium";
-        "Phosphorus - Generic", 0, 1, 0, 0, 0, "No Nitrogen";
-        "Potassium - Generic", 0, 0, 1, 0, 0, "No Nitrogen";
-        "Sulfur - Generic", 0, 0, 0, 1, 0, "No Nitrogen";
-        "Zinc - Generic", 0, 0, 0, 0, 0, "No Nitrogen";
-        "Calcium - Generic", 0, 0, 0, 0, 0, "No Nitrogen"
+        "Phosphorus - Generic", 0, 1, 0, 0, 0, "Other";
+        "Potassium - Generic", 0, 0, 1, 0, 0, "Other";
+        "Sulfur - Generic", 0, 0, 0, 1, 0, "Other";
+        "Zinc - Generic", 0, 0, 0, 0, 0, "Other";
+        "Calcium - Generic", 0, 0, 0, 0, 0, "Other"
       }, r, c)
 )));
 
@@ -196,3 +196,32 @@ Fertiliser_Products_Data4
 )));
 
 
+/*
+============================================================================
+Lime, dolomite and gypsum
+============================================================================
+*/
+
+Fertiliser_LimeDolomiteGypsumConstants_Title
+=LAMBDA(("Constants for lime, dolomite and gypsum"));
+
+Fertiliser_LimeDolomiteGypsumConstants_Description
+=LAMBDA(("Constants for lime, dolomite and gypsum"));
+
+Fertiliser_LimeDolomiteGypsumConstants_Source
+=LAMBDA(("National Inventory Report 2023 Volume 1: 5.8.2 Methodological issues, equation 3G_1"));
+
+Fertiliser_LimeDolomiteGypsumConstants_Data
+=LAMBDA(
+  MAKEARRAY(4, 3,
+    LAMBDA(r,c,
+      INDEX({
+        "Element", "P", "EF";
+        "Lime (Calcium carbonate)", 0.9, 0.12;
+        "Dolomite (Magnesium carbonate)", 0.95, 0.13;
+        "Gypsum", 0, 0
+      }, r, c)
+)));
+
+Fertiliser_LimeDolomiteGypsumConstants_Variation
+=LAMBDA(("VARIATION FROM SOURCE DATA: Gypsum has been added with placeholder values of 0 for P and EF."));

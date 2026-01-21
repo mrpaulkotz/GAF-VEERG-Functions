@@ -1,0 +1,71 @@
+/*
+======================================
+5: Fertiliser Use
+======================================
+5.3 Lime application
+======================================
+*/
+
+/* 
+--------------------------------------
+VEERG_5_3_1_1__1_LimeApplication
+The emissions from the application of lime and dolomite to soils
+Elime
+t CO2
+Mlime : the total mass of lime applied to soils : kg
+FracLime : the fraction of lime as limestone (CaCO3) : dimensionless
+Plime : fractional purity of limestone : dimensionless
+EFlime : emission factor for limestone fraction of lime : kg C/kg
+FracDol : the fraction of lime as dolomite : dimensionless
+PPdol : fractional purity of dolomite : dimensionless
+EFdol : emission factor for dolomite fraction of lime : kg C/kg
+
+
+--------------------------------------
+*/
+
+VEERG_5_3_1_1__1_LimeApplication
+  =LAMBDA(
+    Mlime, FracLime, Plime, EFlime, FracDol, Pdol, EFdol, CgCO2,
+    ((Mlime *  FracLime * Plime * EFlime) + (Mlime * FracDol * Pdol * EFdol)) * CgCO2 * 10^-3
+  )
+;
+
+VEERG_5_3_1_1__1_LimeApplication_FunctionName
+  =LAMBDA("VEERG_5_3_1_1__1_LimeApplication");
+
+VEERG_5_3_1_1__1_LimeApplication_Title
+  =LAMBDA("The emissions from the application of lime and dolomite to soils");
+
+VEERG_5_3_1_1__1_LimeApplication_Variable
+  =LAMBDA("Elime");
+
+VEERG_5_3_1_1__1_LimeApplication_Unit
+  =LAMBDA("t CO2");
+
+VEERG_5_3_1_1__1_LimeApplication_Source
+  =LAMBDA("VEERG 2026: 5.3.1.1, Equation (1)");
+
+VEERG_5_3_1_1__1_LimeApplication_NIRReference
+  =LAMBDA("National Inventory Report Volume 1, 2023: Equation 3G_1");
+
+VEERG_5_3_1_1__1_LimeApplication_ReadableEquation
+  =LAMBDA("Elime = ((Mlime *  FracLime * Plime * EFlime) + (Mlime * FracDol * Pdol * EFdol)) * CgCO2 * 10^-3");
+
+VEERG_5_3_1_1__1_LimeApplication_Arguments
+  =LAMBDA(
+    MAKEARRAY(8, 2, 
+      LAMBDA(r,c, 
+        INDEX({
+          "Mlime", "The total mass of lime applied to soils : kg";
+          "FracLime", "The fraction of lime as limestone (CaCO3) : dimensionless";
+          "Plime", "Fractional purity of limestone : dimensionless";
+          "EFlime", "Emission factor for limestone fraction of lime : kg C/kg";
+          "FracDol", "The fraction of lime as dolomite : dimensionless";
+          "PPdol", "Fractional purity of dolomite : dimensionless";
+          "EFdol", "Emission factor for dolomite fraction of lime : kg C/kg";
+          "CgCO2","Factor to convert elemental mass of carbon dioxide to molecular mass : dimensionless"
+        }, r, c)
+      )
+    )
+  );
