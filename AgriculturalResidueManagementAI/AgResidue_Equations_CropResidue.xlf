@@ -1,0 +1,180 @@
+/* 
+--------------------------------------
+VEERG_6_1_1_1__1__NitrousOxideEmissionsFromCropResidues
+Nitrous oxide emissions from the return of crop residues across all crops c to the soil
+E
+t N2O
+E=\sum_{c}{M_{c}\times EF_{N}\times C_{g,N2O}\times 10^{-3}}
+Mc = mass of nitrogen in crop c residues returned to the soil (kg N)
+EFN = emission factor for crop residues returned to the soil (kg N2O-N/kg N)
+CgN2O = factor to convert elemental mass of nitrous oxide to molecular mass (dimensionless)
+c = Crop type
+--------------------------------------
+*/
+
+VEERG_6_1_1_1__1__NitrousOxideEmissionsFromCropResidues
+  =LAMBDA(
+    Mc, EFN, CgN2O,
+    Mc * EFN * CgN2O * 10^(-3)
+  )
+;
+
+VEERG_6_1_1_1__1__NitrousOxideEmissionsFromCropResidues_FunctionName
+  =LAMBDA("VEERG_6_1_1_1__1__NitrousOxideEmissionsFromCropResidues");
+
+VEERG_6_1_1_1__1__NitrousOxideEmissionsFromCropResidues_Title
+  =LAMBDA("Nitrous oxide emissions from the return of crop residues across all crops c to the soil");
+
+VEERG_6_1_1_1__1__NitrousOxideEmissionsFromCropResidues_Variable
+  =LAMBDA("E");
+
+VEERG_6_1_1_1__1__NitrousOxideEmissionsFromCropResidues_Unit
+  =LAMBDA("t N2O");
+
+VEERG_6_1_1_1__1__NitrousOxideEmissionsFromCropResidues_Source
+  =LAMBDA("VEERG 2026: 6.1.1.1, Equation (1)");
+
+VEERG_6_1_1_1__1__NitrousOxideEmissionsFromCropResidues_NIRReference
+  =LAMBDA("");
+
+VEERG_6_1_1_1__1__NitrousOxideEmissionsFromCropResidues_LatexEquation
+  =LAMBDA("E=\sum_{c}{M_{c}\times EF_{N}\times C_{g,N2O}\times 10^{-3}}");
+
+VEERG_6_1_1_1__1__NitrousOxideEmissionsFromCropResidues_Arguments
+  =LAMBDA(
+    MAKEARRAY(4, 2, 
+      LAMBDA(r,c, 
+        INDEX({
+          "Mc","mass of nitrogen in crop c residues returned to the soil (kg N)";
+          "EFN","emission factor for crop residues returned to the soil (kg N2O-N/kg N)";
+          "CgN2O","factor to convert elemental mass of nitrous oxide to molecular mass (dimensionless)";
+          "c","Crop type"
+        }, r, c)
+      )
+    )
+  );
+
+/* 
+--------------------------------------
+VEERG_6_1_1_1__2__MassOfNitrogenInCropResidues
+Mass of nitrogen in crop residues returned to the soil
+Mc
+kg N
+M_{c}=(P_{c}\times R_{AGc}\times(1-F_{c}-FFOD_{c})\times DM_{c}\times NC_{AGc})+(P_{c}\times R_{AGc}\times R_{BGc}\times DM_{c}\times NC_{BGc})
+Pc = annual production of crop c (kg)
+RAGc = residue to crop ratio for crop c (dimensionless)
+RBGc = below ground-residue to above ground residue ratio for crop c (dimensionless)
+Fc = fraction of crop residue that is burnt for crop c (dimensionless)
+FFODc = fraction of the crop residue that is removed for crop c (dimensionless)
+DMc = dry matter content of crop c (kg dry weight/kg crop residue)
+NCAGc = nitrogen content of above-ground crop residue of crop c (kg N/kg DM)
+NCBGc = nitrogen content of below-ground crop residue of crop c (kg N/kg DM)
+c = Crop type
+--------------------------------------
+*/
+
+VEERG_6_1_1_1__2__MassOfNitrogenInCropResidues
+  =LAMBDA(
+    Pc, RAGc, Fc, FFODc, DMc, NCAGc, RBGc, NCBGc,
+    (Pc * RAGc * (1 - Fc - FFODc) * DMc * NCAGc) + (Pc * RAGc * RBGc * DMc * NCBGc)
+  )
+;
+
+VEERG_6_1_1_1__2__MassOfNitrogenInCropResidues_FunctionName
+  =LAMBDA("VEERG_6_1_1_1__2__MassOfNitrogenInCropResidues");
+
+VEERG_6_1_1_1__2__MassOfNitrogenInCropResidues_Title
+  =LAMBDA("Mass of nitrogen in crop residues returned to the soil");
+
+VEERG_6_1_1_1__2__MassOfNitrogenInCropResidues_Variable
+  =LAMBDA("Mc");
+
+VEERG_6_1_1_1__2__MassOfNitrogenInCropResidues_Unit
+  =LAMBDA("kg N");
+
+VEERG_6_1_1_1__2__MassOfNitrogenInCropResidues_Source
+  =LAMBDA("VEERG 2026: 6.1.1.1, Equation (2)");
+
+VEERG_6_1_1_1__2__MassOfNitrogenInCropResidues_NIRReference
+  =LAMBDA("");
+
+VEERG_6_1_1_1__2__MassOfNitrogenInCropResidues_LatexEquation
+  =LAMBDA("M_{c}=(P_{c}\times R_{AGc}\times(1-F_{c}-FFOD_{c})\times DM_{c}\times NC_{AGc})+(P_{c}\times R_{AGc}\times R_{BGc}\times DM_{c}\times NC_{BGc})");
+
+VEERG_6_1_1_1__2__MassOfNitrogenInCropResidues_Arguments
+  =LAMBDA(
+    MAKEARRAY(9, 2, 
+      LAMBDA(r,c, 
+        INDEX({
+          "Pc","annual production of crop c (kg)";
+          "RAGc","residue to crop ratio for crop c (dimensionless)";
+          "RBGc","below ground-residue to above ground residue ratio for crop c (dimensionless)";
+          "Fc","fraction of crop residue that is burnt for crop c (dimensionless)";
+          "FFODc","fraction of the crop residue that is removed for crop c (dimensionless)";
+          "DMc","dry matter content of crop c (kg dry weight/kg crop residue)";
+          "NCAGc","nitrogen content of above-ground crop residue of crop c (kg N/kg DM)";
+          "NCBGc","nitrogen content of below-ground crop residue of crop c (kg N/kg DM)";
+          "c","Crop type"
+        }, r, c)
+      )
+    )
+  );
+
+/* 
+--------------------------------------
+VEERG_6_1_1_2__1__FractionOfCropResidueRemovedBaled
+Fraction of crop residue that is removed for crop c, calculated where residues are baled
+FFODc
+dimensionless
+FFOD_{c}=\frac{B\times M_{B}}{P_{c}\times R_{AG,c}}
+B = number of bales generated (dimensionless)
+MB = mass of each bale (kg)
+Pc = annual production of crop c (kg)
+RAGc = residue to crop ratio for crop c (dimensionless)
+c = Crop type
+--------------------------------------
+*/
+
+VEERG_6_1_1_2__1__FractionOfCropResidueRemovedBaled
+  =LAMBDA(
+    B, MB, Pc, RAGc,
+    (B * MB) / (Pc * RAGc)
+  )
+;
+
+VEERG_6_1_1_2__1__FractionOfCropResidueRemovedBaled_FunctionName
+  =LAMBDA("VEERG_6_1_1_2__1__FractionOfCropResidueRemovedBaled");
+
+VEERG_6_1_1_2__1__FractionOfCropResidueRemovedBaled_Title
+  =LAMBDA("Fraction of crop residue that is removed for crop c, calculated where residues are baled");
+
+VEERG_6_1_1_2__1__FractionOfCropResidueRemovedBaled_Variable
+  =LAMBDA("FFODc");
+
+VEERG_6_1_1_2__1__FractionOfCropResidueRemovedBaled_Unit
+  =LAMBDA("dimensionless");
+
+VEERG_6_1_1_2__1__FractionOfCropResidueRemovedBaled_Source
+  =LAMBDA("VEERG 2026: 6.1.1.2, Equation (1)");
+
+VEERG_6_1_1_2__1__FractionOfCropResidueRemovedBaled_NIRReference
+  =LAMBDA("");
+
+VEERG_6_1_1_2__1__FractionOfCropResidueRemovedBaled_LatexEquation
+  =LAMBDA("FFOD_{c}=\frac{B\times M_{B}}{P_{c}\times R_{AG,c}}");
+
+VEERG_6_1_1_2__1__FractionOfCropResidueRemovedBaled_Arguments
+  =LAMBDA(
+    MAKEARRAY(5, 2, 
+      LAMBDA(r,c, 
+        INDEX({
+          "B","number of bales generated (dimensionless)";
+          "MB","mass of each bale (kg)";
+          "Pc","annual production of crop c (kg)";
+          "RAGc","residue to crop ratio for crop c (dimensionless)";
+          "c","Crop type"
+        }, r, c)
+      )
+    )
+  );
+

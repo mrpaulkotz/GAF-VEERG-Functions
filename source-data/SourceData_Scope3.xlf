@@ -3,10 +3,11 @@ Scope3_FertiliserChemicalCompounds_Title
 
 Scope3_FertiliserChemicalCompounds_Data
 =LAMBDA(
-  MAKEARRAY(18, 4,
+  MAKEARRAY(20, 4,
     LAMBDA(r,c,
       INDEX({
         "Chemical compound", "Location not specified", "Rest of world", "China";
+        "Ammonia", 0, 0, 0;
         "Urea",1.7904, 1.6579, 2.7872;
         "Monoammonium phosphate (MAP)", 0.956, 0.9133, 1.2742;
         "Diammonium Phosphate (DAP)", 0.8662, 0.203, 0.303;
