@@ -2,7 +2,7 @@ Fertiliser_FertiliserProductLookup
 =LAMBDA(Product, ProductAttribute, ProductArray, ProductArrayColumn, ProductArrayHeaders,
   IFERROR(
     INDEX(
-      ProductArray,  /* adjust last col to your actual last data column */
+      ProductArray,
       XMATCH(TRIM(Product), ProductArrayColumn, 0),
       XMATCH(TRIM(ProductAttribute), ProductArrayHeaders, 0)
     ),
@@ -11,26 +11,16 @@ Fertiliser_FertiliserProductLookup
 );
 
 
-
-Fertiliser_GetChemicalCompoundAppliedPerIngredient
+Fertiliser_SumProductApplied
 =LAMBDA(
-  ChemicalCompound,
-  AmountApplied,
-  ProductIngredient,
-  ProductIngredientPercent,
-  SUMPRODUCT(
-    AmountApplied,
-    IF(
-      (
-        ProductIngredient = ChemicalCompound
-      ) * ISNUMBER(
-        ProductIngredientPercent
-      ),
-      ProductIngredientPercent,
-      0
-    )
+  LookupTarget1,LookupArray1,AmountApplied,[LookupTarget2],[LookupArray2],
+  LET(
+    criteria1,--(LookupArray1=LookupTarget1),
+    criteria2,IF(ISOMITTED(LookupTarget2),1,--(LookupArray2=LookupTarget2)),
+    SUMPRODUCT(criteria1*criteria2*AmountApplied)
   )
 );
+
 
 Fertiliser_TotalChemicalCompoundAppliedAllIngredients
 =LAMBDA(
@@ -38,70 +28,41 @@ Fertiliser_TotalChemicalCompoundAppliedAllIngredients
   AmountApplied,
   ProductIngredient1,
   ProductIngredientPercent1,
-  ProductIngredient2,
-  ProductIngredientPercent2,
-  ProductIngredient3,
-  ProductIngredientPercent3,
-  ProductIngredient4,
-  ProductIngredientPercent4,
-  ProductIngredient5,
-  ProductIngredientPercent5,
-  ProductIngredient6,
-  ProductIngredientPercent6,
-  Fertiliser_GetChemicalCompoundAppliedPerIngredient(
-    ChemicalCompound,
-    AmountApplied,
-    ProductIngredient1,
-    ProductIngredientPercent1
-  ) + Fertiliser_GetChemicalCompoundAppliedPerIngredient(
-    ChemicalCompound,
-    AmountApplied,
-    ProductIngredient2,
-    ProductIngredientPercent2
-  ) + Fertiliser_GetChemicalCompoundAppliedPerIngredient(
-    ChemicalCompound,
-    AmountApplied,
-    ProductIngredient3,
-    ProductIngredientPercent3
-  ) + Fertiliser_GetChemicalCompoundAppliedPerIngredient(
-    ChemicalCompound,
-    AmountApplied,
-    ProductIngredient4,
-    ProductIngredientPercent4
-  ) + Fertiliser_GetChemicalCompoundAppliedPerIngredient(
-    ChemicalCompound,
-    AmountApplied,
-    ProductIngredient5,
-    ProductIngredientPercent5
-  ) + Fertiliser_GetChemicalCompoundAppliedPerIngredient(
-    ChemicalCompound,
-    AmountApplied,
-    ProductIngredient6,
-    ProductIngredientPercent6
-  )
-);
-
-Fertiliser_GetChemicalCompoundBySourcePerIngredient
-=LAMBDA(
-  AmountApplied,
-  ChemicalCompound,
-  ProductIngredient,
-  ProductIngredientPercent,
-  ProductIngredientSource,
-  Source,
-  SUMPRODUCT(
-    AmountApplied,
-    IF(
-      (
-        ProductIngredient = ChemicalCompound
-      ) *(
-        ProductIngredientSource = Source
-      ) * ISNUMBER(
-        ProductIngredientPercent
-      ),
-      ProductIngredientPercent,
-      0
-    )
+  [ProductIngredient2],
+  [ProductIngredientPercent2],
+  [ProductIngredient3],
+  [ProductIngredientPercent3],
+  [ProductIngredient4],
+  [ProductIngredientPercent4],
+  [ProductIngredient5],
+  [ProductIngredientPercent5],
+  [ProductIngredient6],
+  [ProductIngredientPercent6],
+  LET(
+    calculatedAmount1, (AmountApplied*ProductIngredientPercent1),
+    calculatedAmount2, (AmountApplied*ProductIngredientPercent2),
+    calculatedAmount3, (AmountApplied*ProductIngredientPercent3), 
+    calculatedAmount4, (AmountApplied*ProductIngredientPercent4), 
+    calculatedAmount5, (AmountApplied*ProductIngredientPercent5), 
+    calculatedAmount6, (AmountApplied*ProductIngredientPercent6),  
+    Fertiliser_SumProductApplied(
+      ChemicalCompound, ProductIngredient1, calculatedAmount1
+    )+
+    IFERROR(Fertiliser_SumProductApplied(
+      ChemicalCompound, ProductIngredient2, calculatedAmount2
+    ), 0)+
+    IFERROR(Fertiliser_SumProductApplied(
+      ChemicalCompound, ProductIngredient3, calculatedAmount3
+    ), 0)+
+    IFERROR(Fertiliser_SumProductApplied(
+      ChemicalCompound, ProductIngredient4, calculatedAmount4
+    ), 0)+
+    IFERROR(Fertiliser_SumProductApplied(
+      ChemicalCompound, ProductIngredient5, calculatedAmount5
+    ), 0)+
+    IFERROR(Fertiliser_SumProductApplied(
+      ChemicalCompound, ProductIngredient6, calculatedAmount6
+    ), 0)
   )
 );
 
@@ -113,63 +74,46 @@ Fertiliser_TotalChemicalCompoundtAppliedBySourceAllIngredients
   ProductIngredient1,
   ProductIngredientPercent1,
   ProductIngredient1Source,
-  ProductIngredient2,
-  ProductIngredientPercent2,
-  ProductIngredient2Source,
-  ProductIngredient3,
-  ProductIngredientPercent3,
-  ProductIngredient3Source,
-  ProductIngredient4,
-  ProductIngredientPercent4,
-  ProductIngredient4Source,
-  ProductIngredient5,
-  ProductIngredientPercent5,
-  ProductIngredient5Source,
-  ProductIngredient6,
-  ProductIngredientPercent6,
-  ProductIngredient6Source,
-  Fertiliser_GetChemicalCompoundBySourcePerIngredient(
-    AmountApplied,
-    ChemicalCompound,
-    ProductIngredient1,
-    ProductIngredientPercent1,
-    ProductIngredient1Source,
-    Source
-  ) + Fertiliser_GetChemicalCompoundBySourcePerIngredient(
-    AmountApplied,
-    ChemicalCompound,
-    ProductIngredient2,
-    ProductIngredientPercent2,
-    ProductIngredient2Source,
-    Source
-  ) + Fertiliser_GetChemicalCompoundBySourcePerIngredient(
-    AmountApplied,
-    ChemicalCompound,
-    ProductIngredient3,
-    ProductIngredientPercent3,
-    ProductIngredient3Source,
-    Source
-  ) + Fertiliser_GetChemicalCompoundBySourcePerIngredient(
-    AmountApplied,
-    ChemicalCompound,
-    ProductIngredient4,
-    ProductIngredientPercent4,
-    ProductIngredient4Source,
-    Source
-  ) + Fertiliser_GetChemicalCompoundBySourcePerIngredient(
-    AmountApplied,
-    ChemicalCompound,
-    ProductIngredient5,
-    ProductIngredientPercent5,
-    ProductIngredient5Source,
-    Source
-  ) + Fertiliser_GetChemicalCompoundBySourcePerIngredient(
-    AmountApplied,
-    ChemicalCompound,
-    ProductIngredient6,
-    ProductIngredientPercent6,
-    ProductIngredient6Source,
-    Source
+  [ProductIngredient2],
+  [ProductIngredientPercent2],
+  [ProductIngredient2Source],
+  [ProductIngredient3],
+  [ProductIngredientPercent3],
+  [ProductIngredient3Source],
+  [ProductIngredient4],
+  [ProductIngredientPercent4],
+  [ProductIngredient4Source],
+  [ProductIngredient5],
+  [ProductIngredientPercent5],
+  [ProductIngredient5Source],
+  [ProductIngredient6],
+  [ProductIngredientPercent6],
+  [ProductIngredient6Source],
+  LET(
+    calculatedAmount1, (AmountApplied*ProductIngredientPercent1),
+    calculatedAmount2, (AmountApplied*ProductIngredientPercent2),
+    calculatedAmount3, (AmountApplied*ProductIngredientPercent3), 
+    calculatedAmount4, (AmountApplied*ProductIngredientPercent4), 
+    calculatedAmount5, (AmountApplied*ProductIngredientPercent5), 
+    calculatedAmount6, (AmountApplied*ProductIngredientPercent6),  
+    Fertiliser_SumProductApplied(
+      ChemicalCompound, ProductIngredient1, calculatedAmount1, Source, ProductIngredient1Source
+    )+
+    IFERROR(Fertiliser_SumProductApplied(
+      ChemicalCompound, ProductIngredient2, calculatedAmount2, Source, ProductIngredient2Source
+    ), 0)+
+    IFERROR(Fertiliser_SumProductApplied(
+      ChemicalCompound, ProductIngredient3, calculatedAmount3, Source, ProductIngredient3Source
+    ), 0)+
+    IFERROR(Fertiliser_SumProductApplied(
+      ChemicalCompound, ProductIngredient4, calculatedAmount4, Source, ProductIngredient4Source
+    ), 0)+
+    IFERROR(Fertiliser_SumProductApplied(
+      ChemicalCompound, ProductIngredient5, calculatedAmount5, Source, ProductIngredient5Source
+    ), 0)+
+    IFERROR(Fertiliser_SumProductApplied(
+      ChemicalCompound, ProductIngredient6, calculatedAmount6, Source, ProductIngredient6Source
+    ), 0)
   )
 );
 
@@ -189,4 +133,4 @@ Fertiliser_GetChemicalCompoundElementFraction
       MATCH(ChemicalCompound, ChemicalCompoundColumn, 0),
       MATCH(Element, ElementRow, 0)
     )
-)
+);

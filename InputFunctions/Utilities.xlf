@@ -49,3 +49,33 @@ Utility_SplitStringIntoArray
         "//s"
     )
 );
+
+Utility_GetClimateZone
+=LAMBDA(
+    avgTemp,avgRain,frostDays,elev,map_pet,
+    LET(
+        mask,
+        (VALUE(Table_SourceData_ClimateZones[Min temp])<=avgTemp)*
+        (VALUE(Table_SourceData_ClimateZones[Max temp])>=avgTemp)*
+        (VALUE(Table_SourceData_ClimateZones[Min rainfall])<=avgRain)*
+        (VALUE(Table_SourceData_ClimateZones[Max rainfall])>=avgRain)*
+        (VALUE(Table_SourceData_ClimateZones[Min frost days])<=frostDays)*
+        (VALUE(Table_SourceData_ClimateZones[Max frost days])>=frostDays)*
+        (VALUE(Table_SourceData_ClimateZones[Min elevation])<=elev)*
+        (VALUE(Table_SourceData_ClimateZones[Max elevation])>=elev)*
+        (VALUE(Table_SourceData_ClimateZones[Min MAP:PET])<=map_pet)*
+        (VALUE(Table_SourceData_ClimateZones[Max MAP:PET])>=map_pet),
+        FILTER(Table_SourceData_ClimateZones[Climate zone],mask, "No match")
+    )
+);
+
+Utility_LookupItemFromMinMax
+=LAMBDA(
+    LookupValue, MinArray, MaxArray, ItemArray,
+    LET(
+        mask,
+        (VALUE(MinArray)<=LookupValue)*
+        (VALUE(MaxArray)>=LookupValue),
+        FILTER(ItemArray, mask, "No match")
+    )
+);

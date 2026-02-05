@@ -209,3 +209,235 @@ SourceData_Common_WASA4Areas_Data
       )
     )
   );
+
+/* 
+--------------------------------------
+SourceData_Common_WetAndDryZones
+--------------------------------------
+*/
+
+SourceData_Common_WetAndDryZones_Title
+  =LAMBDA("VEERG Australian wet and dry zones");
+
+SourceData_Common_WetAndDryZones_Variable
+  =LAMBDA("");
+
+SourceData_Common_WetAndDryZones_Unit
+  =LAMBDA("");
+
+SourceData_Common_WetAndDryZones_Source
+  =LAMBDA("VEERG 2026: Table 1.2: Translating climate zones to wet and dry zones");
+
+SourceData_Common_WetAndDryZones_Variation
+   =LAMBDA(
+    MAKEARRAY(3, 1, 
+      LAMBDA(r,c, 
+        INDEX({
+          "VARIATION OF SOURCE DATA:";
+          "Added warm / cool temperate moist / dry - low frost and high temp classes to accommodate climate scenarios excluded by VEERG criteria.";
+          "Fixed typo - Changed 'Fry' to 'Dry'."
+        }, r, c)
+      )
+    )
+  );
+
+SourceData_Common_WetAndDryZones_Data
+   =LAMBDA(
+    MAKEARRAY(15, 2, 
+      LAMBDA(r,c, 
+        INDEX({
+          "Climate Zone", "Wet or Dry Zone";
+          "Tropical montane", "Wet";
+          "Tropical wet", "Wet";
+          "Tropical moist", "Wet";
+          "Tropical dry", "Dry";
+          "Warm temperate moist", "Wet";
+          "Warm temperate dry", "Dry";
+          "Cool temperate moist", "Wet";
+          "Cool temperate dry", "Dry";
+          "Warm temperate moist - low frost", "Wet";
+          "Warm temperate dry - low frost", "Dry";
+          "Warm temperate moist - high temp", "Wet";
+          "Warm temperate dry - high temp", "Dry";
+          "Cool temperate moist - low frost", "Wet";
+          "Cool temperate dry - low frost", "Dry"
+        }, r, c)
+      )
+    )
+  );
+
+/* 
+--------------------------------------
+SourceData_Common_ClimateZones
+--------------------------------------
+*/
+
+SourceData_Common_ClimateZones_Title
+  =LAMBDA("VEERG Australian climate zones");
+
+SourceData_Common_ClimateZones_Variable
+  =LAMBDA("");
+
+SourceData_Common_ClimateZones_Unit
+  =LAMBDA("");
+
+SourceData_Common_ClimateZones_Source
+  =LAMBDA("VEERG 2026: Table 1.3: Climate and Rainfall zone classifications and definitions");
+
+SourceData_Common_ClimateZones_Variation
+   =LAMBDA(
+    MAKEARRAY(5, 1, 
+      LAMBDA(r,c, 
+        INDEX({
+          "VARIATION OF SOURCE DATA:";
+          "Added warm / cool temperate moist / dry - low frost and high temp classes to accommodate climate scenarios excluded by VEERG criteria.";
+          "Fixed typo in MAT value for warm temperate dry - changed 10 to 11.";
+          "Added min and max columns for MAT, MAP, frost days per year, elevation, MAP:PET to calculate zones from real climate data.";
+          "GAF accepts rainfall as a proxy for precipitation."
+        }, r, c)
+      )
+    )
+  );
+
+SourceData_Common_ClimateZones_Data
+   =LAMBDA(
+    MAKEARRAY(15, 16, 
+      LAMBDA(r,c, 
+        INDEX({
+          "Climate Zone", "MAT", "MAP", "Frost days per year", "Elevation", "MAP:PET", "Min temp", "Max temp", "Min rainfall", "Max rainfall", "Min frost days", "Max frost days", "Min elevation", "Max elevation", "Min MAP:PET", "Min MAP:PET";
+          "Tropical montane", "> 18 C", "N/A", "≤ 7", "> 1000 m", "N/A", 18.001, 999999, -999999, 999999, -999999, 7, 1000, 999999, -999999, 999999;
+          "Tropical wet", "> 18 C", "> 2000 mm", "≤ 7", "≤ 1000 m", "N/A", 18.001, 999999, 2000.001, 999999, -999999, 7, -999999, 999.999,  -999999, 999999;
+          "Tropical moist", "> 18 C", "1000 mm - 2000 mm", "≤ 7", "≤ 1000 m", "N/A", 18.001, 999999, 1000, 2000, -999999, 7, -999999, 999.999,  -999999, 999999;
+          "Tropical dry", "> 18 C", "< 1000 mm", "≤ 7", "≤ 1000 m", "N/A", 18.001, 999999, -999999, 999.999, -999999, 7, -999999, 999.999,  -999999, 999999;
+          "Warm temperate moist", "11 C - 18 C", "N/A", "> 7", "N/A", "> 1", 11, 18, -999999, 999999, 8, 999999, -999999, 999999, 1.001, 999999;
+          "Warm temperate dry", "11 C - 18 C", "N/A", "> 7", "N/A", "≤ 1", 11, 18, -999999, 999999, 8, 999999, -999999, 999999,  -999999, 1;
+          "Cool temperate moist", "0 C - 10 C", "N/A", "> 7", "N/A", "> 1", -999999, 10.999, -999999, 999999, 8, 999999, -999999, 999999, 1.001, 999999;
+          "Cool temperate dry", "0 C - 10 C", "N/A", "> 7", "N/A", "≤ 1", -999999, 10.999, -999999, 999999, 8, 999999, -999999, 999999,  -999999, 1;
+          "Warm temperate moist - low frost", "11 C - 18 C", "N/A", "≤ 7", "N/A", "> 1", 11, 18, -999999, 999999, -999999, 7, -999999, 999999, 1.001, 999999;
+          "Warm temperate dry - low frost", "11 C - 18 C", "N/A", "≤ 7", "N/A", "≤ 1", 11, 18, -999999, 999999, -999999, 7, -999999, 999999,  -999999, 1;
+          "Warm temperate moist - high temp", "> 18 C", "N/A", "> 7", "N/A", "> 1", 18.001, 999999, -999999, 999999, 8, 999999, -999999, 999999, 1.001, 999999;
+          "Warm temperate dry - high temp", "> 18 C", "N/A", "> 7", "N/A", "≤ 1", 18.001, 999999, -999999, 999999, 8, 999999, -999999, 999999,  -999999, 1;
+          "Cool temperate moist - low frost", "0 C - 10 C", "N/A", "≤ 7", "N/A", "> 1", -999999, 10.999, -999999, 999999, -999999, 7, -999999, 999999, 1.001, 999999;
+          "Cool temperate dry - low frost", "0 C - 10 C", "N/A", "≤ 7", "N/A", "≤ 1", -999999, 10.999, -999999, 999999, -999999, 7, -999999, 999999,  -999999, 1
+        }, r, c)
+      )
+    )
+  );
+
+SourceData_Common_ClimateZones_Appendices
+   =LAMBDA(
+    MAKEARRAY(4, 1, 
+      LAMBDA(r,c, 
+        INDEX({
+          "Note:";
+          "MAT = mean annual temperature";
+          "MAP = mean annual precipitation";
+          "PET = potential evapotranspiration"
+        }, r, c)
+      )
+    )
+  );
+
+
+/* 
+--------------------------------------
+SourceData_Common_TemperatureZones
+--------------------------------------
+*/
+
+SourceData_Common_TemperatureZones_Title
+  =LAMBDA("VEERG Australian temperature zones");
+
+SourceData_Common_TemperatureZones_Variable
+  =LAMBDA("");
+
+SourceData_Common_TemperatureZones_Unit
+  =LAMBDA("");
+
+SourceData_Common_TemperatureZones_Source
+  =LAMBDA("VEERG 2026: Table 1.3: Climate and Rainfall zone classifications and definitions");
+
+SourceData_Common_TemperatureZones_Variation
+  =LAMBDA("VARIATION OF SOURCE DATA: Added extra MAT min and MAT max columns to calculate zone from real temperature data.");
+
+SourceData_Common_TemperatureZones_Data
+   =LAMBDA(
+    MAKEARRAY(4, 4, 
+      LAMBDA(r,c, 
+        INDEX({
+          "Temperature Zone", "Median Annual Temperature (MAT)", "Min MAT", "Max MAT";
+          "Warm", "≥ 26 C", 26, 999999;
+          "Temperate", "15 - 25 C", 15, 25.999;
+          "Cool", "≤ 14 C", -999999, 14.999
+        }, r, c)
+      )
+    )
+  );
+
+/* 
+--------------------------------------
+SourceData_Common_RainfallZones
+--------------------------------------
+*/
+
+SourceData_Common_RainfallZones_Title
+  =LAMBDA("VEERG Australian rainfall zones");
+
+SourceData_Common_RainfallZones_Variable
+  =LAMBDA("");
+
+SourceData_Common_RainfallZones_Unit
+  =LAMBDA("");
+
+SourceData_Common_RainfallZones_Source
+  =LAMBDA("VEERG 2026: Table 1.3: Climate and Rainfall zone classifications and definitions");
+
+SourceData_Common_RainfallZones_Variation
+  =LAMBDA("VARIATION OF SOURCE DATA: Added extra Rainfall min and Rainfall max columns to calculate zone from real rainfall data.");
+
+SourceData_Common_RainfallZones_Data
+   =LAMBDA(
+    MAKEARRAY(3, 4, 
+      LAMBDA(r,c, 
+        INDEX({
+          "Rainfall Zone", "Annual rainfall", "Rainfall min", "Rainfall max";
+          "High rainfall", "Annual rainfall > 600mm", 600.001, 999999;
+          "Low rainfall", "Annual rainfall ≤ 600mm", -999999, 600
+        }, r, c)
+      )
+    )
+  );
+
+/* 
+--------------------------------------
+SourceData_Common_LeachingZones
+--------------------------------------
+*/
+
+SourceData_Common_LeachingZones_Title
+  =LAMBDA("VEERG Australian leaching zones");
+
+SourceData_Common_LeachingZones_Variable
+  =LAMBDA("");
+
+SourceData_Common_LeachingZones_Unit
+  =LAMBDA("");
+
+SourceData_Common_LeachingZones_Source
+  =LAMBDA("VEERG 2026: Table 1.3: Climate and Rainfall zone classifications and definitions");
+
+SourceData_Common_LeachingZones_Variation
+  =LAMBDA("");
+
+SourceData_Common_LeachingZones_Data
+   =LAMBDA(
+    MAKEARRAY(4, 2, 
+      LAMBDA(r,c, 
+        INDEX({
+          "Leaching Zone", "Leaching criteria";
+          "Leaching occurs", "Σ(𝑟𝑎𝑖𝑛)>Σ(𝐸𝑇0)+𝑠𝑜𝑖𝑙 𝑤𝑎𝑡𝑒𝑟 ℎ𝑜𝑙𝑑𝑖𝑛𝑔 𝑐𝑎𝑝𝑎𝑐𝑖𝑡𝑦";
+          "Leaching does not occur", "Σ(𝑟𝑎𝑖𝑛)≤Σ(𝐸𝑇0)+𝑠𝑜𝑖𝑙 𝑤𝑎𝑡𝑒𝑟 ℎ𝑜𝑙𝑑𝑖𝑛𝑔 𝑐𝑎𝑝𝑎𝑐𝑖𝑡𝑦"
+        }, r, c)
+      )
+    )
+  );

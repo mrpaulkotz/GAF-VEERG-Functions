@@ -1,29 +1,522 @@
-Scope3_FertiliserChemicalCompounds_Title
-=LAMBDA(("Fertiliser chemical compound scope 3"));
 
-Scope3_FertiliserChemicalCompounds_Data
+/*
+============================================================================
+Inorganic fertilisers
+============================================================================
+*/
+
+Scope3_InorganicFertilisers_Title
+=LAMBDA(("Inorganic fertiliser chemical compound scope 3"));
+
+Scope3_InorganicFertilisers_Source
+=LAMBDA(("Scope 3 GHG Emission Factors for Australian Agriculture, Fisheries and Forestry 2026"));
+
+Scope3_InorganicFertilisers_Variation
+=LAMBDA((""));
+
+Scope3_InorganicFertilisers_Data
 =LAMBDA(
-  MAKEARRAY(20, 4,
+  MAKEARRAY(26, 7,
     LAMBDA(r,c,
       INDEX({
-        "Chemical compound", "Location not specified", "Rest of world", "China";
-        "Ammonia", 0, 0, 0;
-        "Urea",1.7904, 1.6579, 2.7872;
-        "Monoammonium phosphate (MAP)", 0.956, 0.9133, 1.2742;
-        "Diammonium Phosphate (DAP)", 0.8662, 0.203, 0.303;
-        "Urea-Ammonium Nitrate (UAN)",1.909, 1.7859, 2.8389;
-        "Ammonium Nitrate (AN)", 2.4608, 2.05, 3.05;
-        "Calcium Ammonium Nitrate (CAN)", 2.3369, 2.06, 3.06;
-        "Single Superphosphate (SSP)", 107, 207, 307;
-        "Sulphate of Ammonia (SOA)", 108, 208, 308;
-        "Muriate of Potash (MOP)", 109, 209, 309;
-        "Nitrogen - Generic", 110, 210, 310;
-        "Nitrogen - Nitrate", 111, 211, 311;
-        "Nitrogen - Ammoniacal", 112, 212, 312;
-        "Phosphorus - Generic", 114, 214, 314;
-        "Potassium - Generic", 115, 215, 315;
-        "Sulfur - Generic", 116, 216, 316;
-        "Zinc - Generic", 117, 217, 317;
-        "Calcium - Generic", 118, 218, 318
+        "Category", "Product", "Source", "Product Unit", "Emission Factor", "Embedded Emissions Unit", "Emissions Intensity Unit";
+        "Inorganic Fertilisers", "Ammonia", "Location not specified", "t", 010101, "t", "t CO2-e / t";
+        "Inorganic Fertilisers", "Ammonia", "China", "t", 010102, "t", "t CO2-e / t";
+        "Inorganic Fertilisers", "Ammonia", "Yemen", "t", 010103, "t", "t CO2-e / t";
+        "Inorganic Fertilisers", "Ammonia", "Canada", "t", 010104, "t", "t CO2-e / t";
+        "Inorganic Fertilisers", "Urea", "Location not specified", "t", 010201, "t", "t CO2-e / t";
+        "Inorganic Fertilisers", "Urea", "China", "t", 010202, "t", "t CO2-e / t";
+        "Inorganic Fertilisers", "Urea", "Yemen", "t", 010203, "t", "t CO2-e / t";
+        "Inorganic Fertilisers", "Urea", "Canada", "t", 010204, "t", "t CO2-e / t";
+        "Inorganic Fertilisers", "Monoammonium phosphate (MAP)", "Location not specified", "t", 010301, "t", "t CO2-e / t";
+        "Inorganic Fertilisers", "Diammonium Phosphate (DAP)", "Location not specified", "t", 010401, "t", "t CO2-e / t";
+        "Inorganic Fertilisers", "Urea-Ammonium Nitrate (UAN)", "Location not specified", "t", 010501, "t", "t CO2-e / t";
+        "Inorganic Fertilisers", "Ammonium Nitrate (AN)", "Location not specified", "t", 010601, "t", "t CO2-e / t";
+        "Inorganic Fertilisers", "Calcium Ammonium Nitrate (CAN)", "Location not specified", "t", 010701, "t", "t CO2-e / t";
+        "Inorganic Fertilisers", "Sulphate of Ammonia (SOA)", "Location not specified", "t", 010801, "t", "t CO2-e / t";
+        "Inorganic Fertilisers", "Nitrogen - Generic", "Location not specified", "t", 010901, "t", "t CO2-e / t";
+        "Inorganic Fertilisers", "Nitrogen - Nitrate", "Location not specified", "t", 011001, "t", "t CO2-e / t";
+        "Inorganic Fertilisers", "Nitrogen - Ammoniacal", "Location not specified", "t", 011101, "t", "t CO2-e / t";
+        "Inorganic Fertilisers", "Muriate of Potash (MOP / KCL)", "Location not specified", "t", 011201, "t", "t CO2-e / t";
+        "Inorganic Fertilisers", "Single superphosphate", "Location not specified", "t", 011301, "t", "t CO2-e / t";
+        "Inorganic Fertilisers", "Double superphosphate", "Location not specified", "t", 011401, "t", "t CO2-e / t";
+        "Inorganic Fertilisers", "Phosphorus - Generic", "Location not specified", "t", 011501, "t", "t CO2-e / t";
+        "Inorganic Fertilisers", "Potassium - Generic", "Location not specified", "t", 011601, "t", "t CO2-e / t";
+        "Inorganic Fertilisers", "Sulfur - Generic", "Location not specified", "t", 011701, "t", "t CO2-e / t";
+        "Inorganic Fertilisers", "Zinc - Generic", "Location not specified", "t", 011801, "t", "t CO2-e / t";
+        "Inorganic Fertilisers", "Calcium - Generic", "Location not specified", "t", 011901, "t", "t CO2-e / t"
       }, r, c)
-)))
+)));
+
+/*
+============================================================================
+Organic fertilisers 
+============================================================================
+*/
+
+Scope3_OrganicFertilisers_Title
+=LAMBDA(("Organic fertiliser scope 3"));
+
+Scope3_OrganicFertilisers_Source
+=LAMBDA(("Scope 3 GHG Emission Factors for Australian Agriculture, Fisheries and Forestry 2026"));
+
+Scope3_OrganicFertilisers_Variation
+=LAMBDA((""));
+
+Scope3_OrganicFertilisers_Data
+=LAMBDA(
+  MAKEARRAY(11, 7,
+    LAMBDA(r,c,
+      INDEX({
+        "Category", "Product", "Source", "Product Unit", "Emission Factor", "Embedded Emissions Unit", "Emissions Intensity Unit";
+        "Organic Fertilisers", "Dairy Manure", "Primary MMS", "t", 020101, "t", "t CO2-e / t";
+        "Organic Fertilisers", "Dairy Manure", "Secondary MMS", "t", 020102, "t", "t CO2-e / t";
+        "Organic Fertilisers", "Pork Manure", "Primary MMS", "t", 020201, "t", "t CO2-e / t";
+        "Organic Fertilisers", "Pork Manure", "Secondary MMS", "t", 020202, "t", "t CO2-e / t";
+        "Organic Fertilisers", "Feedlot Manure", "Primary MMS", "t", 020301, "t", "t CO2-e / t";
+        "Organic Fertilisers", "Feedlot Manure", "Secondary MMS", "t", 020302, "t", "t CO2-e / t";
+        "Organic Fertilisers", "Feedlot Manure", "Tertiary MMS", "t", 020303, "t", "t CO2-e / t";
+        "Organic Fertilisers", "Poultry Manure", "Primary MMS", "t", 020401, "t", "t CO2-e / t";
+        "Organic Fertilisers", "Poultry Manure", "Secondary MMS", "t", 020402, "t", "t CO2-e / t";
+        "Organic Fertilisers", "Other", "Location not specified", "t", 020501, "t", "t CO2-e / t"
+      }, r, c)
+)));
+
+/*
+============================================================================
+Soil amendments
+============================================================================
+*/
+
+Scope3_SoilAmendments_Title
+=LAMBDA(("Soil amendments scope 3"));
+
+Scope3_SoilAmendments_Source
+=LAMBDA(("Scope 3 GHG Emission Factors for Australian Agriculture, Fisheries and Forestry 2026"));
+
+Scope3_SoilAmendments_Variation
+=LAMBDA((""));
+
+Scope3_SoilAmendments_Data
+=LAMBDA(
+  MAKEARRAY(6, 7,
+    LAMBDA(r,c,
+      INDEX({
+        "Category", "Product", "Source", "Product Unit", "Emission Factor", "Embedded Emissions Unit", "Emissions Intensity Unit";
+        "Soil Amendments", "Lime - calcium carbonate", "Location not specified", "t", 030101, "t", "t CO2-e / t";
+        "Soil Amendments", "Limesand - no crushing", "Location not specified", "t", 030102, "t", "t CO2-e / t";
+        "Soil Amendments", "Dolomite - magnesium carbonate", "Location not specified", "t", 030103, "t", "t CO2-e / t";
+        "Soil Amendments", "Gypsum", "Location not specified", "t", 030104, "t", "t CO2-e / t";
+        "Soil Amendments", "Potash", "Location not specified", "t", 030105, "t", "t CO2-e / t"
+      }, r, c)
+)));
+
+/*
+============================================================================
+Agrochemicals
+============================================================================
+*/
+
+Scope3_Agrochemicals_Title
+=LAMBDA(("Agrochemicals scope 3"));
+
+Scope3_Agrochemicals_Source
+=LAMBDA(("Scope 3 GHG Emission Factors for Australian Agriculture, Fisheries and Forestry 2026"));
+
+Scope3_Agrochemicals_Variation
+=LAMBDA((""));
+
+Scope3_Agrochemicals_Data
+=LAMBDA(
+  MAKEARRAY(6, 7,
+    LAMBDA(r,c,
+      INDEX({
+        "Category", "Product", "Source", "Product Unit", "Emission Factor", "Embedded Emissions Unit", "Emissions Intensity Unit";
+        "Agrochemicals", "Glyphosate", "Location not specified", "t", 040101, "t", "t CO2-e / t";
+        "Agrochemicals", "Paraquat, diquat", "Location not specified", "t", 040102, "t", "t CO2-e / t";
+        "Agrochemicals", "Herbicide", "Location not specified", "t", 040103, "t", "t CO2-e / t";
+        "Agrochemicals", "Insecticide", "Location not specified", "t", 040104, "t", "t CO2-e / t";
+        "Agrochemicals", "Fungicide", "Location not specified", "t", 040105, "t", "t CO2-e / t"
+      }, r, c)
+)));
+
+/*
+============================================================================
+Lick Blocks
+============================================================================
+*/
+
+Scope3_LickBlocks_Title
+=LAMBDA(("Lick Blocks scope 3"));
+
+Scope3_LickBlocks_Source
+=LAMBDA(("Scope 3 GHG Emission Factors for Australian Agriculture, Fisheries and Forestry 2026"));
+
+Scope3_LickBlocks_Variation
+=LAMBDA((""));
+
+Scope3_LickBlocks_Data
+=LAMBDA(
+  MAKEARRAY(4, 7,
+    LAMBDA(r,c,
+      INDEX({
+        "Category", "Product", "Source", "Product Unit", "Emission Factor", "Embedded Emissions Unit", "Emissions Intensity Unit";
+        "Lick Blocks", "Mineral block", "Location not specified", "t", 050101, "t", "t CO2-e / t";
+        "Lick Blocks", "Weaner block", "Location not specified", "t", 050102, "t", "t CO2-e / t";
+        "Lick Blocks", "Dry season mix", "Location not specified", "t", 050103, "t", "t CO2-e / t"
+      }, r, c)
+)));
+
+/*
+============================================================================
+Animal Feed
+============================================================================
+*/
+
+Scope3_AnimalFeed_Title
+=LAMBDA(("Animal Feed scope 3"));
+
+Scope3_AnimalFeed_Source
+=LAMBDA(("Scope 3 GHG Emission Factors for Australian Agriculture, Fisheries and Forestry 2026"));
+
+Scope3_AnimalFeed_Variation
+=LAMBDA((""));
+
+Scope3_AnimalFeed_Data
+=LAMBDA(
+  MAKEARRAY(17, 7,
+    LAMBDA(r,c,
+      INDEX({
+        "Category", "Product", "Source", "Product Unit", "Emission Factor", "Embedded Emissions Unit", "Emissions Intensity Unit";
+        "Animal Feed", "Grain", "Location not specified", "t", 060101, "t", "t CO2-e / t";
+        "Animal Feed", "Wheat", "Location not specified", "t", 060102, "t", "t CO2-e / t";
+        "Animal Feed", "Wheat Bran", "Location not specified", "t", 060103, "t", "t CO2-e / t";
+        "Animal Feed", "Barley", "Location not specified", "t", 060104, "t", "t CO2-e / t";
+        "Animal Feed", "Soybean", "Location not specified", "t", 060105, "t", "t CO2-e / t";
+        "Animal Feed", "Soybean meal", "Location not specified", "t", 060106, "t", "t CO2-e / t";
+        "Animal Feed", "Canola meal", "Location not specified", "t", 060107, "t", "t CO2-e / t";
+        "Animal Feed", "Canola oil", "Location not specified", "t", 060108, "t", "t CO2-e / t";
+        "Animal Feed", "Beet pulp", "Location not specified", "t", 060109, "t", "t CO2-e / t";
+        "Animal Feed", "Cotton seed", "Location not specified", "t", 060110, "t", "t CO2-e / t";
+        "Animal Feed", "Hay", "Location not specified", "t", 060111, "t", "t CO2-e / t";
+        "Animal Feed", "Feed formulations (chicken, pigs, cattle, dairy)", "Location not specified", "t", 060112, "t", "t CO2-e / t";
+        "Animal Feed", "Molasses", "Location not specified", "t", 060113, "t", "t CO2-e / t";
+        "Animal Feed", "Bentonite", "Location not specified", "t", 060114, "t", "t CO2-e / t";
+        "Animal Feed", "Meat meal", "Location not specified", "t", 060115, "t", "t CO2-e / t";
+        "Animal Feed", "BentLime, phosphorus, potashonite", "Location not specified", "t", 060114, "t", "t CO2-e / t"
+      }, r, c)
+)));
+
+/*
+============================================================================
+Aquaculture Feed and Bait
+============================================================================
+*/
+
+Scope3_AquacultureFeedAndBait_Title
+=LAMBDA(("Aquaculture Feed and Bait scope 3"));
+
+Scope3_AquacultureFeedAndBait_Source
+=LAMBDA(("Scope 3 GHG Emission Factors for Australian Agriculture, Fisheries and Forestry 2026"));
+
+Scope3_AquacultureFeedAndBait_Variation
+=LAMBDA((""));
+
+Scope3_AquacultureFeedAndBait_Data
+=LAMBDA(
+  MAKEARRAY(8, 7,
+    LAMBDA(r,c,
+      INDEX({
+        "Category", "Product", "Source", "Product Unit", "Emission Factor", "Embedded Emissions Unit", "Emissions Intensity Unit";
+        "Aquaculture Feed and Bait", "Low Animal Protein Formulated Feed", "Location not specified", "t", 070101, "t", "t CO2-e / t";
+        "Aquaculture Feed and Bait", "High Animal Protein Formulated Feed", "Location not specified", "t", 070102, "t", "t CO2-e / t";
+        "Aquaculture Feed and Bait", "Squid", "Location not specified", "t", 070103, "t", "t CO2-e / t";
+        "Aquaculture Feed and Bait", "Whole Fish", "Location not specified", "t", 070104, "t", "t CO2-e / t";
+        "Aquaculture Feed and Bait", "Whole Sardines", "Location not specified", "t", 070105, "t", "t CO2-e / t";
+        "Aquaculture Feed and Bait", "Fish Frames", "Location not specified", "t", 070106, "t", "t CO2-e / t";
+        "Aquaculture Feed and Bait", "Fish Heads", "Location not specified", "t", 070107, "t", "t CO2-e / t"
+      }, r, c)
+)));
+
+/*
+============================================================================
+Livestock
+============================================================================
+*/
+
+Scope3_Livestock_Title
+=LAMBDA(("Livestock scope 3"));
+
+Scope3_Livestock_Source
+=LAMBDA(("Scope 3 GHG Emission Factors for Australian Agriculture, Fisheries and Forestry 2026"));
+
+Scope3_Livestock_Variation
+=LAMBDA((""));
+
+Scope3_Livestock_Data
+=LAMBDA(
+  MAKEARRAY(7, 7,
+    LAMBDA(r,c,
+      INDEX({
+        "Category", "Product", "Source", "Product Unit", "Emission Factor", "Embedded Emissions Unit", "Emissions Intensity Unit";
+        "Livestock", "Beef cattle", "Northern Australia", "t LW", 080101, "t", "t CO2-e / t LW";
+        "Livestock", "Beef cattle", "Southern Australia", "t LW", 080102, "t", "t CO2-e / t LW";
+        "Livestock", "Dairy cattle", "Location not specified", "t LW", 080103, "t", "t CO2-e / t LW";
+        "Livestock", "Sheep", "Location not specified", "t LW", 080104, "t", "t CO2-e / t LW";
+        "Livestock", "Pigs", "Location not specified", "t LW", 080105, "t", "t CO2-e / t LW";
+        "Livestock", "Chickens", "Location not specified", "t LW", 080106, "t", "t CO2-e / t LW"
+      }, r, c)
+)));
+
+/*
+============================================================================
+Packaging
+============================================================================
+*/
+
+Scope3_Packaging_Title
+=LAMBDA(("Packaging scope 3"));
+
+Scope3_Packaging_Source
+=LAMBDA(("Scope 3 GHG Emission Factors for Australian Agriculture, Fisheries and Forestry 2026"));
+
+Scope3_Packaging_Variation
+=LAMBDA((""));
+
+Scope3_Packaging_Data
+=LAMBDA(
+  MAKEARRAY(7, 7,
+    LAMBDA(r,c,
+      INDEX({
+        "Category", "Product", "Source", "Product Unit", "Emission Factor", "Embedded Emissions Unit", "Emissions Intensity Unit";
+        "Packaging", "Wine bottles: Glass - conventional", "Location not specified", "bottle", 090101, "bottle", "kg CO2-e / bottle";
+        "Packaging", "Wine bottles: Glass - light", "Location not specified", "bottle", 090102, "bottle", "kg CO2-e / bottle";
+        "Packaging", "Plastic packaging", "Location not specified", "kg", 090201, "kg", "kg CO2-e / kg";
+        "Packaging", "Polyethylene terephthalate (PET)", "Location not specified", "kg", 090202, "kg", "kg CO2-e / kg";
+        "Packaging", "Polypropylene (PP)", "Location not specified", "kg", 090203, "kg", "kg CO2-e / kg";
+        "Packaging", "Cardboard", "Location not specified", "kg", 090204, "kg", "kg CO2-e / kg"
+      }, r, c)
+)));
+
+/*
+============================================================================
+Seeds and Seedlings
+============================================================================
+*/
+
+Scope3_SeedsAndSeedlings_Title
+=LAMBDA(("Seeds and Seedlings scope 3"));
+
+Scope3_SeedsAndSeedlings_Source
+=LAMBDA(("Scope 3 GHG Emission Factors for Australian Agriculture, Fisheries and Forestry 2026"));
+
+Scope3_SeedsAndSeedlings_Variation
+=LAMBDA((""));
+
+Scope3_SeedsAndSeedlings_Data
+=LAMBDA(
+  MAKEARRAY(3, 7,
+    LAMBDA(r,c,
+      INDEX({
+        "Category", "Product", "Source", "Product Unit", "Emission Factor", "Embedded Emissions Unit", "Emissions Intensity Unit";
+        "Seeds and Seedlings" ,"Seed (general crop and pasture)", "Location not specified", "t", 100101, "t", "t CO2-e / t";
+        "Seeds and Seedlings" ,"Seedlings (forestry, horticulture, environmental)", "Location not specified", "t", 100102, "t", "t CO2-e / t"
+      }, r, c)
+)));
+
+/*
+============================================================================
+Other agricultural inputs
+============================================================================
+*/
+
+Scope3_OtherAgriculturalInputs_Title
+=LAMBDA(("Other agricultural inputs scope 3"));
+
+Scope3_OtherAgriculturalInputs_Source
+=LAMBDA(("Scope 3 GHG Emission Factors for Australian Agriculture, Fisheries and Forestry 2026"));
+
+Scope3_OtherAgriculturalInputs_Variation
+=LAMBDA((""));
+
+Scope3_OtherAgriculturalInputs_Data
+=LAMBDA(
+  MAKEARRAY(7, 7,
+    LAMBDA(r,c,
+      INDEX({
+        "Category", "Product", "Source", "Product Unit", "Emission Factor", "Embedded Emissions Unit", "Emissions Intensity Unit";
+        "Other Agricultural Inputs", "CO2 for carbonation", "Location not specified", "t", 110101, "t", "t CO2-e / t";
+        "Other Agricultural Inputs", "Livestock antibiotics", "Location not specified", "t", 110102, "t", "t CO2-e / t";
+        "Other Agricultural Inputs", "Cleaning chemicals (detergent, acid, bleach)", "Location not specified", "t", 110103, "t", "t CO2-e / t";
+        "Other Agricultural Inputs", "Nylon netting for horticulture", "Location not specified", "t", 110104, "t", "t CO2-e / t";
+        "Other Agricultural Inputs", "Pallets (wood and plastic)", "Location not specified", "t", 110105, "t", "t CO2-e / t";
+        "Other Agricultural Inputs", "Livestock tags", "Location not specified", "t", 110106, "t", "t CO2-e / t"
+      }, r, c)
+)));
+
+/*
+============================================================================
+Fuel - Transport
+============================================================================
+*/
+
+Scope3_FuelTransport_Title
+=LAMBDA(("Fuel - Transport scope 3"));
+
+Scope3_FuelTransport_Source
+=LAMBDA(("Scope 3 GHG Emission Factors for Australian Agriculture, Fisheries and Forestry 2026"));
+
+Scope3_FuelTransport_Variation
+=LAMBDA(("Emission factor values sourced from National Greenhouse Accounts Factors - See relevant table in 'Fuel Source Data'"));
+
+Scope3_FuelTransport_Data
+=LAMBDA(
+  MAKEARRAY(22, 7,
+    LAMBDA(r,c,
+      INDEX({
+        "Category", "Product", "Source", "Product Unit", "Emission Factor", "Embedded Emissions Unit", "Emissions Intensity Unit";
+        "Fuel - Transport - Cars and light commercial vehicles", "Gasoline", "Location not specified", "kl", "XXXXXX", "t", "t CO2-e / kl";
+        "Fuel - Transport - Cars and light commercial vehicles", "Diesel oil", "Location not specified", "kl", "XXXXXX", "t", "t CO2-e / kl";
+        "Fuel - Transport - Cars and light commercial vehicles", "Liquefied petroleum gas (LPG)", "Location not specified", "kl", "XXXXXX", "t", "t CO2-e / kl";
+        "Fuel - Transport - Cars and light commercial vehicles", "Fuel oil", "Location not specified", "kl", "XXXXXX", "t", "t CO2-e / kl";
+        "Fuel - Transport - Cars and light commercial vehicles", "Ethanol", "Location not specified", "kl", "XXXXXX", "t", "t CO2-e / kl";
+        "Fuel - Transport - Cars and light commercial vehicles", "Biodiesel", "Location not specified", "kl", "XXXXXX", "t", "t CO2-e / kl";
+        "Fuel - Transport - Cars and light commercial vehicles", "Renewable diesel", "Location not specified", "kl", "XXXXXX", "t", "t CO2-e / kl";
+        "Fuel - Transport - Cars and light commercial vehicles", "Other biofuels", "Location not specified", "kl", "XXXXXX", "t", "t CO2-e / kl";
+        "Fuel - Transport - Light duty vehicles", "Compressed natural gas", "Location not specified", "m3", "XXXXXX", "t", "t CO2-e / m3";
+        "Fuel - Transport - Light duty vehicles", "Liquefied natural gas", "Location not specified", "kl", "XXXXXX", "t", "t CO2-e / kl";
+        "Fuel - Transport - Heavy duty vehicles", "Compressed natural gas", "Location not specified", "m3", "XXXXXX", "t", "t CO2-e / m3";
+        "Fuel - Transport - Heavy duty vehicles", "Liquefied natural gas", "Location not specified", "kl", "XXXXXX", "t", "t CO2-e / kl";
+        "Fuel - Transport - Heavy duty vehicles", "Diesel oil - Euro iv or higher", "Location not specified", "kl", "XXXXXX", "t", "t CO2-e / kl";
+        "Fuel - Transport - Heavy duty vehicles", "Diesel oil - Euro iii", "Location not specified", "kl", "XXXXXX", "t", "t CO2-e / kl";
+        "Fuel - Transport - Heavy duty vehicles", "Diesel oil - Euro i", "Location not specified", "kl", "XXXXXX", "t", "t CO2-e / kl";
+        "Fuel - Transport - Heavy duty vehicles", "Renewable diesel - Euro iv or higher", "Location not specified", "kl", "XXXXXX", "t", "t CO2-e / kl";
+        "Fuel - Transport - Heavy duty vehicles", "Renewable diesel - Euro iii", "Location not specified", "kl", "XXXXXX", "t", "t CO2-e / kl";
+        "Fuel - Transport - Heavy duty vehicles", "Renewable diesel - Euro i", "Location not specified", "kl", "XXXXXX", "t", "t CO2-e / kl";
+        "Fuel - Transport - Aviation", "Gasoline for use as fuel in an aircraft", "Location not specified", "kl", "XXXXXX", "t", "t CO2-e / kl";
+        "Fuel - Transport - Aviation", "Kerosene for use as fuel in an aircraft", "Location not specified", "kl", "XXXXXX", "t", "t CO2-e / kl";
+        "Fuel - Transport - Aviation", "Renewable aviation kerosene", "Location not specified", "kl", "XXXXXX", "t", "t CO2-e / kl"
+      }, r, c)
+)));
+
+/*
+============================================================================
+Fuel - Stationary - Liquid
+============================================================================
+*/
+
+Scope3_FuelStationaryLiquid_Title
+=LAMBDA(("Fuel - Stationary - Liquid scope 3"));
+
+Scope3_FuelStationaryLiquid_Source
+=LAMBDA(("Scope 3 GHG Emission Factors for Australian Agriculture, Fisheries and Forestry 2026"));
+
+Scope3_FuelStationaryLiquid_Variation
+=LAMBDA(("Emission factor values sourced from National Greenhouse Accounts Factors - See relevant table in 'Fuel Source Data'"));
+
+Scope3_FuelStationaryLiquid_Data
+=LAMBDA(
+  MAKEARRAY(25, 7,
+    LAMBDA(r,c,
+      INDEX({
+        "Category", "Product", "Source", "Product Unit", "Emission Factor", "Embedded Emissions Unit", "Emissions Intensity Unit";
+        "Fuel - Stationary - Liquid", "Petroleum based oils (other than petroleum based oil used as fuel), e.g. lubricants", "Location not specified", "kl", "XXXXXX", " t ", "t CO2 - e / kl ";
+        "Fuel - Stationary - Liquid", "Petroleum based greases", "Location not specified", "kl", "XXXXXX", "t", "t CO2 - e / kl ";
+        "Fuel - Stationary - Liquid", "Crude oil including crude oil condensates", "Location not specified", "t", "XXXXXX", "t", "t CO2 - e / t ";
+        "Fuel - Stationary - Liquid", "Other natural gas liquids", "Location not specified", "t", "XXXXXX", "t", "t CO2 - e / t ";
+        "Fuel - Stationary - Liquid", "Automotive gasoline / petrol (other than for use as fuel in an aircraft)", "Location not specified", "kl", "XXXXXX", "t", "t CO2 - e / kl ";
+        "Fuel - Stationary - Liquid", "Aviation gasoline", "Location not specified", "kl", "XXXXXX", "t", "t CO2 - e / kl ";
+        "Fuel - Stationary - Liquid", "Kerosene (other than for use as fuel in an aircraft)", "Location not specified", "kl", "XXXXXX", "t", "t CO2 - e / kl ";
+        "Fuel - Stationary - Liquid", "Aviation turbine fuel / kerosene", "Location not specified", "kl", "XXXXXX", "t", "t CO2 - e / kl ";
+        "Fuel - Stationary - Liquid", "Heating oil", "Location not specified", "kl", "XXXXXX", "t", "t CO2 - e / kl ";
+        "Fuel - Stationary - Liquid", "Diesel oil", "Location not specified", "kl", "XXXXXX", "t", "t CO2 - e / kl ";
+        "Fuel - Stationary - Liquid", "Fuel oil", "Location not specified", "kl", "XXXXXX", "t", "t CO2 - e / kl ";
+        "Fuel - Stationary - Liquid", "Liquefied aromatic hydrocarbons", "Location not specified", "kl", "XXXXXX", "t", "t CO2 - e / kl ";
+        "Fuel - Stationary - Liquid", "Solvents: mineral turpentine or white spirits", "Location not specified", "kl", "XXXXXX", "t", "t CO2 - e / kl ";
+        "Fuel - Stationary - Liquid", "Liquefied petroleum gas (LPG)", "Location not specified", "kl", "XXXXXX", "t", "t CO2 - e / kl ";
+        "Fuel - Stationary - Liquid", "Naphtha", "Location not specified", "kl", "XXXXXX", "t", "t CO2 - e / kl ";
+        "Fuel - Stationary - Liquid", "Petroleum coke", "Location not specified", "t", "XXXXXX", "t", "t CO2 - e / t ";
+        "Fuel - Stationary - Liquid", "Refinery gas and liquids", "Location not specified", "t", "XXXXXX", "t", "t CO2 - e / t ";
+        "Fuel - Stationary - Liquid", "Refinery coke", "Location not specified", "t", "XXXXXX", "t", "t CO2 - e / t ";
+        "Fuel - Stationary - Liquid", "Petroleum based products other than mentioned in the items above", "Location not specified", "kl", "XXXXXX", "t", "t CO2 - e / kl ";
+        "Fuel - Stationary - Liquid", "Biodiesel", "Location not specified", "kl", "XXXXXX", "t", "t CO2 - e / kl ";
+        "Fuel - Stationary - Liquid", "Ethanol for use as a fuel in an internal combustion engine", "Location not specified", "kl", "XXXXXX", "t", "t CO2 - e / kl ";
+        "Fuel - Stationary - Liquid", "Biofuels other than those mentioned in the items above and below", "Location not specified", "kl", "XXXXXX", "t", "t CO2 - e / kl ";
+        "Fuel - Stationary - Liquid", "Renewable aviation kerosene", "Location not specified", "kl", "XXXXXX", "t", "t CO2 - e / kl ";
+        "Fuel - Stationary - Liquid", "Renewable diesel", "Location not specified", "kl", "XXXXXX", "t", "t CO2 - e / kl "
+      }, r, c)
+)));
+
+/*
+============================================================================
+Fuel - Stationary - Gaseous
+============================================================================
+*/
+
+Scope3_FuelStationaryGaseousTitle
+=LAMBDA(("Fuel - Stationary - Gaseous scope 3"));
+
+Scope3_FuelStationaryGaseousSource
+=LAMBDA(("Scope 3 GHG Emission Factors for Australian Agriculture, Fisheries and Forestry 2026"));
+
+Scope3_FuelStationaryGaseousVariation
+=LAMBDA(("Emission factor values sourced from National Greenhouse Accounts Factors - See relevant table in 'Fuel Source Data'"));
+
+Scope3_FuelStationaryGaseousData
+=LAMBDA(
+  MAKEARRAY(17, 7,
+    LAMBDA(r,c,
+      INDEX({
+        "Category", "Product", "Source", "Product Unit", "Emission Factor", "Embedded Emissions Unit", "Emissions Intensity Unit";
+        "Fuel - Stationary - Gaseous", "Natural gas distributed in a pipeline - Gigajoules", "New South Wales", "Gj", "XXXXXX", "t", "t CO2 - e / Gj";
+        "Fuel - Stationary - Gaseous", "Natural gas distributed in a pipeline - Gigajoules", "ACT", "Gj", "XXXXXX", "t", "t CO2 - e / Gj";
+        "Fuel - Stationary - Gaseous", "Natural gas distributed in a pipeline - Gigajoules", "Victoria", "Gj", "XXXXXX", "t", "t CO2 - e / Gj";
+        "Fuel - Stationary - Gaseous", "Natural gas distributed in a pipeline - Gigajoules", "Queensland", "Gj", "XXXXXX", "t", "t CO2 - e / Gj";
+        "Fuel - Stationary - Gaseous", "Natural gas distributed in a pipeline - Gigajoules", "South Australia", "Gj", "XXXXXX", "t", "t CO2 - e / Gj";
+        "Fuel - Stationary - Gaseous", "Natural gas distributed in a pipeline - Gigajoules", "Western Australia", "Gj", "XXXXXX", "t", "t CO2 - e / Gj";
+        "Fuel - Stationary - Gaseous", "Natural gas distributed in a pipeline - Gigajoules", "Tasmania", "Gj", "XXXXXX", "t", "t CO2 - e / Gj";
+        "Fuel - Stationary - Gaseous", "Natural gas distributed in a pipeline - Gigajoules", "Northern Territory", "Gj", "XXXXXX", "t", "t CO2 - e / Gj";
+        "Fuel - Stationary - Gaseous", "Town gas - Gigajoules", "New South Wales", "Gj", "XXXXXX", "t", "t CO2 - e / Gj";
+        "Fuel - Stationary - Gaseous", "Town gas - Gigajoules", "ACT", "Gj", "XXXXXX", "t", "t CO2 - e / Gj";
+        "Fuel - Stationary - Gaseous", "Town gas - Gigajoules", "Victoria", "Gj", "XXXXXX", "t", "t CO2 - e / Gj";
+        "Fuel - Stationary - Gaseous", "Town gas - Gigajoules", "Queensland", "Gj", "XXXXXX", "t", "t CO2 - e / Gj";
+        "Fuel - Stationary - Gaseous", "Town gas - Gigajoules", "South Australia", "Gj", "XXXXXX", "t", "t CO2 - e / Gj";
+        "Fuel - Stationary - Gaseous", "Town gas - Gigajoules", "Western Australia", "Gj", "XXXXXX", "t", "t CO2 - e / Gj";
+        "Fuel - Stationary - Gaseous", "Town gas - Gigajoules", "Tasmania", "Gj", "XXXXXX", "t", "t CO2 - e / Gj";
+        "Fuel - Stationary - Gaseous", "Town gas - Gigajoules", "Northern Territory", "Gj", "XXXXXX", "t", "t CO2 - e / Gj"
+      }, r, c)
+)));
+
+/*
+============================================================================
+Electricity - State Grid
+============================================================================
+*/
+
+Scope3_Electricity_Title
+=LAMBDA(("Electricity - State Grid scope 3"));
+
+Scope3_Electricity_Source
+=LAMBDA(("Scope 3 GHG Emission Factors for Australian Agriculture, Fisheries and Forestry 2026"));
+
+Scope3_Electricity_Variation
+=LAMBDA(("Emission factor values sourced from National Greenhouse Accounts Factors - See relevant table in 'Electricity Source Data'"));
+
+Scope3_Electricity_Data
+=LAMBDA(
+  MAKEARRAY(11, 7,
+    LAMBDA(r,c,
+      INDEX({
+        "Category", "Product", "Source", "Product Unit", "Emission Factor", "Embedded Emissions Unit", "Emissions Intensity Unit";
+        "Electricity", "State Grid", "New South Wales", "kWh", "XXXXXX", "t", "t CO2 - e / Gj";
+        "Electricity", "State Grid", "ACT", "kWh", "XXXXXX", "t", "t CO2 - e / Gj";
+        "Electricity", "State Grid", "Victoria", "kWh", "XXXXXX", "t", "t CO2 - e / Gj";
+        "Electricity", "State Grid", "Queensland", "kWh", "XXXXXX", "t", "t CO2 - e / Gj";
+        "Electricity", "State Grid", "South Australia", "kWh", "XXXXXX", "t", "t CO2 - e / Gj";
+        "Electricity", "State Grid", "Western Australia - South West Interconnected System (SWIS)", "kWh", "XXXXXX", "t", "t CO2 - e / Gj";
+        "Electricity", "State Grid", "Western Australia - North Western Interconnected System (NWIS)", "kWh", "XXXXXX", "t", "t CO2 - e / Gj";
+        "Electricity", "State Grid", "Tasmania", "kWh", "XXXXXX", "t", "t CO2 - e / Gj";
+        "Electricity", "State Grid", "Northern Territory - Darwin Katherine Interconnected System (DKIS)", "kWh", "XXXXXX", "t", "t CO2 - e / Gj";
+        "Electricity", "State Grid", "National", "kWh", "XXXXXX", "t", "t CO2 - e / Gj"
+      }, r, c)
+)));

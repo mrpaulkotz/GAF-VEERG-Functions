@@ -29,7 +29,7 @@ Fertiliser_ChemicalCompoundElements_Data
         "Single Superphosphate (SSP)", 0, 0.088, 0, 0.11, 0, "Other";
         "Double Superphosphate", 0, 0.088, 0, 0.11, 0, "Other";
         "Sulphate of Ammonia (SOA)", 0.21, 0, 0, 0.24, 0, "Ammonium";
-        "Muriate of Potash (MOP)", 0, 0, 0.6, 0, 0, "Other";
+        "Muriate of Potash (MOP / KCL)", 0, 0, 0.6, 0, 0, "Other";
         "Nitrogen - Generic", 1, 0, 0, 0, 0, "Nitrate";
         "Nitrogen - Nitrate", 0.226, 0, 0, 0, 0, "Nitrate";
         "Nitrogen - Ammoniacal", 0.82, 0, 0, 0, 0, "Ammonium";
@@ -62,10 +62,10 @@ Fertiliser_Products_Data1
     LAMBDA(r,c,
       INDEX({
         "Product", "Ingredient 1", "Ingredient 1 percent", "Ingredient 1 source", "Ingredient 2", "Ingredient 2 percent", "Ingredient 2 source", "Ingredient 3", "Ingredient 3 percent", "Ingredient 3 source", "Ingredient 4", "Ingredient 4 percent", "Ingredient 4 source", "Ingredient 5", "Ingredient 5 percent", "Ingredient 5 source", "Ingredient 6", "Ingredient 6 percent", "Ingredient 6 source", "Product info link";
-        "75% MAP 25% MOP", "Monoammonium phosphate (MAP)", 0.75, "Location not specified", "Muriate of Potash (MOP)", 0.25, "Rest of world", "", "", "", "", "", "", "", "", "", "", "", "", "";
-        "75% Urea 25% MOP", "Urea", 0.75, "Location not specified", "Muriate of Potash (MOP)", 0.25, "Location not specified", "", "", "", "", "", "", "", "", "", "", "", "", "";
-        "80% Urea 20% MAP", "Urea-Ammonium Nitrate (UAN)", 0.8, "China", "Monoammonium phosphate (MAP)", 0.2, "Rest of world", "", "", "", "", "", "", "", "", "", "", "", "", "";
-        "Activate N", "Nitrogen - Ammoniacal", 0.071, "Rest of world", "Nitrogen - Nitrate", 0.006, "Rest of world", "Nitrogen - Ureic", 0.093, "Location not specified", "Phosphorus - Generic", 0.01, "Location not specified", "Potassium - Generic", 0.04, "Location not specified", "Sulfur - Generic", 0.82, "Location not specified", "Active N (Lawnpride.com.au)";
+        "75% MAP 25% MOP", "Monoammonium phosphate (MAP)", 0.75, "Location not specified", "Muriate of Potash (MOP / KCL)", 0.25, "Location not specified", "", "", "", "", "", "", "", "", "", "", "", "", "";
+        "75% Urea 25% MOP", "Urea", 0.75, "Location not specified", "Muriate of Potash (MOP / KCL)", 0.25, "Location not specified", "", "", "", "", "", "", "", "", "", "", "", "", "";
+        "80% Urea 20% MAP", "Urea-Ammonium Nitrate (UAN)", 0.8, "China", "Monoammonium phosphate (MAP)", 0.2, "Location not specified", "", "", "", "", "", "", "", "", "", "", "", "", "";
+        "Activate N", "Nitrogen - Ammoniacal", 0.071, "Location not specified", "Nitrogen - Nitrate", 0.006, "Location not specified", "Nitrogen - Ureic", 0.093, "Location not specified", "Phosphorus - Generic", 0.01, "Location not specified", "Potassium - Generic", 0.04, "Location not specified", "Sulfur - Generic", 0.82, "Location not specified", "Active N (Lawnpride.com.au)";
         "Activist Max Zinc", "Nitrogen - Generic", 0.07, "Location not specified", "Zinc - Generic", 0.7, "Location not specified", "", "", "", "", "", "", "", "", "", "", "", "", "ACTIVIST-MAX.pdf (agrichem.com.au)";
         "Agflow", "Nitrogen - Generic", 0.129, "Location not specified", "Phosphorus - Generic", 0.177, "Location not specified", "Sulfur - Generic", 0.06, "Location not specified", "", "", "", "", "", "", "", "", "", "CSBP High / Maintenance S";
         "Agflow Boost", "Nitrogen - Generic", 0.121, "Location not specified", "Phosphorus - Generic", 0.198, "Location not specified", "Sulfur - Generic", 0.041, "Location not specified", "", "", "", "", "", "", "", "", "", "CSBP High / Maintenance S";
