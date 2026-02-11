@@ -21,6 +21,13 @@ Fertiliser_SumProductApplied
   )
 );
 
+Fertiliser_TotalSoilAmendmentApplied
+=LAMBDA(
+  AmountApplied, AmendmentPercent,
+  SUMPRODUCT(AmountApplied * AmendmentPercent)
+);
+
+
 
 Fertiliser_TotalChemicalCompoundAppliedAllIngredients
 =LAMBDA(

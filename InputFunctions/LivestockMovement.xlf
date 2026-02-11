@@ -312,3 +312,14 @@ LivestockMovement_MovementLiveweightSold
   MovementType, Head, Liveweight,
   IF(MovementType = "Sale", Head*Liveweight, "")
 );
+
+LivestockMovement_SumPurchasedLiveweight
+=LAMBDA(
+  MovementType, MovementTypeArray, Head,Liveweight, [Source],[SourceArray],
+  LET(
+    totalLiveweight, Head*Liveweight,
+    criteria1,--(MovementTypeArray=MovementType),
+    criteria2,IF(ISOMITTED(Source),1,--(SourceArray=Source)),
+    SUMPRODUCT(criteria1*criteria2*totalLiveweight)
+  )
+);

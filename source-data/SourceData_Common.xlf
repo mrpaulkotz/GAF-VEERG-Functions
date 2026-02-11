@@ -441,3 +441,42 @@ SourceData_Common_LeachingZones_Data
       )
     )
   );
+
+
+
+/* 
+--------------------------------------
+SourceData_Common_DataScores_Scope3
+--------------------------------------
+*/
+
+SourceData_Common_DataScores_Scope3_Title
+  =LAMBDA("Australian data scores for scope 3");
+
+SourceData_Common_DataScores_Scope3_Variable
+  =LAMBDA("");
+
+SourceData_Common_DataScores_Scope3_Unit
+  =LAMBDA("");
+
+SourceData_Common_DataScores_Scope3_Source
+  =LAMBDA("VEERG 2026: XXXXXXXX");
+
+SourceData_Common_DataScores_Scope3_Variation
+  =LAMBDA("");
+
+SourceData_Common_DataScores_Scope3_Data
+   =LAMBDA(
+    MAKEARRAY(6, 2, 
+      LAMBDA(r,c, 
+        INDEX({
+          "Data source", "Data score";
+          "International scope 3 database", 1;
+          "Australian scope 3 database", 2;
+          "State or regional scope 3 database", 3;
+          "Emissions intensity calculated from approved method", 4;
+          "Verified credential matching ISO14067", 5
+        }, r, c)
+      )
+    )
+  );

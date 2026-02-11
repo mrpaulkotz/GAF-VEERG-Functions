@@ -103,9 +103,9 @@ Scope3_SoilAmendments_Data
     LAMBDA(r,c,
       INDEX({
         "Category", "Product", "Source", "Product Unit", "Emission Factor", "Embedded Emissions Unit", "Emissions Intensity Unit";
-        "Soil Amendments", "Lime - calcium carbonate", "Location not specified", "t", 030101, "t", "t CO2-e / t";
-        "Soil Amendments", "Limesand - no crushing", "Location not specified", "t", 030102, "t", "t CO2-e / t";
-        "Soil Amendments", "Dolomite - magnesium carbonate", "Location not specified", "t", 030103, "t", "t CO2-e / t";
+        "Soil Amendments", "Lime", "Location not specified", "t", 030101, "t", "t CO2-e / t";
+        "Soil Amendments", "Limesand", "Location not specified", "t", 030102, "t", "t CO2-e / t";
+        "Soil Amendments", "Dolomite", "Location not specified", "t", 030103, "t", "t CO2-e / t";
         "Soil Amendments", "Gypsum", "Location not specified", "t", 030104, "t", "t CO2-e / t";
         "Soil Amendments", "Potash", "Location not specified", "t", 030105, "t", "t CO2-e / t"
       }, r, c)
@@ -134,9 +134,9 @@ Scope3_Agrochemicals_Data
         "Category", "Product", "Source", "Product Unit", "Emission Factor", "Embedded Emissions Unit", "Emissions Intensity Unit";
         "Agrochemicals", "Glyphosate", "Location not specified", "t", 040101, "t", "t CO2-e / t";
         "Agrochemicals", "Paraquat, diquat", "Location not specified", "t", 040102, "t", "t CO2-e / t";
-        "Agrochemicals", "Herbicide", "Location not specified", "t", 040103, "t", "t CO2-e / t";
-        "Agrochemicals", "Insecticide", "Location not specified", "t", 040104, "t", "t CO2-e / t";
-        "Agrochemicals", "Fungicide", "Location not specified", "t", 040105, "t", "t CO2-e / t"
+        "Agrochemicals", "Generic Herbicide", "Location not specified", "t", 040103, "t", "t CO2-e / t";
+        "Agrochemicals", "Generic Insecticide", "Location not specified", "t", 040104, "t", "t CO2-e / t";
+        "Agrochemicals", "Generic Fungicide", "Location not specified", "t", 040105, "t", "t CO2-e / t"
       }, r, c)
 )));
 
@@ -224,17 +224,18 @@ Scope3_AquacultureFeedAndBait_Variation
 
 Scope3_AquacultureFeedAndBait_Data
 =LAMBDA(
-  MAKEARRAY(8, 7,
+  MAKEARRAY(9, 7,
     LAMBDA(r,c,
       INDEX({
         "Category", "Product", "Source", "Product Unit", "Emission Factor", "Embedded Emissions Unit", "Emissions Intensity Unit";
         "Aquaculture Feed and Bait", "Low Animal Protein Formulated Feed", "Location not specified", "t", 070101, "t", "t CO2-e / t";
         "Aquaculture Feed and Bait", "High Animal Protein Formulated Feed", "Location not specified", "t", 070102, "t", "t CO2-e / t";
-        "Aquaculture Feed and Bait", "Squid", "Location not specified", "t", 070103, "t", "t CO2-e / t";
-        "Aquaculture Feed and Bait", "Whole Fish", "Location not specified", "t", 070104, "t", "t CO2-e / t";
-        "Aquaculture Feed and Bait", "Whole Sardines", "Location not specified", "t", 070105, "t", "t CO2-e / t";
-        "Aquaculture Feed and Bait", "Fish Frames", "Location not specified", "t", 070106, "t", "t CO2-e / t";
-        "Aquaculture Feed and Bait", "Fish Heads", "Location not specified", "t", 070107, "t", "t CO2-e / t"
+        "Aquaculture Feed and Bait", "Cereal grain", "Location not specified", "t", 070103, "t", "t CO2-e / t";
+        "Aquaculture Feed and Bait", "Squid", "Location not specified", "t", 070104, "t", "t CO2-e / t";
+        "Aquaculture Feed and Bait", "Whole Fish", "Location not specified", "t", 070105, "t", "t CO2-e / t";
+        "Aquaculture Feed and Bait", "Whole Sardines", "Location not specified", "t", 070106, "t", "t CO2-e / t";
+        "Aquaculture Feed and Bait", "Fish Frames", "Location not specified", "t", 070107, "t", "t CO2-e / t";
+        "Aquaculture Feed and Bait", "Fish Heads", "Location not specified", "t", 070108, "t", "t CO2-e / t"
       }, r, c)
 )));
 
@@ -255,12 +256,13 @@ Scope3_Livestock_Variation
 
 Scope3_Livestock_Data
 =LAMBDA(
-  MAKEARRAY(7, 7,
+  MAKEARRAY(8, 7,
     LAMBDA(r,c,
       INDEX({
         "Category", "Product", "Source", "Product Unit", "Emission Factor", "Embedded Emissions Unit", "Emissions Intensity Unit";
         "Livestock", "Beef cattle", "Northern Australia", "t LW", 080101, "t", "t CO2-e / t LW";
         "Livestock", "Beef cattle", "Southern Australia", "t LW", 080102, "t", "t CO2-e / t LW";
+        "Livestock", "Beef cattle", "Dairy Origin", "t LW", 080102, "t", "t CO2-e / t LW";
         "Livestock", "Dairy cattle", "Location not specified", "t LW", 080103, "t", "t CO2-e / t LW";
         "Livestock", "Sheep", "Location not specified", "t LW", 080104, "t", "t CO2-e / t LW";
         "Livestock", "Pigs", "Location not specified", "t LW", 080105, "t", "t CO2-e / t LW";
@@ -320,9 +322,38 @@ Scope3_SeedsAndSeedlings_Data
       INDEX({
         "Category", "Product", "Source", "Product Unit", "Emission Factor", "Embedded Emissions Unit", "Emissions Intensity Unit";
         "Seeds and Seedlings" ,"Seed (general crop and pasture)", "Location not specified", "t", 100101, "t", "t CO2-e / t";
-        "Seeds and Seedlings" ,"Seedlings (forestry, horticulture, environmental)", "Location not specified", "t", 100102, "t", "t CO2-e / t"
+        "Seeds and Seedlings" ,"Seedlings (forestry, horticulture, environmental)", "Location not specified", "Seedling", 100102, "t", "t CO2-e / Seedling"
       }, r, c)
 )));
+
+/*
+============================================================================
+Cleaning chemicals
+============================================================================
+*/
+
+Scope3_CleaningChemicals_Title
+=LAMBDA(("Cleaning chemicals scope 3"));
+
+Scope3_CleaningChemicals_Source
+=LAMBDA(("Scope 3 GHG Emission Factors for Australian Agriculture, Fisheries and Forestry 2026"));
+
+Scope3_CleaningChemicals_Variation
+=LAMBDA((""));
+
+Scope3_CleaningChemicals_Data
+=LAMBDA(
+  MAKEARRAY(4, 7,
+    LAMBDA(r,c,
+      INDEX({
+        "Category", "Product", "Source", "Product Unit", "Emission Factor", "Embedded Emissions Unit", "Emissions Intensity Unit";
+        "Cleaning chemicals", "Detergent", "Location not specified", "t", 110101, "t", "t CO2-e / t";
+        "Cleaning chemicals", "Acid", "Location not specified", "t", 110102, "t", "t CO2-e / t";
+        "Cleaning chemicals", "Bleach", "Location not specified", "L", 110103, "t", "t CO2-e / L"
+      }, r, c)
+)));
+
+
 
 /*
 ============================================================================
@@ -345,11 +376,11 @@ Scope3_OtherAgriculturalInputs_Data
     LAMBDA(r,c,
       INDEX({
         "Category", "Product", "Source", "Product Unit", "Emission Factor", "Embedded Emissions Unit", "Emissions Intensity Unit";
-        "Other Agricultural Inputs", "CO2 for carbonation", "Location not specified", "t", 110101, "t", "t CO2-e / t";
+        "Other Agricultural Inputs", "CO2 for carbonation", "Location not specified", "t", 120101, "t", "t CO2-e / t";
         "Other Agricultural Inputs", "Livestock antibiotics", "Location not specified", "t", 110102, "t", "t CO2-e / t";
-        "Other Agricultural Inputs", "Cleaning chemicals (detergent, acid, bleach)", "Location not specified", "t", 110103, "t", "t CO2-e / t";
-        "Other Agricultural Inputs", "Nylon netting for horticulture", "Location not specified", "t", 110104, "t", "t CO2-e / t";
-        "Other Agricultural Inputs", "Pallets (wood and plastic)", "Location not specified", "t", 110105, "t", "t CO2-e / t";
+        "Other Agricultural Inputs", "Nylon netting for horticulture", "Location not specified", "t", 110103, "t", "t CO2-e / t";
+        "Other Agricultural Inputs", "Pallets - Wood", "Location not specified", "t", 110104, "t", "t CO2-e / t";
+        "Other Agricultural Inputs", "Pallets - Plastic", "Location not specified", "t", 110105, "t", "t CO2-e / t";
         "Other Agricultural Inputs", "Livestock tags", "Location not specified", "t", 110106, "t", "t CO2-e / t"
       }, r, c)
 )));
