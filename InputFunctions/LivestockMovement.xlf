@@ -224,21 +224,21 @@ LivestockMovement_GetGrowthFactor
   )
 ));
 
-LivestockMovement_GetDurationOfStay
-=LAMBDA(
-  LivestockClass,
-  HLOOKUP(LivestockClass, Table_DurationOfStay[#All], 2, FALSE)
-);
+// LivestockMovement_GetDurationOfStay
+// =LAMBDA(
+//   LivestockClass,
+//   HLOOKUP(LivestockClass, Table_DurationOfStay[#All], 2, FALSE)
+// );
 
-LivestockMovement_CalculateLiveweightGain
-=LAMBDA(
-  Month, LivestockClass,
-  (
-    (LivestockMovement_GetLiveweightAtEnd(LivestockClass) - 
-    LivestockMovement_GetLiveweightAtStart(LivestockClass))
-    / LivestockMovement_GetDurationOfStay(LivestockClass)
-  )* LivestockMovement_GetGrowthFactor(Month, LivestockClass)
-);
+// LivestockMovement_CalculateLiveweightGain
+// =LAMBDA(
+//   Month, LivestockClass,
+//   (
+//     (LivestockMovement_GetLiveweightAtEnd(LivestockClass) - 
+//     LivestockMovement_GetLiveweightAtStart(LivestockClass))
+//     / LivestockMovement_GetDurationOfStay(LivestockClass)
+//   )* LivestockMovement_GetGrowthFactor(Month, LivestockClass)
+// );
 
 AverageLiveweightEndOfMonth
 =LAMBDA(
@@ -264,11 +264,28 @@ LivestockMovement_TotalLiveweightGrownDuringMonthAddedAndRemaining
   LivestockMovement_TotalLiveweightGrownDuringMonth(Month, LivestockClass)
 );
 
-LivestockMovement_CalculateStayDurationToEnd
+// LivestockMovement_CalculateStayDurationToEnd
+// =LAMBDA(
+//   LivestockClass, ReportingPeriodEndDate,
+//   DATEDIF(
+//     MINIFS(Input_HerdMovement[Date], Input_HerdMovement[To],LivestockClass), ReportingPeriodEndDate, "d"
+//   )
+// );
+
+LivestockMovement_CalculateStayDurationToEnd2
 =LAMBDA(
-  LivestockClass, ReportingPeriodEndDate,
-  DATEDIF(
-    MINIFS(Input_HerdMovement[Date], Input_HerdMovement[To],LivestockClass), ReportingPeriodEndDate, "d"
+  LivestockClass,
+  ReportingPeriodStartDate,
+  HeadAtReportingPeriodStartDate,
+  ReportingPeriodEndDate,
+  HeadAtReportingPeriodEndDate,
+  MovementDateArray,
+  MovementToArray,
+  MovementFromArray,
+  LET(
+    durationStart, IF(HeadAtReportingPeriodStartDate>0, ReportingPeriodStartDate, MINIFS(MovementDateArray, MovementToArray,LivestockClass)),
+    durationEnd, IF(HeadAtReportingPeriodEndDate > 0, ReportingPeriodEndDate, MAXIFS(MovementDateArray, MovementFromArray,LivestockClass)),
+    DATEDIF(DurationStart, durationEnd, "d")
   )
 );
 
@@ -307,7 +324,7 @@ LivestockMovement_CalculateProportionCowsCalving
   )
 );
 
-LivestockMovement_MovementLiveweightSold
+LivestockMovement_TotalMovementLiveweightSold
 =LAMBDA(
   MovementType, Head, Liveweight,
   IF(MovementType = "Sale", Head*Liveweight, "")
@@ -322,4 +339,145 @@ LivestockMovement_SumPurchasedLiveweight
     criteria2,IF(ISOMITTED(Source),1,--(SourceArray=Source)),
     SUMPRODUCT(criteria1*criteria2*totalLiveweight)
   )
+);
+
+LivestockMovement_GetHeadAtEnd
+=LAMBDA(
+  EndDate, LivestockClass, DateArray, LivestockClassArray, HeadAtEndOfMonthArray,
+  IFERROR(
+    XLOOKUP(
+      TEXT(EDATE(EndDate, 0),"mmmm yyyy")&LivestockClass,
+      DateArray&LivestockClassArray,
+      HeadAtEndOfMonthArray),
+    "-"
+  )
+);
+
+LivestockMovement_GetEntryDate
+=LAMBDA(
+  HeadAtStart, HeadAtEntry, LivestockClass, MovementDateArray, MovementToArray,
+    IF(
+      HeadAtStart=0,
+      IF(
+        MINIFS(MovementDateArray,MovementToArray,LivestockClass),
+        MINIFS(MovementDateArray,MovementToArray,LivestockClass),
+        "-" 
+      ),
+      "-"
+    )
+);
+
+LivestockMovement_GetExitDate
+=LAMBDA(
+  HeadAtEnd, LivestockClass, MovementDateArray, MovementFromArray,
+  IF(
+    HeadAtEnd=0,
+    IF(
+      MAXIFS(MovementDateArray,MovementFromArray,LivestockClass),
+      MAXIFS(MovementDateArray,MovementFromArray,LivestockClass),
+      "-"
+    ),
+    "-"
+  )
+);
+
+LivestockMovement_GetHeadAtExit
+=LAMBDA(
+  ExitDate, LivestockClass, DateArray, LivestockClassArray, HeadAtStartOfMonthArray,
+  IFERROR(
+    XLOOKUP(
+      TEXT(EDATE(ExitDate, 0),"mmmm yyyy")&LivestockClass,
+      DateArray&LivestockClassArray,
+      HeadAtStartOfMonthArray),
+    "-"
+  )
+);
+
+LivestockMovement_GetLiveweightAtEntry
+=LAMBDA(
+  LivestockClass, LiveweightAtStart, EntryDate, MovementDateArray, MovementToArray, MovementLiveweightArray,
+  IF(
+    ISNUMBER(EntryDate),
+    IF(
+      LiveweightAtStart=0,
+      AVERAGEIFS(
+        MovementLiveweightArray,
+        MovementDateArray, EntryDate, 
+        MovementToArray, LivestockClass
+        ),
+      "-"
+    ),
+    "-"
+  )
+);
+
+LivestockMovement_GetLiveweightAtExit
+=LAMBDA(
+  LivestockClass, LiveweightAtEnd, ExitDate, MovementDateArray, MovementFromArray, MovementLiveweightArray,
+  IF(
+    ISNUMBER(ExitDate),
+    IF(
+      LiveweightAtEnd=0,
+      AVERAGEIFS(
+        MovementLiveweightArray,
+        MovementDateArray, ExitDate,
+        MovementFromArray, LivestockClass
+        ),
+      "-"
+    ),
+    "-"
+  )
+);
+
+LivestockMovement_GetDurationOfStay2
+=LAMBDA(
+  EntryDate, HeadAtStart, HeadAtEnd, ReportingStartDate, ExitDate, ReportingEndDate,
+  LET(
+    dateOfEntry, IF(ISNUMBER(EntryDate), EntryDate, "-"),
+    dateOfReportingStart, IF(HeadAtStart>0, ReportingStartDate, "-"),
+    
+    dateOfExit, IF(ISNUMBER(ExitDate), ExitDate, "-"),
+    dateOfReportingEnd, IF(HeadAtEnd>0, ReportingEndDate, "-"),
+
+    durationStart, IF(ISNUMBER(dateOfEntry), dateOfEntry, dateOfReportingStart),
+    durationEnd, IF(ISNUMBER(dateOfExit), dateOfExit, dateOfReportingEnd),
+    IFERROR(
+      DATEDIF(durationStart, durationEnd, "d"), "-"
+    )
+    )
+);
+
+LivestockMovement_GetDurationOfStayPostWeaning
+=LAMBDA(
+  DurationOfStay, DaysWeaning,
+  FLOOR.MATH(
+    IFERROR(
+      DurationOfStay - DaysWeaning, 0
+    )
+  )
+);
+
+LivestockMovement_GetAverageLiveweightGain
+=LAMBDA(
+  LiveweightAtStart, LiveweightAtEntry, LiveweightAtEnd, LiveweightAtExit, DurationOfStay,
+  IFERROR(
+    LET(
+      startLiveweight, IF(LiveweightAtStart>0, LiveweightAtStart, LiveweightAtEntry),
+      endLiveweight, IF(LiveweightAtEnd>0,LiveweightAtEnd, LiveweightAtExit),
+      (endLiveweight-startLiveweight)/DurationOfStay
+    ), 0
+  )
+);
+
+LivestockMovement_GetAdjustedLiveweightGain
+=LAMBDA(
+  AverageLiveweightGain, LivestockClass, Month, LivestockClassArray, MonthArray, ReturnArray,
+  XLOOKUP(
+    Month, MonthArray,
+    XLOOKUP(
+      LivestockClass,
+      LivestockClassArray,
+      ReturnArray
+    )
+  ) * AverageLiveweightGain
 );
