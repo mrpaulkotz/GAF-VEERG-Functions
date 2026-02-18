@@ -212,34 +212,6 @@ LivestockMovement_GetLiveweightAtEnd
   HLOOKUP(LivestockClass, Range_LivestockStartingValues, 4, FALSE)
 );
 
-LivestockMovement_GetGrowthFactor
-=LAMBDA(
-  Month, LivestockClass,  
-  XLOOKUP(
-    Month,
-   CrudeProteinGrowthFactor[Month],
-  INDEX(
-    CrudeProteinGrowthFactor, , 
-    MATCH(LivestockClass, CrudeProteinGrowthFactor[#Headers], 0)
-  )
-));
-
-// LivestockMovement_GetDurationOfStay
-// =LAMBDA(
-//   LivestockClass,
-//   HLOOKUP(LivestockClass, Table_DurationOfStay[#All], 2, FALSE)
-// );
-
-// LivestockMovement_CalculateLiveweightGain
-// =LAMBDA(
-//   Month, LivestockClass,
-//   (
-//     (LivestockMovement_GetLiveweightAtEnd(LivestockClass) - 
-//     LivestockMovement_GetLiveweightAtStart(LivestockClass))
-//     / LivestockMovement_GetDurationOfStay(LivestockClass)
-//   )* LivestockMovement_GetGrowthFactor(Month, LivestockClass)
-// );
-
 AverageLiveweightEndOfMonth
 =LAMBDA(
   Month, LivestockClass, HeadAtStart, LiveweightAtStart, LiveweightGain,
@@ -263,14 +235,6 @@ LivestockMovement_TotalLiveweightGrownDuringMonthAddedAndRemaining
   LivestockMovement_LiveweightGrownFromMonthStartTotal(LivestockClass, Month, HeadAtStart)+
   LivestockMovement_TotalLiveweightGrownDuringMonth(Month, LivestockClass)
 );
-
-// LivestockMovement_CalculateStayDurationToEnd
-// =LAMBDA(
-//   LivestockClass, ReportingPeriodEndDate,
-//   DATEDIF(
-//     MINIFS(Input_HerdMovement[Date], Input_HerdMovement[To],LivestockClass), ReportingPeriodEndDate, "d"
-//   )
-// );
 
 LivestockMovement_CalculateStayDurationToEnd2
 =LAMBDA(
@@ -301,14 +265,14 @@ LivestockMovement_AverageHeadMonth
 
 LivestockMovement_TotalBirthsDuringMonth
 = LAMBDA(
-    Month,
+    Month, MovementHeadArray, MovementDateArray, MovementTypeArray,
     IFERROR(
     SUM(
       FILTER(
-        Input_HerdMovement[Head],
-        (Input_HerdMovement[Date] >= EOMONTH(Month,-1)+1) *
-        (Input_HerdMovement[Date] <= EOMONTH(Month,0)) *
-        (Input_HerdMovement[Movement type (select)] = "Birth")
+        MovementHeadArray,
+        (MovementDateArray >= EOMONTH(Month,-1)+1) *
+        (MovementDateArray <= EOMONTH(Month,0)) *
+        (MovementTypeArray = "Birth")
       )
     ),
     0

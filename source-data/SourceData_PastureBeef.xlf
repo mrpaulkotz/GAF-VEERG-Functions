@@ -20,13 +20,103 @@ NIR_2023_Vol2
 
 /* 
 --------------------------------------
+NIR_2023_Vol2_A5_5_2_1_PastureBeef_Liveweight
+kg/head/day
+--------------------------------------
+*/
+
+NIR_2023_Vol2_A5_5_2_1_PastureBeef_Liveweight_Title
+  =LAMBDA("Beef cattle - Liveweight");
+
+NIR_2023_Vol2_A5_5_2_1_PastureBeef_Liveweight_Unit
+  =LAMBDA("kg/head/day");
+
+NIR_2023_Vol2_A5_5_2_1_PastureBeef_Liveweight_Source
+  =LAMBDA("National Inventory Report 2023 Volume 2 - Table A5.5.2.1");
+
+NIR_2023_Vol2_A5_5_2_1_PastureBeef_Liveweight_Variation
+  =LAMBDA("");
+
+NIR_2023_Vol2_A5_5_2_1_PastureBeef_Liveweight_Data
+  =LAMBDA(
+    MAKEARRAY(61, 15, 
+      LAMBDA(r,c, 
+        INDEX({
+          "State", "Region", "Season", "Bulls < 1", "Bulls > 1", "Cows < 1", "Cows 1-2", "Cows > 2", "Cows 2-3", "Cows > 3", "Steers < 1", "Steers > 1", "Steers 1-2", "Steers 2-3", "Steers > 3";
+          "ACT", "", "Spring", 80, 480, 75, 300, 440, "", "", 75, 380, "", "", "";
+          "ACT", "", "Summer", 170, 520, 160, 360, 470, "", "", 160, 420, "", "", "";
+          "ACT", "", "Autumn", 240, 550, 220, 390, 490, "", "", 220, 450, "", "", "";
+          "ACT", "", "Winter", 280, 560, 260, 410, 500, "", "", 260, 460, "", "", "";
+          "NSW", "", "Spring", 80, 480, 75, 300, 440, "", "", 75, 380, "", "", "";
+          "NSW", "", "Summer", 170, 520, 160, 360, 470, "", "", 160, 420, "", "", "";
+          "NSW", "", "Autumn", 240, 550, 220, 390, 490, "", "", 220, 450, "", "", "";
+          "NSW", "", "Winter", 280, 560, 260, 410, 500, "", "", 260, 460, "", "", "";
+          "SA", "", "Spring", 250, 800, 220, 400, 500, "", "", 230, 420, "", "", "";
+          "SA", "", "Summer", 320, 800, 280, 420, 500, "", "", 290, 420, "", "", "";
+          "SA", "", "Autumn", 80, 700, 70, 300, 450, "", "", 75, 400, "", "", "";
+          "SA", "", "Winter", 160, 700, 140, 350, 450, "", "", 150, 400, "", "", "";
+          "TAS", "", "Spring", 105, 700, 85, 300, 490, "", "", 90, 480, "", "", "";
+          "TAS", "", "Summer", 480, 750, 150, 350, 530, "", "", 160, 460, "", "", "";
+          "TAS", "", "Autumn", 250, 725, 200, 360, 500, "", "", 215, 490, "", "", "";
+          "TAS", "", "Winter", 260, 700, 210, 380, 460, "", "", 230, 470, "", "", "";
+          "VIC", "", "Spring", 250, 820, 240, 410, 560, "", "", 240, 510, "", "", "";
+          "VIC", "", "Summer", 280, 850, 260, 440, 550, "", "", 270, 520, "", "", "";
+          "VIC", "", "Autumn", 100, 700, 95, 300, 450, "", "", 95, 410, "", "", "";
+          "VIC", "", "Winter", 150, 720, 140, 320, 470, "", "", 140, 440, "", "", "";
+          "WA", "South West", "Spring", 340, 800, 260, 420, 550, "", "", 300, 480, "", "", ""; 
+          "WA", "South West", "Summer", 380, 780, 300, 450, 530, "", "", 340, 470, "", "", "";
+          "WA", "South West", "Autumn", 100, 680, 80, 320, 480, "", "", 100, 340, "", "", "";
+          "WA", "South West", "Winter", 190, 700, 150, 330, 490, "", "", 170, 360, "", "", "";
+          "WA", "Pilbara", "Spring", 80, 450, 70, 260, 340, "", "", 80, 370, "", "", "";
+          "WA", "Pilbara", "Summer", 150, 500, 140, 310, 360, "", "", 150, 400, "", "", "";
+          "WA", "Pilbara", "Autumn", 230, 550, 220, 330, 380, "", "", 230, 420, "", "", "";
+          "WA", "Pilbara", "Winter", 250, 500, 240, 340, 360, "", "", 250, 390, "", "", "";
+          "WA", "Kimberley", "Spring:", 220, 500, 180, 300, 320, "", "", 210, 340, "", "", "";
+          "WA", "Kimberley", "Summer:", 110, 550, 90, 220, 380, "", "", 100, 390, "", "", "";
+          "WA", "Kimberley", "Autumn:", 170, 600, 140, 270, 390, "", "", 160, 430, "", "", "";
+          "WA", "Kimberley", "Winter:", 200, 550, 150, 280, 350, "", "", 190, 400, "", "", "";
+          "NT", "Alice Springs", "Spring", 220, 706, 208, 323, "", 415, 467, 223, "", 371, 493, 585;
+          "NT", "Alice Springs", "Summer", 110, 703, 112, 256, "", 368, 465, 108, "", 280, 421, 543;
+          "NT", "Alice Springs", "Autumn", 170, 721, 169, 306, "", 392, 464, 176, "", 339, 470, 580;
+          "NT", "Alice Springs", "Winter", 200, 727, 211, 338, "", 432, 492, 222, "", 377, 498, 590;
+          "NT", "Barkly", "Spring", 220, 620, 227, 319, "", 398, 452, 216, "", 334, 0, 0;
+          "NT", "Barkly", "Summer", 110, 650, 108, 262, "", 346, 430, 111, "", 236, 0, 0;
+          "NT", "Barkly", "Autumn", 170, 670, 170, 266, "", 363, 444, 169, "", 282, 0, 0;
+          "NT", "Barkly", "Winter", 200, 660, 225, 307, "", 398, 452, 214, "", 326, 0, 0;
+          "NT", "Northern", "Spring", 220, 620, 177, 267, "", 365, 406, 231, "", 249, 324, 0;
+          "NT", "Northern", "Summer", 110, 650, 102, 203, "", 299, 380, 102, "", 218, 263, 0;
+          "NT", "Northern", "Autumn", 170, 670, 173, 250, "", 336, 414, 175, "", 243, 304, 0;
+          "NT", "Northern", "Winter", 200, 660, 202, 272, "", 365, 390, 208, "", 260, 337, 0;
+          "QLD", "High", "Spring", 260, 705, 215, 302, "", 416, 519, 234, "", 455, 551, 660;
+          "QLD", "High", "Summer", 153, 703, 118, 277, "", 397, 483, 111, "", 304, 521, 547;
+          "QLD", "High", "Autumn", 168, 718, 191, 319, "", 440, 506, 188, "", 326, 520, 582;
+          "QLD", "High", "Winter", 235, 722, 207, 352, "", 470, 514, 209, "", 421, 512, 605;
+          "QLD", "Moderate/High", "Spring", 230, 674, 217, "", 344, 357, 467, 242, "", 370, 550, 620;
+          "QLD", "Moderate/High", "Summer", 113, 669, 113, "", 283, 361, 477, 120, "", 273, 545, 553;
+          "QLD", "Moderate/High", "Autumn", 172, 685, 172, "", 309, 376, 471, 238, "", 329, 573, 620;
+          "QLD", "Moderate/High", "Winter", 241, 692, 208, "", 344, 364, 484, 260, "", 350, 567, 620;
+          "QLD", "Moderate/Low", "Spring", 236, 674, 178, "", 310, 428, 466, 193, "", 370, 519, 565;
+          "QLD", "Moderate/Low", "Summer", 120, 669, 112, "", 250, 390, 448, 115, "", 273, 433, 556;
+          "QLD", "Moderate/Low", "Autumn", 125, 685, 140, "", 277, 407, 455, 141, "", 296, 445, 593;
+          "QLD", "Moderate/Low", "Winter", 180, 692, 183, "", 316, 438, 468, 189, "", 354, 500, 553;
+          "QLD", "Low", "Spring", 190, 617, 174, "", 265, 371, 415, 170, "", 272, 392, 531;
+          "QLD", "Low", "Summer", 119, 591, 140, "", 205, 310, 405, 133, "", 218, 315, 445;
+          "QLD", "Low", "Autumn", 175, 610, 163, "", 232, 351, 427, 146, "", 242, 320, 471;
+          "QLD", "Low", "Winter", 192, 615, 162, "", 255, 364, 420, 157, "", 261, 342, 484
+        }, r, c)
+      )
+    )
+  );
+
+/* 
+--------------------------------------
 NIR_2023_Vol2_A5_5_2_2_PastureBeef_LiveweightGain
 kg/head/day
 --------------------------------------
 */
 
 NIR_2023_Vol2_A5_5_2_2_PastureBeef_LiveweightGain_Title
-  =LAMBDA("Beef cattle – Liveweight gain");
+  =LAMBDA("Beef cattle - Liveweight gain");
 
 NIR_2023_Vol2_A5_5_2_2_PastureBeef_LiveweightGain_Unit
   =LAMBDA("kg/head/day");
@@ -39,7 +129,7 @@ NIR_2023_Vol2_A5_5_2_2_PastureBeef_LiveweightGain_Variation
 
 NIR_2023_Vol2_A5_5_2_2_PastureBeef_LiveweightGain_Data
   =LAMBDA(
-    MAKEARRAY(57, 15, 
+    MAKEARRAY(61, 15, 
       LAMBDA(r,c, 
         INDEX({
           "State", "Region", "Season", "Bulls < 1", "Bulls > 1", "Cows < 1", "Cows 1-2", "Cows > 2", "Cows 2-3", "Cows > 3", "Steers < 1", "Steers > 1", "Steers 1-2", "Steers 2-3", "Steers > 3";
@@ -98,9 +188,212 @@ NIR_2023_Vol2_A5_5_2_2_PastureBeef_LiveweightGain_Data
           "QLD", "Moderate/Low", "Spring", 0.62, -0.19, 0.37, 0.41, "", 0.06, -0.02, 0.47, "", 0.44, 0.3, 0.13;
           "QLD", "Moderate/Low", "Summer", 0.05, 0.19, 0.31, 0.54, "", 0.53, 0.15, 0.28, "", 0.57, 0.42, 0.4;
           "QLD", "Moderate/Low", "Autumn", 0.33, 0.13, 0.39, 0.36, "", 0.26, 0.11, 0.4, "", 0.44, 0.37, -0.01;
-          "QLD", "Moderate/Low", "Winter", 0.61, -0.06, 0.21, 0.18, "", 0.12, 0.06, 0.29, "", 0.41, 0.41, -0.15
+          "QLD", "Moderate/Low", "Winter", 0.61, -0.06, 0.21, 0.18, "", 0.12, 0.06, 0.29, "", 0.41, 0.41, -0.15;
+          "QLD", "Low", "Spring", -0.20, 0.02, 0.24, 0.30, "", 0.23, -0.05, 0.34, "", 0.30, 0.57, 0.52;
+          "QLD", "Low", "Summer", 0.62, 0.21, 0.25, 0.32, "", 0.47, 0.31, 0.14, "", 0.40, 0.26, 0.43;
+          "QLD", "Low", "Autumn", 0.40, 0.13, 0.12, 0.27, "", 0.30, 0.08, 0.13, "", 0.24, 0.15, 0.21;
+          "QLD", "Low", "Winter", 0.08, 0.04, 0.06, 0.18, "", 0.11, -0.07, 0.13, "", 0.16, 0.40, 0.33
         }, r, c)
       )
     )
   );
 
+
+/* 
+--------------------------------------
+NIR_2023_Vol2_A5_5_2_3_PastureBeef_DryMatterDigestibility
+per cent
+--------------------------------------
+*/
+
+NIR_2023_Vol2_A5_5_2_3_PastureBeef_DryMatterDigestibility_Title
+  =LAMBDA("Beef cattle - Dry matter digestibility of feed intake (per cent)");
+
+NIR_2023_Vol2_A5_5_2_3_PastureBeef_DryMatterDigestibility_Unit
+  =LAMBDA("per cent");
+
+NIR_2023_Vol2_A5_5_2_3_PastureBeef_DryMatterDigestibility_Source
+  =LAMBDA("National Inventory Report 2023 Volume 2 - Table A5.5.2.3");
+
+NIR_2023_Vol2_A5_5_2_3_PastureBeef_DryMatterDigestibility_Variation
+  =LAMBDA("VARIATION OF SOURCE DATA: ACT and NSW split.");
+
+NIR_2023_Vol2_A5_5_2_3_PastureBeef_DryMatterDigestibility_Data
+  =LAMBDA(
+    MAKEARRAY(11, 6, 
+      LAMBDA(r,c, 
+        INDEX({
+          "State", "Region", "Spring", "Summer", "Autumn", "Winter";
+          "ACT", "", 55, 65, 60, 50;
+          "NSW", "", 55, 65, 60, 50;
+          "NT", "", 55, 61, 57, 54;
+          "QLD", "", 53, 57, 55, 51;
+          "SA", "", 70, 55, 55, 75;
+          "TAS", "", 75, 60, 70, 75;
+          "VIC", "", 80, 55, 60, 76;
+          "WA", "South West", 80, 58, 50, 75;
+          "WA", "Pilbara", 40, 65, 55, 45;
+          "WA", "Kimberley", 40, 65, 55, 45
+        }, r, c)
+      )
+    )
+  );
+
+/* 
+--------------------------------------
+NIR_2023_Vol2_A5_5_2_4_PastureBeef_CrudeProteinContent
+fraction
+--------------------------------------
+*/
+
+NIR_2023_Vol2_A5_5_2_4_PastureBeef_CrudeProteinContent_Title
+  =LAMBDA("Beef cattle - Crude protein content of feed intake (fraction)");
+
+NIR_2023_Vol2_A5_5_2_4_PastureBeef_CrudeProteinContent_Unit
+  =LAMBDA("fraction");
+
+NIR_2023_Vol2_A5_5_2_4_PastureBeef_CrudeProteinContent_Source
+  =LAMBDA("National Inventory Report 2023 Volume 2 - Table A5.5.2.4");
+
+NIR_2023_Vol2_A5_5_2_4_PastureBeef_CrudeProteinContent_Variation
+  =LAMBDA("VARIATION OF SOURCE DATA: ACT and NSW split.");
+
+NIR_2023_Vol2_A5_5_2_4_PastureBeef_CrudeProteinContent_Data
+  =LAMBDA(
+    MAKEARRAY(11, 6, 
+      LAMBDA(r,c, 
+        INDEX({
+          "State", "Region", "Spring", "Summer", "Autumn", "Winter";
+          "ACT", "", 0.07, 0.13, 0.1, 0.06;
+          "NSW", "", 0.07, 0.13, 0.1, 0.06;
+          "NT", "", 0.058, 0.092, 0.075, 0.053;
+          "QLD", "", 0.072, 0.099, 0.078, 0.059;
+          "SA", "", 0.16, 0.07, 0.09, 0.2;
+          "TAS", "", 0.2, 0.1, 0.16, 0.2;
+          "VIC", "", 0.25, 0.07, 0.1, 0.21;
+          "WA", "South West", 0.2, 0.09, 0.06, 0.2;
+          "WA", "Pilbara", 0.04, 0.12, 0.09, 0.06;
+          "WA", "Kimberley", 0.04, 0.12, 0.09, 0.06
+        }, r, c)
+      )
+    )
+  );
+
+
+/* 
+--------------------------------------
+NIR_2023_Vol2_A5_5_2_5_PastureBeef_CrudeProteinContent
+--------------------------------------
+*/
+
+NIR_2023_Vol2_A5_5_2_5_PastureBeef_CrudeProteinContent_Title
+  =LAMBDA("Beef Cattle - Feed intake adjustment and milk production and production");
+
+NIR_2023_Vol2_A5_5_2_5_PastureBeef_CrudeProteinContent_Unit
+  =LAMBDA("");
+
+NIR_2023_Vol2_A5_5_2_5_PastureBeef_CrudeProteinContent_Source
+  =LAMBDA("National Inventory Report 2023 Volume 2 - Table A5.5.2.5");
+
+NIR_2023_Vol2_A5_5_2_5_PastureBeef_CrudeProteinContent_Variation
+  =LAMBDA("VARIATION OF SOURCE DATA: ACT and NSW split. State names replaced by abbreviations to aid data lookup.");
+
+NIR_2023_Vol2_A5_5_2_5_PastureBeef_CrudeProteinContent_Data
+  =LAMBDA(
+    MAKEARRAY(41, 5, 
+      LAMBDA(r,c, 
+        INDEX({
+          "State", "Region", "Season", "Feed adjustment", "Milk intake / production (kg/day)";
+          "ACT", "", "Spring", 1.3, 6;
+          "ACT", "", "Summer", 1.1, 4;
+          "ACT", "", "Autumn", 0, 0;
+          "ACT", "", "Winter", 0, 0;
+          "NSW", "", "Spring", 1.3, 6;
+          "NSW", "", "Summer", 1.1, 4;
+          "NSW", "", "Autumn", 0, 0;
+          "NSW", "", "Winter", 0, 0;
+          "NT", "", "Spring", 0, 0;
+          "NT", "", "Summer", 1.3, 4;
+          "NT", "", "Autumn", 1.1, 3;
+          "NT", "", "Winter", 0, 0;
+          "QLD", "", "Spring", 0, 0;
+          "QLD", "", "Summer", 1.3, 4;
+          "QLD", "", "Autumn", 1.1, 3;
+          "QLD", "", "Winter", 0, 0;
+          "SA", "", "Spring", 0, 0;
+          "SA", "", "Summer", 0, 0;
+          "SA", "", "Autumn", 1.3, 6;
+          "SA", "", "Winter", 1.1, 4;
+          "TAS", "", "Spring", 1.3, 6;
+          "TAS", "", "Summer", 1.1, 4;
+          "TAS", "", "Autumn", 0, 0;
+          "TAS", "", "Winter", 0, 0;
+          "VIC","", "Spring", 0, 0;
+          "VIC","", "Summer", 0, 0;
+          "VIC","", "Autumn", 1.3, 6;
+          "VIC","", "Winter", 1.1, 4;
+          "WA", "South West", "Spring", 0, 0;
+          "WA", "South West", "Summer", 0, 0;
+          "WA", "South West", "Autumn", 1.3, 6;
+          "WA", "South West", "Winter", 1.1, 4;
+          "WA", "Pilbara", "Spring", 1.3, 4;
+          "WA", "Pilbara", "Summer", 1.1, 3;
+          "WA", "Pilbara", "Autumn", 0, 0;
+          "WA", "Pilbara", "Winter", 0, 0;
+          "WA", "Kimberley", "Spring", 0, 0;
+          "WA", "Kimberley", "Summer", 1.3, 4;
+          "WA", "Kimberley", "Autumn", 1.1, 3;
+          "WA", "Kimberley", "Winter", 0, 0
+        }, r, c)
+      )
+    )
+  );
+
+/* 
+--------------------------------------
+NIR_2023_Vol2_A5_5_2_6_PastureBeef_StandardReferenceWeights
+kg
+--------------------------------------
+*/
+
+NIR_2023_Vol2_A5_5_2_6_PastureBeef_StandardReferenceWeights_Title
+  =LAMBDA("Beef cattle - Standard reference weights (kg)");
+
+NIR_2023_Vol2_A5_5_2_6_PastureBeef_StandardReferenceWeights_Unit
+  =LAMBDA("kg");
+
+NIR_2023_Vol2_A5_5_2_6_PastureBeef_StandardReferenceWeights_Source
+  =LAMBDA("National Inventory Report 2023 Volume 2 - Table A5.5.2.6");
+
+NIR_2023_Vol2_A5_5_2_6_PastureBeef_StandardReferenceWeights_Variation
+  =LAMBDA(
+    MAKEARRAY(4, 1, 
+      LAMBDA(r,c, 
+        INDEX({
+          "VARIATION OF SOURCE DATA:";
+          "ACT and NSW split.";
+          "State names replaced by abbreviations to aid data lookup."; 
+          "Pluralised 'Steer' to 'Steers' for consistency."
+        }, r, c)
+      )
+    )
+  );
+
+NIR_2023_Vol2_A5_5_2_6_PastureBeef_StandardReferenceWeights_Data
+  =LAMBDA(
+    MAKEARRAY(9, 8, 
+      LAMBDA(r,c, 
+        INDEX({
+          "State", "Bulls < 1", "Bulls > 1", "Cows < 1", "Cows 1-2", "Cows > 2", "Steers < 1", "Steers > 1";
+          "ACT", 700, 700, 600, 500, 500, 500, 600;
+          "NSW", 700, 700, 600, 500, 500, 500, 600;
+          "Northern Territory", 770, 770, 660, 550, 550, 550, 660;
+          "Queensland", 770, 770, 660, 550, 550, 550, 660;
+          "South Australia", 770, 770, 660, 550, 550, 550, 660;
+          "Tasmania", 770, 770, 660, 550, 550, 550, 660;
+          "Victoria", 770, 770, 660, 550, 550, 550, 660;
+          "Western Australia", 770, 770, 660, 550, 550, 550, 660
+        }, r, c)
+      )
+    )
+  );
