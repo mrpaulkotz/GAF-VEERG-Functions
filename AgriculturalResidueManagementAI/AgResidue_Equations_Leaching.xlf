@@ -1,0 +1,120 @@
+/* 
+--------------------------------------
+VEERG_6_3_1_1__1__LeachingAndRunoffEmissionsCropAndPastureResidue
+Nitrous oxide leaching and runoff emissions from crop and pasture residues returned to the soil, across all crop residues c and pasture residues p
+EN2O
+t N2O
+E_{N2O}=\sum_{c}\sum_{p}(M_{leach,cp}\times EF_{leach}\times C_{N2O}\times 10^{-3})
+Mleachcp = mass of nitrogen lost through leaching and runoff from the crop residue c or pasture residue p (kg N)
+EFleach = emission factor for leaching and runoff (kg N2O-N/kg N)
+CN2O = factor to convert elemental mass of nitrous oxide to molecular mass (dimensionless)
+c = Crop residue type
+p = Pasture residue type
+--------------------------------------
+*/
+
+VEERG_6_3_1_1__1__LeachingAndRunoffEmissionsCropAndPastureResidue
+  =LAMBDA(
+    Mleachcp, EFleach, CgN2O,
+    Mleachcp * EFleach * CgN2O * 10^(-3)
+  )
+;
+
+VEERG_6_3_1_1__1__LeachingAndRunoffEmissionsCropAndPastureResidue_FunctionName
+  =LAMBDA("VEERG_6_3_1_1__1__LeachingAndRunoffEmissionsCropAndPastureResidue");
+
+VEERG_6_3_1_1__1__LeachingAndRunoffEmissionsCropAndPastureResidue_Title
+  =LAMBDA("Nitrous oxide leaching and runoff emissions from crop and pasture residues returned to the soil");
+
+VEERG_6_3_1_1__1__LeachingAndRunoffEmissionsCropAndPastureResidue_Variable
+  =LAMBDA("EN2O");
+
+VEERG_6_3_1_1__1__LeachingAndRunoffEmissionsCropAndPastureResidue_Unit
+  =LAMBDA("t N2O");
+
+VEERG_6_3_1_1__1__LeachingAndRunoffEmissionsCropAndPastureResidue_Source
+  =LAMBDA("VEERG 2026: 6.3.1.1, Equation (1)");
+
+VEERG_6_3_1_1__1__LeachingAndRunoffEmissionsCropAndPastureResidue_NIRReference
+  =LAMBDA("");
+
+VEERG_6_3_1_1__1__LeachingAndRunoffEmissionsCropAndPastureResidue_LatexEquation
+  =LAMBDA("E_{N2O}=\sum_{c}\sum_{p}(M_{leach,cp}\times EF_{leach}\times Cg_{N2O}\times 10^{-3})");
+
+VEERG_6_3_1_1__1__LeachingAndRunoffEmissionsCropAndPastureResidue_Arguments
+  =LAMBDA(
+    MAKEARRAY(5, 2, 
+      LAMBDA(r,c, 
+        INDEX({
+          "Mleachcp","mass of nitrogen lost through leaching and runoff from the crop residue c or pasture residue p (kg N)";
+          "EFleach","emission factor for leaching and runoff (kg N2O-N/kg N)";
+          "CgN2O","factor to convert elemental mass of nitrous oxide to molecular mass (dimensionless)";
+          "c","Crop residue type";
+          "p","Pasture residue type"
+        }, r, c)
+      )
+    )
+  );
+
+/* 
+--------------------------------------
+VEERG_6_3_1_1__2__MassOfNitrogenLostThroughLeachingAndRunoff
+Mass of nitrogen lost through leaching and runoff
+Mleachcp
+kg N
+M_{leach,cp}=M_{cp}\times FracWET_{j}\times FracLEACH
+Mcp = mass of nitrogen in crop residues c or pasture residues p applied to soils (kg N)
+FracWETj = fraction of N that is available for leaching and runoff from production system j (dimensionless)
+FracLEACH = fraction of N that is lost through leaching and runoff (dimensionless)
+c = Crop residue type
+p = Pasture residue type
+j = Production system
+--------------------------------------
+*/
+
+VEERG_6_3_1_1__2__MassOfNitrogenLostThroughLeachingAndRunoff
+  =LAMBDA(
+    Mcp, FracWETj, FracLEACH,
+    Mcp * FracWETj * FracLEACH
+  )
+;
+
+VEERG_6_3_1_1__2__MassOfNitrogenLostThroughLeachingAndRunoff_FunctionName
+  =LAMBDA("VEERG_6_3_1_1__2__MassOfNitrogenLostThroughLeachingAndRunoff");
+
+VEERG_6_3_1_1__2__MassOfNitrogenLostThroughLeachingAndRunoff_Title
+  =LAMBDA("Mass of nitrogen lost through leaching and runoff");
+
+VEERG_6_3_1_1__2__MassOfNitrogenLostThroughLeachingAndRunoff_Variable
+  =LAMBDA("Mleachcp");
+
+VEERG_6_3_1_1__2__MassOfNitrogenLostThroughLeachingAndRunoff_Unit
+  =LAMBDA("kg N");
+
+VEERG_6_3_1_1__2__MassOfNitrogenLostThroughLeachingAndRunoff_Source
+  =LAMBDA("VEERG 2026: 6.3.1.1, Equation (2)");
+
+VEERG_6_3_1_1__2__MassOfNitrogenLostThroughLeachingAndRunoff_NIRReference
+  =LAMBDA("");
+
+VEERG_6_3_1_1__2__MassOfNitrogenLostThroughLeachingAndRunoff_LatexEquation
+  =LAMBDA("M_{leach,cp}=M_{cp}\times FracWET_{j}\times FracLEACH");
+
+VEERG_6_3_1_1__2__MassOfNitrogenLostThroughLeachingAndRunoff_Arguments
+  =LAMBDA(
+    MAKEARRAY(6, 2, 
+      LAMBDA(r,c, 
+        INDEX({
+          "Mcp","mass of nitrogen in crop residues c or pasture residues p applied to soils (kg N)";
+          "FracWETj","fraction of N that is available for leaching and runoff from production system j (dimensionless)";
+          "FracLEACH","fraction of N that is lost through leaching and runoff (dimensionless)";
+          "c","Crop residue type";
+          "p","Pasture residue type";
+          "j","Production system"
+        }, r, c)
+      )
+    )
+  );
+
+
+

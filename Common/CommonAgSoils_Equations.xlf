@@ -1,0 +1,434 @@
+/*
+============================================================================
+National Inventory Report 2023 reference:
+Agricultural soils: Atmospheric deposition (3.D.b.1)
+============================================================================
+*/
+
+/* 
+--------------------------------------
+AgSoils_AtmosphericDeposition
+Atmospheric deposition emissions from urine and dung deposited by grazing animals on pasture,
+range and paddock
+EN2Oad
+t N2O
+EN2Oad = Mvolm * EFad * CgN2O * 10^-3
+Mvolm :Mmass of nitrogen volatilised from urine and faeces deposited on pasture : kg N
+EFad : Emission factor for atmospheric deposition : kg N2O-N/kg N
+CgN2O : Factor to convert elemental mass of N2O to molecular mass
+--------------------------------------
+*/
+AgSoils_AtmosphericDeposition_GWP
+ =LAMBDA(
+    EN2Oad,GWPN2O,
+     (EN2Oad * GWPN2O)
+   );
+
+AgSoils_AtmosphericDeposition
+  =LAMBDA(
+    Mvolm,Efad,CgN2O,
+    (Mvolm * Efad * CgN2O * 10^-3)
+  )
+;
+
+AgSoils_AtmosphericDeposition_Title
+  =LAMBDA("Atmospheric deposition emissions from urine and dung deposited by grazing animals on pasture, range and paddock");
+
+AgSoils_AtmosphericDeposition_Variable
+  =LAMBDA("EN2Oad");
+
+AgSoils_AtmosphericDeposition_Unit
+  =LAMBDA("t N2O");
+
+AgSoils_AtmosphericDeposition_NIRReference
+  =LAMBDA("National Inventory Report Volume 1, 2023: 3.D.B_4");
+
+AgSoils_AtmosphericDeposition_ReadableEquation
+  =LAMBDA("EN2Oad = Mvolm * EFad * CgN2O * 10 ^ - 3");
+
+AgSoils_AtmosphericDeposition_Arguments
+  =LAMBDA(
+    MAKEARRAY(3, 3, 
+      LAMBDA(r,c, 
+        INDEX({
+          "Mvolm","Mass of nitrogen volatilised from urine and faeces deposited on pasture","kg N";
+          "EFad","Emission factor for atmospheric deposition","kg N2O-N/kg N";
+          "CgN2O","Factor to convert elemental mass of N2O to molecular mass",""
+        }, r, c)
+      )
+    )
+  );
+
+/* 
+--------------------------------------
+AgSoils_MassVolatilisedAnimalWaste
+The mass of nitrogen volatilised from manure, urine and faeces deposited on soils
+Mvolm
+kg N
+Mvolm = (MNjm + UNjm + FNjm) * FracGASMsoil
+MNjm : Mass of manure nitrogen applied to soils : kg N
+UNjm : Mass of urine nitrogen excreted on pasture, range and paddock for each dairy cattle class : kg N
+FNjm : Mass of faecal nitrogen excreted on pasture, range and paddock for each dairy cattle class : kg N
+FracGASMsoil : Fraction of nitrogen volatilised from urine and faeces deposited on pasture : (kg NH3-N + NOx-N)/kg N
+
+--------------------------------------
+*/
+
+
+AgSoils_MassVolatilisedAnimalWaste
+  =LAMBDA(
+    MNjm, UNjm, FNjm, FracGASMsoil,
+    (MNjm + UNjm + FNjm) * FracGASMsoil
+  )
+;
+
+AgSoils_MassVolatilisedAnimalWaste_Title
+  =LAMBDA("Mass of nitrogen volatilised from manure, urine and faeces deposited on soils");
+
+AgSoils_MassVolatilisedAnimalWaste_Variable
+  =LAMBDA("Mvolm");
+
+AgSoils_MassVolatilisedAnimalWaste_Unit
+  =LAMBDA("kg N");
+
+AgSoils_MassVolatilisedAnimalWaste_NIRReference
+  =LAMBDA("National Inventory Report Volume 1, 2023: 3.D.B_2");
+
+AgSoils_MassVolatilisedAnimalWaste_ReadableEquation
+  =LAMBDA("Mvolm = (MNjm + UNjm + FNjm) * FracGASMsoil");
+
+AgSoils_MassVolatilisedAnimalWaste_Arguments
+  =LAMBDA(
+    MAKEARRAY(4, 3, 
+      LAMBDA(r,c, 
+        INDEX({
+          "MNjm","Mass of manure nitrogen applied to soils","kg N";
+          "UNjm","Mass of urine nitrogen excreted on pasture, range and paddock for each dairy cattle class","kg N";
+          "FNjm","Mass of faecal nitrogen excreted on pasture, range and paddock for each dairy cattle class","kg N";
+          "FracGASMsoil","Fraction of nitrogen volatilised from urine and faeces deposited on pasture","(kg NH3-N + NOx-N)/kg N"
+        }, r, c)
+      )
+    )
+  );
+
+
+/* 
+--------------------------------------
+AgSoils_MassVolatilisedInorganicFertiliser
+The mass of nitrogen volatilised from inorganic fertiliser applied to soils
+Mvolinorganic
+kg N
+Mvolinorganic = MNf * FracGASFf
+MNf :Mass of nitrogen in inorganic fertiliser applied : kg N
+FracGASFf : Fraction of inorganic fertiliser that volatilises : (kg NH3-N + NOx-N)/kg N
+--------------------------------------
+*/
+
+
+Agsoils_MassVolatilisedInorganicFertiliser
+  =LAMBDA(
+    MNf, FracGASFf,
+    MNf * FracGASFf
+  )
+;
+
+Agsoils_MassVolatilisedInorganicFertiliser_Title
+  =LAMBDA("Mass of nitrogen volatilised from inorganic fertiliser deposited on soils");
+
+Agsoils_MassVolatilisedInorganicFertiliser_Variable
+  =LAMBDA("Mvolinorganic");
+
+Agsoils_MassVolatilisedInorganicFertiliser_Unit
+  =LAMBDA("kg N");
+
+Agsoils_MassVolatilisedInorganicFertiliser_NIRReference
+  =LAMBDA("National Inventory Report Volume 1, 2023: 3.D.B_1");
+
+Agsoils_MassVolatilisedInorganicFertiliser_ReadableEquation
+  =LAMBDA("Mvolinorganic = MNf * FracGASFf");
+
+Agsoils_MassVolatilisedInorganicFertiliser_Arguments
+  =LAMBDA(
+    MAKEARRAY(2, 3, 
+      LAMBDA(r,c, 
+        INDEX({
+          "MNf","Mass of nitrogen in inorganic fertiliser applied","kg N";
+          "FracGASFf","Fraction of inorganic fertiliser that volatilises","(kg NH3–N + NOx–N)/kg N"
+        }, r, c)
+      )
+    )
+  );
+
+
+/*
+============================================================================
+National Inventory Report 2023 reference:
+Agricultural soils: Leaching and Runoff (3.D.b.2)
+============================================================================
+*/
+
+/* 
+--------------------------------------
+AgSoils_LeachingAndRunoff
+Leaching and runoff emissions from crop residue,
+inorganic and organic fertiliser applied to soil,
+urine and dung deposited on pasture
+EN2Oleach = Mleach * EFleach * CgN2O * 10 ^ - 3
+Mleach : Mass of nitrogen lost to leached and run off : kg N
+EFleach : Emission factor for leaching and runoff : kg N2O-N/kg N
+CgN2O : Factor to convert elemental mass of N2O to molecular mass
+--------------------------------------
+*/
+AgSoils_LeachingAndRunoff_GWP
+ =LAMBDA(
+    EN2Oleach,GWPN2O,
+     (EN2Oleach * GWPN2O)
+   );
+
+AgSoils_LeachingAndRunoff
+  =LAMBDA(
+    Mleach,EFleach,CgN2O,
+    (Mleach * EFleach * CgN2O * 10^-3)
+  )
+;
+
+AgSoils_LeachingAndRunoff_Title
+  =LAMBDA("Leaching and runoff emissions from crop residue,inorganic and organic fertiliser applied to soil, urine and dung deposited on pasture");
+
+AgSoils_LeachingAndRunoff_Variable
+  =LAMBDA("EN2Oleach");
+
+AgSoils_LeachingAndRunoff_Unit
+  =LAMBDA("t N2O");
+
+AgSoils_LeachingAndRunoff_NIRReference
+  =LAMBDA("National Inventory Report Volume 1, 2023: 3.D.B_10");
+
+AgSoils_LeachingAndRunoff_ReadableEquation
+  =LAMBDA("EN2Oleach = Mleach * EFleach * CgN2O * 10 ^ - 3");
+
+AgSoils_LeachingAndRunoff_Arguments
+  =LAMBDA(
+    MAKEARRAY(3, 3, 
+      LAMBDA(r,c, 
+        INDEX({
+          "Mleach","Mass of nitrogen lost to leached and run off","kg N";
+          "EFleach","Emission factor for leaching and runoff","kg N2O-N/kg N";
+          "CgN2O","Factor to convert elemental mass of N2O to molecular mass",""
+        }, r, c)
+      )
+    )
+  );
+
+/* 
+--------------------------------------
+AgSoils_MassAnimalWasteNLost
+Mass of nitrogen lost from manure, urine and dung to leaching and runoff
+Mleachanimalwaste=(MNjm+UNjm+FNjm)*FracWET*FracLEACH
+Mleachanimalwaste
+kg N
+MNjm : Mass of nitrogen in manure applied to soils : kg N
+UNjm : Mass of nitrogen in urine deposited on pasture, range and paddock : kg N
+FNjm : Mass of nitrogen in dung deposited on pasture,range and paddock : kg N
+FracWET : Fraction of N available for leaching and runoff in the climate zone of the entity : fraction
+FracLEACH : Fraction of N that is lost through leaching and runoff : fraction
+--------------------------------------
+*/
+
+AgSoils_MassAnimalWasteNLost
+  =LAMBDA(
+    MNjm,UNjm,FNjm,FracWET,FracLEACH,
+    (MNjm+UNjm+FNjm)*FracWET*FracLEACH
+  )
+;
+
+AgSoils_MassAnimalWasteNLost_Title
+  =LAMBDA("Mass of nitrogen lost from manure, urine and dung to leaching and runoff");
+
+AgSoils_MassAnimalWasteNLost_Variable
+  =LAMBDA("Mleachanimalwaste");
+
+AgSoils_MassAnimalWasteNLost_Unit
+  =LAMBDA("kg N");
+
+AgSoils_MassAnimalWasteNLost_NIRReference
+  =LAMBDA("National Inventory Report Volume 1, 2023: 3.D.B_6");
+
+AgSoils_MassAnimalWasteNLost_ReadableEquation
+  =LAMBDA("Mleachanimalwaste=(MNjm+UNjm+FNjm)*FracWET*FracLEACH");
+
+AgSoils_MassAnimalWasteNLost_Arguments
+  =LAMBDA(
+    MAKEARRAY(3, 3, 
+      LAMBDA(r,c, 
+        INDEX({
+          "MNjm","Mass of nitrogen in manure applied to soils","kg N";
+          "UNjm","Mass of nitrogen in urine deposited on pasture, range and paddock","kg N";
+          "FNjm","Mass of nitrogen in dung deposited on pasture,range and paddock","kg N";
+          "FracWET","Fraction of nitrogen available for leaching and runoff in the climate zone of the entity","fraction";
+          "FracLEACH","Fraction of nitrogen that is lost through leaching and runoff","fraction"
+        }, r, c)
+      )
+    )
+  );
+
+/* 
+--------------------------------------
+AgSoils_MassInorganicFertiliserNLost
+Mleachinorganic
+Mleachinorganic = M * FracWET * FracLEACH
+M : Mass of nitrogen in inorganic fertiliser applied to soils : kg N
+FracWET : Fraction of nitrogen available for leaching and runoff in the climate zone of the entity : fraction
+FracLEACH : Fraction of nitrogen that is lost through leaching and runoff : fraction
+--------------------------------------
+*/
+
+AgSoils_MassInorganicFertiliserNLost
+  =LAMBDA(
+    M, FracWET, FracLEACH,
+    M * FracWET * FracLEACH
+  )
+;
+
+AgSoils_MassInorganicFertiliserNLost_Title
+  =LAMBDA("Mass of nitrogen lost from inorganic fertiliser to leaching and runoff");
+
+AgSoils_MassInorganicFertiliserNLost_Variable
+  =LAMBDA("Mleachinorganic");
+
+AgSoils_MassInorganicFertiliserNLost_Unit
+  =LAMBDA("kg N");
+
+AgSoils_MassInorganicFertiliserNLost_NIRReference
+  =LAMBDA("National Inventory Report Volume 1, 2023: 3.D.B_5");
+
+AgSoils_MassInorganicFertiliserNLost_ReadableEquation
+  =LAMBDA("Mleachinorganic = M * FracWET * FracLEACH");
+
+AgSoils_MassInorganicFertiliserNLost_Arguments
+  =LAMBDA(
+    MAKEARRAY(3, 3, 
+      LAMBDA(r,c, 
+        INDEX({
+          "M","Mass of nitrogen in inorganic fertiliser applied to soils","kg N";
+          "FracWET","Fraction of nitrogen available for leaching and runoff in the climate zone of the entity","fraction";
+          "FracLEACH","Fraction of nitrogen that is lost through leaching and runoff","fraction"
+        }, r, c)
+      )
+    )
+  );
+
+/* 
+--------------------------------------
+AgSoils_MassCropResidueNLost
+Mleachresidue
+Mleachresidue = M * FracWET * FracLEACH
+M : Mass of nitrogen in crop residue applied to soils : kg N
+FracWET : Fraction of nitrogen available for leaching and runoff in the climate zone of the entity : fraction
+FracLEACH : Fraction of nitrogen that is lost through leaching and runoff : fraction
+--------------------------------------
+*/
+
+AgSoils_MassCropResidueNLost
+  =LAMBDA(
+    M, FracWET, FracLEACH,
+    M * FracWET * FracLEACH
+  )
+;
+
+AgSoils_MassCropResidueNLost_Title
+  =LAMBDA("Mass of nitrogen lost from crop residue to leaching and runoff");
+
+AgSoils_MassCropResidueNLost_Variable
+  =LAMBDA("Mleachresidue");
+
+AgSoils_MassCropResidueNLost_Unit
+  =LAMBDA("kg N");
+
+AgSoils_MassCropResidueNLost_NIRReference
+  =LAMBDA("National Inventory Report Volume 1, 2023: 3.D.B_8");
+
+AgSoils_MassCropResidueNLost_ReadableEquation
+  =LAMBDA("Mleachresidue = M * FracWET * FracLEACH");
+
+AgSoils_MassCropResidueNLost_Arguments
+  =LAMBDA(
+    MAKEARRAY(3, 3, 
+      LAMBDA(r,c, 
+        INDEX({
+          "M","Mass of nitrogen in crop residue applied to soils","kg N";
+          "FracWET","Fraction of nitrogen available for leaching and runoff in the climate zone of the entity","fraction";
+          "FracLEACH","Fraction of nitrogen that is lost through leaching and runoff","fraction"
+        }, r, c)
+      )
+    )
+  );
+
+
+/*
+============================================================================
+National Inventory Report 2023 reference:
+Urine and dung deposited by grazing animals (3.D.a.3)
+============================================================================
+*/
+
+
+/* 
+--------------------------------------
+UrineAndDungDeposited
+Nitrous oxide production from urine and dung deposited by grazing animals on pasture,
+range and paddock
+EN2Odir
+t N2O
+EN2Odir = ((AFjm=14 * EFPRP * CgN2O) + (AUjm=14 * EFPRP * CgN2O)) * 10^-3
+AFjm : mass of nitrogen in dung deposited on pasture, range and paddock : kg N
+AUjm : mass of nitrogen in urine deposited on pasture, range and paddock : kg N
+EFPRP : direct N2O emission factor for pasture, range and paddock : kg N2O-N/kg N
+CgN2O : factor to convert elemental mass of N2O to molecular mass
+--------------------------------------
+*/
+
+AgSoils_UrineAndDungDeposited_GWP
+ =LAMBDA(
+    EN2Odir,GWPN2O,
+     (EN2Odir * GWPN2O)
+   );
+
+AgSoils_UrineAndDungDeposited
+  =LAMBDA(
+    AFjm, AUjm, EFPRP, CgN2O,
+    ((AFjm * EFPRP * CgN2O) + (AUjm * EFPRP * CgN2O)) * 10^-3
+  )
+;
+
+AgSoils_UrineAndDungDeposited_Title
+  =LAMBDA("Nitrous oxide production from urine and dung deposited by grazing animals on pasture, range and paddock");
+
+AgSoils_UrineAndDungDeposited_Variable
+  =LAMBDA("EN2Odir");
+
+AgSoils_UrineAndDungDeposited_Unit
+  =LAMBDA("t N2O");
+
+AgSoils_UrineAndDungDeposited_NIRReference
+  =LAMBDA("National Inventory Report Volume 1, 2023: 3.D.a.3");
+
+AgSoils_UrineAndDungDeposited_ReadableEquation
+  =LAMBDA("EN2Odir = ((AFjm=14 * EFPRP * CgN2O) + (AUjm=14 * EFPRP * CgN2O)) * 10^-3");
+
+AgSoils_UrineAndDungDeposited_Arguments
+  =LAMBDA(
+    MAKEARRAY(4, 3, 
+      LAMBDA(r,c, 
+        INDEX({
+          "AFjm","mass of N in dung deposited on pasture, range and paddock","kg N";
+          "AUjm","mass of N in urine deposited on pasture, range and paddock","kg N";
+          "EFPRP","direct N2O emission factor for pasture, range and paddock","kg N2O-N/kg N";
+          "CgN2O","factor to convert elemental mass of N2O to molecular mass",""
+        }, r, c)
+      )
+    )
+  );
+
+
+

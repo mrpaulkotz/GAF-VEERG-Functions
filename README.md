@@ -1,5 +1,10 @@
 # GAF-VEERG-Functions
 This file includes instructions from getting information from a VEERG document and adding it to a VEERG equation template.
+The file extension is .xlf
+
+Rules:
+1. Use spaces instead of tab characters for indenting. Tab characters are not valid in .xlf Excel formula syntax.
+2. Do not escape backslashes in LatexEquation strings. For example, the string "\times" should remain as "\times" and not "\\times".
 
 Function naming convention:
 
@@ -153,3 +158,4 @@ VEERG_5_1_1_1__2_MassOfNitrogenInInorganicFertiliser_Arguments
       )
     )
   );
+
