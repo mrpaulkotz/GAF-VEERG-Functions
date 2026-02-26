@@ -1,0 +1,92 @@
+
+/* 
+--------------------------------------
+Common_ConvertN2OToCO2e
+Convert nitrous oxide emissions to carbon dioxide equivalent emissions
+EN2O CO2e
+t CO2e
+EN2O: nitrous oxide emissions (t N2O)
+GWPN2O: global warming potential for nitrous oxide (t CO2-e / t N2O)
+--------------------------------------
+*/
+
+
+Common_ConvertN2OToCO2e
+  =LAMBDA(
+    E_N2O, GWP_N2O,
+    E_N2O * GWP_N2O
+  )
+;
+
+Common_ConvertN2OToCO2e_Title
+  =LAMBDA("Convert nitrous oxide emissions to carbon dioxide equivalent emissions");
+
+Common_ConvertN2OToCO2e_Variable
+  =LAMBDA("EN2O CO2e");
+
+Common_ConvertN2OToCO2e_Unit
+  =LAMBDA("t CO2e");
+
+Common_ConvertN2OToCO2e_NIRReference
+  =LAMBDA("");
+
+Common_ConvertN2OToCO2e_LatexEquation
+  =LAMBDA("CO2_e = E_{N2O} \times GWP_{N2O}");
+
+Common_ConvertN2OToCO2e_Arguments
+  =LAMBDA(
+    MAKEARRAY(2, 2, 
+      LAMBDA(r,c, 
+        INDEX({
+          "EN2O","Nitrous oxide emissions (t N2O)";
+          "GWPN2O","Global warming potential for nitrous oxide (t CO2-e / t N2O)"
+        }, r, c)
+      )
+    )
+  );
+
+/* 
+--------------------------------------
+Common_ConvertCH4ToCO2e
+Convert methane emissions to carbon dioxide equivalent emissions
+ECH4 CO2e
+t CO2e
+ECH4: methane emissions (t CH4)
+GWPCH4: global warming potential for methane (t CO2-e / t CH4)
+--------------------------------------
+*/
+
+
+Common_ConvertCH4ToCO2e
+  =LAMBDA(
+    E_CH4, GWP_CH4,
+    E_CH4 * GWP_CH4
+  )
+;
+
+Common_ConvertCH4ToCO2e_Title
+  =LAMBDA("Convert methane emissions to carbon dioxide equivalent emissions");
+
+Common_ConvertCH4ToCO2e_Variable
+  =LAMBDA("ECH4 CO2e");
+
+Common_ConvertCH4ToCO2e_Unit
+  =LAMBDA("t CO2e");
+
+Common_ConvertCH4ToCO2e_NIRReference
+  =LAMBDA("");
+
+Common_ConvertCH4ToCO2e_LatexEquation
+  =LAMBDA("CO2_e = E_{CH4} \times GWP_{CH4}");
+
+Common_ConvertCH4ToCO2e_Arguments
+  =LAMBDA(
+    MAKEARRAY(2, 2, 
+      LAMBDA(r,c, 
+        INDEX({
+          "ECH4","Methane emissions (t CH4)";
+          "GWPCH4","Global warming potential for methane (t CO2-e / t CH4)"
+        }, r, c)
+      )
+    )
+  );

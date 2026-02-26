@@ -99,23 +99,6 @@ Utility_SumQuantityFromCriteria
   )
 );
 
-// getOverlappingReportingCycles=
-// LAMBDA(
-//     ProductionCycleStart, ProductionCycleEnd, ReportingStartMonth, ReportingStartDay,
-//     LET(
-//         S, ProductionCycleStart,
-//         E, ProductionCycleEnd,
-//         m, ReportingStartMonth,
-//         d, ReportingStartDay,
-//         A, S - 364,                                 /* earliest start that can still overlap S */
-//         ya, YEAR(A),
-//         yb, YEAR(E),
-//         firstYear, ya + (DATE(ya, m, d) < A),       /* bump forward if that year's anchor is before A */
-//         lastYear,  yb - (DATE(yb, m, d) > E),       /* pull back if that year's anchor is after E */
-//         MAX(0, lastYear - firstYear + 1)
-// )
-// );
-
 getOverlappingReportingCycles
 =LAMBDA(
     ProductionCycleStart,ProductionCycleEnd,ReportingCycleStart,

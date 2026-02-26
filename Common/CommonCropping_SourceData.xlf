@@ -72,18 +72,18 @@ SourceData_Cropping_Common_UreaCO2EF_Data
 /* 
 --------------------------------------
 SourceData_Cropping_Common_N2OEFOrganicFertiliser
-National Inventory Report 2023 Volume 1: Equation 3.H_1
+VEERG 2026: Table A.2.1.4 Emission factor for organic fertiliser and crop residues returned to the soil
 --------------------------------------
 */
 
 SourceData_Cropping_Common_N2OEFOrganicFertiliser_Title
-  =LAMBDA("The direct nitrous oxide EF from the organic fertiliser when applied to soils");
+  =LAMBDA("Emission factor for organic fertiliser and crop residues returned to the soil");
 
 SourceData_Cropping_Common_N2OEFOrganicFertiliser_Unit
   =LAMBDA("kg N2O - N / kg N");
 
 SourceData_Cropping_Common_N2OEFOrganicFertiliser_Source
-  =LAMBDA("VEERG 2026: 5.2.2.3 Constant parameters");
+  =LAMBDA("VEERG 2026: Table A.2.1.4");
 
 SourceData_Cropping_Common_N2OEFOrganicFertiliser_NIRReference
   =LAMBDA("IPCC 2019 Refinement Volume 4 Table 11.1 [1, p. 11]");
@@ -94,8 +94,8 @@ SourceData_Cropping_Common_N2OEFOrganicFertiliser_Data
       LAMBDA(r,c, 
         INDEX({
           "Climate zone i", "EF i N2O";
-            "High rainfall", 0.006;
-            "Low rainfall", 0.005
+            "Wet climate zone", 0.006;
+            "Dry climate zone", 0.005
         }, r, c)
       )
     )

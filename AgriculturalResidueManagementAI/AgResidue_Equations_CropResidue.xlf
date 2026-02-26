@@ -6,7 +6,7 @@ E
 t N2O
 E=\sum_{c}{M_{c}\times EF_{N}\times C_{g,N2O}\times 10^{-3}}
 Mc = mass of nitrogen in crop c residues returned to the soil (kg N)
-EFN = emission factor for crop residues returned to the soil (kg N2O-N/kg N)
+EFNi = emission factor for crop residues returned to the soil (kg N2O-N/kg N)
 CgN2O = factor to convert elemental mass of nitrous oxide to molecular mass (dimensionless)
 c = Crop type
 --------------------------------------
@@ -14,8 +14,8 @@ c = Crop type
 
 VEERG_6_1_1_1__1__NitrousOxideEmissionsFromCropResidues
   =LAMBDA(
-    Mc, EFN, CgN2O,
-    Mc * EFN * CgN2O * 10^(-3)
+    Mc, EFNi, CgN2O,
+    Mc * EFNi * CgN2O * 10^(-3)
   )
 ;
 
@@ -42,13 +42,14 @@ VEERG_6_1_1_1__1__NitrousOxideEmissionsFromCropResidues_LatexEquation
 
 VEERG_6_1_1_1__1__NitrousOxideEmissionsFromCropResidues_Arguments
   =LAMBDA(
-    MAKEARRAY(4, 2, 
+    MAKEARRAY(5, 2, 
       LAMBDA(r,c, 
         INDEX({
           "Mc","mass of nitrogen in crop c residues returned to the soil (kg N)";
-          "EFN","emission factor for crop residues returned to the soil (kg N2O-N/kg N)";
+          "EFNi","emission factor for crop residues returned to the soil (kg N2O-N/kg N)";
           "CgN2O","factor to convert elemental mass of nitrous oxide to molecular mass (dimensionless)";
-          "c","Crop type"
+          "c","Crop type";
+          "i","Climate zone"
         }, r, c)
       )
     )
@@ -103,7 +104,7 @@ VEERG_6_1_1_1__2__MassOfNitrogenInCropResidues_LatexEquation
 
 VEERG_6_1_1_1__2__MassOfNitrogenInCropResidues_Arguments
   =LAMBDA(
-    MAKEARRAY(9, 2, 
+    MAKEARRAY(10, 2, 
       LAMBDA(r,c, 
         INDEX({
           "Pc","annual production of crop c (kg)";
@@ -114,7 +115,8 @@ VEERG_6_1_1_1__2__MassOfNitrogenInCropResidues_Arguments
           "DMc","dry matter content of crop c (kg dry weight/kg crop residue)";
           "NCAGc","nitrogen content of above-ground crop residue of crop c (kg N/kg DM)";
           "NCBGc","nitrogen content of below-ground crop residue of crop c (kg N/kg DM)";
-          "c","Crop type"
+          "c","Crop type";
+          "State","State or territory"
         }, r, c)
       )
     )

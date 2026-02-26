@@ -7,54 +7,270 @@ Crop attributes
 */
 
 CropAttributes_Title
-=LAMBDA(("Table A5.5.9.1 Crop attributes"));
+=LAMBDA(("Table A.2.1.1: Crop attributes"));
 
 CropAttributes_Description
 =LAMBDA(("Crop attributes"));
 
 CropAttributes_Source
-=LAMBDA(("National Inventory Report 2023 Volume 2: - Table A5.5.9.1"));
+=LAMBDA(("VEERG 2026: Table A.2.1.1: Crop attributes"));
 
 CropAttributes_Data
 =LAMBDA(
-  MAKEARRAY(18, 10,
+  MAKEARRAY(20, 9,
     LAMBDA(r,c,
       INDEX({
-        "Crop type", "Residue: Crop ratio", "Below-ground: above-ground residue ratio", "Dry matter content", "Carbon fraction in dry matter", "N content above-ground", "N content below-ground", "Fraction of residue remaining at time of burning (b)", "Fraction burnt", "Fraction removed";
-        "k", "RAGk", "RBGk", "DMk", "CCk", "NCAGk", "NCBGk", "Sk", "Fik", "FFODlk";
-        "Wheat", 1.50, 0.29, 0.88, 0.40, 0.006, 0.010, 0.5, "Table 5.1.3", "Table 5.1.3";
-        "Barley", 1.24, 0.32, 0.88, 0.40, 0.007, 0.010, 0.5, "Table 5.1.3", "Table 5.1.3";
-        "Maize", 0.81, 0.39, 0.85, 0.42, 0.005, 0.007, 1.0, "Table 5.1.3", "Table 5.1.3";
-        "Oats", 1.42, 0.43, 0.88, 0.40, 0.006, 0.010, 0.5, "Table 5.1.3", "Table 5.1.3";
-        "Rice", 1.31, 0.16, 0.80, 0.42, 0.007, 0.010, 1.0, 0.815, 0.06;
-        "Sorghum", 1.50, 0.22, 0.80, 0.40, 0.008, 0.007, 0.5, "Table 5.1.3", "Table 5.1.3";
-        "Triticale", 1.50, 0.42, 0.88, 0.40, 0.006, 0.010, 0.5, "Table 5.1.3", "Table5.1.3";
-        "Other cereals", 1.46, 0.36, 0.88, 0.40, 0.006, 0.010, 0.5, "Table 5.1.3", "Table 5.1.3";
-        "Pulses", 1.37, 0.51, 0.87, 0.40, 0.009, 0.010, 0.5, "Table 5.1.3", "Table 5.1.3";
-        "Tubers and roots", 0.34, 0.43, 0.25, 0.40, 0.020, 0.010, "NA", 0, 1;
-        "Peanuts", 1.07, 0.20, 0.80, 0.42, 0.016, 0.014, 0.5, "Table 5.1.3", "Table 5.1.3";
-        "Sugar cane", 0.25, 0.45, 0.20, 0.40, 0.005, 0.007, 1.0, "Table 5.1.4", "(f)";
-        "Cotton", 1.90, 0.30, 0.90, 0.40, 0.01, 0.01, "NA", 0, 0;
-        "Hops", 1.50, 0.29, 0.88, 0.40, 0.006, "NA", "NA", 0, 0;
-        "Oilseeds", 2.08, 0.33, 0.96, 0.40, 0.009, 0.010, 0.5, "Table 5.1.3", "Table 5.1.3";
-        "Forage crops", 1.34, 0.37, 0.88, 0.40, 0.006, 0.010, "NA", 0, 0.8
+        "Crop type", "Residue: Crop ratio", "Below-ground: above-ground residue ratio", "Dry matter content", "Carbon fraction in dry matter", "N content above-ground", "N content below-ground", "Fraction of residue remaining at time of burning", "Burning efficiencyt";
+        "c", "RAGc", "RBGc", "DMc", "CCc", "NCAGc", "NCBGc", "Sc", "Zc";
+        "Wheat", 1.50, 0.29, 0.88, 0.40, 0.006, 0.010, 0.5, 0.90;
+        "Barley", 1.24, 0.32, 0.88, 0.40, 0.007, 0.010, 0.5, 0.85;
+        "Maize", 0.81, 0.39, 0.85, 0.42, 0.005, 0.007, 1.0, 0.80;
+        "Oats", 1.42, 0.43, 0.88, 0.40, 0.006, 0.010, 0.5, 0.85;
+        "Rice", 1.31, 0.16, 0.80, 0.42, 0.007, 0.010, 1.0, 0.80;
+        "Sorghum", 1.50, 0.22, 0.80, 0.40, 0.008, 0.007, 0.5, 0.85;
+        "Triticale", 1.50, 0.42, 0.88, 0.40, 0.006, 0.010, 0.5, 0.85;
+        "Other cereals", 1.46, 0.36, 0.88, 0.40, 0.006, 0.010, 0.5, 0.85;
+        "Pulses", 1.37, 0.51, 0.87, 0.40, 0.009, 0.010, 0.5, 0.85;
+        "Tubers and roots", 0.34, 0.43, 0.25, 0.40, 0.020, 0.010, "n/a", 0.85;
+        "Peanuts", 1.07, 0.20, 0.80, 0.42, 0.016, 0.014, 0.5, 0.85;
+        "Sugar cane", 0.25, 0.45, 0.20, 0.40, 0.005, 0.007, 1.0, 0.80;
+        "Cotton", 1.90, 0.30, 0.90, 0.40, 0.01, 0.01, "n/a", 0.85;
+        "Hops", 1.50, 0.29, 0.88, 0.40, 0.006, "n/a", "n/a", 0.85;
+        "Oilseeds", 2.08, 0.33, 0.96, 0.40, 0.009, 0.010, 0.5, 0.85;
+        "Forage crops", 1.34, 0.37, 0.88, 0.40, 0.006, 0.010, "n/a", 0.85;
+        "Other annual crops", 1.00, 0.22, 0.85, 0.40, 0.008, 0.009, "n/a", "n/a";
+        "Other perennial crops", 1.5, 0.29, 0.88, 0.4, 0.006, "n/a", "n/a", "n/a"
       }, r, c)
 )));
 
 CropAttributes_Variation
-=LAMBDA(("VARIATION OF SOURCE DATA: (c) reference removed from Rice label. tel removed from Sugar cane label. ™ removed from Peanuts label."));
+=LAMBDA((""));
 
-CropAttributes_Appendices
+/*
+============================================================================
+Crop attributes - Fraction removed (FFODc)
+============================================================================
+*/
+
+CropFractionRemoved_Title
+=LAMBDA(("Table A.2.1.2: Crop attributes - Fraction removed (FFODc)"));
+
+CropFractionRemoved_Description
+=LAMBDA(("Crop attributes - Fraction removed (FFODc)"));
+
+CropFractionRemoved_Source
+=LAMBDA(("VEERG 2026: Table A.2.1.2: Crop attributes - Fraction removed (FFODc)"));
+
+CropFractionRemoved_Data
 =LAMBDA(
-  MAKEARRAY(7, 1,
+  MAKEARRAY(20, 3,
     LAMBDA(r,c,
       INDEX({
-        "(a) Sourced from Janzen et al. (2003) unless otherwise specified";
-        "(b) Mulholland et al. (1976) and R Jarvis pers. comm.";
-        "(c) Robinson and Kirby (2002).";
-        "(d) IPCC (2006).";
-        "(e) Root:shoot from Morris and Tai (2004), N content from Fortes et al. (2013).";
-        "(f) 0.03 for QLD and zero for WA and NSW.";
-        "(g) Rochester pers. comm. (2014) above ground values only"
+        "Crop type c", "State", "Fraction removed FFODc";
+        "Rice", "All states", 0.06;
+        "Tubers and roots", "All states", 1;
+        "Cotton", "All states", 0;
+        "Hops", "All states", 0;
+        "Forage crops", "All states", 0.8;
+        "Sugar Cane", "NSW", 0;
+        "Sugar Cane", "QLD", 0.03;
+        "Sugar Cane", "WA", 0;
+        "All other crop types", "NSW", 0.05;
+        "All other crop types", "VIC", 0.07;
+        "All other crop types", "QLD", 0.04;
+        "All other crop types", "SA", 0.09;
+        "All other crop types", "WA", 0.11;
+        "All other crop types", "TAS", 0.16;
+        "All other crop types", "NT", 0.01;
+        "All other crop types", "ACT", 0.00
       }, r, c)
 )));
+
+CropFractionRemoved_CustomisedData
+=LAMBDA(
+  MAKEARRAY(144, 3,
+    LAMBDA(r,c,
+      INDEX({
+        "Crop type c", "State", "Fraction removed FFODc";
+        "Rice", "NSW", 0.06;
+        "Rice", "VIC", 0.06;
+        "Rice", "QLD", 0.06;
+        "Rice", "SA", 0.06;
+        "Rice", "WA", 0.06;
+        "Rice", "TAS", 0.06;
+        "Rice", "NT", 0.06;
+        "Rice", "ACT", 0.06;
+        "Tubers and roots", "NSW", 1;
+        "Tubers and roots", "VIC", 1;
+        "Tubers and roots", "QLD", 1;
+        "Tubers and roots", "SA", 1;
+        "Tubers and roots", "WA", 1;
+        "Tubers and roots", "TAS", 1;
+        "Tubers and roots", "NT", 1;
+        "Tubers and roots", "ACT", 1;
+        "Cotton", "NSW", 0;
+        "Cotton", "VIC", 0;
+        "Cotton", "QLD", 0;
+        "Cotton", "SA", 0;
+        "Cotton", "WA", 0;
+        "Cotton", "TAS", 0;
+        "Cotton", "NT", 0;
+        "Cotton", "ACT", 0;
+        "Hops", "NSW", 0;
+        "Hops", "VIC", 0;
+        "Hops", "QLD", 0;
+        "Hops", "SA", 0;
+        "Hops", "WA", 0;
+        "Hops", "TAS", 0;
+        "Hops", "NT", 0;
+        "Hops", "ACT", 0;
+        "Forage crops", "NSW", 0.8;
+        "Forage crops", "VIC", 0.8;
+        "Forage crops", "QLD", 0.8;
+        "Forage crops", "SA", 0.8;
+        "Forage crops", "WA", 0.8;
+        "Forage crops", "TAS", 0.8;
+        "Forage crops", "NT", 0.8;
+        "Forage crops", "ACT", 0.8;
+        "Sugar Cane", "NSW", 0;
+        "Sugar Cane", "VIC", "N/A";
+        "Sugar Cane", "QLD", 0.03;
+        "Sugar Cane", "SA", "N/A";
+        "Sugar Cane", "WA", 0;
+        "Sugar Cane", "TAS", "N/A";
+        "Sugar Cane", "NT", "N/A";
+        "Sugar Cane", "ACT", "N/A";
+        "Wheat", "NSW", 0.05;
+        "Wheat", "VIC", 0.07;
+        "Wheat", "QLD", 0.04;
+        "Wheat", "SA", 0.09;
+        "Wheat", "WA", 0.11;
+        "Wheat", "TAS", 0.16;
+        "Wheat", "NT", 0.01;
+        "Wheat", "ACT", 0.00;
+        "Barley", "NSW", 0.05;
+        "Barley", "VIC", 0.07;
+        "Barley", "QLD", 0.04;
+        "Barley", "SA", 0.09;
+        "Barley", "WA", 0.11;
+        "Barley", "TAS", 0.16;
+        "Barley", "NT", 0.01;
+        "Barley", "ACT", 0.00;
+        "Maize", "NSW", 0.05;
+        "Maize", "VIC", 0.07;
+        "Maize", "QLD", 0.04;
+        "Maize", "SA", 0.09;
+        "Maize", "WA", 0.11;
+        "Maize", "TAS", 0.16;
+        "Maize", "NT", 0.01;
+        "Maize", "ACT", 0.00;
+        "Oats", "NSW", 0.05;
+        "Oats", "VIC", 0.07;
+        "Oats", "QLD", 0.04;
+        "Oats", "SA", 0.09;
+        "Oats", "WA", 0.11;
+        "Oats", "TAS", 0.16;
+        "Oats", "NT", 0.01;
+        "Oats", "ACT", 0.00;
+        "Sorghum", "NSW", 0.05;
+        "Sorghum", "VIC", 0.07;
+        "Sorghum", "QLD", 0.04;
+        "Sorghum", "SA", 0.09;
+        "Sorghum", "WA", 0.11;
+        "Sorghum", "TAS", 0.16;
+        "Sorghum", "NT", 0.01;
+        "Sorghum", "ACT", 0.00;
+        "Triticale", "NSW", 0.05;
+        "Triticale", "VIC", 0.07;
+        "Triticale", "QLD", 0.04;
+        "Triticale", "SA", 0.09;
+        "Triticale", "WA", 0.11;
+        "Triticale", "TAS", 0.16;
+        "Triticale", "NT", 0.01;
+        "Triticale", "ACT", 0.00;
+        "Other cereals", "NSW", 0.05;
+        "Other cereals", "VIC", 0.07;
+        "Other cereals", "QLD", 0.04;
+        "Other cereals", "SA", 0.09;
+        "Other cereals", "WA", 0.11;
+        "Other cereals", "TAS", 0.16;
+        "Other cereals", "NT", 0.01;
+        "Other cereals", "ACT", 0.00;
+        "Pulses", "NSW", 0.05;
+        "Pulses", "VIC", 0.07;
+        "Pulses", "QLD", 0.04;
+        "Pulses", "SA", 0.09;
+        "Pulses", "WA", 0.11;
+        "Pulses", "TAS", 0.16;
+        "Pulses", "NT", 0.01;
+        "Pulses", "ACT", 0.00;
+        "Peanuts", "NSW", 0.05;
+        "Peanuts", "VIC", 0.07;
+        "Peanuts", "QLD", 0.04;
+        "Peanuts", "SA", 0.09;
+        "Peanuts", "WA", 0.11;
+        "Peanuts", "TAS", 0.16;
+        "Peanuts", "NT", 0.01;
+        "Peanuts", "ACT", 0.00;
+        "Oilseeds", "NSW", 0.05;
+        "Oilseeds", "VIC", 0.07;
+        "Oilseeds", "QLD", 0.04;
+        "Oilseeds", "SA", 0.09;
+        "Oilseeds", "WA", 0.11;
+        "Oilseeds", "TAS", 0.16;
+        "Oilseeds", "NT", 0.01;
+        "Oilseeds", "ACT", 0.00;
+        "Other annual crops", "NSW", 0.05;
+        "Other annual crops", "VIC", 0.07;
+        "Other annual crops", "QLD", 0.04;
+        "Other annual crops", "SA", 0.09;
+        "Other annual crops", "WA", 0.11;
+        "Other annual crops", "TAS", 0.16;
+        "Other annual crops", "NT", 0.01;
+        "Other annual crops", "ACT", 0.00;
+        "Other perennial crops", "NSW", 0.05;
+        "Other perennial crops", "VIC", 0.07;
+        "Other perennial crops", "QLD", 0.04;
+        "Other perennial crops", "SA", 0.09;
+        "Other perennial crops", "WA", 0.11;
+        "Other perennial crops", "TAS", 0.16;
+        "Other perennial crops", "NT", 0.01;
+        "Other perennial crops", "ACT", 0.00
+      }, r, c)
+)));
+
+CropFractionRemoved_Variation
+=LAMBDA(("VARIATION OF SOURCE DATA: Split 'All other crop types' into individual crop types for each state. Listed all states for Sugar Cane, with 'N/A' for states where it is not grown."));
+
+
+/*
+============================================================================
+Pasture attributes
+============================================================================
+*/
+
+PastureAttributes_Title
+=LAMBDA(("Table A.2.1.3 Pasture attributes"));
+
+PastureAttributes_Description
+=LAMBDA(("Pasture attributes"));
+
+PastureAttributes_Source
+=LAMBDA(("VEERG 2026: Table A.2.1.3: Pasture attributes"));
+
+PastureAttributes_Data
+=LAMBDA(
+  MAKEARRAY(6, 6,
+    LAMBDA(r,c,
+      INDEX({
+        "Pasture type", "Average Yield (t DM ha) Yp", "Below-ground: above-ground residue ratio RBGp", "N content Above-ground NCAGp", "N content Below-ground NCBGp", "Fraction of pasture yield that is removed FFODp";
+        "Annual grass", 4.41, 0.4, 0.015, 0.012, 0.8;
+        "Grass clover mixture", 8.34, 0.8, 0.025, 0.016, 0.8;
+        "Lucerne", 8.62, 0.4, 0.027, 0.019, 0.8;
+        "Other legume", 5.62, 0.4, 0.027, 0.022, 0.8;
+        "Perennial pasture", 8.35, 0.8, 0.015, 0.012, 0.8
+      }, r, c)
+)));
+
+
+

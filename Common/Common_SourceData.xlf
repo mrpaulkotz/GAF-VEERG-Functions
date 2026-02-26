@@ -2,7 +2,7 @@
 ============================================================================
 ============================================================================
 Source data that is common across all enterprise types
-Excel module name: SourceData_Common
+Excel module name: Common_SourceData
 ============================================================================
 ============================================================================
 */
@@ -18,67 +18,67 @@ NIR_2023_Vol1
 
 /* 
 --------------------------------------
-SourceData_Common_DensityOfMethane
+Common_SourceData_DensityOfMethane
 p = density of methane (0.6784 kg/m3)
 Taken from the National Greenhouse and Energy Reporting 
 (Measurement) Determination 2008
 --------------------------------------
 */
 
-SourceData_Common_DensityOfMethane_Title
+Common_SourceData_DensityOfMethane_Title
   =LAMBDA("p = density of methane");
 
-SourceData_Common_DensityOfMethane_Unit
+Common_SourceData_DensityOfMethane_Unit
   =LAMBDA("kg/m3");
 
-SourceData_Common_DensityOfMethane_Source
+Common_SourceData_DensityOfMethane_Source
   =LAMBDA("National Inventory Report 2023 Volume 1: Equations 3.B.1a_2, 3.B.1c_2, 3.B.3_1, 3.B.4g_2");
 
-SourceData_Common_DensityOfMethane_Data
+Common_SourceData_DensityOfMethane_Data
   =LAMBDA(0.6784);
 
 /* 
 --------------------------------------
-SourceData_Common_ConvertN2oElementalToMolecularCg
+Common_SourceData_ConvertN2oElementalToMolecularCg
 Cg = 44/28 factor to convert elemental mass of N2O to molecular mass
 --------------------------------------
 */
 
-SourceData_Common_ConvertN2oElementalToMolecularCg_Title
+Common_SourceData_ConvertN2oElementalToMolecularCg_Title
   =LAMBDA("Factor to convert elemental mass of N2O to molecular mass");
 
-SourceData_Common_ConvertN2oElementalToMolecularCg_Variable
+Common_SourceData_ConvertN2oElementalToMolecularCg_Variable
   =LAMBDA("CgN2O");
 
-SourceData_Common_ConvertN2oElementalToMolecularCg_Unit
+Common_SourceData_ConvertN2oElementalToMolecularCg_Unit
   =LAMBDA("factor");
 
-SourceData_Common_ConvertN2oElementalToMolecularCg_Source
+Common_SourceData_ConvertN2oElementalToMolecularCg_Source
   =LAMBDA("National Inventory Report 2023 Volume 1");
 
-SourceData_Common_ConvertN2oElementalToMolecularCg_Data
+Common_SourceData_ConvertN2oElementalToMolecularCg_Data
   =LAMBDA(44/28);
 
 /* 
 --------------------------------------
-SourceData_Common_ConvertGasElementalToMolecular
+Common_SourceData_ConvertGasElementalToMolecular
 Factor to convert elemental mass of gas to molecular mass
 --------------------------------------
 */
 
-SourceData_Common_ConvertGasElementalToMolecular_Title
+Common_SourceData_ConvertGasElementalToMolecular_Title
   =LAMBDA("Factor to convert elemental mass of gas to molecular mass");
 
-SourceData_Common_ConvertGasElementalToMolecular_Variable
+Common_SourceData_ConvertGasElementalToMolecular_Variable
   =LAMBDA("Cg");
 
-SourceData_Common_ConvertGasElementalToMolecular_Unit
+Common_SourceData_ConvertGasElementalToMolecular_Unit
   =LAMBDA("factor");
 
-SourceData_Common_ConvertGasElementalToMolecular_Source
+Common_SourceData_ConvertGasElementalToMolecular_Source
   =LAMBDA("XXXXXXX");
 
-SourceData_Common_ConvertGasElementalToMolecular_Data
+Common_SourceData_ConvertGasElementalToMolecular_Data
   =LAMBDA(
     MAKEARRAY(8, 4, 
       LAMBDA(r,c, 
@@ -98,24 +98,24 @@ SourceData_Common_ConvertGasElementalToMolecular_Data
 
 /* 
 --------------------------------------
-SourceData_Common_GWPN2O
+Common_SourceData_GWPN2O
 Global warming potential for greenhouse gases
 --------------------------------------
 */
 
-SourceData_Common_GWP_Title
+Common_SourceData_GWP_Title
   =LAMBDA("Global warming potential for greenhouse gases");
 
-SourceData_Common_GWP_Variable
+Common_SourceData_GWP_Variable
   =LAMBDA("GWPN2O");
 
-SourceData_Common_GWP_Unit
+Common_SourceData_GWP_Unit
   =LAMBDA("factor");
 
-SourceData_Common_GWP_Source
+Common_SourceData_GWP_Source
   =LAMBDA("XXXXXXX");
 
-SourceData_Common_GWP_Data
+Common_SourceData_GWP_Data
   =LAMBDA(
     MAKEARRAY(8, 2, 
       LAMBDA(r,c, 
@@ -136,23 +136,23 @@ SourceData_Common_GWP_Data
 
 /* 
 --------------------------------------
-SourceData_Common_AustralianStatesTerritories
+Common_SourceData_AustralianStatesTerritories
 --------------------------------------
 */
 
-SourceData_Common_AustralianStatesTerritories_Title
+Common_SourceData_AustralianStatesTerritories_Title
   =LAMBDA("Australian states and territories");
 
-SourceData_Common_AustralianStatesTerritories_Variable
+Common_SourceData_AustralianStatesTerritories_Variable
   =LAMBDA("");
 
-SourceData_Common_AustralianStatesTerritories_Unit
+Common_SourceData_AustralianStatesTerritories_Unit
   =LAMBDA("");
 
-SourceData_Common_AustralianStatesTerritories_Source
+Common_SourceData_AustralianStatesTerritories_Source
   =LAMBDA("");
 
-SourceData_Common_AustralianStatesTerritories_Data
+Common_SourceData_AustralianStatesTerritories_Data
    =LAMBDA(
     MAKEARRAY(9, 3, 
       LAMBDA(r,c, 
@@ -173,23 +173,23 @@ SourceData_Common_AustralianStatesTerritories_Data
 
 /* 
 --------------------------------------
-SourceData_Common_WASA4Areas
+Common_SourceData_WASA4Areas
 --------------------------------------
 */
 
-SourceData_Common_WASA4Areas_Title
+Common_SourceData_WASA4Areas_Title
   =LAMBDA("ABS Statistcal Areas Level 4 - Western Australia");
 
-SourceData_Common_WASA4Areas_Variable
+Common_SourceData_WASA4Areas_Variable
   =LAMBDA("");
 
-SourceData_Common_WASA4Areas_Unit
+Common_SourceData_WASA4Areas_Unit
   =LAMBDA("");
 
-SourceData_Common_WASA4Areas_Source
+Common_SourceData_WASA4Areas_Source
   =LAMBDA("Australian Bureau of Statistics (ABS) - Statistical Areas Level 2 - 2021 - Shapefile");
 
-SourceData_Common_WASA4Areas_Data
+Common_SourceData_WASA4Areas_Data
    =LAMBDA(
     MAKEARRAY(11, 1, 
       LAMBDA(r,c, 
@@ -212,23 +212,23 @@ SourceData_Common_WASA4Areas_Data
 
 /* 
 --------------------------------------
-SourceData_Common_WetAndDryZones
+Common_SourceData_WetAndDryZones
 --------------------------------------
 */
 
-SourceData_Common_WetAndDryZones_Title
+Common_SourceData_WetAndDryZones_Title
   =LAMBDA("VEERG Australian wet and dry zones");
 
-SourceData_Common_WetAndDryZones_Variable
+Common_SourceData_WetAndDryZones_Variable
   =LAMBDA("");
 
-SourceData_Common_WetAndDryZones_Unit
+Common_SourceData_WetAndDryZones_Unit
   =LAMBDA("");
 
-SourceData_Common_WetAndDryZones_Source
+Common_SourceData_WetAndDryZones_Source
   =LAMBDA("VEERG 2026: Table 1.2: Translating climate zones to wet and dry zones");
 
-SourceData_Common_WetAndDryZones_Variation
+Common_SourceData_WetAndDryZones_Variation
    =LAMBDA(
     MAKEARRAY(3, 1, 
       LAMBDA(r,c, 
@@ -241,26 +241,26 @@ SourceData_Common_WetAndDryZones_Variation
     )
   );
 
-SourceData_Common_WetAndDryZones_Data
+Common_SourceData_WetAndDryZones_Data
    =LAMBDA(
     MAKEARRAY(15, 2, 
       LAMBDA(r,c, 
         INDEX({
           "Climate Zone", "Wet or Dry Zone";
-          "Tropical montane", "Wet";
-          "Tropical wet", "Wet";
-          "Tropical moist", "Wet";
-          "Tropical dry", "Dry";
-          "Warm temperate moist", "Wet";
-          "Warm temperate dry", "Dry";
-          "Cool temperate moist", "Wet";
-          "Cool temperate dry", "Dry";
-          "Warm temperate moist - low frost", "Wet";
-          "Warm temperate dry - low frost", "Dry";
-          "Warm temperate moist - high temp", "Wet";
-          "Warm temperate dry - high temp", "Dry";
-          "Cool temperate moist - low frost", "Wet";
-          "Cool temperate dry - low frost", "Dry"
+          "Tropical montane", "Wet climate zone";
+          "Tropical wet", "Wet climate zone";
+          "Tropical moist", "Wet climate zone";
+          "Tropical dry", "Dry climate zone";
+          "Warm temperate moist", "Wet climate zone";
+          "Warm temperate dry", "Dry climate zone";
+          "Cool temperate moist", "Wet climate zone";
+          "Cool temperate dry", "Dry climate zone";
+          "Warm temperate moist - low frost", "Wet climate zone";
+          "Warm temperate dry - low frost", "Dry climate zone";
+          "Warm temperate moist - high temp", "Wet climate zone";
+          "Warm temperate dry - high temp", "Dry climate zone";
+          "Cool temperate moist - low frost", "Wet climate zone";
+          "Cool temperate dry - low frost", "Dry climate zone"
         }, r, c)
       )
     )
@@ -268,23 +268,23 @@ SourceData_Common_WetAndDryZones_Data
 
 /* 
 --------------------------------------
-SourceData_Common_ClimateZones
+Common_SourceData_ClimateZones
 --------------------------------------
 */
 
-SourceData_Common_ClimateZones_Title
+Common_SourceData_ClimateZones_Title
   =LAMBDA("VEERG Australian climate zones");
 
-SourceData_Common_ClimateZones_Variable
+Common_SourceData_ClimateZones_Variable
   =LAMBDA("");
 
-SourceData_Common_ClimateZones_Unit
+Common_SourceData_ClimateZones_Unit
   =LAMBDA("");
 
-SourceData_Common_ClimateZones_Source
+Common_SourceData_ClimateZones_Source
   =LAMBDA("VEERG 2026: Table 1.3: Climate and Rainfall zone classifications and definitions");
 
-SourceData_Common_ClimateZones_Variation
+Common_SourceData_ClimateZones_Variation
    =LAMBDA(
     MAKEARRAY(5, 1, 
       LAMBDA(r,c, 
@@ -299,7 +299,7 @@ SourceData_Common_ClimateZones_Variation
     )
   );
 
-SourceData_Common_ClimateZones_Data
+Common_SourceData_ClimateZones_Data
    =LAMBDA(
     MAKEARRAY(9, 16, 
       LAMBDA(r,c, 
@@ -318,7 +318,7 @@ SourceData_Common_ClimateZones_Data
     )
   );
 
-SourceData_Common_ClimateZones_Appendices
+Common_SourceData_ClimateZones_Appendices
    =LAMBDA(
     MAKEARRAY(4, 1, 
       LAMBDA(r,c, 
@@ -335,26 +335,26 @@ SourceData_Common_ClimateZones_Appendices
 
 /* 
 --------------------------------------
-SourceData_Common_TemperatureZones
+Common_SourceData_TemperatureZones
 --------------------------------------
 */
 
-SourceData_Common_TemperatureZones_Title
+Common_SourceData_TemperatureZones_Title
   =LAMBDA("VEERG Australian temperature zones");
 
-SourceData_Common_TemperatureZones_Variable
+Common_SourceData_TemperatureZones_Variable
   =LAMBDA("");
 
-SourceData_Common_TemperatureZones_Unit
+Common_SourceData_TemperatureZones_Unit
   =LAMBDA("");
 
-SourceData_Common_TemperatureZones_Source
+Common_SourceData_TemperatureZones_Source
   =LAMBDA("VEERG 2026: Table 1.3: Climate and Rainfall zone classifications and definitions");
 
-SourceData_Common_TemperatureZones_Variation
+Common_SourceData_TemperatureZones_Variation
   =LAMBDA("VARIATION OF SOURCE DATA: Added extra MAT min and MAT max columns to calculate zone from real temperature data.");
 
-SourceData_Common_TemperatureZones_Data
+Common_SourceData_TemperatureZones_Data
    =LAMBDA(
     MAKEARRAY(4, 4, 
       LAMBDA(r,c, 
@@ -370,26 +370,26 @@ SourceData_Common_TemperatureZones_Data
 
 /* 
 --------------------------------------
-SourceData_Common_RainfallZones
+Common_SourceData_RainfallZones
 --------------------------------------
 */
 
-SourceData_Common_RainfallZones_Title
+Common_SourceData_RainfallZones_Title
   =LAMBDA("VEERG Australian rainfall zones");
 
-SourceData_Common_RainfallZones_Variable
+Common_SourceData_RainfallZones_Variable
   =LAMBDA("");
 
-SourceData_Common_RainfallZones_Unit
+Common_SourceData_RainfallZones_Unit
   =LAMBDA("");
 
-SourceData_Common_RainfallZones_Source
+Common_SourceData_RainfallZones_Source
   =LAMBDA("VEERG 2026: Table 1.3: Climate and Rainfall zone classifications and definitions");
 
-SourceData_Common_RainfallZones_Variation
+Common_SourceData_RainfallZones_Variation
   =LAMBDA("VARIATION OF SOURCE DATA: Added extra Rainfall min and Rainfall max columns to calculate zone from real rainfall data.");
 
-SourceData_Common_RainfallZones_Data
+Common_SourceData_RainfallZones_Data
    =LAMBDA(
     MAKEARRAY(3, 4, 
       LAMBDA(r,c, 
@@ -404,26 +404,26 @@ SourceData_Common_RainfallZones_Data
 
 /* 
 --------------------------------------
-SourceData_Common_LeachingZones
+Common_SourceData_LeachingZones
 --------------------------------------
 */
 
-SourceData_Common_LeachingZones_Title
+Common_SourceData_LeachingZones_Title
   =LAMBDA("VEERG Australian leaching zones");
 
-SourceData_Common_LeachingZones_Variable
+Common_SourceData_LeachingZones_Variable
   =LAMBDA("");
 
-SourceData_Common_LeachingZones_Unit
+Common_SourceData_LeachingZones_Unit
   =LAMBDA("");
 
-SourceData_Common_LeachingZones_Source
+Common_SourceData_LeachingZones_Source
   =LAMBDA("VEERG 2026: Table 1.3: Climate and Rainfall zone classifications and definitions");
 
-SourceData_Common_LeachingZones_Variation
+Common_SourceData_LeachingZones_Variation
   =LAMBDA("");
 
-SourceData_Common_LeachingZones_Data
+Common_SourceData_LeachingZones_Data
    =LAMBDA(
     MAKEARRAY(4, 2, 
       LAMBDA(r,c, 
@@ -440,26 +440,26 @@ SourceData_Common_LeachingZones_Data
 
 /* 
 --------------------------------------
-SourceData_Common_DataScores_Scope3
+Common_SourceData_DataScores_Scope3
 --------------------------------------
 */
 
-SourceData_Common_DataScores_Scope3_Title
+Common_SourceData_DataScores_Scope3_Title
   =LAMBDA("Australian data scores for scope 3");
 
-SourceData_Common_DataScores_Scope3_Variable
+Common_SourceData_DataScores_Scope3_Variable
   =LAMBDA("");
 
-SourceData_Common_DataScores_Scope3_Unit
+Common_SourceData_DataScores_Scope3_Unit
   =LAMBDA("");
 
-SourceData_Common_DataScores_Scope3_Source
+Common_SourceData_DataScores_Scope3_Source
   =LAMBDA("VEERG 2026: XXXXXXXX");
 
-SourceData_Common_DataScores_Scope3_Variation
+Common_SourceData_DataScores_Scope3_Variation
   =LAMBDA("");
 
-SourceData_Common_DataScores_Scope3_Data
+Common_SourceData_DataScores_Scope3_Data
    =LAMBDA(
     MAKEARRAY(6, 2, 
       LAMBDA(r,c, 

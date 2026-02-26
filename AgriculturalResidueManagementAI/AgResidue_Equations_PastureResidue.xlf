@@ -1,0 +1,122 @@
+/* 
+--------------------------------------
+VEERG_6_2_1_1__1__NitrousOxideEmissionsFromPastureResidues
+Nitrous oxide emissions from the return of pasture residues from all pasture types to the soil
+EN2O
+t N2O
+E_{N2O}=\sum_{p}\left(M_p\times EF_{Ni}\times C_{N2O}\times{10}^{-3}\right)
+Mp = mass of nitrogen in pasture p residues returned to the soil (kg N)
+EFNi = emission factor for crop residues returned to the soil in climate zone i (kg N2O-N/kg N)
+CN2O = factor to convert elemental mass of nitrous oxide to molecular mass (dimensionless)
+p = Pasture type
+i = Climate zone
+--------------------------------------
+*/
+
+VEERG_6_2_1_1__1__NitrousOxideEmissionsFromPastureResidues
+  =LAMBDA(
+    Mp, EFNi, CN2O,
+    Mp * EFNi * CN2O * 10^(-3)
+  );
+
+VEERG_6_2_1_1__1__NitrousOxideEmissionsFromPastureResidues_FunctionName
+  =LAMBDA("VEERG_6_2_1_1__1__NitrousOxideEmissionsFromPastureResidues");
+
+VEERG_6_2_1_1__1__NitrousOxideEmissionsFromPastureResidues_Title
+  =LAMBDA("Nitrous oxide emissions from the return of pasture residues from all pasture types to the soil");
+
+VEERG_6_2_1_1__1__NitrousOxideEmissionsFromPastureResidues_Variable
+  =LAMBDA("EN2O");
+
+VEERG_6_2_1_1__1__NitrousOxideEmissionsFromPastureResidues_Unit
+  =LAMBDA("t N2O");
+
+VEERG_6_2_1_1__1__NitrousOxideEmissionsFromPastureResidues_Source
+  =LAMBDA("VEERG 2026: 6.2.1.1, Equation (1)");
+
+VEERG_6_2_1_1__1__NitrousOxideEmissionsFromPastureResidues_NIRReference
+  =LAMBDA("");
+
+VEERG_6_2_1_1__1__NitrousOxideEmissionsFromPastureResidues_LatexEquation
+  =LAMBDA("E_{N2O}=\sum_{p}\left(M_p\times EF_{Ni}\times C_{N2O}\times{10}^{-3}\right)");
+
+VEERG_6_2_1_1__1__NitrousOxideEmissionsFromPastureResidues_Arguments
+  =LAMBDA(
+    MAKEARRAY(5, 2, 
+      LAMBDA(r,c, 
+        INDEX({
+          "Mp","mass of nitrogen in pasture p residues returned to the soil (kg N)";
+          "EFNi","emission factor for crop residues returned to the soil in climate zone i (kg N2O-N/kg N)";
+          "CgN2O","factor to convert elemental mass of nitrous oxide to molecular mass (dimensionless)";
+          "p","Pasture type";
+          "i","Climate zone"
+        }, r, c)
+      )
+    )
+  );
+
+/* 
+--------------------------------------
+VEERG_6_2_1_1__2__MassOfNitrogenInPastureResidues
+Mass of nitrogen in pasture residues returned to the soil
+Mp
+kg N
+M_p = (A_p ×(Y_p \times 10^{-3}) \times (1- FFOD_p) \times NC_{AGp}) + (A_p \times (Y_p \times 10^{-3})\times R_{BGp} \times NC_{BGp})
+Ap = area of pasture renewed or removed (ha)
+Yp = average yield of pasture crop (t DM/ha)
+NCAGp = N content of above-ground pasture residue (kg N/kg DM)
+RBGp = below-ground residue to above-ground residue ratio for pasture crop (dimensionless)
+NCBGp = N content of below-ground pasture crop residue (kg N/kg DM)
+FFODp = fraction of pasture yield that is removed (dimensionless)
+p = Pasture type
+--------------------------------------
+*/
+
+VEERG_6_2_1_1__2__MassOfNitrogenInPastureResidues
+  =LAMBDA(
+    Ap, Yp, FFODp, NCAGp, RBGp, NCBGp,
+    (Ap * (Yp * 10^(-3)) * (1 - FFODp) * NCAGp) + (Ap * (Yp * 10^(-3)) * RBGp * NCBGp)
+  )
+;
+
+VEERG_6_2_1_1__2__MassOfNitrogenInPastureResidues_FunctionName
+  =LAMBDA("VEERG_6_2_1_1__2__MassOfNitrogenInPastureResidues");
+
+VEERG_6_2_1_1__2__MassOfNitrogenInPastureResidues_Title
+  =LAMBDA("Mass of nitrogen in pasture residues returned to the soil");
+
+VEERG_6_2_1_1__2__MassOfNitrogenInPastureResidues_Variable
+  =LAMBDA("Mp");
+
+VEERG_6_2_1_1__2__MassOfNitrogenInPastureResidues_Unit
+  =LAMBDA("kg N");
+
+VEERG_6_2_1_1__2__MassOfNitrogenInPastureResidues_Source
+  =LAMBDA("VEERG 2026: 6.2.1.1, Equation (2)");
+
+VEERG_6_2_1_1__2__MassOfNitrogenInPastureResidues_NIRReference
+  =LAMBDA("");
+
+VEERG_6_2_1_1__2__MassOfNitrogenInPastureResidues_LatexEquation
+  =LAMBDA("M_p = (A_p \times (Y_p \times 10^{-3}) \times (1- FFOD_p) \times NC_{AGp}) + (A_p \times (Y_p \times 10^{-3})\times R_{BGp} \times NC_{BGp})");
+
+VEERG_6_2_1_1__2__MassOfNitrogenInPastureResidues_Arguments
+  =LAMBDA(
+    MAKEARRAY(7, 2, 
+      LAMBDA(r,c, 
+        INDEX({
+          "Ap","area of pasture renewed or removed (ha)";
+          "Yp","average yield of pasture crop (t DM/ha)";
+          "NCAGp","N content of above-ground pasture residue (kg N/kg DM)";
+          "RBGp","below-ground residue to above-ground residue ratio for pasture crop (dimensionless)";
+          "NCBGp","N content of below-ground pasture crop residue (kg N/kg DM)";
+          "FFODp","fraction of pasture yield that is removed (dimensionless)";
+          "p","Pasture type"
+        }, r, c)
+      )
+    )
+  );
+
+
+
+
