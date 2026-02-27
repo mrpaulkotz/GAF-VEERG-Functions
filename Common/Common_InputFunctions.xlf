@@ -141,3 +141,6 @@ getOverlappingReportingPeriods
         IF(n=0,"",HSTACK(startsText & " to " & endsText & tag))
     )
 );
+
+Utility_DisplayFunctionName
+=LAMBDA(Function, FORMULATEXT(Function));

@@ -31,9 +31,6 @@ VEERG_4_3_1_3__1_MMS_N2O_Direct
    )
 ;
 
-VEERG_4_3_1_3__1_MMS_N2O_Direct_FunctionName
-  =LAMBDA("VEERG_4_3_1_3__1_MMS_N2O_Direct");
-
 VEERG_4_3_1_3__1_MMS_N2O_Direct_Title
   =LAMBDA("The total annual direct nitrous oxide emissions from manure management systems");
 
@@ -82,9 +79,6 @@ VEERG_4_3_1_3__2_FaecalN2OMMS
    )
 ;
 
-VEERG_4_3_1_3__2_FaecalN2OMMS_FunctionName
-  =LAMBDA("VEERG_4_3_1_3__2_FaecalN2OMMS");
-
 VEERG_4_3_1_3__2_FaecalN2OMMS_Title
   =LAMBDA("Faecal nitrogen in each manure management system");
 
@@ -131,9 +125,6 @@ VEERG_4_3_1_3__3a_FaecalNitrogenExcretedGTOne
     (Nj * Fj * Dj)
   )
 ;
-
-VEERG_4_3_1_3__3a_FaecalNitrogenExcretedGTOne_FunctionName
-  =LAMBDA("VEERG_4_3_1_3__3a_FaecalNitrogenExcretedGTOne");
 
 VEERG_4_3_1_3__3a_FaecalNitrogenExcretedGTOne_Title
   =LAMBDA("Faecal nitrogen excreted by dairy cattle >1 year old");
@@ -183,9 +174,6 @@ VEERG_4_3_1_3__3b_FaecalNitrogenExcretedLTOne
     (Nj * Fj * Dj) + (Nj * FPWj * DPWj)
    )
 ;
-
-VEERG_4_3_1_3__3b_FaecalNitrogenExcretedLTOne_FunctionName
-  =LAMBDA("VEERG_4_3_1_3__3b_FaecalNitrogenExcretedLTOne");
 
 VEERG_4_3_1_3__3b_FaecalNitrogenExcretedLTOne_Title
   =LAMBDA("Total faecal nitrogen excreted (AFj=3,5)");
@@ -239,9 +227,6 @@ VEERG_4_3_1_3__4_NitrogenExcretedInFaeces
    )
 ;
 
-VEERG_4_3_1_3__4_NitrogenExcretedInFaeces_FunctionName
-  =LAMBDA("VEERG_4_3_1_3__4_NitrogenExcretedInFaeces");
-
 VEERG_4_3_1_3__4_NitrogenExcretedInFaeces_Title
   =LAMBDA("Nitrogen excreted in faeces");
 
@@ -290,9 +275,6 @@ VEERG_4_3_1_3__5_MetabolisableEnergy
   )
 ;
 
-VEERG_4_3_1_3__5_MetabolisableEnergy_FunctionName
-  =LAMBDA("VEERG_4_3_1_3__5_MetabolisableEnergy");
-
 VEERG_4_3_1_3__5_MetabolisableEnergy_Title
   =LAMBDA("Metabolisable energy");
 
@@ -337,9 +319,6 @@ VEERG_4_3_1_3__6_CrudeProteinIntake
     Ij * CPj
   )
 ;
-
-VEERG_4_3_1_3__6_CrudeProteinIntake_FunctionName
-  =LAMBDA("VEERG_4_3_1_3__6_CrudeProteinIntake");
 
 VEERG_4_3_1_3__6_CrudeProteinIntake_Title
   =LAMBDA("Crude protein intake of dairy cattle");
@@ -387,9 +366,6 @@ VEERG_4_3_1_3__8_UrinaryNitrogenMMS
   )
 ;
 
-VEERG_4_3_1_3__8_UrinaryNitrogenMMS_FunctionName
-  =LAMBDA("VEERG_4_3_1_3__8_UrinaryNitrogenMMS");
-
 VEERG_4_3_1_3__8_UrinaryNitrogenMMS_Title
   =LAMBDA("Urinary nitrogen in each MMS");
 
@@ -436,9 +412,6 @@ VEERG_4_3_1_3__9a_UrinaryNitrogenExcretedGTOne
     (Nj * Uj * Dj)
   )
 ;
-
-VEERG_4_3_1_3__9a_UrinaryNitrogenExcretedGTOne_FunctionName
-  =LAMBDA("VEERG_4_3_1_3__9a_UrinaryNitrogenExcretedGTOne");
 
 VEERG_4_3_1_3__9a_UrinaryNitrogenExcretedGTOne_Title
   =LAMBDA("Urinary nitrogen excreted by dairy cattle >1 year old");
@@ -489,9 +462,6 @@ VEERG_4_3_1_3__9b_UrinaryNitrogenExcretedLTOne
     (Nj * Uj * Dj) + (Nj * UPWj * DPWj)
   )
 ;
-
-VEERG_4_3_1_3__9b_UrinaryNitrogenExcretedLTOne_FunctionName
-  =LAMBDA("VEERG_4_3_1_3__9b_UrinaryNitrogenExcretedLTOne");
 
 VEERG_4_3_1_3__9b_UrinaryNitrogenExcretedLTOne_Title
   =LAMBDA("Urinary nitrogen excreted by dairy cattle <1 year old");
@@ -544,9 +514,6 @@ VEERG_4_3_1_3__10_NitrogenExcretedInUrine
     (CPIj / 6.25) - NRj - Fj - ((1.1 * 10 ^ -4 * (Wj ^ 0.75)) / 6.25)
   )
 ;
-
-VEERG_4_3_1_3__10_NitrogenExcretedInUrine_FunctionName
-  =LAMBDA("VEERG_4_3_1_3__10_NitrogenExcretedInUrine");
 
 VEERG_4_3_1_3__10_NitrogenExcretedInUrine_Title
   =LAMBDA("Nitrogen excreted in urine for of dairy cattle >1 year old and weaned cattle <1 year old");
@@ -601,9 +568,6 @@ VEERG_4_3_1_3__11_NitrogenRetainedInTheBody
   )
 ;
 
-VEERG_4_3_1_3__11_NitrogenRetainedInTheBody_FunctionName
-  =LAMBDA("VEERG_4_3_1_3__11_NitrogenRetainedInTheBody");
-
 VEERG_4_3_1_3__11_NitrogenRetainedInTheBody_Title
   =LAMBDA("Nitrogen retained in the body");
 
@@ -656,9 +620,6 @@ VEERG_4_3_1_3__12_IntakeRelativeToMaintenance
   )
 ;
 
-VEERG_4_3_1_3__12_IntakeRelativeToMaintenance_FunctionName
-  =LAMBDA("VEERG_4_3_1_3__12_IntakeRelativeToMaintenance");
-
 VEERG_4_3_1_3__12_IntakeRelativeToMaintenance_Title
   =LAMBDA("Intake relative to maintenance");
 
@@ -707,9 +668,6 @@ VEERG_4_3_1_3__13_RelativeSize
     Wj / SRWj
   )
 ;
-
-VEERG_4_3_1_3__13_RelativeSize_FunctionName
-  =LAMBDA("VEERG_4_3_1_3__13_RelativeSize");
 
 VEERG_4_3_1_3__13_RelativeSize_Title
   =LAMBDA("Relative size of each livestock class");

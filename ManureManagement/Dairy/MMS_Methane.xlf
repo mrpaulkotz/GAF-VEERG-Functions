@@ -187,10 +187,6 @@ VEERG_4_3_1_1__2_MethaneFromManureProduction
      (Nj*Mj*Dj)+(Nj*MPWj*DPWj)
    );
 
-
-VEERG_4_3_1_1__2_MethaneFromManureProduction_FunctionName
-  =LAMBDA("VEERG_4_3_1_1__2_MethaneFromManureProduction");
-
 VEERG_4_3_1_1__2_MethaneFromManureProduction_Title
   =LAMBDA("Methane from manure production");
 
@@ -241,10 +237,6 @@ VEERG_4_3_1_1__3_VolatileSolids
     Ij, DMDj, A,
      (Ij*(1-DMDj)+(0.04*Ij))*(1-A)
    );
-
-
-VEERG_4_3_1_1__3_VolatileSolids_FunctionName
-  =LAMBDA("VEERG_4_3_1_1__3_VolatileSolids");
 
 VEERG_4_3_1_1__3_VolatileSolids_Title
   =LAMBDA("Volatile solids in manure");

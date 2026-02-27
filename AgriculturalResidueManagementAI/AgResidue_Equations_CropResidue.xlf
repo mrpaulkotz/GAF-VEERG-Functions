@@ -81,9 +81,6 @@ VEERG_6_1_1_1__2__MassOfNitrogenInCropResidues
   )
 ;
 
-VEERG_6_1_1_1__2__MassOfNitrogenInCropResidues_FunctionName
-  =LAMBDA("VEERG_6_1_1_1__2__MassOfNitrogenInCropResidues");
-
 VEERG_6_1_1_1__2__MassOfNitrogenInCropResidues_Title
   =LAMBDA("Mass of nitrogen in crop residues returned to the soil");
 
@@ -143,9 +140,6 @@ VEERG_6_1_1_2__1__FractionOfCropResidueRemovedBaled
     (B * MB) / (Pc * RAGc)
   )
 ;
-
-VEERG_6_1_1_2__1__FractionOfCropResidueRemovedBaled_FunctionName
-  =LAMBDA("VEERG_6_1_1_2__1__FractionOfCropResidueRemovedBaled");
 
 VEERG_6_1_1_2__1__FractionOfCropResidueRemovedBaled_Title
   =LAMBDA("Fraction of crop residue that is removed for crop c, calculated where residues are baled");

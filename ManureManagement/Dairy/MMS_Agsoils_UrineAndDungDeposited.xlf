@@ -13,9 +13,6 @@ VEERG_4_3_1_9__1_UrineAndDungDeposited
     AFjm, AUjm, EFPRP, CgN2O, Common_AgSoils.AgSoils_UrineAndDungDeposited(AFjm, AUjm, EFPRP, CgN2O)
   );
 
-VEERG_4_3_1_9__1_UrineAndDungDeposited_FunctionName
-  =LAMBDA("VEERG_4_3_1_9__1_UrineAndDungDeposited");
-
 VEERG_4_3_1_9__1_UrineAndDungDeposited_Title
   =LAMBDA(Common_AgSoils.AgSoils_UrineAndDungDeposited_Title());
 

@@ -31,9 +31,6 @@ VEERG_5_3_1_1__1_LimeApplication
   )
 ;
 
-VEERG_5_3_1_1__1_LimeApplication_FunctionName
-  =LAMBDA("VEERG_5_3_1_1__1_LimeApplication");
-
 VEERG_5_3_1_1__1_LimeApplication_Title
   =LAMBDA("The emissions from the application of lime and dolomite to soils");
 

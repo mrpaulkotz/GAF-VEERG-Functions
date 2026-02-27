@@ -24,9 +24,6 @@ VEERG_9_1_1__1_RefrigerantLeaking
   )
 ;
 
-VEERG_9_1_1__1_RefrigerantLeaking_FunctionName
-  =LAMBDA("VEERG_9_1_1__1_RefrigerantLeaking");
-
 VEERG_9_1_1__1_RefrigerantLeaking_Title
   =LAMBDA("The total emissions of refrigerant leaking during operation (not during installation or disposal)");
 

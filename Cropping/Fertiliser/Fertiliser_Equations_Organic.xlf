@@ -36,9 +36,6 @@ VEERG_5_2_1_1__1_OrganicFertiliserApplication
   )
 ;
 
-VEERG_5_2_1_1__1_OrganicFertiliserApplication_FunctionName
-  =LAMBDA("VEERG_5_2_1_1__1_OrganicFertiliserApplication");
-
 VEERG_5_2_1_1__1_OrganicFertiliserApplication_Title
   =LAMBDA("Nitrous oxide emissions from organic fertilisers applied to soils for all organic fertiliser types f and all production systems j");
 
@@ -93,9 +90,6 @@ VEERG_5_2_1_1__2_MassOfNitrogenInOrganicFertiliser
     Morganicjf * FNorganicf
   )
 ;
-
-VEERG_5_2_1_1__2_MassOfNitrogenInOrganicFertiliser_FunctionName
-  =LAMBDA("VEERG_5_2_1_1__2_MassOfNitrogenInOrganicFertiliser");
 
 VEERG_5_2_1_1__2_MassOfNitrogenInOrganicFertiliser_Title
   =LAMBDA("Mass of nitrogen in purchased organic fertilisers applied to soils");

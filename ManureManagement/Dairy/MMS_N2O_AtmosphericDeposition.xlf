@@ -29,10 +29,6 @@ VEERG_4_3_1_5__1_MMS_NO2AtmosphericDeposition
      MNatmos * EFN2O * Cg * 10 ^-3
    );
 
-
-VEERG_4_3_1_5__1_MMS_NO2AtmosphericDeposition_FunctionName
-  =LAMBDA("VEERG_4_3_1_5__1_MMS_NO2AtmosphericDeposition");
-
 VEERG_4_3_1_5__1_MMS_NO2AtmosphericDeposition_Title
   =LAMBDA("Annual atmospheric deposition emissions from manure management systems");
 
@@ -83,9 +79,6 @@ VEERG_4_3_1_5__2_TotalNitrogenVolatilisedMMS
     (FNjm * FracGASMm) + (UNjm * FracGASMm)
   )
 ;
-
-VEERG_4_3_1_5__2_TotalNitrogenVolatilisedMMS_FunctionName
-  =LAMBDA("VEERG_4_3_1_5__2_TotalNitrogenVolatilisedMMS");
 
 VEERG_4_3_1_5__2_TotalNitrogenVolatilisedMMS_Title
   =LAMBDA("Total of nitrogen volatilised from MMS");

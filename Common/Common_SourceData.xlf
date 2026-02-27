@@ -436,6 +436,42 @@ Common_SourceData_LeachingZones_Data
     )
   );
 
+/* 
+--------------------------------------
+Common_SourceData_FracWET
+5.5.2.3 Constant Parameters
+Fraction of N that is available for leaching and runoff
+--------------------------------------
+*/
+
+Common_SourceData_FracWET_Title
+  =LAMBDA("Fraction of N that is available for leaching and runoff");
+
+Common_SourceData_FracWET_Unit
+  =LAMBDA("(Dimensionless");
+
+Common_SourceData_FracWET_Source
+  =LAMBDA("VEERG 2026:5.5.2.3 Constant Parameters");
+
+Common_SourceData_FracWET_NIRReference
+  =LAMBDA("");
+
+Common_SourceData_FracWET_Data
+  =LAMBDA(
+    MAKEARRAY(3, 2, 
+      LAMBDA(r,c, 
+        INDEX({
+          "Is in leaching zone","FracWET";
+          "Yes - in leaching zone", 1;
+          "No - not in leaching zone", 0
+        }, r, c)
+      )
+    )
+  );
+
+  Common_SourceData_FracWET_Variation
+  =LAMBDA((""));
+
 
 
 /* 
@@ -474,3 +510,74 @@ Common_SourceData_DataScores_Scope3_Data
       )
     )
   );
+
+
+  /* 
+--------------------------------------
+Common_SourceData_FracLEACH
+5.5.2.3 Constant Parameters
+Fraction of N that is available for leaching and runoff
+--------------------------------------
+*/
+
+Common_SourceData_FracLEACH_Title
+  =LAMBDA("Fraction of N that is available for leaching and runoff");
+
+Common_SourceData_FracLEACH_Unit
+  =LAMBDA("(Dimensionless");
+
+Common_SourceData_FracLEACH_Source
+  =LAMBDA("VEERG 2026:5.5.2.3 Constant Parameters");
+
+Common_SourceData_FracLEACH_NIRReference
+  =LAMBDA("National Inventory Report Volume 1: Leaching and runoff (3.D.b.2)");
+
+Common_SourceData_FracLEACH_Data
+  =LAMBDA(
+    MAKEARRAY(1, 2, 
+      LAMBDA(r,c, 
+        INDEX({
+          "FracLEACH",0.24
+        }, r, c)
+      )
+    )
+  );
+
+  Common_SourceData_FracLEACH_Variation
+  =LAMBDA((""));
+
+
+
+  /* 
+--------------------------------------
+Common_SourceData_EFleach
+5.5.2.3 Constant Parameters
+Emission factor for nitrogen leaching and runoff
+--------------------------------------
+*/
+
+Common_SourceData_EFleach_Title
+  =LAMBDA("Emission factor for nitrogen leaching and runoff");
+
+Common_SourceData_EFleach_Unit
+  =LAMBDA("(kg N2O-N / kg N");
+
+Common_SourceData_EFleach_Source
+  =LAMBDA("VEERG 2026:5.5.2.3 Constant Parameters");
+
+Common_SourceData_EFleach_NIRReference
+  =LAMBDA("National Inventory Report Volume 1: Equation 3.D.B_10");
+
+Common_SourceData_EFleach_Data
+  =LAMBDA(
+    MAKEARRAY(1, 2, 
+      LAMBDA(r,c, 
+        INDEX({
+          "EFleach",0.011
+        }, r, c)
+      )
+    )
+  );
+
+  Common_SourceData_EFleach_Variation
+  =LAMBDA((""));

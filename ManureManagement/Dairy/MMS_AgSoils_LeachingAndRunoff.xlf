@@ -13,9 +13,6 @@ VEERG_4_3_1_12__1_LeachingAndRunoff
     Mleach,EFleach,CgN2O, Common_AgSoils.AgSoils_LeachingAndRunoff(Mleach,EFleach,CgN2O)
   );
 
-VEERG_4_3_1_12__1_LeachingAndRunoff_FunctionName
-  =LAMBDA("VEERG_4_3_1_12__1_LeachingAndRunoff");
-
 VEERG_4_3_1_12__1_LeachingAndRunoff_Title
   =LAMBDA(Common_AgSoils.AgSoils_LeachingAndRunoff_Title());
 

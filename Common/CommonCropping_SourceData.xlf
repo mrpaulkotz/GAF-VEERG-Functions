@@ -2,7 +2,7 @@
 ============================================================================
 ============================================================================
 Source data that is common across all crop types
-Excel module name: SourceData_Cropping_Common
+Excel module name: CommonCropping_SourceData
 ============================================================================
 ============================================================================
 */
@@ -18,21 +18,21 @@ NIR_2023_Vol1
 
 /* 
 --------------------------------------
-SourceData_Cropping_Common_N2OEFsInorganicFertiliser
+CommonCropping_SourceData_N2OEFsInorganicFertiliser
 Table 5.21 Nitrous oxide EFs for inorganic fertiliser
 --------------------------------------
 */
 
-SourceData_Cropping_Common_N2OEFsInorganicFertiliser_Title
+CommonCropping_SourceData_N2OEFsInorganicFertiliser_Title
   =LAMBDA("Nitrous oxide EFs for inorganic fertiliser");
 
-SourceData_Cropping_Common_N2OEFsInorganicFertiliser_Unit
+CommonCropping_SourceData_N2OEFsInorganicFertiliser_Unit
   =LAMBDA("Gg N2O-N/ Gg N");
 
-SourceData_Cropping_Common_N2OEFsInorganicFertiliser_Source
+CommonCropping_SourceData_N2OEFsInorganicFertiliser_Source
   =LAMBDA("National Inventory Report 2023 Volume 1: Table 5.21");
 
-SourceData_Cropping_Common_N2OEFsInorganicFertiliser_Data
+CommonCropping_SourceData_N2OEFsInorganicFertiliser_Data
   =LAMBDA(
     MAKEARRAY(8, 2, 
       LAMBDA(r,c, 
@@ -52,43 +52,43 @@ SourceData_Cropping_Common_N2OEFsInorganicFertiliser_Data
 
 /* 
 --------------------------------------
-SourceData_Cropping_Common_UreaCO2EF
+CommonCropping_SourceData_UreaCO2EF
 National Inventory Report 2023 Volume 1: Equation 3.H_1
 --------------------------------------
 */
 
-SourceData_Cropping_Common_UreaCO2EF_Title
+CommonCropping_SourceData_UreaCO2EF_Title
   =LAMBDA("Emission factor for carbon emissions from urea application");
 
-SourceData_Cropping_Common_UreaCO2EF_Unit
+CommonCropping_SourceData_UreaCO2EF_Unit
   =LAMBDA("tonne C/tonne urea");
 
-SourceData_Cropping_Common_UreaCO2EF_Source
+CommonCropping_SourceData_UreaCO2EF_Source
   =LAMBDA("National Inventory Report 2023 Volume 1: Equation 3.H_1");
 
-SourceData_Cropping_Common_UreaCO2EF_Data
+CommonCropping_SourceData_UreaCO2EF_Data
   =LAMBDA(0.2);
 
 /* 
 --------------------------------------
-SourceData_Cropping_Common_N2OEFOrganicFertiliser
+CommonCropping_SourceData_N2OEFOrganicFertiliser
 VEERG 2026: Table A.2.1.4 Emission factor for organic fertiliser and crop residues returned to the soil
 --------------------------------------
 */
 
-SourceData_Cropping_Common_N2OEFOrganicFertiliser_Title
+CommonCropping_SourceData_N2OEFOrganicFertiliser_Title
   =LAMBDA("Emission factor for organic fertiliser and crop residues returned to the soil");
 
-SourceData_Cropping_Common_N2OEFOrganicFertiliser_Unit
+CommonCropping_SourceData_N2OEFOrganicFertiliser_Unit
   =LAMBDA("kg N2O - N / kg N");
 
-SourceData_Cropping_Common_N2OEFOrganicFertiliser_Source
+CommonCropping_SourceData_N2OEFOrganicFertiliser_Source
   =LAMBDA("VEERG 2026: Table A.2.1.4");
 
-SourceData_Cropping_Common_N2OEFOrganicFertiliser_NIRReference
+CommonCropping_SourceData_N2OEFOrganicFertiliser_NIRReference
   =LAMBDA("IPCC 2019 Refinement Volume 4 Table 11.1 [1, p. 11]");
 
-SourceData_Cropping_Common_N2OEFOrganicFertiliser_Data
+CommonCropping_SourceData_N2OEFOrganicFertiliser_Data
   =LAMBDA(
     MAKEARRAY(3, 2, 
       LAMBDA(r,c, 
@@ -103,26 +103,26 @@ SourceData_Cropping_Common_N2OEFOrganicFertiliser_Data
 
 /* 
 --------------------------------------
-SourceData_Cropping_Common_FracGASFfInorganicFertiliser
+CommonCropping_SourceData_FracGASFfInorganicFertiliser
 VEERG 2026:Table 12.2.2.9
 IPCC 2019 Refinement Volume 4 Table 11.3 [1, p. 11]
 Fraction of inorganic fertiliser f that volatilises as NH3 and NOx
 --------------------------------------
 */
 
-SourceData_Cropping_Common_FracGASFfInorganicFertiliser_Title
+CommonCropping_SourceData_FracGASFfInorganicFertiliser_Title
   =LAMBDA("The direct nitrous oxide EF from the organic fertiliser when applied to soils");
 
-SourceData_Cropping_Common_FracGASFfInorganicFertiliser_Unit
+CommonCropping_SourceData_FracGASFfInorganicFertiliser_Unit
   =LAMBDA("(kg NH3-N + NOx-N)/kg N");
 
-SourceData_Cropping_Common_FracGASFfInorganicFertiliser_Source
+CommonCropping_SourceData_FracGASFfInorganicFertiliser_Source
   =LAMBDA("VEERG 2026:Table 12.2.2.9");
 
-SourceData_Cropping_Common_FracGASFfInorganicFertiliser_NIRReference
+CommonCropping_SourceData_FracGASFfInorganicFertiliser_NIRReference
   =LAMBDA("IPCC 2019 Refinement Volume 4 Table 11.3 [1, p. 11]");
 
-SourceData_Cropping_Common_FracGASFfInorganicFertiliser_Data
+CommonCropping_SourceData_FracGASFfInorganicFertiliser_Data
   =LAMBDA(
     MAKEARRAY(6, 3, 
       LAMBDA(r,c, 
@@ -138,7 +138,5 @@ SourceData_Cropping_Common_FracGASFfInorganicFertiliser_Data
     )
   );
 
-  SourceData_Cropping_Common_FracGASFfInorganicFertiliser_Variation
+  CommonCropping_SourceData_FracGASFfInorganicFertiliser_Variation
   =LAMBDA(("VARIATION FROM SOURCE DATA: Added extra 'Basis' column with simplified naming to assis with lookups in equations"));
-
-

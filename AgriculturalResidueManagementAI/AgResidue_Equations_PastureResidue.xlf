@@ -19,9 +19,6 @@ VEERG_6_2_1_1__1__NitrousOxideEmissionsFromPastureResidues
     Mp * EFNi * CN2O * 10^(-3)
   );
 
-VEERG_6_2_1_1__1__NitrousOxideEmissionsFromPastureResidues_FunctionName
-  =LAMBDA("VEERG_6_2_1_1__1__NitrousOxideEmissionsFromPastureResidues");
-
 VEERG_6_2_1_1__1__NitrousOxideEmissionsFromPastureResidues_Title
   =LAMBDA("Nitrous oxide emissions from the return of pasture residues from all pasture types to the soil");
 
@@ -76,11 +73,7 @@ VEERG_6_2_1_1__2__MassOfNitrogenInPastureResidues
   =LAMBDA(
     Ap, Yp, FFODp, NCAGp, RBGp, NCBGp,
     (Ap * (Yp * 10^(-3)) * (1 - FFODp) * NCAGp) + (Ap * (Yp * 10^(-3)) * RBGp * NCBGp)
-  )
-;
-
-VEERG_6_2_1_1__2__MassOfNitrogenInPastureResidues_FunctionName
-  =LAMBDA("VEERG_6_2_1_1__2__MassOfNitrogenInPastureResidues");
+  );
 
 VEERG_6_2_1_1__2__MassOfNitrogenInPastureResidues_Title
   =LAMBDA("Mass of nitrogen in pasture residues returned to the soil");

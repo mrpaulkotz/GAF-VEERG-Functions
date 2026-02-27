@@ -13,9 +13,6 @@ VEERG_4_3_1_10__1_AtmosphericDeposition
     Mvolm,Efad,CgN2O, Common_Agsoils.AgSoils_AtmosphericDeposition(Mvolm,Efad,CgN2O)
   );
 
-VEERG_4_3_1_10__1_AtmosphericDeposition_FunctionName
-  =LAMBDA("VEERG_4_3_1_10__1_AtmosphericDeposition");
-
 VEERG_4_3_1_10__1_AtmosphericDeposition_Title
   =LAMBDA(Common_Agsoils.AgSoils_AtmosphericDeposition_Title());
 
@@ -45,9 +42,6 @@ VEERG_4_3_1_10__2_MassVolatilisedAnimalWaste
   =LAMBDA(
     MNjm, UNjm, FNjm, FracGASMsoil, Common_Agsoils.AgSoils_MassVolatilisedAnimalWaste(MNjm, UNjm, FNjm, FracGASMsoil)
   );
-
-VEERG_4_3_1_10__2_MassVolatilisedAnimalWaste_FunctionName
-  =LAMBDA("VEERG_4_3_1_10__2_MassVolatilisedAnimalWaste");
 
 VEERG_4_3_1_10__2_MassVolatilisedAnimalWaste_Title
   =LAMBDA(Common_Agsoils.AgSoils_MassVolatilisedAnimalWaste_Title());
