@@ -123,7 +123,7 @@ VEERG_6_1_1_1__2__MassOfNitrogenInCropResidues_Arguments
 --------------------------------------
 VEERG_6_1_1_2__1__FractionOfCropResidueRemovedBaled
 Fraction of crop residue that is removed for crop c, calculated where residues are baled
-FFODc
+FFODcbaled
 dimensionless
 FFOD_{c}=\frac{B\times M_{B}}{P_{c}\times R_{AG,c}}
 B = number of bales generated (dimensionless)
@@ -137,7 +137,7 @@ c = Crop type
 VEERG_6_1_1_2__1__FractionOfCropResidueRemovedBaled
   =LAMBDA(
     B, MB, Pc, RAGc,
-    (B * MB) / (Pc * RAGc)
+    IFERROR((B * MB) / (Pc * RAGc), 0)
   )
 ;
 
@@ -145,7 +145,7 @@ VEERG_6_1_1_2__1__FractionOfCropResidueRemovedBaled_Title
   =LAMBDA("Fraction of crop residue that is removed for crop c, calculated where residues are baled");
 
 VEERG_6_1_1_2__1__FractionOfCropResidueRemovedBaled_Variable
-  =LAMBDA("FFODc");
+  =LAMBDA("FFODcbaled");
 
 VEERG_6_1_1_2__1__FractionOfCropResidueRemovedBaled_Unit
   =LAMBDA("dimensionless");
@@ -157,7 +157,7 @@ VEERG_6_1_1_2__1__FractionOfCropResidueRemovedBaled_NIRReference
   =LAMBDA("");
 
 VEERG_6_1_1_2__1__FractionOfCropResidueRemovedBaled_LatexEquation
-  =LAMBDA("FFOD_{c}=\frac{B\times M_{B}}{P_{c}\times R_{AG,c}}");
+  =LAMBDA("FFOD_{c,baled}=\frac{B\times M_{B}}{P_{c}\times R_{AG,c}}");
 
 VEERG_6_1_1_2__1__FractionOfCropResidueRemovedBaled_Arguments
   =LAMBDA(
@@ -174,3 +174,57 @@ VEERG_6_1_1_2__1__FractionOfCropResidueRemovedBaled_Arguments
     )
   );
 
+VEERG_6_1_1_2__1__FractionOfCropResidueRemovedBaled_Variation
+  =LAMBDA("VARIATION FROM SOURCE: Added 'baled' to variable subscript");
+
+
+
+/* 
+--------------------------------------
+VEERG_6_1_1_2__1a__FractionOfCropResidueRemoved
+Fraction of crop residue that is removed for crop c
+FFODc
+dimensionless
+
+--------------------------------------
+*/
+
+VEERG_6_1_1_2__1a__FractionOfCropResidueRemoved
+  =LAMBDA(
+    FFODcbaled, FFODcother,
+    FFODcbaled + FFODcother
+  )
+;
+
+VEERG_6_1_1_2__1a__FractionOfCropResidueRemoved_Title
+  =LAMBDA("Fraction of crop residue that is removed for crop c");
+
+VEERG_6_1_1_2__1a__FractionOfCropResidueRemoved_Variable
+  =LAMBDA("FFODc");
+
+VEERG_6_1_1_2__1a__FractionOfCropResidueRemoved_Unit
+  =LAMBDA("dimensionless");
+
+VEERG_6_1_1_2__1a__FractionOfCropResidueRemoved_Source
+  =LAMBDA("VEERG 2026: 6.1.1.2, Equation (1)");
+
+VEERG_6_1_1_2__1a__FractionOfCropResidueRemoved_NIRReference
+  =LAMBDA("");
+
+VEERG_6_1_1_2__1a__FractionOfCropResidueRemoved_LatexEquation
+  =LAMBDA("FFOD_{c} = FFOD_{c,baled} + FFOD_{c,other}");
+
+VEERG_6_1_1_2__1a__FractionOfCropResidueRemoved_Arguments
+  =LAMBDA(
+    MAKEARRAY(2, 2, 
+      LAMBDA(r,c, 
+        INDEX({
+          "FFODcbaled","Fraction of crop residue that is removed for crop c, calculated where residues are baled";
+          "FFODcother","Fraction of crop residue that is removed for crop c, calculated where residues are removed by other means"
+        }, r, c)
+      )
+    )
+  );
+
+VEERG_6_1_1_2__1a__FractionOfCropResidueRemoved_Variation
+  =LAMBDA("VARIATION FROM SOURCE: Added this equation to accommodate user-defined residue removal other than baling.");

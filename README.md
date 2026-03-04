@@ -29,11 +29,7 @@ FunctionPrefix
   =LAMBDA(
     FormulaArguments,
     Formula
-  )
-;
-
-FunctionPrefix_FunctionName
-  =LAMBDA("FunctionPrefix");
+  );
 
 FunctionPrefix_Title
   =LAMBDA("Title");
@@ -120,11 +116,7 @@ VEERG_5_1_1_1__2_MassOfNitrogenInInorganicFertiliser
   =LAMBDA(
     TMjf, FNinorganicf,
     TMjf * FNinorganicf
-  )
-;
-
-VEERG_5_1_1_1__2_MassOfNitrogenInInorganicFertiliser_FunctionName
-  =LAMBDA("VEERG_5_1_1_1__2_MassOfNitrogenInInorganicFertiliser");
+  );
 
 VEERG_5_1_1_1__2_MassOfNitrogenInInorganicFertiliser_Title
   =LAMBDA("Mass of nitrogen in inorganic fertiliser applied to soil");

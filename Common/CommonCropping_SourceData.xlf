@@ -140,3 +140,44 @@ CommonCropping_SourceData_FracGASFfInorganicFertiliser_Data
 
   CommonCropping_SourceData_FracGASFfInorganicFertiliser_Variation
   =LAMBDA(("VARIATION FROM SOURCE DATA: Added extra 'Basis' column with simplified naming to assis with lookups in equations"));
+
+
+  /* 
+--------------------------------------
+CommonCropping_SourceData_FracWETIrrigation
+VEERG 2026: Chapter 1, section 1.8.2 Leaching, climate and rainfall zones
+IPCC: N2O EMISSIONS FROM MANAGED SOILS, AND CO2 EMISSIONS FROM LIME AND UREA APPLICATION
+--------------------------------------
+*/
+
+CommonCropping_SourceData_FracWETIrrigation_Title
+  =LAMBDA("FracWET for irrigation types");
+
+CommonCropping_SourceData_FracWETIrrigation_Unit
+  =LAMBDA("dimensionless");
+
+CommonCropping_SourceData_FracWETIrrigation_Source
+  =LAMBDA("VEERG 2026: Chapter 1, section 1.8.2 Leaching, climate and rainfall zones");
+
+CommonCropping_SourceData_FracWETIrrigation_NIRReference
+  =LAMBDA("IPCC 2019 Refinement Volume 4: Chapter 11: N2O Emissions from Managed Soils, and CO2 Emissions from Lime and Urea Application");
+
+CommonCropping_SourceData_FracWETIrrigation_Data
+  =LAMBDA(
+    MAKEARRAY(6, 2, 
+      LAMBDA(r,c, 
+        INDEX({
+          "Irrigation type ir","FracWET";
+          "Not irrigated", 0;
+          "Drip irrigation", 0;
+          "Sprinkler irrigation", 1;
+          "Surface irrigation", 1;
+          "Other irrigation", 1
+        }, r, c)
+      )
+    )
+  );
+
+  CommonCropping_SourceData_FracWETIrrigation_Variation
+  =LAMBDA("VARIATION FROM SOURCE DATA: Table created based on VEERG text 'Areas are subject to leaching (i.e., in the leaching zone) when... the land is irrigated (except drip irrigation).'");
+

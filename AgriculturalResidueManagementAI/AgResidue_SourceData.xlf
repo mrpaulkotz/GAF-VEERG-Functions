@@ -273,4 +273,34 @@ PastureAttributes_Data
 )));
 
 
+/*
+============================================================================
+Table 5.31 Burning of agricultural residues - EFs
+============================================================================
+*/
+
+BurningOfAgriculturalResiduesEFs_Title
+=LAMBDA(("Table 5.31 Burning of agricultural residues - EFs"));
+
+BurningOfAgriculturalResiduesEFs_Description
+=LAMBDA(("Burning of agricultural residues - EFs"));
+
+BurningOfAgriculturalResiduesEFs_Source
+=LAMBDA(("National Inventory Report 2023 volume 2: Table 5.31: Burning of agricultural residues - EFs"));
+
+BurningOfAgriculturalResiduesEFs_Data
+=LAMBDA(
+  MAKEARRAY(6, 3,
+    LAMBDA(r,c,
+      INDEX({
+        "Gas species", "Emission factor EFg (Gg element in species/ Gg element in fuel burnt)", "Elemental to molecular mass conversion factor (Cg)";
+        "CH4", 0.0035, "16/12";
+        "N2O", 0.0076, "44/28";
+        "NOx", 0.2100, "46/14";
+        "CO", 0.0780, "28/12";
+        "NMVOC", 0.0091, "14/12"
+      }, r, c)
+)));
+
+
 

@@ -1,0 +1,40 @@
+
+CommonCropping_GetFracWET
+=LAMBDA(
+    LeachingZone,
+    ProductionSystem,
+    LeachingZoneLookup,
+    LeachingZoneFracWETLookup,
+    ProductionSystemLookup,
+    ProductionSystemFracWETLookup,
+    LET(
+        LeachingZoneFracWET, 
+        Common_InputFunctions.Utility_LookupValueInTableNumber(
+            LeachingZone,LeachingZoneLookup,LeachingZoneFracWETLookup
+        ),
+        ProductionSystemFracWET, 
+        Common_InputFunctions.Utility_LookupValueInTableNumber(
+            ProductionSystem,ProductionSystemLookup,ProductionSystemFracWETLookup
+        ),
+        IF(LeachingZoneFracWET + ProductionSystemFracWET>0, 1, 0)
+    ));
+
+
+CommonCropping_CalculateHarvestIndex
+=LAMBDA(
+    CropType, CropTypeArray, ResidueCropRatioArray,
+    1/(1+Common_InputFunctions.Utility_LookupValueInTableNumber(CropType, CropTypeArray, ResidueCropRatioArray))
+);
+
+CommonCropping_CalculateResidueCropRatio
+=LAMBDA(
+    HarvestIndex,
+    (1-HarvestIndex)/HarvestIndex
+);
+
+
+CommonCropping_CalculateFractionResidueRemoved
+=LAMBDA(
+    TotalResidue, AmountRemoved,
+    (AmountRemoved*10^3)/(TotalResidue*10^3)
+)

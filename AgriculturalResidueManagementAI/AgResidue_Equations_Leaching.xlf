@@ -65,14 +65,14 @@ FracWETj = fraction of N that is available for leaching and runoff from producti
 FracLEACH = fraction of N that is lost through leaching and runoff (dimensionless)
 c = Crop residue type
 p = Pasture residue type
-j = Production system
+ir = irrigation type
 --------------------------------------
 */
 
 VEERG_6_3_1_1__2__MassOfNitrogenLostThroughLeachingAndRunoff
   =LAMBDA(
-    Mcp, FracWETj, FracLEACH,
-    Mcp * FracWETj * FracLEACH
+    Mcp, FracWETzir, FracLEACH,
+    Mcp * FracWETzir * FracLEACH
   )
 ;
 
@@ -92,7 +92,7 @@ VEERG_6_3_1_1__2__MassOfNitrogenLostThroughLeachingAndRunoff_NIRReference
   =LAMBDA("");
 
 VEERG_6_3_1_1__2__MassOfNitrogenLostThroughLeachingAndRunoff_LatexEquation
-  =LAMBDA("M_{leach,cp}=M_{cp}\times FracWET_{j}\times FracLEACH");
+  =LAMBDA("M_{leach,cp}=M_{cp}\times FracWET_{z,ir}\times FracLEACH");
 
 VEERG_6_3_1_1__2__MassOfNitrogenLostThroughLeachingAndRunoff_Arguments
   =LAMBDA(
@@ -100,16 +100,19 @@ VEERG_6_3_1_1__2__MassOfNitrogenLostThroughLeachingAndRunoff_Arguments
       LAMBDA(r,c, 
         INDEX({
           "Mcp","mass of nitrogen in crop residues c or pasture residues p applied to soils (kg N)";
-          "FracWETj","fraction of N that is available for leaching and runoff from production system j (dimensionless)";
+          "FracWETzir","fraction of N that is available for leaching and runoff from the leaching zone z and irrigation type ir (dimensionless)";
           "FracLEACH","fraction of N that is lost through leaching and runoff (dimensionless)";
           "z", "Location in leaching zone (dimensionless)";
           "c","Crop residue type";
           "p","Pasture residue type";
-          "j","Production system"
+          "ir", "Irrigation type"
         }, r, c)
       )
     )
   );
+
+  VEERG_6_3_1_1__2__MassOfNitrogenLostThroughLeachingAndRunoff_Variation
+  =LAMBDA("VARIATION FROM SOURCE: Added criteria for leaching zone z and irrigation type ir. Removed production system criteria j.");
 
 
 
