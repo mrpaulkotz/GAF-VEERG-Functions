@@ -206,7 +206,7 @@ VEERG_6_1_1_2__1a__FractionOfCropResidueRemoved_Unit
   =LAMBDA("dimensionless");
 
 VEERG_6_1_1_2__1a__FractionOfCropResidueRemoved_Source
-  =LAMBDA("VEERG 2026: 6.1.1.2, Equation (1)");
+  =LAMBDA("");
 
 VEERG_6_1_1_2__1a__FractionOfCropResidueRemoved_NIRReference
   =LAMBDA("");

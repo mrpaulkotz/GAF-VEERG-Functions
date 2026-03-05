@@ -148,6 +148,9 @@ Fuel_Scope1Scope3EmissionFactorsStationaryLiquid_Data
       }, r, c)
 )));
 
+Fuel_Scope1Scope3EmissionFactorsStationaryLiquid_Variation
+=LAMBDA("VARIATION OF SOURCE DATA: 'NE' values returned as zero for calculations.");
+
 /*
 ============================================================================
 Fuel scope 1 and 3 emission factors - Transport
@@ -192,5 +195,8 @@ Fuel_Scope1Scope3EmissionFactorsTransport_Data
         "Aviation", "Renewable aviation kerosene", 36.8, "kl", 0.0, 0.01, 0.6, 0.61, "NE"
       }, r, c)
 )));
+
+Fuel_Scope1Scope3EmissionFactorsTransport_Variation
+=LAMBDA("VARIATION OF SOURCE DATA: 'NE' values returned as zero for calculations.");
 
 

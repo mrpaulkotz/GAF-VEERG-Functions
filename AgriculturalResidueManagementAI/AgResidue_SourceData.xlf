@@ -44,7 +44,7 @@ CropAttributes_Data
 )));
 
 CropAttributes_Variation
-=LAMBDA((""));
+=LAMBDA(("VARIATION FROM SOURCE: 'N/A' values passed as zero for calculations."));
 
 /*
 ============================================================================
