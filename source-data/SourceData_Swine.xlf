@@ -1,0 +1,49 @@
+/*
+============================================================================
+============================================================================
+============================================================================
+Source data For Swine
+Excel module name: SourceData_Swine
+============================================================================
+============================================================================
+============================================================================
+*/
+
+
+/* 
+--------------------------------------
+SourceData_Swine_VolatileSolids
+VSj
+kg/head/day
+--------------------------------------
+*/
+
+SourceData_Swine_VolatileSolids_Title
+  =LAMBDA("Swine - Volatile solids (VSj) - 2020 to 2024");
+
+SourceData_Swine_VolatileSolids_Unit
+  =LAMBDA("kg/head/day");
+
+SourceData_Swine_VolatileSolids_Source
+  =LAMBDA("VEERG 2026: Table A.1.6.1: Swine - Intake and manure characteristics derived from PigBal");
+
+SourceData_Swine_VolatileSolids_Variation
+  =LAMBDA("VARIATION ON SOURCE DATA: Only uses data for 2020-2024. Added 'Suckers', 'Weaners' and 'Growers' classes which have the same values as 'Slaughter pigs'.");
+
+SourceData_Swine_VolatileSolids_Data
+  =LAMBDA(
+    MAKEARRAY(8, 2, 
+      LAMBDA(r,c, 
+        INDEX({
+          "Class", "VSj";
+          "Boars", 0.40;
+          "Sows", 0.46;
+          "Gilts", 0.55;
+          "Slaughter pigs", 0.39;
+          "Suckers", 0.39;
+          "Weaners", 0.39;
+          "Growers", 0.39
+        }, r, c)
+      )
+    )
+  );
