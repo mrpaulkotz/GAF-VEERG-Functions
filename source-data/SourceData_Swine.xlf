@@ -47,3 +47,65 @@ SourceData_Swine_VolatileSolids_Data
       )
     )
   );
+
+
+/* 
+--------------------------------------
+SourceData_Swine_MethaneVolatileSolidsEmissionsPotential
+B0
+m3 CH4/kg VS
+--------------------------------------
+*/
+
+SourceData_Swine_MethaneVolatileSolidsEmissionsPotential_Title
+  =LAMBDA("Emissions potential of methane per kilogram of volatile solids");
+
+SourceData_Swine_MethaneVolatileSolidsEmissionsPotential_Unit
+  =LAMBDA("m3 CH4 / kg VS");
+
+SourceData_Swine_MethaneVolatileSolidsEmissionsPotential_Source
+  =LAMBDA("IPCC (2019), Chapter 10 [4]");
+
+SourceData_Swine_MethaneVolatileSolidsEmissionsPotential_Variation
+  =LAMBDA("");
+
+SourceData_Swine_MethaneVolatileSolidsEmissionsPotential_Data
+  =LAMBDA(0.19);
+
+
+/* 
+--------------------------------------
+SourceData_Swine_MMS_MCFs
+Table A.1.6.4: Swine - MCFs (MCFim)
+--------------------------------------
+*/
+
+SourceData_Swine_MMS_MCFs_Title
+  =LAMBDA("Methane conversion factor for temperature zone and manure management system.");
+
+SourceData_Swine_MMS_MCFs_Unit
+  =LAMBDA("");
+
+SourceData_Swine_MMS_MCFs_Source
+  =LAMBDA("VEERG 2026: Table A.1.6.4: Swine – MCFs (MCFim)");
+
+SourceData_Swine_MMS_MCFs_Variation
+  =LAMBDA("VARIATION ON SOURCE DATA: Added columns for ACT, split QLD and NT");
+
+SourceData_Swine_MMS_MCFs_Data
+  =LAMBDA(
+    MAKEARRAY(8, 9, 
+      LAMBDA(r,c, 
+        INDEX({
+          "MMS", "NSW", "ACT", "QLD", "NT", "SA", "TAS", "VIC", "WA";
+          "Outdoor(Dry lot)", 0.01, 0.03, 0.01, 0.01, 0.01, 0.01; 
+          "Deep litter", 0.04, 0.04, 0.04, 0.04, 0.04, 0.04;
+          "Stockpile(Solid storage)", 0.02, 0.02, 0.02, 0.02, 0.02, 0.02;
+          "Effluent pond(Uncovered anaerobic lagoon)", 0.75, 0.78, 0.75, 0.70, 0.74, 0.76;
+          "Anaerobic digester / Covered lagoon", 0.1, 0.1, 0.1, 0.1, 0.1, 0.1; 
+          "Short HRT tank storage < 1 month(pit storage)", 0.03, 0.03, 0.03, 0.03, 0.03, 0.03; 
+          "Direct Application to soil", 0, 0, 0, 0, 0, 0
+        }, r, c)
+      )
+    )
+  );
