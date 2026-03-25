@@ -1,0 +1,188 @@
+/* 
+--------------------------------------
+SourceData_Poultry_DietProperties
+Table A.1.7.1: Poultry - Diet properties
+--------------------------------------
+*/
+
+SourceData_Poultry_DietProperties_Title
+  =LAMBDA("Poultry - Diet properties");
+
+SourceData_Poultry_DietProperties_Unit
+  =LAMBDA("");
+
+SourceData_Poultry_DietProperties_Source
+  =LAMBDA("VEERG 2026: Table A.1.7.1: Poultry - Diet properties");
+
+SourceData_Poultry_DietProperties_Variation
+  =LAMBDA("");
+
+SourceData_Poultry_DietProperties_Data
+  =LAMBDA(
+    MAKEARRAY(6, 5, 
+      LAMBDA(r,c, 
+        INDEX({
+          "Nutrient analysis", "Layers", "Meat chicken growers", "Meat chicken breeder", "Meat other";
+          "Dry matter intake (kg/head/day)", 0.086, 0.093, 0.103, 0.093; 
+          "Dry matter digestibility", 0.80, 0.80, 0.80, 0.80;
+          "Crude protein", 0.19, 0.23, 0.19, 0.23;
+          "Nitrogen retention rate", 0.35, 0.47, 0.32, 0.47;
+          "Manure ash", 0.18, 0.15, 0.18, 0.15
+        }, r, c)
+      )
+    )
+  );
+
+/* 
+--------------------------------------
+SourceData_Poultry_MCF
+Table A.1.7.4: Poultry - MCFs
+--------------------------------------
+*/
+
+SourceData_Poultry_MCF_Title
+  =LAMBDA("Poultry - MCFs");
+
+SourceData_Poultry_MCF_Unit
+  =LAMBDA("");
+
+SourceData_Poultry_MCF_Source
+  =LAMBDA("VEERG 2026: Table A.1.7.4: Poultry - MCFs");
+
+SourceData_Poultry_MCF_Variation
+  =LAMBDA(
+    MAKEARRAY(5, 1, 
+      LAMBDA(r,c, 
+        INDEX({
+          "VARIATION ON SOURCE:";
+          "Split NSW and ACT into separate states. Split QLD and NT into separate states.";
+          "Included values for each state when 'All states' value is given.";
+          "Added 'NIR definition' column with MMS names that match NIR definitions.";
+          "Duplicated 'Poultry manure without litter' row for NIR MMS 'Belt manure removal' and 'Manure stored in house'"
+        }, r, c)
+      )
+    )
+  );
+
+SourceData_Poultry_MCF_Data
+  =LAMBDA(
+    MAKEARRAY(10, 11, 
+      LAMBDA(r,c, 
+        INDEX({
+          "MMS m", "All states", "NSW", "ACT", "QLD", "NT", "VIC", "SA", "WA", "TAS", "NIR definition";
+          "Poultry manure with litter", 0.015, 0.015, 0.015, 0.015, 0.015, 0.015, 0.015, 0.015, 0.015, "Poultry manure with bedding"; 
+          "Poultry manure without litter", 0.015, 0.015, 0.015, 0.015, 0.015, 0.015, 0.015, 0.015, 0.015, "Belt manure removal";
+          "Poultry manure without litter", 0.015, 0.015, 0.015, 0.015, 0.015, 0.015, 0.015, 0.015, 0.015, "Manure stored in house";
+          "Pasture range and paddock", "n/a", 0.01, 0.01, 0.03, 0.03, 0.01, 0.01, 0.01, 0.01, "Pasture range and paddock";
+          "Solid storage", 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, "Solid storage";
+          "Composting (passive windrow)", "n/a", 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.005, "Composting (passive windrow)";
+          "Anaerobic digester / Covered pond", 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, "Digester / covered lagoons";
+          "Direct processing", 0, 0, 0, 0, 0, 0, 0, 0, 0, "Direct processing";
+          "Direct application to soil", 0, 0, 0, 0, 0, 0, 0, 0, 0, "Direct application"
+        }, r, c)
+      )
+    )
+  );
+
+SourceData_Poultry_MCF_Notes
+  =LAMBDA("'Pasture range and paddock' applies MCF for drylot.");
+
+
+/* 
+--------------------------------------
+SourceData_Poultry_MethaneEmissionsPotential
+Methane emissions potential per poultry class
+--------------------------------------
+*/
+
+SourceData_Poultry_MethaneEmissionsPotential_Title
+  =LAMBDA("Poultry - Methane emissions potential per class");
+
+SourceData_Poultry_MethaneEmissionsPotential_Unit
+  =LAMBDA("m3 CH4/kg VS");
+
+SourceData_Poultry_MethaneEmissionsPotential_Source
+  =LAMBDA("VEERG 2026: 4.6.2.3 CONSTANT: Poultry - Methane emissions potential per class");
+
+SourceData_Poultry_MethaneEmissionsPotential_Variation
+  =LAMBDA("");
+
+SourceData_Poultry_MethaneEmissionsPotential_Data
+  =LAMBDA(
+    MAKEARRAY(3, 2, 
+      LAMBDA(r,c, 
+        INDEX({
+          "Poultry class", "B0";
+          "Layers", 0.39; 
+          "Meat chickens", 0.36
+        }, r, c)
+      )
+    )
+  );
+
+/* 
+--------------------------------------
+SourceData_Poultry_ProductionSystems
+Poultry production systems
+--------------------------------------
+*/
+
+SourceData_Poultry_ProductionSystems_Title
+  =LAMBDA("Poultry - Production systems");
+
+SourceData_Poultry_ProductionSystems_Unit
+  =LAMBDA("");
+
+SourceData_Poultry_ProductionSystems_Source
+  =LAMBDA("VEERG 2026: 4.6 Poultry");
+
+SourceData_Poultry_ProductionSystems_Variation
+  =LAMBDA("");
+
+SourceData_Poultry_ProductionSystems_Data
+  =LAMBDA(
+    MAKEARRAY(4, 1, 
+      LAMBDA(r,c, 
+        INDEX({
+          "Production system";
+          "Free range"; 
+          "Barn";
+          "Cage"
+        }, r, c)
+      )
+    )
+  );
+
+
+/* 
+--------------------------------------
+SourceData_Poultry_VSL
+Fraction of volatile solids lost in the primary MMS
+--------------------------------------
+*/
+
+SourceData_Poultry_VSL_Title
+  =LAMBDA("Poultry - Fraction of volatile solids lost in the primary MMS");
+
+SourceData_Poultry_VSL_Unit
+  =LAMBDA("");
+
+SourceData_Poultry_VSL_Source
+  =LAMBDA("VEERG 2026: 4.6.2.3 CONSTANT");
+
+SourceData_Poultry_VSL_Variation
+  =LAMBDA("VARIATION ON SOURCE: Table generated from line items. Added 'NIR definition column'.");
+
+SourceData_Poultry_VSL_Data
+  =LAMBDA(
+    MAKEARRAY(4, 3, 
+      LAMBDA(r,c, 
+        INDEX({
+          "MMS", "VSL", "NIR definition";
+          "Poultry manure with litter", 0.85, "Poultry manure with bedding";
+          "Poultry manure without litter - stored in house", 0.8, "Manure stored in house";
+          "Poultry manure without litter - belt removal", 1, "Belt manure removal"
+        }, r, c)
+      )
+    )
+  );

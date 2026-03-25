@@ -73,6 +73,12 @@ VEERG_4_5_1_1__2_MethaneProductionPerClass
     SUM(MjmT)
   );
 
+VEERG_4_5_1_1__2_MethaneProductionPerClassVariation
+  =LAMBDA(
+    MjmT1, MjmT2,
+     SUM(MjmT1, MjmT2)
+  );
+
 VEERG_4_5_1_1__2_MethaneProductionPerClass_Title
   =LAMBDA("Methane production from the manure of each class of swine");
 
@@ -101,6 +107,9 @@ VEERG_4_5_1_1__2_MethaneProductionPerClass_Arguments
       )
     )
   );
+
+VEERG_4_5_1_1__2_MethaneProductionPerClass_Variation
+  =LAMBDA("VARIATION ON SOURCE: Split variable Mjm into MjmT1 and MjmT2 for stage 1 and 2 MMS.");
 
 /*
 --------------------------------------
@@ -171,7 +180,10 @@ SSm = fraction of volatile solids separated to solid storage for each MMS : frac
 VEERG_4_5_1_1__4_FractionVolatileSolidsPrimarySystem
   =LAMBDA(
     MMSjmT1, SSm,
-    MMSjmT1 * (1 - SSm)
+    LET(
+      ssm, IF(ISNUMBER(SSm), SSm, 0),
+      MMSjmT1 * (1 - ssm)
+    )
   );
 
 VEERG_4_5_1_1__4_FractionVolatileSolidsPrimarySystem_Title
@@ -204,6 +216,9 @@ VEERG_4_5_1_1__4_FractionVolatileSolidsPrimarySystem_Arguments
     )
   );
 
+VEERG_4_5_1_1__4_FractionVolatileSolidsPrimarySystem_Variation
+  =LAMBDA("VARIATION ON SOURCE: Added check to convert 'N/A' value to zero.");
+
 /*
 --------------------------------------
 VEERG_4_5_1_1__5_FractionVolatileSolidsSolidStorage
@@ -220,7 +235,39 @@ SSm = fraction of volatile solids separated to solid storage for each MMS : frac
 VEERG_4_5_1_1__5_FractionVolatileSolidsSolidStorage
   =LAMBDA(
     MMSjm4T1, MMSjm179T1, SSm,
-    MMSjm4T1 + (MMSjm179T1 * SSm)
+    LET(
+      MMSjm4T1, IF(ISNUMBER(MMSjm4T1), MMSjm4T1, 0),
+      MMSjm179T1, IF(ISNUMBER(MMSjm179T1), MMSjm179T1, 0),
+      SSm, IF(ISNUMBER(SSm), SSm, 0),
+      MMSjm4T1 + (MMSjm179T1 * SSm)
+    )
+    
+  );
+
+VEERG_4_5_1_1__5_FractionVolatileSolidsSolidStorageVariation
+  =LAMBDA(
+    MMSjm4T1,
+    MMSjmT1_1, MMSjmT1_2, MMSjmT1_3, MMSjmT1_4, MMSjmT1_5,
+    SSjmT1_1, SSjmT1_2, SSjmT1_3, SSjmT1_4, SSjmT1_5,
+    LET(
+      MMSjm4T1, IF(ISNUMBER(MMSjm4T1), MMSjm4T1, 0),
+      MMSjmT1_1, IF(ISNUMBER(MMSjmT1_1), MMSjmT1_1, 0),
+      MMSjmT1_2, IF(ISNUMBER(MMSjmT1_2), MMSjmT1_2, 0),
+      MMSjmT1_3, IF(ISNUMBER(MMSjmT1_3), MMSjmT1_3, 0),
+      MMSjmT1_4, IF(ISNUMBER(MMSjmT1_4), MMSjmT1_4, 0),
+      MMSjmT1_5, IF(ISNUMBER(MMSjmT1_5), MMSjmT1_5, 0),
+      SSjmT1_1, IF(ISNUMBER(SSjmT1_1), SSjmT1_1, 0),
+      SSjmT1_2, IF(ISNUMBER(SSjmT1_2), SSjmT1_2, 0),
+      SSjmT1_3, IF(ISNUMBER(SSjmT1_3), SSjmT1_3, 0),
+      SSjmT1_4, IF(ISNUMBER(SSjmT1_4), SSjmT1_4, 0),
+      SSjmT1_5, IF(ISNUMBER(SSjmT1_5), SSjmT1_5, 0),
+      MMSjm4T1 + 
+      (MMSjmT1_1 * SSjmT1_1) + 
+      (MMSjmT1_2 * SSjmT1_2) + 
+      (MMSjmT1_3 * SSjmT1_3) +
+      (MMSjmT1_4 * SSjmT1_4) +
+      (MMSjmT1_5 * SSjmT1_5)
+    )
   );
 
 VEERG_4_5_1_1__5_FractionVolatileSolidsSolidStorage_Title
@@ -241,6 +288,9 @@ VEERG_4_5_1_1__5_FractionVolatileSolidsSolidStorage_NIRReference
 VEERG_4_5_1_1__5_FractionVolatileSolidsSolidStorage_LatexEquation
   =LAMBDA("FVS_{j,m=4,T=1}=MMS_{j,m=4,T=1}+(MMS_{j,m=1,7,9,T=1}\times SS_{m})");
 
+VEERG_4_5_1_1__5_FractionVolatileSolidsSolidStorage_LatexEquationVariation
+  =LAMBDA("FVS_{j,m=4,T=1}=MMS_{j,m=4,T=1}+(MMS_{j,m=1,T=1}\times SS_{m=1,T=1})+(MMS_{j,m=7,T=1}\times SS_{m=7,T=1})+(MMS_{j,m=9,T=1}\times SS_{m=9,T=1})");
+
 VEERG_4_5_1_1__5_FractionVolatileSolidsSolidStorage_Arguments
   =LAMBDA(
     MAKEARRAY(3, 2,
@@ -254,6 +304,10 @@ VEERG_4_5_1_1__5_FractionVolatileSolidsSolidStorage_Arguments
     )
   );
 
+VEERG_4_5_1_1__5_FractionVolatileSolidsSolidStorage_Variation
+  =LAMBDA("VARIATION ON SOURCE: Split equation for MMSm=1,7,9 into separate items to allow for calculation");
+  
+
 /*
 --------------------------------------
 VEERG_4_5_1_1__6_Stage2MethaneProduction
@@ -266,13 +320,18 @@ BO = emissions potential : m3 CH4/kg VS
 MMSjmT2 = fraction of manure in each secondary system : fraction
 MCFim = methane conversion factor for temperate zone and system : fraction
 rho = density of methane : kg/m3
+i = state
 --------------------------------------
 */
 
 VEERG_4_5_1_1__6_Stage2MethaneProduction
   =LAMBDA(
     VSTjmT2, BO, MMSjmT2, MCFim, rho,
-    VSTjmT2 * BO * MMSjmT2 * MCFim * rho
+    LET(
+      VSTjmT2, IF(ISNUMBER(VSTjmT2), VSTjmT2, 0),
+      MMSjmT2, IF(ISNUMBER(MMSjmT2), MMSjmT2, 0),
+      VSTjmT2 * BO * MMSjmT2 * MCFim * rho
+    )
   );
 
 VEERG_4_5_1_1__6_Stage2MethaneProduction_Title
@@ -295,14 +354,15 @@ VEERG_4_5_1_1__6_Stage2MethaneProduction_LatexEquation
 
 VEERG_4_5_1_1__6_Stage2MethaneProduction_Arguments
   =LAMBDA(
-    MAKEARRAY(5, 2,
+    MAKEARRAY(6, 2,
       LAMBDA(r,c,
         INDEX({
           "VSTjmT2","volatile solids transferred to treatment stage 2 MMS : kg/head/day";
           "BO","emissions potential : m3 CH4/kg VS";
           "MMSjmT2","fraction of manure in each secondary system : fraction";
           "MCFim","methane conversion factor for temperate zone and system : fraction";
-          "rho","density of methane : kg/m3"
+          "rho","density of methane : kg/m3";
+          "i","state"
         }, r, c)
       )
     )

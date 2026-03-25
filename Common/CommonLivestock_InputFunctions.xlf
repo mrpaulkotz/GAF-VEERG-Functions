@@ -1,60 +1,60 @@
-LivestockMovement_HeadLostDuringMonth
-= LAMBDA(Month, LivestockClass,
-    IFERROR(
-    SUM(
-      FILTER(
-        Input_HerdMovement[Head],
-        (Input_HerdMovement[Date] >= EOMONTH(Month,-1)+1) *
-        (Input_HerdMovement[Date] <= EOMONTH(Month,0)) *
-        (Input_HerdMovement[From] = LivestockClass)
-      )
-    ),
-    0
-  )
-);
+// LivestockMovement_HeadLostDuringMonth
+// = LAMBDA(Month, LivestockClass,
+//     IFERROR(
+//     SUM(
+//       FILTER(
+//         Input_HerdMovement[Head],
+//         (Input_HerdMovement[Date] >= EOMONTH(Month,-1)+1) *
+//         (Input_HerdMovement[Date] <= EOMONTH(Month,0)) *
+//         (Input_HerdMovement[From] = LivestockClass)
+//       )
+//     ),
+//     0
+//   )
+// );
 
-LivestockMovement_HeadAddedDuringMonth
-= LAMBDA(Month, LivestockClass,
-    IFERROR(
-    SUM(
-      FILTER(
-        Input_HerdMovement[Head],
-        (Input_HerdMovement[Date] >= EOMONTH(Month,-1)+1) *
-        (Input_HerdMovement[Date] <= EOMONTH(Month,0)) *
-        (Input_HerdMovement[To] = LivestockClass)
-      )
-    ),
-    0
-  )
-);
+// LivestockMovement_HeadAddedDuringMonth
+// = LAMBDA(Month, LivestockClass,
+//     IFERROR(
+//     SUM(
+//       FILTER(
+//         Input_HerdMovement[Head],
+//         (Input_HerdMovement[Date] >= EOMONTH(Month,-1)+1) *
+//         (Input_HerdMovement[Date] <= EOMONTH(Month,0)) *
+//         (Input_HerdMovement[To] = LivestockClass)
+//       )
+//     ),
+//     0
+//   )
+// );
 
-LivestockMovement_HeadRemainingAtMonthEnd
-=LAMBDA(
-    Month, LivestockClass,HeadAtStartOfMonth,
-    MAX(
-        HeadAtStartOfMonth-LivestockMovement_HeadLostDuringMonth(Month,LivestockClass), 
-        0
-    )
-);
+// LivestockMovement_HeadRemainingAtMonthEnd
+// =LAMBDA(
+//     Month, LivestockClass,HeadAtStartOfMonth,
+//     MAX(
+//         HeadAtStartOfMonth-LivestockMovement_HeadLostDuringMonth(Month,LivestockClass), 
+//         0
+//     )
+// );
 
 
-LivestockMovement_GetMovementLiveweightGain
-=LAMBDA(LivestockClass, MovementDate,
-  LET(
-    ym, TEXT(MovementDate,"yyyymm"),
-    IFERROR(
-      INDEX(
-        FILTER(
-          Herd[Liveweight gain in kg/head/day],
-          (TEXT(Herd[Month],"yyyymm") = ym) *
-          (Herd[Livestock class] = LivestockClass)
-        ),
-        1
-      ),
-      ""
-    )
-  )
-);
+// LivestockMovement_GetMovementLiveweightGain
+// =LAMBDA(LivestockClass, MovementDate,
+//   LET(
+//     ym, TEXT(MovementDate,"yyyymm"),
+//     IFERROR(
+//       INDEX(
+//         FILTER(
+//           Herd[Liveweight gain in kg/head/day],
+//           (TEXT(Herd[Month],"yyyymm") = ym) *
+//           (Herd[Livestock class] = LivestockClass)
+//         ),
+//         1
+//       ),
+//       ""
+//     )
+//   )
+// );
 
 LivestockMovement_DaysMovementToMonthEnd
 =LAMBDA(
@@ -62,53 +62,51 @@ LivestockMovement_DaysMovementToMonthEnd
   DATEDIF(MovementDate, EOMONTH(MovementDate, 0), "d")
 );
 
-LivestockMovement_LiveweightGrownDuringMonthPerHead
-=LAMBDA(LivestockClass, MovementDate,
-  IFERROR( 
-    LivestockMovement_GetMovementLiveweightGain(LivestockClass, MovementDate)*
-    LivestockMovement_DaysMovementToMonthEnd(MovementDate)
-  , 0)
-);
+// LivestockMovement_LiveweightGrownDuringMonthPerHead
+// =LAMBDA(LivestockClass, MovementDate,
+//   IFERROR( 
+//     LivestockMovement_GetMovementLiveweightGain(LivestockClass, MovementDate)*
+//     LivestockMovement_DaysMovementToMonthEnd(MovementDate)
+//   , 0)
+// );
 
-LivestockMovement_LiveweightAddedDuringMonth
-= LAMBDA(LivestockClass, MovementDate, WeightAtMovementDate, Head,
-IFERROR(
-    Head*
-        (
-        WeightAtMovementDate+
-        LivestockMovement_LiveweightGrownDuringMonthPerHead(LivestockClass, MovementDate)
-        )
-, 0)
-);
+// LivestockMovement_LiveweightAddedDuringMonth
+// = LAMBDA(LivestockClass, MovementDate, WeightAtMovementDate, Head,
+// IFERROR(
+//     Head*
+//         (
+//         WeightAtMovementDate+
+//         LivestockMovement_LiveweightGrownDuringMonthPerHead(LivestockClass, MovementDate)
+//         )
+// , 0)
+// );
 
-LivestockMovement_LiveweightGrownFromMovementDateTotal
-=LAMBDA(
-  LivestockClass, MovementDate, Head,
-  LivestockMovement_LiveweightGrownDuringMonthPerHead(LivestockClass, MovementDate) *
-  Head
-);
+// LivestockMovement_LiveweightGrownFromMovementDateTotal
+// =LAMBDA(
+//   LivestockClass, MovementDate, Head,
+//   LivestockMovement_LiveweightGrownDuringMonthPerHead(LivestockClass, MovementDate) *
+//   Head
+// );
 
-LivestockMovement_LiveweightGrownFromMonthStartPerHead
-=LAMBDA(LivestockClass, Month,
-  LivestockMovement_LiveweightGrownDuringMonthPerHead(LivestockClass, EOMONTH(Month,-1)+1)
-);
+// LivestockMovement_LiveweightGrownFromMonthStartPerHead
+// =LAMBDA(LivestockClass, Month,
+//   LivestockMovement_LiveweightGrownDuringMonthPerHead(LivestockClass, EOMONTH(Month,-1)+1)
+// );
 
-LivestockMovement_LiveweightGrownFromMonthStartTotal
-=LAMBDA(LivestockClass, Month, HeadAtStartOfMonth,
-  LivestockMovement_HeadRemainingAtMonthEnd(Month, LivestockClass, HeadAtStartOfMonth) *
-  LivestockMovement_LiveweightGrownFromMonthStartPerHead(LivestockClass, Month)
-);
+// LivestockMovement_LiveweightGrownFromMonthStartTotal
+// =LAMBDA(LivestockClass, Month, HeadAtStartOfMonth,
+//   LivestockMovement_HeadRemainingAtMonthEnd(Month, LivestockClass, HeadAtStartOfMonth) *
+//   LivestockMovement_LiveweightGrownFromMonthStartPerHead(LivestockClass, Month)
+// );
 
-LivestockMovement_HeadAtEndOfMonth
-= LAMBDA(HeadAtStart, Month, LivestockClass,
-MAX(
-    HeadAtStart
-    + 
-    LivestockMovement_HeadAddedDuringMonth(Month, LivestockClass)
-    - 
-    LivestockMovement_HeadLostDuringMonth(Month, LivestockClass)
-    ,0)
-);
+// LivestockMovement_HeadAtEndOfMonth
+// = LAMBDA(HeadAtStart, Month, LivestockClass,
+//     HeadAtStart
+//     + 
+//     LivestockMovement_HeadAddedDuringMonth(Month, LivestockClass)
+//     - 
+//     LivestockMovement_HeadLostDuringMonth(Month, LivestockClass)
+// );
 
 LivestockMovement_LiveweightFromStartOfMonth
 = LAMBDA(LiveweightAtStart, LiveweightGainPerDay, Month,
@@ -116,47 +114,47 @@ LivestockMovement_LiveweightFromStartOfMonth
   (LiveweightGainPerDay*DATEDIF(EDATE(Month, 0), EDATE(Month, 1), "d"))
 );
 
-LivestockMovement_TotalLiveweightAddedDuringMonth
-= LAMBDA(
-    Month, LivestockClass,
-    IFERROR(
-    SUM(
-      FILTER(
-        Input_HerdMovement[Total weight gained since joining],
-        (Input_HerdMovement[Date] >= EOMONTH(Month,-1)+1) *
-        (Input_HerdMovement[Date] <= EOMONTH(Month,0)) *
-        (Input_HerdMovement[To] = LivestockClass)
-      )
-    ),
-    0
-  )
-);
+// LivestockMovement_TotalLiveweightAddedDuringMonth
+// = LAMBDA(
+//     Month, LivestockClass,
+//     IFERROR(
+//     SUM(
+//       FILTER(
+//         Input_HerdMovement[Total weight gained since joining],
+//         (Input_HerdMovement[Date] >= EOMONTH(Month,-1)+1) *
+//         (Input_HerdMovement[Date] <= EOMONTH(Month,0)) *
+//         (Input_HerdMovement[To] = LivestockClass)
+//       )
+//     ),
+//     0
+//   )
+// );
 
-LivestockMovement_TotalLiveweightGrownDuringMonth
-= LAMBDA(
-    Month, LivestockClass,
-    IFERROR(
-    SUM(
-      FILTER(
-        Input_HerdMovement[Liveweight grown since joining],
-        (Input_HerdMovement[Date] >= EOMONTH(Month,-1)+1) *
-        (Input_HerdMovement[Date] <= EOMONTH(Month,0)) *
-        (Input_HerdMovement[To] = LivestockClass)
-      )
-    ),
-    0
-  )
-);
+// LivestockMovement_TotalLiveweightGrownDuringMonth
+// = LAMBDA(
+//     Month, LivestockClass,
+//     IFERROR(
+//     SUM(
+//       FILTER(
+//         Input_HerdMovement[Liveweight grown since joining],
+//         (Input_HerdMovement[Date] >= EOMONTH(Month,-1)+1) *
+//         (Input_HerdMovement[Date] <= EOMONTH(Month,0)) *
+//         (Input_HerdMovement[To] = LivestockClass)
+//       )
+//     ),
+//     0
+//   )
+// );
 
-LivestockMovement_AverageLiveweightAddedDuringMonth
-=LAMBDA(
-    Month, LivestockClass,
-    IFERROR(
-      LivestockMovement_TotalLiveweightAddedDuringMonth(Month, LivestockClass)/
-      LivestockMovement_HeadAddedDuringMonth(Month, LivestockClass)
-      , 0
-    )
-);
+// LivestockMovement_AverageLiveweightAddedDuringMonth
+// =LAMBDA(
+//     Month, LivestockClass,
+//     IFERROR(
+//       LivestockMovement_TotalLiveweightAddedDuringMonth(Month, LivestockClass)/
+//       LivestockMovement_HeadAddedDuringMonth(Month, LivestockClass)
+//       , 0
+//     )
+// );
 
 LivestockMovement_AverageLiveweightRemainingHead
 =LAMBDA(
@@ -164,41 +162,41 @@ LivestockMovement_AverageLiveweightRemainingHead
   LiveweightAtStart+(LiveweightGain*DATEDIF(EDATE(Month, 0), EDATE(Month, 1), "d"))
 );
 
-LivestockMovement_ProportionHeadRemainingAtEndOfMonth
-=LAMBDA(
-    Month, LivestockClass, HeadAtStart,
-    IFERROR(
-      MIN(1,
-        LivestockMovement_HeadRemainingAtMonthEnd(Month, LivestockClass, HeadAtStart)/ 
-        LivestockMovement_HeadAtEndOfMonth(HeadAtStart, Month, LivestockClass)
-      ), 0
-    )
-);
+// LivestockMovement_ProportionHeadRemainingAtEndOfMonth
+// =LAMBDA(
+//     Month, LivestockClass, HeadAtStart,
+//     IFERROR(
+//       MIN(1,
+//         LivestockMovement_HeadRemainingAtMonthEnd(Month, LivestockClass, HeadAtStart)/ 
+//         LivestockMovement_HeadAtEndOfMonth(HeadAtStart, Month, LivestockClass)
+//       ), 0
+//     )
+// );
 
-LivestockMovement_ProportionHeadAddedDuringMonth
-=LAMBDA(
-    Month, LivestockClass, HeadAtStart,
-    IFERROR(
-      MIN(1,
-        LivestockMovement_HeadAddedDuringMonth(Month, LivestockClass)/ 
-        LivestockMovement_HeadAtEndOfMonth(HeadAtStart, Month, LivestockClass)
-      ), 0
-    )
-);
+// LivestockMovement_ProportionHeadAddedDuringMonth
+// =LAMBDA(
+//     Month, LivestockClass, HeadAtStart,
+//     IFERROR(
+//       MIN(1,
+//         LivestockMovement_HeadAddedDuringMonth(Month, LivestockClass)/ 
+//         LivestockMovement_HeadAtEndOfMonth(HeadAtStart, Month, LivestockClass)
+//       ), 0
+//     )
+// );
 
-LivestockMovement_ProportionalAverageLiveweightAddedDuringMonth
-=LAMBDA(
-    Month, LivestockClass, HeadAtStart,
-    LivestockMovement_ProportionHeadAddedDuringMonth(Month, LivestockClass, HeadAtStart)*
-    LivestockMovement_AverageLiveweightAddedDuringMonth(Month, LivestockClass)
-);
+// LivestockMovement_ProportionalAverageLiveweightAddedDuringMonth
+// =LAMBDA(
+//     Month, LivestockClass, HeadAtStart,
+//     LivestockMovement_ProportionHeadAddedDuringMonth(Month, LivestockClass, HeadAtStart)*
+//     LivestockMovement_AverageLiveweightAddedDuringMonth(Month, LivestockClass)
+// );
 
-LivestockMovement_ProportionalAverageLiveweightRemainingAtEndOfMonth
-=LAMBDA(
-    Month, LivestockClass, HeadAtStart, LiveweightAtStart, LiveweightGain,
-    LivestockMovement_ProportionHeadRemainingAtEndOfMonth(Month, LivestockClass, HeadAtStart)*
-    LivestockMovement_AverageLiveweightRemainingHead(Month, LiveweightAtStart, LiveweightGain)
-);
+// LivestockMovement_ProportionalAverageLiveweightRemainingAtEndOfMonth
+// =LAMBDA(
+//     Month, LivestockClass, HeadAtStart, LiveweightAtStart, LiveweightGain,
+//     LivestockMovement_ProportionHeadRemainingAtEndOfMonth(Month, LivestockClass, HeadAtStart)*
+//     LivestockMovement_AverageLiveweightRemainingHead(Month, LiveweightAtStart, LiveweightGain)
+// );
 
 LivestockMovement_GetLiveweightAtStart
 =LAMBDA(
@@ -212,12 +210,12 @@ LivestockMovement_GetLiveweightAtEnd
   HLOOKUP(LivestockClass, Range_LivestockStartingValues, 4, FALSE)
 );
 
-AverageLiveweightEndOfMonth
-=LAMBDA(
-  Month, LivestockClass, HeadAtStart, LiveweightAtStart, LiveweightGain,
-  LivestockMovement_ProportionalAverageLiveweightAddedDuringMonth(Month, LivestockClass, HeadAtStart)+
-  LivestockMovement_ProportionalAverageLiveweightRemainingAtEndOfMonth(Month, LivestockClass, HeadAtStart, LiveweightAtStart, LiveweightGain)
-);
+// AverageLiveweightEndOfMonth
+// =LAMBDA(
+//   Month, LivestockClass, HeadAtStart, LiveweightAtStart, LiveweightGain,
+//   LivestockMovement_ProportionalAverageLiveweightAddedDuringMonth(Month, LivestockClass, HeadAtStart)+
+//   LivestockMovement_ProportionalAverageLiveweightRemainingAtEndOfMonth(Month, LivestockClass, HeadAtStart, LiveweightAtStart, LiveweightGain)
+// );
 
 AverageLiveweightMonth
 =LAMBDA(
@@ -229,12 +227,12 @@ AverageLiveweightMonth
   )
 );
 
-LivestockMovement_TotalLiveweightGrownDuringMonthAddedAndRemaining
-=LAMBDA(
-  Month, LivestockClass, HeadAtStart,
-  LivestockMovement_LiveweightGrownFromMonthStartTotal(LivestockClass, Month, HeadAtStart)+
-  LivestockMovement_TotalLiveweightGrownDuringMonth(Month, LivestockClass)
-);
+// LivestockMovement_TotalLiveweightGrownDuringMonthAddedAndRemaining
+// =LAMBDA(
+//   Month, LivestockClass, HeadAtStart,
+//   LivestockMovement_LiveweightGrownFromMonthStartTotal(LivestockClass, Month, HeadAtStart)+
+//   LivestockMovement_TotalLiveweightGrownDuringMonth(Month, LivestockClass)
+// );
 
 LivestockMovement_CalculateStayDurationToEnd2
 =LAMBDA(
@@ -444,4 +442,52 @@ LivestockMovement_GetAdjustedLiveweightGain
       ReturnArray
     )
   ) * AverageLiveweightGain
+);
+
+LivestockMovement_CalculateGrowthFactor
+=LAMBDA(
+  Month, LivestockClass, 
+  CPMonthArray, CPLivestockClassArray, CPReturnArray, CPTableName,
+  DMDMonthArray, DMDLivestockClassArray, DMDReturnArray, DMDTableName,
+  LET(
+    monthCP, 
+    XLOOKUP(
+      Month, CPMonthArray,
+      XLOOKUP(
+        LivestockClass,
+        CPLivestockClassArray,
+        CPReturnArray
+      )
+    ),
+    averageCP,
+    AVERAGE(
+      INDEX(CPTableName,,MATCH(LivestockClass,CPLivestockClassArray,0))
+    ),
+    monthDMD, 
+    XLOOKUP(
+      Month, DMDMonthArray,
+      XLOOKUP(
+        LivestockClass,
+        DMDLivestockClassArray,
+        DMDReturnArray
+      )
+    ),
+    averageDMD,
+    AVERAGE(
+      INDEX(DMDTableName,,MATCH(LivestockClass,DMDLivestockClassArray,0))
+    ),
+    AVERAGE(
+      monthCP/averageCP, monthDMD/averageDMD
+    )
+  )
+);
+
+Livestock_LookupMCFState
+=LAMBDA(
+  MMS, MMSArray, State, StateArray, ReturnArray,
+  XLOOKUP(MMS,MMSArray,
+    XLOOKUP(State, StateArray,
+    ReturnArray
+    )
+  )
 );

@@ -1,0 +1,146 @@
+/* 
+--------------------------------------
+SourceData_Feedlot_VSL
+Fraction of volatile solids lost in the primary MMS
+--------------------------------------
+*/
+
+SourceData_Feedlot_VSL_Title
+  =LAMBDA("Feedlot - Fraction of volatile solids lost during storage in the primary system");
+
+SourceData_Feedlot_VSL_Variable
+  =LAMBDA("VSL");
+
+SourceData_Feedlot_VSL_Unit
+  =LAMBDA("Fraction");
+
+SourceData_Feedlot_VSL_Source
+  =LAMBDA("VEERG 2026: 4.1.2.3 CONSTANTS");
+
+SourceData_Feedlot_VSL_Variation
+  =LAMBDA("");
+
+SourceData_Feedlot_VSL_Data
+  =LAMBDA(0.5);
+
+/* 
+--------------------------------------
+SourceData_Feedlot_MMSm1T3
+Fraction of volatile solids to each tertiary system assumed that 2 per cent is run - off from the feed pad.
+--------------------------------------
+*/
+
+SourceData_Feedlot_MMSm1T3_Title
+  =LAMBDA("Fraction of volatile solids to each tertiary system assumed that 2 per cent is run - off from the feed pad.");
+
+SourceData_Feedlot_MMSm1T3_Variable
+  =LAMBDA("MMSm1T3");
+
+SourceData_Feedlot_MMSm1T3_Unit
+  =LAMBDA("Fraction");
+
+SourceData_Feedlot_MMSm1T3_Source
+  =LAMBDA("VEERG 2026: 4.1.2.3 CONSTANTS");
+
+SourceData_Feedlot_MMSm1T3_Variation
+  =LAMBDA("");
+
+SourceData_Feedlot_MMSm1T3_Data
+  =LAMBDA(0.02);
+
+/* 
+--------------------------------------
+SourceData_Feedlot_AshContent
+Ash content of manure.
+--------------------------------------
+*/
+
+SourceData_Feedlot_AshContent_Title
+  =LAMBDA("Ash content of manure.");
+
+SourceData_Feedlot_AshContent_Variable
+  =LAMBDA("A");
+
+SourceData_Feedlot_AshContent_Unit
+  =LAMBDA("Fraction");
+
+SourceData_Feedlot_AshContent_Source
+  =LAMBDA("VEERG 2026: 4.1.2.3 CONSTANTS");
+
+SourceData_Feedlot_AshContent_Variation
+  =LAMBDA("");
+
+SourceData_Feedlot_AshContent_Data
+  =LAMBDA(0.16);
+
+/* 
+--------------------------------------
+SourceData_Feedlot_MethaneEmissionsPotential
+Methane emissions potential.
+--------------------------------------
+*/
+
+SourceData_Feedlot_MethaneEmissionsPotential_Title
+  =LAMBDA("Methane emissions potential.");
+
+SourceData_Feedlot_MethaneEmissionsPotential_Variable
+  =LAMBDA("B0");
+
+SourceData_Feedlot_MethaneEmissionsPotential_Unit
+  =LAMBDA("m3 CH4 / kg VS");
+
+SourceData_Feedlot_MethaneEmissionsPotential_Source
+  =LAMBDA("VEERG 2026: 4.1.2.3 CONSTANTS");
+
+SourceData_Feedlot_MethaneEmissionsPotential_Variation
+  =LAMBDA("");
+
+SourceData_Feedlot_MethaneEmissionsPotential_Data
+  =LAMBDA(0.19);
+
+
+/* 
+--------------------------------------
+SourceData_Feedlot_MCF
+Table A.1.7.4: Feedlot - MCFs
+--------------------------------------
+*/
+
+SourceData_Feedlot_MCF_Title
+  =LAMBDA("Feedlot - MCFs");
+
+SourceData_Feedlot_MCF_Unit
+  =LAMBDA("");
+
+SourceData_Feedlot_MCF_Source
+  =LAMBDA("VEERG 2026: Table A.1.7.4: Feedlot - MCFs");
+
+SourceData_Feedlot_MCF_Variation
+  =LAMBDA(
+    MAKEARRAY(4, 1, 
+      LAMBDA(r,c, 
+        INDEX({
+          "VARIATION ON SOURCE:";
+          "Duplicated NSW values for ACT";
+          "Added NT and TAS columns with 'no data' values";
+          "Added 'NIR definition' column with MMS names that match NIR definitions."
+        }, r, c)
+      )
+    )
+  );
+
+SourceData_Feedlot_MCF_Data
+  =LAMBDA(
+    MAKEARRAY(6, 11, 
+      LAMBDA(r,c, 
+        INDEX({
+          "Treatment stage T", "MMS m", "NSW", "ACT", "QLD", "NT", "SA", "VIC", "WA", "TAS", "NIR definition";
+          "Primary", "Dry lot (Feedpad)", 0.01, 0.01, 0.03, "No data", 0.01, 0.01, 0.01, "No data", "Drylot (feed pad)"; 
+          "Secondary", "Solid Storage (Stockpile)", 0.02, 0.02, 0.02, "No data", 0.02, 0.02, 0.02, "No data", "Solid storage"; 
+          "Secondary", "Composting (Passive Windrow)", 0.01, 0.01, 0.01, "No data", 0.01, 0.01, 0.01, "No data", "Composting (passive windrow)"; 
+          "Secondary", "Direct Application to soil", 0, 0, 0, "No data", 0, 0, 0, "No data", "Direct application"; 
+          "Tertiary", "Uncovered anaerobic lagoon (Effluent pond)", 0.75, 0.75, 0.77, "No data", 0.75, 0.75, 0.77, "No data", "Anaerobic lagoon"
+        }, r, c)
+      )
+    )
+  );

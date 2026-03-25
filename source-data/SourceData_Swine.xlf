@@ -60,6 +60,9 @@ m3 CH4/kg VS
 SourceData_Swine_MethaneVolatileSolidsEmissionsPotential_Title
   =LAMBDA("Emissions potential of methane per kilogram of volatile solids");
 
+SourceData_Swine_MethaneVolatileSolidsEmissionsPotential_Variable
+  =LAMBDA("B0");
+
 SourceData_Swine_MethaneVolatileSolidsEmissionsPotential_Unit
   =LAMBDA("m3 CH4 / kg VS");
 
@@ -90,21 +93,55 @@ SourceData_Swine_MMS_MCFs_Source
   =LAMBDA("VEERG 2026: Table A.1.6.4: Swine – MCFs (MCFim)");
 
 SourceData_Swine_MMS_MCFs_Variation
-  =LAMBDA("VARIATION ON SOURCE DATA: Added columns for ACT, split QLD and NT");
+  =LAMBDA("VARIATION ON SOURCE DATA: Added columns for ACT, split QLD and NT. Added extra column with MMS names that match NIR definitions");
 
 SourceData_Swine_MMS_MCFs_Data
   =LAMBDA(
-    MAKEARRAY(8, 9, 
+    MAKEARRAY(8, 10, 
       LAMBDA(r,c, 
         INDEX({
-          "MMS", "NSW", "ACT", "QLD", "NT", "SA", "TAS", "VIC", "WA";
-          "Outdoor(Dry lot)", 0.01, 0.03, 0.01, 0.01, 0.01, 0.01; 
-          "Deep litter", 0.04, 0.04, 0.04, 0.04, 0.04, 0.04;
-          "Stockpile(Solid storage)", 0.02, 0.02, 0.02, 0.02, 0.02, 0.02;
-          "Effluent pond(Uncovered anaerobic lagoon)", 0.75, 0.78, 0.75, 0.70, 0.74, 0.76;
-          "Anaerobic digester / Covered lagoon", 0.1, 0.1, 0.1, 0.1, 0.1, 0.1; 
-          "Short HRT tank storage < 1 month(pit storage)", 0.03, 0.03, 0.03, 0.03, 0.03, 0.03; 
-          "Direct Application to soil", 0, 0, 0, 0, 0, 0
+          "MMS", "NSW", "ACT", "QLD", "NT", "SA", "TAS", "VIC", "WA", "NIR definition";
+          "Outdoor (Dry lot)", 0.01, 0.01, 0.03, 0.03, 0.01, 0.01, 0.01, 0.01, "Drylot (feed pad)"; 
+          "Deep litter", 0.04, 0.04, 0.04, 0.04, 0.04, 0.04, 0.04, 0.04, "Deep litter";
+          "Stockpile (Solid storage)", 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, "Solid storage";
+          "Effluent pond (Uncovered anaerobic lagoon)", 0.75, 0.75, 0.78, 0.78, 0.75, 0.70, 0.74, 0.76, "Anaerobic lagoon";
+          "Anaerobic digester / Covered lagoon", 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, "Digester / covered lagoons"; 
+          "Short HRT tank storage < 1 month (pit storage)", 0.03, 0.03, 0.03, 0.03, 0.03, 0.03, 0.03, 0.03, "Pit storage"; 
+          "Direct Application to soil", 0, 0, 0, 0, 0, 0, 0, 0, "Direct application"
+        }, r, c)
+      )
+    )
+  );
+
+
+/* 
+--------------------------------------
+SourceData_Swine_ProductionSystems
+4.5 Swine Figure 4.8
+--------------------------------------
+*/
+
+SourceData_Swine_ProductionSystems_Title
+  =LAMBDA("Swine production systems");
+
+SourceData_Swine_ProductionSystems_Unit
+  =LAMBDA("");
+
+SourceData_Swine_ProductionSystems_Source
+  =LAMBDA("VEERG 2026: 4.5 Swine Figure 4.8");
+
+SourceData_Swine_ProductionSystems_Variation
+  =LAMBDA("");
+
+SourceData_Swine_ProductionSystems_Data
+  =LAMBDA(
+    MAKEARRAY(4, 1, 
+      LAMBDA(r,c, 
+        INDEX({
+          "Production system";
+          "Conventional housing";
+          "Deep litter housing";
+          "Outdoor/free range"
         }, r, c)
       )
     )
