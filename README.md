@@ -5,6 +5,7 @@ The file extension is .xlf
 Rules:
 1. Use spaces instead of tab characters for indenting. Tab characters are not valid in .xlf Excel formula syntax.
 2. Do not escape backslashes in LatexEquation strings. For example, the string "\times" should remain as "\times" and not "\\times".
+3. Formula variables in the source text may include subscripts eg: MN_{jm=5,T=1} . When generating variables, use the following format example: MN_jm5T1 instead of MNjm5T1.
 
 Function naming convention:
 
@@ -114,15 +115,15 @@ f = Inorganic fertiliser type
 
 VEERG_5_1_1_1__2_MassOfNitrogenInInorganicFertiliser
   =LAMBDA(
-    TMjf, FNinorganicf,
-    TMjf * FNinorganicf
+    TM_jf, FN_inorganicf,
+    TM_jf * FN_inorganicf
   );
 
 VEERG_5_1_1_1__2_MassOfNitrogenInInorganicFertiliser_Title
   =LAMBDA("Mass of nitrogen in inorganic fertiliser applied to soil");
 
 VEERG_5_1_1_1__2_MassOfNitrogenInInorganicFertiliser_Variable
-  =LAMBDA("MNjf");
+  =LAMBDA("MN_jf");
 
 VEERG_5_1_1_1__2_MassOfNitrogenInInorganicFertiliser_Unit
   =LAMBDA("kg N");
@@ -141,8 +142,8 @@ VEERG_5_1_1_1__2_MassOfNitrogenInInorganicFertiliser_Arguments
     MAKEARRAY(5, 2, 
       LAMBDA(r,c, 
         INDEX({
-          "TMjf","total mass of inorganic fertiliser type f applied to production system j (kg)";
-          "FNinorganicf","fraction of nitrogen in inorganic fertiliser type f (kg N/kg)";
+          "TM_jf","total mass of inorganic fertiliser type f applied to production system j (kg)";
+          "FN_inorganicf","fraction of nitrogen in inorganic fertiliser type f (kg N/kg)";
           "j","Production system";
           "inorganic", "Inorganic fertiliser";
           "f","Fertiliser type"

@@ -1,4 +1,4 @@
-/*
+﻿/*
 ============================================================================
 4.1: Beef Feedlot
 ============================================================================
@@ -10,26 +10,26 @@
 --------------------------------------
 VEERG_4_1_1_1__1_TotalAnnualMethaneEmissions
 Total annual methane emissions from manure management
-ECH4
+E_CH4
 t CH4
 {E}_{CH4}=\sum_{j}\sum_{m}\sum_{T}(D_{j}\times M_{jmT}\times N_{j})\times10^{-3}
-Dj = length of stay of each cattle group : days
-MjmT = methane production from manure per cattle group, MMS, and treatment stage : kg CH4/head/day
-Nj = numbers of beef cattle in each group : head
+D_j = length of stay of each cattle group : days
+M_jmT = methane production from manure per cattle group, MMS, and treatment stage : kg CH4/head/day
+N_j = numbers of beef cattle in each group : head
 --------------------------------------
 */
 
 VEERG_4_1_1_1__1_TotalAnnualMethaneEmissions
   =LAMBDA(
-    Dj, MjmT, Nj,
-    SUMPRODUCT(Dj, MjmT, Nj) * 10 ^ -3
+    D_j, M_jmT, N_j,
+    SUMPRODUCT(D_j, M_jmT, N_j) * 10 ^ -3
   );
 
 VEERG_4_1_1_1__1_TotalAnnualMethaneEmissions_Title
   =LAMBDA("Total annual methane emissions from manure management");
 
 VEERG_4_1_1_1__1_TotalAnnualMethaneEmissions_Variable
-  =LAMBDA("ECH4");
+  =LAMBDA("E_CH4");
 
 VEERG_4_1_1_1__1_TotalAnnualMethaneEmissions_Unit
   =LAMBDA("t CH4");
@@ -48,9 +48,9 @@ VEERG_4_1_1_1__1_TotalAnnualMethaneEmissions_Arguments
     MAKEARRAY(3, 2,
       LAMBDA(r,c,
         INDEX({
-          "Dj","length of stay of each cattle group : days";
-          "MjmT","methane production from manure per cattle group, MMS, and treatment stage : kg CH4/head/day";
-          "Nj","numbers of beef cattle in each group : head"
+          "D_j","length of stay of each cattle group : days";
+          "M_jmT","methane production from manure per cattle group, MMS, and treatment stage : kg CH4/head/day";
+          "N_j","numbers of beef cattle in each group : head"
         }, r, c)
       )
     )
@@ -60,23 +60,23 @@ VEERG_4_1_1_1__1_TotalAnnualMethaneEmissions_Arguments
 --------------------------------------
 VEERG_4_1_1_1__2_Stage1MethaneProductionDrylot
 Production of methane in treatment stage 1 MMS
-Mjm5T1
+M_jm5T1
 kg CH4/head/day
 M_{jm=5,T=1}=VS_{j}\times BO\times MMS_{m=5,T=1}\times MCF_{im=5}\times \rho
-VSj = volatile solid production from feedlot cattle in each group : kg/head/day
+VS_j = volatile solid production from feedlot cattle in each group : kg/head/day
 BO = emissions potential : m3 CH4/kg VS
-MMSm5T1 = fraction of manure in primary system drylot MMS : fraction
-MCFim5 = methane conversion factor for temperature zone and drylot system : fraction
+MMS_m5T1 = fraction of manure in primary system drylot MMS : fraction
+MCF_im5 = methane conversion factor for temperature zone and drylot system : fraction
 rho = density of methane : kg/m3
 --------------------------------------
 */
 
 VEERG_4_1_1_1__2_Stage1MethaneProductionDrylot
   =LAMBDA(
-    VSj, BO, MMSm5T1, MCFim5, rho,
+    VS_j, BO, MMS_m5T1, MCF_im5, rho,
     LET(
-      MCFim5, IF(ISNUMBER(MCFim5), MCFim5, 0),
-      VSj * BO * MMSm5T1 * MCFim5 * rho
+      MCF_im5, IF(ISNUMBER(MCF_im5), MCF_im5, 0),
+      VS_j * BO * MMS_m5T1 * MCF_im5 * rho
     )
   );
 
@@ -84,7 +84,7 @@ VEERG_4_1_1_1__2_Stage1MethaneProductionDrylot_Title
   =LAMBDA("Production of methane in treatment stage 1 MMS");
 
 VEERG_4_1_1_1__2_Stage1MethaneProductionDrylot_Variable
-  =LAMBDA("Mjm5T1");
+  =LAMBDA("M_jm5T1");
 
 VEERG_4_1_1_1__2_Stage1MethaneProductionDrylot_Unit
   =LAMBDA("kg CH4/head/day");
@@ -103,10 +103,10 @@ VEERG_4_1_1_1__2_Stage1MethaneProductionDrylot_Arguments
     MAKEARRAY(6, 2,
       LAMBDA(r,c,
         INDEX({
-          "VSj","volatile solid production from feedlot cattle in each group : kg/head/day";
+          "VS_j","volatile solid production from feedlot cattle in each group : kg/head/day";
           "BO","emissions potential : m3 CH4/kg VS";
-          "MMSm5T1","fraction of manure in primary system drylot MMS : fraction";
-          "MCFim5","methane conversion factor for temperature zone and drylot system : fraction";
+          "MMS_m5T1","fraction of manure in primary system drylot MMS : fraction";
+          "MCF_im5","methane conversion factor for temperature zone and drylot system : fraction";
           "rho","density of methane : kg/m3";
           "i", "state"
         }, r, c)
@@ -118,29 +118,29 @@ VEERG_4_1_1_1__2_Stage1MethaneProductionDrylot_Arguments
 --------------------------------------
 VEERG_4_1_1_1__3_Stage2MethaneProduction
 Production of methane in treatment stage 2 MMS
-MjmT2
+M_jmT2
 kg CH4/head/day
 M_{jmT=2}=(1-VSL)\times VS_{j}\times BO\times MMS_{mT=2}\times MCF_{im}\times \rho
 VSL = fraction of volatile solids lost during storage in the primary system : fraction
-VSj = volatile solid production from feedlot cattle in each group : kg/head/day
+VS_j = volatile solid production from feedlot cattle in each group : kg/head/day
 BO = emissions potential : m3 CH4/kg VS
-MMSmT2 = fraction of manure in each secondary system : fraction
-MCFim = methane conversion factor for temperature zone and MMS : fraction
+MMS_mT2 = fraction of manure in each secondary system : fraction
+MCF_im = methane conversion factor for temperature zone and MMS : fraction
 rho = density of methane : kg/m3
 --------------------------------------
 */
 
 VEERG_4_1_1_1__3_Stage2MethaneProduction
   =LAMBDA(
-    VSL, VSj, BO, MMSmT2, MCFim, rho,
-    (1 - VSL) * VSj * BO * MMSmT2 * MCFim * rho
+    VSL, VS_j, BO, MMS_mT2, MCF_im, rho,
+    (1 - VSL) * VS_j * BO * MMS_mT2 * MCF_im * rho
   );
 
 VEERG_4_1_1_1__3_Stage2MethaneProduction_Title
   =LAMBDA("Production of methane in treatment stage 2 MMS");
 
 VEERG_4_1_1_1__3_Stage2MethaneProduction_Variable
-  =LAMBDA("MjmT2");
+  =LAMBDA("M_jmT2");
 
 VEERG_4_1_1_1__3_Stage2MethaneProduction_Unit
   =LAMBDA("kg CH4/head/day");
@@ -160,10 +160,10 @@ VEERG_4_1_1_1__3_Stage2MethaneProduction_Arguments
       LAMBDA(r,c,
         INDEX({
           "VSL","fraction of volatile solids lost during storage in the primary system : fraction";
-          "VSj","volatile solid production from feedlot cattle in each group : kg/head/day";
+          "VS_j","volatile solid production from feedlot cattle in each group : kg/head/day";
           "BO","emissions potential : m3 CH4/kg VS";
-          "MMSmT2","fraction of manure in each secondary system : fraction";
-          "MCFim","methane conversion factor for temperature zone and MMS : fraction";
+          "MMS_mT2","fraction of manure in each secondary system : fraction";
+          "MCF_im","methane conversion factor for temperature zone and MMS : fraction";
           "rho","density of methane : kg/m3";
           "i", "state"
         }, r, c)
@@ -175,28 +175,28 @@ VEERG_4_1_1_1__3_Stage2MethaneProduction_Arguments
 --------------------------------------
 VEERG_4_1_1_1__4_Stage3MethaneProductionAnaerobicLagoon
 Production of methane in treatment stage 3 MMS
-Mjm1T3
+M_jm1T3
 kg CH4/head/day
 M_{jm=1,T=3}=VS_{j}\times BO\times MMS_{m=1,T=3}\times MCF_{im=1}\times \rho
-VSj = volatile solid production from feedlot cattle in each group : kg/head/day
+VS_j = volatile solid production from feedlot cattle in each group : kg/head/day
 BO = emissions potential : m3 CH4/kg VS
-MMSm1T3 = fraction of manure to tertiary anaerobic lagoon system : fraction
-MCFim1 = methane conversion factor for temperature zone and anaerobic lagoon system : fraction
+MMS_m1T3 = fraction of manure to tertiary anaerobic lagoon system : fraction
+MCF_im1 = methane conversion factor for temperature zone and anaerobic lagoon system : fraction
 rho = density of methane : kg/m3
 --------------------------------------
 */
 
 VEERG_4_1_1_1__4_Stage3MethaneProductionAnaerobicLagoon
   =LAMBDA(
-    VSj, BO, MMSm1T3, MCFim1, rho,
-    VSj * BO * MMSm1T3 * MCFim1 * rho
+    VS_j, BO, MMS_m1T3, MCF_im1, rho,
+    VS_j * BO * MMS_m1T3 * MCF_im1 * rho
   );
 
 VEERG_4_1_1_1__4_Stage3MethaneProductionAnaerobicLagoon_Title
   =LAMBDA("Production of methane in treatment stage 3 MMS");
 
 VEERG_4_1_1_1__4_Stage3MethaneProductionAnaerobicLagoon_Variable
-  =LAMBDA("Mjm1T3");
+  =LAMBDA("M_jm1T3");
 
 VEERG_4_1_1_1__4_Stage3MethaneProductionAnaerobicLagoon_Unit
   =LAMBDA("kg CH4/head/day");
@@ -215,10 +215,10 @@ VEERG_4_1_1_1__4_Stage3MethaneProductionAnaerobicLagoon_Arguments
     MAKEARRAY(6, 2,
       LAMBDA(r,c,
         INDEX({
-          "VSj","volatile solid production from feedlot cattle in each group : kg/head/day";
+          "VS_j","volatile solid production from feedlot cattle in each group j : kg/head/day";
           "BO","emissions potential : m3 CH4/kg VS";
-          "MMSm1T3","fraction of manure to tertiary anaerobic lagoon system : fraction";
-          "MCFim1","methane conversion factor for temperature zone and anaerobic lagoon system : fraction";
+          "MMS_m1T3","fraction of manure to tertiary anaerobic lagoon system : fraction";
+          "MCF_im1","methane conversion factor for temperature zone and anaerobic lagoon system : fraction";
           "rho","density of methane : kg/m3";
           "i", "state"
         }, r, c)
@@ -230,26 +230,26 @@ VEERG_4_1_1_1__4_Stage3MethaneProductionAnaerobicLagoon_Arguments
 --------------------------------------
 VEERG_4_1_1_1__5_VolatileSolidProduction
 Volatile solid production
-VSj
+VS_j
 kg/head/day
 VS_{j}=I_{j}\times(1-DMD_{j})\times(1-A)
-Ij = dry matter intake for each group : kg DM/head/day
-DMDj = dry matter digestibility for each group : fraction
+I_j = dry matter intake for each group : kg DM/head/day
+DMD_j = dry matter digestibility for each group : fraction
 A = ash content of manure : fraction
 --------------------------------------
 */
 
 VEERG_4_1_1_1__5_VolatileSolidProduction
   =LAMBDA(
-    Ij, DMDj, A,
-    Ij * (1 - DMDj) * (1 - A)
+    I_j, DMD_j, A,
+    I_j * (1 - DMD_j) * (1 - A)
   );
 
 VEERG_4_1_1_1__5_VolatileSolidProduction_Title
   =LAMBDA("Volatile solid production");
 
 VEERG_4_1_1_1__5_VolatileSolidProduction_Variable
-  =LAMBDA("VSj");
+  =LAMBDA("VS_j");
 
 VEERG_4_1_1_1__5_VolatileSolidProduction_Unit
   =LAMBDA("kg/head/day");
@@ -268,14 +268,13 @@ VEERG_4_1_1_1__5_VolatileSolidProduction_Arguments
     MAKEARRAY(3, 2,
       LAMBDA(r,c,
         INDEX({
-          "Ij","dry matter intake for each group : kg DM/head/day";
-          "DMDj","dry matter digestibility for each group : fraction";
+          "I_j","dry matter intake for each group j : kg DM/head/day";
+          "DMD_j","dry matter digestibility for each group j : fraction";
           "A","ash content of manure : fraction"
         }, r, c)
       )
     )
   );
-
 
 
 

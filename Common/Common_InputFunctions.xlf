@@ -143,4 +143,4 @@ getOverlappingReportingPeriods
 );
 
 Utility_DisplayFunctionName
-=LAMBDA(Function, FORMULATEXT(Function));
+=LAMBDA(Function, TEXTBEFORE(FORMULATEXT(Function), "("));

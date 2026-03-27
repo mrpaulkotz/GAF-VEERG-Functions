@@ -1,0 +1,12 @@
+{
+  "name": "gaf-veerg-functions",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "powershell -NoProfile -ExecutionPolicy Bypass -File .\\build.ps1",
+    "build:dry": "powershell -NoProfile -ExecutionPolicy Bypass -File .\\scripts\\sync-xlf-to-excel-labs.ps1 -DryRun",
+    "expand-lambda-functions": "powershell -NoProfile -ExecutionPolicy Bypass -File .\\scripts\\expand-veerg-lambda-references.ps1 -SourceWorkbook .\\Excel\\4_1_ManureManagement_Feedlot_WIP_v01.xlsx -OutputWorkbook .\\Excel\\4_1_ManureManagement_Feedlot_WIP_v01_expanded.xlsx",
+    "expand-lambda-functions:dry": "powershell -NoProfile -ExecutionPolicy Bypass -File .\\scripts\\expand-veerg-lambda-references.ps1 -SourceWorkbook .\\Excel\\4_1_ManureManagement_Feedlot_WIP_v01.xlsx -OutputWorkbook .\\Excel\\4_1_ManureManagement_Feedlot_WIP_v01_expanded.xlsx -DryRun",
+    "expand-lambda-functions:debug": "powershell -NoProfile -ExecutionPolicy Bypass -File .\\scripts\\expand-veerg-lambda-references.ps1 -SourceWorkbook .\\Excel\\4_1_ManureManagement_Feedlot_WIP_v01.xlsx -OutputWorkbook .\\Excel\\4_1_ManureManagement_Feedlot_WIP_v01_expanded.xlsx -DebugFailedWrites"
+  }
+}

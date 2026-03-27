@@ -1,0 +1,402 @@
+﻿/*
+============================================================================
+4.1: Beef Feedlot
+============================================================================
+4.1.1.3 Method 1 - Manure Direct N2O Beef Feedlot
+============================================================================
+*/
+
+/*
+--------------------------------------
+VEERG_4_1_1_3__1_TotalAnnualDirectNitrousOxideEmissions
+Total annual direct nitrous oxide emissions from manure management systems
+E_N2Odir
+t N2O
+E_{N2O,dir}=\sum_{j}\sum_{m}\sum_{T}(MN_{jmT}\times EF_{jm}\times C_{N2O})\times10^{-3}
+MN_jmT = nitrogen per cattle group, MMS and treatment stage : kg N
+EF_jm = nitrous oxide emission factor for MMS : kg N2O-N/kg N
+C_N2O = factor to convert elemental mass of nitrous oxide to molecular mass : ratio
+--------------------------------------
+*/
+
+VEERG_4_1_1_3__1_TotalAnnualDirectNitrousOxideEmissions
+  =LAMBDA(
+    MN_jmT, EF_jm, C_N2O,
+    SUMPRODUCT(MN_jmT, EF_jm, C_N2O) * 10 ^ -3
+  );
+
+VEERG_4_1_1_3__1_TotalAnnualDirectNitrousOxideEmissions_Title
+  =LAMBDA("Total annual direct nitrous oxide emissions from manure management systems");
+
+VEERG_4_1_1_3__1_TotalAnnualDirectNitrousOxideEmissions_Variable
+  =LAMBDA("E_N2Odir");
+
+VEERG_4_1_1_3__1_TotalAnnualDirectNitrousOxideEmissions_Unit
+  =LAMBDA("t N2O");
+
+VEERG_4_1_1_3__1_TotalAnnualDirectNitrousOxideEmissions_Source
+  =LAMBDA("VEERG 2026: 4.1.1.3, Equation (1)");
+
+VEERG_4_1_1_3__1_TotalAnnualDirectNitrousOxideEmissions_NIRReference
+  =LAMBDA("");
+
+VEERG_4_1_1_3__1_TotalAnnualDirectNitrousOxideEmissions_LatexEquation
+  =LAMBDA("E_{N2O,dir}=\sum_{j}\sum_{m}\sum_{T}(MN_{jmT}\times EF_{jm}\times C_{N2O})\times10^{-3}");
+
+VEERG_4_1_1_3__1_TotalAnnualDirectNitrousOxideEmissions_Arguments
+  =LAMBDA(
+    MAKEARRAY(3, 2,
+      LAMBDA(r,c,
+        INDEX({
+          "MN_jmT","nitrogen per cattle group, MMS and treatment stage : kg N";
+          "EF_jm","nitrous oxide emission factor for MMS : kg N2O-N/kg N";
+          "C_N2O","factor to convert elemental mass of nitrous oxide to molecular mass : ratio"
+        }, r, c)
+      )
+    )
+  );
+
+/*
+--------------------------------------
+VEERG_4_1_1_3__2_Stage1NitrogenInMMSDrylot
+Nitrogen in treatment stage 1 MMS
+MN_jm5T1
+kg N
+MN_{jm=5,T=1}=AE_{j}\times MMS_{jm=5,T=1}
+AE_j = total nitrogen excreted by each cattle group : kg N
+MMS_jm5T1 = fraction of manure in primary system drylot MMS : fraction
+--------------------------------------
+*/
+
+VEERG_4_1_1_3__2_Stage1NitrogenInMMSDrylot
+  =LAMBDA(
+    AE_j, MMS_jm5T1,
+    AE_j * MMS_jm5T1
+  );
+
+VEERG_4_1_1_3__2_Stage1NitrogenInMMSDrylot_Title
+  =LAMBDA("Nitrogen in treatment stage 1 MMS");
+
+VEERG_4_1_1_3__2_Stage1NitrogenInMMSDrylot_Variable
+  =LAMBDA("MN_jm5T1");
+
+VEERG_4_1_1_3__2_Stage1NitrogenInMMSDrylot_Unit
+  =LAMBDA("kg N");
+
+VEERG_4_1_1_3__2_Stage1NitrogenInMMSDrylot_Source
+  =LAMBDA("VEERG 2026: 4.1.1.3, Equation (2)");
+
+VEERG_4_1_1_3__2_Stage1NitrogenInMMSDrylot_NIRReference
+  =LAMBDA("");
+
+VEERG_4_1_1_3__2_Stage1NitrogenInMMSDrylot_LatexEquation
+  =LAMBDA("MN_{jm=5,T=1}=AE_{j}\times MMS_{jm=5,T=1}");
+
+VEERG_4_1_1_3__2_Stage1NitrogenInMMSDrylot_Arguments
+  =LAMBDA(
+    MAKEARRAY(2, 2,
+      LAMBDA(r,c,
+        INDEX({
+          "AE_j","total nitrogen excreted by each cattle group : kg N";
+          "MMS_jm5T1","fraction of manure in primary system drylot MMS : fraction"
+        }, r, c)
+      )
+    )
+  );
+
+/*
+--------------------------------------
+VEERG_4_1_1_3__3_AnnualNitrogenExcretion
+Annual nitrogen excretion from each feedlot cattle group
+AE_j
+kg N
+AE_{j}=N_{j}\times NE_{j}\times D_{j}
+N_j = number of cattle in each group : head
+NE_j = nitrogen excretion : kg N/head/day
+D_j = duration of stay of cattle group : days
+--------------------------------------
+*/
+
+VEERG_4_1_1_3__3_AnnualNitrogenExcretion
+  =LAMBDA(
+    N_j, NE_j, D_j,
+    N_j * NE_j * D_j
+  );
+
+VEERG_4_1_1_3__3_AnnualNitrogenExcretion_Title
+  =LAMBDA("Annual nitrogen excretion from each feedlot cattle group");
+
+VEERG_4_1_1_3__3_AnnualNitrogenExcretion_Variable
+  =LAMBDA("AE_j");
+
+VEERG_4_1_1_3__3_AnnualNitrogenExcretion_Unit
+  =LAMBDA("kg N");
+
+VEERG_4_1_1_3__3_AnnualNitrogenExcretion_Source
+  =LAMBDA("VEERG 2026: 4.1.1.3, Equation (3)");
+
+VEERG_4_1_1_3__3_AnnualNitrogenExcretion_NIRReference
+  =LAMBDA("");
+
+VEERG_4_1_1_3__3_AnnualNitrogenExcretion_LatexEquation
+  =LAMBDA("AE_{j}=N_{j}\times NE_{j}\times D_{j}");
+
+VEERG_4_1_1_3__3_AnnualNitrogenExcretion_Arguments
+  =LAMBDA(
+    MAKEARRAY(3, 2,
+      LAMBDA(r,c,
+        INDEX({
+          "N_j","number of cattle in each group : head";
+          "NE_j","nitrogen excretion : kg N/head/day";
+          "D_j","duration of stay of cattle group : days"
+        }, r, c)
+      )
+    )
+  );
+
+/*
+--------------------------------------
+VEERG_4_1_1_3__4_NitrogenExcretionPerHead
+Nitrogen excretion per head per day
+NE_j
+kg N/head/day
+NE_{j}=NI_{j}\times(1-NR_{j})
+NI_j = nitrogen intake : kg N/head/day
+NR_j = nitrogen retention expressed as a fraction of intake : fraction
+--------------------------------------
+*/
+
+VEERG_4_1_1_3__4_NitrogenExcretionPerHead
+  =LAMBDA(
+    NI_j, NR_j,
+    NI_j * (1 - NR_j)
+  );
+
+VEERG_4_1_1_3__4_NitrogenExcretionPerHead_Title
+  =LAMBDA("Nitrogen excretion per head per day");
+
+VEERG_4_1_1_3__4_NitrogenExcretionPerHead_Variable
+  =LAMBDA("NE_j");
+
+VEERG_4_1_1_3__4_NitrogenExcretionPerHead_Unit
+  =LAMBDA("kg N/head/day");
+
+VEERG_4_1_1_3__4_NitrogenExcretionPerHead_Source
+  =LAMBDA("VEERG 2026: 4.1.1.3, Equation (4)");
+
+VEERG_4_1_1_3__4_NitrogenExcretionPerHead_NIRReference
+  =LAMBDA("");
+
+VEERG_4_1_1_3__4_NitrogenExcretionPerHead_LatexEquation
+  =LAMBDA("NE_{j}=NI_{j}\times(1-NR_{j})");
+
+VEERG_4_1_1_3__4_NitrogenExcretionPerHead_Arguments
+  =LAMBDA(
+    MAKEARRAY(2, 2,
+      LAMBDA(r,c,
+        INDEX({
+          "NI_j","nitrogen intake : kg N/head/day";
+          "NR_j","nitrogen retention expressed as a fraction of intake : fraction"
+        }, r, c)
+      )
+    )
+  );
+
+/*
+--------------------------------------
+VEERG_4_1_1_3__5_NitrogenIntake
+Nitrogen intake of feedlot cattle
+NI_j
+kg N/head/day
+NI_{j}=I_{j}\times CP_{j}\div 6.25
+I_j = dry matter intake : kg DM/head/day
+CP_j = crude protein content of feed : fraction
+6.25 = factor for converting crude protein into nitrogen : ratio
+--------------------------------------
+*/
+
+VEERG_4_1_1_3__5_NitrogenIntake
+  =LAMBDA(
+    I_j, CP_j,
+    I_j * CP_j / 6.25
+  );
+
+VEERG_4_1_1_3__5_NitrogenIntake_Title
+  =LAMBDA("Nitrogen intake of feedlot cattle");
+
+VEERG_4_1_1_3__5_NitrogenIntake_Variable
+  =LAMBDA("NI_j");
+
+VEERG_4_1_1_3__5_NitrogenIntake_Unit
+  =LAMBDA("kg N/head/day");
+
+VEERG_4_1_1_3__5_NitrogenIntake_Source
+  =LAMBDA("VEERG 2026: 4.1.1.3, Equation (5)");
+
+VEERG_4_1_1_3__5_NitrogenIntake_NIRReference
+  =LAMBDA("");
+
+VEERG_4_1_1_3__5_NitrogenIntake_LatexEquation
+  =LAMBDA("NI_{j}=I_{j}\times CP_{j}\div 6.25");
+
+VEERG_4_1_1_3__5_NitrogenIntake_Arguments
+  =LAMBDA(
+    MAKEARRAY(3, 2,
+      LAMBDA(r,c,
+        INDEX({
+          "I_j","dry matter intake : kg DM/head/day";
+          "CP_j","crude protein content of feed : fraction";
+          "6.25","factor for converting crude protein into nitrogen : ratio"
+        }, r, c)
+      )
+    )
+  );
+
+/*
+--------------------------------------
+VEERG_4_1_1_3__6_Stage2NitrogenInMMS
+Nitrogen in treatment stage 2 MMS
+MN_jmT2
+kg N
+MN_{jm,T=2}=NT_{jm,T=2}\times MMS_{jm,T=2}
+NT_jmT2 = nitrogen transferred to secondary treatment MMS : kg N
+MMS_jmT2 = fraction of manure in each secondary system : fraction
+--------------------------------------
+*/
+
+VEERG_4_1_1_3__6_Stage2NitrogenInMMS
+  =LAMBDA(
+    NT_jmT2, MMS_jmT2,
+    NT_jmT2 * MMS_jmT2
+  );
+
+VEERG_4_1_1_3__6_Stage2NitrogenInMMS_Title
+  =LAMBDA("Nitrogen in treatment stage 2 MMS");
+
+VEERG_4_1_1_3__6_Stage2NitrogenInMMS_Variable
+  =LAMBDA("MN_jmT2");
+
+VEERG_4_1_1_3__6_Stage2NitrogenInMMS_Unit
+  =LAMBDA("kg N");
+
+VEERG_4_1_1_3__6_Stage2NitrogenInMMS_Source
+  =LAMBDA("VEERG 2026: 4.1.1.3, Equation (6)");
+
+VEERG_4_1_1_3__6_Stage2NitrogenInMMS_NIRReference
+  =LAMBDA("");
+
+VEERG_4_1_1_3__6_Stage2NitrogenInMMS_LatexEquation
+  =LAMBDA("MN_{jm,T=2}=NT_{jm,T=2}\times MMS_{jm,T=2}");
+
+VEERG_4_1_1_3__6_Stage2NitrogenInMMS_Arguments
+  =LAMBDA(
+    MAKEARRAY(2, 2,
+      LAMBDA(r,c,
+        INDEX({
+          "NT_jmT2","nitrogen transferred to secondary treatment MMS : kg N";
+          "MMS_jmT2","fraction of manure in each secondary system : fraction"
+        }, r, c)
+      )
+    )
+  );
+
+/*
+--------------------------------------
+VEERG_4_1_1_3__7_NitrogenTransferredToStage2
+Nitrogen transferred to treatment stage 2 MMS
+NT_jmT2
+kg N
+NT_{jm,T=2}=(MN_{jm=5,T=1}\times(1-FracGASM_{m=5}-EF_{m=5}))-MN_{jm,T=3}
+MN_jm5T1 = nitrogen in MMS treatment stage 1 : kg N
+FracGASM_m5 = fraction of N volatilised from drylot MMS : fraction
+EF_m5 = nitrous oxide emission factor for drylot MMS : kg N2O-N/kg N deposited
+MN_jmT3 = nitrogen in MMS treatment stage 3 : kg N
+--------------------------------------
+*/
+
+VEERG_4_1_1_3__7_NitrogenTransferredToStage2
+  =LAMBDA(
+    MN_jm5T1, FracGASM_m5, EF_m5, MN_jmT3,
+    (MN_jm5T1 * (1 - FracGASM_m5 - EF_m5)) - MN_jmT3
+  );
+
+VEERG_4_1_1_3__7_NitrogenTransferredToStage2_Title
+  =LAMBDA("Nitrogen transferred to treatment stage 2 MMS");
+
+VEERG_4_1_1_3__7_NitrogenTransferredToStage2_Variable
+  =LAMBDA("NT_jmT2");
+
+VEERG_4_1_1_3__7_NitrogenTransferredToStage2_Unit
+  =LAMBDA("kg N");
+
+VEERG_4_1_1_3__7_NitrogenTransferredToStage2_Source
+  =LAMBDA("VEERG 2026: 4.1.1.3, Equation (7)");
+
+VEERG_4_1_1_3__7_NitrogenTransferredToStage2_NIRReference
+  =LAMBDA("");
+
+VEERG_4_1_1_3__7_NitrogenTransferredToStage2_LatexEquation
+  =LAMBDA("NT_{jm,T=2}=(MN_{jm=5,T=1}\times(1-FracGASM_{m=5}-EF_{m=5}))-MN_{jm,T=3}");
+
+VEERG_4_1_1_3__7_NitrogenTransferredToStage2_Arguments
+  =LAMBDA(
+    MAKEARRAY(4, 2,
+      LAMBDA(r,c,
+        INDEX({
+          "MN_jm5T1","nitrogen in MMS treatment stage 1 : kg N";
+          "FracGASM_m5","fraction of N volatilised from drylot MMS : fraction";
+          "EF_m5","nitrous oxide emission factor for drylot MMS : kg N2O-N/kg N deposited";
+          "MN_jmT3","nitrogen in MMS treatment stage 3 : kg N"
+        }, r, c)
+      )
+    )
+  );
+
+/*
+--------------------------------------
+VEERG_4_1_1_3__8_Stage3NitrogenInMMSAnaerobicLagoon
+Nitrogen in treatment stage 3 MMS
+MN_jm1T3
+kg N
+MN_{jm=1,T=3}=AE_{j}\times MMS_{jm=1,T=3}
+AE_j = total nitrogen excreted by each cattle group : kg N
+MMS_jm1T3 = fraction of manure to tertiary anaerobic lagoon system : fraction
+--------------------------------------
+*/
+
+VEERG_4_1_1_3__8_Stage3NitrogenInMMSAnaerobicLagoon
+  =LAMBDA(
+    AE_j, MMS_jm1T3,
+    AE_j * MMS_jm1T3
+  );
+
+VEERG_4_1_1_3__8_Stage3NitrogenInMMSAnaerobicLagoon_Title
+  =LAMBDA("Nitrogen in treatment stage 3 MMS");
+
+VEERG_4_1_1_3__8_Stage3NitrogenInMMSAnaerobicLagoon_Variable
+  =LAMBDA("MN_jm1T3");
+
+VEERG_4_1_1_3__8_Stage3NitrogenInMMSAnaerobicLagoon_Unit
+  =LAMBDA("kg N");
+
+VEERG_4_1_1_3__8_Stage3NitrogenInMMSAnaerobicLagoon_Source
+  =LAMBDA("VEERG 2026: 4.1.1.3, Equation (8)");
+
+VEERG_4_1_1_3__8_Stage3NitrogenInMMSAnaerobicLagoon_NIRReference
+  =LAMBDA("");
+
+VEERG_4_1_1_3__8_Stage3NitrogenInMMSAnaerobicLagoon_LatexEquation
+  =LAMBDA("MN_{jm=1,T=3}=AE_{j}\times MMS_{jm=1,T=3}");
+
+VEERG_4_1_1_3__8_Stage3NitrogenInMMSAnaerobicLagoon_Arguments
+  =LAMBDA(
+    MAKEARRAY(2, 2,
+      LAMBDA(r,c,
+        INDEX({
+          "AE_j","total nitrogen excreted by each cattle group : kg N";
+          "MMS_jm1T3","fraction of manure to tertiary anaerobic lagoon system : fraction"
+        }, r, c)
+      )
+    )
+  );
+

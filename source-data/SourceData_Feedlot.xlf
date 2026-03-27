@@ -99,10 +99,203 @@ SourceData_Feedlot_MethaneEmissionsPotential_Data
   =LAMBDA(0.19);
 
 
+SourceData_Feedlot_Stage1MMSOptions
+  =LAMBDA(
+    MAKEARRAY(1, 1,
+      LAMBDA(r,c,
+        INDEX({
+          "Drylot (feed pad)"
+        }, r, c)
+      )
+    )
+  );
+
+SourceData_Feedlot_Stage2MMSOptions
+  =LAMBDA(
+    MAKEARRAY(4, 1,
+      LAMBDA(r,c,
+        INDEX({
+          "Solid storage";
+          "Composting (passive windrow)";
+          "Direct application";
+          "No MMS"
+        }, r, c)
+      )
+    )
+  );
+
+SourceData_Feedlot_Stage3MMSOptions
+  =LAMBDA(
+    MAKEARRAY(1, 1,
+      LAMBDA(r,c,
+        INDEX({
+          "Anaerobic lagoon"
+        }, r, c)
+      )
+    )
+  );
+
+SourceData_Feedlot_LivestockClasses
+  =LAMBDA(
+    MAKEARRAY(3, 1,
+      LAMBDA(r,c,
+        INDEX({
+          "Domestic"; 
+          "Export mid fed"; 
+          "Export long fed"
+        }, r, c)
+      )
+    )
+  );
+
+
+/* 
+--------------------------------------
+SourceData_Feedlot_DurationOfStay
+Table A.1.1.1: Beef feedlot cattle - Duration of stay (days)
+--------------------------------------
+*/
+
+SourceData_Feedlot_DurationOfStay_Title
+  =LAMBDA("Beef feedlot cattle - Duration of stay (days)");
+
+SourceData_Feedlot_DurationOfStay_Unit
+  =LAMBDA("");
+
+SourceData_Feedlot_DurationOfStay_Source
+  =LAMBDA("VEERG 2026: Table A.1.1.1: Beef feedlot cattle - Duration of stay (days)");
+
+SourceData_Feedlot_DurationOfStay_Variation
+  =LAMBDA("");
+
+SourceData_Feedlot_DurationOfStay_Data
+  =LAMBDA(
+    MAKEARRAY(4, 2, 
+      LAMBDA(r,c, 
+        INDEX({
+          "Feedlot type", "Length of Stay";
+          "Domestic", "1-80 days";
+          "Mid-fed", "81-200 days";
+          "Long-fed", "201+ days"
+        }, r, c)
+      )
+    )
+  );
+
+
+
+/* 
+--------------------------------------
+SourceData_Feedlot_AnimalCharacteristics
+Table A.1.1.2: Beef feedlot cattle - Animal characteristics
+--------------------------------------
+*/
+
+SourceData_Feedlot_AnimalCharacteristics_Title
+  =LAMBDA("Beef feedlot cattle - Animal characteristics");
+
+SourceData_Feedlot_AnimalCharacteristics_Unit
+  =LAMBDA("");
+
+SourceData_Feedlot_AnimalCharacteristics_Source
+  =LAMBDA("VEERG 2026: Table A.1.1.2: Beef feedlot cattle - Animal characteristics");
+
+SourceData_Feedlot_AnimalCharacteristics_Variation
+  =LAMBDA(
+    MAKEARRAY(3, 1, 
+      LAMBDA(r,c, 
+        INDEX({
+          "VARIATION ON SOURCE:";
+          "Moved feedlot types to a separate column to aid lookup.";
+          "Named 'characteristic' column - original has header 'Unit' which covers two columns)"
+        }, r, c)
+      )
+    )
+  );
+
+SourceData_Feedlot_AnimalCharacteristics_Data
+  =LAMBDA(
+    MAKEARRAY(10, 7, 
+      LAMBDA(r,c, 
+        INDEX({
+          "Feedlot type", "Characteristic", "Unit", "2005-2009", "2010-2014", "2015-2019", "2020-2023";
+          "Domestic", "Days on feed", "days", 70, 70, 70, 75;
+          "Domestic", "Feed intake", "kg DM/day", 10.0, 10.0, 10.4, 10.4;
+          "Domestic", "N retention", "per cent of intake", 21.1, 20.4, 20.4, 20.4;
+          "Mid-fed", "Days on feed", "days", 115, 115, 120, 150;
+          "Mid-fed", "Feed intake", "kg DM/day", 11.2, 10.8, 10.8, 10.8;
+          "Mid-fed", "N retention", "per cent of intake", 12.5, 12.7, 12.7, 12.7;
+          "Long-fed", "Days on feed", "days", 250, 250, 250, 250;
+          "Long-fed", "Feed intake", "kg DM/day", 9.0, 8.5, 8.2, 8.2;
+          "Long-fed", "N retention", "per cent of intake", 6.6, 7.0, 7.0, 7.0
+        }, r, c)
+      )
+    )
+  );
+
+
+
+
+
+
+
+/* 
+--------------------------------------
+SourceData_Feedlot_DietProperties
+Table A.1.1.3: Beef feedlot cattle - Diet properties
+--------------------------------------
+*/
+
+SourceData_Feedlot_DietProperties_Title
+  =LAMBDA("Beef feedlot cattle - Diet properties");
+
+SourceData_Feedlot_DietProperties_Unit
+  =LAMBDA("");
+
+SourceData_Feedlot_DietProperties_Source
+  =LAMBDA("VEERG 2026: Table A.1.1.3: Beef feedlot cattle - Diet properties");
+
+SourceData_Feedlot_DietProperties_Variation
+  =LAMBDA(
+    MAKEARRAY(3, 1, 
+      LAMBDA(r,c, 
+        INDEX({
+          "VARIATION ON SOURCE:";
+          "Added 'Converted to fraction column and converted NDF and Ether extract values to fractions.";
+          "Moved feedlot types to a separate column to aid lookup."
+        }, r, c)
+      )
+    )
+  );
+
+SourceData_Feedlot_DietProperties_Data
+  =LAMBDA(
+    MAKEARRAY(13, 8, 
+      LAMBDA(r,c, 
+        INDEX({
+          "Feedlot type", "Nutrient analysis", "Unit", "2005-2009", "2010-2014", "2015-2019", "2020-2023", "Converted to fraction";
+          "Domestic", "Dry matter digestibility", "fraction", 0.81, 0.81, 0.81, 0.81, 0.81;
+          "Domestic", "Crude protein", "fraction", 0.14, 0.14, 0.14, 0.14, 0.14;
+          "Domestic", "NDF", "per cent", 23.0, 22.0, 22.0, 22.0, 0.22;
+          "Domestic", "Ether Extract", "per cent", 4.5, 4.5, 4.8, 4.8, 0.048;
+          "Mid-fed", "Dry matter digestibility", "fraction", 0.81, 0.81, 0.81, 0.81, 0.81;
+          "Mid-fed", "Crude protein", "fraction", 0.13, 0.125, 0.12, 0.12, 0.12;
+          "Mid-fed", "NDF", "per cent", 24.0, 22.0, 22.0, 22.0, 0.22;
+          "Mid-fed", "Ether Extract", "per cent", 5.0, 5.0, 5.0, 5.0, 0.05;
+          "Long-Fed", "Dry matter digestibility", "fraction", 0.81, 0.81, 0.81, 0.81, 0.81;
+          "Long-Fed", "Crude protein", "fraction", 0.13, 0.125, 0.12, 0.12, 0.12;
+          "Long-Fed", "NDF", "per cent", 24.0, 24.0, 24.0, 24.0, 0.24;
+          "Long-Fed", "Ether Extract", "per cent", 5.0, 5.0, 5.5, 5.5, 0.055
+        }, r, c)
+      )
+    )
+  );
+
+
 /* 
 --------------------------------------
 SourceData_Feedlot_MCF
-Table A.1.7.4: Feedlot - MCFs
+Table A.1.1.4: Beef feedlot cattle - MCFs (fraction) (MCFimT)
 --------------------------------------
 */
 
@@ -113,7 +306,7 @@ SourceData_Feedlot_MCF_Unit
   =LAMBDA("");
 
 SourceData_Feedlot_MCF_Source
-  =LAMBDA("VEERG 2026: Table A.1.7.4: Feedlot - MCFs");
+  =LAMBDA("VEERG 2026: Table A.1.1.4: Beef feedlot cattle - MCFs (fraction) (MCFimT)");
 
 SourceData_Feedlot_MCF_Variation
   =LAMBDA(
@@ -144,3 +337,96 @@ SourceData_Feedlot_MCF_Data
       )
     )
   );
+
+
+
+/* 
+--------------------------------------
+SourceData_Feedlot_NitrousOxideEFs
+Table A.1.1.5: Beef feedlot cattle - Nitrous oxide EFs (EFmT)
+--------------------------------------
+*/
+
+SourceData_Feedlot_NitrousOxideEFs_Title
+  =LAMBDA("Feedlot - Nitrous oxide EFs");
+
+SourceData_Feedlot_NitrousOxideEFs_Unit
+  =LAMBDA("");
+
+SourceData_Feedlot_NitrousOxideEFs_Source
+  =LAMBDA("VEERG 2026: Table A.1.1.5: Beef feedlot cattle - Nitrous oxide EFs (EFmT)");
+
+SourceData_Feedlot_NitrousOxideEFs_Variation
+  =LAMBDA(
+    MAKEARRAY(2, 1, 
+      LAMBDA(r,c, 
+        INDEX({
+          "VARIATION ON SOURCE:";
+          "Added 'NIR definition' column with MMS names that match NIR definitions."
+        }, r, c)
+      )
+    )
+  );
+
+SourceData_Feedlot_NitrousOxideEFs_Data
+  =LAMBDA(
+    MAKEARRAY(6, 4, 
+      LAMBDA(r,c, 
+        INDEX({
+          "Treatment stage T", "MMS m", "EFmT (kg N2O-N/kg N)", "NIR definition";
+          "Primary", "Dry lot (Feedpad)", 0.0054, "Drylot (feed pad)";
+          "Secondary", "Solid Storage (Stockpile)", 0.005, "Solid storage";
+          "Secondary", "Composting (Passive Windrow)", 0.01, "Composting (passive windrow)";
+          "Secondary", "Direct Application to soil", 0, "Direct application";
+          "Tertiary", "Uncovered anaerobic lagoon (Effluent Pond)", 0, "Anaerobic lagoon"
+        }, r, c)
+      )
+    )
+  );
+
+
+
+/* 
+--------------------------------------
+SourceData_Feedlot_FracNVolatilised
+Table A.1.1.6: Beef feedlot cattle - Fraction of N volatilised by MMS (FracGASMmT)
+--------------------------------------
+*/
+
+SourceData_Feedlot_FracNVolatilised_Title
+  =LAMBDA("Feedlot - Fraction of N volatilised by MMS (FracGASMmT)");
+
+SourceData_Feedlot_FracNVolatilised_Unit
+  =LAMBDA("");
+
+SourceData_Feedlot_FracNVolatilised_Source
+  =LAMBDA("VEERG 2026: Table A.1.1.6: Beef feedlot cattle - Fraction of N volatilised by MMS (FracGASMmT)");
+
+SourceData_Feedlot_FracNVolatilised_Variation
+  =LAMBDA(
+    MAKEARRAY(2, 1, 
+      LAMBDA(r,c, 
+        INDEX({
+          "VARIATION ON SOURCE:";
+          "Added 'NIR definition' column with MMS names that match NIR definitions."
+        }, r, c)
+      )
+    )
+  );
+
+SourceData_Feedlot_FracNVolatilised_Data
+  =LAMBDA(
+    MAKEARRAY(6, 4, 
+      LAMBDA(r,c, 
+        INDEX({
+          "Treatment stage T", "MMS m", "FracGASMmT (kg NH3-N + NOx-N)/kg N", "NIR definition";
+          "Primary", "Dry lot (Feedpad)", 0.6, "Drylot (feed pad)";
+          "Secondary", "Solid Storage (Stockpile)", 0.25, "Solid storage";
+          "Secondary", "Composting (Passive Windrow)", 0.4, "Composting (passive windrow)";
+          "Secondary", "Direct Application to soil", 0, "Direct application";
+          "Tertiary", "Uncovered anaerobic lagoon (Effluent pond)", 0.35, "Anaerobic lagoon"
+        }, r, c)
+      )
+    )
+  );
+
