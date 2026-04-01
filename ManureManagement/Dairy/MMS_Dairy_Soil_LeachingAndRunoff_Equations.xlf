@@ -1,0 +1,107 @@
+/*
+============================================================================
+4.3: Dairy
+============================================================================
+4.3.1.12 Method 1 - Soil Leaching And Runoff N2O Dairy
+============================================================================
+*/
+
+/*
+--------------------------------------
+VEERG_4_3_1_12__1_LeachingAndRunoffEmissionsFromUrineAndDungOnPasture
+Leaching and runoff emissions from urine and dung deposited on pasture
+E_N2Oleach
+t N2O
+E_{N2O,leach}=M_{leach,m=14}\times EF_{leach}\times C_{N2O}\times 10^{-3}
+M_leach_m14 = mass of nitrogen lost to leaching and runoff from urine and faeces deposited on pasture (kg N)
+EF_leach = nitrous oxide emission factor for leaching and runoff (kg N2O-N/kg N)
+C_N2O = factor to convert elemental mass of N2O to molecular mass
+--------------------------------------
+*/
+
+VEERG_4_3_1_12__1_LeachingAndRunoffEmissionsFromUrineAndDungOnPasture
+  =LAMBDA(
+    M_leach_m14, EF_leach, C_N2O,
+    M_leach_m14 * EF_leach * C_N2O * 10 ^ -3
+  );
+
+VEERG_4_3_1_12__1_LeachingAndRunoffEmissionsFromUrineAndDungOnPasture_Title
+  =LAMBDA("Leaching and runoff emissions from urine and dung deposited on pasture");
+
+VEERG_4_3_1_12__1_LeachingAndRunoffEmissionsFromUrineAndDungOnPasture_Variable
+  =LAMBDA("E_N2Oleach");
+
+VEERG_4_3_1_12__1_LeachingAndRunoffEmissionsFromUrineAndDungOnPasture_Unit
+  =LAMBDA("t N2O");
+
+VEERG_4_3_1_12__1_LeachingAndRunoffEmissionsFromUrineAndDungOnPasture_Source
+  =LAMBDA("VEERG 2026: 4.3.1.12, Equation (1)");
+
+VEERG_4_3_1_12__1_LeachingAndRunoffEmissionsFromUrineAndDungOnPasture_NIRReference
+  =LAMBDA("");
+
+VEERG_4_3_1_12__1_LeachingAndRunoffEmissionsFromUrineAndDungOnPasture_LatexEquation
+  =LAMBDA("E_{N2O,leach}=M_{leach,m=14}\times EF_{leach}\times C_{N2O}\times 10^{-3}");
+
+VEERG_4_3_1_12__1_LeachingAndRunoffEmissionsFromUrineAndDungOnPasture_Arguments
+  =LAMBDA(
+    MAKEARRAY(3, 2,
+      LAMBDA(r,c,
+        INDEX({
+          "M_leach_m14", "mass of nitrogen lost to leaching and runoff from urine and faeces deposited on pasture (kg N)";
+          "EF_leach", "nitrous oxide emission factor for leaching and runoff (kg N2O-N/kg N)";
+          "C_N2O", "factor to convert elemental mass of N2O to molecular mass"
+        }, r, c)
+      )
+    )
+  );
+
+/*
+--------------------------------------
+VEERG_4_3_1_12__2_MassOfNitrogenLostToLeachingAndRunoffOnPasture
+Mass of nitrogen lost to leaching and runoff from urine and faeces on pasture
+M_leach_m14
+kg N
+M_{leach,m=14}=MN_{jm=14}\times FracWet\times FracLEACH
+MN_jm14 = mass of nitrogen excreted on pasture, range and paddock for each dairy class (kg N)
+FracWet = fraction of N available for leaching and runoff
+FracLEACH = fraction of N lost through leaching and runoff
+--------------------------------------
+*/
+
+VEERG_4_3_1_12__2_MassOfNitrogenLostToLeachingAndRunoffOnPasture
+  =LAMBDA(
+    MN_jm14, FracWet, FracLEACH,
+    MN_jm14 * FracWet * FracLEACH
+  );
+
+VEERG_4_3_1_12__2_MassOfNitrogenLostToLeachingAndRunoffOnPasture_Title
+  =LAMBDA("Mass of nitrogen lost to leaching and runoff from urine and faeces on pasture");
+
+VEERG_4_3_1_12__2_MassOfNitrogenLostToLeachingAndRunoffOnPasture_Variable
+  =LAMBDA("M_leach_m14");
+
+VEERG_4_3_1_12__2_MassOfNitrogenLostToLeachingAndRunoffOnPasture_Unit
+  =LAMBDA("kg N");
+
+VEERG_4_3_1_12__2_MassOfNitrogenLostToLeachingAndRunoffOnPasture_Source
+  =LAMBDA("VEERG 2026: 4.3.1.12, Equation (2)");
+
+VEERG_4_3_1_12__2_MassOfNitrogenLostToLeachingAndRunoffOnPasture_NIRReference
+  =LAMBDA("");
+
+VEERG_4_3_1_12__2_MassOfNitrogenLostToLeachingAndRunoffOnPasture_LatexEquation
+  =LAMBDA("M_{leach,m=14}=MN_{jm=14}\times FracWet\times FracLEACH");
+
+VEERG_4_3_1_12__2_MassOfNitrogenLostToLeachingAndRunoffOnPasture_Arguments
+  =LAMBDA(
+    MAKEARRAY(3, 2,
+      LAMBDA(r,c,
+        INDEX({
+          "MN_jm14", "mass of nitrogen excreted on pasture, range and paddock for each dairy class (kg N)";
+          "FracWet", "fraction of N available for leaching and runoff";
+          "FracLEACH", "fraction of N lost through leaching and runoff"
+        }, r, c)
+      )
+    )
+  );

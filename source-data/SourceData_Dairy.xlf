@@ -1,0 +1,445 @@
+
+/* 
+--------------------------------------
+SourceData_Dairy_LiveweightCowsAndHeifers
+Table A.1.3.1: Dairy cattle - Liveweight (kg) - Cows and Heifers (Wj)
+--------------------------------------
+*/
+
+SourceData_Dairy_LiveweightCowsAndHeifers_Title
+  =LAMBDA("Table A.1.3.1: Dairy cattle - Liveweight (kg) - Cows and Heifers (Wj)");
+
+SourceData_Dairy_LiveweightCowsAndHeifers_Variable
+  =LAMBDA("Wj");
+
+SourceData_Dairy_LiveweightCowsAndHeifers_Unit
+  =LAMBDA("kg");
+
+SourceData_Dairy_LiveweightCowsAndHeifers_Source
+  =LAMBDA("VEERG 2026: Table A.1.3.1");
+
+SourceData_Dairy_LiveweightCowsAndHeifers_Variation
+  =LAMBDA("VARIATION OF SOURCE: Excluded 'Reference', as the value is consistently 'Dairy Australia [1]' and is not used in calculation.");
+
+SourceData_Dairy_LiveweightCowsAndHeifers_Data
+  =LAMBDA(
+    MAKEARRAY(11, 4,
+      LAMBDA(r,c,
+        INDEX({
+          "Breed", "Milking Cows", "Heifers >1", "Heifers <1 (weaned)";
+          "Medium Friesian", 550, 380, 155;
+          "Large Friesian", 600, 415, 170;
+          "Holstein-Friesian", 650, 450, 185;
+          "Friesian crossbred", 500, 350, 145;
+          "Jersey", 400, 275, 115;
+          "Jersey crossbred", 450, 315, 130;
+          "Ayrshire", 540, 375, 150;
+          "Guernsey", 480, 335, 140;
+          "Brown Swiss", 600, 415, 170;
+          "Illawarra/Aussie Red", 550, 375, 150
+        }, r, c)
+      )
+    )
+  );
+
+
+/* 
+--------------------------------------
+SourceData_Dairy_LiveweightBulls
+Table A.1.3.2: Dairy cattle - Liveweight (kg) - Bulls (Wj)
+--------------------------------------
+*/
+
+SourceData_Dairy_LiveweightBulls_Title
+  =LAMBDA("Table A.1.3.2: Dairy cattle - Liveweight (kg) - Bulls (Wj)");
+
+SourceData_Dairy_LiveweightBulls_Variable
+  =LAMBDA("Wj");
+
+SourceData_Dairy_LiveweightBulls_Unit
+  =LAMBDA("kg");
+
+SourceData_Dairy_LiveweightBulls_Source
+  =LAMBDA("VEERG 2026: Table A.1.3.2");
+
+SourceData_Dairy_LiveweightBulls_Variation
+  =LAMBDA("");
+
+SourceData_Dairy_LiveweightBulls_Data
+  =LAMBDA(
+    MAKEARRAY(2, 3,
+      LAMBDA(r,c,
+        INDEX({
+          "Breed", "Bulls >1", "Bulls <1 (weaned)";
+          "All breeds", 600, 225
+        }, r, c)
+      )
+    )
+  );
+
+/* 
+--------------------------------------
+SourceData_Dairy_LiveweightGain
+Table A.1.3.3: Dairy cattle - Liveweight gain (kg) (LWGj)
+--------------------------------------
+*/
+
+SourceData_Dairy_LiveweightGain_Title
+  =LAMBDA("Table A.1.3.3: Dairy cattle - Liveweight gain (kg) (LWGj)");
+
+SourceData_Dairy_LiveweightGain_Variable
+  =LAMBDA("LWGj");
+
+SourceData_Dairy_LiveweightGain_Unit
+  =LAMBDA("kg");
+
+SourceData_Dairy_LiveweightGain_Source
+  =LAMBDA("VEERG 2026: Table A.1.3.3");
+
+SourceData_Dairy_LiveweightGain_Variation
+  =LAMBDA("");
+
+SourceData_Dairy_LiveweightGain_Data
+  =LAMBDA(
+    MAKEARRAY(2, 5,
+      LAMBDA(r,c,
+        INDEX({
+          "Milking Cows", "Heifers >1", "Heifers <1 (weaned)", "Bulls >1", "Bulls <1 (weaned)";
+          0.016, 0.6, 0.57, 0.1, 0.8
+        }, r, c)
+      )
+    )
+  );
+
+/* 
+--------------------------------------
+SourceData_Dairy_ReferenceWeights
+Table A.1.3.4: Dairy cattle - Reference weights (kg) (WRj)
+--------------------------------------
+*/
+
+SourceData_Dairy_ReferenceWeights_Title
+  =LAMBDA("Table A.1.3.4: Dairy cattle - Reference weights (kg) (WRj)");
+
+SourceData_Dairy_ReferenceWeights_Variable
+  =LAMBDA("WRj");
+
+SourceData_Dairy_ReferenceWeights_Unit
+  =LAMBDA("kg");
+
+SourceData_Dairy_ReferenceWeights_Source
+  =LAMBDA("VEERG 2026: Table A.1.3.4");
+
+SourceData_Dairy_ReferenceWeights_Variation
+  =LAMBDA("");
+
+SourceData_Dairy_ReferenceWeights_Data
+  =LAMBDA(
+    MAKEARRAY(2, 5,
+      LAMBDA(r,c,
+        INDEX({
+          "Milking Cows", "Heifers >1", "Heifers <1 (weaned)", "Bulls >1", "Bulls <1 (weaned)";
+          590, 590, 590, 770, 770
+        }, r, c)
+      )
+    )
+  );
+
+/* 
+--------------------------------------
+SourceData_Dairy_PreWeanedCalves
+Table A.1.3.5: Dairy cattle - Data for pre - weaned calves
+--------------------------------------
+*/
+
+SourceData_Dairy_PreWeanedCalves_Title
+  =LAMBDA("Table A.1.3.5: Dairy cattle - Data for pre - weaned calves");
+
+SourceData_Dairy_PreWeanedCalves_Variable
+  =LAMBDA("VSj=3,5; NPWj=3,5");
+
+SourceData_Dairy_PreWeanedCalves_Unit
+  =LAMBDA("kg/day");
+
+SourceData_Dairy_PreWeanedCalves_Source
+  =LAMBDA("VEERG 2026: Table A.1.3.5");
+
+SourceData_Dairy_PreWeanedCalves_Variation
+  =LAMBDA("VARIATION OF SOURCE: Added 'Animal class j' column header");
+
+SourceData_Dairy_PreWeanedCalves_Data
+  =LAMBDA(
+    MAKEARRAY(4, 4,
+      LAMBDA(r,c,
+        INDEX({
+          "Animal class j", "CH4 production", "Volatile solids (VSj=3,5)", "Nitrogen Excreted (NPWj=3,5)";
+          "", "(kg/day)", "(kg/day)", "(kg/day)";
+          "Heifers<1", 0.0176, 0.2685, 0.0137;
+          "Bulls<1", 0.0204, 0.3003, 0.0092
+        }, r, c)
+      )
+    )
+  );
+
+/* 
+--------------------------------------
+SourceData_Dairy_MCF
+Table A.1.3.6: Dairy cattle - Dairy cattle - MCFs (fraction) (MCFjm)
+--------------------------------------
+*/
+
+SourceData_Dairy_MCF_Title
+  =LAMBDA("Table A.1.3.6: Dairy cattle - Dairy cattle - MCFs (fraction) (MCFjm)");
+
+SourceData_Dairy_MCF_Variable
+  =LAMBDA("MCFjm");
+
+SourceData_Dairy_MCF_Unit
+  =LAMBDA("fraction");
+
+SourceData_Dairy_MCF_Source
+  =LAMBDA("VEERG 2026: Table A.1.3.6");
+
+SourceData_Dairy_MCF_Variation
+  =LAMBDA("VARIATION OF SOURCE: Added 'NIR reference' column to aid lookup");
+
+SourceData_Dairy_MCF_Data
+  =LAMBDA(
+    MAKEARRAY(7, 10,
+      LAMBDA(r,c,
+        INDEX({
+          "MMS m", "ACT", "NSW", "NT", "QLD", "SA", "TAS", "VIC", "WA", "NIR reference";
+          "Pasture", 0.01, 0.01, 0.02, 0.01, 0.01, 0.01, 0.01, 0.01, "Pasture range and paddock";
+          "Anaerobic lagoon", 0.72, 0.76, 0.8, 0.78, 0.74, 0.69, 0.73, 0.76, "Anaerobic lagoon";
+          "Daily spread - Sump and dispersal systems", 0.005, 0.005, 0.01, 0.005, 0.005, 0.001, 0.005, 0.005, "Sump and dispersal system";
+          "Daily spread - Drains to paddocks (a)", 0.15, 0.18, 0.50, 0.24, 0.17, 0.13, 0.17, 0.18, "Drains to paddock";
+          "Solid Storage", 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, "Solid storage";
+          "Direct Application to soil", 0, 0, 0, 0, 0, 0, 0, 0, "Direct application"
+        }, r, c)
+      )
+    )
+  );
+
+/* 
+--------------------------------------
+SourceData_Dairy_NitrousOxideEFsAndFracGASM
+Table A.1.3.7: Dairy cattle - Nitrous oxide EFs and fraction of N volatilised by MMS
+--------------------------------------
+*/
+
+SourceData_Dairy_NitrousOxideEFsAndFracGASM_Title
+  =LAMBDA("Table A.1.3.7: Dairy cattle - Nitrous oxide EFs and fraction of N volatilised by MMS");
+
+SourceData_Dairy_NitrousOxideEFsAndFracGASM_Variable
+  =LAMBDA("EFm; FracGASMm");
+
+SourceData_Dairy_NitrousOxideEFsAndFracGASM_Unit
+  =LAMBDA("kg N2O-N/kg N excreted");
+
+SourceData_Dairy_NitrousOxideEFsAndFracGASM_Source
+  =LAMBDA("VEERG 2026: Table A.1.3.7");
+
+SourceData_Dairy_NitrousOxideEFsAndFracGASM_Variation
+  =LAMBDA("VARIATION OF SOURCE: Added 'NIR reference' column to aid lookup");
+
+SourceData_Dairy_NitrousOxideEFsAndFracGASM_Data
+  =LAMBDA(
+    MAKEARRAY(6, 4,
+      LAMBDA(r,c,
+        INDEX({
+          "MMS m", "EFm (kg N2O-N/kg N excreted)", "FracGASMm (kg N2O-N/kg N excreted)", "NIR reference";
+          "M=14 Pasture", 0, 0, "Pasture range and paddock";
+          "M=1 Anaerobic lagoon", 0, 0.35, "Anaerobic lagoon";
+          "M=2 Daily Spread - Sump and Dispersal", 0, 0.07, "Sump and dispersal system";
+          "M=3 Daily Spread - Drains to Paddock", 0, 0.2, "Drains to paddock";
+          "M=3 Solid Storage", 0.005, 0.3, "Solid storage"
+        }, r, c)
+      )
+    )
+  );
+
+
+/* 
+--------------------------------------
+SourceData_Dairy_MethaneProductionPreWeanedCalves
+Table A.1.3.8: Dairy cattle - Methane production for pre-weaned heifer and bull calves (kg CH4/head/day) (MPWENTERIC,j=3,5)
+--------------------------------------
+*/
+
+SourceData_Dairy_MethaneProductionPreWeanedCalves_Title
+  =LAMBDA("Table A.1.3.8: Dairy cattle - Methane production for pre-weaned heifer and bull calves (kg CH4/head/day) (MPWENTERIC,j=3,5)");
+
+SourceData_Dairy_MethaneProductionPreWeanedCalves_Variable
+  =LAMBDA("MPWENTERIC,j=3,5");
+
+SourceData_Dairy_MethaneProductionPreWeanedCalves_Unit
+  =LAMBDA("kg CH4/head/day");
+
+SourceData_Dairy_MethaneProductionPreWeanedCalves_Source
+  =LAMBDA("VEERG 2026: Table A.1.3.8");
+
+SourceData_Dairy_MethaneProductionPreWeanedCalves_Variation
+  =LAMBDA("");
+
+SourceData_Dairy_MethaneProductionPreWeanedCalves_Data
+  =LAMBDA(
+    MAKEARRAY(3, 2,
+      LAMBDA(r,c,
+        INDEX({
+          "Animal Class j", "MPWENTERIC";
+          "Heifers < 1 year", 0.0176;
+          "Bulls < 1 year", 0.0204
+        }, r, c)
+      )
+    )
+  );
+
+/* 
+--------------------------------------
+SourceData_Dairy_IncreasedMetabolicRateMilk
+Table A.1.3.9: Dairy cattle - Increased metabolic rate when producing milk (kg DM/head/day) (MRj)
+--------------------------------------
+*/
+
+SourceData_Dairy_IncreasedMetabolicRateMilk_Title
+  =LAMBDA("Table A.1.3.9: Dairy cattle - Increased metabolic rate when producing milk (kg DM/head/day) (MRj)");
+
+SourceData_Dairy_IncreasedMetabolicRateMilk_Variable
+  =LAMBDA("MRj");
+
+SourceData_Dairy_IncreasedMetabolicRateMilk_Unit
+  =LAMBDA("kg DM/head/day");
+
+SourceData_Dairy_IncreasedMetabolicRateMilk_Source
+  =LAMBDA("VEERG 2026: Table A.1.3.9");
+
+SourceData_Dairy_IncreasedMetabolicRateMilk_Variation
+  =LAMBDA("");
+
+SourceData_Dairy_IncreasedMetabolicRateMilk_Data
+  =LAMBDA(
+    MAKEARRAY(3, 2,
+      LAMBDA(r,c,
+        INDEX({
+          "Animal Class j", "MRj";
+          "Milking cows, and house cows", 1.1;
+          "All other cattle classes", 1.0
+        }, r, c)
+      )
+    )
+  );
+
+/* 
+--------------------------------------
+SourceData_Dairy_FractionVolatileSolidsVoidedMMS
+Table A.1.3.10: Dairy cattle - Fraction of volatile solids voided to each manure management system (fraction) (MMSjm)
+--------------------------------------
+*/
+
+SourceData_Dairy_FractionVolatileSolidsVoidedMMS_Title
+  =LAMBDA("Table A.1.3.10: Dairy cattle - Fraction of volatile solids voided to each manure management system (fraction) (MMSjm)");
+
+SourceData_Dairy_FractionVolatileSolidsVoidedMMS_Variable
+  =LAMBDA("MMSjm");
+
+SourceData_Dairy_FractionVolatileSolidsVoidedMMS_Unit
+  =LAMBDA("fraction");
+
+SourceData_Dairy_FractionVolatileSolidsVoidedMMS_Source
+  =LAMBDA("VEERG 2026: Table A.1.3.10");
+
+SourceData_Dairy_FractionVolatileSolidsVoidedMMS_Variation
+  =LAMBDA("VARIATION OF SOURCE: Excluded 'Annual fraction of time spent per area' row as this information is in the table title.");
+
+SourceData_Dairy_FractionVolatileSolidsVoidedMMS_Data
+  =LAMBDA(
+    MAKEARRAY(5, 4,
+      LAMBDA(r,c,
+        INDEX({
+          "Area", "Pasture", "Milking Shed", "Feedpad";
+          "System 1: Grazed Only", 0.89, 0.11, 0;
+          "System 2: On feedpad for <10 hr/day for <3 months/year", 0.79, 0.11, 0.10;
+          "System 3: Pasture-grazed 3-9 months/year", 0.534, 0.11, 0.356;
+          "System 4: Zero grazing", 0, 0.11, 0.89
+        }, r, c)
+      )
+    )
+  );
+
+/* 
+--------------------------------------
+SourceData_Dairy_EFNitrousOxidePerMMS
+Table A.1.3.11: Dairy cattle - EF for nitrous oxide per MMS (kg N2O-N/kg N) (EFm)
+--------------------------------------
+*/
+
+SourceData_Dairy_EFNitrousOxidePerMMS_Title
+  =LAMBDA("Table A.1.3.11: Dairy cattle - EF for nitrous oxide per MMS (kg N2O-N/kg N) (EFm)");
+
+SourceData_Dairy_EFNitrousOxidePerMMS_Variable
+  =LAMBDA("EFm");
+
+SourceData_Dairy_EFNitrousOxidePerMMS_Unit
+  =LAMBDA("kg N2O-N/kg N");
+
+SourceData_Dairy_EFNitrousOxidePerMMS_Source
+  =LAMBDA("VEERG 2026: Table A.1.3.11");
+
+SourceData_Dairy_EFNitrousOxidePerMMS_Variation
+  =LAMBDA("VARIATION OF SOURCE: Added 'NIR reference' column to aid lookup");
+
+SourceData_Dairy_EFNitrousOxidePerMMS_Data
+  =LAMBDA(
+    MAKEARRAY(6, 3,
+      LAMBDA(r,c,
+        INDEX({
+          "MMS m", "EFm", "NIR reference";
+          "m=14 Pasture", 0, "Pasture range and paddock";
+          "m=1 Anerobic Lagoon", 0, "Anaerobic lagoon";
+          "m=2 Daily Spread: Sump and dispersal", 0, "Sump and dispersal system";
+          "m=3 Daily Spread: Drains to paddocks", 0, "Drains to paddock";
+          "m=4 Solid Storage", 0.005, "Solid storage"
+        }, r, c)
+      )
+    )
+  );
+
+
+
+/* 
+--------------------------------------
+SourceData_Dairy_DurationOfStay
+Duration of stay for each dairy cattle input class
+--------------------------------------
+*/
+
+SourceData_Dairy_DurationOfStay_Title
+  =LAMBDA("Duration of stay for each dairy cattle input class");
+
+SourceData_Dairy_DurationOfStay_Variable
+  =LAMBDA("D");
+
+SourceData_Dairy_DurationOfStay_Unit
+  =LAMBDA("days");
+
+SourceData_Dairy_DurationOfStay_Source
+  =LAMBDA("VEERG 2026: 4.3.2.2	DATA (METHOD 1 AND 2 OPTIONS)");
+
+SourceData_Dairy_DurationOfStay_Variation
+  =LAMBDA("VARIATION OF SOURCE: Converted free text in document to table, matching livestock class names.");
+
+SourceData_Dairy_DurationOfStay_Data
+  =LAMBDA(
+    MAKEARRAY(6, 3,
+      LAMBDA(r,c,
+        INDEX({
+          "Animal class j", "Duration (weaned)", "Duration (pre-weaned)";
+          "Milking cows", 365, 0;
+          "Heifers > 1 year", 365, 0;
+          "Heifers < 1 year", 281, 84;
+          "Bulls > 1 year", 365, 0;
+          "Bulls < 1 year", 281, 84
+        }, r, c)
+      )
+    )
+  );

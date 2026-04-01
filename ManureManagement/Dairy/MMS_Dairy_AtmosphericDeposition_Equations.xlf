@@ -1,0 +1,105 @@
+/*
+============================================================================
+4.3: Dairy
+============================================================================
+4.3.1.5 Method 1 - Manure Atmospheric Deposition Dairy
+============================================================================
+*/
+
+/*
+--------------------------------------
+VEERG_4_3_1_5__1_AnnualAtmosphericDepositionEmissionsFromMMS
+Annual atmospheric deposition emissions from MMS
+E_N2OMMSad
+t N2O
+E_{N2O,MMS,ad}=MN_{ATMOS}\times EF_{N2O}\times C_{N2O}\times 10^{-3}
+MN_ATMOS = mass of N volatilised from MMS (kg N)
+EF_N2O = nitrous oxide emission factor for atmospheric deposition (kg N2O-N/kg N)
+C_N2O = factor to convert elemental mass of N2O to molecular mass
+--------------------------------------
+*/
+
+VEERG_4_3_1_5__1_AnnualAtmosphericDepositionEmissionsFromMMS
+  =LAMBDA(
+    MN_ATMOS, EF_N2O, C_N2O,
+    MN_ATMOS * EF_N2O * C_N2O * 10 ^ -3
+  );
+
+VEERG_4_3_1_5__1_AnnualAtmosphericDepositionEmissionsFromMMS_Title
+  =LAMBDA("Annual atmospheric deposition emissions from MMS");
+
+VEERG_4_3_1_5__1_AnnualAtmosphericDepositionEmissionsFromMMS_Variable
+  =LAMBDA("E_N2OMMSad");
+
+VEERG_4_3_1_5__1_AnnualAtmosphericDepositionEmissionsFromMMS_Unit
+  =LAMBDA("t N2O");
+
+VEERG_4_3_1_5__1_AnnualAtmosphericDepositionEmissionsFromMMS_Source
+  =LAMBDA("VEERG 2026: 4.3.1.5, Equation (1)");
+
+VEERG_4_3_1_5__1_AnnualAtmosphericDepositionEmissionsFromMMS_NIRReference
+  =LAMBDA("");
+
+VEERG_4_3_1_5__1_AnnualAtmosphericDepositionEmissionsFromMMS_LatexEquation
+  =LAMBDA("E_{N2O,MMS,ad}=MN_{ATMOS}\times EF_{N2O}\times C_{N2O}\times 10^{-3}");
+
+VEERG_4_3_1_5__1_AnnualAtmosphericDepositionEmissionsFromMMS_Arguments
+  =LAMBDA(
+    MAKEARRAY(3, 2,
+      LAMBDA(r,c,
+        INDEX({
+          "MN_ATMOS", "mass of N volatilised from MMS (kg N)";
+          "EF_N2O", "nitrous oxide emission factor for atmospheric deposition (kg N2O-N/kg N)";
+          "C_N2O", "factor to convert elemental mass of N2O to molecular mass"
+        }, r, c)
+      )
+    )
+  );
+
+/*
+--------------------------------------
+VEERG_4_3_1_5__2_TotalNitrogenVolatilisedFromMMS
+Total nitrogen volatilised from MMS
+MN_ATMOS
+kg N
+MN_{ATMOS}=MN_{jm}\times FracGASM_m
+MN_jm = total nitrogen in each MMS for dairy cattle classes (kg N)
+FracGASM_m = fraction of N volatilised from MMS (fraction)
+--------------------------------------
+*/
+
+VEERG_4_3_1_5__2_TotalNitrogenVolatilisedFromMMS
+  =LAMBDA(
+    MN_jm, FracGASM_m,
+    MN_jm * FracGASM_m
+  );
+
+VEERG_4_3_1_5__2_TotalNitrogenVolatilisedFromMMS_Title
+  =LAMBDA("Total nitrogen volatilised from MMS");
+
+VEERG_4_3_1_5__2_TotalNitrogenVolatilisedFromMMS_Variable
+  =LAMBDA("MN_ATMOS");
+
+VEERG_4_3_1_5__2_TotalNitrogenVolatilisedFromMMS_Unit
+  =LAMBDA("kg N");
+
+VEERG_4_3_1_5__2_TotalNitrogenVolatilisedFromMMS_Source
+  =LAMBDA("VEERG 2026: 4.3.1.5, Equation (2)");
+
+VEERG_4_3_1_5__2_TotalNitrogenVolatilisedFromMMS_NIRReference
+  =LAMBDA("");
+
+VEERG_4_3_1_5__2_TotalNitrogenVolatilisedFromMMS_LatexEquation
+  =LAMBDA("MN_{ATMOS}=MN_{jm}\times FracGASM_m");
+
+VEERG_4_3_1_5__2_TotalNitrogenVolatilisedFromMMS_Arguments
+  =LAMBDA(
+    MAKEARRAY(2, 2,
+      LAMBDA(r,c,
+        INDEX({
+          "MN_jm", "total nitrogen in each MMS for dairy cattle classes (kg N)";
+          "FracGASM_m", "fraction of N volatilised from MMS (fraction)"
+        }, r, c)
+      )
+    )
+  );

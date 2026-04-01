@@ -1,0 +1,115 @@
+/*
+============================================================================
+4.3: Dairy
+============================================================================
+4.3.1.8 Method 1 - Manure Applied To Soils Dairy
+============================================================================
+*/
+
+/*
+--------------------------------------
+VEERG_4_3_1_8__1_MassOfNitrogenAppliedToSoilsScope1
+Mass of nitrogen from manure applied to soils for scope 1 emissions
+MNSoil_scope1
+kg N
+MNSoil_{scope1}=(MN_{jm}\times (1-EF_m-FracGASM_m)-MNLeach_jm)\times PF_scope
+MN_jm = total nitrogen in each MMS for dairy cattle classes (kg N)
+EF_m = emission factor for nitrous oxide emissions per MMS (kg N2O-N/kg N)
+FracGASM_m = fraction of N volatilised from MMS
+MNLeach_jm = mass of N lost through leaching and runoff from each MMS (kg N)
+PF_scope = fraction of manure applied to soil within farm boundary
+--------------------------------------
+*/
+
+VEERG_4_3_1_8__1_MassOfNitrogenAppliedToSoilsScope1
+  =LAMBDA(
+    MN_jm, EF_m, FracGASM_m, MNLeach_jm, PF_scope,
+    (MN_jm * (1 - EF_m - FracGASM_m) - MNLeach_jm) * PF_scope
+  );
+
+VEERG_4_3_1_8__1_MassOfNitrogenAppliedToSoilsScope1_Title
+  =LAMBDA("Mass of nitrogen from manure applied to soils for scope 1 emissions");
+
+VEERG_4_3_1_8__1_MassOfNitrogenAppliedToSoilsScope1_Variable
+  =LAMBDA("MNSoil_scope1");
+
+VEERG_4_3_1_8__1_MassOfNitrogenAppliedToSoilsScope1_Unit
+  =LAMBDA("kg N");
+
+VEERG_4_3_1_8__1_MassOfNitrogenAppliedToSoilsScope1_Source
+  =LAMBDA("VEERG 2026: 4.3.1.8, Equation (1)");
+
+VEERG_4_3_1_8__1_MassOfNitrogenAppliedToSoilsScope1_NIRReference
+  =LAMBDA("");
+
+VEERG_4_3_1_8__1_MassOfNitrogenAppliedToSoilsScope1_LatexEquation
+  =LAMBDA("MNSoil_{scope1}=(MN_{jm}\times (1-EF_m-FracGASM_m)-MNLeach_{jm})\times PF_{scope}");
+
+VEERG_4_3_1_8__1_MassOfNitrogenAppliedToSoilsScope1_Arguments
+  =LAMBDA(
+    MAKEARRAY(5, 2,
+      LAMBDA(r,c,
+        INDEX({
+          "MN_jm", "total nitrogen in each MMS for dairy cattle classes (kg N)";
+          "EF_m", "emission factor for nitrous oxide emissions per MMS (kg N2O-N/kg N)";
+          "FracGASM_m", "fraction of N volatilised from MMS";
+          "MNLeach_jm", "mass of N lost through leaching and runoff from each MMS (kg N)";
+          "PF_scope", "fraction of manure applied to soil within farm boundary"
+        }, r, c)
+      )
+    )
+  );
+
+/*
+--------------------------------------
+VEERG_4_3_1_8__2_MassOfNitrogenAppliedToSoilsScope3
+Mass of nitrogen from manure applied to soils for scope 3 emissions
+MNSoil_scope3
+kg N
+MNSoil_{scope3}=(MN_{jm}\times (1-EF_m-FracGASM_m)-MNLeach_jm)\times (1-PF)
+MN_jm = total nitrogen in each MMS for dairy cattle classes (kg N)
+EF_m = emission factor for nitrous oxide emissions per MMS (kg N2O-N/kg N)
+FracGASM_m = fraction of N volatilised from MMS
+MNLeach_jm = mass of N lost through leaching and runoff from each MMS (kg N)
+PF = fraction of manure applied to soil within farm boundary
+--------------------------------------
+*/
+
+VEERG_4_3_1_8__2_MassOfNitrogenAppliedToSoilsScope3
+  =LAMBDA(
+    MN_jm, EF_m, FracGASM_m, MNLeach_jm, PF,
+    (MN_jm * (1 - EF_m - FracGASM_m) - MNLeach_jm) * (1 - PF)
+  );
+
+VEERG_4_3_1_8__2_MassOfNitrogenAppliedToSoilsScope3_Title
+  =LAMBDA("Mass of nitrogen from manure applied to soils for scope 3 emissions");
+
+VEERG_4_3_1_8__2_MassOfNitrogenAppliedToSoilsScope3_Variable
+  =LAMBDA("MNSoil_scope3");
+
+VEERG_4_3_1_8__2_MassOfNitrogenAppliedToSoilsScope3_Unit
+  =LAMBDA("kg N");
+
+VEERG_4_3_1_8__2_MassOfNitrogenAppliedToSoilsScope3_Source
+  =LAMBDA("VEERG 2026: 4.3.1.8, Equation (2)");
+
+VEERG_4_3_1_8__2_MassOfNitrogenAppliedToSoilsScope3_NIRReference
+  =LAMBDA("");
+
+VEERG_4_3_1_8__2_MassOfNitrogenAppliedToSoilsScope3_LatexEquation
+  =LAMBDA("MNSoil_{scope3}=(MN_{jm}\times (1-EF_m-FracGASM_m)-MNLeach_{jm})\times (1-PF)");
+
+VEERG_4_3_1_8__2_MassOfNitrogenAppliedToSoilsScope3_Arguments
+  =LAMBDA(
+    MAKEARRAY(5, 2,
+      LAMBDA(r,c,
+        INDEX({
+          "MN_jm", "total nitrogen in each MMS for dairy cattle classes (kg N)";
+          "EF_m", "emission factor for nitrous oxide emissions per MMS (kg N2O-N/kg N)";
+          "FracGASM_m", "fraction of N volatilised from MMS";
+          "MNLeach_jm", "mass of N lost through leaching and runoff from each MMS (kg N)";
+          "PF", "fraction of manure applied to soil within farm boundary"
+        }, r, c)
+      )
+    )
+  );

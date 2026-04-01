@@ -1,0 +1,57 @@
+/*
+============================================================================
+4.3: Dairy
+============================================================================
+4.3.1.9 Method 1 - Soil Direct N2O Dairy
+============================================================================
+*/
+
+/*
+--------------------------------------
+VEERG_4_3_1_9__1_DirectNitrousOxideEmissionsOnPasture
+Direct nitrous oxide emissions on pasture
+E_N2Odir
+t N2O
+E_{N2O,dir}=MN_{jm=14}\times EF_{PRP}\times C_{N2O}\times 10^{-3}
+MN_jm14 = mass of nitrogen excreted on pasture, range, and paddock for each dairy cattle class (kg N)
+EF_PRP = emission factor for nitrous oxide emissions for urine and dung deposited on PRP (kg N2O-N/kg N deposited)
+C_N2O = factor to convert elemental mass of N2O to molecular mass
+--------------------------------------
+*/
+
+VEERG_4_3_1_9__1_DirectNitrousOxideEmissionsOnPasture
+  =LAMBDA(
+    MN_jm14, EF_PRP, C_N2O,
+    MN_jm14 * EF_PRP * C_N2O * 10 ^ -3
+  );
+
+VEERG_4_3_1_9__1_DirectNitrousOxideEmissionsOnPasture_Title
+  =LAMBDA("Direct nitrous oxide emissions on pasture");
+
+VEERG_4_3_1_9__1_DirectNitrousOxideEmissionsOnPasture_Variable
+  =LAMBDA("E_N2Odir");
+
+VEERG_4_3_1_9__1_DirectNitrousOxideEmissionsOnPasture_Unit
+  =LAMBDA("t N2O");
+
+VEERG_4_3_1_9__1_DirectNitrousOxideEmissionsOnPasture_Source
+  =LAMBDA("VEERG 2026: 4.3.1.9, Equation (1)");
+
+VEERG_4_3_1_9__1_DirectNitrousOxideEmissionsOnPasture_NIRReference
+  =LAMBDA("");
+
+VEERG_4_3_1_9__1_DirectNitrousOxideEmissionsOnPasture_LatexEquation
+  =LAMBDA("E_{N2O,dir}=MN_{jm=14}\times EF_{PRP}\times C_{N2O}\times 10^{-3}");
+
+VEERG_4_3_1_9__1_DirectNitrousOxideEmissionsOnPasture_Arguments
+  =LAMBDA(
+    MAKEARRAY(3, 2,
+      LAMBDA(r,c,
+        INDEX({
+          "MN_jm14", "mass of nitrogen excreted on pasture, range, and paddock for each dairy cattle class (kg N)";
+          "EF_PRP", "emission factor for nitrous oxide emissions for urine and dung deposited on PRP (kg N2O-N/kg N deposited)";
+          "C_N2O", "factor to convert elemental mass of N2O to molecular mass"
+        }, r, c)
+      )
+    )
+  );

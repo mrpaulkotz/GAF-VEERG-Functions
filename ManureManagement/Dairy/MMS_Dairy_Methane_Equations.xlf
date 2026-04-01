@@ -1,0 +1,267 @@
+/*
+============================================================================
+4.3: Dairy
+============================================================================
+4.3.1.1 Method 1 - Manure Methane Dairy
+============================================================================
+*/
+
+/*
+--------------------------------------
+VEERG_4_3_1_1__1_TotalAnnualMethaneFromManureManagement
+Total annual methane production from manure management
+E_CH4
+t CH4
+E_{CH4}=((N_{j=1,2,4}\times M_{j=1,2,4,m}\times D_{j=1,2,4})+(N_{j=3,5}\times M_{j=3,5,m}\times D_{j=3,5})+(N_{j=3,5}\times MPW_{manure,j=3,5}\times D_{j=3,5}))\times 10^{-3}
+N_j124 = number of dairy cattle in classes j=1,2,4
+M_j124m = methane production from manure of weaned dairy cattle in classes j=1,2,4 in MMS m (kg CH4/head/day)
+D_j124 = duration of stay on farm for classes j=1,2,4 (days)
+N_j35 = number of dairy cattle in classes j=3,5
+M_j35m = methane production from manure of weaned dairy cattle in classes j=3,5 in MMS m (kg CH4/head/day)
+D_j35 = duration of stay on farm for classes j=3,5 (days)
+MPW_manure_j35 = methane production from manure of pre-weaned heifer and bull calves (kg CH4/head/day)
+--------------------------------------
+*/
+
+VEERG_4_3_1_1__1_TotalAnnualMethaneFromManureManagement
+  =LAMBDA(
+    N_j124, M_j124m, D_j124, N_j35, M_j35m, D_j35, MPW_manure_j35,
+    ((N_j124 * M_j124m * D_j124) + (N_j35 * M_j35m * D_j35) + (N_j35 * MPW_manure_j35 * D_j35)) * 10 ^ -3
+  );
+
+VEERG_4_3_1_1__1_TotalAnnualMethaneFromManureManagement_Title
+  =LAMBDA("Total annual methane production from manure management");
+
+VEERG_4_3_1_1__1_TotalAnnualMethaneFromManureManagement_Variable
+  =LAMBDA("E_CH4");
+
+VEERG_4_3_1_1__1_TotalAnnualMethaneFromManureManagement_Unit
+  =LAMBDA("t CH4");
+
+VEERG_4_3_1_1__1_TotalAnnualMethaneFromManureManagement_Source
+  =LAMBDA("VEERG 2026: 4.3.1.1, Equation (1)");
+
+VEERG_4_3_1_1__1_TotalAnnualMethaneFromManureManagement_NIRReference
+  =LAMBDA("");
+
+VEERG_4_3_1_1__1_TotalAnnualMethaneFromManureManagement_LatexEquation
+  =LAMBDA("E_{CH4}=((N_{j=1,2,4}\times M_{j=1,2,4,m}\times D_{j=1,2,4})+(N_{j=3,5}\times M_{j=3,5,m}\times D_{j=3,5})+(N_{j=3,5}\times MPW_{manure,j=3,5}\times D_{j=3,5}))\times 10^{-3}");
+
+VEERG_4_3_1_1__1_TotalAnnualMethaneFromManureManagement_Arguments
+  =LAMBDA(
+    MAKEARRAY(7, 2,
+      LAMBDA(r,c,
+        INDEX({
+          "N_j124", "number of dairy cattle in classes j=1,2,4";
+          "M_j124m", "methane production from manure of weaned dairy cattle in classes j=1,2,4 in MMS m (kg CH4/head/day)";
+          "D_j124", "duration of stay on farm for classes j=1,2,4 (days)";
+          "N_j35", "number of dairy cattle in classes j=3,5";
+          "M_j35m", "methane production from manure of weaned dairy cattle in classes j=3,5 in MMS m (kg CH4/head/day)";
+          "D_j35", "duration of stay on farm for classes j=3,5 (days)";
+          "MPW_manure_j35", "methane production from manure of pre-weaned heifer and bull calves (kg CH4/head/day)"
+        }, r, c)
+      )
+    )
+  );
+
+/*
+--------------------------------------
+VEERG_4_3_1_1__2_MethaneFromManureProduction
+Methane from manure production from weaned dairy cattle
+M_jm
+kg CH4/head/day
+M_{jm}=VS_j\times FVS_{jm,T=1}\times MCF_{im}\times B_o\times \rho
+VS_j = daily volatile solids production per head for dairy cattle (kg/head/day)
+FVS_jmT1 = fraction of waste from each class in each management system
+MCF_im = methane conversion factor for temperature zone and MMS
+B_o = emissions potential (m3 CH4/kgVS)
+rho = density of methane (kg/m3)
+--------------------------------------
+*/
+
+VEERG_4_3_1_1__2_MethaneFromManureProduction
+  =LAMBDA(
+    VS_j, FVS_jmT1, MCF_im, B_o, rho,
+    VS_j * FVS_jmT1 * MCF_im * B_o * rho
+  );
+
+VEERG_4_3_1_1__2_MethaneFromManureProduction_Title
+  =LAMBDA("Methane from manure production from weaned dairy cattle");
+
+VEERG_4_3_1_1__2_MethaneFromManureProduction_Variable
+  =LAMBDA("M_jm");
+
+VEERG_4_3_1_1__2_MethaneFromManureProduction_Unit
+  =LAMBDA("kg CH4/head/day");
+
+VEERG_4_3_1_1__2_MethaneFromManureProduction_Source
+  =LAMBDA("VEERG 2026: 4.3.1.1, Equation (2)");
+
+VEERG_4_3_1_1__2_MethaneFromManureProduction_NIRReference
+  =LAMBDA("");
+
+VEERG_4_3_1_1__2_MethaneFromManureProduction_LatexEquation
+  =LAMBDA("M_{jm}=VS_j\times FVS_{jm,T=1}\times MCF_{im}\times B_o\times \rho");
+
+VEERG_4_3_1_1__2_MethaneFromManureProduction_Arguments
+  =LAMBDA(
+    MAKEARRAY(5, 2,
+      LAMBDA(r,c,
+        INDEX({
+          "VS_j", "daily volatile solids production per head for dairy cattle (kg/head/day)";
+          "FVS_jmT1", "fraction of waste from each class in each management system";
+          "MCF_im", "methane conversion factor for temperature zone and MMS";
+          "B_o", "emissions potential (m3 CH4/kgVS)";
+          "rho", "density of methane (kg/m3)"
+        }, r, c)
+      )
+    )
+  );
+
+/*
+--------------------------------------
+VEERG_4_3_1_1__3_VolatileSolidsForWeanedDairyCattle
+Volatile solids for weaned dairy cattle
+VS_j
+kg/head/day
+VS_j=(I_j\times (1-DMD_j)+(0.04\times I_j))\times (1-A)
+I_j = dry matter feed intake (kgDM/head/day)
+DMD_j = dry matter digestibility
+A = ash content of feed intake
+--------------------------------------
+*/
+
+VEERG_4_3_1_1__3_VolatileSolidsForWeanedDairyCattle
+  =LAMBDA(
+    I_j, DMD_j, A,
+    (I_j * (1 - DMD_j) + (0.04 * I_j)) * (1 - A)
+  );
+
+VEERG_4_3_1_1__3_VolatileSolidsForWeanedDairyCattle_Title
+  =LAMBDA("Volatile solids for weaned dairy cattle");
+
+VEERG_4_3_1_1__3_VolatileSolidsForWeanedDairyCattle_Variable
+  =LAMBDA("VS_j");
+
+VEERG_4_3_1_1__3_VolatileSolidsForWeanedDairyCattle_Unit
+  =LAMBDA("kg/head/day");
+
+VEERG_4_3_1_1__3_VolatileSolidsForWeanedDairyCattle_Source
+  =LAMBDA("VEERG 2026: 4.3.1.1, Equation (3)");
+
+VEERG_4_3_1_1__3_VolatileSolidsForWeanedDairyCattle_NIRReference
+  =LAMBDA("");
+
+VEERG_4_3_1_1__3_VolatileSolidsForWeanedDairyCattle_LatexEquation
+  =LAMBDA("VS_j=(I_j\times (1-DMD_j)+(0.04\times I_j))\times (1-A)");
+
+VEERG_4_3_1_1__3_VolatileSolidsForWeanedDairyCattle_Arguments
+  =LAMBDA(
+    MAKEARRAY(3, 2,
+      LAMBDA(r,c,
+        INDEX({
+          "I_j", "dry matter feed intake (kgDM/head/day)";
+          "DMD_j", "dry matter digestibility";
+          "A", "ash content of feed intake"
+        }, r, c)
+      )
+    )
+  );
+
+/*
+--------------------------------------
+VEERG_4_3_1_1__4_FractionVolatileSolidsNotSolidStorage
+Fraction of volatile solids in each system other than solid storage
+FVS_jm
+fraction
+FVS_{jm}=MMS_{jm}\times (1-SS_m)
+SS_m = fraction of volatile solids separated to solid storage for each MMS
+MMS_jm = fraction of manure to each primary MMS for each class prior to solid separation
+--------------------------------------
+*/
+
+VEERG_4_3_1_1__4_FractionVolatileSolidsNotSolidStorage
+  =LAMBDA(
+    MMS_jm, SS_m,
+    MMS_jm * (1 - SS_m)
+  );
+
+VEERG_4_3_1_1__4_FractionVolatileSolidsNotSolidStorage_Title
+  =LAMBDA("Fraction of volatile solids in each system other than solid storage");
+
+VEERG_4_3_1_1__4_FractionVolatileSolidsNotSolidStorage_Variable
+  =LAMBDA("FVS_jm");
+
+VEERG_4_3_1_1__4_FractionVolatileSolidsNotSolidStorage_Unit
+  =LAMBDA("fraction");
+
+VEERG_4_3_1_1__4_FractionVolatileSolidsNotSolidStorage_Source
+  =LAMBDA("VEERG 2026: 4.3.1.1, Equation (4)");
+
+VEERG_4_3_1_1__4_FractionVolatileSolidsNotSolidStorage_NIRReference
+  =LAMBDA("");
+
+VEERG_4_3_1_1__4_FractionVolatileSolidsNotSolidStorage_LatexEquation
+  =LAMBDA("FVS_{jm}=MMS_{jm}\times (1-SS_m)");
+
+VEERG_4_3_1_1__4_FractionVolatileSolidsNotSolidStorage_Arguments
+  =LAMBDA(
+    MAKEARRAY(2, 2,
+      LAMBDA(r,c,
+        INDEX({
+          "MMS_jm", "fraction of manure to each primary MMS for each class prior to solid separation";
+          "SS_m", "fraction of volatile solids separated to solid storage for each MMS"
+        }, r, c)
+      )
+    )
+  );
+
+/*
+--------------------------------------
+VEERG_4_3_1_1__5_FractionVolatileSolidsSolidStorage
+Fraction of volatile solids in solid storage
+FVS_jm4
+fraction
+FVS_{jm=4}=MMS_{jm=4}+(MMS_{jm=1,7,9}\times SS_m)
+MMS_jm4 = fraction of volatile solids in solid storage before transfer
+MMS_jm179 = fraction of volatile solids in MMS m=1,7,9 before transfer
+SS_m = fraction of volatile solids separated to solid storage for each MMS
+--------------------------------------
+*/
+
+VEERG_4_3_1_1__5_FractionVolatileSolidsSolidStorage
+  =LAMBDA(
+    MMS_jm4, MMS_jm179, SS_m,
+    MMS_jm4 + (MMS_jm179 * SS_m)
+  );
+
+VEERG_4_3_1_1__5_FractionVolatileSolidsSolidStorage_Title
+  =LAMBDA("Fraction of volatile solids in solid storage");
+
+VEERG_4_3_1_1__5_FractionVolatileSolidsSolidStorage_Variable
+  =LAMBDA("FVS_jm4");
+
+VEERG_4_3_1_1__5_FractionVolatileSolidsSolidStorage_Unit
+  =LAMBDA("fraction");
+
+VEERG_4_3_1_1__5_FractionVolatileSolidsSolidStorage_Source
+  =LAMBDA("VEERG 2026: 4.3.1.1, Equation (5)");
+
+VEERG_4_3_1_1__5_FractionVolatileSolidsSolidStorage_NIRReference
+  =LAMBDA("");
+
+VEERG_4_3_1_1__5_FractionVolatileSolidsSolidStorage_LatexEquation
+  =LAMBDA("FVS_{jm=4}=MMS_{jm=4}+(MMS_{jm=1,7,9}\times SS_m)");
+
+VEERG_4_3_1_1__5_FractionVolatileSolidsSolidStorage_Arguments
+  =LAMBDA(
+    MAKEARRAY(3, 2,
+      LAMBDA(r,c,
+        INDEX({
+          "MMS_jm4", "fraction of volatile solids in solid storage before transfer";
+          "MMS_jm179", "fraction of volatile solids in MMS m=1,7,9 before transfer";
+          "SS_m", "fraction of volatile solids separated to solid storage for each MMS"
+        }, r, c)
+      )
+    )
+  );

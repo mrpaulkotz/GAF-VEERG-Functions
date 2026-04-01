@@ -1,0 +1,453 @@
+/*
+============================================================================
+4.3: Dairy
+============================================================================
+4.3.1.3 Method 1 - Manure Direct N2O Dairy
+============================================================================
+*/
+
+/*
+--------------------------------------
+VEERG_4_3_1_3__1_TotalAnnualDirectNitrousOxideEmissionsFromMMS
+Total annual direct nitrous oxide emissions from manure management systems
+E_N2Odir
+t N2O
+E_{N2O,dir}=MN_{jm}\times EF_m\times C_{N2O}\times 10^{-3}
+MN_jm = total nitrogen in each MMS for dairy cattle classes (kg N)
+EF_m = nitrous oxide emission factor for each MMS (kg N2O-N/kg N deposited)
+C_N2O = factor to convert elemental mass of N2O to molecular mass
+--------------------------------------
+*/
+
+VEERG_4_3_1_3__1_TotalAnnualDirectNitrousOxideEmissionsFromMMS
+  =LAMBDA(
+    MN_jm, EF_m, C_N2O,
+    MN_jm * EF_m * C_N2O * 10 ^ -3
+  );
+
+VEERG_4_3_1_3__1_TotalAnnualDirectNitrousOxideEmissionsFromMMS_Title
+  =LAMBDA("Total annual direct nitrous oxide emissions from manure management systems");
+
+VEERG_4_3_1_3__1_TotalAnnualDirectNitrousOxideEmissionsFromMMS_Variable
+  =LAMBDA("E_N2Odir");
+
+VEERG_4_3_1_3__1_TotalAnnualDirectNitrousOxideEmissionsFromMMS_Unit
+  =LAMBDA("t N2O");
+
+VEERG_4_3_1_3__1_TotalAnnualDirectNitrousOxideEmissionsFromMMS_Source
+  =LAMBDA("VEERG 2026: 4.3.1.3, Equation (1)");
+
+VEERG_4_3_1_3__1_TotalAnnualDirectNitrousOxideEmissionsFromMMS_NIRReference
+  =LAMBDA("");
+
+VEERG_4_3_1_3__1_TotalAnnualDirectNitrousOxideEmissionsFromMMS_LatexEquation
+  =LAMBDA("E_{N2O,dir}=MN_{jm}\times EF_m\times C_{N2O}\times 10^{-3}");
+
+VEERG_4_3_1_3__1_TotalAnnualDirectNitrousOxideEmissionsFromMMS_Arguments
+  =LAMBDA(
+    MAKEARRAY(3, 2,
+      LAMBDA(r,c,
+        INDEX({
+          "MN_jm", "total nitrogen in each MMS for dairy cattle classes (kg N)";
+          "EF_m", "nitrous oxide emission factor for each MMS (kg N2O-N/kg N deposited)";
+          "C_N2O", "factor to convert elemental mass of N2O to molecular mass"
+        }, r, c)
+      )
+    )
+  );
+
+/*
+--------------------------------------
+VEERG_4_3_1_3__2_TotalNitrogenInEachMMS
+Total nitrogen in each MMS
+MN_jm
+kg N
+MN_{jm}=AE_j\times MMS_{jm}
+AE_j = total nitrogen excreted by each dairy class (kg N)
+MMS_jm = manure management system fraction for class j and system m
+--------------------------------------
+*/
+
+VEERG_4_3_1_3__2_TotalNitrogenInEachMMS
+  =LAMBDA(
+    AE_j, MMS_jm,
+    AE_j * MMS_jm
+  );
+
+VEERG_4_3_1_3__2_TotalNitrogenInEachMMS_Title
+  =LAMBDA("Total nitrogen in each MMS");
+
+VEERG_4_3_1_3__2_TotalNitrogenInEachMMS_Variable
+  =LAMBDA("MN_jm");
+
+VEERG_4_3_1_3__2_TotalNitrogenInEachMMS_Unit
+  =LAMBDA("kg N");
+
+VEERG_4_3_1_3__2_TotalNitrogenInEachMMS_Source
+  =LAMBDA("VEERG 2026: 4.3.1.3, Equation (2)");
+
+VEERG_4_3_1_3__2_TotalNitrogenInEachMMS_NIRReference
+  =LAMBDA("");
+
+VEERG_4_3_1_3__2_TotalNitrogenInEachMMS_LatexEquation
+  =LAMBDA("MN_{jm}=AE_j\times MMS_{jm}");
+
+VEERG_4_3_1_3__2_TotalNitrogenInEachMMS_Arguments
+  =LAMBDA(
+    MAKEARRAY(2, 2,
+      LAMBDA(r,c,
+        INDEX({
+          "AE_j", "total nitrogen excreted by each dairy class (kg N)";
+          "MMS_jm", "manure management system fraction for class j and system m"
+        }, r, c)
+      )
+    )
+  );
+
+/*
+--------------------------------------
+VEERG_4_3_1_3__3a_TotalAnnualNitrogenExcretedGreaterThanOneYear
+Total annual nitrogen excreted by dairy cattle >1 year old
+AE_j124
+kg N
+AE_{j=1,2,4}=N_{j=1,2,4}\times NE_{j=1,2,4}\times 365
+N_j124 = number of dairy cattle in classes j=1,2,4
+NE_j124 = nitrogen excreted by dairy cattle >1 year old (kg N/head/day)
+--------------------------------------
+*/
+
+VEERG_4_3_1_3__3a_TotalAnnualNitrogenExcretedGreaterThanOneYear
+  =LAMBDA(
+    N_j124, NE_j124,
+    N_j124 * NE_j124 * 365
+  );
+
+VEERG_4_3_1_3__3a_TotalAnnualNitrogenExcretedGreaterThanOneYear_Title
+  =LAMBDA("Total annual nitrogen excreted by dairy cattle greater than one year old");
+
+VEERG_4_3_1_3__3a_TotalAnnualNitrogenExcretedGreaterThanOneYear_Variable
+  =LAMBDA("AE_j124");
+
+VEERG_4_3_1_3__3a_TotalAnnualNitrogenExcretedGreaterThanOneYear_Unit
+  =LAMBDA("kg N");
+
+VEERG_4_3_1_3__3a_TotalAnnualNitrogenExcretedGreaterThanOneYear_Source
+  =LAMBDA("VEERG 2026: 4.3.1.3, Equation (3a)");
+
+VEERG_4_3_1_3__3a_TotalAnnualNitrogenExcretedGreaterThanOneYear_NIRReference
+  =LAMBDA("");
+
+VEERG_4_3_1_3__3a_TotalAnnualNitrogenExcretedGreaterThanOneYear_LatexEquation
+  =LAMBDA("AE_{j=1,2,4}=N_{j=1,2,4}\times NE_{j=1,2,4}\times 365");
+
+VEERG_4_3_1_3__3a_TotalAnnualNitrogenExcretedGreaterThanOneYear_Arguments
+  =LAMBDA(
+    MAKEARRAY(2, 2,
+      LAMBDA(r,c,
+        INDEX({
+          "N_j124", "number of dairy cattle in classes j=1,2,4";
+          "NE_j124", "nitrogen excreted by dairy cattle greater than one year old (kg N/head/day)"
+        }, r, c)
+      )
+    )
+  );
+
+/*
+--------------------------------------
+VEERG_4_3_1_3__3b_TotalAnnualNitrogenExcretedLessThanOneYear
+Total annual nitrogen excreted by dairy cattle <1 year old
+AE_j35
+kg N
+AE_{j=3,5}=(N_{j=3,5}\times NE_{j=3,5}\times 281)+(N_{j=3,5}\times NPW_{j=3,5}\times 84)
+N_j35 = number of dairy cattle in classes j=3,5
+NE_j35 = nitrogen excreted by weaned dairy cattle <1 year old (kg N/head/day)
+NPW_j35 = nitrogen excreted by pre-weaned calves (kg N/head/day)
+--------------------------------------
+*/
+
+VEERG_4_3_1_3__3b_TotalAnnualNitrogenExcretedLessThanOneYear
+  =LAMBDA(
+    N_j35, NE_j35, NPW_j35,
+    (N_j35 * NE_j35 * 281) + (N_j35 * NPW_j35 * 84)
+  );
+
+VEERG_4_3_1_3__3b_TotalAnnualNitrogenExcretedLessThanOneYear_Title
+  =LAMBDA("Total annual nitrogen excreted by dairy cattle less than one year old");
+
+VEERG_4_3_1_3__3b_TotalAnnualNitrogenExcretedLessThanOneYear_Variable
+  =LAMBDA("AE_j35");
+
+VEERG_4_3_1_3__3b_TotalAnnualNitrogenExcretedLessThanOneYear_Unit
+  =LAMBDA("kg N");
+
+VEERG_4_3_1_3__3b_TotalAnnualNitrogenExcretedLessThanOneYear_Source
+  =LAMBDA("VEERG 2026: 4.3.1.3, Equation (3b)");
+
+VEERG_4_3_1_3__3b_TotalAnnualNitrogenExcretedLessThanOneYear_NIRReference
+  =LAMBDA("");
+
+VEERG_4_3_1_3__3b_TotalAnnualNitrogenExcretedLessThanOneYear_LatexEquation
+  =LAMBDA("AE_{j=3,5}=(N_{j=3,5}\times NE_{j=3,5}\times 281)+(N_{j=3,5}\times NPW_{j=3,5}\times 84)");
+
+VEERG_4_3_1_3__3b_TotalAnnualNitrogenExcretedLessThanOneYear_Arguments
+  =LAMBDA(
+    MAKEARRAY(3, 2,
+      LAMBDA(r,c,
+        INDEX({
+          "N_j35", "number of dairy cattle in classes j=3,5";
+          "NE_j35", "nitrogen excreted by weaned dairy cattle less than one year old (kg N/head/day)";
+          "NPW_j35", "nitrogen excreted by pre-weaned calves (kg N/head/day)"
+        }, r, c)
+      )
+    )
+  );
+
+/*
+--------------------------------------
+VEERG_4_3_1_3__4_NitrogenExcretedByDairyCattleGreaterThanOneYear
+Nitrogen excreted by dairy cattle >1 year old
+NE_j
+kg N/head/day
+NE_j=(CPI_j/6.25)-NR_j-((1.1\times 10^{-4}\times W_j^{0.75})/6.25)
+CPI_j = crude protein intake (kg/head/day)
+NR_j = amount of nitrogen retained by the body (kg N/head/day)
+W_j = liveweight (kg)
+--------------------------------------
+*/
+
+VEERG_4_3_1_3__4_NitrogenExcretedByDairyCattleGreaterThanOneYear
+  =LAMBDA(
+    CPI_j, NR_j, W_j,
+    (CPI_j / 6.25) - NR_j - ((1.1 * 10 ^ -4 * W_j ^ 0.75) / 6.25)
+  );
+
+VEERG_4_3_1_3__4_NitrogenExcretedByDairyCattleGreaterThanOneYear_Title
+  =LAMBDA("Nitrogen excreted by dairy cattle greater than one year old");
+
+VEERG_4_3_1_3__4_NitrogenExcretedByDairyCattleGreaterThanOneYear_Variable
+  =LAMBDA("NE_j");
+
+VEERG_4_3_1_3__4_NitrogenExcretedByDairyCattleGreaterThanOneYear_Unit
+  =LAMBDA("kg N/head/day");
+
+VEERG_4_3_1_3__4_NitrogenExcretedByDairyCattleGreaterThanOneYear_Source
+  =LAMBDA("VEERG 2026: 4.3.1.3, Equation (4)");
+
+VEERG_4_3_1_3__4_NitrogenExcretedByDairyCattleGreaterThanOneYear_NIRReference
+  =LAMBDA("");
+
+VEERG_4_3_1_3__4_NitrogenExcretedByDairyCattleGreaterThanOneYear_LatexEquation
+  =LAMBDA("NE_j=(CPI_j/6.25)-NR_j-((1.1\times 10^{-4}\times W_j^{0.75})/6.25)");
+
+VEERG_4_3_1_3__4_NitrogenExcretedByDairyCattleGreaterThanOneYear_Arguments
+  =LAMBDA(
+    MAKEARRAY(3, 2,
+      LAMBDA(r,c,
+        INDEX({
+          "CPI_j", "crude protein intake (kg/head/day)";
+          "NR_j", "amount of nitrogen retained by the body (kg N/head/day)";
+          "W_j", "liveweight (kg)"
+        }, r, c)
+      )
+    )
+  );
+
+/*
+--------------------------------------
+VEERG_4_3_1_3__5_CrudeProteinIntakeOfDairyCattle
+Crude protein intake of dairy cattle
+CPI_j
+kg/head/day
+CPI_j=I_j\times CP_j
+I_j = dry matter intake (kgDM/head/day)
+CP_j = crude protein content of feed intake (fraction)
+--------------------------------------
+*/
+
+VEERG_4_3_1_3__5_CrudeProteinIntakeOfDairyCattle
+  =LAMBDA(
+    I_j, CP_j,
+    I_j * CP_j
+  );
+
+VEERG_4_3_1_3__5_CrudeProteinIntakeOfDairyCattle_Title
+  =LAMBDA("Crude protein intake of dairy cattle");
+
+VEERG_4_3_1_3__5_CrudeProteinIntakeOfDairyCattle_Variable
+  =LAMBDA("CPI_j");
+
+VEERG_4_3_1_3__5_CrudeProteinIntakeOfDairyCattle_Unit
+  =LAMBDA("kg/head/day");
+
+VEERG_4_3_1_3__5_CrudeProteinIntakeOfDairyCattle_Source
+  =LAMBDA("VEERG 2026: 4.3.1.3, Equation (5)");
+
+VEERG_4_3_1_3__5_CrudeProteinIntakeOfDairyCattle_NIRReference
+  =LAMBDA("");
+
+VEERG_4_3_1_3__5_CrudeProteinIntakeOfDairyCattle_LatexEquation
+  =LAMBDA("CPI_j=I_j\times CP_j");
+
+VEERG_4_3_1_3__5_CrudeProteinIntakeOfDairyCattle_Arguments
+  =LAMBDA(
+    MAKEARRAY(2, 2,
+      LAMBDA(r,c,
+        INDEX({
+          "I_j", "dry matter intake (kgDM/head/day)";
+          "CP_j", "crude protein content of feed intake (fraction)"
+        }, r, c)
+      )
+    )
+  );
+
+/*
+--------------------------------------
+VEERG_4_3_1_3__6_NitrogenRetainedByBody
+Amount of nitrogen retained by the body
+NR_j
+kg N/head/day
+NR_j=(((0.032\times MP_j\times 1.03)/6.38)+((0.212-0.008\times (L_j-2)-((0.140-0.008\times (L_j-2))/(1+EXP(-6\times (Z_j-0.4)))))\times (LWG_j\times 0.92)))\times (1/6.25)
+MP_j = milk production (L/head/day)
+L_j = intake relative to maintenance
+Z_j = relative size
+LWG_j = liveweight gain (kg/day)
+--------------------------------------
+*/
+
+VEERG_4_3_1_3__6_NitrogenRetainedByBody
+  =LAMBDA(
+    MP_j, L_j, Z_j, LWG_j,
+    (((0.032 * MP_j * 1.03) / 6.38) + ((0.212 - 0.008 * (L_j - 2) - ((0.140 - 0.008 * (L_j - 2)) / (1 + EXP(-6 * (Z_j - 0.4))))) * (LWG_j * 0.92))) * (1 / 6.25)
+  );
+
+VEERG_4_3_1_3__6_NitrogenRetainedByBody_Title
+  =LAMBDA("Amount of nitrogen retained by the body");
+
+VEERG_4_3_1_3__6_NitrogenRetainedByBody_Variable
+  =LAMBDA("NR_j");
+
+VEERG_4_3_1_3__6_NitrogenRetainedByBody_Unit
+  =LAMBDA("kg N/head/day");
+
+VEERG_4_3_1_3__6_NitrogenRetainedByBody_Source
+  =LAMBDA("VEERG 2026: 4.3.1.3, Equation (6)");
+
+VEERG_4_3_1_3__6_NitrogenRetainedByBody_NIRReference
+  =LAMBDA("");
+
+VEERG_4_3_1_3__6_NitrogenRetainedByBody_LatexEquation
+  =LAMBDA("NR_j=(((0.032\times MP_j\times 1.03)/6.38)+((0.212-0.008\times (L_j-2)-((0.140-0.008\times (L_j-2))/(1+e^{-6\times (Z_j-0.4)})))\times (LWG_j\times 0.92)))\times (1/6.25)");
+
+VEERG_4_3_1_3__6_NitrogenRetainedByBody_Arguments
+  =LAMBDA(
+    MAKEARRAY(4, 2,
+      LAMBDA(r,c,
+        INDEX({
+          "MP_j", "milk production (L/head/day)";
+          "L_j", "intake relative to maintenance";
+          "Z_j", "relative size";
+          "LWG_j", "liveweight gain (kg/day)"
+        }, r, c)
+      )
+    )
+  );
+
+/*
+--------------------------------------
+VEERG_4_3_1_3__7_IntakeRelativeToMaintenance
+Intake relative to maintenance
+L_j
+ratio
+L_j=I_j/((1.185+0.00454\times W_j-0.0000026\times W_j^2)^2\times MR_j+MI_j)
+I_j = dry matter intake (kgDM/head/day)
+W_j = liveweight (kg)
+MR_j = increase in metabolic rate when producing milk
+MI_j = additional intake required for milk production (kgDM/head/day)
+--------------------------------------
+*/
+
+VEERG_4_3_1_3__7_IntakeRelativeToMaintenance
+  =LAMBDA(
+    I_j, W_j, MR_j, MI_j,
+    I_j / (((1.185 + 0.00454 * W_j - 0.0000026 * W_j ^ 2) ^ 2 * MR_j) + MI_j)
+  );
+
+VEERG_4_3_1_3__7_IntakeRelativeToMaintenance_Title
+  =LAMBDA("Intake relative to maintenance");
+
+VEERG_4_3_1_3__7_IntakeRelativeToMaintenance_Variable
+  =LAMBDA("L_j");
+
+VEERG_4_3_1_3__7_IntakeRelativeToMaintenance_Unit
+  =LAMBDA("ratio");
+
+VEERG_4_3_1_3__7_IntakeRelativeToMaintenance_Source
+  =LAMBDA("VEERG 2026: 4.3.1.3, Equation (7)");
+
+VEERG_4_3_1_3__7_IntakeRelativeToMaintenance_NIRReference
+  =LAMBDA("");
+
+VEERG_4_3_1_3__7_IntakeRelativeToMaintenance_LatexEquation
+  =LAMBDA("L_j=I_j/((1.185+0.00454\times W_j-0.0000026\times W_j^2)^2\times MR_j+MI_j)");
+
+VEERG_4_3_1_3__7_IntakeRelativeToMaintenance_Arguments
+  =LAMBDA(
+    MAKEARRAY(4, 2,
+      LAMBDA(r,c,
+        INDEX({
+          "I_j", "dry matter intake (kgDM/head/day)";
+          "W_j", "liveweight (kg)";
+          "MR_j", "increase in metabolic rate when producing milk";
+          "MI_j", "additional intake required for milk production (kgDM/head/day)"
+        }, r, c)
+      )
+    )
+  );
+
+/*
+--------------------------------------
+VEERG_4_3_1_3__8_RelativeSize
+Relative size
+Z_j
+ratio
+Z_j=W_j/WR_j
+W_j = liveweight (kg)
+WR_j = reference weight (kg)
+--------------------------------------
+*/
+
+VEERG_4_3_1_3__8_RelativeSize
+  =LAMBDA(
+    W_j, WR_j,
+    W_j / WR_j
+  );
+
+VEERG_4_3_1_3__8_RelativeSize_Title
+  =LAMBDA("Relative size");
+
+VEERG_4_3_1_3__8_RelativeSize_Variable
+  =LAMBDA("Z_j");
+
+VEERG_4_3_1_3__8_RelativeSize_Unit
+  =LAMBDA("ratio");
+
+VEERG_4_3_1_3__8_RelativeSize_Source
+  =LAMBDA("VEERG 2026: 4.3.1.3, Equation (8)");
+
+VEERG_4_3_1_3__8_RelativeSize_NIRReference
+  =LAMBDA("");
+
+VEERG_4_3_1_3__8_RelativeSize_LatexEquation
+  =LAMBDA("Z_j=W_j/WR_j");
+
+VEERG_4_3_1_3__8_RelativeSize_Arguments
+  =LAMBDA(
+    MAKEARRAY(2, 2,
+      LAMBDA(r,c,
+        INDEX({
+          "W_j", "liveweight (kg)";
+          "WR_j", "reference weight (kg)"
+        }, r, c)
+      )
+    )
+  );
