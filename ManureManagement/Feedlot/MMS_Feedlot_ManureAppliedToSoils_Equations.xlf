@@ -1,0 +1,113 @@
+/*
+============================================================================
+4.1: Beef Feedlot
+============================================================================
+4.1.1.9 Manure Applied to Soils
+============================================================================
+*/
+
+/*
+--------------------------------------
+VEERG_4_1_1_9__1_MassOfNitrogenAppliedToSoilsScope1
+Mass of nitrogen applied to soils for scope 1 emissions
+MNSoil_scope1
+kg N
+MNSoil_{scope1}=\sum_{j}\sum_{m}\sum_{T}(MN_{jmT=2,3}\times(1-EF_{mT=2,3}-FracGASM_{mT=2,3}))\times PF
+MN_jmT23 = mass of N in secondary and tertiary treatment MMS stages as calculated for manure management : kg N
+EF_mT23 = nitrous oxide emission factor for each MMS : kg N2O-N/kg N
+FracGASM_mT23 = fraction of animal waste N volatilised in each MMS for each cattle group : (kg NH3-N + NOx-N)/kg N
+PF = fraction of manure applied to soil within the feedlot boundary : fraction
+--------------------------------------
+*/
+
+VEERG_4_1_1_9__1_MassOfNitrogenAppliedToSoilsScope1
+  =LAMBDA(
+    MN_jmT23, EF_mT23, FracGASM_mT23, PF,
+    (MN_jmT23 * (1 - EF_mT23 - FracGASM_mT23)) * PF
+  );
+
+VEERG_4_1_1_9__1_MassOfNitrogenAppliedToSoilsScope1_Title
+  =LAMBDA("Mass of nitrogen applied to soils for scope 1 emissions");
+
+VEERG_4_1_1_9__1_MassOfNitrogenAppliedToSoilsScope1_Variable
+  =LAMBDA("MNSoil_scope1");
+
+VEERG_4_1_1_9__1_MassOfNitrogenAppliedToSoilsScope1_Unit
+  =LAMBDA("kg N");
+
+VEERG_4_1_1_9__1_MassOfNitrogenAppliedToSoilsScope1_Source
+  =LAMBDA("VEERG 2026: 4.1.1.9, Equation (1)");
+
+VEERG_4_1_1_9__1_MassOfNitrogenAppliedToSoilsScope1_NIRReference
+  =LAMBDA("");
+
+VEERG_4_1_1_9__1_MassOfNitrogenAppliedToSoilsScope1_LatexEquation
+  =LAMBDA("MNSoil_{scope1}=\sum_{j}\sum_{m}\sum_{T}(MN_{jmT=2,3}\times(1-EF_{mT=2,3}-FracGASM_{mT=2,3}))\times PF");
+
+VEERG_4_1_1_9__1_MassOfNitrogenAppliedToSoilsScope1_Arguments
+  =LAMBDA(
+    MAKEARRAY(4, 2,
+      LAMBDA(r,c,
+        INDEX({
+          "MN_jmT23","mass of N in secondary and tertiary treatment MMS stages as calculated for manure management : kg N";
+          "EF_mT23","nitrous oxide emission factor for each MMS : kg N2O-N/kg N";
+          "FracGASM_mT23","fraction of animal waste N volatilised in each MMS for each cattle group : (kg NH3-N + NOx-N)/kg N";
+          "PF","fraction of manure applied to soil within the feedlot boundary : fraction"
+        }, r, c)
+      )
+    )
+  );
+
+/*
+--------------------------------------
+VEERG_4_1_1_9__2_MassOfNitrogenAppliedToSoilsScope3
+Mass of nitrogen applied to soils for scope 3 emissions
+MNSoil_scope3
+kg N
+MNSoil_{scope3}=\sum_{j}\sum_{m}\sum_{T}(MN_{jmT=2,3}\times(1-EF_{mT=2,3}-FracGASM_{mT=2,3}))\times(1-PF)
+MN_jmT23 = mass of N in secondary and tertiary treatment MMS stages as calculated for manure management : kg N
+EF_mT23 = nitrous oxide emission factor for each MMS : kg N2O-N/kg N
+FracGASM_mT23 = fraction of animal waste N volatilised in each MMS for each cattle group : (kg NH3-N + NOx-N)/kg N
+PF = fraction of manure applied to soil within the feedlot boundary : fraction
+--------------------------------------
+*/
+
+VEERG_4_1_1_9__2_MassOfNitrogenAppliedToSoilsScope3
+  =LAMBDA(
+    MN_jmT23, EF_mT23, FracGASM_mT23, PF,
+    (MN_jmT23 * (1 - EF_mT23 - FracGASM_mT23)) * (1 - PF)
+  );
+
+VEERG_4_1_1_9__2_MassOfNitrogenAppliedToSoilsScope3_Title
+  =LAMBDA("Mass of nitrogen applied to soils for scope 3 emissions");
+
+VEERG_4_1_1_9__2_MassOfNitrogenAppliedToSoilsScope3_Variable
+  =LAMBDA("MNSoil_scope3");
+
+VEERG_4_1_1_9__2_MassOfNitrogenAppliedToSoilsScope3_Unit
+  =LAMBDA("kg N");
+
+VEERG_4_1_1_9__2_MassOfNitrogenAppliedToSoilsScope3_Source
+  =LAMBDA("VEERG 2026: 4.1.1.9, Equation (2)");
+
+VEERG_4_1_1_9__2_MassOfNitrogenAppliedToSoilsScope3_NIRReference
+  =LAMBDA("");
+
+VEERG_4_1_1_9__2_MassOfNitrogenAppliedToSoilsScope3_LatexEquation
+  =LAMBDA("MNSoil_{scope3}=\sum_{j}\sum_{m}\sum_{T}(MN_{jmT=2,3}\times(1-EF_{mT=2,3}-FracGASM_{mT=2,3}))\times(1-PF)");
+
+VEERG_4_1_1_9__2_MassOfNitrogenAppliedToSoilsScope3_Arguments
+  =LAMBDA(
+    MAKEARRAY(4, 2,
+      LAMBDA(r,c,
+        INDEX({
+          "MN_jmT23","mass of N in secondary and tertiary treatment MMS stages as calculated for manure management : kg N";
+          "EF_mT23","nitrous oxide emission factor for each MMS : kg N2O-N/kg N";
+          "FracGASM_mT23","fraction of animal waste N volatilised in each MMS for each cattle group : (kg NH3-N + NOx-N)/kg N";
+          "PF","fraction of manure applied to soil within the feedlot boundary : fraction"
+        }, r, c)
+      )
+    )
+  );
+
+

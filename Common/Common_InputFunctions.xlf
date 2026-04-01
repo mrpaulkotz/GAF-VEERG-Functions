@@ -54,23 +54,26 @@ Utility_SplitStringIntoArray
 Utility_GetClimateZone
 =LAMBDA(
     avgTemp,avgRain,frostDays,elev,map_pet,
+    minTempArray,maxTempArray,
+    minRainfallArray,maxRainfallArray,
+    minFrostArray,maxFrostArray,
+    minElevationArray,maxElevationArray,
+    minPETArray,maxPETArray,
+    climateZoneArray,
     LET(
         mask,
-        (VALUE(Table_SourceData_ClimateZones[Min temp])<=avgTemp)*
-        (VALUE(Table_SourceData_ClimateZones[Max temp])>=avgTemp)*
-        (VALUE(Table_SourceData_ClimateZones[Min rainfall])<=avgRain)*
-        (VALUE(Table_SourceData_ClimateZones[Max rainfall])>=avgRain)*
-        (VALUE(Table_SourceData_ClimateZones[Min frost days])<=frostDays)*
-        (VALUE(Table_SourceData_ClimateZones[Max frost days])>=frostDays)*
-        (VALUE(Table_SourceData_ClimateZones[Min elevation])<=elev)*
-        (VALUE(Table_SourceData_ClimateZones[Max elevation])>=elev)*
-        (VALUE(Table_SourceData_ClimateZones[Min MAP:PET])<=map_pet)*
-        (VALUE(Table_SourceData_ClimateZones[Max MAP:PET])>=map_pet),
-        /* If the temp is over 18 and frost days are 7 or below we get multiple results.
-        In this case 'tropical' results should be used, so we take the first result
-        because tropical values are first in the table */
+        (VALUE(minTempArray)<=avgTemp)*
+        (VALUE(maxTempArray)>=avgTemp)*
+        (VALUE(minRainfallArray)<=avgRain)*
+        (VALUE(maxRainfallArray)>=avgRain)*
+        (VALUE(minFrostArray)<=frostDays)*
+        (VALUE(maxFrostArray)>=frostDays)*
+        (VALUE(minElevationArray)<=elev)*
+        (VALUE(maxElevationArray)>=elev)*
+        (VALUE(minPETArray)<=map_pet)*
+        (VALUE(maxPETArray)>=map_pet),
         TAKE(
-            FILTER(Table_SourceData_ClimateZones[Climate zone],mask, "No match"),
+            FILTER(climateZoneArray,mask, "No match"),
             1
         )
     )
@@ -144,3 +147,18 @@ getOverlappingReportingPeriods
 
 Utility_DisplayFunctionName
 =LAMBDA(Function, TEXTBEFORE(FORMULATEXT(Function), "("));
+
+Utility_LookupN2OEFFromProdIrrigationRainfall
+=LAMBDA(
+    ProductionSystem, IrrigationMethod, RainfallZone,
+    ProductionSystemArray, IrrigationMethodArray, RainfallZoneArray,ReturnArray,
+    LET(
+        IrrigationMethod, IF(IrrigationMethod="Not irrigated", "Not irrigated", "Any"),
+        RainfallZone, IF(IrrigationMethod = "Not irrigated", RainfallZone, "Any"),
+        XLOOKUP(1, 
+            (ProductionSystemArray=ProductionSystem)*
+            (IrrigationMethodArray=IrrigationMethod)*
+            (RainfallZoneArray=RainfallZone), 
+            ReturnArray)
+    )
+);

@@ -355,8 +355,376 @@ function Sync-CommonSheetsAcrossWorkbooks {
     }
 
     $sourceSheetsByName = @{}
-    foreach ($sourceSheet in @($sourceWorkbook.Worksheets)) {
-      $sourceSheetsByName[$sourceSheet.Name] = $sourceSheet
+    for ($sheetIndex = 1; $sheetIndex -le [int] $sourceWorkbook.Worksheets.Count; $sheetIndex++) {
+      $sourceSheet = $sourceWorkbook.Worksheets.Item($sheetIndex)
+      $sourceSheetsByName[[string] $sourceSheet.Name] = $sourceSheet
+    }
+
+    function Get-UniqueWorksheetName {
+      param(
+        [Parameter(Mandatory = $true)]
+        $Workbook,
+
+        [Parameter(Mandatory = $true)]
+        [string] $BaseName
+      )
+
+      $candidate = $BaseName
+      if ($candidate.Length -gt 31) {
+        $candidate = $candidate.Substring(0, 31)
+      }
+
+      $suffix = 1
+      while ($true) {
+        $exists = $false
+        try {
+          [void] $Workbook.Worksheets.Item($candidate)
+          $exists = $true
+        } catch {
+          $exists = $false
+        }
+
+        if (-not $exists) {
+          return $candidate
+        }
+
+        $rawSuffix = "_{0}" -f $suffix
+        $maxBaseLen = [Math]::Max(1, 31 - $rawSuffix.Length)
+        $base = if ($BaseName.Length -gt $maxBaseLen) { $BaseName.Substring(0, $maxBaseLen) } else { $BaseName }
+        $candidate = $base + $rawSuffix
+        $suffix++
+      }
+    }
+
+    function Replace-WorkbookTableReferences {
+      param(
+        [Parameter(Mandatory = $true)]
+        $Workbook,
+
+        [Parameter(Mandatory = $true)]
+        [string] $OldTableName,
+
+        [Parameter(Mandatory = $true)]
+        [string] $NewTableName
+      )
+
+      if ($OldTableName -eq $NewTableName) {
+        return
+      }
+
+      $maxAttempts = 8
+      $attempt = 0
+      while ($true) {
+        $attempt++
+        try {
+          $wsCount = [int] $Workbook.Worksheets.Count
+          for ($wsIndex = 1; $wsIndex -le $wsCount; $wsIndex++) {
+            $worksheet = $Workbook.Worksheets.Item($wsIndex)
+            try {
+              $formulaCells = $worksheet.UsedRange.SpecialCells(-4123)
+              if ($null -ne $formulaCells) {
+                [void] $formulaCells.Replace($OldTableName, $NewTableName, 2, 1, $false, $false, $false, $false)
+              }
+            } catch {
+              # No formula cells on this worksheet.
+            }
+          }
+
+          $nameCount = [int] $Workbook.Names.Count
+          for ($nameIndex = 1; $nameIndex -le $nameCount; $nameIndex++) {
+            $name = $Workbook.Names.Item($nameIndex)
+            try {
+              $refersTo = [string] $name.RefersTo
+              if (-not [string]::IsNullOrEmpty($refersTo) -and $refersTo.Contains($OldTableName)) {
+                $name.RefersTo = $refersTo.Replace($OldTableName, $NewTableName)
+              }
+            } catch {
+              # Skip names that cannot be read or updated.
+            }
+          }
+
+          break
+        } catch {
+          $isRpcRejected = ($_.Exception -is [System.Runtime.InteropServices.COMException]) -and (
+            $_.Exception.HResult -eq -2147418111 -or
+            $_.Exception.Message -match 'RPC_E_CALL_REJECTED|Call was rejected by callee'
+          )
+
+          if ($isRpcRejected -and $attempt -lt $maxAttempts) {
+            Start-Sleep -Milliseconds (120 * $attempt)
+            continue
+          }
+
+          throw
+        }
+      }
+    }
+
+    function Split-ScopedName {
+      param(
+        [Parameter(Mandatory = $true)]
+        [string] $NameText
+      )
+
+      $bangIndex = $NameText.IndexOf('!')
+      if ($bangIndex -lt 0) {
+        return $null
+      }
+
+      $scopeText = $NameText.Substring(0, $bangIndex).Trim()
+      $simpleName = $NameText.Substring($bangIndex + 1).Trim()
+
+      if ($scopeText.StartsWith("'") -and $scopeText.EndsWith("'")) {
+        $scopeText = $scopeText.Substring(1, $scopeText.Length - 2).Replace("''", "'")
+      }
+
+      return [pscustomobject]@{
+        ScopeName  = $scopeText
+        SimpleName = $simpleName
+      }
+    }
+
+    function Remove-WorksheetScopedCommonModuleNames {
+      param(
+        [Parameter(Mandatory = $true)]
+        $Workbook,
+
+        [Parameter(Mandatory = $true)]
+        [string[]] $WorksheetNames
+      )
+
+      foreach ($worksheetName in $WorksheetNames) {
+        if ([string]::IsNullOrWhiteSpace($worksheetName)) {
+          continue
+        }
+
+        $worksheet = $null
+        try {
+          $worksheet = $Workbook.Worksheets.Item($worksheetName)
+        } catch {
+          continue
+        }
+
+        $candidateNames = [System.Collections.Generic.List[object]]::new()
+        $wsNameCount = 0
+        try {
+          $wsNameCount = [int] $worksheet.Names.Count
+        } catch {
+          $wsNameCount = 0
+        }
+
+        for ($nameIndex = 1; $nameIndex -le $wsNameCount; $nameIndex++) {
+          $nameObj = $worksheet.Names.Item($nameIndex)
+          try {
+            $nameText = [string] $nameObj.Name
+            if ([string]::IsNullOrWhiteSpace($nameText)) {
+              continue
+            }
+
+            $simpleName = $nameText
+            $bangIndex = $simpleName.IndexOf('!')
+            if ($bangIndex -ge 0) {
+              $simpleName = $simpleName.Substring($bangIndex + 1).Trim()
+            }
+
+            if ($simpleName -match '^(?i)Common_(?:SourceData|InputFunctions|Equations)_') {
+              $candidateNames.Add($nameObj)
+            }
+          } catch {
+            # Skip names that cannot be inspected.
+          }
+        }
+
+        foreach ($candidateName in $candidateNames) {
+          try {
+            [void] $candidateName.Delete()
+          } catch {
+            # Skip names that cannot be deleted.
+          }
+        }
+      }
+    }
+
+    function Get-WorksheetScopedCommonModuleNameDefinitions {
+      param(
+        [Parameter(Mandatory = $true)]
+        $Workbook,
+
+        [Parameter(Mandatory = $true)]
+        [string[]] $WorksheetNames
+      )
+
+      $definitions = @{}
+      foreach ($worksheetName in $WorksheetNames) {
+        if ([string]::IsNullOrWhiteSpace($worksheetName)) {
+          continue
+        }
+
+        $worksheet = $null
+        try {
+          $worksheet = $Workbook.Worksheets.Item($worksheetName)
+        } catch {
+          continue
+        }
+
+        $wsNameCount = 0
+        try {
+          $wsNameCount = [int] $worksheet.Names.Count
+        } catch {
+          $wsNameCount = 0
+        }
+
+        for ($nameIndex = 1; $nameIndex -le $wsNameCount; $nameIndex++) {
+          $nameObj = $worksheet.Names.Item($nameIndex)
+          try {
+            $nameText = [string] $nameObj.Name
+            if ([string]::IsNullOrWhiteSpace($nameText)) {
+              continue
+            }
+
+            $simpleName = $nameText
+            $bangIndex = $simpleName.IndexOf('!')
+            if ($bangIndex -ge 0) {
+              $simpleName = $simpleName.Substring($bangIndex + 1).Trim()
+            }
+
+            if ($simpleName -notmatch '^(?i)Common_(?:SourceData|InputFunctions|Equations)_') {
+              continue
+            }
+
+            $definitions[$simpleName] = [string] $nameObj.RefersTo
+          } catch {
+            # Skip names that cannot be inspected.
+          }
+        }
+      }
+
+      return $definitions
+    }
+
+    function Upsert-WorkbookScopedCommonModuleNames {
+      param(
+        [Parameter(Mandatory = $true)]
+        $Workbook,
+
+        [Parameter(Mandatory = $true)]
+        [hashtable] $Definitions
+      )
+
+      foreach ($nameKey in $Definitions.Keys) {
+        try {
+          $existing = $Workbook.Names.Item($nameKey)
+          if ($null -ne $existing) {
+            [void] $existing.Delete()
+          }
+        } catch {
+          # Missing is expected.
+        }
+
+        try {
+          [void] $Workbook.Names.Add($nameKey, [string] $Definitions[$nameKey])
+        } catch {
+          # Ignore single-name failures so one bad entry does not block the workbook.
+        }
+      }
+    }
+
+    function Normalize-WorksheetScopedLambdaNames {
+      param(
+        [Parameter(Mandatory = $true)]
+        $Workbook,
+
+        [Parameter(Mandatory = $true)]
+        [string[]] $WorksheetNames
+      )
+
+      $pending = [System.Collections.Generic.List[object]]::new()
+
+      foreach ($worksheetName in $WorksheetNames) {
+        if ([string]::IsNullOrWhiteSpace($worksheetName)) {
+          continue
+        }
+
+        $worksheet = $null
+        try {
+          $worksheet = $Workbook.Worksheets.Item($worksheetName)
+        } catch {
+          continue
+        }
+
+        $wsNameCount = 0
+        try {
+          $wsNameCount = [int] $worksheet.Names.Count
+        } catch {
+          $wsNameCount = 0
+        }
+
+        for ($nameIndex = 1; $nameIndex -le $wsNameCount; $nameIndex++) {
+          $nameObj = $worksheet.Names.Item($nameIndex)
+          try {
+            $nameText = [string] $nameObj.Name
+            if ([string]::IsNullOrWhiteSpace($nameText)) {
+              continue
+            }
+
+            $simpleName = $nameText
+            $bangIndex = $simpleName.IndexOf('!')
+            if ($bangIndex -ge 0) {
+              $simpleName = $simpleName.Substring($bangIndex + 1).Trim()
+            }
+            if ([string]::IsNullOrWhiteSpace($simpleName)) {
+              continue
+            }
+
+            $refersTo = [string] $nameObj.RefersTo
+            if ([string]::IsNullOrWhiteSpace($refersTo)) {
+              continue
+            }
+
+            if ($refersTo -notmatch '(?i)\bLAMBDA\s*\(') {
+              continue
+            }
+
+            $pending.Add([pscustomobject]@{
+              NameObj     = $nameObj
+              SimpleName  = $simpleName
+              RefersTo    = $refersTo
+            })
+          } catch {
+            # Skip names that cannot be inspected.
+          }
+        }
+      }
+
+      foreach ($entry in $pending) {
+        $hasWorkbookScoped = $false
+        try {
+          $existing = $Workbook.Names.Item($entry.SimpleName)
+          if ($null -ne $existing) {
+            $existing.RefersTo = [string] $entry.RefersTo
+            $hasWorkbookScoped = $true
+          }
+        } catch {
+          $hasWorkbookScoped = $false
+        }
+
+        if (-not $hasWorkbookScoped) {
+          try {
+            [void] $Workbook.Names.Add([string] $entry.SimpleName, [string] $entry.RefersTo)
+            $hasWorkbookScoped = $true
+          } catch {
+            $hasWorkbookScoped = $false
+          }
+        }
+
+        if ($hasWorkbookScoped) {
+          try {
+            [void] $entry.NameObj.Delete()
+          } catch {
+            # Skip names that cannot be deleted.
+          }
+        }
+      }
     }
 
     foreach ($targetWorkbookFile in $targetWorkbookFiles) {
@@ -386,15 +754,133 @@ function Sync-CommonSheetsAcrossWorkbooks {
 
           if (-not $DryRun) {
             $sourceSheet = $sourceSheetsByName[$sheetName]
-            [void] $targetSheet.Cells.Clear()
 
-            $sourceUsedRange = $sourceSheet.UsedRange
-            if ($null -ne $sourceUsedRange) {
-              $rowCount = [int] $sourceUsedRange.Rows.Count
-              $colCount = [int] $sourceUsedRange.Columns.Count
+            $isConstantsCommon = $sheetName -match '^(?i)Constants(?:\s*-\s*|_|\s+)Common$'
+            if ($isConstantsCommon) {
+              $oldSheet = $targetSheet
+              $oldSheetName = Get-UniqueWorksheetName -Workbook $targetWorkbook -BaseName 'Constants_Common_Old'
+              $oldSheet.Name = $oldSheetName
 
-              if ($rowCount -gt 0 -and $colCount -gt 0) {
-                [void] $sourceUsedRange.Copy($targetSheet.Range('A1'))
+              $existingSheetNames = @{}
+              for ($sheetIndex = 1; $sheetIndex -le [int] $targetWorkbook.Worksheets.Count; $sheetIndex++) {
+                $ws = $targetWorkbook.Worksheets.Item($sheetIndex)
+                $existingSheetNames[[string] $ws.Name] = $true
+              }
+
+              $copied = $false
+
+              try {
+                [void] $sourceSheet.Copy([Type]::Missing, $oldSheet)
+                $copied = $true
+              } catch {
+                try {
+                  [void] $sourceSheet.Copy($oldSheet)
+                  $copied = $true
+                } catch {
+                  throw ("Unable to copy sheet '{0}' into workbook '{1}': {2}" -f $sheetName, $targetWorkbookFile.Name, $_.Exception.Message)
+                }
+              }
+
+              if (-not $copied) {
+                throw ("Copy operation did not create a new worksheet for '{0}' in '{1}'." -f $sheetName, $targetWorkbookFile.Name)
+              }
+
+              $newSheet = $null
+              for ($sheetIndex = 1; $sheetIndex -le [int] $targetWorkbook.Worksheets.Count; $sheetIndex++) {
+                $ws = $targetWorkbook.Worksheets.Item($sheetIndex)
+                $wsName = [string] $ws.Name
+                if (-not $existingSheetNames.ContainsKey($wsName)) {
+                  $newSheet = $ws
+                  break
+                }
+              }
+
+              if ($null -eq $newSheet) {
+                $newSheet = $targetWorkbook.ActiveSheet
+              }
+
+              if ($null -eq $newSheet) {
+                throw ("Unable to resolve copied worksheet for '{0}' in '{1}'." -f $sheetName, $targetWorkbookFile.Name)
+              }
+
+              if ($newSheet.Name -ne $sheetName) {
+                $newSheet.Name = $sheetName
+              }
+
+              $incomingCommonNames = Get-WorksheetScopedCommonModuleNameDefinitions -Workbook $targetWorkbook -WorksheetNames @($sheetName)
+              if ($incomingCommonNames.Count -gt 0) {
+                Upsert-WorkbookScopedCommonModuleNames -Workbook $targetWorkbook -Definitions $incomingCommonNames
+              }
+
+              Normalize-WorksheetScopedLambdaNames -Workbook $targetWorkbook -WorksheetNames @($oldSheetName, $sheetName)
+
+              $sourceTables = @($sourceSheet.ListObjects)
+              $newTables = @($newSheet.ListObjects)
+              $tableCount = [Math]::Min($sourceTables.Count, $newTables.Count)
+
+              for ($i = 0; $i -lt $tableCount; $i++) {
+                $previousTableName = [string] $sourceTables[$i].DisplayName
+                $incomingTableName = [string] $newTables[$i].DisplayName
+                Replace-WorkbookTableReferences -Workbook $targetWorkbook -OldTableName $previousTableName -NewTableName $incomingTableName
+              }
+
+              # When the original tab was renamed, Excel rewrote all cell formulas that
+              # contained 'Constants - Common'! to use the new temporary name.  Redirect
+              # those references back to the canonical sheet name now that the new copy
+              # is in place, before we delete the old tab (after deletion they become #REF!).
+              #
+              # Excel only wraps a sheet name in single quotes when the name contains
+              # characters that would otherwise be ambiguous in a formula (spaces, hyphens,
+              # or other non-alphanumeric/underscore chars, or a leading digit).
+              # Using the wrong quoting means Replace() will never find a match.
+              $needsQuoting = { param([string] $n) $n -match "[^A-Za-z0-9_]" -or $n -match "^\d" }
+              $sheetRefOld = if (& $needsQuoting $oldSheetName) { "'" + $oldSheetName.Replace("'", "''") + "'!" } else { $oldSheetName + "!" }
+              $sheetRefNew = if (& $needsQuoting $sheetName)    { "'" + $sheetName.Replace("'",   "''") + "'!" } else { $sheetName    + "!" }
+              $wsCount2 = [int] $targetWorkbook.Worksheets.Count
+              for ($wsIndex2 = 1; $wsIndex2 -le $wsCount2; $wsIndex2++) {
+                $ws2 = $targetWorkbook.Worksheets.Item($wsIndex2)
+                if ($ws2.Name -eq $sheetName -or $ws2.Name -eq $oldSheetName) { continue }
+                try {
+                  $formulaCells2 = $ws2.UsedRange.SpecialCells(-4123)
+                  if ($null -ne $formulaCells2) {
+                    [void] $formulaCells2.Replace($sheetRefOld, $sheetRefNew, 2, 1, $false, $false, $false, $false)
+                  }
+                } catch { }
+              }
+              # Also fix named ranges (Lambda definitions) that may have had their
+              # sheet qualifier rewritten when the old tab was renamed.
+              $nameCount2 = [int] $targetWorkbook.Names.Count
+              for ($nameIndex2 = 1; $nameIndex2 -le $nameCount2; $nameIndex2++) {
+                $name2 = $targetWorkbook.Names.Item($nameIndex2)
+                try {
+                  $refersTo2 = [string] $name2.RefersTo
+                  if (-not [string]::IsNullOrEmpty($refersTo2) -and $refersTo2.Contains($sheetRefOld)) {
+                    $name2.RefersTo = $refersTo2.Replace($sheetRefOld, $sheetRefNew)
+                  }
+                } catch { }
+              }
+
+              [void] $oldSheet.Delete()
+
+              # Rename tables back to canonical names.
+              for ($i = 0; $i -lt $tableCount; $i++) {
+                $canonicalTableName = [string] $sourceTables[$i].DisplayName
+                $currentTableName   = [string] $newTables[$i].DisplayName
+                if ($currentTableName -ne $canonicalTableName) {
+                  $newTables[$i].DisplayName = $canonicalTableName
+                }
+              }
+            } else {
+              [void] $targetSheet.Cells.Clear()
+
+              $sourceUsedRange = $sourceSheet.UsedRange
+              if ($null -ne $sourceUsedRange) {
+                $rowCount = [int] $sourceUsedRange.Rows.Count
+                $colCount = [int] $sourceUsedRange.Columns.Count
+
+                if ($rowCount -gt 0 -and $colCount -gt 0) {
+                  [void] $sourceUsedRange.Copy($targetSheet.Range('A1'))
+                }
               }
             }
           }
@@ -407,6 +893,15 @@ function Sync-CommonSheetsAcrossWorkbooks {
           Write-Host ("{0}: {1} sheet contents from {2} -> {3}" -f $targetWorkbookFile.Name, $action, $sourceWorkbookFile.Name, (($touchedSheets | Sort-Object -Unique) -join ', '))
 
           if (-not $DryRun) {
+            # Defensive final pass: remove any worksheet-scoped Common_* names that
+            # may exist anywhere in the workbook so only workbook-scoped definitions remain.
+            $allWorksheetNames = [System.Collections.Generic.List[string]]::new()
+            for ($wsIdx = 1; $wsIdx -le [int] $targetWorkbook.Worksheets.Count; $wsIdx++) {
+              $wsObj = $targetWorkbook.Worksheets.Item($wsIdx)
+              $allWorksheetNames.Add([string] $wsObj.Name)
+            }
+            Normalize-WorksheetScopedLambdaNames -Workbook $targetWorkbook -WorksheetNames $allWorksheetNames.ToArray()
+
             [void] $targetWorkbook.Save()
           }
         } else {

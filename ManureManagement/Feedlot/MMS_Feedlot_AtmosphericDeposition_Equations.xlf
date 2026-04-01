@@ -1,0 +1,108 @@
+/*
+============================================================================
+4.1: Beef Feedlot
+============================================================================
+4.1.1.5 Method 1 - Manure Atmospheric Deposition Beef Feedlot
+============================================================================
+*/
+
+/*
+--------------------------------------
+VEERG_4_1_1_5__1_TotalAnnualAtmosphericDepositionEmissions
+Total annual atmospheric deposition emissions from manure management
+E_N2Oad
+t N2O
+E_{N2O,ad}=(MMS_{ATMOS}\times EF_{N2O}\times C_{N2O})\times10^{-3}
+MMS_ATMOS = mass of N volatilised from MMS : kg N
+EF_N2O = nitrous oxide emission factor for atmospheric deposition : kg N2O-N/kg N
+C_N2O = factor to convert elemental mass of nitrous oxide to molecular mass : ratio
+--------------------------------------
+*/
+
+VEERG_4_1_1_5__1_TotalAnnualAtmosphericDepositionEmissions
+  =LAMBDA(
+    MMS_ATMOS, EF_N2O, C_N2O,
+    (MMS_ATMOS * EF_N2O * C_N2O) * 10 ^ -3
+  );
+
+VEERG_4_1_1_5__1_TotalAnnualAtmosphericDepositionEmissions_Title
+  =LAMBDA("Total annual atmospheric deposition emissions from manure management");
+
+VEERG_4_1_1_5__1_TotalAnnualAtmosphericDepositionEmissions_Variable
+  =LAMBDA("E_N2Oad");
+
+VEERG_4_1_1_5__1_TotalAnnualAtmosphericDepositionEmissions_Unit
+  =LAMBDA("t N2O");
+
+VEERG_4_1_1_5__1_TotalAnnualAtmosphericDepositionEmissions_Source
+  =LAMBDA("VEERG 2026: 4.1.1.5, Equation (1)");
+
+VEERG_4_1_1_5__1_TotalAnnualAtmosphericDepositionEmissions_NIRReference
+  =LAMBDA("");
+
+VEERG_4_1_1_5__1_TotalAnnualAtmosphericDepositionEmissions_LatexEquation
+  =LAMBDA("E_{N2O,ad}=(MMS_{ATMOS}\times EF_{N2O}\times C_{N2O})\times10^{-3}");
+
+VEERG_4_1_1_5__1_TotalAnnualAtmosphericDepositionEmissions_Arguments
+  =LAMBDA(
+    MAKEARRAY(6, 2,
+      LAMBDA(r,c,
+        INDEX({
+          "MMS_ATMOS","mass of N volatilised from MMS : kg N";
+          "EF_N2O","nitrous oxide emission factor for atmospheric deposition : kg N2O-N/kg N";
+          "C_N2O","factor to convert elemental mass of nitrous oxide to molecular mass : ratio";
+          "j", "production system";
+          "i", "irrigation method";
+          "r", "rainfall zone"
+        }, r, c)
+      )
+    )
+  );
+
+/*
+--------------------------------------
+VEERG_4_1_1_5__2_VolatilisedNitrogenFromManureManagement
+Volatilised nitrogen from manure management
+MMS_ATMOS
+kg N
+MMS_{ATMOS}=\sum_{j}\sum_{m}\sum_{T}(MN_{jmT}\times FracGASM_{mT})
+MN_jmT = nitrogen in each treatment stage MMS (excluding MN_ijm13T2) : kg N
+FracGASM_mT = fraction of N volatilised in each MMS : (kg NH3-N + NOx-N)/kg N
+--------------------------------------
+*/
+
+VEERG_4_1_1_5__2_VolatilisedNitrogenFromManureManagement
+  =LAMBDA(
+    MN_jmT, FracGASM_mT,
+    MN_jmT * FracGASM_mT
+  );
+
+VEERG_4_1_1_5__2_VolatilisedNitrogenFromManureManagement_Title
+  =LAMBDA("Volatilised nitrogen from manure management");
+
+VEERG_4_1_1_5__2_VolatilisedNitrogenFromManureManagement_Variable
+  =LAMBDA("MMS_ATMOS");
+
+VEERG_4_1_1_5__2_VolatilisedNitrogenFromManureManagement_Unit
+  =LAMBDA("kg N");
+
+VEERG_4_1_1_5__2_VolatilisedNitrogenFromManureManagement_Source
+  =LAMBDA("VEERG 2026: 4.1.1.5, Equation (2)");
+
+VEERG_4_1_1_5__2_VolatilisedNitrogenFromManureManagement_NIRReference
+  =LAMBDA("");
+
+VEERG_4_1_1_5__2_VolatilisedNitrogenFromManureManagement_LatexEquation
+  =LAMBDA("MMS_{ATMOS}=\sum_{j}\sum_{m}\sum_{T}(MN_{jmT}\times FracGASM_{mT})");
+
+VEERG_4_1_1_5__2_VolatilisedNitrogenFromManureManagement_Arguments
+  =LAMBDA(
+    MAKEARRAY(2, 2,
+      LAMBDA(r,c,
+        INDEX({
+          "MN_jmT","nitrogen in each treatment stage MMS (excluding MN_ijm13T2) : kg N";
+          "FracGASM_mT","fraction of N volatilised in each MMS : (kg NH3-N + NOx-N)/kg N"
+        }, r, c)
+      )
+    )
+  );

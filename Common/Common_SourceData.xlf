@@ -548,7 +548,7 @@ Common_SourceData_FracLEACH_Data
 
 
 
-  /* 
+/* 
 --------------------------------------
 Common_SourceData_EFleach
 5.5.2.3 Constant Parameters
@@ -581,3 +581,63 @@ Common_SourceData_EFleach_Data
 
   Common_SourceData_EFleach_Variation
   =LAMBDA((""));
+
+
+/* 
+--------------------------------------
+Common_SourceData_EFN2O
+Table A.2.2.1
+Nitrous oxide emission factors for inorganic fertiliser application (kg N2O-N/kg N) (EFN2O)
+--------------------------------------
+*/
+
+Common_SourceData_EFN2O_Title
+  =LAMBDA("Nitrous oxide emission factors for inorganic fertiliser application");
+
+Common_SourceData_EFN2O_Unit
+  =LAMBDA("(kg N2O-N / kg N");
+
+Common_SourceData_EFN2O_Source
+  =LAMBDA("VEERG 2026: Table A.2.2.1");
+
+Common_SourceData_EFN2O_NIRReference
+  =LAMBDA("");
+
+Common_SourceData_EFN2O_Data
+  =LAMBDA(
+    MAKEARRAY(15, 5, 
+      LAMBDA(r,c, 
+        INDEX({
+          "Production system j","EFN2O", "Production system only", "Irrigation method", "Rainfall zone";
+          "Irrigated pasture",0.0059, "Pasture", "Any", "Any";
+          "Irrigated crop",0.007, "Crop", "Any", "Any";
+          "Non-irrigated pasture",0.0018, "Pasture", "Not irrigated", "Low rainfall";
+          "Non-irrigated pasture",0.0018, "Pasture", "Not irrigated", "High rainfall";
+          "Non-irrigated crop (low rainfall)",0.0029, "Crop", "Not irrigated", "Low rainfall";
+          "Non-irrigated crop (high rainfall)",0.008, "Crop", "Not irrigated", "High rainfall";
+          "Sugar",0.0199, "Sugar", "Any", "Any";
+          "Cotton",0.0053, "Cotton", "Any", "Any";
+          "Horticultural crops",0.0064, "Horticultural crops", "Any", "Any";
+          "Rice (continuous flooding)",0.003, "Rice", "Continuous flooding", "Any";
+          "Rice (single and multiple drainage, or alternate wetting and drying)",0.005, "Rice", "Single and multiple drainage, or alternate wetting and drying", "Any";
+          "Aquaculture",0.0026, "Aquaculture", "Any", "Any";
+          "Forestry",0.0018, "Forestry", "Any", "Any"
+        }, r, c)
+      )
+    )
+  );
+
+  Common_SourceData_EFN2O_Variation
+  =LAMBDA(
+    MAKEARRAY(5, 1, 
+      LAMBDA(r,c, 
+        INDEX({
+          "VARIATION OF SOURCE DATA:";
+          "Removed duplicate 'Aquaculture' row.";
+          "Removed asterisks to aid lookup.";
+          "Added 'production system only', 'rainfall zone' and 'irrigation method' columns to aid lookup.";
+          "Duplicated 'non-irrigated pasture' row with same EF for low and high rainfall zones to aid lookup."
+        }, r, c)
+      )
+    )
+  );

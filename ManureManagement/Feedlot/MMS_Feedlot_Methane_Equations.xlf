@@ -22,7 +22,7 @@ N_j = numbers of beef cattle in each group : head
 VEERG_4_1_1_1__1_TotalAnnualMethaneEmissions
   =LAMBDA(
     D_j, M_jmT, N_j,
-    SUMPRODUCT(D_j, M_jmT, N_j) * 10 ^ -3
+    (D_j * M_jmT * N_j) * 10 ^ -3
   );
 
 VEERG_4_1_1_1__1_TotalAnnualMethaneEmissions_Title
