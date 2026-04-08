@@ -718,4 +718,50 @@ Common_SourceData_EFPastureRangeAndPaddock_Data
   =LAMBDA("VARIATION FROM SOURCE DATA: Changed 'Dry climate zones' to singular 'Dry climate zone' to aid lookup.");
 
 
+/* 
+--------------------------------------
+Common_SourceData_MonthsToSeasons
+--------------------------------------
+*/
+
+Common_SourceData_MonthsToSeasons_Title
+  =LAMBDA("Months to Seasons Mapping");
+
+Common_SourceData_MonthsToSeasons_Unit
+  =LAMBDA("");
+
+Common_SourceData_MonthsToSeasons_Source
+  =LAMBDA("");
+
+Common_SourceData_MonthsToSeasons_NIRReference
+  =LAMBDA("");
+
+Common_SourceData_MonthsToSeasons_Data
+  =LAMBDA(
+    MAKEARRAY(13, 2, 
+      LAMBDA(r,c, 
+        INDEX({
+          "Month", "Season";
+          "January", "Summer";
+          "February", "Summer";
+          "March", "Autumn";
+          "April", "Autumn";
+          "May", "Autumn";
+          "June", "Winter";
+          "July", "Winter";
+          "August", "Winter";
+          "September", "Spring";
+          "October", "Spring";
+          "November", "Spring";
+          "December", "Summer"
+        }, r, c)
+      )
+    )
+  );
+
+  Common_SourceData_MonthsToSeasons_Variation
+  =LAMBDA("");
+
+
+
 

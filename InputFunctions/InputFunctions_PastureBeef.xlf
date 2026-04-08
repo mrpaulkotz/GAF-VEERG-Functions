@@ -1,0 +1,49 @@
+LookupLiveweightFromSeason
+=LAMBDA(
+    State, Region, Season, LivestockClass,
+    StateArray, RegionArray, SeasonArray, LivestockClassArray,
+    ReturnArray,
+    StateCommonNameArray, StateAbbreviationArray,
+    Let(
+        State, XLOOKUP(State, StateCommonNameArray, StateAbbreviationArray),
+        XLOOKUP(
+        1, 
+        (StateArray=State) * 
+        (RegionArray=Region) * 
+        (SeasonArray=Season), 
+        XLOOKUP(LivestockClass, LivestockClassArray, 
+        ReturnArray))
+    )
+);
+
+LookupLiveweightFromMonth
+=LAMBDA(
+    State, Region, Month, LivestockClass,
+    StateArray, RegionArray, SeasonArray, LivestockClassArray,
+    ReturnArray,
+    StateCommonNameArray, StateAbbreviationArray,
+    MonthArray, MonthToSeasonArray,
+    Let(
+        Month, TEXT(Month, "mmmm"),
+        State, XLOOKUP(State, StateCommonNameArray, StateAbbreviationArray),
+        Season, XLOOKUP(Month, MonthArray, MonthToSeasonArray),
+        XLOOKUP(
+        1, 
+        (StateArray=State) * 
+        (RegionArray=Region) * 
+        (SeasonArray=Season), 
+        XLOOKUP(LivestockClass, LivestockClassArray, 
+        ReturnArray))
+    )
+);
+
+ConvertMonthlyCalvingToSeason
+
+= LAMBDA(
+    Season, SumArray, CalvingMonthArray, MonthArray, MonthToSeasonArray,
+    LET(
+        MonthText, TEXT(CalvingMonthArray, "mmmm"),
+        SeasonPerRow, XLOOKUP(MonthText, MonthArray, MonthToSeasonArray, "", 0),
+        SUM(SumArray * (SeasonPerRow=Season))
+    )
+);
