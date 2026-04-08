@@ -22,8 +22,8 @@ VARIATION OF SOURCE: For Method 1, emissions are estimated only for solid storag
 
 VEERG_4_3_1_6__1_AnnualEmissionsFromLeachingAndRunoffFromMMS
   =LAMBDA(
-    MNLeach_jm4, EF_leach, C_N2O,
-    MNLeach_jm4 * EF_leach * C_N2O * 10 ^ -3
+    MNLeach_jm, EF_leach, C_N2O,
+    (MNLeach_jm * EF_leach * C_N2O) * 10 ^ -3
   );
 
 VEERG_4_3_1_6__1_AnnualEmissionsFromLeachingAndRunoffFromMMS_Title
@@ -42,14 +42,14 @@ VEERG_4_3_1_6__1_AnnualEmissionsFromLeachingAndRunoffFromMMS_NIRReference
   =LAMBDA("");
 
 VEERG_4_3_1_6__1_AnnualEmissionsFromLeachingAndRunoffFromMMS_LatexEquation
-  =LAMBDA("E_{N2O,leach}=MNLeach_{jm=4}\times EF_{leach}\times C_{N2O}\times 10^{-3}");
+  =LAMBDA("E_{N2O,leach}=\sum\nolimits_{j}\sum\nolimits_{m=1-13}(MNLeach_{jm}\times EF_{leach}\times C_{N2O})\times 10^{-3}");
 
 VEERG_4_3_1_6__1_AnnualEmissionsFromLeachingAndRunoffFromMMS_Arguments
   =LAMBDA(
     MAKEARRAY(3, 2,
       LAMBDA(r,c,
         INDEX({
-          "MNLeach_jm4", "mass of N lost through leaching and runoff from solid storage MMS m=4 (kg N)";
+          "MNLeach_jm", "mass of N lost through leaching and runoff";
           "EF_leach", "nitrous oxide emission factor for leaching and runoff (kg N2O-N/kg N)";
           "C_N2O", "factor to convert elemental mass of N2O to molecular mass"
         }, r, c)
@@ -96,12 +96,15 @@ VEERG_4_3_1_6__2_MassOfNitrogenLostToLeachingAndRunoffFromSolidStorage_LatexEqua
 
 VEERG_4_3_1_6__2_MassOfNitrogenLostToLeachingAndRunoffFromSolidStorage_Arguments
   =LAMBDA(
-    MAKEARRAY(3, 2,
+    MAKEARRAY(6, 2,
       LAMBDA(r,c,
         INDEX({
           "MN_jm4", "total nitrogen in solid storage system m=4 (kg N)";
-          "FracWET_i", "fraction of N available for leaching and runoff";
-          "FracLEACH_MS", "fraction of N lost through leaching and runoff"
+          "FracWET_i", "fraction of N that is available for leaching and runoff from the leaching zone z and irrigation type ir (dimensionless)";
+          "FracLEACH_MS", "fraction of N that is lost through leaching and runoff (dimensionless)";
+          "z", "location in leaching zone";
+          "j", "production system";
+          "ir", "irrigation method"
         }, r, c)
       )
     )

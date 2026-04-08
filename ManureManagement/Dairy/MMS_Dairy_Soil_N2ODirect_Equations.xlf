@@ -41,16 +41,17 @@ VEERG_4_3_1_9__1_DirectNitrousOxideEmissionsOnPasture_NIRReference
   =LAMBDA("");
 
 VEERG_4_3_1_9__1_DirectNitrousOxideEmissionsOnPasture_LatexEquation
-  =LAMBDA("E_{N2O,dir}=MN_{jm=14}\times EF_{PRP}\times C_{N2O}\times 10^{-3}");
+  =LAMBDA("E_{N2O,dir}=\sum\nolimits_{j}(MN_{jm=14}\times EF_{PRP}\times C_{N2O}\times 10^{-3})");
 
 VEERG_4_3_1_9__1_DirectNitrousOxideEmissionsOnPasture_Arguments
   =LAMBDA(
-    MAKEARRAY(3, 2,
+    MAKEARRAY(4, 2,
       LAMBDA(r,c,
         INDEX({
           "MN_jm14", "mass of nitrogen excreted on pasture, range, and paddock for each dairy cattle class (kg N)";
           "EF_PRP", "emission factor for nitrous oxide emissions for urine and dung deposited on PRP (kg N2O-N/kg N deposited)";
-          "C_N2O", "factor to convert elemental mass of N2O to molecular mass"
+          "C_N2O", "factor to convert elemental mass of N2O to molecular mass";
+          "z","Wet or dry climate zone"
         }, r, c)
       )
     )

@@ -1,0 +1,201 @@
+/*
+============================================================================
+3.2: Enteric Methane - Pasture Beef
+============================================================================
+3.2.1.1 Method 1 - Enteric Beef Grazing
+============================================================================
+*/
+
+/*
+--------------------------------------
+VEERG_3_2_1_1__1_TotalAnnualMethaneFromEntericFermentation
+Total annual methane production from enteric fermentation in grazing beef cattle
+E_enteric
+t CH4
+E_{enteric}=\sum_{j}\sum_{k}\sum_{l}(D_j\times M_{jkl}\times N_{jkl})\times 10^{-3}
+D_j = number of days the animal is on the farm in each time-period (days)
+M_jkl = daily production of enteric methane in each time-period, class and subclass (kg CH4/head/day)
+N_jkl = number of beef cattle in each time-period, class and subclass (head)
+--------------------------------------
+*/
+
+VEERG_3_2_1_1__1_TotalAnnualMethaneFromEntericFermentation
+  =LAMBDA(
+    D_j, M_jkl, N_jkl,
+    (D_j * M_jkl * N_jkl) * 10 ^ -3
+  );
+
+VEERG_3_2_1_1__1_TotalAnnualMethaneFromEntericFermentation_Title
+  =LAMBDA("Total annual methane production from enteric fermentation in grazing beef cattle");
+
+VEERG_3_2_1_1__1_TotalAnnualMethaneFromEntericFermentation_Variable
+  =LAMBDA("E_enteric");
+
+VEERG_3_2_1_1__1_TotalAnnualMethaneFromEntericFermentation_Unit
+  =LAMBDA("t CH4");
+
+VEERG_3_2_1_1__1_TotalAnnualMethaneFromEntericFermentation_Source
+  =LAMBDA("VEERG 2026: 3.2.1.1, Equation (1)");
+
+VEERG_3_2_1_1__1_TotalAnnualMethaneFromEntericFermentation_NIRReference
+  =LAMBDA("");
+
+VEERG_3_2_1_1__1_TotalAnnualMethaneFromEntericFermentation_LatexEquation
+  =LAMBDA("E_{enteric}=\sum_{j}\sum_{k}\sum_{l}(D_j\times M_{jkl}\times N_{jkl})\times 10^{-3}");
+
+VEERG_3_2_1_1__1_TotalAnnualMethaneFromEntericFermentation_Arguments
+  =LAMBDA(
+    MAKEARRAY(3, 2,
+      LAMBDA(r,c,
+        INDEX({
+          "D_j", "number of days the animal is on the farm in each time-period (days)";
+          "M_jkl", "daily production of enteric methane in each time-period, class and subclass (kg CH4/head/day)";
+          "N_jkl", "number of beef cattle in each time-period, class and subclass (head)"
+        }, r, c)
+      )
+    )
+  );
+
+/*
+--------------------------------------
+VEERG_3_2_1_1__2_DailyEntericMethaneProduction
+Daily production of enteric methane
+M_jkl
+kg CH4/head/day
+M_{jkl}=20.7\times I_{jkl}\times 10^{-3}
+I_jkl = dry matter intake (kg DM/head/day)
+--------------------------------------
+*/
+
+VEERG_3_2_1_1__2_DailyEntericMethaneProduction
+  =LAMBDA(
+    I_jkl,
+    20.7 * I_jkl * 10 ^ -3
+  );
+
+VEERG_3_2_1_1__2_DailyEntericMethaneProduction_Title
+  =LAMBDA("Daily production of enteric methane");
+
+VEERG_3_2_1_1__2_DailyEntericMethaneProduction_Variable
+  =LAMBDA("M_jkl");
+
+VEERG_3_2_1_1__2_DailyEntericMethaneProduction_Unit
+  =LAMBDA("kg CH4/head/day");
+
+VEERG_3_2_1_1__2_DailyEntericMethaneProduction_Source
+  =LAMBDA("VEERG 2026: 3.2.1.1, Equation (2)");
+
+VEERG_3_2_1_1__2_DailyEntericMethaneProduction_NIRReference
+  =LAMBDA("Charmley et al. (2015)");
+
+VEERG_3_2_1_1__2_DailyEntericMethaneProduction_LatexEquation
+  =LAMBDA("M_{jkl}=20.7\times I_{jkl}\times 10^{-3}");
+
+VEERG_3_2_1_1__2_DailyEntericMethaneProduction_Arguments
+  =LAMBDA(
+    MAKEARRAY(1, 2,
+      LAMBDA(r,c,
+        INDEX({
+          "I_jkl", "dry matter intake (kg DM/head/day)"
+        }, r, c)
+      )
+    )
+  );
+
+/*
+--------------------------------------
+VEERG_3_2_1_1__3_FeedIntakeForGrazingBeef
+Feed intake for grazing beef cattle
+I_jkl
+kg DM/head/day
+I_{jkl}=(1.185+0.00454\times W_{jkl}-0.0000026\times W_{jkl}^{2}+0.315\times LWG_{jkl})^2\times MA_{jk=4,5}
+W_jkl = liveweight (kg)
+LWG_jkl = live weight gain (kg/head/day)
+MA_jk45 = additional intake for milk production in cows greater than 2 years (kg/head/day)
+--------------------------------------
+*/
+
+VEERG_3_2_1_1__3_FeedIntakeForGrazingBeef
+  =LAMBDA(
+    W_jkl, LWG_jkl, MA_jk45,
+    (1.185 + 0.00454 * W_jkl - 0.0000026 * W_jkl ^ 2 + 0.315 * LWG_jkl) ^ 2 * MA_jk45
+  );
+
+VEERG_3_2_1_1__3_FeedIntakeForGrazingBeef_Title
+  =LAMBDA("Feed intake for grazing beef cattle)");
+
+VEERG_3_2_1_1__3_FeedIntakeForGrazingBeef_Variable
+  =LAMBDA("I_jkl");
+
+VEERG_3_2_1_1__3_FeedIntakeForGrazingBeef_Unit
+  =LAMBDA("kg DM/head/day");
+
+VEERG_3_2_1_1__3_FeedIntakeForGrazingBeef_Source
+  =LAMBDA("VEERG 2026: 3.2.1.1, Equation (3)");
+
+VEERG_3_2_1_1__3_FeedIntakeForGrazingBeef_NIRReference
+  =LAMBDA("Minson and McDonald (1987)");
+
+VEERG_3_2_1_1__3_FeedIntakeForGrazingBeef_LatexEquation
+  =LAMBDA("I_{jkl}=(1.185+0.00454\times W_{jkl}-0.0000026\times W_{jkl}^{2}+0.315\times LWG_{jkl})^2\times MA_{jk=4,5}");
+
+VEERG_3_2_1_1__3_FeedIntakeForGrazingBeef_Arguments
+  =LAMBDA(
+    MAKEARRAY(3, 2,
+      LAMBDA(r,c,
+        INDEX({
+          "W_jkl", "liveweight (kg)";
+          "LWG_jkl", "live weight gain (kg/head/day)";
+          "MA_jk45", "additional intake for milk production in cows greater than 2 years (kg/head/day)"
+        }, r, c)
+      )
+    )
+  );
+
+/*
+--------------------------------------
+VEERG_3_2_1_1__4_AdditionalIntakeForMilkProduction
+Additional intake for milk production in the season of calving and the season after calving
+MA_jk45
+fraction
+MA_{jk=4,5}=(LC_{jk=4,5}\times FA_{jk=4,5})+(1-LC_{jk=4,5})
+LC_jk45 = proportion of cows greater than 1 year in calf in the season of calving expressed as a fraction
+FA_jk45 = feed adjustment value for lactating cows in the season of calving and the season immediately after calving expressed as a fraction
+--------------------------------------
+*/
+
+VEERG_3_2_1_1__4_AdditionalIntakeForMilkProduction
+  =LAMBDA(
+    LC_jk45, FA_jk45,
+    (LC_jk45 * FA_jk45) + (1 - LC_jk45)
+  );
+
+VEERG_3_2_1_1__4_AdditionalIntakeForMilkProduction_Title
+  =LAMBDA("Additional intake for milk production in the season of calving and the season after calving");
+
+VEERG_3_2_1_1__4_AdditionalIntakeForMilkProduction_Variable
+  =LAMBDA("MA_jk45");
+
+VEERG_3_2_1_1__4_AdditionalIntakeForMilkProduction_Unit
+  =LAMBDA("fraction");
+
+VEERG_3_2_1_1__4_AdditionalIntakeForMilkProduction_Source
+  =LAMBDA("VEERG 2026: 3.2.1.1, Equation (4)");
+
+VEERG_3_2_1_1__4_AdditionalIntakeForMilkProduction_NIRReference
+  =LAMBDA("");
+
+VEERG_3_2_1_1__4_AdditionalIntakeForMilkProduction_LatexEquation
+  =LAMBDA("MA_{jk=4,5}=(LC_{jk=4,5}\times FA_{jk=4,5})+(1-LC_{jk=4,5})");
+
+VEERG_3_2_1_1__4_AdditionalIntakeForMilkProduction_Arguments
+  =LAMBDA(
+    MAKEARRAY(2, 2,
+      LAMBDA(r,c,
+        INDEX({
+          "LC_jk45", "proportion of cows greater than 1 year in calf in the season of calving expressed as a fraction";
+          "FA_jk45", "feed adjustment value for lactating cows in the season of calving and the season immediately after calving expressed as a fraction"
+        }, r, c)
+      )
+    )
+  );

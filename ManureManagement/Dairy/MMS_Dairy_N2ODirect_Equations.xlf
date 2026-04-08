@@ -41,7 +41,7 @@ VEERG_4_3_1_3__1_TotalAnnualDirectNitrousOxideEmissionsFromMMS_NIRReference
   =LAMBDA("");
 
 VEERG_4_3_1_3__1_TotalAnnualDirectNitrousOxideEmissionsFromMMS_LatexEquation
-  =LAMBDA("E_{N2O,dir}=MN_{jm}\times EF_m\times C_{N2O}\times 10^{-3}");
+  =LAMBDA("E_{N2O,dir}=\sum\nolimits_{j}\sum\nolimits_{m}(MN_{jm}\times EF_m\times C_{N2O}\times 10^{-3})");
 
 VEERG_4_3_1_3__1_TotalAnnualDirectNitrousOxideEmissionsFromMMS_Arguments
   =LAMBDA(
@@ -122,6 +122,12 @@ VEERG_4_3_1_3__3a_TotalAnnualNitrogenExcretedGreaterThanOneYear
     N_j124 * NE_j124 * 365
   );
 
+VEERG_4_3_1_3__3a_TotalAnnualNitrogenExcretedGreaterThanOneYearVariation
+  =LAMBDA(
+    N_j124, NE_j124, D_j124,
+    N_j124 * NE_j124 * D_j124
+  );
+
 VEERG_4_3_1_3__3a_TotalAnnualNitrogenExcretedGreaterThanOneYear_Title
   =LAMBDA("Total annual nitrogen excreted by dairy cattle greater than one year old");
 
@@ -140,17 +146,24 @@ VEERG_4_3_1_3__3a_TotalAnnualNitrogenExcretedGreaterThanOneYear_NIRReference
 VEERG_4_3_1_3__3a_TotalAnnualNitrogenExcretedGreaterThanOneYear_LatexEquation
   =LAMBDA("AE_{j=1,2,4}=N_{j=1,2,4}\times NE_{j=1,2,4}\times 365");
 
+VEERG_4_3_1_3__3a_TotalAnnualNitrogenExcretedGreaterThanOneYear_LatexEquationVariation
+  =LAMBDA("AE_{j=1,2,4}=N_{j=1,2,4}\times NE_{j=1,2,4}\times D_{j=1,2,4}");
+
 VEERG_4_3_1_3__3a_TotalAnnualNitrogenExcretedGreaterThanOneYear_Arguments
   =LAMBDA(
-    MAKEARRAY(2, 2,
+    MAKEARRAY(3, 2,
       LAMBDA(r,c,
         INDEX({
           "N_j124", "number of dairy cattle in classes j=1,2,4";
-          "NE_j124", "nitrogen excreted by dairy cattle greater than one year old (kg N/head/day)"
+          "NE_j124", "nitrogen excreted by dairy cattle greater than one year old (kg N/head/day)";
+          "D_j124", "duration of stay on farm for classes j=1,2,4 (days)"
         }, r, c)
       )
     )
   );
+
+VEERG_4_3_1_3__3a_TotalAnnualNitrogenExcretedGreaterThanOneYear_Variation
+  =LAMBDA("VARIATION: Used Duration variables instead of hard-coded 365 value.");
 
 /*
 --------------------------------------
@@ -171,6 +184,12 @@ VEERG_4_3_1_3__3b_TotalAnnualNitrogenExcretedLessThanOneYear
     (N_j35 * NE_j35 * 281) + (N_j35 * NPW_j35 * 84)
   );
 
+VEERG_4_3_1_3__3b_TotalAnnualNitrogenExcretedLessThanOneYearVariation
+  =LAMBDA(
+    N_j35, NE_j35, NPW_j35, D_j35, DPW_j35,
+    (N_j35 * NE_j35 * D_j35) + (N_j35 * NPW_j35 * DPW_j35)
+  );
+
 VEERG_4_3_1_3__3b_TotalAnnualNitrogenExcretedLessThanOneYear_Title
   =LAMBDA("Total annual nitrogen excreted by dairy cattle less than one year old");
 
@@ -189,18 +208,26 @@ VEERG_4_3_1_3__3b_TotalAnnualNitrogenExcretedLessThanOneYear_NIRReference
 VEERG_4_3_1_3__3b_TotalAnnualNitrogenExcretedLessThanOneYear_LatexEquation
   =LAMBDA("AE_{j=3,5}=(N_{j=3,5}\times NE_{j=3,5}\times 281)+(N_{j=3,5}\times NPW_{j=3,5}\times 84)");
 
+VEERG_4_3_1_3__3b_TotalAnnualNitrogenExcretedLessThanOneYear_LatexEquationVariation
+  =LAMBDA("AE_{j=3,5}=(N_{j=3,5}\times NE_{j=3,5}\times D_{j=3,5})+(N_{j=3,5}\times NPW_{j=3,5}\times DPW_{j=3,5})");
+
 VEERG_4_3_1_3__3b_TotalAnnualNitrogenExcretedLessThanOneYear_Arguments
   =LAMBDA(
-    MAKEARRAY(3, 2,
+    MAKEARRAY(5, 2,
       LAMBDA(r,c,
         INDEX({
           "N_j35", "number of dairy cattle in classes j=3,5";
           "NE_j35", "nitrogen excreted by weaned dairy cattle less than one year old (kg N/head/day)";
-          "NPW_j35", "nitrogen excreted by pre-weaned calves (kg N/head/day)"
+          "NPW_j35", "nitrogen excreted by pre-weaned calves (kg N/head/day)";
+          "D_j35", "duration of stay on farm for weaned dairy cattle less than one year old (days)";
+          "DPW_j35", "duration of stay on farm for pre-weaned calves (days)"
         }, r, c)
       )
     )
   );
+
+VEERG_4_3_1_3__3b_TotalAnnualNitrogenExcretedLessThanOneYear_Variation
+  =LAMBDA("VARIATION: Used Duration variables instead of hard-coded 281 and 84 values.");
 
 /*
 --------------------------------------
@@ -237,7 +264,7 @@ VEERG_4_3_1_3__4_NitrogenExcretedByDairyCattleGreaterThanOneYear_NIRReference
   =LAMBDA("");
 
 VEERG_4_3_1_3__4_NitrogenExcretedByDairyCattleGreaterThanOneYear_LatexEquation
-  =LAMBDA("NE_j=(CPI_j/6.25)-NR_j-((1.1\times 10^{-4}\times W_j^{0.75})/6.25)");
+  =LAMBDA("NE_j=(\frac{CPI_j}{6.25})-NR_j-\left[\frac{1.1\times10^{-4} \times W_j^{0.75}}{6.25}\right]");
 
 VEERG_4_3_1_3__4_NitrogenExcretedByDairyCattleGreaterThanOneYear_Arguments
   =LAMBDA(
@@ -336,7 +363,7 @@ VEERG_4_3_1_3__6_NitrogenRetainedByBody_NIRReference
   =LAMBDA("");
 
 VEERG_4_3_1_3__6_NitrogenRetainedByBody_LatexEquation
-  =LAMBDA("NR_j=(((0.032\times MP_j\times 1.03)/6.38)+((0.212-0.008\times (L_j-2)-((0.140-0.008\times (L_j-2))/(1+e^{-6\times (Z_j-0.4)})))\times (LWG_j\times 0.92)))\times (1/6.25)");
+  =LAMBDA("NR_j=\left(\frac{0.032 \times MP_j \times 1.03}{6.38}\right) + \left\{\left(0.212-0.008 \times (L_j - 2) - \left[\frac{0.140-0.008\times(L_j-2)}{1+e^{-6\times(Z_j-0.4)}}\right]\right) \times (LWG_j \times 0.92)\right\} \times \frac{1}{6.25}");
 
 VEERG_4_3_1_3__6_NitrogenRetainedByBody_Arguments
   =LAMBDA(
@@ -388,7 +415,7 @@ VEERG_4_3_1_3__7_IntakeRelativeToMaintenance_NIRReference
   =LAMBDA("");
 
 VEERG_4_3_1_3__7_IntakeRelativeToMaintenance_LatexEquation
-  =LAMBDA("L_j=I_j/((1.185+0.00454\times W_j-0.0000026\times W_j^2)^2\times MR_j+MI_j)");
+  =LAMBDA("L_j=\frac{I_j}{(1.185+0.00454\times W_j-0.0000026\times W_j^2)^2\times MR_j+MI_j}");
 
 VEERG_4_3_1_3__7_IntakeRelativeToMaintenance_Arguments
   =LAMBDA(
@@ -438,7 +465,7 @@ VEERG_4_3_1_3__8_RelativeSize_NIRReference
   =LAMBDA("");
 
 VEERG_4_3_1_3__8_RelativeSize_LatexEquation
-  =LAMBDA("Z_j=W_j/WR_j");
+  =LAMBDA("Z_j=\frac{W_j}{WR_j}");
 
 VEERG_4_3_1_3__8_RelativeSize_Arguments
   =LAMBDA(

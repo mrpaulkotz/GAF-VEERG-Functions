@@ -29,6 +29,13 @@ VEERG_4_3_1_1__1_TotalAnnualMethaneFromManureManagement
     ((N_j124 * M_j124m * D_j124) + (N_j35 * M_j35m * D_j35) + (N_j35 * MPW_manure_j35 * D_j35)) * 10 ^ -3
   );
 
+VEERG_4_3_1_1__1_TotalAnnualMethaneFromManureManagementVariation
+  =LAMBDA(
+    N_j124, M_j124m, D_j124, N_j35, M_j35m, D_j35, MPW_manure_j35, DPW_j35,
+    ((N_j124 * M_j124m * D_j124) + (N_j35 * M_j35m * D_j35) + (N_j35 * MPW_manure_j35 * DPW_j35)) * 10 ^ -3
+  );
+
+
 VEERG_4_3_1_1__1_TotalAnnualMethaneFromManureManagement_Title
   =LAMBDA("Total annual methane production from manure management");
 
@@ -45,11 +52,14 @@ VEERG_4_3_1_1__1_TotalAnnualMethaneFromManureManagement_NIRReference
   =LAMBDA("");
 
 VEERG_4_3_1_1__1_TotalAnnualMethaneFromManureManagement_LatexEquation
-  =LAMBDA("E_{CH4}=((N_{j=1,2,4}\times M_{j=1,2,4,m}\times D_{j=1,2,4})+(N_{j=3,5}\times M_{j=3,5,m}\times D_{j=3,5})+(N_{j=3,5}\times MPW_{manure,j=3,5}\times D_{j=3,5}))\times 10^{-3}");
+  =LAMBDA("E_{CH4}=\sum\nolimits_{j}\sum\nolimits_{m}((N_{j=1,2,4}\times M_{j=1,2,4,m}\times D_{j=1,2,4})+(N_{j=3,5}\times M_{j=3,5,m}\times D_{j=3,5})+(N_{j=3,5}\times MPW_{manure,j=3,5}\times D_{j=3,5}))\times 10^{-3}");
+
+VEERG_4_3_1_1__1_TotalAnnualMethaneFromManureManagement_LatexEquationVariation
+  =LAMBDA("E_{CH4}=\sum\nolimits_{j}\sum\nolimits_{m}((N_{j=1,2,4}\times M_{j=1,2,4,m}\times D_{j=1,2,4})+(N_{j=3,5}\times M_{j=3,5,m}\times D_{j=3,5})+(N_{j=3,5}\times MPW_{manure,j=3,5}\times DPW_{j=3,5}))\times 10^{-3}");
 
 VEERG_4_3_1_1__1_TotalAnnualMethaneFromManureManagement_Arguments
   =LAMBDA(
-    MAKEARRAY(7, 2,
+    MAKEARRAY(8, 2,
       LAMBDA(r,c,
         INDEX({
           "N_j124", "number of dairy cattle in classes j=1,2,4";
@@ -58,11 +68,15 @@ VEERG_4_3_1_1__1_TotalAnnualMethaneFromManureManagement_Arguments
           "N_j35", "number of dairy cattle in classes j=3,5";
           "M_j35m", "methane production from manure of weaned dairy cattle in classes j=3,5 in MMS m (kg CH4/head/day)";
           "D_j35", "duration of stay on farm for classes j=3,5 (days)";
-          "MPW_manure_j35", "methane production from manure of pre-weaned heifer and bull calves (kg CH4/head/day)"
+          "MPW_manure_j35", "methane production from manure of pre-weaned heifer and bull calves (kg CH4/head/day)";
+          "DPW_j35", "duration of stay on farm for pre-weaned heifer and bull calves (days)"
         }, r, c)
       )
     )
   );
+
+VEERG_4_3_1_1__1_TotalAnnualMethaneFromManureManagement_Variation
+  =LAMBDA("VARIATION: Used separate variable for duration of stay on farm for pre-weaned heifer and bull calves.");
 
 /*
 --------------------------------------
@@ -105,14 +119,15 @@ VEERG_4_3_1_1__2_MethaneFromManureProduction_LatexEquation
 
 VEERG_4_3_1_1__2_MethaneFromManureProduction_Arguments
   =LAMBDA(
-    MAKEARRAY(5, 2,
+    MAKEARRAY(6, 2,
       LAMBDA(r,c,
         INDEX({
           "VS_j", "daily volatile solids production per head for dairy cattle (kg/head/day)";
           "FVS_jmT1", "fraction of waste from each class in each management system";
           "MCF_im", "methane conversion factor for temperature zone and MMS";
           "B_o", "emissions potential (m3 CH4/kgVS)";
-          "rho", "density of methane (kg/m3)"
+          "rho", "density of methane (kg/m3)";
+          "i", "state"
         }, r, c)
       )
     )
@@ -235,6 +250,13 @@ VEERG_4_3_1_1__5_FractionVolatileSolidsSolidStorage
     MMS_jm4 + (MMS_jm179 * SS_m)
   );
 
+VEERG_4_3_1_1__5_FractionVolatileSolidsSolidStorageVariation
+  =LAMBDA(
+    MMS_jm4, MMS_jm1, MMS_jm7, MMS_jm9, SS_m1, SS_m7, SS_m9,
+    MMS_jm4 + (MMS_jm1 * SS_m1) + (MMS_jm7 * SS_m7) + (MMS_jm9 * SS_m9)
+  );
+
+
 VEERG_4_3_1_1__5_FractionVolatileSolidsSolidStorage_Title
   =LAMBDA("Fraction of volatile solids in solid storage");
 
@@ -253,6 +275,9 @@ VEERG_4_3_1_1__5_FractionVolatileSolidsSolidStorage_NIRReference
 VEERG_4_3_1_1__5_FractionVolatileSolidsSolidStorage_LatexEquation
   =LAMBDA("FVS_{jm=4}=MMS_{jm=4}+(MMS_{jm=1,7,9}\times SS_m)");
 
+VEERG_4_3_1_1__5_FractionVolatileSolidsSolidStorage_LatexEquationVariation
+  =LAMBDA("FVS_{jm=4}=MMS_{jm=4}+(MMS_{jm=1}\times SS_{m=1})+(MMS_{jm=7}\times SS_{m=7})+(MMS_{jm=9}\times SS_{m=9})");
+
 VEERG_4_3_1_1__5_FractionVolatileSolidsSolidStorage_Arguments
   =LAMBDA(
     MAKEARRAY(3, 2,
@@ -265,3 +290,7 @@ VEERG_4_3_1_1__5_FractionVolatileSolidsSolidStorage_Arguments
       )
     )
   );
+
+VEERG_4_3_1_1__5_FractionVolatileSolidsSolidStorage_Variation
+  =LAMBDA("Used separate variables for MMS and SS m 1, 7 and 9.");
+

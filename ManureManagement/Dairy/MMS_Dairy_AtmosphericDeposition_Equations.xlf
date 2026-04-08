@@ -45,12 +45,15 @@ VEERG_4_3_1_5__1_AnnualAtmosphericDepositionEmissionsFromMMS_LatexEquation
 
 VEERG_4_3_1_5__1_AnnualAtmosphericDepositionEmissionsFromMMS_Arguments
   =LAMBDA(
-    MAKEARRAY(3, 2,
+    MAKEARRAY(6, 2,
       LAMBDA(r,c,
         INDEX({
           "MN_ATMOS", "mass of N volatilised from MMS (kg N)";
           "EF_N2O", "nitrous oxide emission factor for atmospheric deposition (kg N2O-N/kg N)";
-          "C_N2O", "factor to convert elemental mass of N2O to molecular mass"
+          "C_N2O", "factor to convert elemental mass of N2O to molecular mass";
+          "j", "production system";
+          "ir", "irrigation method";
+          "r", "rainfall region"
         }, r, c)
       )
     )
@@ -90,7 +93,7 @@ VEERG_4_3_1_5__2_TotalNitrogenVolatilisedFromMMS_NIRReference
   =LAMBDA("");
 
 VEERG_4_3_1_5__2_TotalNitrogenVolatilisedFromMMS_LatexEquation
-  =LAMBDA("MN_{ATMOS}=MN_{jm}\times FracGASM_m");
+  =LAMBDA("MN_{ATMOS}=\sum\nolimits_{j}\sum\nolimits_{m}(MN_{jm}\times FracGASM_m)");
 
 VEERG_4_3_1_5__2_TotalNitrogenVolatilisedFromMMS_Arguments
   =LAMBDA(

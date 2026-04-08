@@ -443,3 +443,262 @@ SourceData_Dairy_DurationOfStay_Data
       )
     )
   );
+
+
+/* 
+--------------------------------------
+SourceData_Dairy_CrudeProtein
+Crude protein content of feed intake
+--------------------------------------
+*/
+
+SourceData_Dairy_CrudeProtein_Title
+  =LAMBDA("Crude protein content of feed intake");
+
+SourceData_Dairy_CrudeProtein_Variable
+  =LAMBDA("CP");
+
+SourceData_Dairy_CrudeProtein_Unit
+  =LAMBDA("fraction");
+
+SourceData_Dairy_CrudeProtein_Source
+  =LAMBDA("VEERG 2026: 4.3.2.2	DATA (METHOD 1 AND 2 OPTIONS)");
+
+SourceData_Dairy_CrudeProtein_Variation
+  =LAMBDA("");
+
+SourceData_Dairy_CrudeProtein_Data
+  =LAMBDA(0.20);
+
+
+/* 
+--------------------------------------
+SourceData_Dairy_DryMatterDigestibility
+Dry matter digestibility
+--------------------------------------
+*/
+
+SourceData_Dairy_DryMatterDigestibility_Title
+  =LAMBDA("Dry matter digestibility");
+
+SourceData_Dairy_DryMatterDigestibility_Variable
+  =LAMBDA("DMD");
+
+SourceData_Dairy_DryMatterDigestibility_Unit
+  =LAMBDA("fraction");
+
+SourceData_Dairy_DryMatterDigestibility_Source
+  =LAMBDA("VEERG 2026: 3.3.2.2	DATA (METHOD 1 AND 2 OPTIONS)");
+
+SourceData_Dairy_DryMatterDigestibility_Variation
+  =LAMBDA("");
+
+SourceData_Dairy_DryMatterDigestibility_Data
+  =LAMBDA(0.75);
+
+
+/* 
+--------------------------------------
+SourceData_Dairy_NetEnergy
+Net energy required for milk production
+--------------------------------------
+*/
+
+SourceData_Dairy_NetEnergy_Title
+  =LAMBDA("Net energy required for milk production");
+
+SourceData_Dairy_NetEnergy_Variable
+  =LAMBDA("NE");
+
+SourceData_Dairy_NetEnergy_Unit
+  =LAMBDA("MJ net energy / kg milk");
+
+SourceData_Dairy_NetEnergy_Source
+  =LAMBDA("VEERG 2026: 3.3.2.3 CONSTANTS");
+
+SourceData_Dairy_NetEnergy_Variation
+  =LAMBDA("");
+
+SourceData_Dairy_NetEnergy_Data
+  =LAMBDA(3.054);
+
+
+/* 
+--------------------------------------
+SourceData_Dairy_GrossEnergyContent
+Gross energy content of feed dry matter
+--------------------------------------
+*/
+
+SourceData_Dairy_GrossEnergyContent_Title
+  =LAMBDA("Gross energy content of feed dry matter");
+
+SourceData_Dairy_GrossEnergyContent_Variable
+  =LAMBDA("GEC");
+
+SourceData_Dairy_GrossEnergyContent_Unit
+  =LAMBDA("MJ / kgDM");
+
+SourceData_Dairy_GrossEnergyContent_Source
+  =LAMBDA("VEERG 2026: 3.3.2.3 CONSTANTS");
+
+SourceData_Dairy_GrossEnergyContent_Variation
+  =LAMBDA("");
+
+SourceData_Dairy_GrossEnergyContent_Data
+  =LAMBDA(18.4);
+
+
+/* 
+--------------------------------------
+SourceData_Dairy_EfficiencyOfUseOfMetabolizableEnergy
+Efficiency of use of metabolizable energy for milk production
+--------------------------------------
+*/
+
+SourceData_Dairy_EfficiencyOfUseOfMetabolizableEnergy_Title
+  =LAMBDA("Efficiency of use of metabolizable energy for milk production");
+
+SourceData_Dairy_EfficiencyOfUseOfMetabolizableEnergy_Variable
+  =LAMBDA("k");
+
+SourceData_Dairy_EfficiencyOfUseOfMetabolizableEnergy_Unit
+  =LAMBDA("fraction");
+
+SourceData_Dairy_EfficiencyOfUseOfMetabolizableEnergy_Source
+  =LAMBDA("VEERG 2026: 3.3.2.3 CONSTANTS");
+
+SourceData_Dairy_EfficiencyOfUseOfMetabolizableEnergy_Variation
+  =LAMBDA("");
+
+SourceData_Dairy_EfficiencyOfUseOfMetabolizableEnergy_Data
+  =LAMBDA(0.60);
+
+
+/* 
+--------------------------------------
+SourceData_Dairy_AshContent
+Ash content of manure
+--------------------------------------
+*/
+
+SourceData_Dairy_AshContent_Title
+  =LAMBDA("Ash content of manure");
+
+SourceData_Dairy_AshContent_Variable
+  =LAMBDA("A");
+
+SourceData_Dairy_AshContent_Unit
+  =LAMBDA("fraction");
+
+SourceData_Dairy_AshContent_Source
+  =LAMBDA("VEERG 2026: 4.3.2.3 CONSTANTS");
+
+SourceData_Dairy_AshContent_Variation
+  =LAMBDA("");
+
+SourceData_Dairy_AshContent_Data
+  =LAMBDA(0.08);
+
+
+/* 
+--------------------------------------
+SourceData_Dairy_MethaneEmissionsPotential
+Ash content of manure
+--------------------------------------
+*/
+
+SourceData_Dairy_MethaneEmissionsPotential_Title
+  =LAMBDA("Methane emissions potential");
+
+SourceData_Dairy_MethaneEmissionsPotential_Variable
+  =LAMBDA("B_o");
+
+SourceData_Dairy_MethaneEmissionsPotential_Unit
+  =LAMBDA("m3 CH4/kgVS");
+
+SourceData_Dairy_MethaneEmissionsPotential_Source
+  =LAMBDA("VEERG 2026: 4.3.2.3 CONSTANTS");
+
+SourceData_Dairy_MethaneEmissionsPotential_Variation
+  =LAMBDA("");
+
+SourceData_Dairy_MethaneEmissionsPotential_Data
+  =LAMBDA(0.24);
+
+/* 
+--------------------------------------
+SourceData_Dairy_EmissionFactorForLeachingAndRunoff
+Emission factor for leaching and runoff
+--------------------------------------
+*/
+
+SourceData_Dairy_EmissionFactorForLeachingAndRunoff_Title
+  =LAMBDA("Emission factor for leaching and runoff");
+
+SourceData_Dairy_EmissionFactorForLeachingAndRunoff_Variable
+  =LAMBDA("EF_leach");
+
+SourceData_Dairy_EmissionFactorForLeachingAndRunoff_Unit
+  =LAMBDA("kg N2O-N/kg N");
+
+SourceData_Dairy_EmissionFactorForLeachingAndRunoff_Source
+  =LAMBDA("VEERG 2026: 4.3.2.3 CONSTANTS");
+
+SourceData_Dairy_EmissionFactorForLeachingAndRunoff_Variation
+  =LAMBDA("");
+
+SourceData_Dairy_EmissionFactorForLeachingAndRunoff_Data
+  =LAMBDA(0.011);
+
+
+/* 
+--------------------------------------
+SourceData_Dairy_FractionOfNitrogenLostThroughLeachingAndRunoff
+Fraction of N that is lost through leaching and runoff (dimensionless)
+--------------------------------------
+*/
+
+SourceData_Dairy_FractionOfNitrogenLostThroughLeachingAndRunoff_Title
+  =LAMBDA("Fraction of N that is lost through leaching and runoff");
+
+SourceData_Dairy_FractionOfNitrogenLostThroughLeachingAndRunoff_Variable
+  =LAMBDA("Frac_LEACH_MS");
+
+SourceData_Dairy_FractionOfNitrogenLostThroughLeachingAndRunoff_Unit
+  =LAMBDA("Dimensionless");
+
+SourceData_Dairy_FractionOfNitrogenLostThroughLeachingAndRunoff_Source
+  =LAMBDA("VEERG 2026: 4.3.2.3 CONSTANTS");
+
+SourceData_Dairy_FractionOfNitrogenLostThroughLeachingAndRunoff_Variation
+  =LAMBDA("");
+
+SourceData_Dairy_FractionOfNitrogenLostThroughLeachingAndRunoff_Data
+  =LAMBDA(0.02);
+
+
+/* 
+--------------------------------------
+SourceData_Dairy_FracGASMSoil
+Fraction of nitrogen volatilized from urine and faeces deposited on pasture.
+--------------------------------------
+*/
+
+SourceData_Dairy_FracGASMSoil_Title
+  =LAMBDA("Fraction of nitrogen volatilized from urine and faeces deposited on pasture");
+
+SourceData_Dairy_FracGASMSoil_Variable
+  =LAMBDA("FracGASMsoil");
+
+SourceData_Dairy_FracGASMSoil_Unit
+  =LAMBDA("(kg NH3-N + NOx-N)/kg N");
+
+SourceData_Dairy_FracGASMSoil_Source
+  =LAMBDA("VEERG 2026: 4.3.2.3 CONSTANTS");
+
+SourceData_Dairy_FracGASMSoil_Variation
+  =LAMBDA("");
+
+SourceData_Dairy_FracGASMSoil_Data
+  =LAMBDA(0.21);

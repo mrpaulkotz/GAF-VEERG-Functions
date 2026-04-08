@@ -91,16 +91,19 @@ VEERG_4_3_1_12__2_MassOfNitrogenLostToLeachingAndRunoffOnPasture_NIRReference
   =LAMBDA("");
 
 VEERG_4_3_1_12__2_MassOfNitrogenLostToLeachingAndRunoffOnPasture_LatexEquation
-  =LAMBDA("M_{leach,m=14}=MN_{jm=14}\times FracWet\times FracLEACH");
+  =LAMBDA("M_{leach,m=14}=\sum\nolimits_{j}(MN_{jm=14}\times FracWet\times FracLEACH)");
 
 VEERG_4_3_1_12__2_MassOfNitrogenLostToLeachingAndRunoffOnPasture_Arguments
   =LAMBDA(
-    MAKEARRAY(3, 2,
+    MAKEARRAY(6, 2,
       LAMBDA(r,c,
         INDEX({
           "MN_jm14", "mass of nitrogen excreted on pasture, range and paddock for each dairy class (kg N)";
           "FracWet", "fraction of N available for leaching and runoff";
-          "FracLEACH", "fraction of N lost through leaching and runoff"
+          "FracLEACH", "fraction of N lost through leaching and runoff";
+          "z", "location in leaching zone";
+          "j", "production system";
+          "ir", "irrigation method"
         }, r, c)
       )
     )

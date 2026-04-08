@@ -1,0 +1,19 @@
+CalculateFractionInMMSAfterSolidSeparation
+=LAMBDA(
+    ProductionSystem, MMSFraction, FractionSeparated,
+    ProductionSystem * (MMSFraction-(MMSFraction*FractionSeparated))
+);
+
+CalculateFractionInSolidStorage
+=LAMBDA(
+    ProductionSystem, InitalSolidStorageFraction,
+    MMS1Fraction, MMS1Separated, 
+    MMS2Fraction, MMS2Separated, 
+    MMS3Fraction, MMS3Separated,
+    ProductionSystem * (
+        InitalSolidStorageFraction +
+        (MMS1Fraction * MMS1Separated) +
+        (MMS2Fraction * MMS2Separated) +
+        (MMS3Fraction * MMS3Separated)
+    )
+);

@@ -45,12 +45,15 @@ VEERG_4_3_1_10__1_AtmosphericDepositionEmissionsFromUrineAndDungOnPasture_LatexE
 
 VEERG_4_3_1_10__1_AtmosphericDepositionEmissionsFromUrineAndDungOnPasture_Arguments
   =LAMBDA(
-    MAKEARRAY(3, 2,
+    MAKEARRAY(6, 2,
       LAMBDA(r,c,
         INDEX({
           "M_vol_m14", "mass of nitrogen volatilised from urine and faeces deposited on pasture (kg N)";
           "EF_N2O", "nitrous oxide emission factor for atmospheric deposition (kg N2O-N/kg N)";
-          "C_N2O", "factor to convert elemental mass of N2O to molecular mass"
+          "C_N2O", "factor to convert elemental mass of N2O to molecular mass";
+          "j", "production system";
+          "ir", "irrigation method";
+          "r", "rainfall region"
         }, r, c)
       )
     )
@@ -90,7 +93,7 @@ VEERG_4_3_1_10__2_MassOfNitrogenVolatilisedOnPasture_NIRReference
   =LAMBDA("");
 
 VEERG_4_3_1_10__2_MassOfNitrogenVolatilisedOnPasture_LatexEquation
-  =LAMBDA("M_{vol,m=14}=MN_{jm=14}\times FracGASMsoil");
+  =LAMBDA("M_{vol,m=14}=\sum\nolimits_{j}(MN_{jm=14}\times FracGASMsoil)");
 
 VEERG_4_3_1_10__2_MassOfNitrogenVolatilisedOnPasture_Arguments
   =LAMBDA(

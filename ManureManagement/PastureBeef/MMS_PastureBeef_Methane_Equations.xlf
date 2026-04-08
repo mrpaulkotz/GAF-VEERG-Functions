@@ -1,0 +1,161 @@
+/*
+============================================================================
+4.2: Pasture Beef
+============================================================================
+4.2.1.1 Method 1 - Manure Methane Beef Grazing
+============================================================================
+*/
+
+/*
+--------------------------------------
+VEERG_4_2_1_1__1_TotalAnnualMethaneProductionFromManureManagement
+Total annual methane production from manure management for grazing beef cattle
+E_CH4
+t CH4
+E_{CH4}=\sum_{j}\sum_{k}\sum_{l}\sum_{m}(N_{jkl}\times M_{jklm}\times D_j)\times 10^{-3}
+N_jkl = number of beef cattle in each time-period, class and subclass (head)
+M_jklm = methane production from manure in each time-period, class, subclass and MMS (kg/head/day)
+D_j = number of days in each time-period for each input class (days)
+--------------------------------------
+*/
+
+VEERG_4_2_1_1__1_TotalAnnualMethaneProductionFromManureManagement
+  =LAMBDA(
+    N_jkl, M_jklm, D_j,
+    (N_jkl * M_jklm * D_j) * 10 ^ -3
+  );
+
+VEERG_4_2_1_1__1_TotalAnnualMethaneProductionFromManureManagement_Title
+  =LAMBDA("Total annual methane production from manure management for grazing beef cattle");
+
+VEERG_4_2_1_1__1_TotalAnnualMethaneProductionFromManureManagement_Variable
+  =LAMBDA("E_CH4");
+
+VEERG_4_2_1_1__1_TotalAnnualMethaneProductionFromManureManagement_Unit
+  =LAMBDA("t CH4");
+
+VEERG_4_2_1_1__1_TotalAnnualMethaneProductionFromManureManagement_Source
+  =LAMBDA("VEERG 2026: 4.2.1.1, Equation (1)");
+
+VEERG_4_2_1_1__1_TotalAnnualMethaneProductionFromManureManagement_NIRReference
+  =LAMBDA("");
+
+VEERG_4_2_1_1__1_TotalAnnualMethaneProductionFromManureManagement_LatexEquation
+  =LAMBDA("E_{CH4}=\sum_{j}\sum_{k}\sum_{l}\sum_{m}(N_{jkl}\times M_{jklm}\times D_j)\times 10^{-3}");
+
+VEERG_4_2_1_1__1_TotalAnnualMethaneProductionFromManureManagement_Arguments
+  =LAMBDA(
+    MAKEARRAY(3, 2,
+      LAMBDA(r,c,
+        INDEX({
+          "N_jkl", "number of beef cattle in each time-period, class and subclass (head)";
+          "M_jklm", "methane production from manure in each time-period, class, subclass and MMS (kg/head/day)";
+          "D_j", "number of days in each time-period for each input class (days)"
+        }, r, c)
+      )
+    )
+  );
+
+/*
+--------------------------------------
+VEERG_4_2_1_1__2_MethaneProductionFromManure
+Methane production from the manure of grazing beef cattle
+M_jklm
+kg CH4/head/day
+M_{jklm}=VS_{jkl}\times B_o\times MMS_m\times MCF_{im}\times \rho
+VS_jkl = volatile solid production (kg/day)
+B_o = emissions potential (m3 CH4/kg VS)
+MMS_m = fraction of waste in each manure management system
+MCF_im = methane conversion factor for temperature zone and MMS
+rho = density of methane (kg/m3)
+--------------------------------------
+*/
+
+VEERG_4_2_1_1__2_MethaneProductionFromManure
+  =LAMBDA(
+    VS_jkl, B_o, MMS_m, MCF_im, rho,
+    VS_jkl * B_o * MMS_m * MCF_im * rho
+  );
+
+VEERG_4_2_1_1__2_MethaneProductionFromManure_Title
+  =LAMBDA("Methane production from the manure of grazing beef cattle");
+
+VEERG_4_2_1_1__2_MethaneProductionFromManure_Variable
+  =LAMBDA("M_jklm");
+
+VEERG_4_2_1_1__2_MethaneProductionFromManure_Unit
+  =LAMBDA("kg CH4/head/day");
+
+VEERG_4_2_1_1__2_MethaneProductionFromManure_Source
+  =LAMBDA("VEERG 2026: 4.2.1.1, Equation (2)");
+
+VEERG_4_2_1_1__2_MethaneProductionFromManure_NIRReference
+  =LAMBDA("");
+
+VEERG_4_2_1_1__2_MethaneProductionFromManure_LatexEquation
+  =LAMBDA("M_{jklm}=VS_{jkl}\times B_o\times MMS_m\times MCF_{im}\times \rho");
+
+VEERG_4_2_1_1__2_MethaneProductionFromManure_Arguments
+  =LAMBDA(
+    MAKEARRAY(5, 2,
+      LAMBDA(r,c,
+        INDEX({
+          "VS_jkl", "volatile solid production (kg/day)";
+          "B_o", "emissions potential (m3 CH4/kg VS)";
+          "MMS_m", "fraction of waste in each manure management system";
+          "MCF_im", "methane conversion factor for temperature zone and MMS";
+          "rho", "density of methane (kg/m3)"
+        }, r, c)
+      )
+    )
+  );
+
+/*
+--------------------------------------
+VEERG_4_2_1_1__3_VolatileSolidProductionFromGrazingBeef
+Volatile solid production from grazing beef
+VS_jkl
+kg/head/day
+VS_{jkl}=(I_{jkl}\times (1-DMD_{jkl})+(0.04\times I_{jkl}))\times (1-A)
+I_jkl = dry matter intake as calculated in Chapter 3 Section 3.2.1 (kg/head/day)
+DMD_jkl = dry matter digestibility expressed as a fraction
+A = ash content of feed intake expressed as a fraction
+--------------------------------------
+*/
+
+VEERG_4_2_1_1__3_VolatileSolidProductionFromGrazingBeef
+  =LAMBDA(
+    I_jkl, DMD_jkl, A,
+    (I_jkl * (1 - DMD_jkl) + (0.04 * I_jkl)) * (1 - A)
+  );
+
+VEERG_4_2_1_1__3_VolatileSolidProductionFromGrazingBeef_Title
+  =LAMBDA("Volatile solid production from grazing beef");
+
+VEERG_4_2_1_1__3_VolatileSolidProductionFromGrazingBeef_Variable
+  =LAMBDA("VS_jkl");
+
+VEERG_4_2_1_1__3_VolatileSolidProductionFromGrazingBeef_Unit
+  =LAMBDA("kg/head/day");
+
+VEERG_4_2_1_1__3_VolatileSolidProductionFromGrazingBeef_Source
+  =LAMBDA("VEERG 2026: 4.2.1.1, Equation (3)");
+
+VEERG_4_2_1_1__3_VolatileSolidProductionFromGrazingBeef_NIRReference
+  =LAMBDA("");
+
+VEERG_4_2_1_1__3_VolatileSolidProductionFromGrazingBeef_LatexEquation
+  =LAMBDA("VS_{jkl}=(I_{jkl}\times (1-DMD_{jkl})+(0.04\times I_{jkl}))\times (1-A)");
+
+VEERG_4_2_1_1__3_VolatileSolidProductionFromGrazingBeef_Arguments
+  =LAMBDA(
+    MAKEARRAY(3, 2,
+      LAMBDA(r,c,
+        INDEX({
+          "I_jkl", "dry matter intake as calculated in Chapter 3 Section 3.2.1 (kg/head/day)";
+          "DMD_jkl", "dry matter digestibility expressed as a fraction";
+          "A", "ash content of feed intake expressed as a fraction"
+        }, r, c)
+      )
+    )
+  );

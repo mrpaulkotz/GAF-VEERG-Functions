@@ -43,7 +43,7 @@ VEERG_4_3_1_8__1_MassOfNitrogenAppliedToSoilsScope1_NIRReference
   =LAMBDA("");
 
 VEERG_4_3_1_8__1_MassOfNitrogenAppliedToSoilsScope1_LatexEquation
-  =LAMBDA("MNSoil_{scope1}=(MN_{jm}\times (1-EF_m-FracGASM_m)-MNLeach_{jm})\times PF_{scope}");
+  =LAMBDA("MNSoil_{scope1}=\sum\nolimits_{j}\sum\nolimits_{m}(MN_{jm=1-13}\times (1-EF_{m=1-13}-FracGASM_{m=1-13})-MNLeach_{jm})\times PF");
 
 VEERG_4_3_1_8__1_MassOfNitrogenAppliedToSoilsScope1_Arguments
   =LAMBDA(
@@ -97,7 +97,7 @@ VEERG_4_3_1_8__2_MassOfNitrogenAppliedToSoilsScope3_NIRReference
   =LAMBDA("");
 
 VEERG_4_3_1_8__2_MassOfNitrogenAppliedToSoilsScope3_LatexEquation
-  =LAMBDA("MNSoil_{scope3}=(MN_{jm}\times (1-EF_m-FracGASM_m)-MNLeach_{jm})\times (1-PF)");
+  =LAMBDA("MNSoil_{scope3}=\sum\nolimits_{j}\sum\nolimits_{m}(MN_{jm=1-13}\times (1-EF_{m=1-13}-FracGASM_{m=1-13})-MNLeach_{jm})\times (1-PF)");
 
 VEERG_4_3_1_8__2_MassOfNitrogenAppliedToSoilsScope3_Arguments
   =LAMBDA(

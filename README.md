@@ -6,7 +6,8 @@ Rules:
 1. Use spaces instead of tab characters for indenting. Tab characters are not valid in .xlf Excel formula syntax.
 2. Do not escape backslashes in LatexEquation strings. For example, the string "\times" should remain as "\times" and not "\\times".
 3. Formula variables in the source text may include subscripts eg: MN_{jm=5,T=1} . When generating variables, use the following format example: MN_jm5T1 instead of MNjm5T1.
-4. Do no t use SUMPRODUCT Excel formulas. For example, "SUMPRODUCT(MN_jmT23, 1 - EF_mT23 - FracGASM_mT23) * PF" should be "(MN_jmT23 * (1 - EF_mT23 - FracGASM_mT23)) * PF"
+4. Do not use SUMPRODUCT Excel formulas. For example, "SUMPRODUCT(MN_jmT23, 1 - EF_mT23 - FracGASM_mT23) * PF" should be "(MN_jmT23 * (1 - EF_mT23 - FracGASM_mT23)) * PF"
+5. Sum symbols can be used in latex equations.
 
 Function naming convention:
 
