@@ -97,14 +97,16 @@ VEERG_4_2_1_1__2_MethaneProductionFromManure_LatexEquation
 
 VEERG_4_2_1_1__2_MethaneProductionFromManure_Arguments
   =LAMBDA(
-    MAKEARRAY(5, 2,
+    MAKEARRAY(7, 2,
       LAMBDA(r,c,
         INDEX({
           "VS_jkl", "volatile solid production (kg/day)";
           "B_o", "emissions potential (m3 CH4/kg VS)";
           "MMS_m", "fraction of waste in each manure management system";
           "MCF_im", "methane conversion factor for temperature zone and MMS";
-          "rho", "density of methane (kg/m3)"
+          "rho", "density of methane (kg/m3)";
+          "i", "state";
+          "i", "region"
         }, r, c)
       )
     )

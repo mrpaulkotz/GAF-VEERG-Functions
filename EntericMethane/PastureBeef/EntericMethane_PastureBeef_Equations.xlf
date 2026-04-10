@@ -122,7 +122,7 @@ VEERG_3_2_1_1__3_FeedIntakeForGrazingBeef
   );
 
 VEERG_3_2_1_1__3_FeedIntakeForGrazingBeef_Title
-  =LAMBDA("Feed intake for grazing beef cattle)");
+  =LAMBDA("Feed intake for grazing beef cattle");
 
 VEERG_3_2_1_1__3_FeedIntakeForGrazingBeef_Variable
   =LAMBDA("I_jkl");
@@ -170,6 +170,13 @@ VEERG_3_2_1_1__4_AdditionalIntakeForMilkProduction
     (LC_jk45 * FA_jk45) + (1 - LC_jk45)
   );
 
+
+VEERG_3_2_1_1__4_AdditionalIntakeForMilkProductionVariation
+  =LAMBDA(
+    LC_jk45curr, LC_jk45prev, FA_jk45calv, FA_jk45after,
+    ((LC_jk45curr * FA_jk45calv) + (LC_jk45prev * FA_jk45after)) + (1 - (LC_jk45curr + LC_jk45prev))
+  );
+
 VEERG_3_2_1_1__4_AdditionalIntakeForMilkProduction_Title
   =LAMBDA("Additional intake for milk production in the season of calving and the season after calving");
 
@@ -188,14 +195,36 @@ VEERG_3_2_1_1__4_AdditionalIntakeForMilkProduction_NIRReference
 VEERG_3_2_1_1__4_AdditionalIntakeForMilkProduction_LatexEquation
   =LAMBDA("MA_{jk=4,5}=(LC_{jk=4,5}\times FA_{jk=4,5})+(1-LC_{jk=4,5})");
 
+VEERG_3_2_1_1__4_AdditionalIntakeForMilkProduction_LatexEquationVariation
+  =LAMBDA("MA_{jk=4,5}=((LC_{jk=4,5,curr}\times FA_{jk=4,5,calv})+(LC_{jk=4,5,prev}\times FA_{jk=4,5,after}))+(1-(LC_{jk=4,5,curr}+LC_{jk=4,5,prev}))");
+
 VEERG_3_2_1_1__4_AdditionalIntakeForMilkProduction_Arguments
   =LAMBDA(
-    MAKEARRAY(2, 2,
+    MAKEARRAY(3, 2,
       LAMBDA(r,c,
         INDEX({
           "LC_jk45", "proportion of cows greater than 1 year in calf in the season of calving expressed as a fraction";
-          "FA_jk45", "feed adjustment value for lactating cows in the season of calving and the season immediately after calving expressed as a fraction"
+          "FA_jk45", "feed adjustment value for lactating cows in the season of calving and the season immediately after calving expressed as a fraction";
+          "b", "breed of cattle"
         }, r, c)
       )
     )
   );
+
+VEERG_3_2_1_1__4_AdditionalIntakeForMilkProduction_ArgumentsVariation
+  =LAMBDA(
+    MAKEARRAY(5, 2,
+      LAMBDA(r,c,
+        INDEX({
+          "LC_jk45curr", "proportion of cows greater than 1 year in calf in the season of calving expressed as a fraction";
+          "LC_jk45prev", "proportion of cows greater than 1 year in calf in the previous season of calving expressed as a fraction";
+          "FA_jk45calv", "feed adjustment value for lactating cows in the season of calving expressed as a fraction";
+          "FA_jk45after", "feed adjustment value for lactating cows in the season immediately after calving expressed as a fraction";
+          "b", "breed of cattle"
+        }, r, c)
+      )
+    )
+  );
+
+VEERG_3_2_1_1__4_AdditionalIntakeForMilkProduction_Variation
+=LAMBDA("VARIATION ON SOURCE: Expanded equation to account for season after calving, rather than doing the same equation twice for both seasons")

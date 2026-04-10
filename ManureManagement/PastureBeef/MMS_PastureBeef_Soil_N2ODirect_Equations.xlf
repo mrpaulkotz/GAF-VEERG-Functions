@@ -1,0 +1,387 @@
+/*
+============================================================================
+4.2: Pasture Beef
+============================================================================
+4.2.1.3 Method 1 - Soil Direct N2O Beef Grazing
+============================================================================
+*/
+
+/*
+--------------------------------------
+VEERG_4_2_1_3__1_DirectNitrousOxideEmissionsOnPasture
+Total annual direct nitrous oxide emissions from agricultural soils from deposition of urine and dung
+E_N2Odir
+t N2O
+E_{N2O,dir}=AE\times EF_{PRP}\times C_{N2O}\times 10^{-3}
+AE = total mass of nitrogen excreted on PRP for beef cattle (kg N)
+EF_PRP = emission factor for nitrous oxide from urine and dung deposited to soil (kg N2O-N/kg N deposited)
+C_N2O = factor to convert elemental mass of nitrous oxide to molecular mass
+--------------------------------------
+*/
+
+VEERG_4_2_1_3__1_DirectNitrousOxideEmissionsOnPasture
+  =LAMBDA(
+    AE, EF_PRP, C_N2O,
+    AE * EF_PRP * C_N2O * 10 ^ -3
+  );
+
+VEERG_4_2_1_3__1_DirectNitrousOxideEmissionsOnPasture_Title
+  =LAMBDA("Total annual direct nitrous oxide emissions from agricultural soils from deposition of urine and dung");
+
+VEERG_4_2_1_3__1_DirectNitrousOxideEmissionsOnPasture_Variable
+  =LAMBDA("E_N2Odir");
+
+VEERG_4_2_1_3__1_DirectNitrousOxideEmissionsOnPasture_Unit
+  =LAMBDA("t N2O");
+
+VEERG_4_2_1_3__1_DirectNitrousOxideEmissionsOnPasture_Source
+  =LAMBDA("VEERG 2026: 4.2.1.3, Equation (1)");
+
+VEERG_4_2_1_3__1_DirectNitrousOxideEmissionsOnPasture_NIRReference
+  =LAMBDA("");
+
+VEERG_4_2_1_3__1_DirectNitrousOxideEmissionsOnPasture_LatexEquation
+  =LAMBDA("E_{N2O,dir}=AE\times EF_{PRP}\times C_{N2O}\times 10^{-3}");
+
+VEERG_4_2_1_3__1_DirectNitrousOxideEmissionsOnPasture_Arguments
+  =LAMBDA(
+    MAKEARRAY(4, 2,
+      LAMBDA(r,c,
+        INDEX({
+          "AE", "total mass of nitrogen excreted on PRP for beef cattle (kg N)";
+          "EF_PRP", "emission factor for nitrous oxide from urine and dung deposited to soil (kg N2O-N/kg N deposited)";
+          "C_N2O", "factor to convert elemental mass of nitrous oxide to molecular mass";
+          "z", "wet or dry climate zone"
+        }, r, c)
+      )
+    )
+  );
+
+/*
+--------------------------------------
+VEERG_4_2_1_3__2_TotalNitrogenExcretedToPastureRangeAndPaddock
+Total nitrogen excreted to pasture, range and paddock
+AE
+kg N
+AE=\sum_{j}\sum_{k}\sum_{l}(N_{jkl}\times NE_{jkl}\times D_j)
+N_jkl = number of beef cattle by time-period, class and subclass (head)
+NE_jkl = nitrogen excreted in each time-period, by each class and subclass (kg N/head/day)
+D_j = number of days in each time-period (days)
+--------------------------------------
+*/
+
+VEERG_4_2_1_3__2_TotalNitrogenExcretedToPastureRangeAndPaddock
+  =LAMBDA(
+    N_jkl, NE_jkl, D_j,
+    SUM((N_jkl * NE_jkl) * D_j)
+  );
+
+VEERG_4_2_1_3__2_TotalNitrogenExcretedToPastureRangeAndPaddock_Title
+  =LAMBDA("Total nitrogen excreted to pasture, range and paddock");
+
+VEERG_4_2_1_3__2_TotalNitrogenExcretedToPastureRangeAndPaddock_Variable
+  =LAMBDA("AE");
+
+VEERG_4_2_1_3__2_TotalNitrogenExcretedToPastureRangeAndPaddock_Unit
+  =LAMBDA("kg N");
+
+VEERG_4_2_1_3__2_TotalNitrogenExcretedToPastureRangeAndPaddock_Source
+  =LAMBDA("VEERG 2026: 4.2.1.3, Equation (2)");
+
+VEERG_4_2_1_3__2_TotalNitrogenExcretedToPastureRangeAndPaddock_NIRReference
+  =LAMBDA("");
+
+VEERG_4_2_1_3__2_TotalNitrogenExcretedToPastureRangeAndPaddock_LatexEquation
+  =LAMBDA("AE=\sum_{j}\sum_{k}\sum_{l}(N_{jkl}\times NE_{jkl}\times D_j)");
+
+VEERG_4_2_1_3__2_TotalNitrogenExcretedToPastureRangeAndPaddock_Arguments
+  =LAMBDA(
+    MAKEARRAY(3, 2,
+      LAMBDA(r,c,
+        INDEX({
+          "N_jkl", "number of beef cattle by time-period, class and subclass (head)";
+          "NE_jkl", "nitrogen excreted in each time-period, by each class and subclass (kg N/head/day)";
+          "D_j", "number of days in each time-period (days)"
+        }, r, c)
+      )
+    )
+  );
+
+/*
+--------------------------------------
+VEERG_4_2_1_3__3_NitrogenExcreted
+Nitrogen excreted
+NE_jkl
+kg N/head/day
+NE_{jkl}=\frac{I_{jkl}\times CP_j}{6.25}+\frac{0.032\times MC_{jk=1,3,6}}{6.38}-NR_{jkl}-\frac{1.1\times 10^{-4}\times W_{jkl}^{0.75}}{6.25}
+I_jkl = dry matter intake as calculated in Chapter 3 Section 3.2.1 (kg DM/head/day)
+CP_j = crude protein content of dry matter intake
+MC_jk136 = milk intake (kg/head/day)
+NR_jkl = the amount of nitrogen retained by the body (kg N/head/day)
+W_jkl = liveweight (kg/head)
+--------------------------------------
+*/
+
+VEERG_4_2_1_3__3_NitrogenExcreted
+  =LAMBDA(
+    I_jkl, CP_j, MC_jk136, NR_jkl, W_jkl,
+    ((I_jkl * CP_j) / 6.25) + ((0.032 * MC_jk136) / 6.38) - NR_jkl - ((1.1 * 10 ^ -4 * W_jkl ^ 0.75) / 6.25)
+  );
+
+VEERG_4_2_1_3__3_NitrogenExcreted_Title
+  =LAMBDA("Nitrogen excreted");
+
+VEERG_4_2_1_3__3_NitrogenExcreted_Variable
+  =LAMBDA("NE_jkl");
+
+VEERG_4_2_1_3__3_NitrogenExcreted_Unit
+  =LAMBDA("kg N/head/day");
+
+VEERG_4_2_1_3__3_NitrogenExcreted_Source
+  =LAMBDA("VEERG 2026: 4.2.1.3, Equation (3)");
+
+VEERG_4_2_1_3__3_NitrogenExcreted_NIRReference
+  =LAMBDA("");
+
+VEERG_4_2_1_3__3_NitrogenExcreted_LatexEquation
+  =LAMBDA("NE_{jkl}= (I_{jkl}\times CP_j \div 6.25)  + (0.032\times MC_{jk=1,3,6} \div 6.38)  - NR_{jkl} - \left[ (1.1\times 10^{-4}\times W_{jkl}^{0.75}) \div  6.25 \right]");
+
+VEERG_4_2_1_3__3_NitrogenExcreted_Arguments
+  =LAMBDA(
+    MAKEARRAY(5, 2,
+      LAMBDA(r,c,
+        INDEX({
+          "I_jkl", "dry matter intake as calculated in Chapter 3 Section 3.2.1 (kg DM/head/day)";
+          "CP_j", "crude protein content of dry matter intake";
+          "MC_jk136", "milk intake (kg/head/day)";
+          "NR_jkl", "the amount of nitrogen retained by the body (kg N/head/day)";
+          "W_jkl", "liveweight (kg/head)"
+        }, r, c)
+      )
+    )
+  );
+
+/*
+--------------------------------------
+VEERG_4_2_1_3__4_NitrogenRetainedByBody
+Amount of nitrogen retained by the body
+NR_jkl
+kg N/head/day
+NR_{jkl}=\frac{0.032\times MP_{jk=5}}{6.38}+\frac{(0.212-0.008\times(L_{jkl}-2)-[\frac{0.140-0.008\times(L_{jkl}-2)}{1+e^{-6\times(Z_{jkl}-0.4)}}])\times(LWG_{jkl}\times 0.92)}{6.25}
+MP_jk5 = milk production (kg/head/day)
+L_jkl = intake relative to that needed for maintenance
+Z_jkl = relative size
+LWG_jkl = liveweight gain (kg/head/day)
+--------------------------------------
+*/
+
+VEERG_4_2_1_3__4_NitrogenRetainedByBody
+  =LAMBDA(
+    MP_jk5, L_jkl, Z_jkl, LWG_jkl,
+    ((0.032 * MP_jk5) / 6.38) + (((0.212 - 0.008 * (L_jkl - 2) - ((0.140 - 0.008 * (L_jkl - 2)) / (1 + EXP(-6 * (Z_jkl - 0.4))))) * (LWG_jkl * 0.92)) / 6.25)
+  );
+
+VEERG_4_2_1_3__4_NitrogenRetainedByBody_Title
+  =LAMBDA("Amount of nitrogen retained by the body");
+
+VEERG_4_2_1_3__4_NitrogenRetainedByBody_Variable
+  =LAMBDA("NR_jkl");
+
+VEERG_4_2_1_3__4_NitrogenRetainedByBody_Unit
+  =LAMBDA("kg N/head/day");
+
+VEERG_4_2_1_3__4_NitrogenRetainedByBody_Source
+  =LAMBDA("VEERG 2026: 4.2.1.3, Equation (4)");
+
+VEERG_4_2_1_3__4_NitrogenRetainedByBody_NIRReference
+  =LAMBDA("");
+
+VEERG_4_2_1_3__4_NitrogenRetainedByBody_LatexEquation
+  =LAMBDA("NR_{jkl}=(0.032 \times MP_{jk=5} \div 6.38) + \left { \left { 0.212 - 0.008 \times (L_{jkl} -2) - \left[ \frac{0.140-0.008 \times (L_{jkl} - 2)}{1+e^{(-6 \times (Z_{jkl}-0.4))}} \right] \right} \times (LWG_{jkl} \times 0.92) \right} \div 6.25");
+
+VEERG_4_2_1_3__4_NitrogenRetainedByBody_Arguments
+  =LAMBDA(
+    MAKEARRAY(4, 2,
+      LAMBDA(r,c,
+        INDEX({
+          "MP_jk5", "milk production (kg/head/day)";
+          "L_jkl", "intake relative to that needed for maintenance";
+          "Z_jkl", "relative size";
+          "LWG_jkl", "liveweight gain (kg/head/day)"
+        }, r, c)
+      )
+    )
+  );
+
+/*
+--------------------------------------
+VEERG_4_2_1_3__5_MilkProductionForCalvingSeason
+Milk production for the season of calving and season after calving
+MP_jk5
+kg/head/day
+MP_{jk=5}=LC_{jk=5}\times DMP_{jk=5}
+LC_jk5 = proportion of cows greater than 2 years lactating for the season of calving and season after calving expressed as a fraction
+DMP_jk5 = daily milk production (kg/head/day)
+--------------------------------------
+*/
+
+VEERG_4_2_1_3__5_MilkProductionForCalvingSeason
+  =LAMBDA(
+    LC_jk5, DMP_jk5,
+    LC_jk5 * DMP_jk5
+  );
+
+VEERG_4_2_1_3__5_MilkProductionForCalvingSeasonVariation
+  =LAMBDA(
+    LC_jk5curr, LC_jk5prev, DMP_jk5calv, DMP_jk5after,
+    (LC_jk5curr * DMP_jk5calv) + (LC_jk5prev * DMP_jk5after)
+  );
+
+VEERG_4_2_1_3__5_MilkProductionForCalvingSeason_Title
+  =LAMBDA("Milk production for the season of calving and season after calving");
+
+VEERG_4_2_1_3__5_MilkProductionForCalvingSeason_Variable
+  =LAMBDA("MP_jk5");
+
+VEERG_4_2_1_3__5_MilkProductionForCalvingSeason_Unit
+  =LAMBDA("kg/head/day");
+
+VEERG_4_2_1_3__5_MilkProductionForCalvingSeason_Source
+  =LAMBDA("VEERG 2026: 4.2.1.3, Equation (5)");
+
+VEERG_4_2_1_3__5_MilkProductionForCalvingSeason_NIRReference
+  =LAMBDA("");
+
+VEERG_4_2_1_3__5_MilkProductionForCalvingSeason_LatexEquation
+  =LAMBDA("MP_{jk=5}=LC_{jk=5}\times DMP_{jk=5}");
+
+VEERG_4_2_1_3__5_MilkProductionForCalvingSeason_LatexEquationVariation
+  =LAMBDA("MP_{jk=5}=(LC_{jk=5,current}\times DMP_{jk=5,calv})+(LC_{jk=5,prev}\times DMP_{jk=5,after})");
+
+VEERG_4_2_1_3__5_MilkProductionForCalvingSeason_Arguments
+  =LAMBDA(
+    MAKEARRAY(3, 2,
+      LAMBDA(r,c,
+        INDEX({
+          "LC_jk5", "proportion of cows greater than 2 years lactating for the season of calving and season after calving expressed as a fraction";
+          "DMP_jk5", "daily milk production (kg/head/day)";
+          "b", "breed of cattle"
+        }, r, c)
+      )
+    )
+  );
+
+VEERG_4_2_1_3__5_MilkProductionForCalvingSeason_ArgumentsVariation
+  =LAMBDA(
+    MAKEARRAY(5, 2,
+      LAMBDA(r,c,
+        INDEX({
+          "LC_jk5curr", "proportion of cows greater than 2 years lactating for the season of calving";
+          "LC_jk5prev", "proportion of cows greater than 2 years lactating for the season after calving";
+          "DMP_jk5calv", "daily milk production for the season of calving (kg/head/day)";
+          "DMP_jk5after", "daily milk production for the season after calving (kg/head/day)";
+          "b", "breed of cattle"
+        }, r, c)
+      )
+    )
+  );
+
+VEERG_4_2_1_3__5_MilkProductionForCalvingSeason_Variation
+=LAMBDA("VARIATION ON SOURCE: Split LC and DMP into calving season and after calving season values.");
+
+/*
+--------------------------------------
+VEERG_4_2_1_3__6_IntakeRelativeToMaintenance
+Intake relative to that needed for maintenance
+L_jkl
+ratio
+L_{jkl}=\frac{I_{jkl}}{(1.185+0.00454\times W_{jkl}-0.0000026\times W_{jkl}^{2})^{2}}
+I_jkl = dry matter intake as calculated in Chapter 3 Section 3.2.1 (kg DM/head/day)
+W_jkl = liveweight (kg/head)
+--------------------------------------
+*/
+
+VEERG_4_2_1_3__6_IntakeRelativeToMaintenance
+  =LAMBDA(
+    I_jkl, W_jkl,
+    I_jkl / ((1.185 + 0.00454 * W_jkl - 0.0000026 * W_jkl ^ 2) ^ 2)
+  );
+
+VEERG_4_2_1_3__6_IntakeRelativeToMaintenance_Title
+  =LAMBDA("Intake relative to that needed for maintenance");
+
+VEERG_4_2_1_3__6_IntakeRelativeToMaintenance_Variable
+  =LAMBDA("L_jkl");
+
+VEERG_4_2_1_3__6_IntakeRelativeToMaintenance_Unit
+  =LAMBDA("ratio");
+
+VEERG_4_2_1_3__6_IntakeRelativeToMaintenance_Source
+  =LAMBDA("VEERG 2026: 4.2.1.3, Equation (6)");
+
+VEERG_4_2_1_3__6_IntakeRelativeToMaintenance_NIRReference
+  =LAMBDA("");
+
+VEERG_4_2_1_3__6_IntakeRelativeToMaintenance_LatexEquation
+  =LAMBDA("L_{jkl}=\frac{I_{jkl}}{(1.185+0.00454\times W_{jkl}-0.0000026\times W_{jkl}^{2})^{2}}");
+
+VEERG_4_2_1_3__6_IntakeRelativeToMaintenance_Arguments
+  =LAMBDA(
+    MAKEARRAY(2, 2,
+      LAMBDA(r,c,
+        INDEX({
+          "I_jkl", "dry matter intake as calculated in Chapter 3 Section 3.2.1 (kg DM/head/day)";
+          "W_jkl", "liveweight (kg/head)"
+        }, r, c)
+      )
+    )
+  );
+
+/*
+--------------------------------------
+VEERG_4_2_1_3__7_RelativeSize
+Relative size of the cattle
+Z_jkl
+ratio
+Z_{jkl}=\frac{W_{jkl}}{SRW_k}
+W_jkl = liveweight (kg)
+SRW_k = standard reference weight (kg)
+--------------------------------------
+*/
+
+VEERG_4_2_1_3__7_RelativeSize
+  =LAMBDA(
+    W_jkl, SRW_k,
+    W_jkl / SRW_k
+  );
+
+VEERG_4_2_1_3__7_RelativeSize_Title
+  =LAMBDA("Relative size of the cattle");
+
+VEERG_4_2_1_3__7_RelativeSize_Variable
+  =LAMBDA("Z_jkl");
+
+VEERG_4_2_1_3__7_RelativeSize_Unit
+  =LAMBDA("ratio");
+
+VEERG_4_2_1_3__7_RelativeSize_Source
+  =LAMBDA("VEERG 2026: 4.2.1.3, Equation (7)");
+
+VEERG_4_2_1_3__7_RelativeSize_NIRReference
+  =LAMBDA("");
+
+VEERG_4_2_1_3__7_RelativeSize_LatexEquation
+  =LAMBDA("Z_{jkl}=\frac{W_{jkl}}{SRW_k}");
+
+VEERG_4_2_1_3__7_RelativeSize_Arguments
+  =LAMBDA(
+    MAKEARRAY(3, 2,
+      LAMBDA(r,c,
+        INDEX({
+          "W_jkl", "liveweight (kg)";
+          "SRW_k", "standard reference weight (kg)";
+          "i", "state"
+        }, r, c)
+      )
+    )
+  );

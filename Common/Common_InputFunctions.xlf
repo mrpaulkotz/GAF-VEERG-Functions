@@ -37,6 +37,20 @@ Utility_LookupValueInTableNumber
     ), XLOOKUP(LookupValue, LookupArray, ReturnArray, ""), 0)
 );
 
+Utility_LookupValueInTableTwoColumns
+=LAMBDA(
+    LookupValue1, LookupValue2, LookupArray1, LookupArray2, ReturnArray,
+    XLOOKUP(1, (LookupArray1=LookupValue1)*(LookupArray2=LookupValue2), ReturnArray, "")
+);
+
+Utility_LookupValueInTableOneColumnAndHeader
+=LAMBDA(
+    LookupValue1, LookupValue2, LookupArray1, LookupArray2, ReturnArray,
+    XLOOKUP(LookupValue1, LookupArray1,
+        XLOOKUP(LookupValue2, LookupArray2, ReturnArray)
+    )
+);
+
 Utility_SplitStringIntoArray
 =LAMBDA(
     Cell, Delimiter, [CharacterToRemove1], [CharacterToRemove2],
@@ -89,6 +103,7 @@ Utility_LookupItemFromMinMax
         FILTER(ItemArray, mask, "No match")
     )
 );
+
 
 Utility_SumQuantityFromCriteria
 =LAMBDA(
@@ -182,3 +197,12 @@ CommonCropping_GetFracWET
         ),
         IF(LeachingZoneFracWET + ProductionSystemFracWET>0, 1, 0)
     ));
+
+
+Utility_ConvertStateCommonNameToAbbreviation
+=LAMBDA(
+    StateCommonName,
+    StateCommonNameArray, StateAbbreviationArray,
+    XLOOKUP(StateCommonName, StateCommonNameArray, StateAbbreviationArray, "")
+);
+

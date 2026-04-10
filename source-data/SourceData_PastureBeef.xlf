@@ -54,7 +54,7 @@ SourceData_PastureBeef_Liveweight_Data
           "Western Australia", "Kimberley", "Spring", 220, 500, 180, 300, 320, 210, 340;
           "Western Australia", "Kimberley", "Summer", 110, 550, 90, 220, 380, 100, 390;
           "Western Australia", "Kimberley", "Autumn", 170, 600, 140, 270, 390, 160, 430;
-          "Western Australia", "Kimberley", "Winter", 200, 550, 150, 280, 350, 190, 400;
+          "Western Australia", "Kimberley", "Winter", 200, 550, 150, 280, 350, 190, 400
         }, r, c)
       )
     )
@@ -265,18 +265,23 @@ SourceData_PastureBeef_DryMatterDigestibility_Source
   =LAMBDA("VEERG 2026: Table A.1.2.5");
 
 SourceData_PastureBeef_DryMatterDigestibility_Variation
-  =LAMBDA("VARIATION ON SOURCE: Split ACT and NSW into separate rows.");
+  =LAMBDA("VARIATION ON SOURCE: Split ACT and NSW into separate rows. Duplicated QLD and NT rows with regions from table A.1.2.2 to aid lookup");
 
 SourceData_PastureBeef_DryMatterDigestibility_Data
   =LAMBDA(
-    MAKEARRAY(11, 6,
+    MAKEARRAY(16, 6,
       LAMBDA(r,c,
         INDEX({
           "State", "Region", "Spring", "Summer", "Autumn", "Winter";
           "ACT", "n/a", 0.55, 0.65, 0.60, 0.50;
           "NSW", "n/a", 0.55, 0.65, 0.60, 0.50;
-          "NT", "n/a", 0.55, 0.61, 0.57, 0.54;
-          "QLD", "n/a", 0.53, 0.57, 0.55, 0.51;
+          "NT", "Alice Springs", 0.55, 0.61, 0.57, 0.54;
+          "NT", "Barkly", 0.55, 0.61, 0.57, 0.54;
+          "NT", "Northern", 0.55, 0.61, 0.57, 0.54;
+          "QLD", "High", 0.53, 0.57, 0.55, 0.51;
+          "QLD", "Moderate/High", 0.53, 0.57, 0.55, 0.51;
+          "QLD", "Moderate/Low", 0.53, 0.57, 0.55, 0.51;
+          "QLD", "Low", 0.53, 0.57, 0.55, 0.51;
           "SA", "n/a", 0.70, 0.55, 0.55, 0.75;
           "TAS", "n/a", 0.75, 0.60, 0.70, 0.75;
           "VIC", "n/a", 0.80, 0.55, 0.60, 0.76;
@@ -308,18 +313,23 @@ SourceData_PastureBeef_CrudeProteinContent_Source
   =LAMBDA("VEERG 2026: Table A.1.2.6");
 
 SourceData_PastureBeef_CrudeProteinContent_Variation
-  =LAMBDA("VARIATION ON SOURCE: Split ACT and NSW into separate rows.");
+  =LAMBDA("VARIATION ON SOURCE: Split ACT and NSW into separate rows. Duplicated QLD and NT rows with regions from table A.1.2.2 to aid lookup");
 
 SourceData_PastureBeef_CrudeProteinContent_Data
   =LAMBDA(
-    MAKEARRAY(11, 6,
+    MAKEARRAY(16, 6,
       LAMBDA(r,c,
         INDEX({
           "State", "Region", "Spring", "Summer", "Autumn", "Winter";
           "ACT", "n/a", 0.07, 0.13, 0.1, 0.06;
           "NSW", "n/a", 0.07, 0.13, 0.1, 0.06;
-          "NT", "n/a", 0.058, 0.092, 0.075, 0.053;
-          "QLD", "n/a", 0.072, 0.099, 0.078, 0.059;
+          "NT", "Alice Springs", 0.058, 0.092, 0.075, 0.053;
+          "NT", "Barkly", 0.058, 0.092, 0.075, 0.053;
+          "NT", "Northern", 0.058, 0.092, 0.075, 0.053;
+          "QLD", "High", 0.072, 0.099, 0.078, 0.059;
+          "QLD", "Moderate/High", 0.072, 0.099, 0.078, 0.059;
+          "QLD", "Moderate/Low", 0.072, 0.099, 0.078, 0.059;
+          "QLD", "Low", 0.072, 0.099, 0.078, 0.059;
           "SA", "n/a", 0.16, 0.07, 0.09, 0.2;
           "TAS", "n/a", 0.2, 0.1, 0.16, 0.2;
           "VIC", "n/a", 0.25, 0.07, 0.1, 0.21;
@@ -434,14 +444,14 @@ SourceData_PastureBeef_FractionOfManureToMMS_Source
   =LAMBDA("VEERG 2026: Table A.1.2.9");
 
 SourceData_PastureBeef_FractionOfManureToMMS_Variation
-  =LAMBDA("");
+  =LAMBDA("VARIATION ON SOURCE: Removed comma from 'Pasture range and paddock' to aid lookup");
 
 SourceData_PastureBeef_FractionOfManureToMMS_Data
   =LAMBDA(
     MAKEARRAY(16, 4,
       LAMBDA(r,c,
         INDEX({
-          "State", "Region", "Pasture, range and paddock", "Uncovered Anaerobic lagoon";
+          "State", "Region", "Pasture range and paddock", "Uncovered Anaerobic lagoon";
           "ACT", "n/a", 99.192, 0.808;
           "NSW", "n/a", 99.452, 0.548;
           "SA", "n/a", 99.759, 0.241;
@@ -482,14 +492,14 @@ SourceData_PastureBeef_MethaneConversionFactorPerRegion_Source
   =LAMBDA("VEERG 2026: Table A.1.2.10");
 
 SourceData_PastureBeef_MethaneConversionFactorPerRegion_Variation
-  =LAMBDA("");
+  =LAMBDA("VARIATION ON SOURCE: Removed comma from 'Pasture range and paddock' to aid lookup");
 
 SourceData_PastureBeef_MethaneConversionFactorPerRegion_Data
   =LAMBDA(
     MAKEARRAY(16, 4,
       LAMBDA(r,c,
         INDEX({
-          "State", "Region", "Pasture, range and paddock", "Uncovered Anaerobic lagoon";
+          "State", "Region", "Pasture range and paddock", "Uncovered Anaerobic lagoon";
           "ACT", "n/a", 0.0047, 0.71;
           "NSW", "n/a", 0.0047, 0.75;
           "SA", "n/a", 0.0047, 0.74;
@@ -509,3 +519,105 @@ SourceData_PastureBeef_MethaneConversionFactorPerRegion_Data
       )
     )
   );
+
+
+
+/* 
+--------------------------------------
+SourceData_PastureBeef_AshContentOfFeedIntake
+VEERG 2026: 4.2.2.3 CONSTANTS
+--------------------------------------
+*/
+
+SourceData_PastureBeef_AshContentOfFeedIntake_Title
+  =LAMBDA("Ash content of feed intake");
+
+SourceData_PastureBeef_AshContentOfFeedIntake_Variable
+  =LAMBDA("A");
+
+SourceData_PastureBeef_AshContentOfFeedIntake_Unit
+  =LAMBDA("fraction");
+
+SourceData_PastureBeef_AshContentOfFeedIntake_Source
+  =LAMBDA("VEERG 2026: 4.2.2.3 CONSTANTS");
+
+SourceData_PastureBeef_AshContentOfFeedIntake_Variation
+  =LAMBDA("");
+
+SourceData_PastureBeef_AshContentOfFeedIntake_Data
+  =LAMBDA(0.08);
+
+/* 
+--------------------------------------
+SourceData_PastureBeef_MethaneEmissionsPotential
+Methane emissions potential.
+--------------------------------------
+*/
+
+SourceData_PastureBeef_MethaneEmissionsPotential_Title
+  =LAMBDA("Methane emissions potential");
+
+SourceData_PastureBeef_MethaneEmissionsPotential_Variable
+  =LAMBDA("B0");
+
+SourceData_PastureBeef_MethaneEmissionsPotential_Unit
+  =LAMBDA("m3 CH4 / kg VS");
+
+SourceData_PastureBeef_MethaneEmissionsPotential_Source
+  =LAMBDA("VEERG 2026: 4.2.2.3 CONSTANTS");
+
+SourceData_PastureBeef_MethaneEmissionsPotential_Variation
+  =LAMBDA("");
+
+SourceData_PastureBeef_MethaneEmissionsPotential_Data
+  =LAMBDA(0.19);
+
+/* 
+--------------------------------------
+SourceData_PastureBeef_FracGASMSoil
+Fraction of nitrogen volatilised from urine and faeces deposited on pasture
+--------------------------------------
+*/
+
+SourceData_PastureBeef_FracGASMSoil_Title
+  =LAMBDA("Fraction of nitrogen volatilised from urine and faeces deposited on pasture");
+
+SourceData_PastureBeef_FracGASMSoil_Variable
+  =LAMBDA("FracGASMSoil");
+
+SourceData_PastureBeef_FracGASMSoil_Unit
+  =LAMBDA("fraction");
+
+SourceData_PastureBeef_FracGASMSoil_Source
+  =LAMBDA("VEERG 2026: 4.2.2.3 CONSTANTS");
+
+SourceData_PastureBeef_FracGASMSoil_Variation
+  =LAMBDA("");
+
+SourceData_PastureBeef_FracGASMSoil_Data
+  =LAMBDA(0.21);
+
+/* 
+--------------------------------------
+SourceData_PastureBeef_FracLEACH
+Default fraction of N that is lost through leaching and runoff
+--------------------------------------
+*/
+
+SourceData_PastureBeef_FracLEACH_Title
+  =LAMBDA("Default fraction of N that is lost through leaching and runoff");
+
+SourceData_PastureBeef_FracLEACH_Variable
+  =LAMBDA("FracLEACH");
+
+SourceData_PastureBeef_FracLEACH_Unit
+  =LAMBDA("fraction");
+
+SourceData_PastureBeef_FracLEACH_Source
+  =LAMBDA("VEERG 2026: 4.2.2.3 CONSTANTS");
+
+SourceData_PastureBeef_FracLEACH_Variation
+  =LAMBDA("");
+
+SourceData_PastureBeef_FracLEACH_Data
+  =LAMBDA(0.24);

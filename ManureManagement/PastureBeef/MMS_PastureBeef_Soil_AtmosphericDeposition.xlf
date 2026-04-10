@@ -1,0 +1,108 @@
+/*
+============================================================================
+4.2: Pasture Beef
+============================================================================
+4.2.1.5 Method 1 - Soil Atmospheric Deposition N2O Beef Grazing
+============================================================================
+*/
+
+/*
+--------------------------------------
+VEERG_4_2_1_5__1_AtmosphericDepositionEmissionsFromUrineAndDungOnPasture
+Atmospheric deposition emissions from urine and dung deposited on pasture
+E_N2Oad
+t N2O
+E_{N2O,ad}=M_{vol}\times EF_{N2O}\times C_{N2O}\times 10^{-3}
+M_vol = mass of nitrogen volatilised from urine and faeces deposited on pasture (kg N)
+EF_N2O = nitrous oxide emission factor for atmospheric deposition (kg N2O-N/kg N)
+C_N2O = factor to convert elemental mass of N2O to molecular mass
+--------------------------------------
+*/
+
+VEERG_4_2_1_5__1_AtmosphericDepositionEmissionsFromUrineAndDungOnPasture
+  =LAMBDA(
+    M_vol, EF_N2O, C_N2O,
+    M_vol * EF_N2O * C_N2O * 10 ^ -3
+  );
+
+VEERG_4_2_1_5__1_AtmosphericDepositionEmissionsFromUrineAndDungOnPasture_Title
+  =LAMBDA("Atmospheric deposition emissions from urine and dung deposited on pasture");
+
+VEERG_4_2_1_5__1_AtmosphericDepositionEmissionsFromUrineAndDungOnPasture_Variable
+  =LAMBDA("E_N2Oad");
+
+VEERG_4_2_1_5__1_AtmosphericDepositionEmissionsFromUrineAndDungOnPasture_Unit
+  =LAMBDA("t N2O");
+
+VEERG_4_2_1_5__1_AtmosphericDepositionEmissionsFromUrineAndDungOnPasture_Source
+  =LAMBDA("VEERG 2026: 4.2.1.5, Equation (1)");
+
+VEERG_4_2_1_5__1_AtmosphericDepositionEmissionsFromUrineAndDungOnPasture_NIRReference
+  =LAMBDA("");
+
+VEERG_4_2_1_5__1_AtmosphericDepositionEmissionsFromUrineAndDungOnPasture_LatexEquation
+  =LAMBDA("E_{N2O,ad}=M_{vol}\times EF_{N2O}\times C_{N2O}\times 10^{-3}");
+
+VEERG_4_2_1_5__1_AtmosphericDepositionEmissionsFromUrineAndDungOnPasture_Arguments
+  =LAMBDA(
+    MAKEARRAY(6, 2,
+      LAMBDA(r,c,
+        INDEX({
+          "M_vol", "mass of nitrogen volatilised from urine and faeces deposited on pasture (kg N)";
+          "EF_N2O", "nitrous oxide emission factor for atmospheric deposition (kg N2O-N/kg N)";
+          "C_N2O", "factor to convert elemental mass of N2O to molecular mass";
+          "j", "production system";
+          "i", "irrigation method";
+          "r", "rainfall zone"
+        }, r, c)
+      )
+    )
+  );
+
+/*
+--------------------------------------
+VEERG_4_2_1_5__2_MassOfNitrogenVolatilisedOnPasture
+Mass of nitrogen volatilised
+M_vol
+kg N
+M_{vol}=AE\times FracGASMsoil
+AE = total mass of nitrogen excreted on PRP for beef cattle (kg N)
+FracGASMsoil = fraction of nitrogen volatilised from urine and faeces deposited on pasture ((kg NH3-N + NOx-N)/kg N)
+--------------------------------------
+*/
+
+VEERG_4_2_1_5__2_MassOfNitrogenVolatilisedOnPasture
+  =LAMBDA(
+    AE, FracGASMsoil,
+    AE * FracGASMsoil
+  );
+
+VEERG_4_2_1_5__2_MassOfNitrogenVolatilisedOnPasture_Title
+  =LAMBDA("Mass of nitrogen volatilised");
+
+VEERG_4_2_1_5__2_MassOfNitrogenVolatilisedOnPasture_Variable
+  =LAMBDA("M_vol");
+
+VEERG_4_2_1_5__2_MassOfNitrogenVolatilisedOnPasture_Unit
+  =LAMBDA("kg N");
+
+VEERG_4_2_1_5__2_MassOfNitrogenVolatilisedOnPasture_Source
+  =LAMBDA("VEERG 2026: 4.2.1.5, Equation (2)");
+
+VEERG_4_2_1_5__2_MassOfNitrogenVolatilisedOnPasture_NIRReference
+  =LAMBDA("");
+
+VEERG_4_2_1_5__2_MassOfNitrogenVolatilisedOnPasture_LatexEquation
+  =LAMBDA("M_{vol}=AE\times FracGASMsoil");
+
+VEERG_4_2_1_5__2_MassOfNitrogenVolatilisedOnPasture_Arguments
+  =LAMBDA(
+    MAKEARRAY(2, 2,
+      LAMBDA(r,c,
+        INDEX({
+          "AE", "total mass of nitrogen excreted on PRP for beef cattle (kg N)";
+          "FracGASMsoil", "fraction of nitrogen volatilised from urine and faeces deposited on pasture ((kg NH3-N + NOx-N)/kg N)"
+        }, r, c)
+      )
+    )
+  );
