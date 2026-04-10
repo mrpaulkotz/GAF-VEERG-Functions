@@ -19,6 +19,11 @@ if ($commandArgsInput.Count -gt 0 -and -not [string]::IsNullOrWhiteSpace($comman
     $commandArgs = $commandArgsInput[1..($commandArgsInput.Count - 1)]
   }
 
+  if ($commandName -eq 'Sync-CommonSheetsAcrossWorkbooks') {
+    Write-Host 'Sync-CommonSheetsAcrossWorkbooks already ran as part of build.ps1.'
+    exit 0
+  }
+
   & $commandName @commandArgs
   exit $LASTEXITCODE
 }

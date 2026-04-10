@@ -307,6 +307,56 @@ if (-not $anyUpdates) {
   Write-Host 'Excel Labs modules are already in sync with .xlf files.'
 }
 
+function Test-IsTransientExcelComException {
+  param(
+    [Parameter(Mandatory = $true)]
+    [System.Management.Automation.ErrorRecord] $ErrorRecord
+  )
+
+  $exception = $ErrorRecord.Exception
+  if ($exception -isnot [System.Runtime.InteropServices.COMException]) {
+    return $false
+  }
+
+  return (
+    $exception.HResult -eq -2147418111 -or # RPC_E_CALL_REJECTED
+    $exception.HResult -eq -2147417848 -or # RPC_E_DISCONNECTED
+    $exception.Message -match 'RPC_E_CALL_REJECTED|Call was rejected by callee|RPC_E_DISCONNECTED|disconnected from its clients'
+  )
+}
+
+function Invoke-ComObjectCleanup {
+  param(
+    [Parameter()]
+    $ComObject,
+
+    [Parameter()]
+    [scriptblock] $Action
+  )
+
+  if ($null -eq $ComObject) {
+    return
+  }
+
+  if ($null -ne $Action) {
+    try {
+      & $Action $ComObject
+    } catch {
+      if (-not (Test-IsTransientExcelComException $_)) {
+        Write-Verbose ("Ignoring COM cleanup error: {0}" -f $_.Exception.Message)
+      }
+    }
+  }
+
+  try {
+    if ([System.Runtime.InteropServices.Marshal]::IsComObject($ComObject)) {
+      [void] [System.Runtime.InteropServices.Marshal]::FinalReleaseComObject($ComObject)
+    }
+  } catch {
+    Write-Verbose ("Ignoring COM release error: {0}" -f $_.Exception.Message)
+  }
+}
+
 function Sync-CommonSheetsAcrossWorkbooks {
   param(
     [Parameter(Mandatory = $true)]
@@ -315,7 +365,19 @@ function Sync-CommonSheetsAcrossWorkbooks {
     [switch] $DryRun
   )
 
-  $commonCandidates = @($Workbooks | Where-Object { $_.BaseName -like 'Common*' } | Sort-Object LastWriteTime -Descending)
+  $commonCandidates = @(
+    $Workbooks |
+      Where-Object { $_.BaseName -like 'Common*' } |
+      Sort-Object @{ Expression = {
+          $versionMatch = [regex]::Match($_.BaseName, '(?i)_v(?<version>\d+)$')
+          if ($versionMatch.Success) {
+            [int] $versionMatch.Groups['version'].Value
+          } else {
+            -1
+          }
+        }; Descending = $true },
+        @{ Expression = 'LastWriteTime'; Descending = $true }
+  )
   if ($commonCandidates.Count -eq 0) {
     Write-Host 'No Common*.xlsx source workbook found; skipping sheet propagation.'
     return
@@ -354,10 +416,13 @@ function Sync-CommonSheetsAcrossWorkbooks {
       return
     }
 
-    $sourceSheetsByName = @{}
+    $sourceSheetNames = [System.Collections.Generic.List[string]]::new()
     for ($sheetIndex = 1; $sheetIndex -le [int] $sourceWorkbook.Worksheets.Count; $sheetIndex++) {
       $sourceSheet = $sourceWorkbook.Worksheets.Item($sheetIndex)
-      $sourceSheetsByName[[string] $sourceSheet.Name] = $sourceSheet
+      $sourceSheetName = [string] $sourceSheet.Name
+      if (-not [string]::IsNullOrWhiteSpace($sourceSheetName) -and -not $sourceSheetNames.Contains($sourceSheetName)) {
+        $sourceSheetNames.Add($sourceSheetName)
+      }
     }
 
     function Get-UniqueWorksheetName {
@@ -408,6 +473,10 @@ function Sync-CommonSheetsAcrossWorkbooks {
         [string] $NewTableName
       )
 
+      if ([string]::IsNullOrWhiteSpace($OldTableName) -or [string]::IsNullOrWhiteSpace($NewTableName)) {
+        return
+      }
+
       if ($OldTableName -eq $NewTableName) {
         return
       }
@@ -430,9 +499,27 @@ function Sync-CommonSheetsAcrossWorkbooks {
             }
           }
 
-          $nameCount = [int] $Workbook.Names.Count
+          $nameCount = 0
+          try {
+            if ($null -ne $Workbook.Names) {
+              $nameCount = [int] $Workbook.Names.Count
+            }
+          } catch {
+            $nameCount = 0
+          }
+
           for ($nameIndex = 1; $nameIndex -le $nameCount; $nameIndex++) {
-            $name = $Workbook.Names.Item($nameIndex)
+            $name = $null
+            try {
+              $name = $Workbook.Names.Item($nameIndex)
+            } catch {
+              continue
+            }
+
+            if ($null -eq $name) {
+              continue
+            }
+
             try {
               $refersTo = [string] $name.RefersTo
               if (-not [string]::IsNullOrEmpty($refersTo) -and $refersTo.Contains($OldTableName)) {
@@ -445,12 +532,7 @@ function Sync-CommonSheetsAcrossWorkbooks {
 
           break
         } catch {
-          $isRpcRejected = ($_.Exception -is [System.Runtime.InteropServices.COMException]) -and (
-            $_.Exception.HResult -eq -2147418111 -or
-            $_.Exception.Message -match 'RPC_E_CALL_REJECTED|Call was rejected by callee'
-          )
-
-          if ($isRpcRejected -and $attempt -lt $maxAttempts) {
+          if ((Test-IsTransientExcelComException $_) -and $attempt -lt $maxAttempts) {
             Start-Sleep -Milliseconds (120 * $attempt)
             continue
           }
@@ -739,7 +821,7 @@ function Sync-CommonSheetsAcrossWorkbooks {
           continue
         }
 
-        foreach ($sheetName in $sourceSheetsByName.Keys) {
+        foreach ($sheetName in $sourceSheetNames) {
           $targetSheet = $null
 
           try {
@@ -753,7 +835,16 @@ function Sync-CommonSheetsAcrossWorkbooks {
           }
 
           if (-not $DryRun) {
-            $sourceSheet = $sourceSheetsByName[$sheetName]
+            $sourceSheet = $null
+            try {
+              $sourceSheet = $sourceWorkbook.Worksheets.Item($sheetName)
+            } catch {
+              if (Test-IsTransientExcelComException $_) {
+                throw ("Excel disconnected while resolving source sheet '{0}' for workbook '{1}': {2}" -f $sheetName, $targetWorkbookFile.Name, $_.Exception.Message)
+              }
+
+              throw
+            }
 
             $isConstantsCommon = $sheetName -match '^(?i)Constants(?:\s*-\s*|_|\s+)Common$'
             if ($isConstantsCommon) {
@@ -821,6 +912,12 @@ function Sync-CommonSheetsAcrossWorkbooks {
               for ($i = 0; $i -lt $tableCount; $i++) {
                 $previousTableName = [string] $sourceTables[$i].DisplayName
                 $incomingTableName = [string] $newTables[$i].DisplayName
+
+                if ([string]::IsNullOrWhiteSpace($previousTableName) -or [string]::IsNullOrWhiteSpace($incomingTableName)) {
+                  Write-Warning ("Skipping table reference sync for workbook '{0}', sheet '{1}', table index {2}: source name='{3}', target name='{4}'" -f $targetWorkbookFile.Name, $sheetName, $i, $previousTableName, $incomingTableName)
+                  continue
+                }
+
                 Replace-WorkbookTableReferences -Workbook $targetWorkbook -OldTableName $previousTableName -NewTableName $incomingTableName
               }
 
@@ -849,9 +946,27 @@ function Sync-CommonSheetsAcrossWorkbooks {
               }
               # Also fix named ranges (Lambda definitions) that may have had their
               # sheet qualifier rewritten when the old tab was renamed.
-              $nameCount2 = [int] $targetWorkbook.Names.Count
+              $nameCount2 = 0
+              try {
+                if ($null -ne $targetWorkbook.Names) {
+                  $nameCount2 = [int] $targetWorkbook.Names.Count
+                }
+              } catch {
+                $nameCount2 = 0
+              }
+
               for ($nameIndex2 = 1; $nameIndex2 -le $nameCount2; $nameIndex2++) {
-                $name2 = $targetWorkbook.Names.Item($nameIndex2)
+                $name2 = $null
+                try {
+                  $name2 = $targetWorkbook.Names.Item($nameIndex2)
+                } catch {
+                  continue
+                }
+
+                if ($null -eq $name2) {
+                  continue
+                }
+
                 try {
                   $refersTo2 = [string] $name2.RefersTo
                   if (-not [string]::IsNullOrEmpty($refersTo2) -and $refersTo2.Contains($sheetRefOld)) {
@@ -873,13 +988,28 @@ function Sync-CommonSheetsAcrossWorkbooks {
             } else {
               [void] $targetSheet.Cells.Clear()
 
-              $sourceUsedRange = $sourceSheet.UsedRange
-              if ($null -ne $sourceUsedRange) {
-                $rowCount = [int] $sourceUsedRange.Rows.Count
-                $colCount = [int] $sourceUsedRange.Columns.Count
+              $sourceUsedRange = $null
+              try {
+                $sourceUsedRange = $sourceSheet.UsedRange
+              } catch {
+                if (Test-IsTransientExcelComException $_) {
+                  Write-Warning ("Skipping sheet copy for workbook '{0}', sheet '{1}' after transient Excel COM error while reading UsedRange: {2}" -f $targetWorkbookFile.Name, $sheetName, $_.Exception.Message)
+                  continue
+                }
 
-                if ($rowCount -gt 0 -and $colCount -gt 0) {
+                throw
+              }
+
+              if ($null -ne $sourceUsedRange) {
+                try {
                   [void] $sourceUsedRange.Copy($targetSheet.Range('A1'))
+                } catch {
+                  if (Test-IsTransientExcelComException $_) {
+                    Write-Warning ("Skipping sheet copy for workbook '{0}', sheet '{1}' after transient Excel COM error while copying UsedRange: {2}" -f $targetWorkbookFile.Name, $sheetName, $_.Exception.Message)
+                    continue
+                  }
+
+                  throw
                 }
               }
             }
@@ -907,22 +1037,26 @@ function Sync-CommonSheetsAcrossWorkbooks {
         } else {
           Write-Host ("{0}: no matching sheet names found for propagation from {1}." -f $targetWorkbookFile.Name, $sourceWorkbookFile.Name)
         }
+      } catch {
+        if (Test-IsTransientExcelComException $_) {
+          Write-Host ("Skipping target workbook {0} after transient Excel COM error: {1}" -f $targetWorkbookFile.Name, $_.Exception.Message)
+          continue
+        }
+
+        throw
       } finally {
         if ($null -ne $targetWorkbook) {
-          [void] $targetWorkbook.Close($false)
-          [void] [System.Runtime.InteropServices.Marshal]::FinalReleaseComObject($targetWorkbook)
+          Invoke-ComObjectCleanup -ComObject $targetWorkbook -Action { param($workbook) [void] $workbook.Close($false) }
         }
       }
     }
   } finally {
     if ($null -ne $sourceWorkbook) {
-      [void] $sourceWorkbook.Close($false)
-      [void] [System.Runtime.InteropServices.Marshal]::FinalReleaseComObject($sourceWorkbook)
+      Invoke-ComObjectCleanup -ComObject $sourceWorkbook -Action { param($workbook) [void] $workbook.Close($false) }
     }
 
     if ($null -ne $excel) {
-      $excel.Quit()
-      [void] [System.Runtime.InteropServices.Marshal]::FinalReleaseComObject($excel)
+      Invoke-ComObjectCleanup -ComObject $excel -Action { param($app) $app.Quit() }
     }
 
     [GC]::Collect()
