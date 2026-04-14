@@ -1,0 +1,108 @@
+/*
+============================================================================
+4.5: Swine
+============================================================================
+4.5.1.5 Method 1 - Manure Atmospheric Deposition Swine
+============================================================================
+*/
+
+/*
+--------------------------------------
+VEERG_4_5_1_5__1_AnnualAtmosphericDepositionEmissionsFromMMS
+Annual atmospheric deposition emissions from MMS
+E_N2OMMSad
+t N2O
+E_{N2O,ad}=MMS_{ATMOS}\times EF_{N2O}\times C_{N2O}\times 10^{-3}
+MMS_ATMOS = mass of N volatilised from MMS (kg N)
+EF_N2O = nitrous oxide emission factor for atmospheric deposition (kg N2O-N/kg N)
+C_N2O = factor to convert elemental mass of N2O to molecular mass
+--------------------------------------
+*/
+
+VEERG_4_5_1_5__1_AnnualAtmosphericDepositionEmissionsFromMMS
+  =LAMBDA(
+    MMS_ATMOS, EF_N2O, C_N2O,
+    MMS_ATMOS * EF_N2O * C_N2O * 10 ^ -3
+  );
+
+VEERG_4_5_1_5__1_AnnualAtmosphericDepositionEmissionsFromMMS_Title
+  =LAMBDA("Annual atmospheric deposition emissions from MMS");
+
+VEERG_4_5_1_5__1_AnnualAtmosphericDepositionEmissionsFromMMS_Variable
+  =LAMBDA("E_N2OMMSad");
+
+VEERG_4_5_1_5__1_AnnualAtmosphericDepositionEmissionsFromMMS_Unit
+  =LAMBDA("t N2O");
+
+VEERG_4_5_1_5__1_AnnualAtmosphericDepositionEmissionsFromMMS_Source
+  =LAMBDA("VEERG 2026: 4.5.1.1, Equation (1)");
+
+VEERG_4_5_1_5__1_AnnualAtmosphericDepositionEmissionsFromMMS_NIRReference
+  =LAMBDA("");
+
+VEERG_4_5_1_5__1_AnnualAtmosphericDepositionEmissionsFromMMS_LatexEquation
+  =LAMBDA("E_{N2O,ad}=MMS_{ATMOS}\times EF_{N2O}\times C_{N2O}\times 10^{-3}");
+
+VEERG_4_5_1_5__1_AnnualAtmosphericDepositionEmissionsFromMMS_Arguments
+  =LAMBDA(
+    MAKEARRAY(6, 2,
+      LAMBDA(r,c,
+        INDEX({
+          "MMS_ATMOS", "mass of N volatilised from MMS (kg N)";
+          "EF_N2O", "nitrous oxide emission factor for atmospheric deposition (kg N2O-N/kg N)";
+          "C_N2O", "factor to convert elemental mass of N2O to molecular mass";
+          "j", "production system";
+          "ir", "irrigation method";
+          "r", "rainfall region"
+        }, r, c)
+      )
+    )
+  );
+
+/*
+--------------------------------------
+VEERG_4_5_1_5__2_TotalNitrogenVolatilisedFromMMS
+Total nitrogen volatilised from MMS
+MMS_ATMOS
+kg N
+MMS_{ATMOS}=\sum_{j}\sum_{m}\sum_{T}(MN_{jmT}\times FracGASM_{mT})
+MN_jmT = nitrogen per swine class, MMS and treatment stage (kg N)
+FracGASMmT = fraction of N volatilised in each MMS ((kg NH3-N + NOx-N)/kg N)
+--------------------------------------
+*/
+
+VEERG_4_5_1_5__2_TotalNitrogenVolatilisedFromMMS
+  =LAMBDA(
+    MN_jmT, FracGASMmT,
+    MN_jmT * FracGASMmT
+  );
+
+VEERG_4_5_1_5__2_TotalNitrogenVolatilisedFromMMS_Title
+  =LAMBDA("Total nitrogen volatilised from MMS");
+
+VEERG_4_5_1_5__2_TotalNitrogenVolatilisedFromMMS_Variable
+  =LAMBDA("MMS_ATMOS");
+
+VEERG_4_5_1_5__2_TotalNitrogenVolatilisedFromMMS_Unit
+  =LAMBDA("kg N");
+
+VEERG_4_5_1_5__2_TotalNitrogenVolatilisedFromMMS_Source
+  =LAMBDA("VEERG 2026: 4.5.1.1, Equation (2)");
+
+VEERG_4_5_1_5__2_TotalNitrogenVolatilisedFromMMS_NIRReference
+  =LAMBDA("");
+
+VEERG_4_5_1_5__2_TotalNitrogenVolatilisedFromMMS_LatexEquation
+  =LAMBDA("MMS_{ATMOS}=\sum_{j}\sum_{m}\sum_{T}(MN_{jmT}\times FracGASM_{mT})");
+
+VEERG_4_5_1_5__2_TotalNitrogenVolatilisedFromMMS_Arguments
+  =LAMBDA(
+    MAKEARRAY(2, 2,
+      LAMBDA(r,c,
+        INDEX({
+          "MN_jmT", "nitrogen per swine class, MMS and treatment stage (kg N)";
+          "FracGASMmT", "fraction of N volatilised in each MMS ((kg NH3-N + NOx-N)/kg N)"
+        }, r, c)
+      )
+    )
+  );

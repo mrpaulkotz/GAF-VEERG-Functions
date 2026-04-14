@@ -1,0 +1,267 @@
+/*
+============================================================================
+4.6: Poultry
+============================================================================
+4.6.1.1 Method 1 - Manure Methane Poultry
+============================================================================
+*/
+
+/*
+--------------------------------------
+VEERG_4_6_1_1__1_TotalAnnualMethaneEmissions
+Total annual methane emissions from manure management
+E_CH4
+t CH4
+E_{CH4}=\sum_{j}\sum_{k}\sum_{m}\sum_{T}(D_{jk}\times M_{jkmT}\times N_{jk})\times10^{-3}
+D_jk = duration of stay of each class and subclass of poultry : days
+M_jkmT = methane production from manure per class, subclass, MMS, and treatment stage : kg CH4/bird/day
+N_jk = numbers of poultry in each class and subclass : bird
+--------------------------------------
+*/
+
+VEERG_4_6_1_1__1_TotalAnnualMethaneEmissions
+  =LAMBDA(
+    D_jk, M_jkmT, N_jk,
+    (D_jk * M_jkmT * N_jk) * 10 ^ -3
+  );
+
+VEERG_4_6_1_1__1_TotalAnnualMethaneEmissions_Title
+  =LAMBDA("Total annual methane emissions from manure management");
+
+VEERG_4_6_1_1__1_TotalAnnualMethaneEmissions_Variable
+  =LAMBDA("E_CH4");
+
+VEERG_4_6_1_1__1_TotalAnnualMethaneEmissions_Unit
+  =LAMBDA("t CH4");
+
+VEERG_4_6_1_1__1_TotalAnnualMethaneEmissions_Source
+  =LAMBDA("VEERG 2026: 4.4.1.1, Equation (1)");
+
+VEERG_4_6_1_1__1_TotalAnnualMethaneEmissions_NIRReference
+  =LAMBDA("");
+
+VEERG_4_6_1_1__1_TotalAnnualMethaneEmissions_LatexEquation
+  =LAMBDA("E_{CH4}=\sum_{j}\sum_{k}\sum_{m}\sum_{T}(D_{jk}\times M_{jkmT}\times N_{jk})\times10^{-3}");
+
+VEERG_4_6_1_1__1_TotalAnnualMethaneEmissions_Arguments
+  =LAMBDA(
+    MAKEARRAY(3, 2,
+      LAMBDA(r,c,
+        INDEX({
+          "D_jk","duration of stay of each class and subclass of poultry : days";
+          "M_jkmT","methane production from manure per class, subclass, MMS, and treatment stage : kg CH4/bird/day";
+          "N_jk","numbers of poultry in each class and subclass : bird"
+        }, r, c)
+      )
+    )
+  );
+
+/*
+--------------------------------------
+VEERG_4_6_1_1__2_Stage1MethaneProduction
+Production of methane in treatment stage 1 MMS
+M_jkmT1
+kg CH4/bird/day
+M_{jkmT=1}=VS_{jk}\times BO_{j}\times MMS_{jmT=1}\times MCF_{im}\times \rho
+VS_jk = volatile solid production poultry classes : kg VS/bird/day
+BO_j = emissions potential per class : m3 CH4/kg VS
+MMS_jmT1 = fraction of manure in each primary system : fraction
+MCF_im = methane conversion factor for temperature zone and MMS : fraction
+rho = density of methane : kg/m3
+--------------------------------------
+*/
+
+VEERG_4_6_1_1__2_Stage1MethaneProduction
+  =LAMBDA(
+    VS_jk, BO_j, MMS_jmT1, MCF_im, rho,
+    VS_jk * BO_j * MMS_jmT1 * MCF_im * rho
+  );
+
+VEERG_4_6_1_1__2_Stage1MethaneProduction_Title
+  =LAMBDA("Production of methane in treatment stage 1 MMS");
+
+VEERG_4_6_1_1__2_Stage1MethaneProduction_Variable
+  =LAMBDA("M_jkmT1");
+
+VEERG_4_6_1_1__2_Stage1MethaneProduction_Unit
+  =LAMBDA("kg CH4/bird/day");
+
+VEERG_4_6_1_1__2_Stage1MethaneProduction_Source
+  =LAMBDA("VEERG 2026: 4.4.1.1, Equation (2)");
+
+VEERG_4_6_1_1__2_Stage1MethaneProduction_NIRReference
+  =LAMBDA("");
+
+VEERG_4_6_1_1__2_Stage1MethaneProduction_LatexEquation
+  =LAMBDA("M_{jkmT=1}=VS_{jk}\times BO_{j}\times MMS_{jmT=1}\times MCF_{im}\times \rho");
+
+VEERG_4_6_1_1__2_Stage1MethaneProduction_Arguments
+  =LAMBDA(
+    MAKEARRAY(6, 2,
+      LAMBDA(r,c,
+        INDEX({
+          "VS_jk","volatile solid production poultry classes : kg VS/bird/day";
+          "BO_j","emissions potential per class : m3 CH4/kg VS";
+          "MMS_jmT1","fraction of manure in each primary system : fraction";
+          "MCF_im","methane conversion factor for temperature zone and MMS : fraction";
+          "rho","density of methane : kg/m3";
+          "i", "state"
+        }, r, c)
+      )
+    )
+  );
+
+/*
+--------------------------------------
+VEERG_4_6_1_1__3_Stage2MethaneProduction
+Production of methane in treatment stage 2 MMS
+M_jkmT2
+kg CH4/bird/day
+M_{jkmT=2}=VST_{jk}\times BO\times MMS_{jmT=2}\times MCF_{im}\times \rho
+VST_jk = volatile solids transferred to treatment stage 2 MMS : kg VS/bird/day
+BO = emissions potential : m3 CH4/kg VS
+MMS_jmT2 = fraction of manure in each secondary system : fraction
+MCF_im = methane conversion factor for temperature zone and MMS : fraction
+rho = density of methane : kg/m3
+--------------------------------------
+*/
+
+VEERG_4_6_1_1__3_Stage2MethaneProduction
+  =LAMBDA(
+    VST_jk, BO, MMS_jmT2, MCF_im, rho,
+    VST_jk * BO * MMS_jmT2 * MCF_im * rho
+  );
+
+VEERG_4_6_1_1__3_Stage2MethaneProduction_Title
+  =LAMBDA("Production of methane in treatment stage 2 MMS");
+
+VEERG_4_6_1_1__3_Stage2MethaneProduction_Variable
+  =LAMBDA("M_jkmT2");
+
+VEERG_4_6_1_1__3_Stage2MethaneProduction_Unit
+  =LAMBDA("kg CH4/bird/day");
+
+VEERG_4_6_1_1__3_Stage2MethaneProduction_Source
+  =LAMBDA("VEERG 2026: 4.4.1.1, Equation (3)");
+
+VEERG_4_6_1_1__3_Stage2MethaneProduction_NIRReference
+  =LAMBDA("");
+
+VEERG_4_6_1_1__3_Stage2MethaneProduction_LatexEquation
+  =LAMBDA("M_{jkmT=2}=VST_{jk}\times BO\times MMS_{jmT=2}\times MCF_{im}\times \rho");
+
+VEERG_4_6_1_1__3_Stage2MethaneProduction_Arguments
+  =LAMBDA(
+    MAKEARRAY(6, 2,
+      LAMBDA(r,c,
+        INDEX({
+          "VST_jk","volatile solids transferred to treatment stage 2 MMS : kg VS/bird/day";
+          "BO","emissions potential : m3 CH4/kg VS";
+          "MMS_jmT2","fraction of manure in each secondary system : fraction";
+          "MCF_im","methane conversion factor for temperature zone and MMS : fraction";
+          "rho","density of methane : kg/m3";
+          "i", "state"
+        }, r, c)
+      )
+    )
+  );
+
+/*
+--------------------------------------
+VEERG_4_6_1_1__4_VolatileSolidsTransferred
+Volatile solids transferred to treatment stage 2 MMS
+VST_jk
+kg VS/bird/day
+VST_{jk}=VS_{jk}\times MMS_{jmT=1}\times (1-VSL_{mT=1})
+VS_jk = volatile solid production poultry classes : kg VS/bird/day
+MMS_jmT1 = fraction of manure in each primary system : fraction
+VSL_mT1 = fraction of volatile solids lost during storage in the primary system : fraction
+--------------------------------------
+*/
+
+VEERG_4_6_1_1__4_VolatileSolidsTransferred
+  =LAMBDA(
+    VS_jk, MMS_jmT1, VSL_mT1,
+    VS_jk * MMS_jmT1 * (1 - VSL_mT1)
+  );
+
+VEERG_4_6_1_1__4_VolatileSolidsTransferred_Title
+  =LAMBDA("Volatile solids transferred to treatment stage 2 MMS");
+
+VEERG_4_6_1_1__4_VolatileSolidsTransferred_Variable
+  =LAMBDA("VST_jk");
+
+VEERG_4_6_1_1__4_VolatileSolidsTransferred_Unit
+  =LAMBDA("kg VS/bird/day");
+
+VEERG_4_6_1_1__4_VolatileSolidsTransferred_Source
+  =LAMBDA("VEERG 2026: 4.4.1.1, Equation (4)");
+
+VEERG_4_6_1_1__4_VolatileSolidsTransferred_NIRReference
+  =LAMBDA("");
+
+VEERG_4_6_1_1__4_VolatileSolidsTransferred_LatexEquation
+  =LAMBDA("VST_{jk}=VS_{jk}\times MMS_{jmT=1}\times (1-VSL_{mT=1})");
+
+VEERG_4_6_1_1__4_VolatileSolidsTransferred_Arguments
+  =LAMBDA(
+    MAKEARRAY(3, 2,
+      LAMBDA(r,c,
+        INDEX({
+          "VS_jk","volatile solid production poultry classes : kg VS/bird/day";
+          "MMS_jmT1","fraction of manure in each primary system : fraction";
+          "VSL_mT1","fraction of volatile solids lost during storage in the primary system : fraction"
+        }, r, c)
+      )
+    )
+  );
+
+/*
+--------------------------------------
+VEERG_4_6_1_1__5_VolatileSolidProduction
+Volatile solid production poultry classes
+VS_jk
+kg VS/bird/day
+VS_{jk}=I_{jk}\times (1-DMD_{jk})\times (1-A_{j})
+I_jk = dry matter intake for each class and subclass : kg DM/bird/day
+DMD_jk = dry matter digestibility for each class and subclass : fraction
+A_j = ash content of manure for each class and subclass : fraction
+--------------------------------------
+*/
+
+VEERG_4_6_1_1__5_VolatileSolidProduction
+  =LAMBDA(
+    I_jk, DMD_jk, A_j,
+    I_jk * (1 - DMD_jk) * (1 - A_j)
+  );
+
+VEERG_4_6_1_1__5_VolatileSolidProduction_Title
+  =LAMBDA("Volatile solid production poultry classes");
+
+VEERG_4_6_1_1__5_VolatileSolidProduction_Variable
+  =LAMBDA("VS_jk");
+
+VEERG_4_6_1_1__5_VolatileSolidProduction_Unit
+  =LAMBDA("kg VS/bird/day");
+
+VEERG_4_6_1_1__5_VolatileSolidProduction_Source
+  =LAMBDA("VEERG 2026: 4.4.1.1, Equation (5)");
+
+VEERG_4_6_1_1__5_VolatileSolidProduction_NIRReference
+  =LAMBDA("");
+
+VEERG_4_6_1_1__5_VolatileSolidProduction_LatexEquation
+  =LAMBDA("VS_{jk}=I_{jk}\times (1-DMD_{jk})\times (1-A_{j})");
+
+VEERG_4_6_1_1__5_VolatileSolidProduction_Arguments
+  =LAMBDA(
+    MAKEARRAY(3, 2,
+      LAMBDA(r,c,
+        INDEX({
+          "I_jk","dry matter intake for each class and subclass : kg DM/bird/day";
+          "DMD_jk","dry matter digestibility for each class and subclass : fraction";
+          "A_j","ash content of manure for each class and subclass : fraction"
+        }, r, c)
+      )
+    )
+  );

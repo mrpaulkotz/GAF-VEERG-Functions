@@ -1,0 +1,365 @@
+/*
+============================================================================
+4.5: Swine
+============================================================================
+4.5.1.3 Method 1 - Manure Direct N2O Swine
+============================================================================
+*/
+
+/*
+--------------------------------------
+VEERG_4_5_1_3__1_TotalAnnualDirectNitrousOxideEmissionsFromMMS
+Total annual direct nitrous oxide emissions from manure management systems
+E_N2Odir
+t N2O
+E_{N2O,dir}=\sum_{j}\sum_{m}\sum_{T}(MN_{jmT}\times EF_{jm}\times C_{N2O})\times10^{-3}
+MN_jmT = nitrogen per swine class, MMS and treatment stage (kg N)
+EF_jm = nitrous oxide emission factor for MMS (kg N2O-N/kg N)
+C_N2O = factor to convert elemental mass of nitrous oxide to molecular mass
+--------------------------------------
+*/
+
+VEERG_4_5_1_3__1_TotalAnnualDirectNitrousOxideEmissionsFromMMS
+  =LAMBDA(
+    MN_jmT, EF_jm, C_N2O,
+    MN_jmT * EF_jm * C_N2O * 10 ^ -3
+  );
+
+VEERG_4_5_1_3__1_TotalAnnualDirectNitrousOxideEmissionsFromMMS_Title
+  =LAMBDA("Total annual direct nitrous oxide emissions from manure management systems");
+
+VEERG_4_5_1_3__1_TotalAnnualDirectNitrousOxideEmissionsFromMMS_Variable
+  =LAMBDA("E_N2Odir");
+
+VEERG_4_5_1_3__1_TotalAnnualDirectNitrousOxideEmissionsFromMMS_Unit
+  =LAMBDA("t N2O");
+
+VEERG_4_5_1_3__1_TotalAnnualDirectNitrousOxideEmissionsFromMMS_Source
+  =LAMBDA("VEERG 2026: 4.5.1.3, Equation (1)");
+
+VEERG_4_5_1_3__1_TotalAnnualDirectNitrousOxideEmissionsFromMMS_NIRReference
+  =LAMBDA("");
+
+VEERG_4_5_1_3__1_TotalAnnualDirectNitrousOxideEmissionsFromMMS_LatexEquation
+  =LAMBDA("E_{N2O,dir}=\sum_{j}\sum_{m}\sum_{T}(MN_{jmT}\times EF_{jm}\times C_{N2O})\times10^{-3}");
+
+VEERG_4_5_1_3__1_TotalAnnualDirectNitrousOxideEmissionsFromMMS_Arguments
+  =LAMBDA(
+    MAKEARRAY(3, 2,
+      LAMBDA(r,c,
+        INDEX({
+          "MN_jmT", "nitrogen per swine class, MMS and treatment stage (kg N)";
+          "EF_jm", "nitrous oxide emission factor for MMS (kg N2O-N/kg N)";
+          "C_N2O", "factor to convert elemental mass of nitrous oxide to molecular mass"
+        }, r, c)
+      )
+    )
+  );
+
+/*
+--------------------------------------
+VEERG_4_5_1_3__2_Stage1NitrogenInMMS
+Nitrogen in treatment stage 1 MMS
+MN_jmT1
+kg N
+MN_{jm,T=1}=AE_{j}\times FN_{jm,T=1}
+AE_j = total nitrogen excreted by each swine class (kg N)
+FN_jmT1 = fraction of nitrogen in each primary MMS system
+--------------------------------------
+*/
+
+VEERG_4_5_1_3__2_Stage1NitrogenInMMS
+  =LAMBDA(
+    AE_j, FN_jmT1,
+    AE_j * FN_jmT1
+  );
+
+VEERG_4_5_1_3__2_Stage1NitrogenInMMS_Title
+  =LAMBDA("Nitrogen in treatment stage 1 MMS");
+
+VEERG_4_5_1_3__2_Stage1NitrogenInMMS_Variable
+  =LAMBDA("MN_jmT1");
+
+VEERG_4_5_1_3__2_Stage1NitrogenInMMS_Unit
+  =LAMBDA("kg N");
+
+VEERG_4_5_1_3__2_Stage1NitrogenInMMS_Source
+  =LAMBDA("VEERG 2026: 4.5.1.3, Equation (2)");
+
+VEERG_4_5_1_3__2_Stage1NitrogenInMMS_NIRReference
+  =LAMBDA("");
+
+VEERG_4_5_1_3__2_Stage1NitrogenInMMS_LatexEquation
+  =LAMBDA("MN_{jm,T=1}=AE_{j}\times FN_{jm,T=1}");
+
+VEERG_4_5_1_3__2_Stage1NitrogenInMMS_Arguments
+  =LAMBDA(
+    MAKEARRAY(2, 2,
+      LAMBDA(r,c,
+        INDEX({
+          "AE_j", "total nitrogen excreted by each swine class (kg N)";
+          "FN_jmT1", "fraction of nitrogen in each primary MMS system"
+        }, r, c)
+      )
+    )
+  );
+
+/*
+--------------------------------------
+VEERG_4_5_1_3__3_FractionOfNitrogenInPrimaryMMS
+Fraction of nitrogen in each primary MMS (excluding solid storage)
+FN_jmT1
+fraction
+FN_{jm,T=1}=MMS_{jm,T=1}\times(1-SN_{m})
+MMS_jmT1 = fraction of manure in primary MMS
+SN_m = fraction of nitrogen separated to solid storage for each MMS
+--------------------------------------
+*/
+
+VEERG_4_5_1_3__3_FractionOfNitrogenInPrimaryMMS
+  =LAMBDA(
+    MMS_jmT1, SN_m,
+    MMS_jmT1 * (1 - SN_m)
+  );
+
+VEERG_4_5_1_3__3_FractionOfNitrogenInPrimaryMMS_Title
+  =LAMBDA("Fraction of nitrogen in each primary MMS (excluding solid storage)");
+
+VEERG_4_5_1_3__3_FractionOfNitrogenInPrimaryMMS_Variable
+  =LAMBDA("FN_jmT1");
+
+VEERG_4_5_1_3__3_FractionOfNitrogenInPrimaryMMS_Unit
+  =LAMBDA("fraction");
+
+VEERG_4_5_1_3__3_FractionOfNitrogenInPrimaryMMS_Source
+  =LAMBDA("VEERG 2026: 4.5.1.3, Equation (3)");
+
+VEERG_4_5_1_3__3_FractionOfNitrogenInPrimaryMMS_NIRReference
+  =LAMBDA("");
+
+VEERG_4_5_1_3__3_FractionOfNitrogenInPrimaryMMS_LatexEquation
+  =LAMBDA("FN_{jm,T=1}=MMS_{jm,T=1}\times(1-SN_{m})");
+
+VEERG_4_5_1_3__3_FractionOfNitrogenInPrimaryMMS_Arguments
+  =LAMBDA(
+    MAKEARRAY(2, 2,
+      LAMBDA(r,c,
+        INDEX({
+          "MMS_jmT1", "fraction of manure in primary MMS";
+          "SN_m", "fraction of nitrogen separated to solid storage for each MMS"
+        }, r, c)
+      )
+    )
+  );
+
+/*
+--------------------------------------
+VEERG_4_5_1_3__4_FractionOfNitrogenInSolidStorage
+Fraction of nitrogen in solid storage
+FN_jm4T1
+fraction
+FN_{jm=4,T=1}=MMS_{jm=4,T=1}+(MMS_{jm=1,7,9,T=1}\times SN_{m})
+MMS_jm4T1 = fraction of manure in solid storage MMS
+MMS_jm179T1 = fraction of manure in primary liquid systems (m=1,7,9)
+SN_m = fraction of nitrogen separated to solid storage for each MMS
+--------------------------------------
+*/
+
+VEERG_4_5_1_3__4_FractionOfNitrogenInSolidStorage
+  =LAMBDA(
+    MMS_jm4T1, MMS_jm179T1, SN_m,
+    MMS_jm4T1 + (MMS_jm179T1 * SN_m)
+  );
+
+VEERG_4_5_1_3__4_FractionOfNitrogenInSolidStorageVariation
+  =LAMBDA(
+    MMS_jm4T1,
+    MMSjmT1_1, MMSjmT1_2, MMSjmT1_3, MMSjmT1_4, MMSjmT1_5,
+    SSjmT1_1, SSjmT1_2, SSjmT1_3, SSjmT1_4, SSjmT1_5,
+    MMS_jm4T1 + (MMSjmT1_1 * SSjmT1_1) + (MMSjmT1_2 * SSjmT1_2) + (MMSjmT1_3 * SSjmT1_3) + (MMSjmT1_4 * SSjmT1_4) + (MMSjmT1_5 * SSjmT1_5)
+  );
+
+VEERG_4_5_1_3__4_FractionOfNitrogenInSolidStorage_Title
+  =LAMBDA("Fraction of nitrogen in solid storage");
+
+VEERG_4_5_1_3__4_FractionOfNitrogenInSolidStorage_Variable
+  =LAMBDA("FN_jm4T1");
+
+VEERG_4_5_1_3__4_FractionOfNitrogenInSolidStorage_Unit
+  =LAMBDA("fraction");
+
+VEERG_4_5_1_3__4_FractionOfNitrogenInSolidStorage_Source
+  =LAMBDA("VEERG 2026: 4.5.1.3, Equation (4)");
+
+VEERG_4_5_1_3__4_FractionOfNitrogenInSolidStorage_NIRReference
+  =LAMBDA("");
+
+VEERG_4_5_1_3__4_FractionOfNitrogenInSolidStorage_LatexEquation
+  =LAMBDA("FN_{jm=4,T=1}=MMS_{jm=4,T=1}+(MMS_{jm=1,7,9,T=1}\times SN_{m})");
+
+VEERG_4_5_1_3__4_FractionOfNitrogenInSolidStorage_LatexEquationVariation
+  =LAMBDA("FN_{jm=4,T=1}=MMS_{jm=4,T=1}+(MMS_{j,m=1,T=1}\times SS_{m=1,T=1})+(MMS_{j,m=7,T=1}\times SS_{m=7,T=1})+(MMS_{j,m=9,T=1}\times SS_{m=9,T=1})");
+
+VEERG_4_5_1_3__4_FractionOfNitrogenInSolidStorage_Arguments
+  =LAMBDA(
+    MAKEARRAY(3, 2,
+      LAMBDA(r,c,
+        INDEX({
+          "MMS_jm4T1", "fraction of manure in solid storage MMS";
+          "MMS_jm179T1", "fraction of manure in primary liquid systems (m=1,7,9)";
+          "SN_m", "fraction of nitrogen separated to solid storage for each MMS"
+        }, r, c)
+      )
+    )
+  );
+
+VEERG_4_5_1_3__4_FractionOfNitrogenInSolidStorage_Variation
+  =LAMBDA("VARIATION ON SOURCE: Split equation for MMSm=1,7,9 into separate items to allow for calculation");
+
+/*
+--------------------------------------
+VEERG_4_5_1_3__5_AnnualNitrogenExcretion
+Annual nitrogen excretion from each swine group
+AE_j
+kg N
+AE_{j}=N_{j}\times NW_{j}\times D_{j}
+N_j = number of swine in each group (head)
+NW_j = nitrogen produced in swine manure and waste feed in each class (kg N/head/day)
+D_j = duration of stay of swine group (days)
+--------------------------------------
+*/
+
+VEERG_4_5_1_3__5_AnnualNitrogenExcretion
+  =LAMBDA(
+    N_j, NW_j, D_j,
+    N_j * NW_j * D_j
+  );
+
+VEERG_4_5_1_3__5_AnnualNitrogenExcretion_Title
+  =LAMBDA("Annual nitrogen excretion from each swine group");
+
+VEERG_4_5_1_3__5_AnnualNitrogenExcretion_Variable
+  =LAMBDA("AE_j");
+
+VEERG_4_5_1_3__5_AnnualNitrogenExcretion_Unit
+  =LAMBDA("kg N");
+
+VEERG_4_5_1_3__5_AnnualNitrogenExcretion_Source
+  =LAMBDA("VEERG 2026: 4.5.1.3, Equation (5)");
+
+VEERG_4_5_1_3__5_AnnualNitrogenExcretion_NIRReference
+  =LAMBDA("");
+
+VEERG_4_5_1_3__5_AnnualNitrogenExcretion_LatexEquation
+  =LAMBDA("AE_{j}=N_{j}\times NW_{j}\times D_{j}");
+
+VEERG_4_5_1_3__5_AnnualNitrogenExcretion_Arguments
+  =LAMBDA(
+    MAKEARRAY(3, 2,
+      LAMBDA(r,c,
+        INDEX({
+          "N_j", "number of swine in each group (head)";
+          "NW_j", "nitrogen produced in swine manure and waste feed in each class (kg N/head/day)";
+          "D_j", "duration of stay of swine group (days)"
+        }, r, c)
+      )
+    )
+  );
+
+/*
+--------------------------------------
+VEERG_4_5_1_3__6_Stage2NitrogenInMMS
+Nitrogen in treatment stage 2 MMS
+MN_jmT2
+kg N
+MN_{jm,T=2}=NT_{jm,T=2}\times MMS_{jm,T=2}
+NT_jmT2 = nitrogen transferred to secondary treatment MMS (kg N)
+MMS_jmT2 = fraction of manure in each secondary system
+--------------------------------------
+*/
+
+VEERG_4_5_1_3__6_Stage2NitrogenInMMS
+  =LAMBDA(
+    NT_jmT2, MMS_jmT2,
+    NT_jmT2 * MMS_jmT2
+  );
+
+VEERG_4_5_1_3__6_Stage2NitrogenInMMS_Title
+  =LAMBDA("Nitrogen in treatment stage 2 MMS");
+
+VEERG_4_5_1_3__6_Stage2NitrogenInMMS_Variable
+  =LAMBDA("MN_jmT2");
+
+VEERG_4_5_1_3__6_Stage2NitrogenInMMS_Unit
+  =LAMBDA("kg N");
+
+VEERG_4_5_1_3__6_Stage2NitrogenInMMS_Source
+  =LAMBDA("VEERG 2026: 4.5.1.3, Equation (6)");
+
+VEERG_4_5_1_3__6_Stage2NitrogenInMMS_NIRReference
+  =LAMBDA("");
+
+VEERG_4_5_1_3__6_Stage2NitrogenInMMS_LatexEquation
+  =LAMBDA("MN_{jm,T=2}=NT_{jm,T=2}\times MMS_{jm,T=2}");
+
+VEERG_4_5_1_3__6_Stage2NitrogenInMMS_Arguments
+  =LAMBDA(
+    MAKEARRAY(2, 2,
+      LAMBDA(r,c,
+        INDEX({
+          "NT_jmT2", "nitrogen transferred to secondary treatment MMS (kg N)";
+          "MMS_jmT2", "fraction of manure in each secondary system"
+        }, r, c)
+      )
+    )
+  );
+
+/*
+--------------------------------------
+VEERG_4_5_1_3__7_NitrogenTransferredToStage2MMS
+Nitrogen transferred to treatment stage 2 MMS
+NT_jmT2
+kg N
+NT_{jm,T=2}=MN_{jm,T=1}\times(1-FracGASM_{m,T=1}-EF_{m,T=1})
+MN_jmT1 = nitrogen per swine class in treatment stage 1 MMS (kg N)
+FracGASMmT1 = fraction of N volatilised from MMS treatment at stage 1
+EF_mT1 = nitrous oxide emission factor for MMS treatment at stage 1
+--------------------------------------
+*/
+
+VEERG_4_5_1_3__7_NitrogenTransferredToStage2MMS
+  =LAMBDA(
+    MN_jmT1, FracGASMmT1, EF_mT1,
+    MN_jmT1 * (1 - FracGASMmT1 - EF_mT1)
+  );
+
+VEERG_4_5_1_3__7_NitrogenTransferredToStage2MMS_Title
+  =LAMBDA("Nitrogen transferred to treatment stage 2 MMS");
+
+VEERG_4_5_1_3__7_NitrogenTransferredToStage2MMS_Variable
+  =LAMBDA("NT_jmT2");
+
+VEERG_4_5_1_3__7_NitrogenTransferredToStage2MMS_Unit
+  =LAMBDA("kg N");
+
+VEERG_4_5_1_3__7_NitrogenTransferredToStage2MMS_Source
+  =LAMBDA("VEERG 2026: 4.5.1.3, Equation (7)");
+
+VEERG_4_5_1_3__7_NitrogenTransferredToStage2MMS_NIRReference
+  =LAMBDA("");
+
+VEERG_4_5_1_3__7_NitrogenTransferredToStage2MMS_LatexEquation
+  =LAMBDA("NT_{jm,T=2}=MN_{jm,T=1}\times(1-FracGASM_{m,T=1}-EF_{m,T=1})");
+
+VEERG_4_5_1_3__7_NitrogenTransferredToStage2MMS_Arguments
+  =LAMBDA(
+    MAKEARRAY(3, 2,
+      LAMBDA(r,c,
+        INDEX({
+          "MN_jmT1", "nitrogen per swine class in treatment stage 1 MMS (kg N)";
+          "FracGASMmT1", "fraction of N volatilised from MMS treatment at stage 1";
+          "EF_mT1", "nitrous oxide emission factor for MMS treatment at stage 1"
+        }, r, c)
+      )
+    )
+  );

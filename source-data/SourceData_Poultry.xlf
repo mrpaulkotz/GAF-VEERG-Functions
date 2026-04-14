@@ -179,9 +179,9 @@ SourceData_Poultry_VSL_Data
       LAMBDA(r,c, 
         INDEX({
           "MMS", "VSL", "NIR definition";
-          "Poultry manure with litter", 0.85, "Poultry manure with bedding";
-          "Poultry manure without litter - stored in house", 0.8, "Manure stored in house";
-          "Poultry manure without litter - belt removal", 1, "Belt manure removal"
+          "Poultry manure with litter", 0.15, "Poultry manure with bedding";
+          "Poultry manure without litter - stored in house", 0.2, "Manure stored in house";
+          "Poultry manure without litter - belt removal", 0, "Belt manure removal"
         }, r, c)
       )
     )

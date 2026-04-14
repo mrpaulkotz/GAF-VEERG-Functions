@@ -47,3 +47,40 @@ ConvertMonthlyCalvingToSeason
         SUM(SumArray * (SeasonPerRow=Season))
     )
 );
+
+LookupValueFromStateRegionSeason
+=LAMBDA(
+    State, Region, Season,
+    StateArray, RegionArray, SeasonArray,
+    ReturnArray,
+    StateCommonNameArray, StateAbbreviationArray,
+    LET(
+        State, XLOOKUP(State, StateCommonNameArray, StateAbbreviationArray),
+        XLOOKUP(
+            1, (StateArray=State)*
+            (RegionArray=Region),
+            XLOOKUP(
+                Season, SeasonArray, ReturnArray
+            )
+        )
+    )
+);
+
+LookupValueFromStateRegionMonth
+=LAMBDA(
+    State, Region, Month,
+    StateArray, RegionArray, SeasonArray,
+    ReturnArray,
+    StateCommonNameArray, StateAbbreviationArray, MonthArray, MonthToSeasonArray,
+    LET(
+        State, XLOOKUP(State, StateCommonNameArray, StateAbbreviationArray),
+        Season, XLOOKUP(TEXT(Month, "mmmm"), MonthArray, MonthToSeasonArray),
+        XLOOKUP(
+            1, (StateArray=State)*
+            (RegionArray=Region),
+            XLOOKUP(
+                Season, SeasonArray, ReturnArray
+            )
+        )
+    )
+);

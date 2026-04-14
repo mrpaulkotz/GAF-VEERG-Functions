@@ -180,10 +180,7 @@ SSm = fraction of volatile solids separated to solid storage for each MMS : frac
 VEERG_4_5_1_1__4_FractionVolatileSolidsPrimarySystem
   =LAMBDA(
     MMSjmT1, SSm,
-    LET(
-      ssm, IF(ISNUMBER(SSm), SSm, 0),
-      MMSjmT1 * (1 - ssm)
-    )
+    MMSjmT1 * (1 - SSm)
   );
 
 VEERG_4_5_1_1__4_FractionVolatileSolidsPrimarySystem_Title
@@ -217,7 +214,7 @@ VEERG_4_5_1_1__4_FractionVolatileSolidsPrimarySystem_Arguments
   );
 
 VEERG_4_5_1_1__4_FractionVolatileSolidsPrimarySystem_Variation
-  =LAMBDA("VARIATION ON SOURCE: Added check to convert 'N/A' value to zero.");
+  =LAMBDA("");
 
 /*
 --------------------------------------
@@ -235,13 +232,7 @@ SSm = fraction of volatile solids separated to solid storage for each MMS : frac
 VEERG_4_5_1_1__5_FractionVolatileSolidsSolidStorage
   =LAMBDA(
     MMSjm4T1, MMSjm179T1, SSm,
-    LET(
-      MMSjm4T1, IF(ISNUMBER(MMSjm4T1), MMSjm4T1, 0),
-      MMSjm179T1, IF(ISNUMBER(MMSjm179T1), MMSjm179T1, 0),
-      SSm, IF(ISNUMBER(SSm), SSm, 0),
-      MMSjm4T1 + (MMSjm179T1 * SSm)
-    )
-    
+    MMSjm4T1 + (MMSjm179T1 * SSm)
   );
 
 VEERG_4_5_1_1__5_FractionVolatileSolidsSolidStorageVariation
@@ -249,25 +240,12 @@ VEERG_4_5_1_1__5_FractionVolatileSolidsSolidStorageVariation
     MMSjm4T1,
     MMSjmT1_1, MMSjmT1_2, MMSjmT1_3, MMSjmT1_4, MMSjmT1_5,
     SSjmT1_1, SSjmT1_2, SSjmT1_3, SSjmT1_4, SSjmT1_5,
-    LET(
-      MMSjm4T1, IF(ISNUMBER(MMSjm4T1), MMSjm4T1, 0),
-      MMSjmT1_1, IF(ISNUMBER(MMSjmT1_1), MMSjmT1_1, 0),
-      MMSjmT1_2, IF(ISNUMBER(MMSjmT1_2), MMSjmT1_2, 0),
-      MMSjmT1_3, IF(ISNUMBER(MMSjmT1_3), MMSjmT1_3, 0),
-      MMSjmT1_4, IF(ISNUMBER(MMSjmT1_4), MMSjmT1_4, 0),
-      MMSjmT1_5, IF(ISNUMBER(MMSjmT1_5), MMSjmT1_5, 0),
-      SSjmT1_1, IF(ISNUMBER(SSjmT1_1), SSjmT1_1, 0),
-      SSjmT1_2, IF(ISNUMBER(SSjmT1_2), SSjmT1_2, 0),
-      SSjmT1_3, IF(ISNUMBER(SSjmT1_3), SSjmT1_3, 0),
-      SSjmT1_4, IF(ISNUMBER(SSjmT1_4), SSjmT1_4, 0),
-      SSjmT1_5, IF(ISNUMBER(SSjmT1_5), SSjmT1_5, 0),
       MMSjm4T1 + 
       (MMSjmT1_1 * SSjmT1_1) + 
       (MMSjmT1_2 * SSjmT1_2) + 
       (MMSjmT1_3 * SSjmT1_3) +
       (MMSjmT1_4 * SSjmT1_4) +
       (MMSjmT1_5 * SSjmT1_5)
-    )
   );
 
 VEERG_4_5_1_1__5_FractionVolatileSolidsSolidStorage_Title

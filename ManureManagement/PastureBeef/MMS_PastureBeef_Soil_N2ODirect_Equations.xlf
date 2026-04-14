@@ -148,14 +148,16 @@ VEERG_4_2_1_3__3_NitrogenExcreted_LatexEquation
 
 VEERG_4_2_1_3__3_NitrogenExcreted_Arguments
   =LAMBDA(
-    MAKEARRAY(5, 2,
+    MAKEARRAY(7, 2,
       LAMBDA(r,c,
         INDEX({
           "I_jkl", "dry matter intake as calculated in Chapter 3 Section 3.2.1 (kg DM/head/day)";
           "CP_j", "crude protein content of dry matter intake";
           "MC_jk136", "milk intake (kg/head/day)";
           "NR_jkl", "the amount of nitrogen retained by the body (kg N/head/day)";
-          "W_jkl", "liveweight (kg/head)"
+          "W_jkl", "liveweight (kg/head)";
+          "b", "breed of cattle";
+          "s", "Calving season"
         }, r, c)
       )
     )

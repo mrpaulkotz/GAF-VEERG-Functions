@@ -28,21 +28,165 @@ SourceData_Swine_VolatileSolids_Source
   =LAMBDA("VEERG 2026: Table A.1.6.1: Swine - Intake and manure characteristics derived from PigBal");
 
 SourceData_Swine_VolatileSolids_Variation
-  =LAMBDA("VARIATION ON SOURCE DATA: Only uses data for 2020-2024. Added 'Suckers', 'Weaners' and 'Growers' classes which have the same values as 'Slaughter pigs'.");
+  =LAMBDA("VARIATION ON SOURCE DATA: Only uses data for 2020-2024. Use 'Slaughter pigs' data for 'Other j=4' class.");
 
 SourceData_Swine_VolatileSolids_Data
   =LAMBDA(
-    MAKEARRAY(8, 2, 
+    MAKEARRAY(5, 2, 
       LAMBDA(r,c, 
         INDEX({
           "Class", "VSj";
           "Boars", 0.40;
           "Sows", 0.46;
           "Gilts", 0.55;
-          "Slaughter pigs", 0.39;
-          "Suckers", 0.39;
-          "Weaners", 0.39;
-          "Growers", 0.39
+          "Others", 0.39
+        }, r, c)
+      )
+    )
+  );
+
+
+/* 
+--------------------------------------
+SourceData_Swine_FeedIntake
+Ij
+kg/head/day
+--------------------------------------
+*/
+
+SourceData_Swine_FeedIntake_Title
+  =LAMBDA("Swine - Feed intake - ingested as fed  (Ij) - 2020 to 2024");
+
+SourceData_Swine_FeedIntake_Unit
+  =LAMBDA("kg/head/day");
+
+SourceData_Swine_FeedIntake_Source
+  =LAMBDA("VEERG 2026: Table A.1.6.1: Swine - Intake and manure characteristics derived from PigBal");
+
+SourceData_Swine_FeedIntake_Variation
+  =LAMBDA("VARIATION ON SOURCE DATA: Only uses data for 2020-2024. Use 'Slaughter pigs' data for 'Other j=4' class.");
+
+SourceData_Swine_FeedIntake_Data
+  =LAMBDA(
+    MAKEARRAY(5, 2, 
+      LAMBDA(r,c, 
+        INDEX({
+          "Class", "Ij";
+          "Boars", 2.62;
+          "Sows",2.30;
+          "Gilts", 2.50;
+          "Others", 1.71
+        }, r, c)
+      )
+    )
+  );
+
+/* 
+--------------------------------------
+SourceData_Swine_NitrogenInWaste
+NWj
+kg/head/day
+--------------------------------------
+*/
+
+SourceData_Swine_NitrogenInWaste_Title
+  =LAMBDA("Swine - Nitrogen in waste (NWj) - 2020 to 2024");
+
+SourceData_Swine_NitrogenInWaste_Unit
+  =LAMBDA("kg/head/day");
+
+SourceData_Swine_NitrogenInWaste_Source
+  =LAMBDA("VEERG 2026: Table A.1.6.1: Swine - Intake and manure characteristics derived from PigBal");
+
+SourceData_Swine_NitrogenInWaste_Variation
+  =LAMBDA("VARIATION ON SOURCE DATA: Only uses data for 2020-2024. Use 'Slaughter pigs' data for 'Other j=4' class. Added 'NWj daily' column to provide daily value for Others class. Added 'Class name' column to aid lookup.");
+
+SourceData_Swine_NitrogenInWaste_Data
+  =LAMBDA(
+    MAKEARRAY(5, 4, 
+      LAMBDA(r,c, 
+        INDEX({
+          "Class", "NWj", "NWj daily", "Class name";
+          "Boars", 0.046, 0.046, "Boars";
+          "Sows",0.049, 0.049, "Sows";
+          "Gilts", 0.046, 0.046, "Gilts";
+          "Others (kg/head/year)", 11.4, 0.0312, "Others"
+        }, r, c)
+      )
+    )
+  );
+
+
+/* 
+--------------------------------------
+SourceData_Swine_FractionNVolatilised
+FracGASMmT
+(kg NH3-N + NOx-N)/kgN
+--------------------------------------
+*/
+
+SourceData_Swine_FractionNVolatilised_Title
+  =LAMBDA("Swine - Fraction of nitrogen volatilised (FracGASMmT)");
+
+SourceData_Swine_FractionNVolatilised_Unit
+  =LAMBDA("(kg NH3-N + NOx-N)/kgN");
+
+SourceData_Swine_FractionNVolatilised_Source
+  =LAMBDA("VEERG 2026: Table A.1.6.2: Swine - Fraction of N volatilised by MMS ((kg NH3-N + NOx-N)/kgN) (FracGASMmT)");
+
+SourceData_Swine_FractionNVolatilised_Variation
+  =LAMBDA("VARIATION ON SOURCE DATA: Added 'NIR reference column to aid lookup.");
+
+SourceData_Swine_FractionNVolatilised_Data
+  =LAMBDA(
+    MAKEARRAY(7, 3, 
+      LAMBDA(r,c, 
+        INDEX({
+          "MMSm", "FracGASMmT", "NIR reference";
+          "Outdoor (Dry lot)", 0.3, "Drylot (feed pad)";
+          "Deep litter", 0.125, "Deep litter";
+          "Stockpile (Solid storage)", 0.2, "Solid storage";
+          "Effluent pond (Uncovered anaerobic lagoon)", 0.55, "Anaerobic lagoon";
+          "Anaerobic digester / Covered lagoon", 0, "Digester / covered lagoons";
+          "Short HRT tank storage < 1 month (pit storage)", 0.25, "Pit storage"
+        }, r, c)
+      )
+    )
+  );
+
+
+/* 
+--------------------------------------
+SourceData_Swine_NitrousOxideEFs
+FracGASMmT
+kgN2O - N / kgN
+--------------------------------------
+*/
+
+SourceData_Swine_NitrousOxideEFs_Title
+  =LAMBDA("Swine - Nitrous oxide EFs by MMS (EFmT)");
+
+SourceData_Swine_NitrousOxideEFs_Unit
+  =LAMBDA("kgN2O - N / kgN");
+
+SourceData_Swine_NitrousOxideEFs_Source
+  =LAMBDA("VEERG 2026: Table A.1.6.3: Swine - Nitrous oxide EFs by MMS (kgN2O-N/kgN) (EFmT)");
+
+SourceData_Swine_NitrousOxideEFs_Variation
+  =LAMBDA("VARIATION ON SOURCE DATA: Added 'NIR reference column to aid lookup.");
+
+SourceData_Swine_NitrousOxideEFs_Data
+  =LAMBDA(
+    MAKEARRAY(7, 3, 
+      LAMBDA(r,c, 
+        INDEX({
+          "MMSm", "EFmT", "NIR reference";
+          "Outdoor (Dry lot)", 0.02, "Drylot (feed pad)";
+          "Deep litter", 0.01, "Deep litter";
+          "Stockpile (Solid storage)", 0.005, "Solid storage";
+          "Effluent pond (Uncovered anaerobic lagoon)", 0, "Anaerobic lagoon";
+          "Anaerobic digestor / Covered lagoon", 0, "Digester / covered lagoons";
+          "Short HRT tank storage < 1 month (pit storage)", 0.002, "Pit storage"
         }, r, c)
       )
     )
@@ -90,7 +234,7 @@ SourceData_Swine_MMS_MCFs_Unit
   =LAMBDA("");
 
 SourceData_Swine_MMS_MCFs_Source
-  =LAMBDA("VEERG 2026: Table A.1.6.4: Swine – MCFs (MCFim)");
+  =LAMBDA("VEERG 2026: Table A.1.6.4: Swine - MCFs (MCFim)");
 
 SourceData_Swine_MMS_MCFs_Variation
   =LAMBDA("VARIATION ON SOURCE DATA: Added columns for ACT, split QLD and NT. Added extra column with MMS names that match NIR definitions");
@@ -108,6 +252,43 @@ SourceData_Swine_MMS_MCFs_Data
           "Anaerobic digester / Covered lagoon", 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, "Digester / covered lagoons"; 
           "Short HRT tank storage < 1 month (pit storage)", 0.03, 0.03, 0.03, 0.03, 0.03, 0.03, 0.03, 0.03, "Pit storage"; 
           "Direct Application to soil", 0, 0, 0, 0, 0, 0, 0, 0, "Direct application"
+        }, r, c)
+      )
+    )
+  );
+
+
+/* 
+--------------------------------------
+SourceData_Swine_AverageLiveweight
+Wco
+kg
+--------------------------------------
+*/
+
+SourceData_Swine_AverageLiveweight_Title
+  =LAMBDA("Swine - Average liveweight (inventory defaults) (kg) (Wco)");
+
+SourceData_Swine_AverageLiveweight_Unit
+  =LAMBDA("kg");
+
+SourceData_Swine_AverageLiveweight_Source
+  =LAMBDA("VEERG 2026: Table A.1.6.5: Swine - Average liveweight (inventory defaults) (kg) (Wco)");
+
+SourceData_Swine_AverageLiveweight_Variation
+  =LAMBDA(".");
+
+SourceData_Swine_AverageLiveweight_Data
+  =LAMBDA(
+    MAKEARRAY(6, 2, 
+      LAMBDA(r,c, 
+        INDEX({
+          "Livestock Type j", "Average Liveweight (kg)";
+          "Sows", 188;
+          "Boars", 206;
+          "Gilts", 125;
+          "Slaughter pigs", 39;
+          "Slaughter pigs at turnoff", 97
         }, r, c)
       )
     )
@@ -146,3 +327,31 @@ SourceData_Swine_ProductionSystems_Data
       )
     )
   );
+
+
+/* 
+--------------------------------------
+SourceData_Swine_FracLEACH_DrylotMMS
+FracLEACH_MS
+fraction
+--------------------------------------
+*/
+
+SourceData_Swine_FracLEACH_DrylotMMS_Title
+  =LAMBDA("Fraction of nitrogen lost through leaching and runoff for drylot MMS");
+
+SourceData_Swine_FracLEACH_DrylotMMS_Variable
+  =LAMBDA("FracLEACH_MS");
+
+SourceData_Swine_FracLEACH_DrylotMMS_Unit
+  =LAMBDA("fraction");
+
+SourceData_Swine_FracLEACH_DrylotMMS_Source
+  =LAMBDA("VEERG 2026: 4.5.2.3 CONSTANT");
+
+SourceData_Swine_FracLEACH_DrylotMMS_Variation
+  =LAMBDA("VARIATION ON SOURCE: Text refers to 'solid storage' MMS, but equation refers to 'drylot' MMS.");
+
+SourceData_Swine_FracLEACH_DrylotMMS_Data
+  =LAMBDA(0.02);
+

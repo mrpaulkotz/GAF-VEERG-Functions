@@ -1,0 +1,115 @@
+/*
+============================================================================
+4.5: Swine
+============================================================================
+4.5.1.9 Manure Applied to Soils
+============================================================================
+*/
+
+/*
+--------------------------------------
+VEERG_4_5_1_9__1_MassOfNitrogenAppliedToSoilsScope1
+Mass of nitrogen applied to soils for scope 1 emissions
+MNSoil_scope1
+kg N
+MNSoil_{scope1}=\sum_{j}\sum_{m}(MN_{jmT=2}\times(1-EF_{mT=2}-FracGASM_{mT=2})-MNLeach_{jm=5})\times PF
+MN_jmT2 = mass of N in MMS at treatment stage 2 : kg N
+EF_mT2 = nitrous oxide emission factor for each MMS at treatment stage 2 : kg N2O-N/kg N
+FracGASM_mT2 = fraction of animal waste N volatilised in each MMS at treatment stage 2 : (kg NH3-N + NOx-N)/kg N
+MNLeach_jm5 = mass of N lost to leaching and runoff from drylot MMS : kg N
+PF = fraction of manure applied to soil within the piggery boundary : fraction
+--------------------------------------
+*/
+
+VEERG_4_5_1_9__1_MassOfNitrogenAppliedToSoilsScope1
+  =LAMBDA(
+    MN_jmT2, EF_mT2, FracGASM_mT2, MNLeach_jm5, PF,
+    (MN_jmT2 * (1 - EF_mT2 - FracGASM_mT2) - MNLeach_jm5) * PF
+  );
+
+VEERG_4_5_1_9__1_MassOfNitrogenAppliedToSoilsScope1_Title
+  =LAMBDA("Mass of nitrogen applied to soils for scope 1 emissions");
+
+VEERG_4_5_1_9__1_MassOfNitrogenAppliedToSoilsScope1_Variable
+  =LAMBDA("MNSoil_scope1");
+
+VEERG_4_5_1_9__1_MassOfNitrogenAppliedToSoilsScope1_Unit
+  =LAMBDA("kg N");
+
+VEERG_4_5_1_9__1_MassOfNitrogenAppliedToSoilsScope1_Source
+  =LAMBDA("VEERG 2026: 4.5.1.9, Equation (1)");
+
+VEERG_4_5_1_9__1_MassOfNitrogenAppliedToSoilsScope1_NIRReference
+  =LAMBDA("");
+
+VEERG_4_5_1_9__1_MassOfNitrogenAppliedToSoilsScope1_LatexEquation
+  =LAMBDA("MNSoil_{scope1}=\sum_{j}\sum_{m}(MN_{jmT=2}\times(1-EF_{mT=2}-FracGASM_{mT=2})-MNLeach_{jm=5})\times PF");
+
+VEERG_4_5_1_9__1_MassOfNitrogenAppliedToSoilsScope1_Arguments
+  =LAMBDA(
+    MAKEARRAY(5, 2,
+      LAMBDA(r,c,
+        INDEX({
+          "MN_jmT2","mass of N in MMS at treatment stage 2 : kg N";
+          "EF_mT2","nitrous oxide emission factor for each MMS at treatment stage 2 : kg N2O-N/kg N";
+          "FracGASM_mT2","fraction of animal waste N volatilised in each MMS at treatment stage 2 : (kg NH3-N + NOx-N)/kg N";
+          "MNLeach_jm5","mass of N lost to leaching and runoff from drylot MMS : kg N";
+          "PF","fraction of manure applied to soil within the piggery boundary : fraction"
+        }, r, c)
+      )
+    )
+  );
+
+/*
+--------------------------------------
+VEERG_4_5_1_9__2_MassOfNitrogenAppliedToSoilsScope3
+Mass of nitrogen applied to soils for scope 3 emissions
+MNSoil_scope3
+kg N
+MNSoil_{scope3}=\sum_{j}\sum_{m}(MN_{jmT=2}\times(1-EF_{mT=2}-FracGASM_{mT=2})-MNLeach_{jm=5})\times(1-PF)
+MN_jmT2 = mass of N in MMS at treatment stage 2 : kg N
+EF_mT2 = nitrous oxide emission factor for each MMS at treatment stage 2 : kg N2O-N/kg N
+FracGASM_mT2 = fraction of animal waste N volatilised in each MMS at treatment stage 2 : (kg NH3-N + NOx-N)/kg N
+MNLeach_jm5 = mass of N lost to leaching and runoff from drylot MMS : kg N
+PF = fraction of manure applied to soil within the piggery boundary : fraction
+--------------------------------------
+*/
+
+VEERG_4_5_1_9__2_MassOfNitrogenAppliedToSoilsScope3
+  =LAMBDA(
+    MN_jmT2, EF_mT2, FracGASM_mT2, MNLeach_jm5, PF,
+    (MN_jmT2 * (1 - EF_mT2 - FracGASM_mT2) - MNLeach_jm5) * (1 - PF)
+  );
+
+VEERG_4_5_1_9__2_MassOfNitrogenAppliedToSoilsScope3_Title
+  =LAMBDA("Mass of nitrogen applied to soils for scope 3 emissions");
+
+VEERG_4_5_1_9__2_MassOfNitrogenAppliedToSoilsScope3_Variable
+  =LAMBDA("MNSoil_scope3");
+
+VEERG_4_5_1_9__2_MassOfNitrogenAppliedToSoilsScope3_Unit
+  =LAMBDA("kg N");
+
+VEERG_4_5_1_9__2_MassOfNitrogenAppliedToSoilsScope3_Source
+  =LAMBDA("VEERG 2026: 4.5.1.9, Equation (2)");
+
+VEERG_4_5_1_9__2_MassOfNitrogenAppliedToSoilsScope3_NIRReference
+  =LAMBDA("");
+
+VEERG_4_5_1_9__2_MassOfNitrogenAppliedToSoilsScope3_LatexEquation
+  =LAMBDA("MNSoil_{scope3}=\sum_{j}\sum_{m}(MN_{jmT=2}\times(1-EF_{mT=2}-FracGASM_{mT=2})-MNLeach_{jm=5})\times(1-PF)");
+
+VEERG_4_5_1_9__2_MassOfNitrogenAppliedToSoilsScope3_Arguments
+  =LAMBDA(
+    MAKEARRAY(5, 2,
+      LAMBDA(r,c,
+        INDEX({
+          "MN_jmT2","mass of N in MMS at treatment stage 2 : kg N";
+          "EF_mT2","nitrous oxide emission factor for each MMS at treatment stage 2 : kg N2O-N/kg N";
+          "FracGASM_mT2","fraction of animal waste N volatilised in each MMS at treatment stage 2 : (kg NH3-N + NOx-N)/kg N";
+          "MNLeach_jm5","mass of N lost to leaching and runoff from drylot MMS : kg N";
+          "PF","fraction of manure applied to soil within the piggery boundary : fraction"
+        }, r, c)
+      )
+    )
+  );
