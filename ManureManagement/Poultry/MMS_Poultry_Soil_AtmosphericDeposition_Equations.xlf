@@ -1,0 +1,108 @@
+/*
+============================================================================
+4.6: Poultry
+============================================================================
+4.6.1.12 Method 1 - Soil Atmospheric Deposition N2O Poultry
+============================================================================
+*/
+
+/*
+--------------------------------------
+VEERG_4_6_1_12__1_AtmosphericDepositionEmissionsFromPoultryManureOnPasture
+Atmospheric deposition emissions from poultry manure deposited on pasture
+E_N2Oad
+t N2O
+E_{N2O,ad}=M_{vol,m=14}\times EF_{N2O}\times C_{N2O}\times 10^{-3}
+M_vol_m14 = mass of nitrogen volatilised from manure deposited on pasture (kg N)
+EF_N2O = emission factor for atmospheric deposition (kg N2O-N/kg N)
+C_N2O = factor to convert elemental mass of N2O to molecular mass
+--------------------------------------
+*/
+
+VEERG_4_6_1_12__1_AtmosphericDepositionEmissionsFromPoultryManureOnPasture
+  =LAMBDA(
+    M_vol_m14, EF_N2O, C_N2O,
+    M_vol_m14 * EF_N2O * C_N2O * 10 ^ -3
+  );
+
+VEERG_4_6_1_12__1_AtmosphericDepositionEmissionsFromPoultryManureOnPasture_Title
+  =LAMBDA("Atmospheric deposition emissions from poultry manure deposited on pasture");
+
+VEERG_4_6_1_12__1_AtmosphericDepositionEmissionsFromPoultryManureOnPasture_Variable
+  =LAMBDA("E_N2Oad");
+
+VEERG_4_6_1_12__1_AtmosphericDepositionEmissionsFromPoultryManureOnPasture_Unit
+  =LAMBDA("t N2O");
+
+VEERG_4_6_1_12__1_AtmosphericDepositionEmissionsFromPoultryManureOnPasture_Source
+  =LAMBDA("VEERG 2026: 4.6.1.12, Equation (1)");
+
+VEERG_4_6_1_12__1_AtmosphericDepositionEmissionsFromPoultryManureOnPasture_NIRReference
+  =LAMBDA("");
+
+VEERG_4_6_1_12__1_AtmosphericDepositionEmissionsFromPoultryManureOnPasture_LatexEquation
+  =LAMBDA("E_{N2O,ad}=M_{vol,m=14}\times EF_{N2O}\times C_{N2O}\times 10^{-3}");
+
+VEERG_4_6_1_12__1_AtmosphericDepositionEmissionsFromPoultryManureOnPasture_Arguments
+  =LAMBDA(
+    MAKEARRAY(6, 2,
+      LAMBDA(r,c,
+        INDEX({
+          "M_vol_m14", "mass of nitrogen volatilised from manure deposited on pasture (kg N)";
+          "EF_N2O", "emission factor for atmospheric deposition (kg N2O-N/kg N)";
+          "C_N2O", "factor to convert elemental mass of N2O to molecular mass";
+          "j", "production system";
+          "ir", "irrigation method";
+          "r", "rainfall region"
+        }, r, c)
+      )
+    )
+  );
+
+/*
+--------------------------------------
+VEERG_4_6_1_12__2_MassOfNitrogenVolatilisedFromPoultryManureOnPasture
+Mass of nitrogen volatilised from poultry manure deposited on pasture
+M_vol_m14
+kg N
+M_{vol,m=14}=MN_{jkm=14,T=1}\times FracGASMsoil
+MN_jkm14T1 = mass of nitrogen excreted directly on pasture by poultry class and subclass (kg N)
+FracGASMsoil = fraction of nitrogen volatilised from manure deposited on pasture ((kg NH3-N + NOx-N)/kg N)
+--------------------------------------
+*/
+
+VEERG_4_6_1_12__2_MassOfNitrogenVolatilisedFromPoultryManureOnPasture
+  =LAMBDA(
+    MN_jkm14T1, FracGASMsoil,
+    MN_jkm14T1 * FracGASMsoil
+  );
+
+VEERG_4_6_1_12__2_MassOfNitrogenVolatilisedFromPoultryManureOnPasture_Title
+  =LAMBDA("Mass of nitrogen volatilised from poultry manure deposited on pasture");
+
+VEERG_4_6_1_12__2_MassOfNitrogenVolatilisedFromPoultryManureOnPasture_Variable
+  =LAMBDA("M_vol_m14");
+
+VEERG_4_6_1_12__2_MassOfNitrogenVolatilisedFromPoultryManureOnPasture_Unit
+  =LAMBDA("kg N");
+
+VEERG_4_6_1_12__2_MassOfNitrogenVolatilisedFromPoultryManureOnPasture_Source
+  =LAMBDA("VEERG 2026: 4.6.1.12, Equation (2)");
+
+VEERG_4_6_1_12__2_MassOfNitrogenVolatilisedFromPoultryManureOnPasture_NIRReference
+  =LAMBDA("");
+
+VEERG_4_6_1_12__2_MassOfNitrogenVolatilisedFromPoultryManureOnPasture_LatexEquation
+  =LAMBDA("M_{vol,m=14}=\sum_{j}\sum_{k}(MN_{jkm=14,T=1}\times FracGASMsoil)");
+
+VEERG_4_6_1_12__2_MassOfNitrogenVolatilisedFromPoultryManureOnPasture_Arguments
+  =LAMBDA(
+    MAKEARRAY(2, 2,
+      LAMBDA(r,c,
+        INDEX({
+          "MN_jkm14T1", "mass of nitrogen excreted directly on pasture by poultry class and subclass (kg N)";
+          "FracGASMsoil", "fraction of nitrogen volatilised from manure deposited on pasture ((kg NH3-N + NOx-N)/kg N)"
+        }, r, c)
+      )
+    )
+  );

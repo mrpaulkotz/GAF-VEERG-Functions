@@ -1,0 +1,110 @@
+/*
+============================================================================
+4.6: Poultry
+============================================================================
+4.6.1.14 Method 1 - Soil Leaching And Runoff N2O Poultry
+============================================================================
+*/
+
+/*
+--------------------------------------
+VEERG_4_6_1_14__1_LeachingAndRunoffEmissionsFromPoultryManureOnPasture
+Leaching and runoff emissions from poultry manure deposited on pasture
+E_N2Oleach
+t N2O
+E_{N2O,leach}=M_{leach,m=14}\times EF_{leach}\times C_{N2O}\times 10^{-3}
+M_leach_m14 = mass of nitrogen lost to leaching and runoff from poultry manure deposited on pasture (kg N)
+EF_leach = emission factor for leaching and runoff (kg N2O-N/kg N)
+C_N2O = factor to convert elemental mass of N2O to molecular mass
+--------------------------------------
+*/
+
+VEERG_4_6_1_14__1_LeachingAndRunoffEmissionsFromPoultryManureOnPasture
+  =LAMBDA(
+    M_leach_m14, EF_leach, C_N2O,
+    M_leach_m14 * EF_leach * C_N2O * 10 ^ -3
+  );
+
+VEERG_4_6_1_14__1_LeachingAndRunoffEmissionsFromPoultryManureOnPasture_Title
+  =LAMBDA("Leaching and runoff emissions from poultry manure deposited on pasture");
+
+VEERG_4_6_1_14__1_LeachingAndRunoffEmissionsFromPoultryManureOnPasture_Variable
+  =LAMBDA("E_N2Oleach");
+
+VEERG_4_6_1_14__1_LeachingAndRunoffEmissionsFromPoultryManureOnPasture_Unit
+  =LAMBDA("t N2O");
+
+VEERG_4_6_1_14__1_LeachingAndRunoffEmissionsFromPoultryManureOnPasture_Source
+  =LAMBDA("VEERG 2026: 4.6.1.14, Equation (1)");
+
+VEERG_4_6_1_14__1_LeachingAndRunoffEmissionsFromPoultryManureOnPasture_NIRReference
+  =LAMBDA("");
+
+VEERG_4_6_1_14__1_LeachingAndRunoffEmissionsFromPoultryManureOnPasture_LatexEquation
+  =LAMBDA("E_{N2O,leach}=M_{leach,m=14}\times EF_{leach}\times C_{N2O}\times 10^{-3}");
+
+VEERG_4_6_1_14__1_LeachingAndRunoffEmissionsFromPoultryManureOnPasture_Arguments
+  =LAMBDA(
+    MAKEARRAY(3, 2,
+      LAMBDA(r,c,
+        INDEX({
+          "M_leach_m14", "mass of nitrogen lost to leaching and runoff from poultry manure deposited on pasture (kg N)";
+          "EF_leach", "emission factor for leaching and runoff (kg N2O-N/kg N)";
+          "C_N2O", "factor to convert elemental mass of N2O to molecular mass"
+        }, r, c)
+      )
+    )
+  );
+
+/*
+--------------------------------------
+VEERG_4_6_1_14__2_MassOfNitrogenLostToLeachingAndRunoffFromPoultryManureOnPasture
+Mass of nitrogen lost to leaching and runoff from poultry manure deposited on pasture
+M_leach_m14
+kg N
+M_{leach,m=14}=MN_{jkm=14,T=1}\times FracWet\times FracLEACH_MS
+MN_jkm14T1 = mass of nitrogen excreted directly on pasture by poultry class and subclass (kg N)
+FracWet = fraction of N available for leaching and runoff
+FracLEACH_MS = fraction of N that is lost through leaching and runoff
+--------------------------------------
+*/
+
+VEERG_4_6_1_14__2_MassOfNitrogenLostToLeachingAndRunoffFromPoultryManureOnPasture
+  =LAMBDA(
+    MN_jkm14T1, FracWet, FracLEACH_MS,
+    MN_jkm14T1 * FracWet * FracLEACH_MS
+  );
+
+VEERG_4_6_1_14__2_MassOfNitrogenLostToLeachingAndRunoffFromPoultryManureOnPasture_Title
+  =LAMBDA("Mass of nitrogen lost to leaching and runoff from poultry manure deposited on pasture");
+
+VEERG_4_6_1_14__2_MassOfNitrogenLostToLeachingAndRunoffFromPoultryManureOnPasture_Variable
+  =LAMBDA("M_leach_m14");
+
+VEERG_4_6_1_14__2_MassOfNitrogenLostToLeachingAndRunoffFromPoultryManureOnPasture_Unit
+  =LAMBDA("kg N");
+
+VEERG_4_6_1_14__2_MassOfNitrogenLostToLeachingAndRunoffFromPoultryManureOnPasture_Source
+  =LAMBDA("VEERG 2026: 4.6.1.14, Equation (2)");
+
+VEERG_4_6_1_14__2_MassOfNitrogenLostToLeachingAndRunoffFromPoultryManureOnPasture_NIRReference
+  =LAMBDA("");
+
+VEERG_4_6_1_14__2_MassOfNitrogenLostToLeachingAndRunoffFromPoultryManureOnPasture_LatexEquation
+  =LAMBDA("M_{leach,m=14}=\sum_{j}\sum_{k}(MN_{jkm=14,T=1}\times FracWet\times FracLEACH_MS)");
+
+VEERG_4_6_1_14__2_MassOfNitrogenLostToLeachingAndRunoffFromPoultryManureOnPasture_Arguments
+  =LAMBDA(
+    MAKEARRAY(6, 2,
+      LAMBDA(r,c,
+        INDEX({
+          "MN_jkm14T1", "mass of nitrogen excreted directly on pasture by poultry class and subclass (kg N)";
+          "FracWet", "fraction of N available for leaching and runoff";
+          "FracLEACH_MS", "fraction of N that is lost through leaching and runoff";
+          "z", "location in leaching zone";
+          "j", "production system";
+          "ir", "irrigation method"
+        }, r, c)
+      )
+    )
+  );

@@ -186,3 +186,106 @@ SourceData_Poultry_VSL_Data
       )
     )
   );
+
+
+
+/* 
+--------------------------------------
+SourceData_Poultry_FracGASMmT
+Table A.1.7.2: Poultry - Fraction of N volatilised by MMS ((kg NH3-N + NOx-N)/kgN) (FracGASMmT)
+--------------------------------------
+*/
+
+SourceData_Poultry_FracGASMmT_Title
+  =LAMBDA("Poultry - Fraction of N volatilised by MMS ((kg NH3-N + NOx-N)/kgN) (FracGASMmT)");
+
+SourceData_Poultry_FracGASMmT_Unit
+  =LAMBDA("(kg NH3-N + NOx-N)/kgN");
+
+SourceData_Poultry_FracGASMmT_Source
+  =LAMBDA("VEERG 2026: Table A.1.7.2");
+
+SourceData_Poultry_FracGASMmT_Variation
+  =LAMBDA("VARIATION ON SOURCE: Added 'NIR definition column'.");
+
+SourceData_Poultry_FracGASMmT_Data
+  =LAMBDA(
+    MAKEARRAY(8, 3, 
+      LAMBDA(r,c, 
+        INDEX({
+          "MMS m", "FracGASMmT", "NIR reference";
+          "Poultry manure with litter (housing)", 0.3, "Poultry manure with bedding";
+          "Poultry manure without litter (housing) Belt manure removal", 0.05, "Belt manure removal";
+          "Poultry manure without litter (housing) Manure stored in house under cages or slat", 0.4, "Manure stored in house";
+          "Solid storage (stockpile)", 0.2, "Solid storage";
+          "Composting (passive windrow)", 0.2, "Composting (passive windrow)";
+          "Direct processing", 0, "Direct processing";
+          "Anaerobic digester / covered pond", 0, "Digester / covered lagoons"
+        }, r, c)
+      )
+    )
+  );
+
+
+/* 
+--------------------------------------
+SourceData_Poultry_EFmT
+Table A.1.7.3: Poultry - Nitrous oxide EFs by MMS (kgN2O-N/kgN) (EFmT)
+--------------------------------------
+*/
+
+SourceData_Poultry_EFmT_Title
+  =LAMBDA("Poultry - Nitrous oxide EFs by MMS (kgN2O-N/kgN) (EFmT)");
+
+SourceData_Poultry_EFmT_Unit
+  =LAMBDA("kgN2O - N / kgN");
+
+SourceData_Poultry_EFmT_Source
+  =LAMBDA("VEERG 2026: Table A.1.7.3");
+
+SourceData_Poultry_EFmT_Variation
+  =LAMBDA("VARIATION ON SOURCE: Added 'NIR definition column'. Duplicated 'Poultry manure without litter' row for NIR MMS 'Belt manure removal' and 'Manure stored in house'.");
+
+SourceData_Poultry_EFmT_Data
+  =LAMBDA(
+    MAKEARRAY(9, 3, 
+      LAMBDA(r,c, 
+        INDEX({
+          "MMS m", "EFmT", "NIR reference";
+          "Poultry manure with litter (housing)", 0.001, "Poultry manure with bedding";
+          "Poultry manure without litter (housing)", 0.001, "Belt manure removal";
+          "Poultry manure without litter (housing)", 0.001, "Manure stored in house";
+          "Pasture range and paddock (free range)", 0.02, "Pasture range and paddock";
+          "Solid storage (stockpile)", 0.005, "Solid storage";
+          "Composting (passive windrow)", 0.01, "Composting (passive windrow)";
+          "Direct processing", 0, "Direct processing";
+          "Anaerobic digester / covered pond", 0, "Digester / covered lagoons"
+        }, r, c)
+      )
+    )
+  );
+
+/* 
+--------------------------------------
+SourceData_Poultry_FractionOfNitrogenLostThroughLeachingAndRunoff
+Fraction of N that is lost through leaching and runoff (dimensionless)
+--------------------------------------
+*/
+
+SourceData_Poultry_FractionOfNitrogenLostThroughLeachingAndRunoff_Title
+  =LAMBDA("Fraction of N that is lost through leaching and runoff");
+
+SourceData_Poultry_FractionOfNitrogenLostThroughLeachingAndRunoff_Variable
+  =LAMBDA("Frac_LEACH_MS");
+
+SourceData_Poultry_FractionOfNitrogenLostThroughLeachingAndRunoff_Unit
+  =LAMBDA("Dimensionless");
+
+SourceData_Poultry_FractionOfNitrogenLostThroughLeachingAndRunoff_Source
+  =LAMBDA("VEERG 2026: 4.6.2.3 CONSTANTS");
+
+SourceData_Poultry_FractionOfNitrogenLostThroughLeachingAndRunoff_Variation
+  =LAMBDA("");
+
+SourceData_Poultry_FractionOfNitrogenLostThroughLeachingAndRunoff_Data
+  =LAMBDA(0.02);

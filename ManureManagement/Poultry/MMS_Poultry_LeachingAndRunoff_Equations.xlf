@@ -1,0 +1,111 @@
+/*
+============================================================================
+4.6: Poultry
+============================================================================
+4.6.1.7 Method 1 - Manure Leaching and Runoff N2O Poultry
+============================================================================
+*/
+
+/*
+--------------------------------------
+VEERG_4_6_1_7__1_AnnualEmissionsFromLeachingAndRunoffFromMMS
+Annual emissions from leaching and runoff from each MMS
+E_N2Oleach
+t N2O
+E_{N2O,leach}=MNLeach_{jkm=4}\times EF_{leach}\times C_{N2O}\times10^{-3}
+MNLeach_jkm4 = mass of N lost through leaching and runoff from each MMS : kg N
+EF_leach = emission factor for leaching and runoff : kg N2O-N/kg N
+C_N2O = factor to convert elemental mass of N2O to molecular mass : ratio
+VARIATION OF SOURCE: For Method 1, emissions are estimated for solid storage (m=4).
+--------------------------------------
+*/
+
+VEERG_4_6_1_7__1_AnnualEmissionsFromLeachingAndRunoffFromMMS
+  =LAMBDA(
+    MNLeach_jkm4, EF_leach, C_N2O,
+    (MNLeach_jkm4 * EF_leach * C_N2O) * 10 ^ -3
+  );
+
+VEERG_4_6_1_7__1_AnnualEmissionsFromLeachingAndRunoffFromMMS_Title
+  =LAMBDA("Annual emissions from leaching and runoff from each MMS");
+
+VEERG_4_6_1_7__1_AnnualEmissionsFromLeachingAndRunoffFromMMS_Variable
+  =LAMBDA("E_N2Oleach");
+
+VEERG_4_6_1_7__1_AnnualEmissionsFromLeachingAndRunoffFromMMS_Unit
+  =LAMBDA("t N2O");
+
+VEERG_4_6_1_7__1_AnnualEmissionsFromLeachingAndRunoffFromMMS_Source
+  =LAMBDA("VEERG 2026: 4.6.1.7, Equation (1)");
+
+VEERG_4_6_1_7__1_AnnualEmissionsFromLeachingAndRunoffFromMMS_NIRReference
+  =LAMBDA("");
+
+VEERG_4_6_1_7__1_AnnualEmissionsFromLeachingAndRunoffFromMMS_LatexEquation
+  =LAMBDA("E_{N2O,leach}=MNLeach_{jkm=4}\times EF_{leach}\times C_{N2O}\times10^{-3}");
+
+VEERG_4_6_1_7__1_AnnualEmissionsFromLeachingAndRunoffFromMMS_Arguments
+  =LAMBDA(
+    MAKEARRAY(3, 2,
+      LAMBDA(r,c,
+        INDEX({
+          "MNLeach_jkm4","mass of N lost through leaching and runoff from each MMS : kg N";
+          "EF_leach","emission factor for leaching and runoff : kg N2O-N/kg N";
+          "C_N2O","factor to convert elemental mass of N2O to molecular mass : ratio"
+        }, r, c)
+      )
+    )
+  );
+
+/*
+--------------------------------------
+VEERG_4_6_1_7__2_MassOfNitrogenLostToLeachingAndRunoffFromSolidStorage
+Mass of nitrogen lost to leaching and runoff from solid storage systems
+MNLeach_jkm4
+kg N
+MNLeach_{jkm=4}=MN_{jkm=4,T=1}\times FracWET\times FracLEACH_{MS}
+MN_jkm4T1 = nitrogen in solid storage MMS treatment stage 1 : kg N
+FracWET = fraction of N available for leaching and runoff : fraction
+FracLEACH_MS = fraction of N lost through leaching and runoff : fraction
+--------------------------------------
+*/
+
+VEERG_4_6_1_7__2_MassOfNitrogenLostToLeachingAndRunoffFromSolidStorage
+  =LAMBDA(
+    MN_jkm4T1, FracWET, FracLEACH_MS,
+    MN_jkm4T1 * FracWET * FracLEACH_MS
+  );
+
+VEERG_4_6_1_7__2_MassOfNitrogenLostToLeachingAndRunoffFromSolidStorage_Title
+  =LAMBDA("Mass of nitrogen lost to leaching and runoff from solid storage systems");
+
+VEERG_4_6_1_7__2_MassOfNitrogenLostToLeachingAndRunoffFromSolidStorage_Variable
+  =LAMBDA("MNLeach_jkm4");
+
+VEERG_4_6_1_7__2_MassOfNitrogenLostToLeachingAndRunoffFromSolidStorage_Unit
+  =LAMBDA("kg N");
+
+VEERG_4_6_1_7__2_MassOfNitrogenLostToLeachingAndRunoffFromSolidStorage_Source
+  =LAMBDA("VEERG 2026: 4.6.1.7, Equation (2)");
+
+VEERG_4_6_1_7__2_MassOfNitrogenLostToLeachingAndRunoffFromSolidStorage_NIRReference
+  =LAMBDA("");
+
+VEERG_4_6_1_7__2_MassOfNitrogenLostToLeachingAndRunoffFromSolidStorage_LatexEquation
+  =LAMBDA("MNLeach_{jkm=4}=MN_{jkm=4,T=1}\times FracWET\times FracLEACH_{MS}");
+
+VEERG_4_6_1_7__2_MassOfNitrogenLostToLeachingAndRunoffFromSolidStorage_Arguments
+  =LAMBDA(
+    MAKEARRAY(6, 2,
+      LAMBDA(r,c,
+        INDEX({
+          "MN_jkm4T1","nitrogen in solid storage MMS treatment stage 1 : kg N";
+          "FracWET","fraction of N available for leaching and runoff : fraction";
+          "FracLEACH_MS","fraction of N lost through leaching and runoff : fraction";
+          "z", "location in leaching zone";
+          "j", "production system";
+          "ir", "irrigation method"
+        }, r, c)
+      )
+    )
+  );

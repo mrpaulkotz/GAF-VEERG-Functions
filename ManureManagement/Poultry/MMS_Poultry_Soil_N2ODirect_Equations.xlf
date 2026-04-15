@@ -1,0 +1,57 @@
+/*
+============================================================================
+4.6: Poultry
+============================================================================
+4.6.1.10 Method 1 - Soil Direct N2O Poultry
+============================================================================
+*/
+
+/*
+--------------------------------------
+VEERG_4_6_1_10__1_DirectNitrousOxideEmissionsFromPoultryManure
+Direct nitrous oxide emissions from poultry manure on pasture
+EM_N2OPRPdir
+t N2O
+EM_{N2O,PRP,dir}=\sum_{j}\sum_{k}(MN_{jkm=14,T=1}\times EF_{PRP}\times C_{N2O})\times 10^{-3}
+MN_jkm14T1 = mass of nitrogen excreted directly on pasture by poultry class and subclass (kg N)
+EF_PRP = nitrous oxide emission factor for manure deposited on pasture (kg N2O-N/kg N deposited)
+C_N2O = factor to convert elemental mass of N2O to molecular mass
+--------------------------------------
+*/
+
+VEERG_4_6_1_10__1_DirectNitrousOxideEmissionsFromPoultryManure
+  =LAMBDA(
+    MN_jkm14T1, EF_PRP, C_N2O,
+    MN_jkm14T1 * EF_PRP * C_N2O * 10 ^ -3
+  );
+
+VEERG_4_6_1_10__1_DirectNitrousOxideEmissionsFromPoultryManure_Title
+  =LAMBDA("Direct nitrous oxide emissions from poultry manure on pasture");
+
+VEERG_4_6_1_10__1_DirectNitrousOxideEmissionsFromPoultryManure_Variable
+  =LAMBDA("EM_N2OPRPdir");
+
+VEERG_4_6_1_10__1_DirectNitrousOxideEmissionsFromPoultryManure_Unit
+  =LAMBDA("t N2O");
+
+VEERG_4_6_1_10__1_DirectNitrousOxideEmissionsFromPoultryManure_Source
+  =LAMBDA("VEERG 2026: 4.6.1.10, Equation (1)");
+
+VEERG_4_6_1_10__1_DirectNitrousOxideEmissionsFromPoultryManure_NIRReference
+  =LAMBDA("");
+
+VEERG_4_6_1_10__1_DirectNitrousOxideEmissionsFromPoultryManure_LatexEquation
+  =LAMBDA("EM_{N2O,PRP,dir}=\sum_{j}\sum_{k}(MN_{jkm=14,T=1}\times EF_{PRP}\times C_{N2O})\times 10^{-3}");
+
+VEERG_4_6_1_10__1_DirectNitrousOxideEmissionsFromPoultryManure_Arguments
+  =LAMBDA(
+    MAKEARRAY(3, 2,
+      LAMBDA(r,c,
+        INDEX({
+          "MN_jkm14T1", "mass of nitrogen excreted directly on pasture by poultry class and subclass (kg N)";
+          "EF_PRP", "nitrous oxide emission factor for manure deposited on pasture (kg N2O-N/kg N deposited)";
+          "C_N2O", "factor to convert elemental mass of N2O to molecular mass"
+        }, r, c)
+      )
+    )
+  );
