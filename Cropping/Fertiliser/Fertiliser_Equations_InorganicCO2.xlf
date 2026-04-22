@@ -1,0 +1,111 @@
+/*
+======================================
+5: Fertiliser Use
+======================================
+5.1 Inorganic fertiliser application
+======================================
+*/
+
+/* 
+--------------------------------------
+VEERG_5_1_1_3__1_InorganicFertiliserApplicationCO2Emissions
+Carbon dioxide emissions resulting from the use of all inorganic, urea-based fertilisers
+E_CO2
+t CO2
+E_{CO2}=\sum_{j}\sum_{f}((MU_{jf}\times EF_{urea,CO2}\times C_{CO2})\times 10^{-3})
+MU_jf
+EF_ureaCO2
+C_CO2
+j
+f
+--------------------------------------
+*/
+
+VEERG_5_1_1_3__1_InorganicFertiliserApplicationCO2Emissions
+  =LAMBDA(
+    MU_jf, EF_ureaCO2, C_CO2,
+    (MU_jf * EF_ureaCO2 * C_CO2) * 10 ^ -3
+  );
+
+VEERG_5_1_1_3__1_InorganicFertiliserApplicationCO2Emissions_Title
+  =LAMBDA("Carbon dioxide emissions resulting from the use of all inorganic, urea-based fertilisers");
+
+VEERG_5_1_1_3__1_InorganicFertiliserApplicationCO2Emissions_Variable
+  =LAMBDA("E_CO2");
+
+VEERG_5_1_1_3__1_InorganicFertiliserApplicationCO2Emissions_Unit
+  =LAMBDA("t CO2");
+
+VEERG_5_1_1_3__1_InorganicFertiliserApplicationCO2Emissions_Source
+  =LAMBDA("VEERG 2026: 5.1.1.3, Equation (1)");
+
+VEERG_5_1_1_3__1_InorganicFertiliserApplicationCO2Emissions_NIRReference
+  =LAMBDA("");
+
+VEERG_5_1_1_3__1_InorganicFertiliserApplicationCO2Emissions_LatexEquation
+  =LAMBDA("E_{CO2}=\sum_{j}\sum_{f}((MU_{jf}\times EF_{urea,CO2}\times C_{CO2})\times 10^{-3})");
+
+VEERG_5_1_1_3__1_InorganicFertiliserApplicationCO2Emissions_Arguments
+  =LAMBDA(
+    MAKEARRAY(5, 3, 
+      LAMBDA(r,c, 
+        INDEX({
+          "MU_jf","mass of urea of inorganic fertiliser type f applied to production system j : kg urea", "Calculated";
+          "EF_ureaCO2","emission factor for carbon emissions from urea-based fertilisers : kg C/kg urea", "Constant";
+          "C_CO2","factor to convert elemental mass of carbon to molecular mass of carbon dioxide", "Constant";
+          "j","Production system", "Input";
+          "f","Inorganic fertiliser type", "Lookup"
+        }, r, c)
+      )
+    )
+  );
+
+/* 
+--------------------------------------
+VEERG_5_1_1_3__2_MassOfUreaInInorganicFertiliser
+Mass of urea applied to production system
+MU_jf
+kg urea
+{MU}_{jf}=TM_{jf}\times FU_f
+TM_jf
+FU_f
+j
+f
+--------------------------------------
+*/
+
+VEERG_5_1_1_3__2_MassOfUreaInInorganicFertiliser
+  =LAMBDA(
+    TM_jf, FU_f,
+    TM_jf * FU_f
+  );
+
+VEERG_5_1_1_3__2_MassOfUreaInInorganicFertiliser_Title
+  =LAMBDA("Mass of urea applied to production system");
+
+VEERG_5_1_1_3__2_MassOfUreaInInorganicFertiliser_Variable
+  =LAMBDA("MU_jf");
+
+VEERG_5_1_1_3__2_MassOfUreaInInorganicFertiliser_Unit
+  =LAMBDA("kg urea");
+
+VEERG_5_1_1_3__2_MassOfUreaInInorganicFertiliser_Source
+  =LAMBDA("VEERG 2026: 5.1.1.3, Equation (2)");
+
+VEERG_5_1_1_3__2_MassOfUreaInInorganicFertiliser_NIRReference
+  =LAMBDA("");
+
+VEERG_5_1_1_3__2_MassOfUreaInInorganicFertiliser_LatexEquation
+  =LAMBDA("{MU}_{jf}=TM_{jf}\times FU_f");
+
+VEERG_5_1_1_3__2_MassOfUreaInInorganicFertiliser_Arguments
+  =LAMBDA(
+    MAKEARRAY(2, 3, 
+      LAMBDA(r,c, 
+        INDEX({
+          "TM_jf","total mass of inorganic fertiliser type f applied to production system j : kg", "Input";
+          "FU_f","fraction of urea in fertiliser type f : kg urea/kg", "Lookup"
+        }, r, c)
+      )
+    )
+  );

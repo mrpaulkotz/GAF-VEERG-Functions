@@ -1,0 +1,279 @@
+/*
+======================================
+5: Fertiliser Use
+======================================
+5.1 Inorganic fertiliser application
+======================================
+*/
+
+/* 
+--------------------------------------
+VEERG_5_1_1_1__1_InorganicFertiliserApplicationN2OEmissions
+Nitrous oxide emissions from the application of all inorganic fertiliser types f to all production systems j
+E_N2O
+t N2O
+\sum_{j}\sum_{f}((MN_{jf}\times EF_{j,N2O}\times C_{N2O})\times 10^{-3})
+MN_jf
+EF_jN2O
+C_N2O
+j
+f
+--------------------------------------
+*/
+
+VEERG_5_1_1_1__1_InorganicFertiliserApplicationN2OEmissions
+  =LAMBDA(
+    MN_jf, EF_jN2O, C_N2O,
+    (MN_jf * EF_jN2O * C_N2O) * 10 ^ -3
+  );
+
+VEERG_5_1_1_1__1_InorganicFertiliserApplicationN2OEmissions_Title
+  =LAMBDA("Nitrous oxide emissions from the application of all inorganic fertiliser types f to all production systems j");
+
+VEERG_5_1_1_1__1_InorganicFertiliserApplicationN2OEmissions_Variable
+  =LAMBDA("E_N2O");
+
+VEERG_5_1_1_1__1_InorganicFertiliserApplicationN2OEmissions_Unit
+  =LAMBDA("t N2O");
+
+VEERG_5_1_1_1__1_InorganicFertiliserApplicationN2OEmissions_Source
+  =LAMBDA("VEERG 2026: 5.1.1.1, Equation (1)");
+
+VEERG_5_1_1_1__1_InorganicFertiliserApplicationN2OEmissions_NIRReference
+  =LAMBDA("");
+
+VEERG_5_1_1_1__1_InorganicFertiliserApplicationN2OEmissions_LatexEquation
+  =LAMBDA("E_{N2O}=\sum_{j}\sum_{f}((MN_{jf}\times EF_{j,N2O}\times C_{N2O})\times 10^{-3})");
+
+VEERG_5_1_1_1__1_InorganicFertiliserApplicationN2OEmissions_Arguments
+  =LAMBDA(
+    MAKEARRAY(7, 3, 
+      LAMBDA(r,c, 
+        INDEX({
+          "MN_jf","mass of nitrogen in inorganic fertiliser type f applied to production system j (kg N)", "Calculated";
+          "EF_jN2O","emission factor for nitrous oxide for inorganic fertilisers (kg N2O-N/kg N applied)", "Constant";
+          "C_N2O","factor to convert elemental mass of nitrous oxide to molecular mass", "Constant";
+          "j","Production system", "Input";
+          "f","Inorganic fertiliser type", "Constant";
+          "ir", "irrigation method", "Input";
+          "z", "rainfall zone", "Input"
+        }, r, c)
+      )
+    )
+  );
+
+VEERG_5_1_1_1__1_InorganicFertiliserApplicationN2OEmissions_Arguments_Method2
+  =LAMBDA(
+    MAKEARRAY(8, 3, 
+      LAMBDA(r,c, 
+        INDEX({
+          "MN_jf","mass of nitrogen in inorganic fertiliser type f applied to production system j (kg N)", "Calculated";
+          "EF_jN2O","emission factor for nitrous oxide for inorganic fertilisers (kg N2O-N/kg N applied)", "Lookup";
+          "C_N2O","factor to convert elemental mass of nitrous oxide to molecular mass", "Constant";
+          "j","Production system", "Input";
+          "c","Crop type", "Input";
+          "f","Inorganic fertiliser type", "Constant";
+          "ir", "irrigation method", "Input";
+          "z", "rainfall zone", "Input"
+        }, r, c)
+      )
+    )
+  );
+
+/* 
+--------------------------------------
+VEERG_5_1_1_1__2_MassOfNitrogenInInorganicFertiliser
+Mass of nitrogen in inorganic fertiliser applied to production system
+MN_jf
+kg N
+{MN}_{jf}=TM_{jf}\times FN_{inorganic,f}
+TM_jf
+FN_inorganicf
+j
+inorganic
+f
+--------------------------------------
+*/
+
+VEERG_5_1_1_1__2_MassOfNitrogenInInorganicFertiliser
+  =LAMBDA(
+    TM_jf, FN_inorganicf,
+    TM_jf * FN_inorganicf
+  );
+
+VEERG_5_1_1_1__2_MassOfNitrogenInInorganicFertiliser_Title
+  =LAMBDA("Mass of nitrogen in inorganic fertiliser applied to production system");
+
+VEERG_5_1_1_1__2_MassOfNitrogenInInorganicFertiliser_Variable
+  =LAMBDA("MN_jf");
+
+VEERG_5_1_1_1__2_MassOfNitrogenInInorganicFertiliser_Unit
+  =LAMBDA("kg N");
+
+VEERG_5_1_1_1__2_MassOfNitrogenInInorganicFertiliser_Source
+  =LAMBDA("VEERG 2026: 5.1.1.1, Equation (2)");
+
+VEERG_5_1_1_1__2_MassOfNitrogenInInorganicFertiliser_NIRReference
+  =LAMBDA("");
+
+VEERG_5_1_1_1__2_MassOfNitrogenInInorganicFertiliser_LatexEquation
+  =LAMBDA("{MN}_{jf}=TM_{jf}\times FN_{inorganic,f}");
+
+VEERG_5_1_1_1__2_MassOfNitrogenInInorganicFertiliser_Arguments
+  =LAMBDA(
+    MAKEARRAY(2, 3, 
+      LAMBDA(r,c, 
+        INDEX({
+          "TM_jf","total mass of inorganic fertiliser type f applied to production system j (kg)", "Input";
+          "FN_inorganicf","fraction of nitrogen in inorganic fertiliser type f (kg N/kg)", "Constant"
+        }, r, c)
+      )
+    )
+  );
+
+
+/* 
+--------------------------------------
+VEERG_5_1_1_2__1_EmissionFactorIrrigatedMaize
+Emission factor for nitrous oxide for irrigated maize
+EF_fjIrrigatedMaizeN2O
+kg N2O-N/kg N applied
+EF_{fj=irrigatedmaize,N2O}=(-0.1474+(0.0061\times N_{fj=irrigatedmaize}))\times 10^{-2}
+N_fjIrrigatedMaize
+f
+--------------------------------------
+*/
+
+VEERG_5_1_1_2__1_EmissionFactorIrrigatedMaize
+  =LAMBDA(
+    N_fjIrrigatedMaize,
+    (-0.1474 + (0.0061 * N_fjIrrigatedMaize)) * 10 ^ -2
+  );
+
+VEERG_5_1_1_2__1_EmissionFactorIrrigatedMaize_Title
+  =LAMBDA("Emission factor for nitrous oxide for irrigated maize");
+
+VEERG_5_1_1_2__1_EmissionFactorIrrigatedMaize_Variable
+  =LAMBDA("EF_fjIrrigatedMaizeN2O");
+
+VEERG_5_1_1_2__1_EmissionFactorIrrigatedMaize_Unit
+  =LAMBDA("kg N2O-N/kg N applied");
+
+VEERG_5_1_1_2__1_EmissionFactorIrrigatedMaize_Source
+  =LAMBDA("VEERG 2026: 5.1.1.2, Equation (1)");
+
+VEERG_5_1_1_2__1_EmissionFactorIrrigatedMaize_NIRReference
+  =LAMBDA("");
+
+VEERG_5_1_1_2__1_EmissionFactorIrrigatedMaize_LatexEquation
+  =LAMBDA("EF_{fj=irrigatedmaize,N2O}=(-0.1474+(0.0061\times N_{fj=irrigatedmaize}))\times 10^{-2}");
+
+VEERG_5_1_1_2__1_EmissionFactorIrrigatedMaize_Arguments
+  =LAMBDA(
+    MAKEARRAY(2, 3, 
+      LAMBDA(r,c, 
+        INDEX({
+          "N_fjIrrigatedMaize","application rate of inorganic fertiliser type f in the irrigated maize crop (kg N/ha)", "Input";
+          "f","Inorganic fertiliser type", "Constant"
+        }, r, c)
+      )
+    )
+  );
+
+/* 
+--------------------------------------
+VEERG_5_1_1_2__2_EmissionFactorNonIrrigatedGrainsHighRainfall
+Emission factor for nitrous oxide for non-irrigated grains in high rainfall zone
+EF_fjNonIrrigatedGrainsN2O
+kg N2O-N/kg N applied
+EF_{fj=nonirrigatedgrains,N2O}=(0.0781+(0.0075\times N_{fj=nonirrigatedgrains}))\times 10^{-2}
+N_fjNonIrrigatedGrains
+f
+--------------------------------------
+*/
+
+VEERG_5_1_1_2__2_EmissionFactorNonIrrigatedGrainsHighRainfall
+  =LAMBDA(
+    N_fjNonIrrigatedGrains,
+    (0.0781 + (0.0075 * N_fjNonIrrigatedGrains)) * 10 ^ -2
+  );
+
+VEERG_5_1_1_2__2_EmissionFactorNonIrrigatedGrainsHighRainfall_Title
+  =LAMBDA("Emission factor for nitrous oxide for non-irrigated grains in high rainfall zone");
+
+VEERG_5_1_1_2__2_EmissionFactorNonIrrigatedGrainsHighRainfall_Variable
+  =LAMBDA("EF_fjNonIrrigatedGrainsN2O");
+
+VEERG_5_1_1_2__2_EmissionFactorNonIrrigatedGrainsHighRainfall_Unit
+  =LAMBDA("kg N2O-N/kg N applied");
+
+VEERG_5_1_1_2__2_EmissionFactorNonIrrigatedGrainsHighRainfall_Source
+  =LAMBDA("VEERG 2026: 5.1.1.2, Equation (2)");
+
+VEERG_5_1_1_2__2_EmissionFactorNonIrrigatedGrainsHighRainfall_NIRReference
+  =LAMBDA("");
+
+VEERG_5_1_1_2__2_EmissionFactorNonIrrigatedGrainsHighRainfall_LatexEquation
+  =LAMBDA("EF_{fj=nonirrigatedgrains,N2O}=(0.0781+(0.0075\times N_{fj=nonirrigatedgrains}))\times 10^{-2}");
+
+VEERG_5_1_1_2__2_EmissionFactorNonIrrigatedGrainsHighRainfall_Arguments
+  =LAMBDA(
+    MAKEARRAY(2, 3, 
+      LAMBDA(r,c, 
+        INDEX({
+          "N_fjNonIrrigatedGrains","application rate of inorganic fertiliser type f in the grains crop (kg N/ha)", "Input";
+          "f","Inorganic fertiliser type", "Constant"
+        }, r, c)
+      )
+    )
+  );
+
+/* 
+--------------------------------------
+VEERG_5_1_1_2__3_EmissionFactorCotton
+Emission factor for nitrous oxide for cotton
+EF_fjCottonN2O
+kg N2O-N/kg N applied
+EF_{fj=cotton,N2O}=\min\left((0.01\times(0.29+0.007\times((e^{(0.037\times N_{fj=cotton})}-1)/N_{fj=cotton})))\times 10^{-2},0.0183\right)
+N_fjCotton
+f
+--------------------------------------
+*/
+
+VEERG_5_1_1_2__3_EmissionFactorCotton
+  =LAMBDA(
+    N_fjCotton,
+    (0.01 * (0.29 + (  (0.007 * (EXP(0.037 * N_fjCotton) - 1)) / N_fjCotton  ) )) * 10 ^ -2
+  );
+
+VEERG_5_1_1_2__3_EmissionFactorCotton_Title
+  =LAMBDA("Emission factor for nitrous oxide for cotton");
+
+VEERG_5_1_1_2__3_EmissionFactorCotton_Variable
+  =LAMBDA("EF_fjCottonN2O");
+
+VEERG_5_1_1_2__3_EmissionFactorCotton_Unit
+  =LAMBDA("kg N2O-N/kg N applied");
+
+VEERG_5_1_1_2__3_EmissionFactorCotton_Source
+  =LAMBDA("VEERG 2026: 5.1.1.2, Equation (3)");
+
+VEERG_5_1_1_2__3_EmissionFactorCotton_NIRReference
+  =LAMBDA("");
+
+VEERG_5_1_1_2__3_EmissionFactorCotton_LatexEquation
+  =LAMBDA("EF_{fj=cotton,N2O}=(0.01 \times (0.29 + \frac{0.007(e^{0.037 \times N_{fj=cotton}}-1)}{N_{fj=cotton}})) \times 10^{-2}
+");
+
+VEERG_5_1_1_2__3_EmissionFactorCotton_Arguments
+  =LAMBDA(
+    MAKEARRAY(2, 3, 
+      LAMBDA(r,c, 
+        INDEX({
+          "N_fjCotton","application rate of inorganic fertiliser type f in the cotton crop (kg N/ha)", "Input";
+          "f","Inorganic fertiliser type", "Constant"
+        }, r, c)
+      )
+    )
+  );
+

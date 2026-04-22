@@ -206,3 +206,11 @@ Utility_ConvertStateCommonNameToAbbreviation
     XLOOKUP(StateCommonName, StateCommonNameArray, StateAbbreviationArray, "")
 );
 
+Utility_SourceHyperlink
+=LAMBDA(TargetCell,
+  LET(
+    sh, TEXTAFTER(CELL("filename", TargetCell), "]"),
+    addr, CELL("address", TargetCell),
+    "#'" & sh & "'!" & addr
+  )
+)
