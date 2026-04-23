@@ -226,3 +226,17 @@ Utility_DisplayArguments_3_4
     ArgumentsArray,
     CHOOSECOLS(ArgumentsArray, 3, 4)
 );
+
+Common_GetMCFTemperatureZone
+=LAMBDA(
+    Temperature, MMS, TemperatureArray, MMSArray, ReturnArray,
+    XLOOKUP(
+        MEDIAN(
+            Temperature, 
+            MIN(TemperatureArray), 
+            MAX(TemperatureArray)
+        ),
+        TemperatureArray,
+        XLOOKUP(MMS, MMSArray, ReturnArray)
+    )
+)
