@@ -764,4 +764,68 @@ Common_SourceData_MonthsToSeasons_Data
 
 
 
+/* 
+--------------------------------------
+Common_SourceData_MCFTemperatureZone
+--------------------------------------
+*/
+
+Common_SourceData_MCFTemperatureZone_Title
+  =LAMBDA("Manure Management – Methane conversion factor per temperature zone (fraction) (MCFim)");
+
+Common_SourceData_MCFTemperatureZone_Unit
+  =LAMBDA("fraction");
+
+Common_SourceData_MCFTemperatureZone_Source
+  =LAMBDA("VEERG 2026: Table A.1.8.1");
+
+Common_SourceData_MCFTemperatureZone_Data
+  =LAMBDA(
+    MAKEARRAY(22, 16, 
+      LAMBDA(r,c, 
+        INDEX({
+          "Temperature zone", "MAT (ºC)", "Uncovered anerobic lagoon", "Covered lagoon", "Liquid Slurry (without natural crust)", "Daily spread (b)", "Composting (passive windrow)", "Solid Storage", "Pit Storage <1 month", "Deep Litter", "Poultry Manure (with/without litter)", "", "Direct processing into pelletized fertiliser", "Direct application to soil", "Pasture, Range and Paddock (c)(d)", "MAT raw";
+          "Cool", "≤10", 0.66, 0.1, 0.1, 0.001, 0.005, 0.02, 0.03, 0.04, 0.015, 0.015, 0, 0, 0.0047, 10;
+          "Cool", 11, 0.68, 0.1, 0.11, 0.001, 0.005, 0.02, 0.03, 0.04, 0.015, 0.015, 0, 0, 0.0047, 11;
+          "Cool", 12, 0.7, 0.1, 0.13, 0.001, 0.005, 0.02, 0.03, 0.04, 0.015, 0.015, 0, 0, 0.0047, 12;
+          "Cool", 13, 0.71, 0.1, 0.14, 0.001, 0.005, 0.02, 0.03, 0.04, 0.015, 0.015, 0, 0, 0.0047, 13;
+          "Cool", 14, 0.73, 0.1, 0.15, 0.001, 0.005, 0.02, 0.03, 0.04, 0.015, 0.015, 0, 0, 0.0047, 14;
+          "Temperate", 15, 0.74, 0.1, 0.17, 0.005, 0.01, 0.02, 0.03, 0.04, 0.015, 0.015, 0, 0, 0.0047, 15;
+          "Temperate", 16, 0.75, 0.1, 0.18, 0.005, 0.01, 0.02, 0.03, 0.04, 0.015, 0.015, 0, 0, 0.0047, 16;
+          "Temperate", 17, 0.76, 0.1, 0.2, 0.005, 0.01, 0.02, 0.03, 0.04, 0.015, 0.015, 0, 0, 0.0047, 17;
+          "Temperate", 18, 0.77, 0.1, 0.22, 0.005, 0.01, 0.02, 0.03, 0.04, 0.015, 0.015, 0, 0, 0.0047, 18;
+          "Temperate", 19, 0.77, 0.1, 0.24, 0.005, 0.01, 0.02, 0.03, 0.04, 0.015, 0.015, 0, 0, 0.0047, 19;
+          "Temperate", 20, 0.78, 0.1, 0.26, 0.005, 0.01, 0.02, 0.03, 0.04, 0.015, 0.015, 0, 0, 0.0047, 20;
+          "Temperate", 21, 0.78, 0.1, 0.29, 0.005, 0.01, 0.02, 0.03, 0.04, 0.015, 0.015, 0, 0, 0.0047, 21;
+          "Temperate", 22, 0.78, 0.1, 0.31, 0.005, 0.01, 0.02, 0.03, 0.04, 0.015, 0.015, 0, 0, 0.0047, 22;
+          "Temperate", 23, 0.79, 0.1, 0.34, 0.005, 0.01, 0.02, 0.03, 0.04, 0.015, 0.015, 0, 0, 0.0047, 23;
+          "Temperate", 24, 0.79, 0.1, 0.37, 0.005, 0.01, 0.02, 0.03, 0.04, 0.015, 0.015, 0, 0, 0.0047, 24;
+          "Temperate", 25, 0.79, 0.1, 0.41, 0.005, 0.01, 0.02, 0.03, 0.04, 0.015, 0.015, 0, 0, 0.0047, 25;
+          "Warm", 26, 0.79, 0.1, 0.44, 0.01, 0.015, 0.02, 0.03, 0.04, 0.015, 0.015, 0, 0, 0.0047, 26;
+          "Warm", 27, 0.8, 0.1, 0.48, 0.01, 0.015, 0.02, 0.03, 0.04, 0.015, 0.015, 0, 0, 0.0047, 27;
+          "Warm", "≥28", 0.8, 0.1, 0.5, 0.01, 0.015, 0.02, 0.03, 0.04, 0.015, 0.015, 0, 0, 0.0047, 28;
+          "", "", "Anaerobic lagoon", "Digester / covered lagoons", "Liquid systems", "Daily spread", "Composting (passive windrow)", "Solid storage", "Pit storage", "Deep litter", "Poultry manure with bedding", "Poultry manure without bedding", "Direct processing", "Direct application", "Pasture range and paddock", "MAT raw" 
+        }, r, c)
+      )
+    )
+  );
+
+Common_SourceData_MCFTemperatureZone_Variation
+  =LAMBDA("VARIATION FROM SOURCE: Added row of NIR MMA definitions to aid lookup. Duplicated 'Poultry with and without litter' column with separate NIR definitions to aid lookup. Added 'MAT raw' column to allow lookup of numbers.");
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

@@ -213,4 +213,16 @@ Utility_SourceHyperlink
     addr, CELL("address", TargetCell),
     "#'" & sh & "'!" & addr
   )
-)
+);
+
+Utility_DisplayArguments_1_2
+=LAMBDA(
+    ArgumentsArray,
+    CHOOSECOLS(ArgumentsArray, 1, 2)
+);
+
+Utility_DisplayArguments_3_4
+=LAMBDA(
+    ArgumentsArray,
+    CHOOSECOLS(ArgumentsArray, 3, 4)
+);

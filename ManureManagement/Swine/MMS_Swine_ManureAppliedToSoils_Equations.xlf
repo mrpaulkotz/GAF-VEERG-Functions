@@ -47,14 +47,14 @@ VEERG_4_5_1_9__1_MassOfNitrogenAppliedToSoilsScope1_LatexEquation
 
 VEERG_4_5_1_9__1_MassOfNitrogenAppliedToSoilsScope1_Arguments
   =LAMBDA(
-    MAKEARRAY(5, 2,
+    MAKEARRAY(5, 4,
       LAMBDA(r,c,
         INDEX({
-          "MN_jmT2","mass of N in MMS at treatment stage 2 : kg N";
-          "EF_mT2","nitrous oxide emission factor for each MMS at treatment stage 2 : kg N2O-N/kg N";
-          "FracGASM_mT2","fraction of animal waste N volatilised in each MMS at treatment stage 2 : (kg NH3-N + NOx-N)/kg N";
-          "MNLeach_jm5","mass of N lost to leaching and runoff from drylot MMS : kg N";
-          "PF","fraction of manure applied to soil within the piggery boundary : fraction"
+          "MN_jmT2","mass of N in MMS at treatment stage 2", "kg N", "Calculated from 4.5.1.3 (6)";
+          "EF_mT2","nitrous oxide emission factor for each MMS at treatment stage 2", "kg N2O-N/kg N", "Constant";
+          "FracGASM_mT2","fraction of animal waste N volatilised in each MMS at treatment stage 2", "(kg NH3-N + NOx-N)/kg N", "Constant";
+          "MNLeach_jm5","mass of N lost to leaching and runoff from drylot MMS", "kg N", "Calculated from 4.5.1.7 (2)";
+          "PF","fraction of manure applied to soil within the piggery boundary", "fraction", "Input"
         }, r, c)
       )
     )
@@ -101,14 +101,14 @@ VEERG_4_5_1_9__2_MassOfNitrogenAppliedToSoilsScope3_LatexEquation
 
 VEERG_4_5_1_9__2_MassOfNitrogenAppliedToSoilsScope3_Arguments
   =LAMBDA(
-    MAKEARRAY(5, 2,
+    MAKEARRAY(5, 4,
       LAMBDA(r,c,
         INDEX({
-          "MN_jmT2","mass of N in MMS at treatment stage 2 : kg N";
-          "EF_mT2","nitrous oxide emission factor for each MMS at treatment stage 2 : kg N2O-N/kg N";
-          "FracGASM_mT2","fraction of animal waste N volatilised in each MMS at treatment stage 2 : (kg NH3-N + NOx-N)/kg N";
-          "MNLeach_jm5","mass of N lost to leaching and runoff from drylot MMS : kg N";
-          "PF","fraction of manure applied to soil within the piggery boundary : fraction"
+          "MN_jmT2","mass of N in MMS at treatment stage 2", "kg N", "Calculated from 4.5.1.3 (6)";
+          "EF_mT2","nitrous oxide emission factor for each MMS at treatment stage 2", "kg N2O-N/kg N", "Constant";
+          "FracGASM_mT2","fraction of animal waste N volatilised in each MMS at treatment stage 2", "(kg NH3-N + NOx-N)/kg N", "Constant";
+          "MNLeach_jm5","mass of N lost to leaching and runoff from drylot MMS", "kg N", "Calculated from 4.5.1.7 (2)";
+          "PF","fraction of manure applied to soil within the piggery boundary", "fraction", "Input"
         }, r, c)
       )
     )

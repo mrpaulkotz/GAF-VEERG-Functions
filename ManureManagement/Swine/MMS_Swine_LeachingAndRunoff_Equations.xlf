@@ -46,12 +46,12 @@ VEERG_4_5_1_7__1_AnnualEmissionsFromLeachingAndRunoffFromMMS_LatexEquation
 
 VEERG_4_5_1_7__1_AnnualEmissionsFromLeachingAndRunoffFromMMS_Arguments
   =LAMBDA(
-    MAKEARRAY(3, 2,
+    MAKEARRAY(3, 4,
       LAMBDA(r,c,
         INDEX({
-          "MNLeach_jm5", "mass of N lost through leaching and runoff from drylot MMS (kg N)";
-          "EF_leach", "emission factor for leaching and runoff (kg N2O-N/kg N)";
-          "C_N2O", "factor to convert elemental mass of N2O to molecular mass"
+          "MNLeach_jm5", "mass of N lost through leaching and runoff from drylot MMS", "kg N", "Calculated from 4.5.1.7 (2)";
+          "EF_leach", "emission factor for leaching and runoff", "kg N2O-N/kg N", "Constant";
+          "C_N2O", "factor to convert elemental mass of N2O to molecular mass", "", "Constant"
         }, r, c)
       )
     )
@@ -96,15 +96,15 @@ VEERG_4_5_1_7__2_MassOfNitrogenLostToLeachingAndRunoffFromDrylotMMS_LatexEquatio
 
 VEERG_4_5_1_7__2_MassOfNitrogenLostToLeachingAndRunoffFromDrylotMMS_Arguments
   =LAMBDA(
-    MAKEARRAY(6, 2,
+    MAKEARRAY(6, 4,
       LAMBDA(r,c,
         INDEX({
-          "MN_jm5T1", "nitrogen in treatment stage 1 drylot MMS (kg N)";
-          "FracWET", "fraction of N available for leaching and runoff";
-          "FracLEACH_MS", "fraction of N lost through leaching and runoff";
-          "z", "location in leaching zone";
-          "j", "production system";
-          "ir", "irrigation method"
+          "MN_jm5T1", "nitrogen in treatment stage 1 drylot MMS", "kg N", "Calculated from 4.5.1.3 (2)";
+          "FracWET", "fraction of N available for leaching and runoff", "fraction", "Constant";
+          "FracLEACH_MS", "fraction of N lost through leaching and runoff", "fraction", "Constant";
+          "z", "location in leaching zone", "", "Input";
+          "j", "production system", "", "Input";
+          "ir", "irrigation method", "", "Input"
         }, r, c)
       )
     )

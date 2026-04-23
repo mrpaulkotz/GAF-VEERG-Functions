@@ -45,12 +45,12 @@ VEERG_4_5_1_1__1_TotalAnnualMethaneEmissions_LatexEquation
 
 VEERG_4_5_1_1__1_TotalAnnualMethaneEmissions_Arguments
   =LAMBDA(
-    MAKEARRAY(3, 2,
+    MAKEARRAY(3, 4,
       LAMBDA(r,c,
         INDEX({
-          "Dj","length of stay of each class of swine : days";
-          "Mmj","methane production from manure in each swine class : kg CH4/head/day";
-          "Nj","numbers of swine in each class : head"
+          "Dj","length of stay of each class of swine", "days", "Input";
+          "Mmj","methane production from manure in each swine class", "kg CH4/head/day", "Calculated from 4.5.1.1 (2)";
+          "Nj","numbers of swine in each class", "head", "Input"
         }, r, c)
       )
     )
@@ -99,10 +99,10 @@ VEERG_4_5_1_1__2_MethaneProductionPerClass_LatexEquation
 
 VEERG_4_5_1_1__2_MethaneProductionPerClass_Arguments
   =LAMBDA(
-    MAKEARRAY(1, 2,
+    MAKEARRAY(1, 4,
       LAMBDA(r,c,
         INDEX({
-          "MjmT","methane production from manure per class, MMS, and treatment stage : kg CH4/head/day"
+          "MjmT","methane production from manure per class, MMS, and treatment stage", "kg CH4/head/day", "Calculated from 4.5.1.1 (3) and (6)"
         }, r, c)
       )
     )
@@ -152,14 +152,14 @@ VEERG_4_5_1_1__3_Stage1MethaneProduction_LatexEquation
 
 VEERG_4_5_1_1__3_Stage1MethaneProduction_Arguments
   =LAMBDA(
-    MAKEARRAY(5, 2,
+    MAKEARRAY(5, 4,
       LAMBDA(r,c,
         INDEX({
-          "VSj","volatile solid production from swine in each class : kg/head/day";
-          "FVSjmT1","fraction of volatile solids in each primary system : fraction";
-          "MCFim","methane conversion factor for temperate zone and system : fraction";
-          "BO","emissions potential : m3 CH4/kg VS";
-          "rho","density of methane : kg/m3"
+          "VSj","volatile solid production from swine in each class", "kg/head/day", "Input";
+          "FVSjmT1","fraction of volatile solids in each primary system", "fraction", "Calculated from 4.5.1.1 (4)(5)";
+          "MCFim","methane conversion factor for temperate zone and system", "fraction", "Constant";
+          "BO","emissions potential", "m3 CH4/kg VS", "Constant";
+          "rho","density of methane", "kg/m3", "Constant"
         }, r, c)
       )
     )
@@ -203,11 +203,11 @@ VEERG_4_5_1_1__4_FractionVolatileSolidsPrimarySystem_LatexEquation
 
 VEERG_4_5_1_1__4_FractionVolatileSolidsPrimarySystem_Arguments
   =LAMBDA(
-    MAKEARRAY(2, 2,
+    MAKEARRAY(2, 4,
       LAMBDA(r,c,
         INDEX({
-          "MMSjmT1","fraction of manure to each primary MMS for each class prior to solid separation : fraction";
-          "SSm","fraction of volatile solids separated to solid storage for each MMS : fraction"
+          "MMSjmT1","fraction of manure to each primary MMS for each class prior to solid separation", "fraction", "Input";
+          "SSm","fraction of volatile solids separated to solid storage for each MMS", "fraction", "Input"
         }, r, c)
       )
     )
@@ -271,12 +271,12 @@ VEERG_4_5_1_1__5_FractionVolatileSolidsSolidStorage_LatexEquationVariation
 
 VEERG_4_5_1_1__5_FractionVolatileSolidsSolidStorage_Arguments
   =LAMBDA(
-    MAKEARRAY(3, 2,
+    MAKEARRAY(3, 4,
       LAMBDA(r,c,
         INDEX({
-          "MMSjm4T1","fraction of manure in solid storage primary system : fraction";
-          "MMSjm179T1","fraction of manure in MMS 1, 7, and 9 in treatment stage 1 : fraction";
-          "SSm","fraction of volatile solids separated to solid storage for each MMS : fraction"
+          "MMSjm4T1","fraction of manure in solid storage primary system", "fraction", "Input";
+          "MMSjm179T1","fraction of manure in MMS 1, 7, and 9 in treatment stage 1", "fraction", "Input";
+          "SSm","fraction of volatile solids separated to solid storage for each MMS", "fraction", "Input"
         }, r, c)
       )
     )
@@ -332,15 +332,15 @@ VEERG_4_5_1_1__6_Stage2MethaneProduction_LatexEquation
 
 VEERG_4_5_1_1__6_Stage2MethaneProduction_Arguments
   =LAMBDA(
-    MAKEARRAY(6, 2,
+    MAKEARRAY(6, 4,
       LAMBDA(r,c,
         INDEX({
-          "VSTjmT2","volatile solids transferred to treatment stage 2 MMS : kg/head/day";
-          "BO","emissions potential : m3 CH4/kg VS";
-          "MMSjmT2","fraction of manure in each secondary system : fraction";
-          "MCFim","methane conversion factor for temperate zone and system : fraction";
-          "rho","density of methane : kg/m3";
-          "i","state"
+          "VSTjmT2","volatile solids transferred to treatment stage 2 MMS", "kg/head/day", "Calculated from 4.5.1.1 (7)";
+          "BO","emissions potential", "m3 CH4/kg VS", "Constant";
+          "MMSjmT2","fraction of manure in each secondary system", "fraction", "Input";
+          "MCFim","methane conversion factor for temperate zone and system", "fraction", "Constant";
+          "rho","density of methane", "kg/m3", "Constant";
+          "i","state", "", "Input"
         }, r, c)
       )
     )
@@ -385,12 +385,12 @@ VEERG_4_5_1_1__7_VolatileSolidsTransferredStage2_LatexEquation
 
 VEERG_4_5_1_1__7_VolatileSolidsTransferredStage2_Arguments
   =LAMBDA(
-    MAKEARRAY(3, 2,
+    MAKEARRAY(3, 4,
       LAMBDA(r,c,
         INDEX({
-          "VSj","volatile solid production from swine in each class : kg/head/day";
-          "FVSjmT1","fraction of volatile solids in each primary system : fraction";
-          "VSLmT1","fraction of volatile solids lost during storage in the primary system : fraction"
+          "VSj","volatile solid production from swine in each class", "kg/head/day", "Input";
+          "FVSjmT1","fraction of volatile solids in each primary system", "fraction", "Calculated from 4.5.1.1 (4)(5)";
+          "VSLmT1","fraction of volatile solids lost during storage in the primary system", "fraction", "Lookup"
         }, r, c)
       )
     )
