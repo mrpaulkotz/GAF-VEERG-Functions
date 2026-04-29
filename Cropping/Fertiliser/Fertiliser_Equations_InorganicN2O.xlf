@@ -47,16 +47,16 @@ VEERG_5_1_1_1__1_InorganicFertiliserApplicationN2OEmissions_LatexEquation
 
 VEERG_5_1_1_1__1_InorganicFertiliserApplicationN2OEmissions_Arguments
   =LAMBDA(
-    MAKEARRAY(7, 3, 
+    MAKEARRAY(7, 4, 
       LAMBDA(r,c, 
         INDEX({
-          "MN_jf","mass of nitrogen in inorganic fertiliser type f applied to production system j (kg N)", "Calculated";
-          "EF_jN2O","emission factor for nitrous oxide for inorganic fertilisers (kg N2O-N/kg N applied)", "Constant";
-          "C_N2O","factor to convert elemental mass of nitrous oxide to molecular mass", "Constant";
-          "j","Production system", "Input";
-          "f","Inorganic fertiliser type", "Constant";
-          "ir", "irrigation method", "Input";
-          "z", "rainfall zone", "Input"
+          "MN_jf","mass of nitrogen in inorganic fertiliser type f applied to production system j", "kg N", "Calculated from 5.1.1.1 (2)";
+          "EF_jN2O","emission factor for nitrous oxide for inorganic fertilisers", "kg N2O-N/kg N applied", "Constant";
+          "C_N2O","factor to convert elemental mass of nitrous oxide to molecular mass", "", "Constant";
+          "j","Production system", "", "Input";
+          "f","Inorganic fertiliser type", "", "Constant";
+          "ir", "irrigation method", "", "Input";
+          "z", "rainfall zone", "", "Input"
         }, r, c)
       )
     )
@@ -64,17 +64,17 @@ VEERG_5_1_1_1__1_InorganicFertiliserApplicationN2OEmissions_Arguments
 
 VEERG_5_1_1_1__1_InorganicFertiliserApplicationN2OEmissions_Arguments_Method2
   =LAMBDA(
-    MAKEARRAY(8, 3, 
+    MAKEARRAY(8, 4, 
       LAMBDA(r,c, 
         INDEX({
-          "MN_jf","mass of nitrogen in inorganic fertiliser type f applied to production system j (kg N)", "Calculated";
-          "EF_jN2O","emission factor for nitrous oxide for inorganic fertilisers (kg N2O-N/kg N applied)", "Lookup";
-          "C_N2O","factor to convert elemental mass of nitrous oxide to molecular mass", "Constant";
-          "j","Production system", "Input";
-          "c","Crop type", "Input";
-          "f","Inorganic fertiliser type", "Constant";
-          "ir", "irrigation method", "Input";
-          "z", "rainfall zone", "Input"
+          "MN_jf","mass of nitrogen in inorganic fertiliser type f applied to production system j", "kg N", "Calculated from 5.1.1.1 (2)";
+          "EF_jN2O","emission factor for nitrous oxide for inorganic fertilisers", "kg N2O-N/kg N applied", "Calculated from 5.1.1.2 (1)(2)(3)";
+          "C_N2O","factor to convert elemental mass of nitrous oxide to molecular mass", "", "Constant";
+          "j","Production system", "", "Input";
+          "c","Crop type", "", "Input";
+          "f","Inorganic fertiliser type", "", "Constant";
+          "ir", "irrigation method", "", "Input";
+          "z", "rainfall zone", "", "Input"
         }, r, c)
       )
     )
@@ -121,11 +121,11 @@ VEERG_5_1_1_1__2_MassOfNitrogenInInorganicFertiliser_LatexEquation
 
 VEERG_5_1_1_1__2_MassOfNitrogenInInorganicFertiliser_Arguments
   =LAMBDA(
-    MAKEARRAY(2, 3, 
+    MAKEARRAY(2, 4, 
       LAMBDA(r,c, 
         INDEX({
-          "TM_jf","total mass of inorganic fertiliser type f applied to production system j (kg)", "Input";
-          "FN_inorganicf","fraction of nitrogen in inorganic fertiliser type f (kg N/kg)", "Constant"
+          "TM_jf","total mass of inorganic fertiliser type f applied to production system j", "kg", "Input";
+          "FN_inorganicf","fraction of nitrogen in inorganic fertiliser type f ", "kg N/kg", "Constant"
         }, r, c)
       )
     )
@@ -170,11 +170,11 @@ VEERG_5_1_1_2__1_EmissionFactorIrrigatedMaize_LatexEquation
 
 VEERG_5_1_1_2__1_EmissionFactorIrrigatedMaize_Arguments
   =LAMBDA(
-    MAKEARRAY(2, 3, 
+    MAKEARRAY(2, 4, 
       LAMBDA(r,c, 
         INDEX({
-          "N_fjIrrigatedMaize","application rate of inorganic fertiliser type f in the irrigated maize crop (kg N/ha)", "Input";
-          "f","Inorganic fertiliser type", "Constant"
+          "N_fjIrrigatedMaize","application rate of inorganic fertiliser type f in the irrigated maize crop", "kg N/ha", "Input";
+          "f","Inorganic fertiliser type", "", "Constant"
         }, r, c)
       )
     )
@@ -218,11 +218,11 @@ VEERG_5_1_1_2__2_EmissionFactorNonIrrigatedGrainsHighRainfall_LatexEquation
 
 VEERG_5_1_1_2__2_EmissionFactorNonIrrigatedGrainsHighRainfall_Arguments
   =LAMBDA(
-    MAKEARRAY(2, 3, 
+    MAKEARRAY(2, 4, 
       LAMBDA(r,c, 
         INDEX({
-          "N_fjNonIrrigatedGrains","application rate of inorganic fertiliser type f in the grains crop (kg N/ha)", "Input";
-          "f","Inorganic fertiliser type", "Constant"
+          "N_fjNonIrrigatedGrains","application rate of inorganic fertiliser type f in the grains crop", "kg N/ha", "Input";
+          "f","Inorganic fertiliser type", "", "Constant"
         }, r, c)
       )
     )
@@ -267,11 +267,11 @@ VEERG_5_1_1_2__3_EmissionFactorCotton_LatexEquation
 
 VEERG_5_1_1_2__3_EmissionFactorCotton_Arguments
   =LAMBDA(
-    MAKEARRAY(2, 3, 
+    MAKEARRAY(2, 4, 
       LAMBDA(r,c, 
         INDEX({
-          "N_fjCotton","application rate of inorganic fertiliser type f in the cotton crop (kg N/ha)", "Input";
-          "f","Inorganic fertiliser type", "Constant"
+          "N_fjCotton","application rate of inorganic fertiliser type f in the cotton crop", "kg N/ha", "Input";
+          "f","Inorganic fertiliser type", "", "Constant"
         }, r, c)
       )
     )

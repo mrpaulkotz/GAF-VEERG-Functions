@@ -1,0 +1,113 @@
+/*
+======================================
+5: Fertiliser Use
+======================================
+5.2 Organic fertiliser application
+======================================
+*/
+
+/* 
+--------------------------------------
+VEERG_5_2_1_1__1_OrganicFertiliserApplicationN2OEmissions
+Nitrous oxide emissions from the application of all organic fertiliser types f to all production systems j
+E_N2O
+t N2O
+E_{N2O}=\sum_{j}\sum_{f}((MNSoil_{jf}\times EF_{N2O,i}\times C_{N2O})\times 10^{-3})
+MNSoil_jf
+EF_N2Oi
+C_N2O
+j
+i
+f
+--------------------------------------
+*/
+
+VEERG_5_2_1_1__1_OrganicFertiliserApplicationN2OEmissions
+  =LAMBDA(
+    MNSoil_jf, EF_N2Oi, C_N2O,
+    (MNSoil_jf * EF_N2Oi * C_N2O) * 10 ^ -3
+  );
+
+VEERG_5_2_1_1__1_OrganicFertiliserApplicationN2OEmissions_Title
+  =LAMBDA("Nitrous oxide emissions from the application of all organic fertiliser types f to all production systems j");
+
+VEERG_5_2_1_1__1_OrganicFertiliserApplicationN2OEmissions_Variable
+  =LAMBDA("E_N2O");
+
+VEERG_5_2_1_1__1_OrganicFertiliserApplicationN2OEmissions_Unit
+  =LAMBDA("t N2O");
+
+VEERG_5_2_1_1__1_OrganicFertiliserApplicationN2OEmissions_Source
+  =LAMBDA("VEERG 2026: 5.2.1.1, Equation (1)");
+
+VEERG_5_2_1_1__1_OrganicFertiliserApplicationN2OEmissions_NIRReference
+  =LAMBDA("");
+
+VEERG_5_2_1_1__1_OrganicFertiliserApplicationN2OEmissions_LatexEquation
+  =LAMBDA("E_{N2O}=\sum_{j}\sum_{f}((MNSoil_{jf}\times EF_{N2O,i}\times C_{N2O})\times 10^{-3})");
+
+VEERG_5_2_1_1__1_OrganicFertiliserApplicationN2OEmissions_Arguments
+  =LAMBDA(
+    MAKEARRAY(5, 4, 
+      LAMBDA(r,c, 
+        INDEX({
+          "MNSoil_jf","mass of nitrogen in organic fertiliser type f applied to production system j", "kg N", "Calculated from 5.2.1.1 (2)";
+          "EF_N2Oi","emission factor for direct nitrous oxide emissions from organic fertiliser applied to soils and aquatic systems in climate zone i", "kg N2O-N/kg N", "Lookup";
+          "C_N2O","factor to convert elemental mass of nitrous oxide to molecular mass", "", "Constant";
+          "j","Production system", "", "Input";
+          "i","Wet or dry climate zone", "", "Input"
+        }, r, c)
+      )
+    )
+  );
+
+/* 
+--------------------------------------
+VEERG_5_2_1_1__2_MassOfNitrogenInOrganicFertiliser
+Mass of nitrogen in purchased organic fertilisers applied to production system
+MNSoil_jf
+kg N
+MNSoil_{jf}=M_{organic,jf}\times FN_{organic,f}
+M_organicjf
+FN_organicf
+j
+f
+--------------------------------------
+*/
+
+VEERG_5_2_1_1__2_MassOfNitrogenInOrganicFertiliser
+  =LAMBDA(
+    M_organicjf, FN_organicf,
+    M_organicjf * FN_organicf
+  );
+
+VEERG_5_2_1_1__2_MassOfNitrogenInOrganicFertiliser_Title
+  =LAMBDA("Mass of nitrogen in purchased organic fertilisers applied to production system");
+
+VEERG_5_2_1_1__2_MassOfNitrogenInOrganicFertiliser_Variable
+  =LAMBDA("MNSoil_jf");
+
+VEERG_5_2_1_1__2_MassOfNitrogenInOrganicFertiliser_Unit
+  =LAMBDA("kg N");
+
+VEERG_5_2_1_1__2_MassOfNitrogenInOrganicFertiliser_Source
+  =LAMBDA("VEERG 2026: 5.2.1.1, Equation (2)");
+
+VEERG_5_2_1_1__2_MassOfNitrogenInOrganicFertiliser_NIRReference
+  =LAMBDA("");
+
+VEERG_5_2_1_1__2_MassOfNitrogenInOrganicFertiliser_LatexEquation
+  =LAMBDA("MNSoil_{jf}=M_{organic,jf}\times FN_{organic,f}");
+
+VEERG_5_2_1_1__2_MassOfNitrogenInOrganicFertiliser_Arguments
+  =LAMBDA(
+    MAKEARRAY(3, 4, 
+      LAMBDA(r,c, 
+        INDEX({
+          "M_organicjf","mass of organic fertiliser type f applied to production system j", "kg", "Input";
+          "FN_organicf","nitrogen fraction of organic fertiliser type f", "kg N/kg", "Input";
+          "f","Organic fertiliser type", "", "Input"
+        }, r, c)
+      )
+    )
+  );

@@ -815,6 +815,44 @@ Common_SourceData_MCFTemperatureZone_Variation
 
 
 
+/* 
+--------------------------------------
+Common_SourceData_EFOrganicFertiliserAndCropResidues
+--------------------------------------
+*/
+
+Common_SourceData_EFOrganicFertiliserAndCropResidues_Title
+  =LAMBDA("Emission factor for organic fertiliser and crop residues returned to the soil");
+
+Common_SourceData_EFOrganicFertiliserAndCropResidues_Variable
+  =LAMBDA("EFNi & EFN2Oi");
+
+Common_SourceData_EFOrganicFertiliserAndCropResidues_Unit
+  =LAMBDA("kg N2O - N / kg N");
+
+Common_SourceData_EFOrganicFertiliserAndCropResidues_Source
+  =LAMBDA("VEERG 2026: Table A.2.1.4");
+
+Common_SourceData_EFOrganicFertiliserAndCropResidues_NIRReference
+  =LAMBDA("");
+
+Common_SourceData_EFOrganicFertiliserAndCropResidues_Data
+  =LAMBDA(
+    MAKEARRAY(3, 2, 
+      LAMBDA(r,c, 
+        INDEX({
+          "Climate zone", "EFNi & EFN2O";
+          "Wet climate zone", 0.006;
+          "Dry climate zone", 0.005
+        }, r, c)
+      )
+    )
+  );
+
+Common_SourceData_EFOrganicFertiliserAndCropResidues_Variation
+  =LAMBDA("");
+
+
 
 
 

@@ -12,7 +12,7 @@ Fertiliser_ChemicalCompoundElements_Source
 
 Fertiliser_ChemicalCompoundElements_Data
 =LAMBDA(
- MAKEARRAY(19, 6,
+ MAKEARRAY(20, 6,
  LAMBDA(r,c,
   INDEX({
   "Fertiliser Type f", "FNinorganic,f", "FUf", "Basis", "LifeCycles Scope 3 definition", "Source";
@@ -23,23 +23,24 @@ Fertiliser_ChemicalCompoundElements_Data
   "Urea-ammonium nitrate (UAN)", 0.32, 0.35, "Urea-based fertilisers", "Urea-ammonium nitrate (UAN)", "VEERG";
   "Ammonium nitrate (AN)", 0.337, 0, "Ammonium-nitrate based fertilisers", "Ammonium nitrate (AN)", "VEERG";
   "Calcium ammonium nitrate (CAN)", 0.27, 0, "Ammonium-nitrate based fertilisers", "Calcium ammonium nitrate (CAN)", "VEERG";
-  "Nitrogen - Ammoniacal", 1, 0, "Ammonium-based fertilisers", "Nitrogen from Ammonia", "LifeCycles";
+  "Nitrogen - Ammoniacal", 1, 0, "Ammonium-based fertilisers", "Nitrogen - Ammoniacal", "LifeCycles";
   "Nitrogen - Nitrate", 1, 0, "Nitrate-based fertilisers", "Nitrogen from Nitrate", "LifeCycles";
-  "Nitrogen - generic", 1, 0, "Other fertilisers", "Nitrogen from fertiliser", "LifeCycles";
-  "Phosphorus - generic", 0, 0, "Other fertilisers", "Phosphorus from fertiliser", "LifeCycles";
-  "Potassium - generic", 0, 0, "Other fertilisers", "Potassium from fertiliser", "LifeCycles";
-  "Sulfur - generic", 0, 0, "Other fertilisers", "Sulfur from fertiliser", "LifeCycles";
-  "Zinc - generic", 0, 0, "Other fertilisers", "Zinc from fertiliser", "LifeCycles";
+  "Nitrogen - Ureic", 1, 0, "Urea-based fertilisers", "Nitrogen from fertiliser", "LifeCycles";
+  "Nitrogen - Generic", 1, 0, "Urea-based fertilisers", "Nitrogen from fertiliser", "LifeCycles";
+  "Phosphorus - Generic", 0, 0, "Other fertilisers", "Phosphorus from fertiliser", "LifeCycles";
+  "Potassium - Generic", 0, 0, "Other fertilisers", "Potassium from fertiliser", "LifeCycles";
+  "Sulfur - Generic", 0, 0, "Other fertilisers", "Sulfur from fertiliser", "LifeCycles";
+  "Zinc - Generic", 0, 0, "Other fertilisers", "Zinc from fertiliser", "LifeCycles";
   "Muriate of potash (MOP)", 0, 0, "Other fertilisers", "Muriate of potash (MOP)", "LifeCycles";
   "Double superphosphate", 0, 0, "Other fertilisers", "Double superphosphate", "LifeCycles";
   "Single superphosphate (SSP)", 0, 0, "Other fertilisers", "Single superphosphate (SSP)", "LifeCycles";
-  "Ammonia", 0.82, 0, "Ammonium-based fertilisers", "Ammonia", "LifeCycles"
+  "Ammonia", 0.8235, 0, "Ammonium-based fertilisers", "Ammonia", "LifeCycles"
   }, r, c)
 )));
 
 Fertiliser_ChemicalCompoundElements_Variation
 =LAMBDA(
- MAKEARRAY(9, 1,
+ MAKEARRAY(12, 1,
  LAMBDA(r,c,
   INDEX({
   "VARIATION ON SOURCE";
@@ -50,7 +51,10 @@ Fertiliser_ChemicalCompoundElements_Variation
   "Combined data from Table A.2.2.3 and Table A.2.2.4 into one table to aid lookup.";
   "Excluded 'References' column";
   "Excluded 'Ammonium sulfate' as it is a duplicate of 'Sulphate of ammonia (SOA)'";
-  "Excluded 'Calcium nitrate' as no scope 3 value available."
+  "Excluded 'Calcium nitrate' as no scope 3 value available.";
+  "Set 'Nitrogen - Generic' basis as 'Urea-based fertilisers, as urea is the most commonly used form of nitrogen in Australian fertilisers";
+  "Set 'Urea-ammonium nitrate' basis as 'Urea-based fertiliser'";
+  "Ammonia has an FN value of 0.8235 based on (14/17)x100, where 14 is the mass of nitrogen in ammonia and 17 is the molar mass of ammonia."
   }, r, c)
 )));
 
@@ -85,121 +89,104 @@ Fertiliser_FracGASF_Variation
 =LAMBDA("");
 
 
+/*
+============================================================================
+Emission factor for carbon emissions from urea application
+============================================================================
+*/
 
+Fertiliser_EFUreaCO2_Title
+=LAMBDA(("Emission factor for carbon emissions from urea application"));
 
+Fertiliser_EFUreaCO2_Source
+=LAMBDA(("VEERG 2026: 5.1.2.2 Constant Parameters"));
+
+Fertiliser_EFUreaCO2_Variable
+=LAMBDA(("EFureaCO2"));
+
+Fertiliser_EFUreaCO2_Unit
+=LAMBDA(("kg C/kg urea"));
+
+Fertiliser_EFUreaCO2_Data
+=LAMBDA(0.2);
+
+Fertiliser_EFUreaCO2_Variation
+=LAMBDA("");
 
 
 /*
 ============================================================================
-Branded fertiliser products
+Fraction of organic fertiliser that volatilises as NH3 and NOx
 ============================================================================
 */
 
-Fertiliser_Products_Title
-=LAMBDA(("Branded fertiliser products and their chemical composition"));
+Fertiliser_FracGASMSoil_Title
+=LAMBDA(("Fraction of organic fertiliser that volatilises as NH3 and NOx"));
 
-Fertiliser_Products_Source
-=LAMBDA(("TODO: Publish and attribute to Maria"));
+Fertiliser_FracGASMSoil_Source
+=LAMBDA(("VEERG 2026: 5.4.2.3 Constant Parameters"));
 
-Fertiliser_Products_Data1
-=LAMBDA(
- MAKEARRAY(20, 33,
- LAMBDA(r,c,
-  INDEX({
-"Product","Product Unit","Density (L to kg)","Ingredient 1","Ingredient 1 percent","Ingredient 1 source","Ingredient 2","Ingredient 2 percent","Ingredient 2 source","Ingredient 3","Ingredient 3 percent","Ingredient 3 source","Ingredient 4","Ingredient 4 percent","Ingredient 4 source","Ingredient 5","Ingredient 5 percent","Ingredient 5 source","Ingredient 6","Ingredient 6 percent","Ingredient 6 source","Ingredient 7","Ingredient 7 percent","Ingredient 7 source","Ingredient 8","Ingredient 8 percent","Ingredient 8 source","Ingredient 9","Ingredient 9 percent","Ingredient 9 source","Ingredient 10","Ingredient 10 percent","Ingredient 10 source";
-"Agflow Boost","kg",1,"Nitrogen from Ammonia",0.035,"Location not specified","Nitrogen from Nitrate",0.03,"Location not specified","Nitrogen - Ureic",0.145,"Location not specified","Potassium - generic",0.05,"Location not specified","Sulfur - generic",0.055,"Location not specified","Magnesium - generic",0.019,"Location not specified","Iron - generic",0.017,"Location not specified","Phosphorus - generic",0.008,"Location not specified","Copper - generic",0.0005,"Location not specified","Manganese - generic",0.0005,"Location not specified";
-"AgNP","kg",1,"Nitrogen from Ammonia",0.255,"Location not specified","Sulfur - generic",0.12,"Location not specified","","","","","","","","","","","","","","","","","","","","","","","","";
-"Ammonium Bicarbonate(N)","kg",1,"Nitrogen from Ammonia",0.17,"China","","","","","","","","","","","","","","","","","","","","","","","","","","","";
-"Ammonium Sulfate (N)","kg",1,"Sulfur - generic",0.24,"China","Nitrogen from Ammonia",0.21,"China","","","","","","","","","","","","","","","","","","","","","","","","";
-"Ammonium Sulphate","kg",1,"Nitrogen from Ammonia",0.2,"Location not specified","Sulfur - generic",0.23,"Location not specified","","","","","","","","","","","","","","","","","","","","","","","","";
-"Apex GaIXe Low P 21-1-6","kg",1,"Nitrogen from Ammonia",0.18,"Location not specified","Phosphorus - generic",0.202,"Location not specified","Sulfur - generic",0.015,"Location not specified","","","","","","","","","","","","","","","","","","","","","";
-"Aqua Nitro AN","L",1.25,"Nitrogen - generic",0.223,"Location not specified","","","","","","","","","","","","","","","","","","","","","","","","","","","";
-"Big N","kg",1,"Phosphorus - generic",0.182,"Location not specified","Nitrogen from Ammonia",0.169,"Location not specified","Sulfur - generic",0.08,"Location not specified","Zinc - generic",0.002,"Location not specified","Copper - generic",0.001,"Location not specified","","","","","","","","","","","","","","","";
-"Big Phos","L",1.32,"Nitrogen - Ureic",0.215,"Location not specified","Nitrogen from Ammonia",0.105,"Location not specified","Nitrogen from Nitrate",0.105,"Location not specified","Biuret (impurity)",0.01,"Location not specified","","","","","","","","","","","","","","","","","","";
-"Bronze","kg",1,"Potassium - generic",0.232,"Location not specified","Nitrogen from Ammonia",0.17,"Location not specified","Sulfur - generic",0.005,"Location not specified","Magnesium - generic",0.0024,"Location not specified","Phosphorus - generic",0.0004,"Location not specified","","","","","","","","","","","","","","","";
-"Bronze","kg",1,"Muriate of potash (MOP)",0.232,"Location not specified","Nitrogen - generic",0.17,"Location not specified","Sulfur - generic",0.005,"Location not specified","Magnesium - generic",0.0024,"Location not specified","Phosphorus - generic",0.0004,"Location not specified","","","","","","","","","","","","","","","";
-"Calcium Ammonium Nitrate (CAN)","kg",1,"Nitrogen from Ammonia",0.135,"China","Nitrogen from Nitrate",0.135,"China","Calcium oxide",0.12,"China","Boron - generic",0.003,"China","","","","","","","","","","","","","","","","","","";
-"Campbells Quick-N","kg",1,"Nitrogen - Ureic",0.46,"Location not specified","","","","","","","","","","","","","","","","","","","","","","","","","","","";
-"Compass","kg",1,"Nitrogen - generic",0.15,"Location not specified","Potassium - generic",0.125,"Location not specified","Phosphorus - generic",0.065,"Location not specified","Sulfur - generic",0.06,"Location not specified","","","","","","","","","","","","","","","","","","";
-"Crop K","L",1.31,"Potassium - generic",0.21,"Location not specified","Nitrogen - generic",0.03,"Location not specified","","","","","","","","","","","","","","","","","","","","","","","","";
-"Crop Starter","L",1.2,"Phosphorus - generic",0.08,"Location not specified","Nitrogen - generic",0.05,"Location not specified","Potassium - generic",0.03,"Location not specified","","","","","","","","","","","","","","","","","","","","","";
-"DAP","kg",1,"Nitrogen from Ammonia",0.18,"Location not specified","Phosphorus - generic",0.202,"Location not specified","Sulfur - generic",0.015,"Location not specified","","","","","","","","","","","","","","","","","","","","","";
-"Double Trace","kg",1,"Sulfur - generic",0.18,"Location not specified","Manganese - generic",0.17,"Location not specified","Zinc - generic",0.17,"Location not specified","","","","","","","","","","","","","","","","","","","","","";
-"Easy N Bulk","kg",1,"Nitrogen from Ammonia",0.205,"Location not specified","Sulfur - generic",0.24,"Location not specified","","","","","","","","","","","","","","","","","","","","","","","",""
+Fertiliser_FracGASMSoil_Variable
+=LAMBDA(("FracGASMsoil"));
 
-  }, r, c)
-)));
+Fertiliser_FracGASMSoil_Unit
+=LAMBDA(("(kg NH3-N + NOx-N)/kg N"));
+
+Fertiliser_FracGASMSoil_Data
+=LAMBDA(0.21);
+
+Fertiliser_FracGASMSoil_Variation
+=LAMBDA("");
 
 
-Fertiliser_Products_Data2
-=LAMBDA(
- MAKEARRAY(20, 33,
- LAMBDA(r,c,
-  INDEX({
-"Farm Ag Leichhardt","kg",1,"Nitrogen - Ureic",0.276,"Location not specified","Nitrogen from Ammonia",0.049,"Location not specified","Phosphorus - generic",0.054,"Location not specified","Potassium - generic",0.065,"Location not specified","Sulfur - generic",0.004,"Location not specified","Biuret",0.008,"Location not specified","","","","","","","","","","","","";
-"Flexi-N NBPT","kg",1,"Urea",0.99,"Location not specified","Magnesium Oxide",0.01,"Location not specified","Glaze Extend G3 Flexi",0.005,"Location not specified","","","","","","","","","","","","","","","","","","","","","";
-"Flexi-N NI only","kg",1,"Nitrogen - Ureic",0.46,"Location not specified","Biuret (impurity)",0.014,"Location not specified","","","","","","","","","","","","","","","","","","","","","","","","";
-"Glytrel ZnP","L",1.354,"Phosphorus - generic",0.044,"Location not specified","Zinc - generic",0.1,"Location not specified","","","","","","","","","","","","","","","","","","","","","","","","";
-"Gold Premium","kg",1,"Potassium - generic",0.166,"Location not specified","Nitrogen from Ammonia",0.15,"Location not specified","Sulfur - generic",0.8,"Location not specified","Phosphorus - generic",0.022,"Location not specified","Magnesium - generic",0.012,"Location not specified","Boron - generic",0.0002,"Location not specified","Zinc - generic",0.0001,"Location not specified","","","","","","","","","";
-"Granu-K","kg",1,"Potassium - generic",0.418,"Location not specified","Potassium - generic",0.175,"Location not specified","","","","","","","","","","","","","","","","","","","","","","","","";
-"Granu-K Premium","kg",1,"Potassium - generic",0.415,"Location not specified","Sulfur - generic",0.17,"Location not specified","","","","","","","","","","","","","","","","","","","","","","","","";
-"High NS","L",1.299,"Nitrogen - Ureic",0.212,"Location not specified","Nitrogen from Ammonia",0.092,"Location not specified","Nitrogen from Nitrate",0.076,"Location not specified","Sulfur - generic",0.02,"Location not specified","","","","","","","","","","","","","","","","","","";
-"In Crop","L",1.2,"Potassium - generic",0.11,"Location not specified","Nitrogen - generic",0.1,"Location not specified","Phosphorus - generic",0.01,"Location not specified","","","","","","","","","","","","","","","","","","","","","";
-"K20","L",1.3,"Potassium - generic",0.22,"Location not specified","Nitrogen - generic",0.03,"Location not specified","","","","","","","","","","","","","","","","","","","","","","","","";
-"MAP Impact","kg",1,"Nitrogen from Ammonia",0.1,"Location not specified","Phosphorus - generic",0.219,"Location not specified","Sulfur - generic",1.5,"Location not specified","","","","","","","","","","","","","","","","","","","","","";
-"MAP NUTURF","kg",1,"Nitrogen from Ammonia",0.12,"Location not specified","Phosphorus - generic",0.27,"Location not specified","","","","","","","","","","","","","","","","","","","","","","","","";
-"Maximum N-Pact 29-0-0","L",1.2,"Nitrogen - Ureic",0.1943,"Location not specified","Nitrogen - generic",0.0957,"Location not specified","","","","","","","","","","","","","","","","","","","","","","","","";
-"Nitro -K Prills","kg",1,"Potassium - generic",0.374,"Location not specified","Nitrogen from Nitrate",0.136,"Location not specified","","","","","","","","","","","","","","","","","","","","","","","","";
-"Nitro-P","L",1.44,"Phosphorus - generic",0.233,"Location not specified","Nitrogen - generic",0.158,"Location not specified","","","","","","","","","","","","","","","","","","","","","","","","";
-"Pasture MAXX","L",1.23,"Nitrogen - generic",0.0971,"Location not specified","Potassium - generic",0.0325,"Location not specified","Sulfur - generic",0.0211,"Location not specified","Zinc - generic",0.015,"Location not specified","Magnesium - generic",0.0115,"Location not specified","Iron - generic",0.0111,"Location not specified","Magnesium - generic",0.0045,"Location not specified","Boron - generic",0.002,"Location not specified","","","","","","";
-"Platinum nergetic","kg",1,"Phosphorus - generic",0.109,"Location not specified","Nitrogen - generic",0.1,"Location not specified","Potassium - generic",0.1,"Location not specified","Sulfur - generic",0.04,"Location not specified","Calcium - generic",0.014,"Location not specified","Magnesium - generic",0.012,"Location not specified","Zinc - generic",0.0036,"Location not specified","Boron - generic",0.001,"","","","","","","";
-"Polypeptide Urea","kg",1,"Nitrogen - Ureic",0.46,"China","","","","","","","","","","","","","","","","","","","","","","","","","","","";
-"Quick-N","kg",1,"Nitrogen - generic",0.26,"Location not specified","Sulfur - generic",0.13,"Location not specified","","","","","","","","","","","","","","","","","","","","","","","","";
-"Quick-N Nergetic","kg",1,"Nitrogen - generic",0.25,"Location not specified","Sulfur - generic",0.128,"Location not specified","Manganese - generic",0.001,"Location not specified","Zinc - generic",0.001,"Location not specified","Boron - generic",0.0001,"Location not specified","Molybdenum",0.00001,"Location not specified","","","","","","","","","","","",""
-  }, r, c)
-)));
+/*
+============================================================================
+Fraction of nitrogen that is lost through leaching and runoff
+============================================================================
+*/
 
-Fertiliser_Products_Data3
-=LAMBDA(
- MAKEARRAY(20, 33,
- LAMBDA(r,c,
-  INDEX({
-"Rustica Nergetic","kg",1,"Potassium - generic",0.141,"Location not specified","Nitrogen - generic",0.12,"Location not specified","Sulfur - generic",0.096,"Location not specified","Phosphorus - generic",0.052,"Location not specified","Magnesium - generic",0.012,"Location not specified","Zinc - generic",0.0008,"Location not specified","Iron - generic",0.0007,"Location not specified","Manganese - generic",0.0006,"Location not specified","Boron - generic",0.0002,"Location not specified","","","";
-"SETnSIZE","L",1.3,"Potassium - generic",0.0792,"Location not specified","Phosphorus - generic",0.0605,"Location not specified","Nitrogen - generic",0.0108,"Location not specified","Zinc - generic",0.0107,"Location not specified","Magnesium - generic",0.0104,"Location not specified","Manganese - generic",0.0075,"Location not specified","Sulfur - generic",0.0054,"Location not specified","Cobalt - generic",0.0018,"Location not specified","Iron - generic",0.0015,"Location not specified","Copper - generic",0.0011,"Location not specified";
-"SOA","kg",1,"Nitrogen from Ammonia",0.21,"Location not specified","Sulfur - generic",0.24,"Location not specified","","","","","","","","","","","","","","","","","","","","","","","","";
-"Solu-MAP","kg",1,"Phosphorus - generic",0.266,"Location not specified","Nitrogen from Ammonia",0.12,"Location not specified","","","","","","","","","","","","","","","","","","","","","","","","";
-"Solu-MKP","kg",1,"Phosphorus - generic",0.227,"Location not specified","Potassium - generic",0.285,"Location not specified","","","","","","","","","","","","","","","","","","","","","","","","";
-"Solu-Sam","kg",1,"Nitrogen from Ammonia",0.208,"Location not specified","Sulfur - generic",0.238,"Location not specified","","","","","","","","","","","","","","","","","","","","","","","","";
-"Solu-Zinc","kg",1,"Zinc - generic",0.21,"Location not specified","Sulfur - generic",0.105,"Location not specified","","","","","","","","","","","","","","","","","","","","","","","","";
-"Thio-K","L",1.47,"Potassium - generic",0.3,"Location not specified","Sulfur - generic",0.25,"Location not specified","","","","","","","","","","","","","","","","","","","","","","","","";
-"Thio-N","L",1.32,"Nitrogen - generic",0.372,"Location not specified","Sulfur - generic",0.07,"Location not specified","","","","","","","","","","","","","","","","","","","","","","","","";
-"Thio-N Plus","L",1.32,"Nitrogen - generic",0.364,"Location not specified","Sulfur - generic",0.07,"Location not specified","","","","","","","","","","","","","","","","","","","","","","","","";
-"Thio-Sul","L",1.35,"Sulfur - generic",0.35,"Location not specified","Nitrogen from Ammonia",0.16,"Location not specified","","","","","","","","","","","","","","","","","","","","","","","","";
-"UAS","L",1.235,"Nitrogen - Ureic",0.209,"Location not specified","Sulfur - generic",0.067,"Location not specified","Nitrogen from Ammonia",0.057,"Location not specified","","","","","","","","","","","","","","","","","","","","","";
-"Yara Liquids N-FOL 24+TE","kg",1,"Nitrogen - generic",0.19,"Location not specified","Potassium - generic",0.166,"Location not specified","Sulfur - generic",0.03,"Location not specified","Phosphorus - generic",0.026,"Location not specified","Magnesium - generic",0.018,"Location not specified","Iron - generic",0.0007,"Location not specified","Manganese - generic",0.0004,"Location not specified","Boron - generic",0.00025,"Location not specified","Zinc - generic",0.00025,"Location not specified","Copper - generic",0.0001,"Location not specified";
-"Yara Unika Plus","kg",1,"Potassium - generic",0.382,"Location not specified","Nitrogen - generic",0.12,"Location not specified","Sulfur - generic",0.007,"Location not specified","","","","","","","","","","","","","","","","","","","","","";
-"YaraMila 21-7-3(4)","kg",1,"Nitrogen - generic",0.21,"Location not specified","Phosphorus - generic",0.074,"Location not specified","Sulfur - generic",0.04,"Location not specified","Potassium - generic",0.025,"Location not specified","Magnesium - generic",0.004,"Location not specified","Zinc - generic",0.0015,"Location not specified","","","","","","","","","","","","";
-"YaraRega 13-2-21","kg",1,"Potassium - generic",0.21,"Location not specified","Sulfur - generic",0.108,"Location not specified","Nitrogen from Ammonia",0.077,"Location not specified","Nitrogen from Nitrate",0.053,"Location not specified","Phosphorus - generic",0.0175,"Location not specified","Magnesium - generic",0.004,"Location not specified","Boron - generic",0.0008,"Location not specified","Zinc - generic",0.0008,"Location not specified","","","","","","";
-"YaraRega 9-0-30 (14)","kg",1,"Potassium - generic",0.3,"Location not specified","Sulfur - generic",0.14,"Location not specified","Nitrogen from Ammonia",0.045,"Location not specified","Nitrogen from Nitrate",0.045,"Location not specified","","","","","","","","","","","","","","","","","","";
-"YaraTera KRISTA K PLUS","kg",1,"Nitrogen - generic",0.137,"Location not specified","Potassium - generic",0.384,"Location not specified","","","","","","","","","","","","","","","","","","","","","","","","";
-"YaraTera KRISTA MAP","kg",1,"Phosphorus - generic",0.266,"Location not specified","Nitrogen from Ammonia",0.12,"Location not specified","","","","","","","","","","","","","","","","","","","","","","","","";
-"YaraTera KRISTA MKP","kg",1,"Potassium - generic",0.282,"Location not specified","Phosphorus - generic",0.227,"Location not specified","","","","","","","","","","","","","","","","","","","","","","","",""
-  }, r, c)
-)));
+Fertiliser_FracLEACH_Title
+=LAMBDA(("Fraction of nitrogen that is lost through leaching and runoff"));
 
-Fertiliser_Products_Data4
-=LAMBDA(
- MAKEARRAY(5, 33,
- LAMBDA(r,c,
-  INDEX({
-"YaraTera KRISTALON RED","kg",1,"Potassium - generic",0.2988,"Location not specified","Nitrogen - generic",0.12,"Location not specified","Phosphorus - generic",0.05244,"Location not specified","Sulfur - generic",0.01,"Location not specified","Magnesium - generic",0.00603,"Location not specified","Iron - generic",0.0007,"Location not specified","Manganese - generic",0.0004,"Location not specified","Boron - generic",0.00025,"Location not specified","Zinc - generic",0.00025,"Location not specified","Copper - generic",0.0001,"Location not specified";
-"YaraTera KRISTALON SPECIAL","kg",1,"Nitrogen - generic",0.18,"Location not specified","Potassium - generic",0.149,"Location not specified","Phosphorus - generic",0.079,"Location not specified","Sulfur - generic",0.02,"Location not specified","Magnesium - generic",0.018,"Location not specified","Iron - generic",0.0007,"Location not specified","Manganese - generic",0.0004,"Location not specified","Boron - generic",0.00025,"Location not specified","Zinc - generic",0.00025,"Location not specified","Copper - generic",0.0001,"Location not specified";
-"YaraVita Glytrel ZnP","L",1.354,"Zinc - generic",0.1,"Location not specified","Phosphorus - generic",0.044,"Location not specified","","","","","","","","","","","","","","","","","","","","","","","","";
-"YaraVita Zintrac","L",1.734,"Zinc - generic",0.7,"Location not specified","Nitrogen - generic",0.018,"Location not specified","","","","","","","","","","","","","","","","","","","","","","","","";
-"ZincStar","kg",1,"Nitrogen from Ammonia",0.1,"Location not specified","Phosphorus - generic",0.22,"Location not specified","Sulfur - generic",0.02,"Location not specified","Zinc - generic",0.01,"Location not specified","","","","","","","","","","","","","","","","","",""
-  }, r, c)
-)));
+Fertiliser_FracLEACH_Source
+=LAMBDA(("VEERG 2026: 5.5.2.3 Constant Parameters"));
 
+Fertiliser_FracLEACH_Variable
+=LAMBDA(("FracLEACH"));
+
+Fertiliser_FracLEACH_Unit
+=LAMBDA(("fraction"));
+
+Fertiliser_FracLEACH_Data
+=LAMBDA(0.24);
+
+Fertiliser_FracLEACH_Variation
+=LAMBDA("");
+
+
+/*
+============================================================================
+Emission factor for nitrogen leaching and runoff
+============================================================================
+*/
+
+Fertiliser_EFLeach_Title
+=LAMBDA(("Emission factor for nitrogen leaching and runoff"));
+
+Fertiliser_EFLeach_Source
+=LAMBDA(("VEERG 2026: 5.5.2.3 Constant Parameters"));
+
+Fertiliser_EFLeach_Variable
+=LAMBDA(("EFLeach"));
+
+Fertiliser_EFLeach_Unit
+=LAMBDA(("kg N2O-N / kg N"));
+
+Fertiliser_EFLeach_Data
+=LAMBDA(0.011);
+
+Fertiliser_EFLeach_Variation
+=LAMBDA("");
 
 
 
@@ -216,7 +203,7 @@ Fertiliser_LimeDolomiteGypsumConstants_Description
 =LAMBDA(("Constants for lime, dolomite and gypsum"));
 
 Fertiliser_LimeDolomiteGypsumConstants_Source
-=LAMBDA(("National Inventory Report 2023 Volume 1: 5.8.2 Methodological issues, equation 3G_1"));
+=LAMBDA(("VEERG 2026: 5.3.2.3 Constant Parameters"));
 
 Fertiliser_LimeDolomiteGypsumConstants_Data
 =LAMBDA(
@@ -232,3 +219,164 @@ Fertiliser_LimeDolomiteGypsumConstants_Data
 
 Fertiliser_LimeDolomiteGypsumConstants_Variation
 =LAMBDA(("VARIATION FROM SOURCE DATA: Gypsum has been added with placeholder values of 0 for P and EF."));
+
+
+/*
+============================================================================
+Fraction of nitrogen in common inorganic fertilisers
+============================================================================
+*/
+
+Fertiliser_FractionNCommonFertilisers_Title
+=LAMBDA(("Fraction of nitrogen in common inorganic fertilisers (kgN/kg) (FNorganic,f)"));
+
+Fertiliser_FractionNCommonFertilisers_Source
+=LAMBDA(("VEERG 2026: Table A.2.2.3"));
+
+Fertiliser_FractionNCommonFertilisers_Data
+=LAMBDA(
+ MAKEARRAY(10, 2,
+ LAMBDA(r,c,
+  INDEX({
+  "Fertiliser Type f", "FNinorganicf";
+  "Monoammonium phosphate (MAP)", 0.10;
+  "Diammonium phosphate (DAP)", 0.18;
+  "Urea", 0.46;
+  "Sulphate of ammonia (SOA)", 0.21;
+  "Urea-ammonium nitrate (UAN)", 0.32;
+  "Ammonium nitrate (AN)", 0.337;
+  "Calcium ammonium nitrate (CAN)", 0.27;
+  "Ammonium Sulfate", 0.21;
+  "Calcium Nitrate", 0.155
+  }, r, c)
+)));
+
+Fertiliser_FractionNCommonFertilisers_Variation
+=LAMBDA((""));
+
+
+/*
+============================================================================
+Fraction of urea in common inorganic fertilisers
+============================================================================
+*/
+
+Fertiliser_FractionUreaCommonFertilisers_Title
+=LAMBDA(("Fraction of urea in common inorganic fertilisers (kg urea/kg) (FUf)"));
+
+Fertiliser_FractionUreaCommonFertilisers_Source
+=LAMBDA(("VEERG 2026: Table A.2.2.4"));
+
+Fertiliser_FractionUreaCommonFertilisers_Data
+=LAMBDA(
+ MAKEARRAY(10, 2,
+ LAMBDA(r,c,
+  INDEX({
+  "Fertiliser Type f", "FUf";
+  "Monoammonium phosphate (MAP)", 0;
+  "Diammonium phosphate (DAP)", 0;
+  "Urea", 1;
+  "Sulphate of ammonia (SOA)", 0;
+  "Urea-ammonium nitrate (UAN)", 0.35;
+  "Ammonium nitrate (AN)", 0;
+  "Calcium ammonium nitrate (CAN)", 0;
+  "Ammonium Sulfate", 0;
+  "Calcium Nitrate", 0
+  }, r, c)
+)));
+
+Fertiliser_FractionUreaCommonFertilisers_Variation
+=LAMBDA((""));
+
+/*
+============================================================================
+Branded fertiliser products
+============================================================================
+*/
+
+Fertiliser_Products_Title
+=LAMBDA(("Branded fertiliser products and their chemical composition"));
+
+Fertiliser_Products_Source
+=LAMBDA((""));
+
+Fertiliser_Products_Data1
+=LAMBDA(
+ MAKEARRAY(20, 28,
+ LAMBDA(r,c,
+  INDEX({
+"Include or exclude","Notes","Company","Product Name","Unit","Density","Urea source","Ammonia source","Ingredient 1","Ingredient 1 percent","Ingredient 2","Ingredient 2 percent","Ingredient 3","Ingredient 3 percent","Ingredient 4","Ingredient 4 percent","Ingredient 5","Ingredient 5 percent","Ingredient 6","Ingredient 6 percent","Ingredient 7","Ingredient 7 percent","Ingredient 8","Ingredient 8 percent","Ingredient 9","Ingredient 9 percent","Ingredient 10","Ingredient 10 percent";
+"Include","","Campbells fertilisers Australia","Aqua Finish","L",1.26,"","","Potassium - Generic",0.225,"Phosphorus",0.04,"Nitrogen - Generic",0.026,"","","","","","","","","","","","","","";
+"Include","","Campbells fertilisers Australia","Aqua Grow","L",1.26,"","","Potassium - Generic",0.105,"Nitrogen - Generic ",0.096,"Phosphorus - Generic",0.05,"","","","","","","","","","","","","","";
+"Include","","Campbells fertilisers Australia","Aqua Nitro AN","L",1.24,"","","Nitrogen - Ammoniacal",0.223,"","","","","","","","","","","","","","","","","","";
+"Include","","Campbells fertilisers Australia","Aqua Start","L",1.25,"","","Nitrogen - Generic",0.103,"Phosphorus - Generic",0.1,"Potassium - Generic",0.034,"","","","","","","","","","","","","","";
+"Include","","Campbells fertilisers Australia","Aqua Thio-Complete","L",1.43,"","","Potassium - Generic",0.225,"Phosphorus - Generic",0.038,"Nitrogen - Generic",0.025,"","","","","","","","","","","","","","";
+"Include","","Campbells fertilisers Australia","Aqua Thio-Emerge","L",1.29,"","","Nitrogen - Generic",0.105,"Phosphorus - Generic",0.094,"Potassium - Generic",0.04,"Sulfur - Generic",0.03,"","","","","","","","","","","","";
+"Include","","Campbells fertilisers Australia","Aqua Thio-Flourish","L",1.32,"","","Potassium - Generic",0.108,"Nitrogen - Generic ",0.095,"Sulfur - Generic",0.081,"Phosphorus - Generic",0.047,"","","","","","","","","","","","";
+"Include - Absent ingredients < 2%","","Campbells fertilisers Australia","Boost-It","kg",1,"","","Nitrogen - Ureic",0.24,"Potassium - Generic",0.08,"Sulfur - Generic",0.053,"Phosphorus - Generic",0.052,"Magnesium",0.013,"Zinc",0.002,"Manganese",0.0035,"Iron",0.0013,"Copper",0.0007,"Boron",0.0007;
+"Include","","Campbells fertilisers Australia","Bronze","kg",1,"","","Muriate of Potash (MOP)",0.232,"Nitrogen - Generic",0.17,"Sulfur - Generic",0.005,"Magnesium",0.0024,"Phosphorus - Generic",0.0004,"","","","","","","","","","";
+"Include","50/50 nitrate and ammoniacal nitrogen (ammonium nitrate)","Campbells fertilisers Australia","Compass","kg",1,"","","Nitrogen - Ammoniacal",0.075,"Nitrogen - Nitrate",0.075,"Potassium - Generic",0.125,"Phosphorus-Generic",0.065,"Sulfur - Generic",0.06,"","","","","","","","","","";
+"Include - Absent ingredients < 2%","Controlled release N treated as generic","Campbells fertilisers Australia","CoRoN 12-0-10","L",1.215,"","","Nitrogen - Ureic",0.09,"Potassium - Generic",0.1,"Nitrogen - Generic",0.03,"Boron",0.005,"","","","","","","","","","","",""
+}, r, c)
+)));
+
+/*
+Fertiliser_Products_Data2
+=LAMBDA(
+ MAKEARRAY(6, 28,
+ LAMBDA(r,c,
+  INDEX({
+"Exclude - Absent ingredients > 2%","","Campbells fertilisers Australia","Bud-Wiser Dry","kg","","","Sulfur - Generic",0.094,"Magnesium",0.06,"Boron",0.045,"Zinc",0.027,"","","","","","","","","","","","";
+"Exclude - Not relevant","","Campbells fertilisers Australia","Calbit C","L","","","","","","","","","","","","","","","","","","","","","","","";
+"Exclude - Not relevant","","Campbells fertilisers Australia","Calcium 175","L","","","","","","","","","","","","","","","","","","","","","","","";
+"Exclude - Absent ingredients > 2%","","Campbells fertilisers Australia","CalPhos","L",1.285,"","Phosphorus - Generic",0.135,"Calcium - Generic",0.04,"","","","","","","","","","","","","","";
+"Include","50/50 nitrate and ammoniacal nitrogen (ammonium nitrate)","","Campbells fertilisers Australia","Compass","kg",1,"","Nitrogen - Ammoniacal",0.075,"Nitrogen - Nitrate",0.075,"Potassium - Generic",0.125,"Phosphorus-Generic",0.065,"Sulfur - Generic",0.06,"","","","","","","","";
+"Include - Absent ingredients < 2%","Controlled release N treated as generic","","Campbells fertilisers Australia","CoRoN 12-0-10","L",1.215,"","Nitrogen - Ureic",0.09,"Potassium - Generic",0.1,"Nitrogen - Generic",0.03,"Boron",0.005,"","","","","","","","",""
+  }, r, c)
+)));
+
+
+Fertiliser_Products_Data3
+=LAMBDA(
+ MAKEARRAY(20, 35,
+ LAMBDA(r,c,
+  INDEX({
+"Rustica Nergetic","kg",1,"Potassium - Generic",0.141,"Location not specified","Nitrogen - Generic",0.12,"Location not specified","Sulfur - Generic",0.096,"Location not specified","Phosphorus - Generic",0.052,"Location not specified","Magnesium - generic",0.012,"Location not specified","Zinc - Generic",0.0008,"Location not specified","Iron - generic",0.0007,"Location not specified","Manganese - Generic",0.0006,"Location not specified","Boron - generic",0.0002,"Location not specified","","","";
+"SETnSIZE","L",1.3,"Potassium - Generic",0.0792,"Location not specified","Phosphorus - Generic",0.0605,"Location not specified","Nitrogen - Generic",0.0108,"Location not specified","Zinc - Generic",0.0107,"Location not specified","Magnesium - generic",0.0104,"Location not specified","Manganese - Generic",0.0075,"Location not specified","Sulfur - Generic",0.0054,"Location not specified","Cobalt - generic",0.0018,"Location not specified","Iron - generic",0.0015,"Location not specified","Copper - generic",0.0011,"Location not specified";
+"SOA","kg",1,"Nitrogen - Ammoniacal",0.21,"Location not specified","Sulfur - Generic",0.24,"Location not specified","","","","","","","","","","","","","","","","","","","","","","","","";
+"Solu-MAP","kg",1,"Phosphorus - Generic",0.266,"Location not specified","Nitrogen - Ammoniacal",0.12,"Location not specified","","","","","","","","","","","","","","","","","","","","","","","","";
+"Solu-MKP","kg",1,"Phosphorus - Generic",0.227,"Location not specified","Potassium - Generic",0.285,"Location not specified","","","","","","","","","","","","","","","","","","","","","","","","";
+"Solu-Sam","kg",1,"Nitrogen - Ammoniacal",0.208,"Location not specified","Sulfur - Generic",0.238,"Location not specified","","","","","","","","","","","","","","","","","","","","","","","","";
+"Solu-Zinc","kg",1,"Zinc - Generic",0.21,"Location not specified","Sulfur - Generic",0.105,"Location not specified","","","","","","","","","","","","","","","","","","","","","","","","";
+"Thio-K","L",1.47,"Potassium - Generic",0.3,"Location not specified","Sulfur - Generic",0.25,"Location not specified","","","","","","","","","","","","","","","","","","","","","","","","";
+"Thio-N","L",1.32,"Nitrogen - Generic",0.372,"Location not specified","Sulfur - Generic",0.07,"Location not specified","","","","","","","","","","","","","","","","","","","","","","","","";
+"Thio-N Plus","L",1.32,"Nitrogen - Generic",0.364,"Location not specified","Sulfur - Generic",0.07,"Location not specified","","","","","","","","","","","","","","","","","","","","","","","","";
+"Thio-Sul","L",1.35,"Sulfur - Generic",0.35,"Location not specified","Nitrogen - Ammoniacal",0.16,"Location not specified","","","","","","","","","","","","","","","","","","","","","","","","";
+"UAS","L",1.235,"Nitrogen - Generic",0.209,"Location not specified","Sulfur - Generic",0.067,"Location not specified","Nitrogen - Ammoniacal",0.057,"Location not specified","","","","","","","","","","","","","","","","","","","","","";
+"Yara Liquids N-FOL 24+TE","kg",1,"Nitrogen - Generic",0.19,"Location not specified","Potassium - Generic",0.166,"Location not specified","Sulfur - Generic",0.03,"Location not specified","Phosphorus - Generic",0.026,"Location not specified","Magnesium - generic",0.018,"Location not specified","Iron - generic",0.0007,"Location not specified","Manganese - Generic",0.0004,"Location not specified","Boron - generic",0.00025,"Location not specified","Zinc - Generic",0.00025,"Location not specified","Copper - generic",0.0001,"Location not specified";
+"Yara Unika Plus","kg",1,"Potassium - Generic",0.382,"Location not specified","Nitrogen - Generic",0.12,"Location not specified","Sulfur - Generic",0.007,"Location not specified","","","","","","","","","","","","","","","","","","","","","";
+"YaraMila 21-7-3(4)","kg",1,"Nitrogen - Generic",0.21,"Location not specified","Phosphorus - Generic",0.074,"Location not specified","Sulfur - Generic",0.04,"Location not specified","Potassium - Generic",0.025,"Location not specified","Magnesium - generic",0.004,"Location not specified","Zinc - Generic",0.0015,"Location not specified","","","","","","","","","","","","";
+"YaraRega 13-2-21","kg",1,"Potassium - Generic",0.21,"Location not specified","Sulfur - Generic",0.108,"Location not specified","Nitrogen - Ammoniacal",0.077,"Location not specified","Nitrogen from Nitrate",0.053,"Location not specified","Phosphorus - Generic",0.0175,"Location not specified","Magnesium - generic",0.004,"Location not specified","Boron - generic",0.0008,"Location not specified","Zinc - Generic",0.0008,"Location not specified","","","","","","";
+"YaraRega 9-0-30 (14)","kg",1,"Potassium - Generic",0.3,"Location not specified","Sulfur - Generic",0.14,"Location not specified","Nitrogen - Ammoniacal",0.045,"Location not specified","Nitrogen from Nitrate",0.045,"Location not specified","","","","","","","","","","","","","","","","","","";
+"YaraTera KRISTA K PLUS","kg",1,"Nitrogen - Generic",0.137,"Location not specified","Potassium - Generic",0.384,"Location not specified","","","","","","","","","","","","","","","","","","","","","","","","";
+"YaraTera KRISTA MAP","kg",1,"Phosphorus - Generic",0.266,"Location not specified","Nitrogen - Ammoniacal",0.12,"Location not specified","","","","","","","","","","","","","","","","","","","","","","","","";
+"YaraTera KRISTA MKP","kg",1,"Potassium - Generic",0.282,"Location not specified","Phosphorus - Generic",0.227,"Location not specified","","","","","","","","","","","","","","","","","","","","","","","",""
+  }, r, c)
+)));
+
+Fertiliser_Products_Data4
+=LAMBDA(
+ MAKEARRAY(5, 35,
+ LAMBDA(r,c,
+  INDEX({
+"YaraTera KRISTALON RED","kg",1,"Potassium - Generic",0.2988,"Location not specified","Nitrogen - Generic",0.12,"Location not specified","Phosphorus - Generic",0.05244,"Location not specified","Sulfur - Generic",0.01,"Location not specified","Magnesium - generic",0.00603,"Location not specified","Iron - generic",0.0007,"Location not specified","Manganese - Generic",0.0004,"Location not specified","Boron - generic",0.00025,"Location not specified","Zinc - Generic",0.00025,"Location not specified","Copper - generic",0.0001,"Location not specified";
+"YaraTera KRISTALON SPECIAL","kg",1,"Nitrogen - Generic",0.18,"Location not specified","Potassium - Generic",0.149,"Location not specified","Phosphorus - Generic",0.079,"Location not specified","Sulfur - Generic",0.02,"Location not specified","Magnesium - generic",0.018,"Location not specified","Iron - generic",0.0007,"Location not specified","Manganese - Generic",0.0004,"Location not specified","Boron - generic",0.00025,"Location not specified","Zinc - Generic",0.00025,"Location not specified","Copper - generic",0.0001,"Location not specified";
+"YaraVita Glytrel ZnP","L",1.354,"Zinc - Generic",0.1,"Location not specified","Phosphorus - Generic",0.044,"Location not specified","","","","","","","","","","","","","","","","","","","","","","","","";
+"YaraVita Zintrac","L",1.734,"Zinc - Generic",0.7,"Location not specified","Nitrogen - Generic",0.018,"Location not specified","","","","","","","","","","","","","","","","","","","","","","","","";
+"ZincStar","kg",1,"Nitrogen - Ammoniacal",0.1,"Location not specified","Phosphorus - Generic",0.22,"Location not specified","Sulfur - Generic",0.02,"Location not specified","Zinc - Generic",0.01,"Location not specified","","","","","","","","","","","","","","","","","",""
+  }, r, c)
+)));
+*/
+
+
+

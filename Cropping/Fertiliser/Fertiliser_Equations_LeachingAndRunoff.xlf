@@ -1,0 +1,170 @@
+/*
+======================================
+5: Fertiliser Use
+======================================
+5.5 Leaching and run-off resulting from fertiliser application
+======================================
+*/
+
+/* 
+--------------------------------------
+VEERG_5_5_1_1__1_FertiliserLeachingAndRunoffN2OEmissions
+Nitrous oxide emissions from nitrogen leaching and runoff from the application of all fertilisers across all production systems j
+E_fertleach
+t N2O
+E_{fert,leach}=\sum_{j}((M_{leach,inorganic,j}+M_{leach,organic,j})\times EF_{leach}\times C_{N2O}\times 10^{-3})
+M_leachinorganicj
+M_leachorganicj
+EF_leach
+C_N2O
+j
+--------------------------------------
+*/
+
+VEERG_5_5_1_1__1_FertiliserLeachingAndRunoffN2OEmissions
+  =LAMBDA(
+    M_leachinorganicj, M_leachorganicj, EF_leach, C_N2O,
+    (M_leachinorganicj + M_leachorganicj) * EF_leach * C_N2O * 10 ^ -3
+  );
+
+VEERG_5_5_1_1__1_FertiliserLeachingAndRunoffN2OEmissions_Title
+  =LAMBDA("Nitrous oxide emissions from nitrogen leaching and runoff from the application of all fertilisers across all production systems j");
+
+VEERG_5_5_1_1__1_FertiliserLeachingAndRunoffN2OEmissions_Variable
+  =LAMBDA("E_fertleach");
+
+VEERG_5_5_1_1__1_FertiliserLeachingAndRunoffN2OEmissions_Unit
+  =LAMBDA("t N2O");
+
+VEERG_5_5_1_1__1_FertiliserLeachingAndRunoffN2OEmissions_Source
+  =LAMBDA("VEERG 2026: 5.5, Equation (1)");
+
+VEERG_5_5_1_1__1_FertiliserLeachingAndRunoffN2OEmissions_NIRReference
+  =LAMBDA("");
+
+VEERG_5_5_1_1__1_FertiliserLeachingAndRunoffN2OEmissions_LatexEquation
+  =LAMBDA("E_{fert,leach}=\sum_{j}((M_{leach,inorganic,j}+M_{leach,organic,j})\times EF_{leach}\times C_{N2O}\times 10^{-3})");
+
+VEERG_5_5_1_1__1_FertiliserLeachingAndRunoffN2OEmissions_Arguments
+  =LAMBDA(
+    MAKEARRAY(4, 4, 
+      LAMBDA(r,c, 
+        INDEX({
+          "M_leachinorganicj","mass of nitrogen lost through leaching and runoff from inorganic fertiliser application in production system j", "kg N", "Calculated from 5.5.1.1 (2)";
+          "M_leachorganicj","mass of nitrogen lost through leaching and runoff from organic fertiliser application", "kg N", "Calculated from 5.5.1.1 (3)";
+          "EF_leach","emission factor for nitrogen leaching and runoff", "kg N2O-N/kg N", "Constant";
+          "C_N2O","factor to convert elemental mass of nitrous oxide to molecular mass", "", "Constant"
+        }, r, c)
+      )
+    )
+  );
+
+/* 
+--------------------------------------
+VEERG_5_5_1_1__2_MassOfNitrogenLeachedFromInorganicFertiliser
+Mass of nitrogen lost through leaching and runoff from inorganic fertiliser application in production system j
+M_leachinorganicj
+kg N
+M_{leach,inorganic,j}=\sum_{f}({MN}_{jf}\times Frac_{WET,j}\times Frac_{LEACH})
+MN_jf
+FracWETj
+FracLEACH
+j
+f
+--------------------------------------
+*/
+
+VEERG_5_5_1_1__2_MassOfNitrogenLeachedFromInorganicFertiliser
+  =LAMBDA(
+    MN_jf, FracWETj, FracLEACH,
+    MN_jf * FracWETj * FracLEACH
+  );
+
+VEERG_5_5_1_1__2_MassOfNitrogenLeachedFromInorganicFertiliser_Title
+  =LAMBDA("Mass of nitrogen lost through leaching and runoff from inorganic fertiliser application in production system j");
+
+VEERG_5_5_1_1__2_MassOfNitrogenLeachedFromInorganicFertiliser_Variable
+  =LAMBDA("M_leachinorganicj");
+
+VEERG_5_5_1_1__2_MassOfNitrogenLeachedFromInorganicFertiliser_Unit
+  =LAMBDA("kg N");
+
+VEERG_5_5_1_1__2_MassOfNitrogenLeachedFromInorganicFertiliser_Source
+  =LAMBDA("VEERG 2026: 5.5, Equation (2)");
+
+VEERG_5_5_1_1__2_MassOfNitrogenLeachedFromInorganicFertiliser_NIRReference
+  =LAMBDA("");
+
+VEERG_5_5_1_1__2_MassOfNitrogenLeachedFromInorganicFertiliser_LatexEquation
+  =LAMBDA("M_{leach,inorganic,j}=\sum\nolimits_{f}\left({MN}_{jf}\times Frac_{WET,j}\times Frac_{LEACH}\right)");
+
+VEERG_5_5_1_1__2_MassOfNitrogenLeachedFromInorganicFertiliser_Arguments
+  =LAMBDA(
+    MAKEARRAY(6, 4, 
+      LAMBDA(r,c, 
+        INDEX({
+          "MN_jf","mass of nitrogen in inorganic fertiliser", "kg N", "Calculated from 5.1.1.1 (2)";
+          "FracWETj","fraction of N available for leaching and runoff", "fraction", "Constant";
+          "FracLEACH","fraction of N that is lost through leaching and runoff", "fraction", "Constant";
+            "z","location in leaching zone", "", "Input";
+            "j","production system", "", "Input";
+            "ir","irrigation method", "", "Input"
+        }, r, c)
+      )
+    )
+  );
+
+/* 
+--------------------------------------
+VEERG_5_5_1_1__3_MassOfNitrogenLeachedFromOrganicFertiliser
+Mass of nitrogen lost through leaching and runoff from organic fertiliser application in production system j
+M_leachorganicj
+kg N
+M_{leach,organic,j}=\sum_{f}({MNSoil}_{jf}\times Frac_{WET,j}\times Frac_{LEACH})
+MNSoil_jf
+FracWETj
+FracLEACH
+j
+f
+--------------------------------------
+*/
+
+VEERG_5_5_1_1__3_MassOfNitrogenLeachedFromOrganicFertiliser
+  =LAMBDA(
+    MNSoil_jf, FracWETj, FracLEACH,
+    MNSoil_jf * FracWETj * FracLEACH
+  );
+
+VEERG_5_5_1_1__3_MassOfNitrogenLeachedFromOrganicFertiliser_Title
+  =LAMBDA("Mass of nitrogen lost through leaching and runoff from organic fertiliser application in production system j");
+
+VEERG_5_5_1_1__3_MassOfNitrogenLeachedFromOrganicFertiliser_Variable
+  =LAMBDA("M_leachorganicj");
+
+VEERG_5_5_1_1__3_MassOfNitrogenLeachedFromOrganicFertiliser_Unit
+  =LAMBDA("kg N");
+
+VEERG_5_5_1_1__3_MassOfNitrogenLeachedFromOrganicFertiliser_Source
+  =LAMBDA("VEERG 2026: 5.5, Equation (3)");
+
+VEERG_5_5_1_1__3_MassOfNitrogenLeachedFromOrganicFertiliser_NIRReference
+  =LAMBDA("");
+
+VEERG_5_5_1_1__3_MassOfNitrogenLeachedFromOrganicFertiliser_LatexEquation
+  =LAMBDA("M_{leach,organic,j}=\sum\nolimits_{f}\left({MNSoil}_{jf}\times Frac_{WET,j}\times Frac_{LEACH}\right)");
+
+VEERG_5_5_1_1__3_MassOfNitrogenLeachedFromOrganicFertiliser_Arguments
+  =LAMBDA(
+    MAKEARRAY(6, 4, 
+      LAMBDA(r,c, 
+        INDEX({
+          "MNSoil_jf","mass of nitrogen in organic fertiliser", "kg N", "Calculated from 5.2.1.1 (2)";
+          "FracWETj","fraction of N available for leaching and runoff", "fraction", "Constant";
+          "FracLEACH","fraction of N that is lost through leaching and runoff", "fraction", "Constant";
+          "z","location in leaching zone", "", "Input";
+          "j","production system", "", "Input";
+          "ir","irrigation method", "", "Input"
+        }, r, c)
+      )
+    )
+  );

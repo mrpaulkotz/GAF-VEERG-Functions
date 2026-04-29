@@ -1,0 +1,218 @@
+/*
+======================================
+5: Fertiliser Use
+======================================
+5.4 Inorganic fertiliser atmospheric deposition
+======================================
+*/
+
+/* 
+--------------------------------------
+VEERG_5_4_1_1__1_InorganicFertiliserAtmosphericDepositionN2OEmissions
+Nitrous oxide emissions from atmospheric deposition from all inorganic fertiliser types f and all production systems j
+E_adinorganic
+t N2O
+E_{ad,inorganic}=\sum_{j}\sum_{f}((M_{vol,inorganic,jf}\times EF_{N2O,j})\times C_{N2O}\times 10^{-3})
+M_volinorganicjf
+EF_N2Oj
+C_N2O
+j
+f
+--------------------------------------
+*/
+
+VEERG_5_4_1_1__1_InorganicFertiliserAtmosphericDepositionN2OEmissions
+  =LAMBDA(
+    M_volinorganicjf, EF_N2Oj, C_N2O,
+    (M_volinorganicjf * EF_N2Oj) * C_N2O * 10 ^ -3
+  );
+
+VEERG_5_4_1_1__1_InorganicFertiliserAtmosphericDepositionN2OEmissions_Title
+  =LAMBDA("Nitrous oxide emissions from atmospheric deposition from all inorganic fertiliser types f and all production systems j");
+
+VEERG_5_4_1_1__1_InorganicFertiliserAtmosphericDepositionN2OEmissions_Variable
+  =LAMBDA("E_adinorganic");
+
+VEERG_5_4_1_1__1_InorganicFertiliserAtmosphericDepositionN2OEmissions_Unit
+  =LAMBDA("t N2O");
+
+VEERG_5_4_1_1__1_InorganicFertiliserAtmosphericDepositionN2OEmissions_Source
+  =LAMBDA("VEERG 2026: 5.4.1.1, Equation (1)");
+
+VEERG_5_4_1_1__1_InorganicFertiliserAtmosphericDepositionN2OEmissions_NIRReference
+  =LAMBDA("");
+
+VEERG_5_4_1_1__1_InorganicFertiliserAtmosphericDepositionN2OEmissions_LatexEquation
+  =LAMBDA("E_{ad,inorganic}=\sum\nolimits_{j}\sum\nolimits_{f}((M_{vol,inorganic,jf}\times EF_{N2O,j})\times C_{N2O}\times 10^{-3})");
+
+VEERG_5_4_1_1__1_InorganicFertiliserAtmosphericDepositionN2OEmissions_Arguments
+  =LAMBDA(
+    MAKEARRAY(6, 4, 
+      LAMBDA(r,c, 
+        INDEX({
+          "M_volinorganicjf","mass of nitrogen volatilised from inorganic fertiliser applied to production system", "kg N", "Calculated from 5.4.1.1 (2)";
+          "EF_N2Oj","emission factor for atmospheric deposition", "kg N2O-N/kg N", "Constant";
+          "C_N2O","factor to convert elemental mass of nitrous oxide to molecular mass", "", "Constant";
+          "j","Production system", "", "Input";
+          "ir","irrigation method", "", "Input";
+          "r","rainfall region", "", "Input"
+        }, r, c)
+      )
+    )
+  );
+
+/* 
+--------------------------------------
+VEERG_5_4_1_1__2_MassOfNitrogenVolatilisedFromInorganicFertiliser
+Mass of nitrogen volatilised from inorganic fertiliser applied to production system
+M_volinorganicjf
+kg N
+M_{vol,inorganic,jf}={MN}_{jf}\times FracGASF_{f}
+MN_jf
+FracGASF_f
+j
+f
+--------------------------------------
+*/
+
+VEERG_5_4_1_1__2_MassOfNitrogenVolatilisedFromInorganicFertiliser
+  =LAMBDA(
+    MN_jf, FracGASF_f,
+    MN_jf * FracGASF_f
+  );
+
+VEERG_5_4_1_1__2_MassOfNitrogenVolatilisedFromInorganicFertiliser_Title
+  =LAMBDA("Mass of nitrogen volatilised from inorganic fertiliser applied to production system");
+
+VEERG_5_4_1_1__2_MassOfNitrogenVolatilisedFromInorganicFertiliser_Variable
+  =LAMBDA("M_volinorganicjf");
+
+VEERG_5_4_1_1__2_MassOfNitrogenVolatilisedFromInorganicFertiliser_Unit
+  =LAMBDA("kg N");
+
+VEERG_5_4_1_1__2_MassOfNitrogenVolatilisedFromInorganicFertiliser_Source
+  =LAMBDA("VEERG 2026: 5.4.1.1, Equation (2)");
+
+VEERG_5_4_1_1__2_MassOfNitrogenVolatilisedFromInorganicFertiliser_NIRReference
+  =LAMBDA("");
+
+VEERG_5_4_1_1__2_MassOfNitrogenVolatilisedFromInorganicFertiliser_LatexEquation
+  =LAMBDA("M_{vol,inorganic,jf}={MN}_{jf}\times FracGASF_{f}");
+
+VEERG_5_4_1_1__2_MassOfNitrogenVolatilisedFromInorganicFertiliser_Arguments
+  =LAMBDA(
+    MAKEARRAY(2, 4, 
+      LAMBDA(r,c, 
+        INDEX({
+          "MN_jf","mass of nitrogen in inorganic fertiliser applied", "kg N", "Calculated from 5.1.1.1 (2)";
+          "FracGASF_f","fraction of inorganic fertiliser that volatilises", "(kg NH3-N + NOx-N)/kg N", "Constant"
+        }, r, c)
+      )
+    )
+  );
+
+
+/* 
+--------------------------------------
+VEERG_5_4_1_3__1_OrganicFertiliserAtmosphericDepositionN2OEmissions
+Nitrous oxide emissions from atmospheric deposition of all organic fertiliser types f and all production systems j
+E_adorganic
+t N2O
+E_{ad,organic}=\sum_{j}\sum_{f}((M_{vol,organic,jf}\times EF_{N2O,j})\times C_{N2O}\times 10^{-3})
+M_volorganicjf
+EF_N2Oj
+C_N2O
+j
+f
+--------------------------------------
+*/
+
+VEERG_5_4_1_3__1_OrganicFertiliserAtmosphericDepositionN2OEmissions
+  =LAMBDA(
+    M_volorganicjf, EF_N2Oj, C_N2O,
+    (M_volorganicjf * EF_N2Oj) * C_N2O * 10 ^ -3
+  );
+
+VEERG_5_4_1_3__1_OrganicFertiliserAtmosphericDepositionN2OEmissions_Title
+  =LAMBDA("Nitrous oxide emissions from atmospheric deposition of all organic fertiliser types f and all production systems j");
+
+VEERG_5_4_1_3__1_OrganicFertiliserAtmosphericDepositionN2OEmissions_Variable
+  =LAMBDA("E_adorganic");
+
+VEERG_5_4_1_3__1_OrganicFertiliserAtmosphericDepositionN2OEmissions_Unit
+  =LAMBDA("t N2O");
+
+VEERG_5_4_1_3__1_OrganicFertiliserAtmosphericDepositionN2OEmissions_Source
+  =LAMBDA("VEERG 2026: 5.4.1.3, Equation (1)");
+
+VEERG_5_4_1_3__1_OrganicFertiliserAtmosphericDepositionN2OEmissions_NIRReference
+  =LAMBDA("");
+
+VEERG_5_4_1_3__1_OrganicFertiliserAtmosphericDepositionN2OEmissions_LatexEquation
+  =LAMBDA("E_{ad,organic}=\sum\nolimits_{j}\sum\nolimits_{f}((M_{vol,organic,jf}\times EF_{N2O,j})\times C_{N2O}\times 10^{-3})");
+
+VEERG_5_4_1_3__1_OrganicFertiliserAtmosphericDepositionN2OEmissions_Arguments
+  =LAMBDA(
+    MAKEARRAY(6, 4, 
+      LAMBDA(r,c, 
+        INDEX({
+          "M_volorganicjf","mass of nitrogen volatilised from organic fertiliser applied to production system", "kg N", "Calculated from 5.4.1.3 (2)";
+          "EF_N2Oj","emission factor for atmospheric deposition in production system j", "kg N2O-N/kg N", "Constant";
+          "C_N2O","factor to convert elemental mass of nitrous oxide to molecular mass", "", "Constant";
+          "j","Production system", "", "Input";
+          "ir","irrigation method", "", "Input";
+          "r","rainfall region", "", "Input"
+        }, r, c)
+      )
+    )
+  );
+
+/* 
+--------------------------------------
+VEERG_5_4_1_3__2_MassOfNitrogenVolatilisedFromOrganicFertiliser
+Mass of nitrogen volatilised from organic fertiliser applied to production system
+M_volorganicjf
+kg N
+M_{vol,organic,jf}=MNSoil_{jf}\times FracGASM_{soil}
+MNSoil_jf
+FracGASM_soil
+j
+f
+--------------------------------------
+*/
+
+VEERG_5_4_1_3__2_MassOfNitrogenVolatilisedFromOrganicFertiliser
+  =LAMBDA(
+    MNSoil_jf, FracGASM_soil,
+    MNSoil_jf * FracGASM_soil
+  );
+
+VEERG_5_4_1_3__2_MassOfNitrogenVolatilisedFromOrganicFertiliser_Title
+  =LAMBDA("Mass of nitrogen volatilised from organic fertiliser applied to production system");
+
+VEERG_5_4_1_3__2_MassOfNitrogenVolatilisedFromOrganicFertiliser_Variable
+  =LAMBDA("M_volorganicjf");
+
+VEERG_5_4_1_3__2_MassOfNitrogenVolatilisedFromOrganicFertiliser_Unit
+  =LAMBDA("kg N");
+
+VEERG_5_4_1_3__2_MassOfNitrogenVolatilisedFromOrganicFertiliser_Source
+  =LAMBDA("VEERG 2026: 5.4.1.3, Equation (2)");
+
+VEERG_5_4_1_3__2_MassOfNitrogenVolatilisedFromOrganicFertiliser_NIRReference
+  =LAMBDA("");
+
+VEERG_5_4_1_3__2_MassOfNitrogenVolatilisedFromOrganicFertiliser_LatexEquation
+  =LAMBDA("M_{vol,organic,jf}=MNSoil_{jf}\times FracGASM_{soil}");
+
+VEERG_5_4_1_3__2_MassOfNitrogenVolatilisedFromOrganicFertiliser_Arguments
+  =LAMBDA(
+    MAKEARRAY(2, 4, 
+      LAMBDA(r,c, 
+        INDEX({
+          "MNSoil_jf","mass of nitrogen in organic fertiliser type f applied to production system j", "kg N", "Calculated from 5.2.1.1 (2)";
+          "FracGASM_soil","fraction of organic fertiliser N that volatilises", "(kg NH3-N + NOx-N)/kg N", "Constant"
+        }, r, c)
+      )
+    )
+  );

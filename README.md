@@ -54,11 +54,11 @@ FunctionPrefix_LatexEquation
 
 FunctionPrefix_Arguments
   =LAMBDA(
-    MAKEARRAY(NumberOfArguments, 2, 
+    MAKEARRAY(NumberOfArguments, 4, 
       LAMBDA(r,c, 
         INDEX({
-          "Argument.ArgumentVariable","Argument.ArgumentDescription : Argument.ArgumentUnit";
-          "Argument.ArgumentVariable","Argument.ArgumentDescription : Argument.ArgumentUnit"
+          "Argument.ArgumentVariable","Argument.ArgumentDescription", "Argument.ArgumentUnit", "Argument.ArgumentType";
+          "Argument.ArgumentVariable","Argument.ArgumentDescription", "Argument.ArgumentUnit", "Argument.ArgumentType"
         }, r, c)
       )
     )
@@ -106,11 +106,11 @@ Mass of nitrogen in inorganic fertiliser applied to soil, MN_jf (kg N), is calcu
 MNjf
 kg N
 {MN}_{jf}=TM_{jf}\times FN_{inorganic,f}
-TM_jf = total mass of inorganic fertiliser type f applied to production system j (kg)
-FN_(inorganic,f) = fraction of nitrogen in inorganic fertiliser type f (kg N/kg)
-j = Production system
-inorganic =Inorganic fertiliser
-f = Inorganic fertiliser type
+TM_jf = total mass of inorganic fertiliser type f applied to production system j (kg) Calculated by X.X.X.X (X)
+FN_(inorganic,f) = fraction of nitrogen in inorganic fertiliser type f (kg N/kg) Constant
+j = Production system Input
+inorganic =Inorganic fertiliser Input
+f = Inorganic fertiliser type Input
 --------------------------------------
 */
 
@@ -141,14 +141,14 @@ VEERG_5_1_1_1__2_MassOfNitrogenInInorganicFertiliser_LatexEquation
 
 VEERG_5_1_1_1__2_MassOfNitrogenInInorganicFertiliser_Arguments
   =LAMBDA(
-    MAKEARRAY(5, 2, 
+    MAKEARRAY(5, 4, 
       LAMBDA(r,c, 
         INDEX({
-          "TM_jf","total mass of inorganic fertiliser type f applied to production system j (kg)";
-          "FN_inorganicf","fraction of nitrogen in inorganic fertiliser type f (kg N/kg)";
-          "j","Production system";
-          "inorganic", "Inorganic fertiliser";
-          "f","Fertiliser type"
+          "TM_jf","total mass of inorganic fertiliser type f applied to production system j", "kg", "Calculated by";
+          "FN_inorganicf","fraction of nitrogen in inorganic fertiliser type f", "kg N/kg", "Constant";
+          "j","Production system", "", "Input";
+          "inorganic", "Inorganic fertiliser", "", "Lookup";
+          "f","Fertiliser type", "", "Lookup"
         }, r, c)
       )
     )

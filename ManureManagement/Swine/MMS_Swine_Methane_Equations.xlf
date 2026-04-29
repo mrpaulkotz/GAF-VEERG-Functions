@@ -346,6 +346,23 @@ VEERG_4_5_1_1__6_Stage2MethaneProduction_Arguments
     )
   );
 
+VEERG_4_5_1_1__6_Stage2MethaneProduction_Arguments_Method2
+  =LAMBDA(
+    MAKEARRAY(6, 4,
+      LAMBDA(r,c,
+        INDEX({
+          "VSTjmT2","volatile solids transferred to treatment stage 2 MMS", "kg/head/day", "Calculated from 4.5.1.1 (7)";
+          "BO","emissions potential", "m3 CH4/kg VS", "Constant";
+          "MMSjmT2","fraction of manure in each secondary system", "fraction", "Input";
+          "MCFim","methane conversion factor for temperate zone and system", "fraction", "Constant";
+          "rho","density of methane", "kg/m3", "Constant";
+          "MAT","Mean annual temperature", "°C", "Input"
+        }, r, c)
+      )
+    )
+  );
+
+
 /*
 --------------------------------------
 VEERG_4_5_1_1__7_VolatileSolidsTransferredStage2
