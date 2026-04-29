@@ -303,4 +303,37 @@ BurningOfAgriculturalResiduesEFs_Data
 )));
 
 
+/* 
+--------------------------------------
+N2OEFOrganicFertiliser
+VEERG 2026: Table A.2.1.4 Emission factor for organic fertiliser and crop residues returned to the soil
+--------------------------------------
+*/
+
+N2OEFOrganicFertiliser_Title
+  =LAMBDA("Emission factor for organic fertiliser and crop residues returned to the soil");
+
+N2OEFOrganicFertiliser_Unit
+  =LAMBDA("kg N2O - N / kg N");
+
+N2OEFOrganicFertiliser_Source
+  =LAMBDA("VEERG 2026: Table A.2.1.4");
+
+N2OEFOrganicFertiliser_NIRReference
+  =LAMBDA("IPCC 2019 Refinement Volume 4 Table 11.1 [1, p. 11]");
+
+N2OEFOrganicFertiliser_Data
+  =LAMBDA(
+    MAKEARRAY(3, 2, 
+      LAMBDA(r,c, 
+        INDEX({
+          "Climate zone i", "EF i N2O";
+            "Wet climate zone", 0.006;
+            "Dry climate zone", 0.005
+        }, r, c)
+      )
+    )
+  );
+
+
 
