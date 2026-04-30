@@ -6,9 +6,9 @@ ECH4
 t CH4
 E_{CH4}=
 \sum_{c}(M_{burn,c}\times CC_{c}\times EF_{CH4}\times C_{CH4}\times 10^{-3})
-Mburnc = mass of residue burnt for crop type c (kg)
-CCc = carbon mass fraction in the residues of crop type c (dimensionless)
-EFCH4 = emission factor for methane from burning of crop residues (kg CH4/kg CH4 burnt)
+M_burnc = mass of residue burnt for crop type c (kg)
+CC_c = carbon mass fraction in the residues of crop type c (dimensionless)
+EF_CH4 = emission factor for methane from burning of crop residues (kg CH4/kg CH4 burnt)
 CCH4 = factor to convert elemental mass of methane to molecular mass (dimensionless)
 c = Crop type
 --------------------------------------
@@ -16,8 +16,8 @@ c = Crop type
 
 VEERG_6_4_1_1__1__MethaneEmissionsFromBurningOfCropResidues
   =LAMBDA(
-    Mburnc, CCc, EFCH4, C_CH4,
-    Mburnc * CCc * EFCH4 * C_CH4 * 10^(-3)
+    M_burnc, CC_c, EF_CH4, C_CH4,
+    (M_burnc * CC_c) * EF_CH4 * C_CH4 * 10^(-3)
   );
 
 VEERG_6_4_1_1__1__MethaneEmissionsFromBurningOfCropResidues_FunctionName
@@ -39,18 +39,18 @@ VEERG_6_4_1_1__1__MethaneEmissionsFromBurningOfCropResidues_NIRReference
   =LAMBDA("");
 
 VEERG_6_4_1_1__1__MethaneEmissionsFromBurningOfCropResidues_LatexEquation
-  =LAMBDA("E_{CH4}=\sum_{c}(M_{burn,c}\times CC_{c}\times EF_{CH4}\times C_{CH4}\times 10^{-3})");
+  =LAMBDA("E_{CH4}=\sum\nolimits_c(M_{burn,c}\times CC_{c})\times EF_{CH4}\times C_{CH4}\times 10^{-3}");
 
 VEERG_6_4_1_1__1__MethaneEmissionsFromBurningOfCropResidues_Arguments
   =LAMBDA(
-    MAKEARRAY(5, 2,
+    MAKEARRAY(5, 4,
       LAMBDA(r,c,
         INDEX({
-          "Mburnc","mass of residue burnt for crop type c (kg)";
-          "CCc","carbon mass fraction in the residues of crop type c (dimensionless)";
-          "EFCH4","emission factor for methane from burning of crop residues (kg CH4/kg CH4 burnt)";
-          "CCH4","factor to convert elemental mass of methane to molecular mass (dimensionless)";
-          "c","Crop type"
+          "M_burnc","mass of residue burnt for crop type c", "kg", "Calculated from 6.4.1.1 (3)";
+          "CC_c","carbon mass fraction in the residues of crop type c", "dimensionless", "Constant";
+          "EF_CH4","emission factor for methane from burning of crop residues", "kg CH4 / kg CH4 burnt", "Constant";
+          "C_CH4","factor to convert elemental mass of methane to molecular mass", "dimensionless", "Constant";
+          "c","Crop type", "", "Input"
         }, r, c)
       )
     )
@@ -63,18 +63,18 @@ Nitrous oxide emissions from the burning of crop residues
 EN2O
 t N2O
 E_{N2O}=\sum_{c}(M_{burn,c}\times NC_{AGc}\times EF_{N2O}\times C_{N2O}\times 10^{-3})
-Mburnc = mass of residue burnt for crop type c (kg)
-NCAGc = nitrogen content in the above-ground residue of crop type c (kg N/kg DM)
-EFN2O = emission factor for nitrous oxide from burning of crop residues (kg N2O/kg N2O burnt)
-CN2O = factor to convert elemental mass of nitrous oxide to molecular mass (dimensionless)
+M_burnc = mass of residue burnt for crop type c (kg)
+NC_AGc = nitrogen content in the above-ground residue of crop type c (kg N/kg DM)
+EF_N2O = emission factor for nitrous oxide from burning of crop residues (kg N2O/kg N2O burnt)
+C_N2O = factor to convert elemental mass of nitrous oxide to molecular mass (dimensionless)
 c = Crop type
 --------------------------------------
 */
 
 VEERG_6_4_1_1__2__NitrousOxideEmissionsFromBurningOfCropResidues
   =LAMBDA(
-    Mburnc, NCAGc, EFN2O, CN2O,
-    Mburnc * NCAGc * EFN2O * CN2O * 10^(-3)
+    M_burnc, NC_AGc, EF_N2O, C_N2O,
+    (M_burnc * NC_AGc) * EF_N2O * C_N2O * 10^(-3)
   );
 
 VEERG_6_4_1_1__2__NitrousOxideEmissionsFromBurningOfCropResidues_FunctionName
@@ -96,18 +96,18 @@ VEERG_6_4_1_1__2__NitrousOxideEmissionsFromBurningOfCropResidues_NIRReference
   =LAMBDA("");
 
 VEERG_6_4_1_1__2__NitrousOxideEmissionsFromBurningOfCropResidues_LatexEquation
-  =LAMBDA("E_{N2O}=\sum_{c}(M_{burn,c}\times NC_{AGc}\times EF_{N2O}\times C_{N2O}\times 10^{-3})");
+  =LAMBDA("E_{N2O}=\sum\nolimits_c(M_{burn,c}\times NC_{AGc})\times EF_{N2O}\times C_{N2O}\times 10^{-3}");
 
 VEERG_6_4_1_1__2__NitrousOxideEmissionsFromBurningOfCropResidues_Arguments
   =LAMBDA(
-    MAKEARRAY(5, 2,
+    MAKEARRAY(5, 4,
       LAMBDA(r,c,
         INDEX({
-          "Mburnc","mass of residue burnt for crop type c (kg)";
-          "NCAGc","nitrogen content in the above-ground residue of crop type c (kg N/kg DM)";
-          "EFN2O","emission factor for nitrous oxide from burning of crop residues (kg N2O/kg N2O burnt)";
-          "CN2O","factor to convert elemental mass of nitrous oxide to molecular mass (dimensionless)";
-          "c","Crop type"
+          "M_burnc","mass of residue burnt for crop type c", "kg", "Calculated from 6.4.1.1 (3)";
+          "NC_AGc","nitrogen content in the above-ground residue of crop type c", "kg N/kg DM", "Constant";
+          "EF_N2O","emission factor for nitrous oxide from burning of crop residues", "kg N2O/kg N2O burnt", "Constant";
+          "C_N2O","factor to convert elemental mass of nitrous oxide to molecular mass", "dimensionless", "Constant";
+          "c","Crop type", "", "Input"
         }, r, c)
       )
     )
@@ -117,23 +117,23 @@ VEERG_6_4_1_1__2__NitrousOxideEmissionsFromBurningOfCropResidues_Arguments
 --------------------------------------
 VEERG_6_4_1_1__3__MassOfCropResidueBurnt
 Mass of residue of crop c burnt
-Mburnc
+M_burnc
 kg
 M_{burn,c}=P_{c}\times R_{AGc}\times S_{c}\times DM_{c}\times Z_{c}\times F_{c}
-Pc = annual production of crop type c (kg)
-RAGc = residue to crop ratio of crop type c (kg crop residue/kg crop)
-Sc = fraction of residues of crop type c remaining at burning (dimensionless)
-DMc = dry matter content of crop type c (kg dry weight/kg crop residue)
-Zc = burning efficiency (ratio of fuel burnt to fuel load) of crop type c (dimensionless)
-Fc = fraction of the annual production of crop type c that is burnt (dimensionless)
+P_c = annual production of crop type c (kg)
+R_AGc = residue to crop ratio of crop type c (kg crop residue/kg crop)
+S_c = fraction of residues of crop type c remaining at burning (dimensionless)
+DM_c = dry matter content of crop type c (kg dry weight/kg crop residue)
+Z_c = burning efficiency (ratio of fuel burnt to fuel load) of crop type c (dimensionless)
+F_c = fraction of the annual production of crop type c that is burnt (dimensionless)
 c = Crop type
 --------------------------------------
 */
 
 VEERG_6_4_1_1__3__MassOfCropResidueBurnt
   =LAMBDA(
-    Pc, RAGc, Sc, DMc, Zc, Fc,
-    Pc * RAGc * Sc * DMc * Zc * Fc
+    P_c, R_AGc, S_c, DM_c, Z_c, F_c,
+    P_c * R_AGc * S_c * DM_c * Z_c * F_c
   );
 
 VEERG_6_4_1_1__3__MassOfCropResidueBurnt_FunctionName
@@ -143,7 +143,7 @@ VEERG_6_4_1_1__3__MassOfCropResidueBurnt_Title
   =LAMBDA("Mass of residue of crop c burnt");
 
 VEERG_6_4_1_1__3__MassOfCropResidueBurnt_Variable
-  =LAMBDA("Mburnc");
+  =LAMBDA("M_burnc");
 
 VEERG_6_4_1_1__3__MassOfCropResidueBurnt_Unit
   =LAMBDA("kg");
@@ -159,16 +159,16 @@ VEERG_6_4_1_1__3__MassOfCropResidueBurnt_LatexEquation
 
 VEERG_6_4_1_1__3__MassOfCropResidueBurnt_Arguments
   =LAMBDA(
-    MAKEARRAY(7, 2,
+    MAKEARRAY(7, 4,
       LAMBDA(r,c,
         INDEX({
-          "Pc","annual production of crop type c (kg)";
-          "RAGc","residue to crop ratio of crop type c (kg crop residue/kg crop)";
-          "Sc","fraction of residues of crop type c remaining at burning (dimensionless)";
-          "DMc","dry matter content of crop type c (kg dry weight/kg crop residue)";
-          "Zc","burning efficiency (ratio of fuel burnt to fuel load) of crop type c (dimensionless)";
-          "Fc","fraction of the annual production of crop type c that is burnt (dimensionless)";
-          "c","Crop type"
+          "P_c","annual production of crop type c", "kg", "Input";
+          "R_AGc","residue to crop ratio of crop type c", "kg crop residue/kg crop", "Constant";
+          "S_c","fraction of residues of crop type c remaining at burning", "dimensionless", "Constant";
+          "DM_c","dry matter content of crop type c", "kg dry weight/kg crop residue", "Constant";
+          "Z_c","burning efficiency (ratio of fuel burnt to fuel load) of crop type c", "dimensionless", "Constant";
+          "F_c","fraction of the annual production of crop type c that is burnt", "dimensionless", "Constant";
+          "c","Crop type", "", "Input"
         }, r, c)
       )
     )

@@ -1,4 +1,23 @@
+/*
+============================================================================
+Crop purpose and yield
+============================================================================
+*/
 
+CropPurposeAndYield_Title
+=LAMBDA(("Crop purpose and yield"));
+
+CropPurposeAndYield_Data
+=LAMBDA(
+  MAKEARRAY(4, 8,
+    LAMBDA(r,c,
+      INDEX({
+        "Purpose", "Per hectare unit", "harvest term", "harvest endpoint", "Harvest uit", "Yield note", "Residue crop ratio note", "Total production note";
+        "Cash grain crop", "grain", "yield", "harvest", "grain", "Yield is the grain harvested from the plant", "Residue to crop ratio is provided from default values", "Total production is the total grain harvested";
+        "Cash crop for hay/silage", "above ground biomass", "yield", "harvest", "plant biomass", "Yield is the whole plant harvested for hay/silage", "Residue to crop ratio is 0 assuming the whole plant is harvested for hay/silage", "Total production is the total whole plant biomass harvested as hay/silage";
+        "Cover crop", "above ground biomass", "mass", "end of crop cycle", "above ground biomass", "Yield is the whole plant kept as cover crop", "Residue to crop ratio is 1 assuming the whole plant is kept as cover crop", "Total production is the total whole plant biomass kept as cover crop"
+      }, r, c)
+)));
 
 /*
 ============================================================================

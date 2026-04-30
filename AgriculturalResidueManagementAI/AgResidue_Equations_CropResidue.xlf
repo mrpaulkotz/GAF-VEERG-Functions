@@ -38,7 +38,7 @@ VEERG_6_1_1_1__1__NitrousOxideEmissionsFromCropResidues_NIRReference
   =LAMBDA("");
 
 VEERG_6_1_1_1__1__NitrousOxideEmissionsFromCropResidues_LatexEquation
-  =LAMBDA("E=\sum_{c}{M_{c}\times EF_{N}\times C_{g,N2O}\times 10^{-3}}");
+  =LAMBDA("E=\sum\nolimits_c\left(M_{c}\times EF_{N}\right)\times C_{g,N2O}\times 10^{-3}");
 
 VEERG_6_1_1_1__1__NitrousOxideEmissionsFromCropResidues_Arguments
   =LAMBDA(
