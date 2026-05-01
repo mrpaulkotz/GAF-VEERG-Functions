@@ -168,35 +168,69 @@ Fuel_Scope1Scope3EmissionFactorsTransport_Source
 
 Fuel_Scope1Scope3EmissionFactorsTransport_Data
 =LAMBDA(
-  MAKEARRAY(22, 9,
+  MAKEARRAY(26, 10,
     LAMBDA(r,c,
       INDEX({
-        "Transport type", "Fuel combusted", "Energy Content Factor(GJ per unit of fuel)", "Fuel unit", "Scope 1 Emission Factor (kg CO2 - e / GJ) CO2", "Scope 1 Emission Factor (kg CO2 - e / GJ) CH4", "Scope 1 Emission Factor (kg CO2 - e / GJ) N2O", "Scope 1 Emission Factor (kg CO2 - e / GJ) Combined gases", "Scope 3 Emission Factor (kg CO2 - e / GJ)";
-        "Cars and light commercial vehicles", "Gasoline", 34.2, "kl", 67.4, 0.02, 0.2, 67.62, 17.2;
-        "Cars and light commercial vehicles", "Diesel oil", 38.6, "kl", 69.9, 0.01, 0.5, 70.41, 17.3;
-        "Cars and light commercial vehicles", "Liquefied petroleum gas (LPG)", 26.2, "kl", 60.2, 0.5, 0.3, 61.00, 20.2;
-        "Cars and light commercial vehicles", "Fuel oil", 39.7, "kl", 73.6, 0.08, 0.5, 74.18, 18.0;
-        "Cars and light commercial vehicles", "Ethanol", 23.4, "kl", 0.0, 0.2, 0.2, 0.4, "NE";
-        "Cars and light commercial vehicles", "Biodiesel", 34.6, "kl", 0.0, 0.8, 1.7, 2.5, "NE";
-        "Cars and light commercial vehicles", "Renewable diesel", 38.6, "kl", 0.0, 0.01, 0.5, 0.51, "NE";
-        "Cars and light commercial vehicles", "Other biofuels", 23.4, "kl", 0.0, 0.8, 1.7, 2.5, "NE";
-        "Light duty vehicles", "Compressed natural gas", 0.0393, "m3", 51.4, 7.3, 0.3, 59.0, 18.0;
-        "Light duty vehicles", "Liquefied natural gas", 25.3, "kl", 51.4, 7.3, 0.3, 59.0, 18.0;
-        "Heavy duty vehicles", "Compressed natural gas", 0.0393, "m3", 51.4, 2.8, 0.3, 54.5, 18.0;
-        "Heavy duty vehicles", "Liquefied natural gas", 25.3, "kl", 51.4, 2.8, 0.3, 54.5, 18.0;
-        "Heavy duty vehicles", "Diesel oil - Euro iv or higher", 38.6, "kl", 69.9, 0.07, 0.4, 70.37, 17.3;
-        "Heavy duty vehicles", "Diesel oil - Euro iii", 38.6, "kl", 69.9, 0.1, 0.4, 70.4, 17.3;
-        "Heavy duty vehicles", "Diesel oil - Euro i", 38.6, "kl", 69.9, 0.2, 0.4, 70.5, 17.3;
-        "Heavy duty vehicles", "Renewable diesel – Euro iv or higher", 38.6, "kl", 0.0, 0.07, 0.4, 0.47, "NE";
-        "Heavy duty vehicles", "Renewable diesel – Euro iii", 38.6, "kl", 0.0, 0.1, 0.4, 0.5, "NE";
-        "Heavy duty vehicles", "Renewable diesel – Euro i", 38.6, "kl", 0.0, 0.2, 0.4, 0.6, "NE";
-        "Aviation", "Gasoline for use as fuel in an aircraft", 33.1, "kl", 67.0, 0.06, 0.6, 67.66, 18.0;
-        "Aviation", "Kerosene for use as fuel in an aircraft", 36.8, "kl", 69.6, 0.01, 0.6, 70.21, 18.0;
-        "Aviation", "Renewable aviation kerosene", 36.8, "kl", 0.0, 0.01, 0.6, 0.61, "NE"
+        "Transport type", "Fuel combusted", "Energy Content Factor(GJ per unit of fuel)", "Fuel unit", "Scope 1 Emission Factor (kg CO2 - e / GJ) CO2", "Scope 1 Emission Factor (kg CO2 - e / GJ) CH4", "Scope 1 Emission Factor (kg CO2 - e / GJ) N2O", "Scope 1 Emission Factor (kg CO2 - e / GJ) Combined gases", "Scope 3 Emission Factor (kg CO2 - e / GJ)", "Source";
+        "Cars and light commercial vehicles", "Gasoline", 34.2, "kl", 67.4, 0.02, 0.2, 67.62, 17.2, "NGAF 2025: Table 9";
+        "Cars and light commercial vehicles", "Diesel oil", 38.6, "kl", 69.9, 0.01, 0.5, 70.41, 17.3, "NGAF 2025: Table 9";
+        "Cars and light commercial vehicles", "Liquefied petroleum gas (LPG)", 26.2, "kl", 60.2, 0.5, 0.3, 61.00, 20.2, "NGAF 2025: Table 9";
+        "Cars and light commercial vehicles", "Fuel oil", 39.7, "kl", 73.6, 0.08, 0.5, 74.18, 18.0, "NGAF 2025: Table 9";
+        "Cars and light commercial vehicles", "Ethanol", 23.4, "kl", 0.0, 0.2, 0.2, 0.4, "NE", "NGAF 2025: Table 9";
+        "Cars and light commercial vehicles", "Biodiesel", 34.6, "kl", 0.0, 0.8, 1.7, 2.5, "NE", "NGAF 2025: Table 9";
+        "Cars and light commercial vehicles", "Renewable diesel", 38.6, "kl", 0.0, 0.01, 0.5, 0.51, "NE", "NGAF 2025: Table 9";
+        "Cars and light commercial vehicles", "Other biofuels", 23.4, "kl", 0.0, 0.8, 1.7, 2.5, "NE", "NGAF 2025: Table 9";
+        "Light duty vehicles", "Compressed natural gas", 0.0393, "m3", 51.4, 7.3, 0.3, 59.0, 18.0, "NGAF 2025: Table 9";
+        "Light duty vehicles", "Liquefied natural gas", 25.3, "kl", 51.4, 7.3, 0.3, 59.0, 18.0, "NGAF 2025: Table 9";
+        "Heavy duty vehicles", "Compressed natural gas", 0.0393, "m3", 51.4, 2.8, 0.3, 54.5, 18.0, "NGAF 2025: Table 9";
+        "Heavy duty vehicles", "Liquefied natural gas", 25.3, "kl", 51.4, 2.8, 0.3, 54.5, 18.0, "NGAF 2025: Table 9";
+        "Heavy duty vehicles", "Diesel oil - Euro iv or higher", 38.6, "kl", 69.9, 0.07, 0.4, 70.37, 17.3, "NGAF 2025: Table 9";
+        "Heavy duty vehicles", "Diesel oil - Euro iii", 38.6, "kl", 69.9, 0.1, 0.4, 70.4, 17.3, "NGAF 2025: Table 9";
+        "Heavy duty vehicles", "Diesel oil - Euro i", 38.6, "kl", 69.9, 0.2, 0.4, 70.5, 17.3, "NGAF 2025: Table 9";
+        "Heavy duty vehicles", "Renewable diesel – Euro iv or higher", 38.6, "kl", 0.0, 0.07, 0.4, 0.47, "NE", "NGAF 2025: Table 9";
+        "Heavy duty vehicles", "Renewable diesel – Euro iii", 38.6, "kl", 0.0, 0.1, 0.4, 0.5, "NE", "NGAF 2025: Table 9";
+        "Heavy duty vehicles", "Renewable diesel – Euro i", 38.6, "kl", 0.0, 0.2, 0.4, 0.6, "NE", "NGAF 2025: Table 9";
+        "Aviation", "Gasoline for use as fuel in an aircraft", 33.1, "kl", 67.0, 0.06, 0.6, 67.66, 18.0, "NGAF 2025: Table 9";
+        "Aviation", "Kerosene for use as fuel in an aircraft", 36.8, "kl", 69.6, 0.01, 0.6, 70.21, 18.0, "NGAF 2025: Table 9";
+        "Aviation", "Renewable aviation kerosene", 36.8, "kl", 0.0, 0.01, 0.6, 0.61, "NE", "NGAF 2025: Table 9";
+        "Vessels", "Gasoline", 34.2, "kL", 67.4, 10.1, 0.3, "", 17.2, "VEERG 2026: Table A.4.2.1";
+        "Vessels", "Diesel oil", 38.6, "kL", 69.9, 0.2, 0.5, "", 17.3, "VEERG 2026: Table A.4.2.1";
+        "Vessels", "Fuel Oil", 39.7, "kL", 73.6, 0.2, 0.5, "", 18.0, "VEERG 2026: Table A.4.2.1";
+        "Off-road Agriculture and forestry equipment", "Diesel oil", 38.6, "kL", 69.9, 0.3, 0.5, "", 17.3, "VEERG 2026: Table A.4.2.1"
       }, r, c)
 )));
 
 Fuel_Scope1Scope3EmissionFactorsTransport_Variation
 =LAMBDA("VARIATION OF SOURCE DATA: 'NE' values returned as zero for calculations.");
+
+
+/*
+============================================================================
+Fuel scope 1 and 3 emission factors - Off-rad equipment and vessels
+============================================================================
+*/
+
+Fuel_Scope1Scope3EmissionFactorsTransportOffRoad_Title
+=LAMBDA(("Fuel scope 1 and 3 emission factors - Off-road equipment and vessels"));
+
+Fuel_Scope1Scope3EmissionFactorsTransportOffRoad_Description
+=LAMBDA(("Direct (scope 1) and indirect (scope 3) emission factors for the consumption of fuels in off-road equipment and vessels"));
+
+Fuel_Scope1Scope3EmissionFactorsTransportOffRoad_Source
+=LAMBDA(("VEERG 2026: Table A.4.2.1"));
+
+Fuel_Scope1Scope3EmissionFactorsTransportOffRoad_Data
+=LAMBDA(
+  MAKEARRAY(5, 7,
+    LAMBDA(r,c,
+      INDEX({
+        "Transport type t", "Fuel type q", "ECTrans,q (GJ/kL)", "Scope 1 CO2 EFTran,1,tqg (kg CO2-e/GJ)", "Scope 1 CH4 EFTran,1,tgg (kg CO2-e/GJ)", "Scope 1 N2O EFTran,1,tgg (kg CO2-e/GJ)", "Scope 3 EFTrans,3,q (kg CO2-e/GJ)";
+        "Vessel", "Petrol", 34.2, 67.4, 10.1, 0.3, 17.2;
+        "Vessel", "Diesel", 38.6, 69.9, 0.2, 0.5, 17.3;
+        "Vessel", "Fuel Oil", 39.7, 73.6, 0.2, 0.5, 18.0;
+        "Off-road Agriculture and forestry equipment", "Diesel", 38.6, 69.9, 0.3, 0.5, 17.3
+      }, r, c)
+)));
+
 
 

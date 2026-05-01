@@ -10,7 +10,7 @@
 VEERG_8_FuelCombustion
   =LAMBDA(
     Q, EC, EF,
-    Q * EC * EF * 10 ^ - 3
+    (Q * EC * EF) * 10 ^ - 3
   )
 ;
 
@@ -27,8 +27,8 @@ EF : Scope 1 emission factor for transport energy purposes for each greenhouse g
 
 VEERG_8_1_1_1__1_FuelCombustionTransport
   =LAMBDA(
-    Q, EC, EF,
-    VEERG_8_FuelCombustion(Q, EC, EF)
+    Q_Transtq, EC_Transq, EF_Trans1tqg,
+    VEERG_8_FuelCombustion(Q_Transtq, EC_Transq, EF_Trans1tqg)
   )
 ;
 
@@ -36,7 +36,7 @@ VEERG_8_1_1_1__1_FuelCombustionTransport_Title
   =LAMBDA("Emissions for each GHG from the combustion of fuels for transport energy purposes");
 
 VEERG_8_1_1_1__1_FuelCombustionTransport_Variable
-  =LAMBDA("E");
+  =LAMBDA("E_g");
 
 VEERG_8_1_1_1__1_FuelCombustionTransport_Unit
   =LAMBDA("t CO2-e");
@@ -47,21 +47,21 @@ VEERG_8_1_1_1__1_FuelCombustionTransport_Source
 VEERG_8_1_1_1__1_FuelCombustionTransport_NIRReference
   =LAMBDA("Australian National Greenhouse Accounts Factors 2025 - 2.3 Estimating emissions from transport fuels");
 
-VEERG_8_1_1_1__1_FuelCombustionTransport_ReadableEquation
-  =LAMBDA("E = Q * EC * EF * 10 ^ - 3");
+VEERG_8_1_1_1__1_FuelCombustionTransport_LatexEquation
+  =LAMBDA("E_g=\sum\nolimits_t \sum\nolimits_q\left(Q_{Trans,tq}\times EC_{Trans,q}\times EF_{Trans,1,tqg}\right)\times 10^{-3}");
 
 VEERG_8_1_1_1__1_FuelCombustionTransport_Arguments
   =LAMBDA(
-    MAKEARRAY(7, 3, 
+    MAKEARRAY(7, 4, 
       LAMBDA(r,c, 
         INDEX({
-          "Qq", "Amount of fuel type q combusted for transport energy purposes", "Varies based on fuel type: kL, m3, GJ";
-          "ECTrans,q", "Energy content factor for transport energy purposes", "GJ / unit of fuel";
-          "EFTrans,1,q", "Scope 1 emission factor for transport energy purposes for each greenhouse gas", "kg CO2e / GJ";
-          "q", "Fuel type", "";
-          "Trans", "Transport combustion", "";
-          "g", "Greenhouse gas", "";
-          "1", "Scope 1", ""
+          "Q_Transtq", "Amount of fuel type q combusted for transport energy purposes", "Varies based on fuel type: kL, m3, GJ", "Input";
+          "EC_Transq", "Energy content factor for transport energy purposes", "GJ / unit of fuel", "Constant";
+          "EF_Trans1tqg", "Scope 1 emission factor for transport energy purposes for each greenhouse gas", "kg CO2e / GJ", "Constant";
+          "q", "Fuel type", "", "Constant";
+          "Trans", "Transport combustion", "", "Constant";
+          "g", "Greenhouse gas", "", "Constant";
+          "1", "Scope 1", "", "Constant"
         }, r, c)
       )
     )
@@ -80,8 +80,8 @@ EF : Scope 1 emission factor for stationary combustion for each greenhouse gas :
 
 VEERG_8_2_1_1__1_FuelCombustionStationary
   =LAMBDA(
-    Q, EC, EF,
-    VEERG_8_FuelCombustion(Q, EC, EF)
+    Q_SCq, EC_SCq, EF_SC1qg,
+    VEERG_8_FuelCombustion(Q_SCq, EC_SCq, EF_SC1qg)
   )
 ;
 
@@ -89,7 +89,7 @@ VEERG_8_2_1_1__1_FuelCombustionStationary_Title
   =LAMBDA("Emissions for each GHG from the stationary combustion of fuels");
 
 VEERG_8_2_1_1__1_FuelCombustionStationary_Variable
-  =LAMBDA("E");
+  =LAMBDA("E_g");
 
 VEERG_8_2_1_1__1_FuelCombustionStationary_Unit
   =LAMBDA("t CO2-e");
@@ -100,21 +100,21 @@ VEERG_8_2_1_1__1_FuelCombustionStationary_Source
 VEERG_8_2_1_1__1_FuelCombustionStationary_NIRReference
   =LAMBDA("Australian National Greenhouse Accounts Factors 2025 - 2.2 Estimating emissions from stationary energy sources - Calculating emissions from stationary combustion of liquid fuels");
 
-VEERG_8_2_1_1__1_FuelCombustionStationary_ReadableEquation
-  =LAMBDA("E = Q * EC * EF * 10 ^ - 3");
+VEERG_8_2_1_1__1_FuelCombustionStationary_LatexEquation
+  =LAMBDA("E_g=\sum\nolimits_t \sum\nolimits_q\left(Q_{SC,q}\times EC_{SC,q}\times EF_{SC,1,qg}\right)\times 10^{-3}");
 
 VEERG_8_2_1_1__1_FuelCombustionStationary_Arguments
   =LAMBDA(
-    MAKEARRAY(7, 3, 
+    MAKEARRAY(7, 4, 
       LAMBDA(r,c, 
         INDEX({
-          "Qq", "Amount of fuel type q used for stationary combustion operations", "Varies based on fuel type: kL, m3, GJ";
-          "ECSC,q", "Energy content factor for stationary combustion operations", "GJ / unit of fuel";
-          "EFSC,1,q", "Scope 1 emission factor for stationary combustion for each greenhouse gas", "kg CO2e / GJ";
-          "q", "Fuel type", "";
-          "SC", "Stationary combustion", "";
-          "g", "Greenhouse gas", "";
-          "1", "Scope 1", ""
+          "Q_SCq", "Amount of fuel type q used for stationary combustion operations", "Varies based on fuel type: kL, m3, GJ", "Input";
+          "EC_SCq", "Energy content factor for stationary combustion operations", "GJ / unit of fuel", "Constant";
+          "EF_SC1qg", "Scope 1 emission factor for stationary combustion for each greenhouse gas", "kg CO2e / GJ", "Constant";
+          "q", "Fuel type", "", "Constant";
+          "SC", "Stationary combustion", "", "Constant";
+          "g", "Greenhouse gas", "", "Constant";
+          "1", "Scope 1", "", "Constant"
         }, r, c)
       )
     )
@@ -133,8 +133,8 @@ EF : Scope 1 emission factor for generic combustion for each greenhouse gas : kg
 
 VEERG_8_X_FuelCombustionGeneric
   =LAMBDA(
-    Q, EC, EF,
-    VEERG_8_FuelCombustion(Q, EC, EF)
+    Q_GCq, EC_GCq, EF_GC1qg,
+    VEERG_8_FuelCombustion(Q_GCq, EC_GCq, EF_GC1qg)
   )
 ;
 
@@ -142,7 +142,7 @@ VEERG_8_X_FuelCombustionGeneric_Title
   =LAMBDA("Emissions for each GHG from the generic combustion of fuels");
 
 VEERG_8_X_FuelCombustionGeneric_Variable
-  =LAMBDA("E");
+  =LAMBDA("E_g");
 
 VEERG_8_X_FuelCombustionGeneric_Unit
   =LAMBDA("t CO2-e");
@@ -153,22 +153,25 @@ VEERG_8_X_FuelCombustionGeneric_Source
 VEERG_8_X_FuelCombustionGeneric_NIRReference
   =LAMBDA("Australian National Greenhouse Accounts Factors 2025 - 2.2 Estimating emissions from generic energy sources - Calculating emissions from generic combustion of liquid fuels and 2.3 Estimating emissions from transport fuels");
 
-VEERG_8_X_FuelCombustionGeneric_ReadableEquation
-  =LAMBDA("E = Q * EC * EF * 10 ^ - 3");
+VEERG_8_X_FuelCombustionGeneric_LatexEquation
+  =LAMBDA("E_g=\sum\nolimits_t \sum\nolimits_q\left(Q_{GC,q}\times EC_{GC,q}\times EF_{GC,1,qg}\right)\times 10^{-3}");
 
 VEERG_8_X_FuelCombustionGeneric_Arguments
   =LAMBDA(
-    MAKEARRAY(7, 3, 
+    MAKEARRAY(7, 4, 
       LAMBDA(r,c, 
         INDEX({
-          "Qq", "Amount of fuel type q used for generic combustion operations", "Varies based on fuel type: kL, m3, GJ";
-          "ECGC,q", "Energy content factor for generic combustion operations", "GJ / unit of fuel";
-          "EFGC,1,q", "Scope 1 emission factor for generic combustion for each greenhouse gas", "kg CO2e / GJ";
-          "q", "Fuel type", "";
-          "GC", "Generic combustion", "";
-          "g", "Greenhouse gas", "";
-          "1", "Scope 1", ""
+          "Q_GCq", "Amount of fuel type q used for generic combustion operations", "Varies based on fuel type: kL, m3, GJ", "Input";
+          "EC_GCq", "Energy content factor for generic combustion operations", "GJ / unit of fuel", "Constant";
+          "EF_GC1qg", "Scope 1 emission factor for generic combustion for each greenhouse gas", "kg CO2e / GJ", "Constant";
+          "q", "Fuel type", "", "Constant";
+          "GC", "Generic combustion", "", "Constant";
+          "g", "Greenhouse gas", "", "Constant";
+          "1", "Scope 1", "", "Constant"
         }, r, c)
       )
     )
   );
+
+  VEERG_8_X_FuelCombustionGeneric_Variation
+  =LAMBDA("VARIATION ON SOURCE: This calculation uses averages of transport and stationary emission factors for fuel combustion where the usage is not known.");
