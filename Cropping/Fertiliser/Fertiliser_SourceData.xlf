@@ -12,7 +12,7 @@ Fertiliser_ChemicalCompoundElements_Source
 
 Fertiliser_ChemicalCompoundElements_Data
 =LAMBDA(
- MAKEARRAY(20, 6,
+ MAKEARRAY(19, 6,
  LAMBDA(r,c,
   INDEX({
   "Fertiliser Type f", "FNinorganic,f", "FUf", "Basis", "LifeCycles Scope 3 definition", "Source";
@@ -25,7 +25,6 @@ Fertiliser_ChemicalCompoundElements_Data
   "Calcium ammonium nitrate (CAN)", 0.27, 0, "Ammonium-nitrate based fertilisers", "Calcium ammonium nitrate (CAN)", "VEERG";
   "Nitrogen - Ammoniacal", 1, 0, "Ammonium-based fertilisers", "Nitrogen - Ammoniacal", "LifeCycles";
   "Nitrogen - Nitrate", 1, 0, "Nitrate-based fertilisers", "Nitrogen from Nitrate", "LifeCycles";
-  "Nitrogen - Ureic", 1, 0, "Urea-based fertilisers", "Nitrogen from fertiliser", "LifeCycles";
   "Nitrogen - Generic", 1, 0, "Urea-based fertilisers", "Nitrogen from fertiliser", "LifeCycles";
   "Phosphorus - Generic", 0, 0, "Other fertilisers", "Phosphorus from fertiliser", "LifeCycles";
   "Potassium - Generic", 0, 0, "Other fertilisers", "Potassium from fertiliser", "LifeCycles";
@@ -302,21 +301,21 @@ Fertiliser_Products_Source
 
 Fertiliser_Products_Data1
 =LAMBDA(
- MAKEARRAY(20, 28,
+ MAKEARRAY(12, 28,
  LAMBDA(r,c,
   INDEX({
 "Include or exclude","Notes","Company","Product Name","Unit","Density","Urea source","Ammonia source","Ingredient 1","Ingredient 1 percent","Ingredient 2","Ingredient 2 percent","Ingredient 3","Ingredient 3 percent","Ingredient 4","Ingredient 4 percent","Ingredient 5","Ingredient 5 percent","Ingredient 6","Ingredient 6 percent","Ingredient 7","Ingredient 7 percent","Ingredient 8","Ingredient 8 percent","Ingredient 9","Ingredient 9 percent","Ingredient 10","Ingredient 10 percent";
-"Include","","Campbells fertilisers Australia","Aqua Finish","L",1.26,"","","Potassium - Generic",0.225,"Phosphorus",0.04,"Nitrogen - Generic",0.026,"","","","","","","","","","","","","","";
-"Include","","Campbells fertilisers Australia","Aqua Grow","L",1.26,"","","Potassium - Generic",0.105,"Nitrogen - Generic ",0.096,"Phosphorus - Generic",0.05,"","","","","","","","","","","","","","";
+"Include","","Campbells fertilisers Australia","Aqua Finish","L",1.26,"","","Potassium - Generic",0.225,"Phosphorus - Generic",0.04,"Nitrogen - Generic",0.026,"","","","","","","","","","","","","","";
+"Include","","Campbells fertilisers Australia","Aqua Grow","L",1.26,"","","Potassium - Generic",0.105,"Nitrogen - Generic",0.096,"Phosphorus - Generic",0.05,"","","","","","","","","","","","","","";
 "Include","","Campbells fertilisers Australia","Aqua Nitro AN","L",1.24,"","","Nitrogen - Ammoniacal",0.223,"","","","","","","","","","","","","","","","","","";
 "Include","","Campbells fertilisers Australia","Aqua Start","L",1.25,"","","Nitrogen - Generic",0.103,"Phosphorus - Generic",0.1,"Potassium - Generic",0.034,"","","","","","","","","","","","","","";
 "Include","","Campbells fertilisers Australia","Aqua Thio-Complete","L",1.43,"","","Potassium - Generic",0.225,"Phosphorus - Generic",0.038,"Nitrogen - Generic",0.025,"","","","","","","","","","","","","","";
 "Include","","Campbells fertilisers Australia","Aqua Thio-Emerge","L",1.29,"","","Nitrogen - Generic",0.105,"Phosphorus - Generic",0.094,"Potassium - Generic",0.04,"Sulfur - Generic",0.03,"","","","","","","","","","","","";
-"Include","","Campbells fertilisers Australia","Aqua Thio-Flourish","L",1.32,"","","Potassium - Generic",0.108,"Nitrogen - Generic ",0.095,"Sulfur - Generic",0.081,"Phosphorus - Generic",0.047,"","","","","","","","","","","","";
-"Include - Absent ingredients < 2%","","Campbells fertilisers Australia","Boost-It","kg",1,"","","Nitrogen - Ureic",0.24,"Potassium - Generic",0.08,"Sulfur - Generic",0.053,"Phosphorus - Generic",0.052,"Magnesium",0.013,"Zinc",0.002,"Manganese",0.0035,"Iron",0.0013,"Copper",0.0007,"Boron",0.0007;
+"Include","","Campbells fertilisers Australia","Aqua Thio-Flourish","L",1.32,"","","Potassium - Generic",0.108,"Nitrogen - Generic",0.095,"Sulfur - Generic",0.081,"Phosphorus - Generic",0.047,"","","","","","","","","","","","";
+"Include - Absent ingredients < 2%","Amount of urea calculated from urea nitrogen amount","Campbells fertilisers Australia","Boost-It","kg",1,"","","Urea",0.52173913,"Potassium - Generic",0.08,"Sulfur - Generic",0.053,"Phosphorus - Generic",0.052,"Magnesium",0.013,"Zinc",0.002,"Manganese",0.0035,"Iron",0.0013,"Copper",0.0007,"Boron",0.0007;
 "Include","","Campbells fertilisers Australia","Bronze","kg",1,"","","Muriate of Potash (MOP)",0.232,"Nitrogen - Generic",0.17,"Sulfur - Generic",0.005,"Magnesium",0.0024,"Phosphorus - Generic",0.0004,"","","","","","","","","","";
 "Include","50/50 nitrate and ammoniacal nitrogen (ammonium nitrate)","Campbells fertilisers Australia","Compass","kg",1,"","","Nitrogen - Ammoniacal",0.075,"Nitrogen - Nitrate",0.075,"Potassium - Generic",0.125,"Phosphorus-Generic",0.065,"Sulfur - Generic",0.06,"","","","","","","","","","";
-"Include - Absent ingredients < 2%","Controlled release N treated as generic","Campbells fertilisers Australia","CoRoN 12-0-10","L",1.215,"","","Nitrogen - Ureic",0.09,"Potassium - Generic",0.1,"Nitrogen - Generic",0.03,"Boron",0.005,"","","","","","","","","","","",""
+"Include - Absent ingredients < 2%","Controlled release N treated as generic, Amount of urea calculated from urea nitrogen amount","Campbells fertilisers Australia","CoRoN 12-0-10","L",1.215,"","","Urea",0.195652174,"Potassium - Generic",0.1,"Nitrogen - Generic",0.03,"Boron",0.005,"","","","","","","","","","","",""
 }, r, c)
 )));
 

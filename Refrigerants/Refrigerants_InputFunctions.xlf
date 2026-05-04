@@ -1,0 +1,11 @@
+Refrigerants_CalculateBlendGWP
+=LAMBDA(
+  ConstituentFaction1, ConstituentGWP1, 
+  ConstituentFaction2, ConstituentGWP2, 
+  ConstituentFaction3, ConstituentGWP3, 
+  ConstituentFaction4, ConstituentGWP4,
+  (ConstituentFaction1 * ConstituentGWP1) +
+  (ConstituentFaction2 * ConstituentGWP2) +
+  (ConstituentFaction3 * ConstituentGWP3) +
+  (ConstituentFaction4 * ConstituentGWP4)
+);
