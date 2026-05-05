@@ -45,12 +45,12 @@ VEERG_4_2_1_1__1_TotalAnnualMethaneProductionFromManureManagement_LatexEquation
 
 VEERG_4_2_1_1__1_TotalAnnualMethaneProductionFromManureManagement_Arguments
   =LAMBDA(
-    MAKEARRAY(3, 2,
+    MAKEARRAY(3, 4,
       LAMBDA(r,c,
         INDEX({
-          "N_jkl", "number of beef cattle in each time-period, class and subclass (head)";
-          "M_jklm", "methane production from manure in each time-period, class, subclass and MMS (kg/head/day)";
-          "D_j", "number of days in each time-period for each input class (days)"
+          "N_jkl", "number of beef cattle in each time-period, class and subclass", "head", "Input";
+          "M_jklm", "methane production from manure in each time-period, class, subclass and MMS", "kg/head/day", "Calculated from 4.2.1.1 (2)";
+          "D_j", "number of days in each time-period for each input class", "days", "Input"
         }, r, c)
       )
     )
@@ -97,20 +97,38 @@ VEERG_4_2_1_1__2_MethaneProductionFromManure_LatexEquation
 
 VEERG_4_2_1_1__2_MethaneProductionFromManure_Arguments
   =LAMBDA(
-    MAKEARRAY(7, 2,
+    MAKEARRAY(7, 4,
       LAMBDA(r,c,
         INDEX({
-          "VS_jkl", "volatile solid production (kg/day)";
-          "B_o", "emissions potential (m3 CH4/kg VS)";
-          "MMS_m", "fraction of waste in each manure management system";
-          "MCF_im", "methane conversion factor for temperature zone and MMS";
-          "rho", "density of methane (kg/m3)";
-          "i", "state";
-          "i", "region"
+          "VS_jkl", "volatile solid production", "kg/day", "Calculated from 4.2.1.1 (3)";
+          "B_o", "emissions potential", "m3 CH4/kg VS", "Constant";
+          "MMS_m", "fraction of waste in each manure management system", "fraction", "Input";
+          "MCF_im", "methane conversion factor for temperature zone and MMS", "fraction", "Constant";
+          "rho", "density of methane", "kg/m3", "Constant";
+          "i", "state", "", "Input";
+          "i", "region", "", "Input"
         }, r, c)
       )
     )
   );
+
+
+VEERG_4_2_1_1__2_MethaneProductionFromManure_Arguments_Method2
+  =LAMBDA(
+    MAKEARRAY(7, 4,
+      LAMBDA(r,c,
+        INDEX({
+          "VS_jkl", "volatile solid production", "kg/day", "Calculated from 4.2.1.1 (3)";
+          "B_o", "emissions potential", "m3 CH4/kg VS", "Constant";
+          "MMS_m", "fraction of waste in each manure management system", "fraction", "Input";
+          "MCF_im", "methane conversion factor for temperature zone and MMS", "fraction", "Constant";
+          "rho", "density of methane", "kg/m3", "Constant";
+          "MAT","Mean annual temperature", "°C", "Input"
+        }, r, c)
+      )
+    )
+  );
+
 
 /*
 --------------------------------------
@@ -151,12 +169,12 @@ VEERG_4_2_1_1__3_VolatileSolidProductionFromGrazingBeef_LatexEquation
 
 VEERG_4_2_1_1__3_VolatileSolidProductionFromGrazingBeef_Arguments
   =LAMBDA(
-    MAKEARRAY(3, 2,
+    MAKEARRAY(3, 4,
       LAMBDA(r,c,
         INDEX({
-          "I_jkl", "dry matter intake as calculated in Chapter 3 Section 3.2.1 (kg/head/day)";
-          "DMD_jkl", "dry matter digestibility expressed as a fraction";
-          "A", "ash content of feed intake expressed as a fraction"
+          "I_jkl", "dry matter intake as calculated in Chapter 3 Section 3.2.1", "kg/head/day", "Calculated from 3.2.1.1, (3)";
+          "DMD_jkl", "dry matter digestibility expressed as a fraction", "fraction", "Input";
+          "A", "ash content of feed intake expressed as a fraction", "fraction", "Constant"
         }, r, c)
       )
     )
