@@ -49,16 +49,17 @@ VEERG_3_3_1_1__1_TotalAnnualMethaneFromEntericFermentation_LatexEquation
 
 VEERG_3_3_1_1__1_TotalAnnualMethaneFromEntericFermentation_Arguments
   =LAMBDA(
-    MAKEARRAY(7, 2,
+    MAKEARRAY(7, 4,
       LAMBDA(r,c,
         INDEX({
-          "N_j124", "number of dairy cattle in classes j=1,2,4 (head)";
-          "M_j124", "daily enteric methane production for classes j=1,2,4 (kg CH4/head/day)";
-          "D_j124", "duration of stay on the farm for classes j=1,2,4 (days)";
-          "N_j35", "number of dairy cattle in classes j=3,5 (head)";
-          "M_j35", "daily enteric methane production for classes j=3,5 (kg CH4/head/day)";
-          "D_j35", "duration of stay on the farm for classes j=3,5 (days)";
-          "MPW_ENTERIC_j35", "daily methane production for pre-weaned heifer and bull calves (kg CH4/head/day)"
+          "N_j124", "number of dairy cattle in classes j=1,2,4", "head", "Input";
+          "M_j124", "daily enteric methane production for classes j=1,2,4", "kg CH4/head/day", "Calculated from 3.3.1.1 (2)";
+          "D_j124", "duration of stay on the farm for classes j=1,2,4", "days", "Input";
+          "N_j35", "number of dairy cattle in classes j=3,5", "head", "Input";
+          "M_j35", "daily enteric methane production for classes j=3,5", "kg CH4/head/day", "Calculated from 3.3.1.1 (2)";
+          "D_j35", "duration of stay on the farm for classes j=3,5", "days", "Input";
+          "MPW_ENTERIC_j35", "daily methane production for pre-weaned heifer and bull calves", "kg CH4/head/day", "Constant"
+
         }, r, c)
       )
     )
@@ -101,10 +102,10 @@ VEERG_3_3_1_1__2_DailyEntericMethaneProduction_LatexEquation
 
 VEERG_3_3_1_1__2_DailyEntericMethaneProduction_Arguments
   =LAMBDA(
-    MAKEARRAY(1, 2,
+    MAKEARRAY(1, 4,
       LAMBDA(r,c,
         INDEX({
-          "I_j", "dry matter feed intake (kg DM/head/day)"
+          "I_j", "dry matter feed intake", "kg DM/head/day", "Calculated from 3.3.1.1 (3)"
         }, r, c)
       )
     )
@@ -113,7 +114,7 @@ VEERG_3_3_1_1__2_DailyEntericMethaneProduction_Arguments
 /*
 --------------------------------------
 VEERG_3_3_1_1__3_DryMatterFeedIntake
-Feed intake based on Minson and McDonald (1987)
+Feed intake
 I_j
 kg DM/head/day
 I_j=(1.185+0.00454\times W_j-0.0000026\times W_j^2+0.315\times LWG_j)^2\times MR_j+MI_j
@@ -131,7 +132,7 @@ VEERG_3_3_1_1__3_DryMatterFeedIntake
   );
 
 VEERG_3_3_1_1__3_DryMatterFeedIntake_Title
-  =LAMBDA("Feed intake based on Minson and McDonald (1987)");
+  =LAMBDA("Feed intake");
 
 VEERG_3_3_1_1__3_DryMatterFeedIntake_Variable
   =LAMBDA("I_j");
@@ -143,20 +144,20 @@ VEERG_3_3_1_1__3_DryMatterFeedIntake_Source
   =LAMBDA("VEERG 2026: 3.3.1.1, Equation (3)");
 
 VEERG_3_3_1_1__3_DryMatterFeedIntake_NIRReference
-  =LAMBDA("Minson and McDonald (1987)");
+  =LAMBDA("");
 
 VEERG_3_3_1_1__3_DryMatterFeedIntake_LatexEquation
   =LAMBDA("I_j=(1.185+0.00454\times W_j-0.0000026\times W_j^2+0.315\times LWG_j)^2\times MR_j+MI_j");
 
 VEERG_3_3_1_1__3_DryMatterFeedIntake_Arguments
   =LAMBDA(
-    MAKEARRAY(4, 2,
+    MAKEARRAY(4, 4,
       LAMBDA(r,c,
         INDEX({
-          "W_j", "liveweight (kg)";
-          "LWG_j", "liveweight gain (kg/head/day)";
-          "MR_j", "increase in metabolic rate when producing milk (fraction)";
-          "MI_j", "additional intake required for milk production (kg DM/head/day)"
+          "W_j", "liveweight", "kg", "Input";
+          "LWG_j", "liveweight gain", "kg/head/day", "Input";
+          "MR_j", "increase in metabolic rate when producing milk", "fraction", "Constant";
+          "MI_j", "additional intake required for milk production", "kg DM/head/day", "Calculated from 3.3.1.1 (4)"
         }, r, c)
       )
     )
@@ -203,14 +204,14 @@ VEERG_3_3_1_1__4_AdditionalIntakeForMilkProduction_LatexEquation
 
 VEERG_3_3_1_1__4_AdditionalIntakeForMilkProduction_Arguments
   =LAMBDA(
-    MAKEARRAY(5, 2,
+    MAKEARRAY(5, 4,
       LAMBDA(r,c,
         INDEX({
-          "MP_j", "milk production (L/head/day)";
-          "NE", "net energy (MJ net energy/kg milk)";
-          "GEC", "gross energy content (MJ/kgDM)";
-          "k", "efficiency of metabolizable energy use for milk production (fraction)";
-          "qm_j", "metabolisability of the diet (fraction)"
+          "MP_j", "milk production", "L/head/day", "Input";
+          "NE", "net energy", "MJ net energy/kg milk", "Constant";
+          "GEC", "gross energy content", "MJ/kgDM", "Constant";
+          "k", "efficiency of metabolizable energy use for milk production", "fraction", "Constant";
+          "qm_j", "metabolisability of the diet", "fraction", "Calculated from 3.3.1.1 (6)"
         }, r, c)
       )
     )
@@ -255,12 +256,12 @@ VEERG_3_3_1_1__5_MilkProductionFromMilkSolids_LatexEquation
 
 VEERG_3_3_1_1__5_MilkProductionFromMilkSolids_Arguments
   =LAMBDA(
-    MAKEARRAY(3, 2,
+    MAKEARRAY(3, 4,
       LAMBDA(r,c,
         INDEX({
-          "MS_j", "daily production of milk solids (kg MS/head/day)";
-          "FC_j", "fat content in fat and protein corrected milk (per cent)";
-          "PC_j", "protein content in fat and protein corrected milk (per cent)"
+          "MS_j", "daily production of milk solids", "kg MS/head/day", "Input";
+          "FC_j", "fat content in fat and protein corrected milk", "per cent", "XXXX";
+          "PC_j", "protein content in fat and protein corrected milk", "per cent", "XXXX"
         }, r, c)
       )
     )
@@ -269,7 +270,7 @@ VEERG_3_3_1_1__5_MilkProductionFromMilkSolids_Arguments
 /*
 --------------------------------------
 VEERG_3_3_1_1__6_MetabolisabilityOfDiet
-Metabolisability of the diet based on Minson and McDonald (1987)
+Metabolisability of diet
 qm_j
 fraction
 qm_j=0.795\times (DMD_j\times 100)-0.0014
@@ -284,7 +285,7 @@ VEERG_3_3_1_1__6_MetabolisabilityOfDiet
   );
 
 VEERG_3_3_1_1__6_MetabolisabilityOfDiet_Title
-  =LAMBDA("Metabolisability of the diet based on Minson and McDonald (1987)");
+  =LAMBDA("Metabolisability of diet");
 
 VEERG_3_3_1_1__6_MetabolisabilityOfDiet_Variable
   =LAMBDA("qm_j");
@@ -296,17 +297,17 @@ VEERG_3_3_1_1__6_MetabolisabilityOfDiet_Source
   =LAMBDA("VEERG 2026: 3.3.1.1, Equation (6)");
 
 VEERG_3_3_1_1__6_MetabolisabilityOfDiet_NIRReference
-  =LAMBDA("Minson and McDonald (1987)");
+  =LAMBDA("");
 
 VEERG_3_3_1_1__6_MetabolisabilityOfDiet_LatexEquation
   =LAMBDA("qm_j=0.795\times (DMD_j\times 100)-0.0014");
 
 VEERG_3_3_1_1__6_MetabolisabilityOfDiet_Arguments
   =LAMBDA(
-    MAKEARRAY(1, 2,
+    MAKEARRAY(1, 4,
       LAMBDA(r,c,
         INDEX({
-          "DMD_j", "dry matter digestibility expressed as a fraction"
+          "DMD_j", "dry matter digestibility expressed as a fraction", "fraction", "Input"
         }, r, c)
       )
     )

@@ -47,14 +47,14 @@ VEERG_4_3_1_8__1_MassOfNitrogenAppliedToSoilsScope1_LatexEquation
 
 VEERG_4_3_1_8__1_MassOfNitrogenAppliedToSoilsScope1_Arguments
   =LAMBDA(
-    MAKEARRAY(5, 2,
+    MAKEARRAY(5, 4,
       LAMBDA(r,c,
         INDEX({
-          "MN_jm", "total nitrogen in each MMS for dairy cattle classes (kg N)";
-          "EF_m", "emission factor for nitrous oxide emissions per MMS (kg N2O-N/kg N)";
-          "FracGASM_m", "fraction of N volatilised from MMS";
-          "MNLeach_jm", "mass of N lost through leaching and runoff from each MMS (kg N)";
-          "PF_scope", "fraction of manure applied to soil within farm boundary"
+          "MN_jm", "total nitrogen in each MMS for dairy cattle classes", "kg N", "Calculated from 4.3.1.3 (2)";
+          "EF_m", "emission factor for nitrous oxide emissions per MMS", "kg N2O-N/kg N", "Constant";
+          "FracGASM_m", "fraction of N volatilised from MMS", "fraction", "Constant";
+          "MNLeach_jm", "mass of N lost through leaching and runoff from each MMS", "kg N", "Calculated from 4.3.1.6 (2)";
+          "PF_scope", "fraction of manure applied to soil within farm boundary", "fraction", "Input"
         }, r, c)
       )
     )
@@ -101,14 +101,14 @@ VEERG_4_3_1_8__2_MassOfNitrogenAppliedToSoilsScope3_LatexEquation
 
 VEERG_4_3_1_8__2_MassOfNitrogenAppliedToSoilsScope3_Arguments
   =LAMBDA(
-    MAKEARRAY(5, 2,
+    MAKEARRAY(5, 4,
       LAMBDA(r,c,
         INDEX({
-          "MN_jm", "total nitrogen in each MMS for dairy cattle classes (kg N)";
-          "EF_m", "emission factor for nitrous oxide emissions per MMS (kg N2O-N/kg N)";
-          "FracGASM_m", "fraction of N volatilised from MMS";
-          "MNLeach_jm", "mass of N lost through leaching and runoff from each MMS (kg N)";
-          "PF", "fraction of manure applied to soil within farm boundary"
+          "MN_jm", "total nitrogen in each MMS for dairy cattle classes", "kg N", "Calculated from 4.3.1.3 (2)";
+          "EF_m", "emission factor for nitrous oxide emissions per MMS", "kg N2O-N/kg N", "Constant";
+          "FracGASM_m", "fraction of N volatilised from MMS", "fraction", "Constant";
+          "MNLeach_jm", "mass of N lost through leaching and runoff from each MMS", "kg N", "Calculated from 4.3.1.6 (2)";
+          "PF", "fraction of manure applied to soil within farm boundary", "fraction", "Input"
         }, r, c)
       )
     )

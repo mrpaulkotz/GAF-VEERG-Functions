@@ -173,8 +173,8 @@ VEERG_3_2_1_1__4_AdditionalIntakeForMilkProduction
 
 VEERG_3_2_1_1__4_AdditionalIntakeForMilkProductionVariation
   =LAMBDA(
-    LC_jk45, FA_jk45calv, FA_jk45after,
-    ((LC_jk45 * FA_jk45calv) + (LC_jk45 * FA_jk45after)) + (1 - (LC_jk45 + LC_jk45))
+    LC_jk45calv, LC_jk45prev, FA_jk45calv, FA_jk45after,
+    ((LC_jk45calv * FA_jk45calv) + (LC_jk45prev * FA_jk45after)) + (1 - (LC_jk45calv + LC_jk45prev))
   );
 
 VEERG_3_2_1_1__4_AdditionalIntakeForMilkProduction_Title
@@ -196,7 +196,7 @@ VEERG_3_2_1_1__4_AdditionalIntakeForMilkProduction_LatexEquation
   =LAMBDA("MA_{jk=4,5}=(LC_{jk=4,5}\times FA_{jk=4,5})+(1-LC_{jk=4,5})");
 
 VEERG_3_2_1_1__4_AdditionalIntakeForMilkProduction_LatexEquationVariation
-  =LAMBDA("MA_{jk=4,5}=((LC_{jk=4,5}\times FA_{jk=4,5,calv})+(LC_{jk=4,5}\times FA_{jk=4,5,after}))+(1-(LC_{jk=4,5}+LC_{jk=4,5}))");
+  =LAMBDA("MA_{jk=4,5}=((LC_{jk=4,5,calv}\times FA_{jk=4,5,calv})+(LC_{jk=4,5,prev}\times FA_{jk=4,5,after}))+(1-(LC_{jk=4,5,calv}+LC_{jk=4,5,prev}))");
 
 VEERG_3_2_1_1__4_AdditionalIntakeForMilkProduction_Arguments
   =LAMBDA(

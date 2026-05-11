@@ -46,12 +46,12 @@ VEERG_4_3_1_6__1_AnnualEmissionsFromLeachingAndRunoffFromMMS_LatexEquation
 
 VEERG_4_3_1_6__1_AnnualEmissionsFromLeachingAndRunoffFromMMS_Arguments
   =LAMBDA(
-    MAKEARRAY(3, 2,
+    MAKEARRAY(3, 4,
       LAMBDA(r,c,
         INDEX({
-          "MNLeach_jm", "mass of N lost through leaching and runoff";
-          "EF_leach", "nitrous oxide emission factor for leaching and runoff (kg N2O-N/kg N)";
-          "C_N2O", "factor to convert elemental mass of N2O to molecular mass"
+          "MNLeach_jm", "mass of N lost through leaching and runoff", "kg N", "Calculated from 4.3.1.6 (2)";
+          "EF_leach", "nitrous oxide emission factor for leaching and runoff", "kg N2O-N/kg N", "Constant";
+          "C_N2O", "factor to convert elemental mass of N2O to molecular mass", "", "Constant"
         }, r, c)
       )
     )
@@ -96,15 +96,15 @@ VEERG_4_3_1_6__2_MassOfNitrogenLostToLeachingAndRunoffFromSolidStorage_LatexEqua
 
 VEERG_4_3_1_6__2_MassOfNitrogenLostToLeachingAndRunoffFromSolidStorage_Arguments
   =LAMBDA(
-    MAKEARRAY(6, 2,
+    MAKEARRAY(6, 4,
       LAMBDA(r,c,
         INDEX({
-          "MN_jm4", "total nitrogen in solid storage system m=4 (kg N)";
-          "FracWET_i", "fraction of N that is available for leaching and runoff from the leaching zone z and irrigation type ir (dimensionless)";
-          "FracLEACH_MS", "fraction of N that is lost through leaching and runoff (dimensionless)";
-          "z", "location in leaching zone";
-          "j", "production system";
-          "ir", "irrigation method"
+          "MN_jm4", "total nitrogen in solid storage system m=4 (kg N)", "kg N", "Calculated from 4.3.1.3 (2)";
+          "FracWET_i", "fraction of N that is available for leaching and runoff from the leaching zone z and irrigation type ir", "fraction", "Constant";
+          "FracLEACH_MS", "fraction of N that is lost through leaching and runoff", "fraction", "Constant";
+          "z", "location in leaching zone", "", "Input";
+          "j", "production system", "", "Input";
+          "ir", "irrigation method", "", "Input"
         }, r, c)
       )
     )

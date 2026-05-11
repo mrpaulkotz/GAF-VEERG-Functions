@@ -45,15 +45,15 @@ VEERG_4_3_1_10__1_AtmosphericDepositionEmissionsFromUrineAndDungOnPasture_LatexE
 
 VEERG_4_3_1_10__1_AtmosphericDepositionEmissionsFromUrineAndDungOnPasture_Arguments
   =LAMBDA(
-    MAKEARRAY(6, 2,
+    MAKEARRAY(6, 4,
       LAMBDA(r,c,
         INDEX({
-          "M_vol_m14", "mass of nitrogen volatilised from urine and faeces deposited on pasture (kg N)";
-          "EF_N2O", "nitrous oxide emission factor for atmospheric deposition (kg N2O-N/kg N)";
-          "C_N2O", "factor to convert elemental mass of N2O to molecular mass";
-          "j", "production system";
-          "ir", "irrigation method";
-          "r", "rainfall region"
+          "M_vol_m14", "mass of nitrogen volatilised from urine and faeces deposited on pasture", "kg N", "Calculated from 4.3.1.10 (2)";
+          "EF_N2O", "nitrous oxide emission factor for atmospheric deposition", "kg N2O-N/kg N", "Constant";
+          "C_N2O", "factor to convert elemental mass of N2O to molecular mass", "", "Constant";
+          "j", "production system", "", "Input";
+          "ir", "irrigation method", "", "Input";
+          "r", "rainfall region", "", "Input"
         }, r, c)
       )
     )
@@ -97,11 +97,11 @@ VEERG_4_3_1_10__2_MassOfNitrogenVolatilisedOnPasture_LatexEquation
 
 VEERG_4_3_1_10__2_MassOfNitrogenVolatilisedOnPasture_Arguments
   =LAMBDA(
-    MAKEARRAY(2, 2,
+    MAKEARRAY(2, 4,
       LAMBDA(r,c,
         INDEX({
-          "MN_jm14", "mass of nitrogen excreted on pasture, range and paddock for each dairy class (kg N)";
-          "FracGASMsoil", "fraction of nitrogen volatilised from urine and faeces deposited on pasture ((kg NH3-N + NOx-N)/kg N)"
+          "MN_jm14", "mass of nitrogen excreted on pasture, range and paddock for each dairy class", "kg N", "Calculated from 4.3.1.3 (2)";
+          "FracGASMsoil", "fraction of nitrogen volatilised from urine and faeces deposited on pasture", "(kg NH3-N + NOx-N)/kg N)", "Constant"
         }, r, c)
       )
     )

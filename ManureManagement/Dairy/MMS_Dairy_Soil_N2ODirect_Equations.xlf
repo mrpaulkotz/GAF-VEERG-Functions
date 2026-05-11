@@ -45,13 +45,13 @@ VEERG_4_3_1_9__1_DirectNitrousOxideEmissionsOnPasture_LatexEquation
 
 VEERG_4_3_1_9__1_DirectNitrousOxideEmissionsOnPasture_Arguments
   =LAMBDA(
-    MAKEARRAY(4, 2,
+    MAKEARRAY(4, 4,
       LAMBDA(r,c,
         INDEX({
-          "MN_jm14", "mass of nitrogen excreted on pasture, range, and paddock for each dairy cattle class (kg N)";
-          "EF_PRP", "emission factor for nitrous oxide emissions for urine and dung deposited on PRP (kg N2O-N/kg N deposited)";
-          "C_N2O", "factor to convert elemental mass of N2O to molecular mass";
-          "z","Wet or dry climate zone"
+          "MN_jm14", "mass of nitrogen excreted on pasture, range, and paddock for each dairy cattle class", "kg N", "Calculated from 4.3.1.3 (2)";
+          "EF_PRP", "emission factor for nitrous oxide emissions for urine and dung deposited on PRP", "kg N2O-N/kg N deposited", "Constant";
+          "C_N2O", "factor to convert elemental mass of N2O to molecular mass", "", "Constant";
+          "z","Wet or dry climate zone", "", "Input"
         }, r, c)
       )
     )

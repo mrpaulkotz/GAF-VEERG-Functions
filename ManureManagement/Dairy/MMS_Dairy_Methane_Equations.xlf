@@ -59,17 +59,17 @@ VEERG_4_3_1_1__1_TotalAnnualMethaneFromManureManagement_LatexEquationVariation
 
 VEERG_4_3_1_1__1_TotalAnnualMethaneFromManureManagement_Arguments
   =LAMBDA(
-    MAKEARRAY(8, 2,
+    MAKEARRAY(8, 4,
       LAMBDA(r,c,
         INDEX({
-          "N_j124", "number of dairy cattle in classes j=1,2,4";
-          "M_j124m", "methane production from manure of weaned dairy cattle in classes j=1,2,4 in MMS m (kg CH4/head/day)";
-          "D_j124", "duration of stay on farm for classes j=1,2,4 (days)";
-          "N_j35", "number of dairy cattle in classes j=3,5";
-          "M_j35m", "methane production from manure of weaned dairy cattle in classes j=3,5 in MMS m (kg CH4/head/day)";
-          "D_j35", "duration of stay on farm for classes j=3,5 (days)";
-          "MPW_manure_j35", "methane production from manure of pre-weaned heifer and bull calves (kg CH4/head/day)";
-          "DPW_j35", "duration of stay on farm for pre-weaned heifer and bull calves (days)"
+          "N_j124", "number of dairy cattle in classes j=1,2,4", "head", "Input";
+          "M_j124m", "methane production from manure of weaned dairy cattle in classes j=1,2,4 in MMS m", "kg CH4/head/day", "Calculated from 4.3.1.1 (2)";
+          "D_j124", "duration of stay on farm for classes j=1,2,4", "days", "Input";
+          "N_j35", "number of dairy cattle in classes j=3,5", "head", "Input";
+          "M_j35m", "methane production from manure of weaned dairy cattle in classes j=3,5 in MMS m", "kg CH4/head/day", "Calculated from 4.3.1.1 (2)";
+          "D_j35", "duration of stay on farm for classes j=3,5", "days", "Input";
+          "MPW_manure_j35", "methane production from manure of pre-weaned heifer and bull calves", "kg CH4/head/day", "Constant";
+          "DPW_j35", "duration of stay on farm for pre-weaned heifer and bull calves", "days", "Input"
         }, r, c)
       )
     )
@@ -119,15 +119,31 @@ VEERG_4_3_1_1__2_MethaneFromManureProduction_LatexEquation
 
 VEERG_4_3_1_1__2_MethaneFromManureProduction_Arguments
   =LAMBDA(
-    MAKEARRAY(6, 2,
+    MAKEARRAY(6, 4,
       LAMBDA(r,c,
         INDEX({
-          "VS_j", "daily volatile solids production per head for dairy cattle (kg/head/day)";
-          "FVS_jmT1", "fraction of waste from each class in each management system";
-          "MCF_im", "methane conversion factor for temperature zone and MMS";
-          "B_o", "emissions potential (m3 CH4/kgVS)";
-          "rho", "density of methane (kg/m3)";
-          "i", "state"
+          "VS_j", "daily volatile solids production per head for dairy cattle (kg/head/day)", "kg/head/day", "Calculated from 4.3.1.1 (3)";
+          "FVS_jmT1", "fraction of waste from each class in each management system", "fraction", "Calculated from 4.3.1.1 (4)(5)";
+          "MCF_im", "methane conversion factor for temperature zone and MMS", "fraction", "Constant";
+          "B_o", "emissions potential (m3 CH4/kgVS)", "m3 CH4/kgVS", "Constant";
+          "rho", "density of methane (kg/m3)", "kg/m3", "Constant";
+          "i", "state", "state", "Input"
+        }, r, c)
+      )
+    )
+  );
+
+VEERG_4_3_1_1__2_MethaneFromManureProduction_Arguments_Method2
+  =LAMBDA(
+    MAKEARRAY(6, 4,
+      LAMBDA(r,c,
+        INDEX({
+          "VS_j", "daily volatile solids production per head for dairy cattle (kg/head/day)", "kg/head/day", "Calculated from 4.3.1.1 (3)";
+          "FVS_jmT1", "fraction of waste from each class in each management system", "fraction", "Calculated from 4.3.1.1 (4)(5)";
+          "MCF_im", "methane conversion factor for temperature zone and MMS", "fraction", "Constant";
+          "B_o", "emissions potential (m3 CH4/kgVS)", "m3 CH4/kgVS", "Constant";
+          "rho", "density of methane (kg/m3)", "kg/m3", "Constant";
+          "MAT", "Mean annual temperature", "°C", "Input"
         }, r, c)
       )
     )
@@ -172,12 +188,12 @@ VEERG_4_3_1_1__3_VolatileSolidsForWeanedDairyCattle_LatexEquation
 
 VEERG_4_3_1_1__3_VolatileSolidsForWeanedDairyCattle_Arguments
   =LAMBDA(
-    MAKEARRAY(3, 2,
+    MAKEARRAY(3, 4,
       LAMBDA(r,c,
         INDEX({
-          "I_j", "dry matter feed intake (kgDM/head/day)";
-          "DMD_j", "dry matter digestibility";
-          "A", "ash content of feed intake"
+          "I_j", "dry matter feed intake (kgDM/head/day)", "kgDM/head/day", "Calculated from 3.3.1.1 (3)";
+          "DMD_j", "dry matter digestibility", "fraction", "Input";
+          "A", "ash content of feed intake", "fraction", "Constant"
         }, r, c)
       )
     )
@@ -221,11 +237,11 @@ VEERG_4_3_1_1__4_FractionVolatileSolidsNotSolidStorage_LatexEquation
 
 VEERG_4_3_1_1__4_FractionVolatileSolidsNotSolidStorage_Arguments
   =LAMBDA(
-    MAKEARRAY(2, 2,
+    MAKEARRAY(2, 4,
       LAMBDA(r,c,
         INDEX({
-          "MMS_jm", "fraction of manure to each primary MMS for each class prior to solid separation";
-          "SS_m", "fraction of volatile solids separated to solid storage for each MMS"
+          "MMS_jm", "fraction of manure to each primary MMS for each class prior to solid separation", "fraction", "Input";
+          "SS_m", "fraction of volatile solids separated to solid storage for each MMS", "fraction", "Input"
         }, r, c)
       )
     )
@@ -280,12 +296,12 @@ VEERG_4_3_1_1__5_FractionVolatileSolidsSolidStorage_LatexEquationVariation
 
 VEERG_4_3_1_1__5_FractionVolatileSolidsSolidStorage_Arguments
   =LAMBDA(
-    MAKEARRAY(3, 2,
+    MAKEARRAY(3, 4,
       LAMBDA(r,c,
         INDEX({
-          "MMS_jm4", "fraction of volatile solids in solid storage before transfer";
-          "MMS_jm179", "fraction of volatile solids in MMS m=1,7,9 before transfer";
-          "SS_m", "fraction of volatile solids separated to solid storage for each MMS"
+          "MMS_jm4", "fraction of volatile solids in solid storage before transfer", "fraction", "Input";
+          "MMS_jm179", "fraction of volatile solids in MMS m=1,7,9 before transfer", "fraction", "Input";
+          "SS_m", "fraction of volatile solids separated to solid storage for each MMS", "fraction", "Input"
         }, r, c)
       )
     )

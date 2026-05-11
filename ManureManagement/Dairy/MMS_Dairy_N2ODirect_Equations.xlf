@@ -45,12 +45,12 @@ VEERG_4_3_1_3__1_TotalAnnualDirectNitrousOxideEmissionsFromMMS_LatexEquation
 
 VEERG_4_3_1_3__1_TotalAnnualDirectNitrousOxideEmissionsFromMMS_Arguments
   =LAMBDA(
-    MAKEARRAY(3, 2,
+    MAKEARRAY(3, 4,
       LAMBDA(r,c,
         INDEX({
-          "MN_jm", "total nitrogen in each MMS for dairy cattle classes (kg N)";
-          "EF_m", "nitrous oxide emission factor for each MMS (kg N2O-N/kg N deposited)";
-          "C_N2O", "factor to convert elemental mass of N2O to molecular mass"
+          "MN_jm", "total nitrogen in each MMS for dairy cattle classes", "kg N", "Calculated from 4.3.1.3 (2)";
+          "EF_m", "nitrous oxide emission factor for each MMS (kg N2O-N/kg N deposited)", "kg N2O-N/kg N", "Constant";
+          "C_N2O", "factor to convert elemental mass of N2O to molecular mass", "fraction", "Constant"
         }, r, c)
       )
     )
@@ -94,11 +94,11 @@ VEERG_4_3_1_3__2_TotalNitrogenInEachMMS_LatexEquation
 
 VEERG_4_3_1_3__2_TotalNitrogenInEachMMS_Arguments
   =LAMBDA(
-    MAKEARRAY(2, 2,
+    MAKEARRAY(2, 4,
       LAMBDA(r,c,
         INDEX({
-          "AE_j", "total nitrogen excreted by each dairy class (kg N)";
-          "MMS_jm", "manure management system fraction for class j and system m"
+          "AE_j", "total nitrogen excreted by each dairy class", "kg N", "Calculated from 4.3.1.3 (3a) and (3b)";
+          "MMS_jm", "manure management system fraction for class j and system m", "fraction", "Input"
         }, r, c)
       )
     )
@@ -151,12 +151,12 @@ VEERG_4_3_1_3__3a_TotalAnnualNitrogenExcretedGreaterThanOneYear_LatexEquationVar
 
 VEERG_4_3_1_3__3a_TotalAnnualNitrogenExcretedGreaterThanOneYear_Arguments
   =LAMBDA(
-    MAKEARRAY(3, 2,
+    MAKEARRAY(3, 4,
       LAMBDA(r,c,
         INDEX({
-          "N_j124", "number of dairy cattle in classes j=1,2,4";
-          "NE_j124", "nitrogen excreted by dairy cattle greater than one year old (kg N/head/day)";
-          "D_j124", "duration of stay on farm for classes j=1,2,4 (days)"
+          "N_j124", "number of dairy cattle in classes j=1,2,4", "head", "Input";
+          "NE_j124", "nitrogen excreted by dairy cattle greater than one year old (kg N/head/day)", "kg N/head/day", "Calculated from 4.3.1.3 (4)";
+          "D_j124", "duration of stay on farm for classes j=1,2,4 (days)", "days", "Input"
         }, r, c)
       )
     )
@@ -213,14 +213,14 @@ VEERG_4_3_1_3__3b_TotalAnnualNitrogenExcretedLessThanOneYear_LatexEquationVariat
 
 VEERG_4_3_1_3__3b_TotalAnnualNitrogenExcretedLessThanOneYear_Arguments
   =LAMBDA(
-    MAKEARRAY(5, 2,
+    MAKEARRAY(5, 4,
       LAMBDA(r,c,
         INDEX({
-          "N_j35", "number of dairy cattle in classes j=3,5";
-          "NE_j35", "nitrogen excreted by weaned dairy cattle less than one year old (kg N/head/day)";
-          "NPW_j35", "nitrogen excreted by pre-weaned calves (kg N/head/day)";
-          "D_j35", "duration of stay on farm for weaned dairy cattle less than one year old (days)";
-          "DPW_j35", "duration of stay on farm for pre-weaned calves (days)"
+          "N_j35", "number of dairy cattle in classes j=3,5", "head", "Input";
+          "NE_j35", "nitrogen excreted by weaned dairy cattle less than one year old (kg N/head/day)", "kg N/head/day", "Calculated from 4.3.1.3 (4)";
+          "NPW_j35", "nitrogen excreted by pre-weaned calves (kg N/head/day)", "kg N/head/day", "Constant";
+          "D_j35", "duration of stay on farm for weaned dairy cattle less than one year old (days)", "days", "Input";
+          "DPW_j35", "duration of stay on farm for pre-weaned calves (days)", "days", "Input"
         }, r, c)
       )
     )
@@ -268,12 +268,12 @@ VEERG_4_3_1_3__4_NitrogenExcretedByDairyCattleGreaterThanOneYear_LatexEquation
 
 VEERG_4_3_1_3__4_NitrogenExcretedByDairyCattleGreaterThanOneYear_Arguments
   =LAMBDA(
-    MAKEARRAY(3, 2,
+    MAKEARRAY(3, 4,
       LAMBDA(r,c,
         INDEX({
-          "CPI_j", "crude protein intake (kg/head/day)";
-          "NR_j", "amount of nitrogen retained by the body (kg N/head/day)";
-          "W_j", "liveweight (kg)"
+          "CPI_j", "crude protein intake (kg/head/day)", "kg/head/day", "Calculated from 4.3.1.3 (5)";
+          "NR_j", "amount of nitrogen retained by the body", "kg N/head/day", "Calculated from 4.3.1.3 (6)";
+          "W_j", "liveweight (kg)", "kg", "Input"
         }, r, c)
       )
     )
@@ -317,11 +317,11 @@ VEERG_4_3_1_3__5_CrudeProteinIntakeOfDairyCattle_LatexEquation
 
 VEERG_4_3_1_3__5_CrudeProteinIntakeOfDairyCattle_Arguments
   =LAMBDA(
-    MAKEARRAY(2, 2,
+    MAKEARRAY(2, 4,
       LAMBDA(r,c,
         INDEX({
-          "I_j", "dry matter intake (kgDM/head/day)";
-          "CP_j", "crude protein content of feed intake (fraction)"
+          "I_j", "dry matter intake", "kgDM/head/day", "Calculated from 3.3.1.1 (3)";
+          "CP_j", "crude protein content of feed intake", "fraction", "Input"
         }, r, c)
       )
     )
@@ -367,13 +367,13 @@ VEERG_4_3_1_3__6_NitrogenRetainedByBody_LatexEquation
 
 VEERG_4_3_1_3__6_NitrogenRetainedByBody_Arguments
   =LAMBDA(
-    MAKEARRAY(4, 2,
+    MAKEARRAY(4, 4,
       LAMBDA(r,c,
         INDEX({
-          "MP_j", "milk production (L/head/day)";
-          "L_j", "intake relative to maintenance";
-          "Z_j", "relative size";
-          "LWG_j", "liveweight gain (kg/day)"
+          "MP_j", "milk production", "L/head/day", "Input";
+          "L_j", "intake relative to maintenance", "", "Calculated from 4.3.1.3 (7)";
+          "Z_j", "relative size", "", "Calculated from 4.3.1.3 (8)";
+          "LWG_j", "liveweight gain", "kg/head/day", "Input"
         }, r, c)
       )
     )
@@ -419,13 +419,13 @@ VEERG_4_3_1_3__7_IntakeRelativeToMaintenance_LatexEquation
 
 VEERG_4_3_1_3__7_IntakeRelativeToMaintenance_Arguments
   =LAMBDA(
-    MAKEARRAY(4, 2,
+    MAKEARRAY(4, 4,
       LAMBDA(r,c,
         INDEX({
-          "I_j", "dry matter intake (kgDM/head/day)";
-          "W_j", "liveweight (kg)";
-          "MR_j", "increase in metabolic rate when producing milk";
-          "MI_j", "additional intake required for milk production (kgDM/head/day)"
+          "I_j", "dry matter intake", "kgDM/head/day", "Calculated from 3.3.1.1 (3)";
+          "W_j", "liveweight", "kg/head", "Input";
+          "MR_j", "increase in metabolic rate when producing milk", "", "Constant";
+          "MI_j", "additional intake required for milk production", "kgDM/head/day", "Calculated from 3.3.1.1 (4)"
         }, r, c)
       )
     )
@@ -469,11 +469,11 @@ VEERG_4_3_1_3__8_RelativeSize_LatexEquation
 
 VEERG_4_3_1_3__8_RelativeSize_Arguments
   =LAMBDA(
-    MAKEARRAY(2, 2,
+    MAKEARRAY(2, 4,
       LAMBDA(r,c,
         INDEX({
-          "W_j", "liveweight (kg)";
-          "WR_j", "reference weight (kg)"
+          "W_j", "liveweight", "kg/head", "Input";
+          "WR_j", "reference weight", "kg/head", "Constant"
         }, r, c)
       )
     )
