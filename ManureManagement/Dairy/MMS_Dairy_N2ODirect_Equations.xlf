@@ -367,10 +367,12 @@ VEERG_4_3_1_3__6_NitrogenRetainedByBody_LatexEquation
 
 VEERG_4_3_1_3__6_NitrogenRetainedByBody_Arguments
   =LAMBDA(
-    MAKEARRAY(4, 4,
+    MAKEARRAY(6, 4,
       LAMBDA(r,c,
         INDEX({
-          "MP_j", "milk production", "L/head/day", "Input";
+          "MPU", "input milk production unit", "", "Input";
+          "MP_j", "milk production (if input as litres of milk)", "L/head/day", "Input";
+          "MP_j", "milk production (if input as milk solids)", "L/head/day", "Calculated from 3.3.1.1 (5)";
           "L_j", "intake relative to maintenance", "", "Calculated from 4.3.1.3 (7)";
           "Z_j", "relative size", "", "Calculated from 4.3.1.3 (8)";
           "LWG_j", "liveweight gain", "kg/head/day", "Input"
@@ -378,6 +380,9 @@ VEERG_4_3_1_3__6_NitrogenRetainedByBody_Arguments
       )
     )
   );
+
+VEERG_4_3_1_3__6_NitrogenRetainedByBody_Variation
+  =LAMBDA("VARIATION ON SOURCE: Added check for milk production input unit and choose corresponding MP_j value accordingly.");
 
 /*
 --------------------------------------

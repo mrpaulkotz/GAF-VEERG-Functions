@@ -29,6 +29,12 @@ VEERG_3_3_1_1__1_TotalAnnualMethaneFromEntericFermentation
     ((N_j124 * M_j124 * D_j124) + (N_j35 * M_j35 * D_j35) + (N_j35 * MPW_ENTERIC_j35 * D_j35)) * 10 ^ -3
   );
 
+VEERG_3_3_1_1__1_TotalAnnualMethaneFromEntericFermentationVariation
+  =LAMBDA(
+    N_j124, M_j124, D_j124, N_j35, M_j35, D_j35, DPW_j35, MPW_ENTERIC_j35,
+    ((N_j124 * M_j124 * D_j124) + (N_j35 * M_j35 * D_j35) + (N_j35 * MPW_ENTERIC_j35 * DPW_j35)) * 10 ^ -3
+  );
+
 VEERG_3_3_1_1__1_TotalAnnualMethaneFromEntericFermentation_Title
   =LAMBDA("Total annual methane production from enteric fermentation in dairy cattle");
 
@@ -45,25 +51,32 @@ VEERG_3_3_1_1__1_TotalAnnualMethaneFromEntericFermentation_NIRReference
   =LAMBDA("");
 
 VEERG_3_3_1_1__1_TotalAnnualMethaneFromEntericFermentation_LatexEquation
-  =LAMBDA("E_{enteric}=((N_{j=1,2,4}\times M_{j=1,2,4}\times D_{j=1,2,4})+(N_{j=3,5}\times M_{j=3,5}\times D_{j=3,5})+(N_{j=3,5}\times MPW_{ENTERIC,j=3,5}\times D_{j=3,5}))\times 10^{-3}");
+  =LAMBDA("E_{enteric}=\sum\nolimits_j((N_{j=1,2,4}\times M_{j=1,2,4}\times D_{j=1,2,4})+(N_{j=3,5}\times M_{j=3,5}\times D_{j=3,5})+(N_{j=3,5}\times MPW_{ENTERIC,j=3,5}\times D_{j=3,5}))\times 10^{-3}");
+
+VEERG_3_3_1_1__1_TotalAnnualMethaneFromEntericFermentation_LatexEquationVariation
+  =LAMBDA("E_{enteric}=\sum\nolimits_j((N_{j=1,2,4}\times M_{j=1,2,4}\times D_{j=1,2,4})+(N_{j=3,5}\times M_{j=3,5}\times D_{j=3,5})+(N_{j=3,5}\times MPW_{ENTERIC,j=3,5}\times DPW_{j=3,5}))\times 10^{-3}");
 
 VEERG_3_3_1_1__1_TotalAnnualMethaneFromEntericFermentation_Arguments
   =LAMBDA(
-    MAKEARRAY(7, 4,
+    MAKEARRAY(8, 4,
       LAMBDA(r,c,
         INDEX({
           "N_j124", "number of dairy cattle in classes j=1,2,4", "head", "Input";
           "M_j124", "daily enteric methane production for classes j=1,2,4", "kg CH4/head/day", "Calculated from 3.3.1.1 (2)";
           "D_j124", "duration of stay on the farm for classes j=1,2,4", "days", "Input";
           "N_j35", "number of dairy cattle in classes j=3,5", "head", "Input";
-          "M_j35", "daily enteric methane production for classes j=3,5", "kg CH4/head/day", "Calculated from 3.3.1.1 (2)";
-          "D_j35", "duration of stay on the farm for classes j=3,5", "days", "Input";
+          "M_j35", "daily enteric methane production for weaned classes j=3,5", "kg CH4/head/day", "Calculated from 3.3.1.1 (2)";
+          "D_j35", "duration of stay on the farm for weaned classes j=3,5", "days", "Input";
+          "DPW_j35", "duration of stay on the farm for pre-weaned heifer and bull calves", "days", "Input";
           "MPW_ENTERIC_j35", "daily methane production for pre-weaned heifer and bull calves", "kg CH4/head/day", "Constant"
 
         }, r, c)
       )
     )
   );
+
+VEERG_3_3_1_1__1_TotalAnnualMethaneFromEntericFermentation_Variation
+  =LAMBDA("VARIATION ON SOURCE: Added 'DPW' variable to allow for a separate handling of pre-weaned duration.");
 
 /*
 --------------------------------------
@@ -204,10 +217,12 @@ VEERG_3_3_1_1__4_AdditionalIntakeForMilkProduction_LatexEquation
 
 VEERG_3_3_1_1__4_AdditionalIntakeForMilkProduction_Arguments
   =LAMBDA(
-    MAKEARRAY(5, 4,
+    MAKEARRAY(7, 4,
       LAMBDA(r,c,
         INDEX({
-          "MP_j", "milk production", "L/head/day", "Input";
+          "MPU", "input milk production unit", "", "Input";
+          "MP_j", "milk production (if input as litres of milk)", "L/head/day", "Input";
+          "MP_j", "milk production (if input as milk solids)", "L/head/day", "Calculated from 3.3.1.1 (5)";
           "NE", "net energy", "MJ net energy/kg milk", "Constant";
           "GEC", "gross energy content", "MJ/kgDM", "Constant";
           "k", "efficiency of metabolizable energy use for milk production", "fraction", "Constant";
@@ -216,6 +231,9 @@ VEERG_3_3_1_1__4_AdditionalIntakeForMilkProduction_Arguments
       )
     )
   );
+
+VEERG_3_3_1_1__4_AdditionalIntakeForMilkProduction_Variation
+  =LAMBDA("VARATION ON SOURCE: Added milk production unit variable to allow for use of either milk solids or litres of milk.");
 
 /*
 --------------------------------------
@@ -252,20 +270,38 @@ VEERG_3_3_1_1__5_MilkProductionFromMilkSolids_NIRReference
   =LAMBDA("");
 
 VEERG_3_3_1_1__5_MilkProductionFromMilkSolids_LatexEquation
-  =LAMBDA("MP_j=MS_j/(0.01\times (FC_j+PC_j))");
+  =LAMBDA("MP_j=\frac{MS_j}{0.01\times (FC_j+PC_j)}");
 
 VEERG_3_3_1_1__5_MilkProductionFromMilkSolids_Arguments
   =LAMBDA(
-    MAKEARRAY(3, 4,
+    MAKEARRAY(4, 4,
       LAMBDA(r,c,
         INDEX({
+          "MPU", "input milk production unit", "", "Input";
           "MS_j", "daily production of milk solids", "kg MS/head/day", "Input";
-          "FC_j", "fat content in fat and protein corrected milk", "per cent", "XXXX";
-          "PC_j", "protein content in fat and protein corrected milk", "per cent", "XXXX"
+          "FC_j", "fat content in fat and protein corrected milk", "per cent", "Constant";
+          "PC_j", "protein content in fat and protein corrected milk", "per cent", "Constant"
         }, r, c)
       )
     )
   );
+
+VEERG_3_3_1_1__5_MilkProductionFromMilkSolids_Arguments_Method2
+  =LAMBDA(
+    MAKEARRAY(4, 4,
+      LAMBDA(r,c,
+        INDEX({
+          "MPU", "milk production unit", "", "Input";
+          "MS_j", "daily production of milk solids", "kg MS/head/day", "Input";
+          "FC_j", "fat content in fat and protein corrected milk", "per cent", "Input";
+          "PC_j", "protein content in fat and protein corrected milk", "per cent", "Input"
+        }, r, c)
+      )
+    )
+  );
+
+VEERG_3_3_1_1__5_MilkProductionFromMilkSolids_Variation
+  =LAMBDA("VARATION ON SOURCE: Added milk production unit variable to allow for use of either milk solids or litres of milk. Converted input FC and PC percent to integer.");
 
 /*
 --------------------------------------
