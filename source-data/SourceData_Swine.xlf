@@ -355,3 +355,30 @@ SourceData_Swine_FracLEACH_DrylotMMS_Variation
 SourceData_Swine_FracLEACH_DrylotMMS_Data
   =LAMBDA(0.02);
 
+
+/* 
+--------------------------------------
+SourceData_Swine_MegajoulesPerKilogramMethane
+F
+MJ/kg CH4
+
+--------------------------------------
+*/
+
+SourceData_Swine_MegajoulesPerKilogramMethane_Title
+  =LAMBDA("Megajoules per kilogram of methane");
+
+SourceData_Swine_MegajoulesPerKilogramMethane_Variable
+  =LAMBDA("F");
+
+SourceData_Swine_MegajoulesPerKilogramMethane_Unit
+  =LAMBDA("MJ / kg CH4");
+
+SourceData_Swine_MegajoulesPerKilogramMethane_Source
+  =LAMBDA("VEERG 2026: 3.5.2.3 CONSTANT");
+
+SourceData_Swine_MegajoulesPerKilogramMethane_Variation
+  =LAMBDA("");
+
+SourceData_Swine_MegajoulesPerKilogramMethane_Data
+  =LAMBDA(55.22);

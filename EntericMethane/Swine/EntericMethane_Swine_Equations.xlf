@@ -1,0 +1,109 @@
+/*
+============================================================================
+3.5: Enteric Methane - Swine
+============================================================================
+3.5.1.1 Method 1 - Enteric Swine
+============================================================================
+*/
+
+/*
+--------------------------------------
+VEERG_3_5_1_1__1_TotalAnnualMethaneFromEntericFermentation
+Total annual methane production from enteric fermentation in swine
+E_enteric
+t CH4
+E_{enteric}=\sum_{j}(N_j\times M_j\times D_j)\times 10^{-3}
+N_j = numbers of swine of each class (head)
+M_j = methane production (kg CH4/head/day)
+D_j = the average number of days on farm for each swine class (days)
+--------------------------------------
+*/
+
+VEERG_3_5_1_1__1_TotalAnnualMethaneFromEntericFermentation
+  =LAMBDA(
+    N_j, M_j, D_j,
+    (N_j * M_j * D_j) * 10 ^ -3
+  );
+
+VEERG_3_5_1_1__1_TotalAnnualMethaneFromEntericFermentation_Title
+  =LAMBDA("Total annual methane production from enteric fermentation in swine");
+
+VEERG_3_5_1_1__1_TotalAnnualMethaneFromEntericFermentation_Variable
+  =LAMBDA("E_enteric");
+
+VEERG_3_5_1_1__1_TotalAnnualMethaneFromEntericFermentation_Unit
+  =LAMBDA("t CH4");
+
+VEERG_3_5_1_1__1_TotalAnnualMethaneFromEntericFermentation_Source
+  =LAMBDA("VEERG 2026: 3.5.1.1, Equation (1)");
+
+VEERG_3_5_1_1__1_TotalAnnualMethaneFromEntericFermentation_NIRReference
+  =LAMBDA("");
+
+VEERG_3_5_1_1__1_TotalAnnualMethaneFromEntericFermentation_LatexEquation
+  =LAMBDA("E_{enteric}=\sum\nolimits_j(N_j\times M_j\times D_j)\times 10^{-3}");
+
+VEERG_3_5_1_1__1_TotalAnnualMethaneFromEntericFermentation_Arguments
+  =LAMBDA(
+    MAKEARRAY(3, 4,
+      LAMBDA(r,c,
+        INDEX({
+          "N_j", "numbers of swine of each class", "head", "Input";
+          "M_j", "methane production", "kg CH4/head/day", "Calculated from 3.5.1.1, (2)";
+          "D_j", "the average number of days on farm for each swine class", "days", "Input"
+        }, r, c)
+      )
+    )
+  );
+
+/*
+--------------------------------------
+VEERG_3_5_1_1__2_DailyEntericMethaneProduction
+Total daily production of enteric methane of swine
+M_j
+kg CH4/head/day
+M_j=\frac{I_j\times 18.6\times 0.007}{F}
+I_j = daily feed ingested by each swine class (kg/head/day)
+F = megajoules per kilogram of methane (MJ/kg CH4)
+--------------------------------------
+*/
+
+VEERG_3_5_1_1__2_DailyEntericMethaneProduction
+  =LAMBDA(
+    I_j, F,
+    (I_j * 18.6 * 0.007) / F
+  );
+
+VEERG_3_5_1_1__2_DailyEntericMethaneProduction_Title
+  =LAMBDA("Total daily production of enteric methane of swine");
+
+VEERG_3_5_1_1__2_DailyEntericMethaneProduction_Variable
+  =LAMBDA("M_j");
+
+VEERG_3_5_1_1__2_DailyEntericMethaneProduction_Unit
+  =LAMBDA("kg CH4/head/day");
+
+VEERG_3_5_1_1__2_DailyEntericMethaneProduction_Source
+  =LAMBDA("VEERG 2026: 3.5.1.1, Equation (2)");
+
+VEERG_3_5_1_1__2_DailyEntericMethaneProduction_NIRReference
+  =LAMBDA("");
+
+VEERG_3_5_1_1__2_DailyEntericMethaneProduction_LatexEquation
+  =LAMBDA("M_j=\frac{I_j\times 18.6\times 0.007}{F}");
+
+VEERG_3_5_1_1__2_DailyEntericMethaneProduction_Arguments
+  =LAMBDA(
+    MAKEARRAY(4, 4,
+      LAMBDA(r,c,
+        INDEX({
+          "I_j", "daily feed ingested by each swine class", "kg/head/day", "Input";
+          "18.6", "gross energy (GE) content of feed", "MJ GE/kg feed", "Constant";
+          "0.007", "fraction of GE intake converted to methane by swine", "fraction", "Constant";
+          "F", "megajoules per kilogram of methane", "MJ/kg CH4", "Constant"
+        }, r, c)
+      )
+    )
+  );
+
+
