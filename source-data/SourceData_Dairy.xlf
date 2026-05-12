@@ -702,3 +702,55 @@ SourceData_Dairy_FracGASMSoil_Variation
 
 SourceData_Dairy_FracGASMSoil_Data
   =LAMBDA(0.21);
+
+
+/* 
+--------------------------------------
+SourceData_Dairy_FatContentInMilk
+Fat content in fat and protein corrected milk
+--------------------------------------
+*/
+
+SourceData_Dairy_FatContentInMilk_Title
+  =LAMBDA("Fat content in fat and protein corrected milk");
+
+SourceData_Dairy_FatContentInMilk_Variable
+  =LAMBDA("FC_j");
+
+SourceData_Dairy_FatContentInMilk_Unit
+  =LAMBDA("percent");
+
+SourceData_Dairy_FatContentInMilk_Source
+  =LAMBDA("VEERG 2026: 3.3.2.2 DATA (METHOD 1 AND 2 OPTIONS)");
+
+SourceData_Dairy_FatContentInMilk_Variation
+  =LAMBDA("");
+
+SourceData_Dairy_FatContentInMilk_Data
+  =LAMBDA(4.0);
+
+
+/* 
+--------------------------------------
+SourceData_Dairy_ProteinContentInMilk
+Protein content in fat and protein corrected milk
+--------------------------------------
+*/
+
+SourceData_Dairy_ProteinContentInMilk_Title
+  =LAMBDA("Protein content in fat and protein corrected milk");
+
+SourceData_Dairy_ProteinContentInMilk_Variable
+  =LAMBDA("PC_j");
+
+SourceData_Dairy_ProteinContentInMilk_Unit
+  =LAMBDA("percent");
+
+SourceData_Dairy_ProteinContentInMilk_Source
+  =LAMBDA("VEERG 2026: 3.3.2.2 DATA (METHOD 1 AND 2 OPTIONS)");
+
+SourceData_Dairy_ProteinContentInMilk_Variation
+  =LAMBDA("");
+
+SourceData_Dairy_ProteinContentInMilk_Data
+  =LAMBDA(3.3);
