@@ -45,12 +45,12 @@ VEERG_4_1_1_3__1_TotalAnnualDirectNitrousOxideEmissions_LatexEquation
 
 VEERG_4_1_1_3__1_TotalAnnualDirectNitrousOxideEmissions_Arguments
   =LAMBDA(
-    MAKEARRAY(3, 2,
+    MAKEARRAY(3, 4,
       LAMBDA(r,c,
         INDEX({
-          "MN_jmT","nitrogen per cattle group, MMS and treatment stage : kg N";
-          "EF_jm","nitrous oxide emission factor for MMS : kg N2O-N/kg N";
-          "C_N2O","factor to convert elemental mass of nitrous oxide to molecular mass : ratio"
+          "MN_jmT","nitrogen per cattle group, MMS and treatment stage", "kg N", "Calculated from 4.1.1.3 (2)(6)(8)";
+          "EF_jm","nitrous oxide emission factor for MMS","kg N2O-N/kg N", "Constant";
+          "C_N2O","factor to convert elemental mass of nitrous oxide to molecular mass","ratio", "Constant"
         }, r, c)
       )
     )
@@ -94,11 +94,11 @@ VEERG_4_1_1_3__2_Stage1NitrogenInMMSDrylot_LatexEquation
 
 VEERG_4_1_1_3__2_Stage1NitrogenInMMSDrylot_Arguments
   =LAMBDA(
-    MAKEARRAY(2, 2,
+    MAKEARRAY(2, 4,
       LAMBDA(r,c,
         INDEX({
-          "AE_j","total nitrogen excreted by each cattle group : kg N";
-          "MMS_jm5T1","fraction of manure in primary system drylot MMS : fraction"
+          "AE_j","total nitrogen excreted by each cattle group", "kg N", "Calculated from 4.1.1.3 (3)";
+          "MMS_jm5T1","fraction of manure in primary system drylot MMS", "fraction", "Input"
         }, r, c)
       )
     )
@@ -143,12 +143,12 @@ VEERG_4_1_1_3__3_AnnualNitrogenExcretion_LatexEquation
 
 VEERG_4_1_1_3__3_AnnualNitrogenExcretion_Arguments
   =LAMBDA(
-    MAKEARRAY(3, 2,
+    MAKEARRAY(3, 4,
       LAMBDA(r,c,
         INDEX({
-          "N_j","number of cattle in each group : head";
-          "NE_j","nitrogen excretion : kg N/head/day";
-          "D_j","duration of stay of cattle group : days"
+          "N_j","number of cattle in each group", "head", "Input";
+          "NE_j","nitrogen excretion", "kg N/head/day", "Calculated from 4.1.1.3 (4)";
+          "D_j","duration of stay of cattle group", "days", "Input"
         }, r, c)
       )
     )
@@ -192,11 +192,11 @@ VEERG_4_1_1_3__4_NitrogenExcretionPerHead_LatexEquation
 
 VEERG_4_1_1_3__4_NitrogenExcretionPerHead_Arguments
   =LAMBDA(
-    MAKEARRAY(2, 2,
+    MAKEARRAY(2, 4,
       LAMBDA(r,c,
         INDEX({
-          "NI_j","nitrogen intake : kg N/head/day";
-          "NR_j","nitrogen retention expressed as a fraction of intake : fraction"
+          "NI_j","nitrogen intake", "kg N/head/day", "Calculated from 4.1.1.3 (5)";
+          "NR_j","nitrogen retention expressed as a fraction of intake", "fraction", "Input"
         }, r, c)
       )
     )
@@ -241,12 +241,12 @@ VEERG_4_1_1_3__5_NitrogenIntake_LatexEquation
 
 VEERG_4_1_1_3__5_NitrogenIntake_Arguments
   =LAMBDA(
-    MAKEARRAY(3, 2,
+    MAKEARRAY(3, 4,
       LAMBDA(r,c,
         INDEX({
-          "I_j","dry matter intake : kg DM/head/day";
-          "CP_j","crude protein content of feed : fraction";
-          "6.25","factor for converting crude protein into nitrogen : ratio"
+          "I_j","dry matter intake", "kg DM/head/day", "Input";
+          "CP_j","crude protein content of feed", "fraction", "Input";
+          "6.25","factor for converting crude protein into nitrogen", "ratio", "Constant"
         }, r, c)
       )
     )
@@ -290,11 +290,11 @@ VEERG_4_1_1_3__6_Stage2NitrogenInMMS_LatexEquation
 
 VEERG_4_1_1_3__6_Stage2NitrogenInMMS_Arguments
   =LAMBDA(
-    MAKEARRAY(2, 2,
+    MAKEARRAY(2, 4,
       LAMBDA(r,c,
         INDEX({
-          "NT_jmT2","nitrogen transferred to secondary treatment MMS : kg N";
-          "MMS_jmT2","fraction of manure in each secondary system : fraction"
+          "NT_jmT2","nitrogen transferred to secondary treatment MMS", "kg N", "Calculated from 4.1.1.3 (7)";
+          "MMS_jmT2","fraction of manure in each secondary system", "fraction", "Input"
         }, r, c)
       )
     )
@@ -340,13 +340,13 @@ VEERG_4_1_1_3__7_NitrogenTransferredToStage2_LatexEquation
 
 VEERG_4_1_1_3__7_NitrogenTransferredToStage2_Arguments
   =LAMBDA(
-    MAKEARRAY(4, 2,
+    MAKEARRAY(4, 4,
       LAMBDA(r,c,
         INDEX({
-          "MN_jm5T1","nitrogen in MMS treatment stage 1 : kg N";
-          "FracGASM_m5","fraction of N volatilised from drylot MMS : fraction";
-          "EF_m5","nitrous oxide emission factor for drylot MMS : kg N2O-N/kg N deposited";
-          "MN_jmT3","nitrogen in MMS treatment stage 3 : kg N"
+          "MN_jm5T1","nitrogen in MMS treatment stage 1", "kg N", "Calculated from 4.1.1.3 (2)";
+          "FracGASM_m5","fraction of N volatilised from drylot MMS", "fraction", "Constant";
+          "EF_m5","nitrous oxide emission factor for drylot MMS", "kg N2O-N/kg N deposited", "Constant";
+          "MN_jmT3","nitrogen in MMS treatment stage 3", "kg N", "Calculated from 4.1.1.3 (8)"
         }, r, c)
       )
     )
@@ -390,11 +390,11 @@ VEERG_4_1_1_3__8_Stage3NitrogenInMMSAnaerobicLagoon_LatexEquation
 
 VEERG_4_1_1_3__8_Stage3NitrogenInMMSAnaerobicLagoon_Arguments
   =LAMBDA(
-    MAKEARRAY(2, 2,
+    MAKEARRAY(2, 4,
       LAMBDA(r,c,
         INDEX({
-          "AE_j","total nitrogen excreted by each cattle group : kg N";
-          "MMS_jm1T3","fraction of manure to tertiary anaerobic lagoon system : fraction"
+          "AE_j","total nitrogen excreted by each cattle group", "kg N", "Calculated from 4.1.1.3 (3)";
+          "MMS_jm1T3","fraction of manure to tertiary anaerobic lagoon system", "fraction", "Input"
         }, r, c)
       )
     )
