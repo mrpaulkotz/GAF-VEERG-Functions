@@ -1,0 +1,107 @@
+/*
+============================================================================
+3.1: Enteric Methane - Feedlot Beef
+============================================================================
+3.1.1.1 Method 1 - Enteric Beef Feedlot
+============================================================================
+*/
+
+/*
+--------------------------------------
+VEERG_3_1_1_1__1_TotalAnnualMethaneFromEntericFermentation
+Total annual methane production from enteric fermentation in feedlot beef cattle
+E_enteric
+t CH4
+E_{enteric}=\sum\nolimits_j(D_j\times M_j\times N_j)\times 10^{-3}
+D_j = duration of stay of each cattle lot (days)
+M_j = daily methane production (kg CH4/head/day)
+N_j = numbers of feedlot cattle in each cattle lot (head)
+--------------------------------------
+*/
+
+VEERG_3_1_1_1__1_TotalAnnualMethaneFromEntericFermentation
+  =LAMBDA(
+    D_j, M_j, N_j,
+    (D_j * M_j * N_j) * 10 ^ -3
+  );
+
+VEERG_3_1_1_1__1_TotalAnnualMethaneFromEntericFermentation_Title
+  =LAMBDA("Total annual methane production from enteric fermentation in feedlot beef cattle");
+
+VEERG_3_1_1_1__1_TotalAnnualMethaneFromEntericFermentation_Variable
+  =LAMBDA("E_enteric");
+
+VEERG_3_1_1_1__1_TotalAnnualMethaneFromEntericFermentation_Unit
+  =LAMBDA("t CH4");
+
+VEERG_3_1_1_1__1_TotalAnnualMethaneFromEntericFermentation_Source
+  =LAMBDA("VEERG 2026: 3.1.1.1, Equation (1)");
+
+VEERG_3_1_1_1__1_TotalAnnualMethaneFromEntericFermentation_NIRReference
+  =LAMBDA("");
+
+VEERG_3_1_1_1__1_TotalAnnualMethaneFromEntericFermentation_LatexEquation
+  =LAMBDA("E_{enteric}=\sum\nolimits_j(D_j\times M_j\times N_j)\times 10^{-3}");
+
+VEERG_3_1_1_1__1_TotalAnnualMethaneFromEntericFermentation_Arguments
+  =LAMBDA(
+    MAKEARRAY(3, 4,
+      LAMBDA(r,c,
+        INDEX({
+          "D_j", "duration of stay of each cattle lot", "days", "Input";
+          "M_j", "daily methane production", "kg CH4/head/day", "Calculated from 3.1.1.1, (2)";
+          "N_j", "numbers of feedlot cattle in each cattle lot", "head", "Input"
+        }, r, c)
+      )
+    )
+  );
+
+/*
+--------------------------------------
+VEERG_3_1_1_1__2_DailyEntericMethaneProduction
+Daily production of enteric methane
+M_j
+kg CH4/head/day
+M_j=(5.11\times I_j-4.00\times EE_j+2.26\times NDF_j)\times 10^{-3}
+I_j = dry matter intake (kg DM/head/day)
+EE_j = ether extract as a percentage of I_j (per cent)
+NDF_j = neutral detergent fibre as a percentage of I_j (per cent)
+--------------------------------------
+*/
+
+VEERG_3_1_1_1__2_DailyEntericMethaneProduction
+  =LAMBDA(
+    I_j, EE_j, NDF_j,
+    (5.11 * I_j - 4.00 * EE_j + 2.26 * NDF_j) * 10 ^ -3
+  );
+
+VEERG_3_1_1_1__2_DailyEntericMethaneProduction_Title
+  =LAMBDA("Daily production of enteric methane");
+
+VEERG_3_1_1_1__2_DailyEntericMethaneProduction_Variable
+  =LAMBDA("M_j");
+
+VEERG_3_1_1_1__2_DailyEntericMethaneProduction_Unit
+  =LAMBDA("kg CH4/head/day");
+
+VEERG_3_1_1_1__2_DailyEntericMethaneProduction_Source
+  =LAMBDA("VEERG 2026: 3.1.1.1, Equation (2)");
+
+VEERG_3_1_1_1__2_DailyEntericMethaneProduction_NIRReference
+  =LAMBDA("Almeida et al. (2025)");
+
+VEERG_3_1_1_1__2_DailyEntericMethaneProduction_LatexEquation
+  =LAMBDA("M_j=(5.11\times I_j-4.00\times EE_j+2.26\times NDF_j)\times 10^{-3}");
+
+VEERG_3_1_1_1__2_DailyEntericMethaneProduction_Arguments
+  =LAMBDA(
+    MAKEARRAY(3, 4,
+      LAMBDA(r,c,
+        INDEX({
+          "I_j", "dry matter intake", "kg DM/head/day", "Input";
+          "EE_j", "ether extract as a percentage of I_j", "per cent", "Input";
+          "NDF_j", "neutral detergent fibre as a percentage of I_j", "per cent", "Input"
+        }, r, c)
+      )
+    )
+  );
