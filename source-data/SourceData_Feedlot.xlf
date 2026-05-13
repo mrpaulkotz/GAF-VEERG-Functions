@@ -315,7 +315,8 @@ SourceData_Feedlot_MCF_Variation
         INDEX({
           "VARIATION ON SOURCE:";
           "Duplicated NSW values for ACT";
-          "Added NT and TAS columns with 'no data' values";
+          "Added NT column that duplicates QLD values as per advice from source data provider.";
+          "Added TAS column that duplicates VIC values as per advice from source data provider.";
           "Added 'NIR definition' column with MMS names that match NIR definitions."
         }, r, c)
       )
@@ -328,11 +329,11 @@ SourceData_Feedlot_MCF_Data
       LAMBDA(r,c, 
         INDEX({
           "Treatment stage T", "MMS m", "NSW", "ACT", "QLD", "NT", "SA", "VIC", "WA", "TAS", "NIR definition";
-          "Primary", "Dry lot (Feedpad)", 0.01, 0.01, 0.03, "No data", 0.01, 0.01, 0.01, "No data", "Drylot (feed pad)"; 
-          "Secondary", "Solid Storage (Stockpile)", 0.02, 0.02, 0.02, "No data", 0.02, 0.02, 0.02, "No data", "Solid storage"; 
-          "Secondary", "Composting (Passive Windrow)", 0.01, 0.01, 0.01, "No data", 0.01, 0.01, 0.01, "No data", "Composting (passive windrow)"; 
-          "Secondary", "Direct Application to soil", 0, 0, 0, "No data", 0, 0, 0, "No data", "Direct application"; 
-          "Tertiary", "Uncovered anaerobic lagoon (Effluent pond)", 0.75, 0.75, 0.77, "No data", 0.75, 0.75, 0.77, "No data", "Anaerobic lagoon"
+          "Primary", "Dry lot (Feedpad)", 0.01, 0.01, 0.03, 0.03, 0.01, 0.01, 0.01, 0.01, "Drylot (feed pad)"; 
+          "Secondary", "Solid Storage (Stockpile)", 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, "Solid storage"; 
+          "Secondary", "Composting (Passive Windrow)", 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, "Composting (passive windrow)"; 
+          "Secondary", "Direct Application to soil", 0, 0, 0, 0, 0, 0, 0, 0, "Direct application"; 
+          "Tertiary", "Uncovered anaerobic lagoon (Effluent pond)", 0.75, 0.75, 0.77, 0.77, 0.75, 0.75, 0.77, 0.75, "Anaerobic lagoon"
         }, r, c)
       )
     )
