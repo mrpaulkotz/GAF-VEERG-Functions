@@ -34,3 +34,32 @@ Electricity_Scope2Scope3LocationBased_Data
 
 Electricity_Scope2Scope3LocationBased_Variation
 =LAMBDA(("VARIATION OF SOURCE DATA: NSW and ACT split into separate rows."));
+
+
+/*
+============================================================================
+Residual Mix Factor for market-based equations
+============================================================================
+*/
+
+Electricity_Scope2Scope3MarketBased_Title
+=LAMBDA(("Electricity scope 2 and scope 3 market-based emission factors"));
+
+Electricity_Scope2MarketBased_Description
+=LAMBDA(("Table 2a Indirect (scope 2 and scope 3) emission factors from consumption of purchased or acquired electricity: market-based factors "));
+
+Electricity_Scope2Scope3MarketBased_Source
+=LAMBDA(("Australian National Greenhouse Accounts Factors 2025 - Table 2a"));
+
+Electricity_Scope2Scope3MarketBased_Data
+=LAMBDA(
+  MAKEARRAY(2, 5,
+    LAMBDA(r,c,
+      INDEX({
+        "State, Territory or grid description", "Scope 2 Emission Factors (kg CO2-e/kWh)", "Scope 2 Emission Factors (kg CO2-e/GJ)", "Scope 3 Emission Factors (kg CO2 - e / kWh)", "Scope 3 Emission Factors (kg CO2 - e / GJ)";
+        "National", 0.81, 226, 0.10, 29
+      }, r, c)
+)));
+
+Electricity_Scope2Scope3MarketBased_Variation
+=LAMBDA((""));

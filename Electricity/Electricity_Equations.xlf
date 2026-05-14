@@ -1,102 +1,129 @@
 /*
-======================================
-10: Scope 2: Emissions from Purchased Electricity
-======================================
+============================================================================
+14: Electricity
+============================================================================
+14.1.1 Purchased Electricity (Location-Based)
+14.1.2 Purchased Electricity (Market-Based)
+============================================================================
 */
 
-
-/* 
+/*
 --------------------------------------
-VEERG_10_1_1__1_Scope2Electricity_LocationBased
+VEERG_14_1_1__1_LocationBasedScopeElectricityEmissions
 Location-based Scope 2 emissions from purchased electricity
-Qelec : Amount of electricity purchased from the grid : kWh
-EF2,elec : Location - based Scope 2 emission factor for electricity : kg CO2e / kWh
+E_2elec
+t CO2e
+E_{2,elec}=Q_{elec}\times EF_{2,elec}\times 10^{-3}
+Q_elec = amount of electricity purchased from the grid (kWh)
+EF_2elec = location-based Scope 2 emission factor for electricity (kg CO2e/kWh)
 --------------------------------------
 */
 
-
-VEERG_10_1_1__1_Scope2Electricity_LocationBased
+VEERG_14_1_1__1_LocationBasedScopeElectricityEmissions
   =LAMBDA(
-    Qelec, EF2elec,
-    Qelec * EF2elec * 10 ^ - 3
-  )
-;
+    Q_elec, EF_2elec,
+    Q_elec * EF_2elec * 10 ^ -3
+  );
 
-VEERG_10_1_1__1_Scope2Electricity_LocationBased_Title
+VEERG_14_1_1__1_LocationBasedScopeElectricityEmissions_Title
   =LAMBDA("Location-based Scope 2 emissions from purchased electricity");
 
-VEERG_10_1_1__1_Scope2Electricity_LocationBased_Variable
-  =LAMBDA("E2elec");
+VEERG_14_1_1__1_LocationBasedScopeElectricityEmissions_Variable
+  =LAMBDA("E_2elec");
 
-VEERG_10_1_1__1_Scope2Electricity_LocationBased_Unit
-  =LAMBDA("t CO2-e");
+VEERG_14_1_1__1_LocationBasedScopeElectricityEmissions_Unit
+  =LAMBDA("t CO2e");
 
-VEERG_10_1_1__1_Scope2Electricity_LocationBased_Source
-  =LAMBDA("VEERG 2026: 10.1.1, Equation (1)");
+VEERG_14_1_1__1_LocationBasedScopeElectricityEmissions_Source
+  =LAMBDA("VEERG 2026: 14.1.1, Equation (1)");
 
-VEERG_10_1_1__1_Scope2Electricity_LocationBased_NIRReference
-  =LAMBDA("Australian National Greenhouse Accounts Factors 2025 - 2.2 Estimating emissions from stationary energy sources");
+VEERG_14_1_1__1_LocationBasedScopeElectricityEmissions_NIRReference
+  =LAMBDA("");
 
-VEERG_10_1_1__1_Scope2Electricity_LocationBased_ReadableEquation
-  =LAMBDA("E2,elec = Qelec * EF2,elec * 10 ^ - 3");
+VEERG_14_1_1__1_LocationBasedScopeElectricityEmissions_LatexEquation
+  =LAMBDA("E_{2,elec}=Q_{elec}\times EF_{2,elec}\times 10^{-3}");
 
-VEERG_10_1_1__1_Scope2Electricity_LocationBased_Arguments
+VEERG_14_1_1__1_LocationBasedScopeElectricityEmissions_Arguments
   =LAMBDA(
-    MAKEARRAY(3, 3, 
-      LAMBDA(r,c, 
+    MAKEARRAY(3, 4,
+      LAMBDA(r,c,
         INDEX({
-          "Qelec", "Amount of electricity purchased from the grid", "kWh";
-          "EF2,elec", "Location - based Scope 2 emission factor for electricity", "kg CO2e / kWh";
-          "2", "Scope 2", ""
+          "Q_elec", "amount of electricity purchased from the grid", "kWh", "Input";
+          "EF_2elec", "location-based Scope 2 emission factor for electricity", "kg CO2e/kWh", "Constant";
+          "g", "Grid electricity was purchased from", "", "Input"
         }, r, c)
       )
     )
   );
 
-/* 
+VEERG_14_1_1__1_LocationBasedScopeElectricityEmissions_Variation
+  =LAMBDA("Added g variable to capture which grid electricity was purchased from");
+
+/*
 --------------------------------------
-VEERG_11_9_1_1__1_Scope2Electricity_LocationBased
-Location-based Scope 3 emissions from purchased electricity
-Qelec : Amount of electricity purchased from the grid : kWh
-EF3,elec : Location - based Scope 3 emission factor for electricity : kg CO2e / kWh
+VEERG_14_1_2__1_MarketBasedScopeElectricityEmissions
+Market-based Scope 2 emissions from purchased electricity
+E_2elec
+t CO2e
+E_{2,elec}=((Q_{elec}\times(1-(RPP+JRPP)))-((REC_{surrendered}-REC_{onsite})\times 10^{-3}))\times EF_{RMF2,elec}\times 10^{-3}
+Q_elec = amount of electricity purchased from the grid (kWh)
+RPP = Renewable Power Percentage under the Large-scale Renewable Energy Target (LRET) for the applicable period (per cent)
+JRPP = jurisdictional renewable power percentage for the applicable period (only applies to the ACT) (per cent)
+REC_surrendered = number of eligible Renewable Energy Certificates voluntarily surrendered in the reporting year equivalent to megawatt hours (MWh)
+REC_onsite = number of eligible Renewable Energy Certificates that have been or will be issued for electricity produced on-site during the year and consumed by the entity equivalent to megawatt hours (MWh)
+EF_RMF2elec = Scope 2 residual mix emission factor for electricity (kg CO2e/kWh)
 --------------------------------------
 */
 
-
-VEERG_11_9_1_1__1_Scope3Electricity_LocationBased
+VEERG_14_1_2__1_MarketBasedScopeElectricityEmissions
   =LAMBDA(
-    Qelec, EF3elec,
-    Qelec * EF3elec * 10 ^ - 3
-  )
-;
+    Q_elec, RPP, JRPP, REC_surrendered, REC_onsite, EF_RMF2elec,
+    ((Q_elec * (1 - (RPP + JRPP))) - ((REC_surrendered - REC_onsite) * 10 ^ -3)) * EF_RMF2elec * 10 ^ -3
+  );
 
-VEERG_11_9_1_1__1_Scope3Electricity_LocationBased_Title
-  =LAMBDA("Location-based Scope 3 emissions from purchased electricity");
-
-VEERG_11_9_1_1__1_Scope3Electricity_LocationBased_Variable
-  =LAMBDA("E3elec");
-
-VEERG_11_9_1_1__1_Scope3Electricity_LocationBased_Unit
-  =LAMBDA("t CO2-e");
-
-VEERG_11_9_1_1__1_Scope3Electricity_LocationBased_Source
-  =LAMBDA("VEERG 2026: 11.9.1.1, Equation (1)");
-
-VEERG_11_9_1_1__1_Scope3Electricity_LocationBased_NIRReference
-  =LAMBDA("Australian National Greenhouse Accounts Factors 2025 - 2.2 Estimating emissions from stationary energy sources");
-
-VEERG_11_9_1_1__1_Scope3Electricity_LocationBased_ReadableEquation
-  =LAMBDA("E3,elec = Qelec * EF3,elec * 10 ^ - 3");
-
-VEERG_11_9_1_1__1_Scope3Electricity_LocationBased_Arguments
+VEERG_14_1_2__1_MarketBasedScopeElectricityEmissionsVariation
   =LAMBDA(
-    MAKEARRAY(3, 3, 
-      LAMBDA(r,c, 
+    Q_elec, RPP, JRPP, REC_surrendered, REC_onsite, EF_RMF2elec,
+    ((Q_elec * (1 - (RPP + JRPP))) - ((REC_surrendered - REC_onsite) * 10 ^ 3)) * EF_RMF2elec * 10 ^ -3
+  );
+
+VEERG_14_1_2__1_MarketBasedScopeElectricityEmissions_Title
+  =LAMBDA("Market-based Scope 2 emissions from purchased electricity");
+
+VEERG_14_1_2__1_MarketBasedScopeElectricityEmissions_Variable
+  =LAMBDA("E_2elec");
+
+VEERG_14_1_2__1_MarketBasedScopeElectricityEmissions_Unit
+  =LAMBDA("t CO2e");
+
+VEERG_14_1_2__1_MarketBasedScopeElectricityEmissions_Source
+  =LAMBDA("VEERG 2026: 14.1.2, Equation (1)");
+
+VEERG_14_1_2__1_MarketBasedScopeElectricityEmissions_NIRReference
+  =LAMBDA("");
+
+VEERG_14_1_2__1_MarketBasedScopeElectricityEmissions_LatexEquation
+  =LAMBDA("E_{2,elec}=(Q_{elec} \times (1-(RPP+JRPP)) - ((REC_{surrendered}-REC_{onsite})\times 10^{-3})) \times EF_{RMF2,elec} \times 10^{-3}");
+
+VEERG_14_1_2__1_MarketBasedScopeElectricityEmissionsVariation_LatexEquation
+  =LAMBDA("E_{2,elec}=(Q_{elec} \times (1-(RPP+JRPP)) - ((REC_{surrendered}-REC_{onsite})\times 10^{3})) \times EF_{RMF2,elec} \times 10^{-3}");
+
+VEERG_14_1_2__1_MarketBasedScopeElectricityEmissions_Arguments
+  =LAMBDA(
+    MAKEARRAY(7, 4,
+      LAMBDA(r,c,
         INDEX({
-          "Qelec", "Amount of electricity purchased from the grid", "kWh";
-          "EF3,elec", "Location - based Scope 3 emission factor for electricity", "kg CO2e / kWh";
-          "3", "Scope 3", ""
+          "Q_elec", "amount of electricity purchased from the grid", "kWh", "Input";
+          "RPP", "Renewable Power Percentage under the Large-scale Renewable Energy Target (LRET)", "per cent", "Input";
+          "JRPP", "jurisdictional renewable power percentage for the applicable period (ACT only)", "per cent", "Input";
+          "REC_surrendered", "Renewable Energy Certificates voluntarily surrendered in the reporting year", "MWh", "Input";
+          "REC_onsite", "Renewable Energy Certificates issued for electricity produced on-site during the year and consumed by the entity", "MWh", "Input";
+          "EF_RMF2elec", "Scope 2 residual mix emission factor for electricity", "kg CO2e/kWh", "Constant";
+          "i", "state", "", "Input"
         }, r, c)
       )
     )
   );
+
+VEERG_14_1_2__1_MarketBasedScopeElectricityEmissions_Variation
+  =LAMBDA("VARIATION ON SOURCE: In order to convert megawatt hours to kilowatt hours, the REC_surrendered and REC_onsite variables are multiplied by 10^3 instead of 10^-3.");
