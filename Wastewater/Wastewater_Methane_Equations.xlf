@@ -1,0 +1,84 @@
+/*
+============================================================================
+11.1: Wastewater
+============================================================================
+11.1.1.1 Method 1 - Methane emissions from onsite Wastewater Management
+============================================================================
+*/
+
+/*
+--------------------------------------
+VEERG_11_1_1_1__1_MethaneEmissionsFromWastewaterTreatment
+Methane emissions from wastewater treatment
+E_CH4
+t CH4
+E_{CH4}=\frac{1}{1000}\times\left[\left(W_t\times\left(COD_{in}\times(1-F_{sludge})-COD_{out}\right)\times CF_{ww,t}\times EF_{ww}\right)+\left(W_t\times\left(COD_{in}\times(F_{sludge}-F_{removed})\right)\times CF_{sludge,t}\times EF_{sludge}\right)-\left(6.784\times 10^{-4}\times(Q_{cap}+Q_{flared}+Q_{out})\right)+\left(Q_{flared}\times EC_{flared}\times EF_{flared,CH4}\right)\right]
+W_t = quantity of wastewater treated at facility type t (m3)
+COD_in = average inlet Chemical Oxygen Demand concentration of wastewater (kg COD/m3)
+F_sludge = fraction of COD removed from wastewater as sludge
+COD_out = average outlet COD concentration of wastewater (kg COD/m3)
+CF_ww_t = methane correction factor for facility type t used to treat wastewater
+EF_ww = methane emission factor for wastewater (kg CO2e/kg COD)
+F_removed = fraction of COD removed from the wastewater treatment facility and transferred elsewhere
+CF_sludge_t = methane correction factor for facility type t used to treat sludge
+EF_sludge = methane emission factor for sludge (kg CO2e/kg COD)
+Q_cap = quantity of methane in sludge biogas captured for combustion (m3 CH4)
+Q_flared = quantity of methane in sludge biogas flared (m3 CH4)
+Q_out = quantity of methane in sludge biogas transferred out of the treatment facility (m3 CH4)
+EC_flared = energy content factor of methane in sludge biogas flared (GJ/m3)
+EF_flared_CH4 = methane emission factor for sludge biogas flared (kg CO2e/GJ)
+--------------------------------------
+*/
+
+VEERG_11_1_1_1__1_MethaneEmissionsFromWastewaterTreatment
+  =LAMBDA(
+    W_t, COD_in, F_sludge, COD_out, CF_ww_t, EF_ww, F_removed, CF_sludge_t, EF_sludge, Q_cap, Q_flared, Q_out, EC_flared, EF_flaredCH4,
+    (1/1000) * ((W_t * (COD_in * (1 - F_sludge) - COD_out) * CF_ww_t * EF_ww) + (W_t * (COD_in * (F_sludge - F_removed)) * CF_sludge_t * EF_sludge) - (6.784 * 10^-4 * (Q_cap + Q_flared + Q_out)) + (Q_flared * (EC_flared * EF_flaredCH4)))
+  );
+
+VEERG_11_1_1_1__1_MethaneEmissionsFromWastewaterTreatment_Title
+  =LAMBDA("Methane emissions from wastewater treatment");
+
+VEERG_11_1_1_1__1_MethaneEmissionsFromWastewaterTreatment_Variable
+  =LAMBDA("E_CH4");
+
+VEERG_11_1_1_1__1_MethaneEmissionsFromWastewaterTreatment_Unit
+  =LAMBDA("t CH4");
+
+VEERG_11_1_1_1__1_MethaneEmissionsFromWastewaterTreatment_Source
+  =LAMBDA("VEERG 2026: 11.1.1.1, Equation (1)");
+
+VEERG_11_1_1_1__1_MethaneEmissionsFromWastewaterTreatment_NIRReference
+  =LAMBDA("National Greenhouse and Energy Reporting Measurement Determination 2008");
+
+VEERG_11_1_1_1__1_MethaneEmissionsFromWastewaterTreatment_LatexEquation
+  =LAMBDA("E_{CH4}=\frac{1}{1000}\times\left{\left{W_t\times\left[COD_{in}\times(1-F_{sludge})-COD_{out}\right]\times CF_{ww,t}\times EF_{ww}\right}+\left{W_t\times\left[COD_{in}\times(F_{sludge}-F_{removed})\right]\times CF_{sludge,t}\times EF_{sludge}\right}-\left{6.784\times 10^{-4}\times \left[ Q_{cap}+Q_{flared}+Q_{out}\right]\right}+\left{Q_{flared}\times \left[ EC_{flared}\times EF_{flared,CH4}\right]\right}\right}");
+
+VEERG_11_1_1_1__1_MethaneEmissionsFromWastewaterTreatment_Arguments
+  =LAMBDA(
+    MAKEARRAY(15, 4,
+      LAMBDA(r,c,
+        INDEX({
+          "W_t", "quantity of wastewater treated at facility type t", "m3", "Input";
+          "COD_in", "average inlet Chemical Oxygen Demand concentration of wastewater", "kg COD/m3", "Input";
+          "F_sludge", "fraction of COD removed from wastewater as sludge", "fraction", "Input";
+          "COD_out", "average outlet COD concentration of wastewater", "kg COD/m3", "Input";
+          "CF_ww_t", "methane correction factor for facility type t used to treat wastewater", "fraction", "Constant";
+          "EF_ww", "methane emission factor for wastewater", "kg CH4/kg COD", "Constant";
+          "F_removed", "fraction of COD removed from the wastewater treatment facility and transferred elsewhere", "fraction", "Input";
+          "CF_sludge_t", "methane correction factor for facility type t used to treat sludge", "fraction", "Constant";
+          "EF_sludge", "methane emission factor for sludge", "kg CH4/kg COD", "Constant";
+          "Q_cap", "quantity of methane in sludge biogas captured for combustion", "m3 CH4", "Input";
+          "Q_flared", "quantity of methane in sludge biogas flared by the treatment facility", "m3 CH4", "Input";
+          "Q_out", "quantity of methane in sludge biogas transferred out of the treatment facility", "m3 CH4", "Input";
+          "EC_flared", "energy content factor of methane in sludge biogas flared", "GJ/m3", "Constant";
+          "EF_flaredCH4", "methane emission factor for sludge biogas flared", "kg CH4/GJ", "Constant";
+          "t", "treatment facility type", "", "Input"
+        }, r, c)
+      )
+    )
+  );
+
+
+VEERG_11_1_1_1__1_MethaneEmissionsFromWastewaterTreatment_Variation
+  =LAMBDA("VARIATION ON SOURCE: Changed units of EF_ww, EF_Sludge and EF_flared from CO2e to CH4 to match data in Table ");

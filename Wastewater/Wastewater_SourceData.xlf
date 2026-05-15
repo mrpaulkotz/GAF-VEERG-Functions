@@ -1,0 +1,165 @@
+/*
+============================================================================
+Table A.4.1.3: Methane correction factor for treatment facility type t used to treat wastewater (fraction) (CFww,t)
+============================================================================
+*/
+
+Waste_MethaneCorrectionFactorWastewater_Title
+=LAMBDA(("Methane correction factor for treatment facility type t used to treat wastewater"));
+
+Waste_MethaneCorrectionFactorWastewater_Variable
+=LAMBDA(("CFww,t"));
+
+Waste_MethaneCorrectionFactorWastewater_Unit
+=LAMBDA(("fraction"));
+
+Waste_MethaneCorrectionFactorWastewater_Source
+=LAMBDA(("VEERG 2026: Table A.4.1.3"));
+
+Waste_MethaneCorrectionFactorWastewater_Data
+=LAMBDA(
+  MAKEARRAY(6, 2,
+    LAMBDA(r,c,
+      INDEX({
+        "Facility type t", "CFww,t";
+        "Managed aerobic treatment", 0;
+        "Unmanaged aerobic treatment", 0.3;
+        "Anaerobic digestor/reactor", 0.8;
+        "Shallow anaerobic lagoon (≤ 2 m)", 0.2;
+        "Deep anaerobic lagoon (> 2m)", 0.8
+      }, r, c)
+)));
+
+Waste_MethaneCorrectionFactorWastewater_Variation
+=LAMBDA((""));
+
+
+/*
+============================================================================
+Table A.4.1.4: Methane correction factor for treatment facility type t used to treat sludge (fraction) (CFsludge,t)
+============================================================================
+*/
+
+Waste_MethaneCorrectionFactorSludge_Title
+=LAMBDA(("Methane correction factor for treatment facility type t used to treat sludge"));
+
+Waste_MethaneCorrectionFactorSludge_Variable
+=LAMBDA(("CFsludge,t"));
+
+Waste_MethaneCorrectionFactorSludge_Unit
+=LAMBDA(("fraction"));
+
+Waste_MethaneCorrectionFactorSludge_Source
+=LAMBDA(("VEERG 2026: Table A.4.1.4"));
+
+Waste_MethaneCorrectionFactorSludge_Data
+=LAMBDA(
+  MAKEARRAY(6, 2,
+    LAMBDA(r,c,
+      INDEX({
+        "Facility type t", "CFsludge,t";
+        "Managed aerobic treatment", 0;
+        "Unmanaged aerobic treatment", 0.3;
+        "Anaerobic digestor/reactor", 0.8;
+        "Shallow anaerobic lagoon (≤ 2 m)", 0.2;
+        "Deep anaerobic lagoon (> 2m)", 0.8
+      }, r, c)
+)));
+
+Waste_MethaneCorrectionFactorSludge_Variation
+=LAMBDA((""));
+
+/*
+============================================================================
+*/
+
+Waste_MethaneEmissionFactorWastewater_Title
+=LAMBDA(("Methane emission factor for wastewater"));
+
+Waste_MethaneEmissionFactorWastewater_Variable
+=LAMBDA(("EFww"));
+
+Waste_MethaneEmissionFactorWastewater_Unit
+=LAMBDA(("kg CH4 / kg COD"));
+
+Waste_MethaneEmissionFactorWastewater_Source
+=LAMBDA(("VEERG 2026: 11.2.3 Constants"));
+
+Waste_MethaneEmissionFactorWastewater_Data
+=LAMBDA( 0.25);
+
+/*
+============================================================================
+*/
+
+Waste_MethaneEmissionFactorSludge_Title
+=LAMBDA(("Methane emission factor for sludge"));
+
+Waste_MethaneEmissionFactorSludge_Variable
+=LAMBDA(("EFsludge"));
+
+Waste_MethaneEmissionFactorSludge_Unit
+=LAMBDA(("kg CH4 / kg COD"));
+
+Waste_MethaneEmissionFactorSludge_Source
+=LAMBDA(("VEERG 2026: 11.2.3 Constants"));
+
+Waste_MethaneEmissionFactorSludge_Data
+=LAMBDA(0.25);
+
+/*
+============================================================================
+*/
+
+Waste_EnergyContentFactorSludgeBiogasFlared_Title
+=LAMBDA(("Energy content factor of sludge biogas flared"));
+
+Waste_EnergyContentFactorSludgeBiogasFlared_Variable
+=LAMBDA(("ECflared"));
+
+Waste_EnergyContentFactorSludgeBiogasFlared_Unit
+=LAMBDA(("GJ / m3"));
+
+Waste_EnergyContentFactorSludgeBiogasFlared_Source
+=LAMBDA(("VEERG 2026: 11.2.3 Constants"));
+
+Waste_EnergyContentFactorSludgeBiogasFlared_Data
+=LAMBDA(0.0377);
+
+/*
+============================================================================
+*/
+
+Waste_MethaneEmissionFactorSludgeBiogasFlared_Title
+=LAMBDA(("Methane emission factor for sludge biogas flared"));
+
+Waste_MethaneEmissionFactorSludgeBiogasFlared_Variable
+=LAMBDA(("EFflared,CH4"));
+
+Waste_MethaneEmissionFactorSludgeBiogasFlared_Unit
+=LAMBDA(("kg CH4 / GJ"));
+
+Waste_MethaneEmissionFactorSludgeBiogasFlared_Source
+=LAMBDA(("VEERG 2026: 11.2.3 Constants"));
+
+Waste_MethaneEmissionFactorSludgeBiogasFlared_Data
+=LAMBDA(0.2289);
+
+/*
+============================================================================
+*/
+
+Waste_NitrousOxideEmissionFactorSludgeBiogasFlared_Title
+=LAMBDA(("Nitrous oxide emission factor for sludge biogas flared"));
+
+Waste_NitrousOxideEmissionFactorSludgeBiogasFlared_Variable
+=LAMBDA(("EFflared,N2O"));
+
+Waste_NitrousOxideEmissionFactorSludgeBiogasFlared_Unit
+=LAMBDA(("kg N2O / GJ"));
+
+Waste_NitrousOxideEmissionFactorSludgeBiogasFlared_Source
+=LAMBDA(("VEERG 2026: 11.2.3 Constants"));
+
+Waste_NitrousOxideEmissionFactorSludgeBiogasFlared_Data
+=LAMBDA(1.132e-4);

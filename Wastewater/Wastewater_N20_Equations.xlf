@@ -1,0 +1,56 @@
+/*
+============================================================================
+11.1: Wastewater
+============================================================================
+11.1.3.1 Method 1 - Nitrous oxide emissions from onsite Wastewater Management
+============================================================================
+*/
+
+/*
+--------------------------------------
+VEERG_11_1_3_1__1_NitrousOxideEmissionsFromFlaredBiogas
+Nitrous oxide emissions from flared biogas
+E_N2O
+t N2O
+E_{N2O}=\frac{Q_{flared}}{1000}\times EF_{flared,N2O}
+Q_flared = volume of biogas flared (m3 or GJ)
+EF_flared_N2O = nitrous oxide emission factor for flared biogas (kg N2O/GJ)
+--------------------------------------
+*/
+
+VEERG_11_1_3_1__1_NitrousOxideEmissionsFromFlaredBiogas
+  =LAMBDA(
+    Q_flared, EC_flared, EF_flaredN2O,
+    (Q_flared / 1000) * (EC_flared * EF_flaredN2O)
+  );
+
+VEERG_11_1_3_1__1_NitrousOxideEmissionsFromFlaredBiogas_Title
+  =LAMBDA("Nitrous oxide emissions from flared biogas");
+
+VEERG_11_1_3_1__1_NitrousOxideEmissionsFromFlaredBiogas_Variable
+  =LAMBDA("E_N2O");
+
+VEERG_11_1_3_1__1_NitrousOxideEmissionsFromFlaredBiogas_Unit
+  =LAMBDA("t N2O");
+
+VEERG_11_1_3_1__1_NitrousOxideEmissionsFromFlaredBiogas_Source
+  =LAMBDA("VEERG 2026: 11.1.3.1, Equation (1)");
+
+VEERG_11_1_3_1__1_NitrousOxideEmissionsFromFlaredBiogas_NIRReference
+  =LAMBDA("");
+
+VEERG_11_1_3_1__1_NitrousOxideEmissionsFromFlaredBiogas_LatexEquation
+  =LAMBDA("E_{N2O}=\frac{Q_{flared}}{1000}\times \left[EC_{flared} \times EF_{flared,N2O}\right]");
+
+VEERG_11_1_3_1__1_NitrousOxideEmissionsFromFlaredBiogas_Arguments
+  =LAMBDA(
+    MAKEARRAY(3, 4,
+      LAMBDA(r,c,
+        INDEX({
+          "Q_flared", "volume of biogas flared", "m3", "Input";
+          "EC_flared", "energy content factor of sludge biogas flared", "GJ/m3", "Constant";
+          "EF_flaredN2O", "nitrous oxide emission factor for flared biogas", "kg N2O/GJ", "Constant"
+        }, r, c)
+      )
+    )
+  );

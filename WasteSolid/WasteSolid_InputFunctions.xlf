@@ -1,0 +1,13 @@
+
+WasteSolid_InputFunctions_SumWasteTreatment
+=LAMBDA(
+  TreatmentType, WasteType, TreatmentLocation, AmountUnit, AmountArray,
+  TreatmentArray, WasteArray,
+  SUMIFS(
+    AmountArray,
+    TreatmentArray, TreatmentType,
+    WasteArray, WasteType,
+    LocationType, TreatmentLocation,
+    UnitType, AmountUnit
+  )
+);

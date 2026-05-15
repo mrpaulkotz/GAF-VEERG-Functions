@@ -1,0 +1,95 @@
+/*
+============================================================================
+Emission factors for wastes disposed of at different treatment facilities
+============================================================================
+*/
+
+Waste_EmissionFactorsForWasteTreatment_Title
+=LAMBDA(("Emission factors for wastes disposed of at different treatment facilities"));
+
+Waste_EmissionFactorsForWasteTreatment_Variable
+=LAMBDA(("EFwt"));
+
+Waste_EmissionFactorsForWasteTreatment_Unit
+=LAMBDA(("t CO2e / t"));
+
+Waste_EmissionFactorsForWasteTreatment_Source
+=LAMBDA(("VEERG 2026: Table A.4.1.1"));
+
+Waste_EmissionFactorsForWasteTreatment_Data
+=LAMBDA(
+  MAKEARRAY(21, 4,
+    LAMBDA(r,c,
+      INDEX({
+        "Treatment type t", "Waste type w", "EFwt", "EF source";
+        "Landfill", "Food waste (including animal carcasses, spoiled animal feed or crop)", 2.1, "NGAF 2025 table 15";
+        "Landfill", "Paper and cardboard", 3.3, "NGAF 2025 table 15";
+        "Landfill", "Green waste (including crop residues or prunnings)", 1.6, "NGAF 2025 table 15";
+        "Landfill", "Wood", 0.7, "NGAF 2025 table 15";
+        "Landfill", "Textiles", 2.0, "NGAF 2025 table 15";
+        "Landfill", "Sludge", 0.4, "NGAF 2025 table 15";
+        "Landfill", "Rubber and leather", 3.3, "NGAF 2025 table 15";
+        "Landfill", "Inert waste (including concrete, metal, plastic or glass)", 0, "NGAF 2025 table 15";
+        "Landfill", "Municipal solid waste", 1.6, "NGAF 2025 table 15";
+        "Landfill", "Commercial and industrial waste", 1.3, "NGAF 2025 table 15";
+        "Landfill", "Construction and demolition waste", 0.2, "NGAF 2025 table 15";
+        "Incineration", "Food waste, green waste, wood, sludge", 0, "";
+        "Incineration", "Paper and cardboard", 0.0169, "";
+        "Incineration", "Textiles", 0.3667, "";
+        "Incineration", "Rubber and leather", 0.4919, "";
+        "Incineration", "Inert Waste", 0.1100, "";
+        "Incineration", "Municipal Solid Waste", 0.0537, "NGAF 2025 Table 18";
+        "Incineration", "Industrial Waste", 1.649, "NGAF 2025 Table 18";
+        "Composting", "All organic waste", 0.046, "NGAF 2025 Table 19";
+        "Anaerobic digestion", "All organic waste", 0.028, "NGAF 2025 Table 19"
+      }, r, c)
+)));
+
+Waste_EmissionFactorsForWasteTreatment_Variation
+=LAMBDA(("VARIATION ON SOURCE: Fixed typo 'paper and carboard' to 'paper and cardboard'. Added EF source column with specific references."));
+
+Waste_EmissionFactorsForWasteTreatment_Variation
+=LAMBDA((""));
+
+/*
+============================================================================
+Table A.4.1.2: Volume to mass conversion factor for various waste types (t/m3) (VTMw)
+============================================================================
+*/
+
+Waste_WasteVolumeToMassConversion_Title
+=LAMBDA(("Volume to mass conversion factor for various waste types"));
+
+Waste_WasteVolumeToMassConversion_Variable
+=LAMBDA(("VTMw"));
+
+Waste_WasteVolumeToMassConversion_Unit
+=LAMBDA(("t/m3"));
+
+Waste_WasteVolumeToMassConversion_Source
+=LAMBDA(("VEERG 2026: Table A.4.1.2"));
+
+Waste_WasteVolumeToMassConversion_Data
+=LAMBDA(
+  MAKEARRAY(12, 2,
+    LAMBDA(r,c,
+      INDEX({
+        "Waste type w", "VTMw";
+        "Food waste (including animal carcasses, spoiled animal feed or crop)", 0.50;
+        "Paper and cardboard", 0.09;
+        "Green waste (including crop residues or prunings)", 0.24;
+        "Wood", 0.15;
+        "Textiles", 0.14;
+        "Sludge", 0.72;
+        "Rubber and leather", 0.14;
+        "Inert waste (including concrete, metal, plastic or glass)", 0.42;
+        "Municipal solid waste", 0.36;
+        "Commercial and industrial waste", 0.33;
+        "Construction and demolition waste", 0.39
+      }, r, c)
+)));
+
+Waste_WasteVolumeToMassConversion_Variation
+=LAMBDA(("VARIATION OF SOURCE: Changed column header CFw to VTMw to match title variable."));
+
+
