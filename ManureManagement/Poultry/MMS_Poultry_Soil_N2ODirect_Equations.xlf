@@ -45,12 +45,12 @@ VEERG_4_6_1_10__1_DirectNitrousOxideEmissionsFromPoultryManure_LatexEquation
 
 VEERG_4_6_1_10__1_DirectNitrousOxideEmissionsFromPoultryManure_Arguments
   =LAMBDA(
-    MAKEARRAY(3, 2,
+    MAKEARRAY(3, 4,
       LAMBDA(r,c,
         INDEX({
-          "MN_jkm14T1", "mass of nitrogen excreted directly on pasture by poultry class and subclass (kg N)";
-          "EF_PRP", "nitrous oxide emission factor for manure deposited on pasture (kg N2O-N/kg N deposited)";
-          "C_N2O", "factor to convert elemental mass of N2O to molecular mass"
+          "MN_jkm14T1", "mass of nitrogen excreted directly on pasture by poultry class and subclass", "kg N", "Calculated from 4.6.1.3 (2)";
+          "EF_PRP", "nitrous oxide emission factor for manure deposited on pasture", "kg N2O-N/kg N deposited", "Constant";
+          "C_N2O", "factor to convert elemental mass of N2O to molecular mass", "ratio", "Constant"
         }, r, c)
       )
     )

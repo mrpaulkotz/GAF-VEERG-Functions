@@ -45,12 +45,12 @@ VEERG_4_6_1_1__1_TotalAnnualMethaneEmissions_LatexEquation
 
 VEERG_4_6_1_1__1_TotalAnnualMethaneEmissions_Arguments
   =LAMBDA(
-    MAKEARRAY(3, 2,
+    MAKEARRAY(3, 4,
       LAMBDA(r,c,
         INDEX({
-          "D_jk","duration of stay of each class and subclass of poultry : days";
-          "M_jkmT","methane production from manure per class, subclass, MMS, and treatment stage : kg CH4/bird/day";
-          "N_jk","numbers of poultry in each class and subclass : bird"
+          "D_jk","duration of stay of each class and subclass of poultry", "days", "Input";
+          "M_jkmT","methane production from manure per class, subclass, MMS, and treatment stage", "kg CH4/bird/day", "Calculated from 4.6.1.1 (2)(3)";
+          "N_jk","numbers of poultry in each class and subclass", "birds", "Input"
         }, r, c)
       )
     )
@@ -97,15 +97,44 @@ VEERG_4_6_1_1__2_Stage1MethaneProduction_LatexEquation
 
 VEERG_4_6_1_1__2_Stage1MethaneProduction_Arguments
   =LAMBDA(
-    MAKEARRAY(6, 2,
+    MAKEARRAY(6, 4,
       LAMBDA(r,c,
         INDEX({
-          "VS_jk","volatile solid production poultry classes : kg VS/bird/day";
-          "BO_j","emissions potential per class : m3 CH4/kg VS";
-          "MMS_jmT1","fraction of manure in each primary system : fraction";
-          "MCF_im","methane conversion factor for temperature zone and MMS : fraction";
-          "rho","density of methane : kg/m3";
-          "i", "state"
+          "VS_jk","volatile solid production poultry classes", "kg VS/bird/day", "Calculated from 4.6.1.1 (5)";
+          "BO_j","emissions potential per class", "m3 CH4/kg VS", "Constant";
+          "MMS_jmT1","fraction of manure in each primary system", "fraction", "Input";
+          "MCF_im","methane conversion factor for temperature zone and MMS", "fraction", "Constant";
+          "rho","density of methane", "kg/m3", "Constant";
+          "i", "state", "", "Input"
+        }, r, c)
+      )
+    )
+  );
+
+VEERG_4_6_1_1__2_Stage1MethaneProduction_Arguments_Method2
+  =LAMBDA(
+    MAKEARRAY(6, 4,
+      LAMBDA(r,c,
+        INDEX({
+          "VS_jk","volatile solid production poultry classes", "kg VS/bird/day", "Calculated from 4.6.1.1 (5)";
+          "BO_j","emissions potential per class", "m3 CH4/kg VS", "Constant";
+          "MMS_jmT1","fraction of manure in each primary system", "fraction", "Input";
+          "MCF_im","methane conversion factor for temperature zone and MMS", "fraction", "Constant";
+          "rho","density of methane", "kg/m3", "Constant";
+          "i", "mean annual temperature", "°C", "Input"
+        }, r, c)
+      )
+    )
+  );
+
+VEERG_4_6_1_1__2_Stage1MethaneProduction_Variation
+   =LAMBDA(
+    MAKEARRAY(3, 1,
+      LAMBDA(r,c,
+        INDEX({
+          "VARIATION ON SOURCE:";
+          "Used mean annual temperature instead of temperature zone to determine MCF as MCF values are specific to temperature";
+          "Method 2: Used state based MCF values for 'Belt manure removal' and 'Manure stored in house' MMS as no temperature values exist in Table A.1.8.1"
         }, r, c)
       )
     )
@@ -152,19 +181,38 @@ VEERG_4_6_1_1__3_Stage2MethaneProduction_LatexEquation
 
 VEERG_4_6_1_1__3_Stage2MethaneProduction_Arguments
   =LAMBDA(
-    MAKEARRAY(6, 2,
+    MAKEARRAY(6, 4,
       LAMBDA(r,c,
         INDEX({
-          "VST_jk","volatile solids transferred to treatment stage 2 MMS : kg VS/bird/day";
-          "BO","emissions potential : m3 CH4/kg VS";
-          "MMS_jmT2","fraction of manure in each secondary system : fraction";
-          "MCF_im","methane conversion factor for temperature zone and MMS : fraction";
-          "rho","density of methane : kg/m3";
-          "i", "state"
+          "VST_jk","volatile solids transferred to treatment stage 2 MMS", "kg VS/bird/day", "Calculated from 4.6.1.1 (4)";
+          "BO","emissions potential", "m3 CH4/kg VS", "Constant";
+          "MMS_jmT2","fraction of manure in each secondary system", "fraction", "Input";
+          "MCF_im","methane conversion factor for temperature zone and MMS", "fraction", "Constant";
+          "rho","density of methane", "kg/m3", "Constant";
+          "i", "state", "", "Input"
         }, r, c)
       )
     )
   );
+
+VEERG_4_6_1_1__3_Stage2MethaneProduction_Arguments_Method2
+  =LAMBDA(
+    MAKEARRAY(6, 4,
+      LAMBDA(r,c,
+        INDEX({
+          "VST_jk","volatile solids transferred to treatment stage 2 MMS", "kg VS/bird/day", "Calculated from 4.6.1.1 (4)";
+          "BO","emissions potential", "m3 CH4/kg VS", "Constant";
+          "MMS_jmT2","fraction of manure in each secondary system", "fraction", "Input";
+          "MCF_im","methane conversion factor for temperature zone and MMS", "fraction", "Constant";
+          "rho","density of methane", "kg/m3", "Constant";
+          "i", "mean annual temperature", "°C", "Input"
+        }, r, c)
+      )
+    )
+  );
+
+VEERG_4_6_1_1__3_Stage2MethaneProduction_Variation
+   =LAMBDA("VARIATION ON SOURCE: Used mean annual temperature instead of temperature zone to determine MCF as MCF values are specific to temperature");
 
 /*
 --------------------------------------
@@ -205,12 +253,12 @@ VEERG_4_6_1_1__4_VolatileSolidsTransferred_LatexEquation
 
 VEERG_4_6_1_1__4_VolatileSolidsTransferred_Arguments
   =LAMBDA(
-    MAKEARRAY(3, 2,
+    MAKEARRAY(3, 4,
       LAMBDA(r,c,
         INDEX({
-          "VS_jk","volatile solid production poultry classes : kg VS/bird/day";
-          "MMS_jmT1","fraction of manure in each primary system : fraction";
-          "VSL_mT1","fraction of volatile solids lost during storage in the primary system : fraction"
+          "VS_jk","volatile solid production poultry classes", "kg VS/bird/day", "Calculated from 4.6.1.1 (5)";
+          "MMS_jmT1","fraction of manure in each primary system", "fraction", "Input";
+          "VSL_mT1","fraction of volatile solids lost during storage in the primary system", "fraction", "Constant"
         }, r, c)
       )
     )
@@ -255,12 +303,12 @@ VEERG_4_6_1_1__5_VolatileSolidProduction_LatexEquation
 
 VEERG_4_6_1_1__5_VolatileSolidProduction_Arguments
   =LAMBDA(
-    MAKEARRAY(3, 2,
+    MAKEARRAY(3, 4,
       LAMBDA(r,c,
         INDEX({
-          "I_jk","dry matter intake for each class and subclass : kg DM/bird/day";
-          "DMD_jk","dry matter digestibility for each class and subclass : fraction";
-          "A_j","ash content of manure for each class and subclass : fraction"
+          "I_jk","dry matter intake for each class and subclass", "kg DM/bird/day", "Input";
+          "DMD_jk","dry matter digestibility for each class and subclass", "fraction", "Input";
+          "A_j","ash content of manure for each class and subclass", "fraction", "Constant"
         }, r, c)
       )
     )

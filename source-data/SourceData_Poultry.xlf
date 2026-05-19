@@ -289,3 +289,30 @@ SourceData_Poultry_FractionOfNitrogenLostThroughLeachingAndRunoff_Variation
 
 SourceData_Poultry_FractionOfNitrogenLostThroughLeachingAndRunoff_Data
   =LAMBDA(0.02);
+
+
+/* 
+--------------------------------------
+SourceData_Poultry_FracGAMSSoil
+Fraction of nitrogen volatilised from urine and faeces deposited on pasture
+--------------------------------------
+*/
+
+SourceData_Poultry_FracGAMSSoil_Title
+  =LAMBDA("Fraction of nitrogen volatilised from urine and faeces deposited on pasture");
+
+SourceData_Poultry_FracGAMSSoil_Variable
+  =LAMBDA("FracGASM_soil");
+
+SourceData_Poultry_FracGAMSSoil_Unit
+  =LAMBDA("(kg NH3-N + NOx-N)/kg N");
+
+SourceData_Poultry_FracGAMSSoil_Source
+  =LAMBDA("VEERG 2026: 4.6.2.3 CONSTANTS");
+
+SourceData_Poultry_FracGAMSSoil_Variation
+  =LAMBDA("VARIATION ON SOURCE: This constant is not documented in the draft, used the same value of 0.21 as all other livestock.");
+
+SourceData_Poultry_FracGAMSSoil_Data
+  =LAMBDA(0.21);
+

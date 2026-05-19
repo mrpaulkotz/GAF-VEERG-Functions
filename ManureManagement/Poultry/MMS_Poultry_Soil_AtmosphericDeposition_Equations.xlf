@@ -45,15 +45,15 @@ VEERG_4_6_1_12__1_AtmosphericDepositionEmissionsFromPoultryManureOnPasture_Latex
 
 VEERG_4_6_1_12__1_AtmosphericDepositionEmissionsFromPoultryManureOnPasture_Arguments
   =LAMBDA(
-    MAKEARRAY(6, 2,
+    MAKEARRAY(6, 4,
       LAMBDA(r,c,
         INDEX({
-          "M_vol_m14", "mass of nitrogen volatilised from manure deposited on pasture (kg N)";
-          "EF_N2O", "emission factor for atmospheric deposition (kg N2O-N/kg N)";
-          "C_N2O", "factor to convert elemental mass of N2O to molecular mass";
-          "j", "production system";
-          "ir", "irrigation method";
-          "r", "rainfall region"
+          "M_vol_m14", "mass of nitrogen volatilised from manure deposited on pasture","kg N", "Calculated from 4.6.1.12 (2)";
+          "EF_N2O", "emission factor for atmospheric deposition (kg N2O-N/kg N)", "kg N2O-N/kg N", "Constant";
+          "C_N2O", "factor to convert elemental mass of N2O to molecular mass", "ratio", "Constant";
+          "j", "production system", "dimensionless", "Input";
+          "ir", "irrigation method", "dimensionless", "Input";
+          "r", "rainfall region", "dimensionless", "Input"
         }, r, c)
       )
     )
@@ -97,11 +97,11 @@ VEERG_4_6_1_12__2_MassOfNitrogenVolatilisedFromPoultryManureOnPasture_LatexEquat
 
 VEERG_4_6_1_12__2_MassOfNitrogenVolatilisedFromPoultryManureOnPasture_Arguments
   =LAMBDA(
-    MAKEARRAY(2, 2,
+    MAKEARRAY(2, 4,
       LAMBDA(r,c,
         INDEX({
-          "MN_jkm14T1", "mass of nitrogen excreted directly on pasture by poultry class and subclass (kg N)";
-          "FracGASMsoil", "fraction of nitrogen volatilised from manure deposited on pasture ((kg NH3-N + NOx-N)/kg N)"
+          "MN_jkm14T1", "mass of nitrogen excreted directly on pasture by poultry class and subclass", "kg N", "Calculated from 4.6.1.3 (2)";
+          "FracGASMsoil", "fraction of nitrogen volatilised from manure deposited on pasture", "(kg NH3-N + NOx-N)/kg N", "Constant"
         }, r, c)
       )
     )

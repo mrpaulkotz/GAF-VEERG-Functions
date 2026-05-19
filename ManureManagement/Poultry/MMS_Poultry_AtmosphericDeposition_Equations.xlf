@@ -45,15 +45,15 @@ VEERG_4_6_1_5__1_TotalAnnualAtmosphericDepositionEmissionsFromMMS_LatexEquation
 
 VEERG_4_6_1_5__1_TotalAnnualAtmosphericDepositionEmissionsFromMMS_Arguments
   =LAMBDA(
-    MAKEARRAY(6, 2,
+    MAKEARRAY(6, 4,
       LAMBDA(r,c,
         INDEX({
-          "MMS_ATMOS","mass of N volatilised from MMS : kg N";
-          "EF_N2O","nitrous oxide emission factor for atmospheric deposition : kg N2O-N/kg N";
-          "C_N2O","factor to convert elemental mass of nitrous oxide to molecular mass : ratio";
-          "j", "production system";
-          "ir", "irrigation method";
-          "r", "rainfall region"
+          "MMS_ATMOS","mass of N volatilised from MMS", "kg N", "Calculated from 4.6.1.5 (2)";
+          "EF_N2O","nitrous oxide emission factor for atmospheric deposition", "kg N2O-N/kg N", "Constant";
+          "C_N2O","factor to convert elemental mass of nitrous oxide to molecular mass", "ratio", "Constant";
+          "j", "production system", "", "Input";
+          "ir", "irrigation method", "", "Input";
+          "r", "rainfall region", "", "Input"
         }, r, c)
       )
     )
@@ -97,11 +97,11 @@ VEERG_4_6_1_5__2_TotalNitrogenVolatilisedFromMMS_LatexEquation
 
 VEERG_4_6_1_5__2_TotalNitrogenVolatilisedFromMMS_Arguments
   =LAMBDA(
-    MAKEARRAY(2, 2,
+    MAKEARRAY(2, 4,
       LAMBDA(r,c,
         INDEX({
-          "MN_jkmT","nitrogen in each treatment stage MMS (excluding MN_jkm13T2) : kg N";
-          "FracGASM_mT","fraction of N volatilised in each MMS : (kg NH3-N + NOx-N)/kg N"
+          "MN_jkmT","nitrogen in each treatment stage MMS (excluding MN_jkm13T2)", "kg N", "Calculated from 4.6.1.3 (2)(6)";
+          "FracGASM_mT","fraction of N volatilised in each MMS", "(kg NH3-N + NOx-N)/kg N", "Constant"
         }, r, c)
       )
     )

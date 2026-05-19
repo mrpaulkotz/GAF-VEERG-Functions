@@ -47,14 +47,14 @@ VEERG_4_6_1_9__1_MassOfNitrogenAppliedToSoilsScope1_LatexEquation
 
 VEERG_4_6_1_9__1_MassOfNitrogenAppliedToSoilsScope1_Arguments
   =LAMBDA(
-    MAKEARRAY(5, 2,
+    MAKEARRAY(5, 4,
       LAMBDA(r,c,
         INDEX({
-          "MN_jmT2","mass of N in secondary treatment stage as calculated for manure management : kg N";
-          "EF_mT2","nitrous oxide emission factor for each MMS : kg N2O-N/kg N";
-          "FracGASM_mT2","fraction of animal waste N volatilised in each MMS : (kg NH3-N + NOx-N)/kg N";
-          "MNLeach_MMS","mass of N lost through leaching and runoff from MMS : kg N";
-          "PF","fraction of manure applied to soil within the farm boundary : fraction"
+          "MN_jmT2","mass of N in secondary treatment stage as calculated for manure management", "kg N", "Calculated from 4.6.1.3 (6)";
+          "EF_mT2","nitrous oxide emission factor for each MMS", "kg N2O-N/kg N", "Constant";
+          "FracGASM_mT2","fraction of animal waste N volatilised in each MMS", "(kg NH3-N + NOx-N)/kg N", "Constant";
+          "MNLeach_MMS","mass of N lost through leaching and runoff from MMS", "kg N", "Calculated from 4.6.1.7 (2)";
+          "PF","fraction of manure applied to soil within the farm boundary", "fraction", "Input"
         }, r, c)
       )
     )
@@ -101,14 +101,14 @@ VEERG_4_6_1_9__2_MassOfNitrogenAppliedToSoilsScope3_LatexEquation
 
 VEERG_4_6_1_9__2_MassOfNitrogenAppliedToSoilsScope3_Arguments
   =LAMBDA(
-    MAKEARRAY(5, 2,
+    MAKEARRAY(5, 4,
       LAMBDA(r,c,
         INDEX({
-          "MN_jmT2","mass of N in secondary treatment stage as calculated for manure management : kg N";
-          "EF_mT2","nitrous oxide emission factor for each MMS : kg N2O-N/kg N";
-          "FracGASM_mT2","fraction of animal waste N volatilised in each MMS : (kg NH3-N + NOx-N)/kg N";
-          "MNLeach_MMS","mass of N lost through leaching and runoff from MMS : kg N";
-          "PF","fraction of manure applied to soil within the farm boundary : fraction"
+          "MN_jmT2","mass of N in secondary treatment stage as calculated for manure management", "kg N", "Calculated from 4.6.1.3 (6)";
+          "EF_mT2","nitrous oxide emission factor for each MMS", "kg N2O-N/kg N", "Constant";
+          "FracGASM_mT2","fraction of animal waste N volatilised in each MMS", "(kg NH3-N + NOx-N)/kg N", "Constant";
+          "MNLeach_MMS","mass of N lost through leaching and runoff from MMS", "kg N", "Calculated from 4.6.1.7 (2)";
+          "PF","fraction of manure applied to soil within the farm boundary", "fraction", "Input"
         }, r, c)
       )
     )
