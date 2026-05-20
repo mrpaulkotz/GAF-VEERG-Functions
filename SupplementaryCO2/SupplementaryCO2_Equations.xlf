@@ -1,0 +1,55 @@
+/*
+============================================================================
+12.1: Supplementary CO2
+============================================================================
+12.1.1.1 Method 1 - Supplementary CO2
+============================================================================
+*/
+
+/*
+--------------------------------------
+VEERG_12_1_1_1__1_EmissionsFromSupplementaryCO2
+Emissions from the use of supplementary CO2
+E
+t CO2e
+E=Q\times 10^{-3}
+Q = quantity of supplementary CO2 used within the operations (kg CO2)
+--------------------------------------
+*/
+
+VEERG_12_1_1_1__1_EmissionsFromSupplementaryCO2
+  =LAMBDA(
+    Q,
+    Q * 10 ^ -3
+  );
+
+VEERG_12_1_1_1__1_EmissionsFromSupplementaryCO2_Title
+  =LAMBDA("Emissions from the use of supplementary CO2");
+
+VEERG_12_1_1_1__1_EmissionsFromSupplementaryCO2_Variable
+  =LAMBDA("E");
+
+VEERG_12_1_1_1__1_EmissionsFromSupplementaryCO2_Unit
+  =LAMBDA("t CO2e");
+
+VEERG_12_1_1_1__1_EmissionsFromSupplementaryCO2_Source
+  =LAMBDA("VEERG 2026: 12.1.1.1, Equation (1)");
+
+VEERG_12_1_1_1__1_EmissionsFromSupplementaryCO2_NIRReference
+  =LAMBDA("");
+
+VEERG_12_1_1_1__1_EmissionsFromSupplementaryCO2_LatexEquation
+  =LAMBDA("E=Q\times 10^{-3}");
+
+VEERG_12_1_1_1__1_EmissionsFromSupplementaryCO2_Arguments
+  =LAMBDA(
+    MAKEARRAY(1, 4,
+      LAMBDA(r,c,
+        INDEX({
+          "Q", "quantity of supplementary CO2 used within the operations", "kg CO2", "Input"
+        }, r, c)
+      )
+    )
+  );
+
+
