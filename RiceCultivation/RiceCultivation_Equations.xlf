@@ -1,0 +1,188 @@
+/*
+============================================================================
+7.1: Rice Cultivation
+============================================================================
+7.1.1.1 Method 1 - Rice Cultivation CH4 Emissions
+============================================================================
+*/
+
+/*
+--------------------------------------
+VEERG_7_1_1_1__1_MethaneEmissionsFromRiceCultivation
+Methane emissions from rice cultivation
+E_rice
+t CH4
+E_{rice}=\sum_w\sum_p\sum_o(A_{rice,wpo}\times EF_{rice,wpo}\times t_{rice,wpo})\times 10^{-3}
+A_ricewpo = annual area of rice cultivation under water regime w, pre-season water regime p, and organic amendment condition o (ha)
+EF_ricewpo = emission factor for rice cultivation under conditions w, p, and o (kg CH4/ha/day)
+t_ricewpo = cultivation period for rice under conditions w, p, and o (days)
+--------------------------------------
+*/
+
+VEERG_7_1_1_1__1_MethaneEmissionsFromRiceCultivation
+  =LAMBDA(
+    A_ricewpo, EF_ricewpo, t_ricewpo,
+    SUM(A_ricewpo * EF_ricewpo * t_ricewpo) * 10 ^ -3
+  );
+
+VEERG_7_1_1_1__1_MethaneEmissionsFromRiceCultivation_Title
+  =LAMBDA("Methane emissions from rice cultivation");
+
+VEERG_7_1_1_1__1_MethaneEmissionsFromRiceCultivation_Variable
+  =LAMBDA("E_rice");
+
+VEERG_7_1_1_1__1_MethaneEmissionsFromRiceCultivation_Unit
+  =LAMBDA("t CH4");
+
+VEERG_7_1_1_1__1_MethaneEmissionsFromRiceCultivation_Source
+  =LAMBDA("VEERG 2026: 7.1.1.1, Equation (1)");
+
+VEERG_7_1_1_1__1_MethaneEmissionsFromRiceCultivation_NIRReference
+  =LAMBDA("");
+
+VEERG_7_1_1_1__1_MethaneEmissionsFromRiceCultivation_LatexEquation
+  =LAMBDA("E_{rice}=\sum_w\sum_p\sum_o(A_{rice,wpo}\times EF_{rice,wpo}\times t_{rice,wpo})\times 10^{-3}");
+
+VEERG_7_1_1_1__1_MethaneEmissionsFromRiceCultivation_Arguments
+  =LAMBDA(
+    MAKEARRAY(4, 4,
+      LAMBDA(r,c,
+        INDEX({
+          "A_ricewpo", "annual area of rice cultivation under water regime w, pre-season water regime p, and organic amendment condition o", "ha", "Input";
+          "EF_ricewpo", "emission factor for rice cultivation under conditions w, p, and o", "kg CH4/ha/day", "Calculated from 7.1.1.1, (2)";
+          "t_ricewpo", "cultivation period for rice under conditions w, p, and o", "days", "Input";
+          "s", "number of cropping seasons in reporting period managed this way", "seasons", "Input"
+        }, r, c)
+      )
+    )
+  );
+
+VEERG_7_1_1_1__1_MethaneEmissionsFromRiceCultivation_Variation
+  =LAMBDA("Added 'number of seasons' variable as per VEERG description in 7.2.1 'Where there is more than one cropping season per year, Arice,wpo shall be scaled accordingly'");
+
+/*
+--------------------------------------
+VEERG_7_1_1_1__2_EmissionFactorForRiceCultivation
+Emission factor for rice cultivation
+EF_ricewpo
+kg CH4/ha/day
+EF_{rice,wpo}=EF_c\times SF_w\times SF_p\times SF_o
+EF_c = baseline emission factor for continuously flooded fields without organic amendments (kg CH4/ha/day)
+SF_w = scaling factor for water regime during the growing season
+SF_p = scaling factor for water regime in the pre-season
+SF_o = scaling factor for type and amount of organic amendments (set to 1 for inorganic fertiliser use)
+--------------------------------------
+*/
+
+VEERG_7_1_1_1__2_EmissionFactorForRiceCultivation
+  =LAMBDA(
+    EF_c, SF_w, SF_p, SF_o,
+    EF_c * SF_w * SF_p * SF_o
+  );
+
+VEERG_7_1_1_1__2_EmissionFactorForRiceCultivation_Title
+  =LAMBDA("Emission factor for rice cultivation");
+
+VEERG_7_1_1_1__2_EmissionFactorForRiceCultivation_Variable
+  =LAMBDA("EF_ricewpo");
+
+VEERG_7_1_1_1__2_EmissionFactorForRiceCultivation_Unit
+  =LAMBDA("kg CH4/ha/day");
+
+VEERG_7_1_1_1__2_EmissionFactorForRiceCultivation_Source
+  =LAMBDA("VEERG 2026: 7.1.1.1, Equation (2)");
+
+VEERG_7_1_1_1__2_EmissionFactorForRiceCultivation_NIRReference
+  =LAMBDA("");
+
+VEERG_7_1_1_1__2_EmissionFactorForRiceCultivation_LatexEquation
+  =LAMBDA("EF_{rice,wpo}=EF_c\times SF_w\times SF_p\times SF_o");
+
+VEERG_7_1_1_1__2_EmissionFactorForRiceCultivation_Arguments
+  =LAMBDA(
+    MAKEARRAY(7, 4,
+      LAMBDA(r,c,
+        INDEX({
+          "EF_c", "baseline emission factor for continuously flooded fields without organic amendments", "kg CH4/ha/day", "Constant";
+          "SF_w", "scaling factor for water regime during the growing season", "fraction", "Constant";
+          "SF_p", "scaling factor for water regime in the pre-season", "fraction", "Constant";
+          "SF_o", "scaling factor for type and amount of organic amendments", "fraction", "Calculated from 7.1.1.1, (3)";
+          "w", "water regime during growing season", "", "Input";
+          "p", "pre-season water regime", "", "Input";
+          "o", "organic amendment", "", "Input"
+        }, r, c)
+      )
+    )
+  );
+
+/*
+--------------------------------------
+VEERG_7_1_1_1__3_OrganicAmendmentsScalingFactor
+Organic amendments scaling factor
+SF_o
+dimensionless
+SF_o=(1+\sum_o(ROA_o\times CFOA_o))^{0.59}
+ROA_o = application rate of organic amendment o (tonnes/ha)
+CFOA_o = conversion factor of organic amendment o
+--------------------------------------
+*/
+
+VEERG_7_1_1_1__3_OrganicAmendmentsScalingFactor
+  =LAMBDA(
+    ROA_o, CFOA_o,
+    (1 + SUM(ROA_o * CFOA_o)) ^ 0.59
+  );
+
+VEERG_7_1_1_1__3_OrganicAmendmentsScalingFactorVariation
+  =LAMBDA(
+    ROA_o1, CFOA_o1, ROA_o2, CFOA_o2, ROA_o3, CFOA_o3, ROA_o4, CFOA_o4, ROA_o5, CFOA_o5, ROA_o6, CFOA_o6,
+    (1 + ((ROA_o1 * CFOA_o1) + (ROA_o2 * CFOA_o2) + (ROA_o3 * CFOA_o3)+ (ROA_o4 * CFOA_o4) + (ROA_o5 * CFOA_o5) + (ROA_o6 * CFOA_o6))) ^ 0.59
+  );
+
+VEERG_7_1_1_1__3_OrganicAmendmentsScalingFactor_Title
+  =LAMBDA("Organic amendments scaling factor");
+
+VEERG_7_1_1_1__3_OrganicAmendmentsScalingFactor_Variable
+  =LAMBDA("SF_o");
+
+VEERG_7_1_1_1__3_OrganicAmendmentsScalingFactor_Unit
+  =LAMBDA("dimensionless");
+
+VEERG_7_1_1_1__3_OrganicAmendmentsScalingFactor_Source
+  =LAMBDA("VEERG 2026: 7.1.1.1, Equation (3)");
+
+VEERG_7_1_1_1__3_OrganicAmendmentsScalingFactor_NIRReference
+  =LAMBDA("");
+
+VEERG_7_1_1_1__3_OrganicAmendmentsScalingFactor_LatexEquation
+  =LAMBDA("SF_o=(1+\sum_oROA_o\times CFOA_o)^{0.59}");
+
+VEERG_7_1_1_1__3_OrganicAmendmentsScalingFactor_LatexEquationVariation
+  =LAMBDA("SF_o=(1+ ((ROA_o1\times CFOA_o1) + (ROA_o2\times CFOA_o2) + (ROA_o3\times CFOA_o3) + (ROA_o4\times CFOA_o4) + (ROA_o5\times CFOA_o5) + (ROA_o6\times CFOA_o6))^{0.59}");
+
+VEERG_7_1_1_1__3_OrganicAmendmentsScalingFactor_Arguments
+  =LAMBDA(
+    MAKEARRAY(3, 4,
+      LAMBDA(r,c,
+        INDEX({
+          "ROA_o", "application rate of organic amendment o", "tonnes/ha", "Input";
+          "CFOA_o", "conversion factor of organic amendment o", "fraction", "Constant";
+          "o", "organic amendment type", "", "Input"
+        }, r, c)
+      )
+    )
+  );
+
+VEERG_7_1_1_1__3_OrganicAmendmentsScalingFactor_Variation
+  =LAMBDA(
+    MAKEARRAY(4, 1,
+      LAMBDA(r,c,
+        INDEX({
+          "VARIATION ON SOURCE:";
+          "Included inorganic fertiliser as amendment as per VEERG equation description:";
+          "Where inorganic fertiliser is applied to the rice fields rather than organic amendments, SF_o is set to 1.";
+          "Declared each amendment separately to allow summing in Excel in one equation"
+        }, r, c)
+      )
+    )
+  );

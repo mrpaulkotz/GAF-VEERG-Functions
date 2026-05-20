@@ -1,0 +1,152 @@
+
+/* 
+--------------------------------------
+SourceData_RiceCultivation_WaterScalingFactorGrowingSeason
+--------------------------------------
+*/
+
+SourceData_RiceCultivation_WaterScalingFactorGrowingSeason_Title
+  =LAMBDA("Scaling factor based on the water regime employed during the growing season cultivation period");
+
+SourceData_RiceCultivation_WaterScalingFactorGrowingSeason_Variable
+  =LAMBDA("SFw");
+
+SourceData_RiceCultivation_WaterScalingFactorGrowingSeason_Unit
+  =LAMBDA("fraction");
+
+SourceData_RiceCultivation_WaterScalingFactorGrowingSeason_Source
+  =LAMBDA("VEERG 2026: Table A.2.3.1");
+
+SourceData_RiceCultivation_WaterScalingFactorGrowingSeason_Variation
+  =LAMBDA("");
+
+SourceData_RiceCultivation_WaterScalingFactorGrowingSeason_Data
+  =LAMBDA(
+    MAKEARRAY(9, 3, 
+      LAMBDA(r,c, 
+        INDEX({
+          "Water regime type", "Water regime sub - type", "SFw";
+          "Upland", "Paddy rotation", 0;
+          "Upland", "Fallow without flooding in previous year", 0;
+          "Irrigated", "Continuously flooded", 1;
+          "Irrigated", "Single drainage period", 0.71;
+          "Irrigated", "Multiple drainage periods", 0.55;
+          "Rainfed and deep water", "Regular rainfed", 0.54;
+          "Rainfed and deep water", "Drought prone", 0.16;
+          "Rainfed and deep water", "Deep water", 0.06
+        }, r, c)
+      )
+    )
+  );
+
+
+
+/* 
+--------------------------------------
+SourceData_RiceCultivation_WaterScalingFactorPreSeason
+--------------------------------------
+*/
+
+SourceData_RiceCultivation_WaterScalingFactorPreSeason_Title
+  =LAMBDA("Scaling factor based on the water regime employed in the pre - season before the growing period");
+
+SourceData_RiceCultivation_WaterScalingFactorPreSeason_Variable
+  =LAMBDA("SFp");
+
+SourceData_RiceCultivation_WaterScalingFactorPreSeason_Unit
+  =LAMBDA("fraction");
+
+SourceData_RiceCultivation_WaterScalingFactorPreSeason_Source
+  =LAMBDA("VEERG 2026: Table A.2.3.2");
+
+SourceData_RiceCultivation_WaterScalingFactorPreSeason_Variation
+  =LAMBDA("");
+
+SourceData_RiceCultivation_WaterScalingFactorPreSeason_Data
+  =LAMBDA(
+    MAKEARRAY(5, 2, 
+      LAMBDA(r,c, 
+        INDEX({
+          "Water regime prior to cultivation period p", "SFp";
+          "Non flooded pre-season <180 days", 1;
+          "Non flooded pre-season >180 days", 0.89;
+          "Flooded pre-season >30 days", 2.41;
+          "Non-flooded pre-season >365 days", 0.59
+        }, r, c)
+      )
+    )
+  );
+
+
+/* 
+--------------------------------------
+SourceData_RiceCultivation_OrganicAmendmentConversionFactor
+--------------------------------------
+*/
+
+SourceData_RiceCultivation_OrganicAmendmentConversionFactor_Title
+  =LAMBDA("Conversion factor for organic amendment i");
+
+SourceData_RiceCultivation_OrganicAmendmentConversionFactor_Variable
+  =LAMBDA("CFOAi");
+
+SourceData_RiceCultivation_OrganicAmendmentConversionFactor_Unit
+  =LAMBDA("fraction");
+
+SourceData_RiceCultivation_OrganicAmendmentConversionFactor_Source
+  =LAMBDA("VEERG 2026: Table A.2.3.3");
+
+SourceData_RiceCultivation_OrganicAmendmentConversionFactor_Variation
+  =LAMBDA(
+    MAKEARRAY(3, 1,
+      LAMBDA(r,c,
+        INDEX({
+          "VARIATION ON SOURCE:";
+          "Included inorganic fertiliser as amendment as per VEERG equation description:";
+          "Where inorganic fertiliser is applied to the rice fields rather than organic amendments, SF_o is set to 1."
+        }, r, c)
+      )
+    )
+  );
+
+SourceData_RiceCultivation_OrganicAmendmentConversionFactor_Data
+  =LAMBDA(
+    MAKEARRAY(7, 2, 
+      LAMBDA(r,c, 
+        INDEX({
+          "Organic amendment i", "CFOAi";
+          "Straw incorporated shortly (<30 days) before cultivation", 1.00;
+          "Straw incorporated long (>30 days) before cultivation", 0.19;
+          "Compost", 0.17;
+          "Farm yard manure", 0.21;
+          "Green manure", 0.45;
+          "Inorganic fertiliser", 1
+        }, r, c)
+      )
+    )
+  );
+
+
+/* 
+--------------------------------------
+SourceData_RiceCultivation_BaselineEF
+--------------------------------------
+*/
+
+SourceData_RiceCultivation_BaselineEF_Title
+  =LAMBDA("Baseline emission factor for continuously flooded fields without organic amendments");
+
+SourceData_RiceCultivation_BaselineEF_Variable
+  =LAMBDA("EFc");
+
+SourceData_RiceCultivation_BaselineEF_Unit
+  =LAMBDA("kg CH4 / ha / day");
+
+SourceData_RiceCultivation_BaselineEF_Source
+  =LAMBDA("VEERG 2026: 7.2.3 Constant Parameters");
+
+SourceData_RiceCultivation_BaselineEF_Variation
+  =LAMBDA("");
+
+SourceData_RiceCultivation_BaselineEF_Data
+  =LAMBDA(1.19);
