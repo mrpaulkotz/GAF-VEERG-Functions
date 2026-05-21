@@ -1,0 +1,110 @@
+/*
+============================================================================
+4.7: Manure Management - Other Livestock
+============================================================================
+4.7.1.7 Method 1 - Soil Leaching And Runoff N2O Other Livestock
+============================================================================
+*/
+
+/*
+--------------------------------------
+VEERG_4_7_1_7__1_LeachingAndRunoffEmissionsFromPasture
+Leaching and runoff emissions from urine and dung deposited on pasture
+E_N2Oleach
+t N2O
+E_{N2O,leach}=M_{leach}\times EF_{leach}\times C_{N2O}\times 10^{-3}
+M_leach = mass of nitrogen lost to leaching and runoff (kg N)
+EF_leach = emission factor for leaching and runoff (kg N2O-N/kg N)
+C_N2O = factor to convert elemental mass of nitrous oxide to molecular mass
+--------------------------------------
+*/
+
+VEERG_4_7_1_7__1_LeachingAndRunoffEmissionsFromPasture
+  =LAMBDA(
+    M_leach, EF_leach, C_N2O,
+    M_leach * EF_leach * C_N2O * 10 ^ -3
+  );
+
+VEERG_4_7_1_7__1_LeachingAndRunoffEmissionsFromPasture_Title
+  =LAMBDA("Leaching and runoff emissions from urine and dung deposited on pasture");
+
+VEERG_4_7_1_7__1_LeachingAndRunoffEmissionsFromPasture_Variable
+  =LAMBDA("E_N2Oleach");
+
+VEERG_4_7_1_7__1_LeachingAndRunoffEmissionsFromPasture_Unit
+  =LAMBDA("t N2O");
+
+VEERG_4_7_1_7__1_LeachingAndRunoffEmissionsFromPasture_Source
+  =LAMBDA("VEERG 2026: 4.7.1.7, Equation (1)");
+
+VEERG_4_7_1_7__1_LeachingAndRunoffEmissionsFromPasture_NIRReference
+  =LAMBDA("");
+
+VEERG_4_7_1_7__1_LeachingAndRunoffEmissionsFromPasture_LatexEquation
+  =LAMBDA("E_{N2O,leach}=M_{leach}\times EF_{leach}\times C_{N2O}\times 10^{-3}");
+
+VEERG_4_7_1_7__1_LeachingAndRunoffEmissionsFromPasture_Arguments
+  =LAMBDA(
+    MAKEARRAY(3, 4,
+      LAMBDA(r,c,
+        INDEX({
+          "M_leach", "mass of nitrogen lost to leaching and runoff", "kg N", "Calculated from 4.7.1.7, (2)";
+          "EF_leach", "emission factor for leaching and runoff", "kg N2O-N/kg N", "Constant";
+          "C_N2O", "factor to convert elemental mass of nitrous oxide to molecular mass", "", "Constant"
+        }, r, c)
+      )
+    )
+  );
+
+/*
+--------------------------------------
+VEERG_4_7_1_7__2_MassOfNitrogenLostToLeachingAndRunoff
+Mass of nitrogen lost to leaching and runoff
+M_leach
+kg N
+M_{leach}=AE\times FracWet\times FracLEACH
+AE = annual nitrogen excreted by each livestock type (kg N/year)
+FracWet = fraction of nitrogen available for leaching and runoff
+FracLEACH = fraction of all nitrogen that is lost through leaching and runoff
+--------------------------------------
+*/
+
+VEERG_4_7_1_7__2_MassOfNitrogenLostToLeachingAndRunoff
+  =LAMBDA(
+    AE, FracWet, FracLEACH,
+    AE * FracWet * FracLEACH
+  );
+
+VEERG_4_7_1_7__2_MassOfNitrogenLostToLeachingAndRunoff_Title
+  =LAMBDA("Mass of nitrogen lost to leaching and runoff");
+
+VEERG_4_7_1_7__2_MassOfNitrogenLostToLeachingAndRunoff_Variable
+  =LAMBDA("M_leach");
+
+VEERG_4_7_1_7__2_MassOfNitrogenLostToLeachingAndRunoff_Unit
+  =LAMBDA("kg N");
+
+VEERG_4_7_1_7__2_MassOfNitrogenLostToLeachingAndRunoff_Source
+  =LAMBDA("VEERG 2026: 4.7.1.7, Equation (2)");
+
+VEERG_4_7_1_7__2_MassOfNitrogenLostToLeachingAndRunoff_NIRReference
+  =LAMBDA("");
+
+VEERG_4_7_1_7__2_MassOfNitrogenLostToLeachingAndRunoff_LatexEquation
+  =LAMBDA("M_{leach}=AE\times FracWet\times FracLEACH");
+
+VEERG_4_7_1_7__2_MassOfNitrogenLostToLeachingAndRunoff_Arguments
+  =LAMBDA(
+    MAKEARRAY(6, 4,
+      LAMBDA(r,c,
+        INDEX({
+          "AE", "annual nitrogen excreted by each livestock type", "kg N/year", "Calculated by 4.7.1.3, (2)";
+          "FracWet", "fraction of nitrogen available for leaching and runoff", "", "Constant";
+          "FracLEACH", "fraction of all nitrogen that is lost through leaching and runoff", "", "Constant";
+          "z", "location in leaching zone", "", "Input";
+          "j", "production system", "", "Input";
+          "ir", "irrigation method", "", "Input"
+        }, r, c)
+      )
+    )
+  );

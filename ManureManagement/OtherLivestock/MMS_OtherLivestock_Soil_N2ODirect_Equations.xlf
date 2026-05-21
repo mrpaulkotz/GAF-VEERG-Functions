@@ -1,0 +1,107 @@
+/*
+============================================================================
+4.7: Manure Management - Other Livestock
+============================================================================
+4.7.1.3 Method 1 - Soil Direct N2O Other Livestock
+============================================================================
+*/
+
+/*
+--------------------------------------
+VEERG_4_7_1_3__1_DirectNitrousOxideEmissionsFromSoil
+Direct nitrous oxide emissions from agricultural soils from deposition of urine and dung to pasture
+E_N2Odir
+t N2O
+E_{N2O,dir}=AE\times EF_{PRP}\times C_{N2O}\times 10^{-3}
+AE = annual nitrogen excreted by each livestock type (kg N/year)
+EF_PRP = emission factor for nitrous oxide from urine and dung deposited to soil (kg N2O-N/kg N deposited)
+C_N2O = factor to convert elemental mass of nitrous oxide to molecular mass
+--------------------------------------
+*/
+
+VEERG_4_7_1_3__1_DirectNitrousOxideEmissionsFromSoil
+  =LAMBDA(
+    AE, EF_PRP, C_N2O,
+    AE * EF_PRP * C_N2O * 10 ^ -3
+  );
+
+VEERG_4_7_1_3__1_DirectNitrousOxideEmissionsFromSoil_Title
+  =LAMBDA("Direct nitrous oxide emissions from agricultural soils from deposition of urine and dung to pasture");
+
+VEERG_4_7_1_3__1_DirectNitrousOxideEmissionsFromSoil_Variable
+  =LAMBDA("E_N2Odir");
+
+VEERG_4_7_1_3__1_DirectNitrousOxideEmissionsFromSoil_Unit
+  =LAMBDA("t N2O");
+
+VEERG_4_7_1_3__1_DirectNitrousOxideEmissionsFromSoil_Source
+  =LAMBDA("VEERG 2026: 4.7.1.3, Equation (1)");
+
+VEERG_4_7_1_3__1_DirectNitrousOxideEmissionsFromSoil_NIRReference
+  =LAMBDA("");
+
+VEERG_4_7_1_3__1_DirectNitrousOxideEmissionsFromSoil_LatexEquation
+  =LAMBDA("E_{N2O,dir}=AE\times EF_{PRP}\times C_{N2O}\times 10^{-3}");
+
+VEERG_4_7_1_3__1_DirectNitrousOxideEmissionsFromSoil_Arguments
+  =LAMBDA(
+    MAKEARRAY(4, 4,
+      LAMBDA(r,c,
+        INDEX({
+          "AE", "annual nitrogen excreted by each livestock type", "kg N/year", "Calculated from 4.7.1.3, (2)";
+          "EF_PRP", "emission factor for nitrous oxide from urine and dung deposited to soil", "kg N2O-N/kg N deposited", "Constant";
+          "C_N2O", "factor to convert elemental mass of nitrous oxide to molecular mass", "", "Constant";
+          "z", "wet or dry climate zone", "", "Input"
+        }, r, c)
+      )
+    )
+  );
+
+/*
+--------------------------------------
+VEERG_4_7_1_3__2_AnnualNitrogenExcretedToPasture
+Annual nitrogen excreted by livestock to pasture, range and paddock
+AE
+kg N/year
+AE=\sum_j(N_j\times NE_j\times 365)
+N_j = number of livestock of each livestock type j (head)
+NE_j = nitrogen excreted by each livestock type j (kg N/head/day)
+--------------------------------------
+*/
+
+VEERG_4_7_1_3__2_AnnualNitrogenExcretedToPasture
+  =LAMBDA(
+    N_j, NE_j,
+    N_j * NE_j * 365
+  );
+
+VEERG_4_7_1_3__2_AnnualNitrogenExcretedToPasture_Title
+  =LAMBDA("Annual nitrogen excreted by livestock to pasture, range and paddock");
+
+VEERG_4_7_1_3__2_AnnualNitrogenExcretedToPasture_Variable
+  =LAMBDA("AE");
+
+VEERG_4_7_1_3__2_AnnualNitrogenExcretedToPasture_Unit
+  =LAMBDA("kg N/year");
+
+VEERG_4_7_1_3__2_AnnualNitrogenExcretedToPasture_Source
+  =LAMBDA("VEERG 2026: 4.7.1.3, Equation (2)");
+
+VEERG_4_7_1_3__2_AnnualNitrogenExcretedToPasture_NIRReference
+  =LAMBDA("");
+
+VEERG_4_7_1_3__2_AnnualNitrogenExcretedToPasture_LatexEquation
+  =LAMBDA("AE=\sum\nolimits_j(N_j\times NE_j\times 365)");
+
+VEERG_4_7_1_3__2_AnnualNitrogenExcretedToPasture_Arguments
+  =LAMBDA(
+    MAKEARRAY(3, 4,
+      LAMBDA(r,c,
+        INDEX({
+          "N_j", "number of livestock of each livestock type j", "head", "Input";
+          "NE_j", "nitrogen excreted by each livestock type j", "kg N/head/day", "Constant";
+          "j", "livestock type", "", "Input"
+        }, r, c)
+      )
+    )
+  );

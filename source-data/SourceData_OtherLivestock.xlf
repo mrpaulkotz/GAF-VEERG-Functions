@@ -1,0 +1,322 @@
+
+/* 
+--------------------------------------
+SourceData_OtherLivestock_EntericFermentationEmissionFactor
+Table A.1.5.1: Other Livestock - Enteric fermentation emission factor for each other livestock type (kg CH4/head/year) (Mj)
+--------------------------------------
+*/
+
+SourceData_OtherLivestock_EntericFermentationEmissionFactor_Title
+  =LAMBDA("Other Livestock - Enteric fermentation emission factor for each other livestock type");
+
+SourceData_OtherLivestock_EntericFermentationEmissionFactor_Variable
+  =LAMBDA("Mj");
+
+SourceData_OtherLivestock_EntericFermentationEmissionFactor_Unit
+  =LAMBDA("kg CH4 / head / year");
+
+SourceData_OtherLivestock_EntericFermentationEmissionFactor_Source
+  =LAMBDA("VEERG 2026: Table A.1.5.1");
+
+SourceData_OtherLivestock_EntericFermentationEmissionFactor_Variation
+  =LAMBDA("");
+
+SourceData_OtherLivestock_EntericFermentationEmissionFactor_Data
+  =LAMBDA(
+    MAKEARRAY(9, 2,
+      LAMBDA(r,c,
+        INDEX({
+          "Other Livestock Type", "Mj";
+          "Buffalo", 68;
+          "Goats", 5;
+          "Deer", 20;
+          "Camels", 46;
+          "Alpacas", 8;
+          "Horses", 18;
+          "Mules/asses", 10;
+          "Emus/ostriches", 5
+        }, r, c)
+      )
+    )
+  );
+
+
+/* 
+--------------------------------------
+SourceData_OtherLivestock_VolatileSolidsProduced
+Table A.1.5.2: Other Livestock - Volatile solids produced by each other livestock type (kg VS/head/day) (VSj)
+--------------------------------------
+*/
+
+SourceData_OtherLivestock_VolatileSolidsProduced_Title
+  =LAMBDA("Other Livestock - Volatile solids produced by each other livestock type");
+
+SourceData_OtherLivestock_VolatileSolidsProduced_Variable
+  =LAMBDA("VSj");
+
+SourceData_OtherLivestock_VolatileSolidsProduced_Unit
+  =LAMBDA("kg VS / head / day");
+
+SourceData_OtherLivestock_VolatileSolidsProduced_Source
+  =LAMBDA("VEERG 2026: Table A.1.5.2");
+
+SourceData_OtherLivestock_VolatileSolidsProduced_Variation
+  =LAMBDA("");
+
+SourceData_OtherLivestock_VolatileSolidsProduced_Data
+  =LAMBDA(
+    MAKEARRAY(9, 2,
+      LAMBDA(r,c,
+        INDEX({
+          "Other Livestock Type", "VSj";
+          "Buffalo", 2.73;
+          "Goats", 0.34;
+          "Deer", 0.91;
+          "Camels", 2.73;
+          "Alpacas", 0.34;
+          "Horses", 2.73;
+          "Mules/asses", 0.91;
+          "Emus/ostriches", 0.34
+        }, r, c)
+      )
+    )
+  );
+
+
+/* 
+--------------------------------------
+SourceData_OtherLivestock_NitrogenExcreted
+Table A.1.5.3: Other Livestock - Nitrogen excreted per livestock type (kg N2O/head/year) (NEj)
+--------------------------------------
+*/
+
+SourceData_OtherLivestock_NitrogenExcreted_Title
+  =LAMBDA("Other Livestock - Nitrogen excreted per livestock type");
+
+SourceData_OtherLivestock_NitrogenExcreted_Variable
+  =LAMBDA("NEj");
+
+SourceData_OtherLivestock_NitrogenExcreted_Unit
+  =LAMBDA("kg N2O / head / year");
+
+SourceData_OtherLivestock_NitrogenExcreted_Source
+  =LAMBDA("VEERG 2026: Table A.1.5.3");
+
+SourceData_OtherLivestock_NitrogenExcreted_Variation
+  =LAMBDA("");
+
+SourceData_OtherLivestock_NitrogenExcreted_Data
+  =LAMBDA(
+    MAKEARRAY(9, 2,
+      LAMBDA(r,c,
+        INDEX({
+          "Other Livestock Type", "NEj";
+          "Buffalo", 39.5;
+          "Goats", 7.0;
+          "Deer", 13.2;
+          "Camels", 39.5;
+          "Alpacas", 7.0;
+          "Horses", 39.5;
+          "Mules/asses", 13.2;
+          "Emus/ostriches", 7.0
+        }, r, c)
+      )
+    )
+  );
+
+
+/* 
+--------------------------------------
+SourceData_OtherLivestock_AverageLiveweight
+Table A.1.5.4: Other Livestock - Average Liveweights (Wco) (kg) 
+--------------------------------------
+*/
+
+SourceData_OtherLivestock_AverageLiveweight_Title
+  =LAMBDA("Other Livestock - Average Liveweights");
+
+SourceData_OtherLivestock_AverageLiveweight_Variable
+  =LAMBDA("Wco");
+
+SourceData_OtherLivestock_AverageLiveweight_Unit
+  =LAMBDA("kg");
+
+SourceData_OtherLivestock_AverageLiveweight_Source
+  =LAMBDA("VEERG 2026: Table A.1.5.4");
+
+SourceData_OtherLivestock_AverageLiveweight_Variation
+  =LAMBDA("");
+
+SourceData_OtherLivestock_AverageLiveweight_Data
+  =LAMBDA(
+    MAKEARRAY(11, 3,
+      LAMBDA(r,c,
+        INDEX({
+          "Other Livestock Type j", "Average Liveweight", "Average Liveweight";
+          "Buffalo", 336, "-";
+          "Goats", 33, "28kg - low productivity systems";
+          "Goats", 33, "50kg - high productivity systems";
+          "Deer", 120, 120;
+          "Camels", 217, 570;
+          "Alpacas", "-", 65;
+          "Horses", 377, 550;
+          "Mules/asses", 130, 245;
+          "Emus/ostriches", 120, 120;
+          "Reference", "IPCC 2019 Table 10A.5 [2]", "IPCC 2019 Table 10.10 [2]"
+        }, r, c)
+      )
+    )
+  );
+
+
+/* 
+--------------------------------------
+SourceData_OtherLivestock_FractionWasteInMMS
+Table A.1.5.5: Other Livestock - Fraction of waste in each manure management system (fraction) (MMSm)
+--------------------------------------
+*/
+
+SourceData_OtherLivestock_FractionWasteInMMS_Title
+  =LAMBDA("Other Livestock - Fraction of waste in each manure management system");
+
+SourceData_OtherLivestock_FractionWasteInMMS_Variable
+  =LAMBDA("MMSm");
+
+SourceData_OtherLivestock_FractionWasteInMMS_Unit
+  =LAMBDA("fraction");
+
+SourceData_OtherLivestock_FractionWasteInMMS_Source
+  =LAMBDA("VEERG 2026: Table A.1.5.5");
+
+SourceData_OtherLivestock_FractionWasteInMMS_Variation
+  =LAMBDA("");
+
+SourceData_OtherLivestock_FractionWasteInMMS_Data
+  =LAMBDA(
+    MAKEARRAY(9, 3,
+      LAMBDA(r,c,
+        INDEX({
+          "State", "Pasture range and paddock", "Uncovered Anaerobic lagoon";
+          "ACT",  99.66,  0.34;
+          "NSW",  99.66,  0.34;
+          "NT",  99.66,  0.34;
+          "QLD",  99.66,  0.34;
+          "SA",  99.66,  0.34;
+          "TAS",  99.66,  0.34;
+          "VIC",  99.66,  0.34;
+          "WA",  99.66,  0.34
+        }, r, c)
+      )
+    )
+  );
+
+
+/* 
+--------------------------------------
+SourceData_OtherLivestock_MethaneConversionFactor
+Table A.1.5.6: Other Livestock - Methane conversion factor per region (fraction) (MCFim)
+--------------------------------------
+*/
+
+SourceData_OtherLivestock_MethaneConversionFactor_Title
+  =LAMBDA("Other Livestock - Methane conversion factor per region");
+
+SourceData_OtherLivestock_MethaneConversionFactor_Variable
+  =LAMBDA("MCFim");
+
+SourceData_OtherLivestock_MethaneConversionFactor_Unit
+  =LAMBDA("fraction");
+
+SourceData_OtherLivestock_MethaneConversionFactor_Source
+  =LAMBDA("VEERG 2026: Table A.1.5.6");
+
+SourceData_OtherLivestock_MethaneConversionFactor_Variation
+  =LAMBDA("");
+
+SourceData_OtherLivestock_MethaneConversionFactor_Data
+  =LAMBDA(
+    MAKEARRAY(9, 3,
+      LAMBDA(r,c,
+        INDEX({
+          "State", "Pasture range and paddock", "Uncovered Anaerobic lagoon";
+          "ACT",  0.0047,  0.71;
+          "NSW",  0.0047,  0.75;
+          "NT",  0.0047,  0.80;
+          "QLD",  0.0047,  0.78;
+          "SA",  0.0047,  0.74;
+          "TAS",  0.0047,  0.70;
+          "VIC",  0.0047,  0.74;
+          "WA",  0.0047,  0.76
+        }, r, c)
+      )
+    )
+  );
+
+
+/* 
+--------------------------------------
+SourceData_OtherLivestock_MethaneEmissionsPotential
+Table A.1.5.X: Other Livestock - Methane emissions potential (m3 CH4 / kg VS) (BO)
+--------------------------------------
+*/
+
+SourceData_OtherLivestock_MethaneEmissionsPotential_Title
+  =LAMBDA("Other Livestock - Methane emissions potential");
+
+SourceData_OtherLivestock_MethaneEmissionsPotential_Variable
+  =LAMBDA("BO");
+
+SourceData_OtherLivestock_MethaneEmissionsPotential_Unit
+  =LAMBDA("m3 CH4 / kg VS");
+
+SourceData_OtherLivestock_MethaneEmissionsPotential_Source
+  =LAMBDA("VEERG 2026: Table A.1.5.X");
+
+SourceData_OtherLivestock_MethaneEmissionsPotential_Variation
+  =LAMBDA("VARIATION ON SOURCE: There were no values in VEERG so this data has been generated by using documented BO values from other livestock");
+
+SourceData_OtherLivestock_MethaneEmissionsPotential_Data
+  =LAMBDA(
+    MAKEARRAY(9, 3,
+      LAMBDA(r,c,
+        INDEX({
+          "Other Livestock Type", "BO", "Taken from";
+          "Buffalo", 0.19, "Feedlot, Pasture beef";
+          "Goats", 0.24, "Sheep";
+          "Deer", 0.24, "Sheep";
+          "Camels", 0.24, "Sheep";
+          "Alpacas", 0.24, "Sheep";
+          "Horses", 0.19, "Feedlot, Pasture beef";
+          "Mules/asses", 0.24, "Sheep";
+          "Emus/ostriches", 0.36, "Poultry - meat chickens"
+        }, r, c)
+      )
+    )
+  );
+
+
+/* 
+--------------------------------------
+SourceData_OtherLivestock_FracGASMSoil
+Fraction of nitrogen volatilised from urine and faeces deposited on pasture
+--------------------------------------
+*/
+
+SourceData_OtherLivestock_FracGASMSoil_Title
+  =LAMBDA("Fraction of nitrogen volatilised from urine and faeces deposited on pasture");
+
+SourceData_OtherLivestock_FracGASMSoil_Variable
+  =LAMBDA("FracGASMsoil");
+
+SourceData_OtherLivestock_FracGASMSoil_Unit
+  =LAMBDA("(kg NH3-N + NOx-N)/kg N");
+
+SourceData_OtherLivestock_FracGASMSoil_Source
+  =LAMBDA("VEERG 2026: 4.7.2.3 CONSTANTS");
+
+SourceData_OtherLivestock_FracGASMSoil_Variation
+  =LAMBDA("");
+
+SourceData_OtherLivestock_FracGASMSoil_Data
+  =LAMBDA(0.21);
+

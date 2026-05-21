@@ -1,0 +1,56 @@
+/*
+============================================================================
+3.6: Enteric Methane - Other Livestock
+============================================================================
+3.6.1.1 Method 1 - Enteric Other Livestock
+============================================================================
+*/
+
+/*
+--------------------------------------
+VEERG_3_6_1_1__1_TotalAnnualMethaneFromEntericFermentationOtherLivestock
+Total annual methane production from enteric fermentation in other livestock
+E_enteric
+t CH4
+E_{enteric}=\sum_j(N_j\times M_j)\times 10^{-3}
+N_j = number of livestock of each livestock type j (head)
+M_j = enteric fermentation emission factor (kg CH4/head/year)
+--------------------------------------
+*/
+
+VEERG_3_6_1_1__1_TotalAnnualMethaneFromEntericFermentationOtherLivestock
+  =LAMBDA(
+    N_j, M_j,
+    SUM(N_j * M_j) * 10 ^ -3
+  );
+
+VEERG_3_6_1_1__1_TotalAnnualMethaneFromEntericFermentationOtherLivestock_Title
+  =LAMBDA("Total annual methane production from enteric fermentation in other livestock");
+
+VEERG_3_6_1_1__1_TotalAnnualMethaneFromEntericFermentationOtherLivestock_Variable
+  =LAMBDA("E_enteric");
+
+VEERG_3_6_1_1__1_TotalAnnualMethaneFromEntericFermentationOtherLivestock_Unit
+  =LAMBDA("t CH4");
+
+VEERG_3_6_1_1__1_TotalAnnualMethaneFromEntericFermentationOtherLivestock_Source
+  =LAMBDA("VEERG 2026: 3.6.1.1, Equation (1)");
+
+VEERG_3_6_1_1__1_TotalAnnualMethaneFromEntericFermentationOtherLivestock_NIRReference
+  =LAMBDA("");
+
+VEERG_3_6_1_1__1_TotalAnnualMethaneFromEntericFermentationOtherLivestock_LatexEquation
+  =LAMBDA("E_{enteric}=\sum_j(N_j\times M_j)\times 10^{-3}");
+
+VEERG_3_6_1_1__1_TotalAnnualMethaneFromEntericFermentationOtherLivestock_Arguments
+  =LAMBDA(
+    MAKEARRAY(3, 4,
+      LAMBDA(r,c,
+        INDEX({
+          "N_j", "number of livestock of each livestock type j", "head", "Input";
+          "M_j", "enteric fermentation emission factor", "kg CH4/head/year", "Constant";
+          "j", "livestock type", "", "Input"
+        }, r, c)
+      )
+    )
+  );
