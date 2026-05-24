@@ -539,6 +539,128 @@ function Convert-ExcelLiteralToValue {
   return $value
 }
 
+function Convert-ExcelValueToCellWriteData {
+  param(
+    [Parameter(Mandatory = $false)]
+    $Value
+  )
+
+  if ($null -eq $Value) {
+    return [pscustomobject]@{
+      IsMatrix    = $false
+      ScalarValue = ''
+      RowCount    = 1
+      ColumnCount = 1
+      Values      = $null
+    }
+  }
+
+  if ($Value -is [System.Array]) {
+    $array = $Value
+    if ($array.Rank -eq 2) {
+      $rowStart = [int] (@($array.GetLowerBound(0))[0])
+      $colStart = [int] (@($array.GetLowerBound(1))[0])
+      $rowCount = [int] $array.GetLength(0)
+      $columnCount = [int] $array.GetLength(1)
+      $rowEnd = $rowStart + $rowCount - 1
+      $colEnd = $colStart + $columnCount - 1
+      $values = New-Object 'object[,]' $rowCount, $columnCount
+
+      for ($r = $rowStart; $r -le $rowEnd; $r++) {
+        for ($c = $colStart; $c -le $colEnd; $c++) {
+          $item = $array.GetValue($r, $c)
+          $values[($r - $rowStart), ($c - $colStart)] = if ($null -eq $item) { '' } else { [string] $item }
+        }
+      }
+
+      return [pscustomobject]@{
+        IsMatrix    = $true
+        ScalarValue = $null
+        RowCount    = $rowCount
+        ColumnCount = $columnCount
+        Values      = $values
+      }
+    }
+
+    if ($array.Length -gt 0 -and $array.GetValue(0) -is [System.Array]) {
+      $rows = @($array)
+      $rowCount = $rows.Count
+      $columnCount = 0
+      foreach ($row in $rows) {
+        $columnCount = [Math]::Max($columnCount, @($row).Count)
+      }
+
+      if ($rowCount -gt 0 -and $columnCount -gt 0) {
+        $values = New-Object 'object[,]' $rowCount, $columnCount
+        for ($r = 0; $r -lt $rowCount; $r++) {
+          $row = @($rows[$r])
+          for ($c = 0; $c -lt $columnCount; $c++) {
+            $item = if ($c -lt $row.Count) { $row[$c] } else { '' }
+            $values[$r, $c] = if ($null -eq $item) { '' } else { [string] $item }
+          }
+        }
+
+        return [pscustomobject]@{
+          IsMatrix    = $true
+          ScalarValue = $null
+          RowCount    = $rowCount
+          ColumnCount = $columnCount
+          Values      = $values
+        }
+      }
+    }
+
+    if ($array.Rank -eq 1) {
+      $rowStart = [int] (@($array.GetLowerBound(0))[0])
+      $rowCount = [int] $array.GetLength(0)
+      $rowEnd = $rowStart + $rowCount - 1
+      $values = New-Object 'object[,]' $rowCount, 1
+      for ($r = $rowStart; $r -le $rowEnd; $r++) {
+        $item = $array.GetValue($r)
+        $values[($r - $rowStart), 0] = if ($null -eq $item) { '' } else { [string] $item }
+      }
+
+      return [pscustomobject]@{
+        IsMatrix    = $true
+        ScalarValue = $null
+        RowCount    = $rowCount
+        ColumnCount = 1
+        Values      = $values
+      }
+    }
+  }
+
+  return [pscustomobject]@{
+    IsMatrix    = $false
+    ScalarValue = [string] $Value
+    RowCount    = 1
+    ColumnCount = 1
+    Values      = $null
+  }
+}
+
+function Write-ExcelValueToCells {
+  param(
+    [Parameter(Mandatory = $true)]
+    $Cell,
+
+    [Parameter(Mandatory = $false)]
+    $Value
+  )
+
+  $writeData = Convert-ExcelValueToCellWriteData -Value $Value
+  if (-not $writeData.IsMatrix) {
+    $Cell.Value2 = $writeData.ScalarValue
+    return
+  }
+
+  for ($rowOffset = 0; $rowOffset -lt $writeData.RowCount; $rowOffset++) {
+    for ($colOffset = 0; $colOffset -lt $writeData.ColumnCount; $colOffset++) {
+      $Cell.Offset($rowOffset, $colOffset).Value2 = $writeData.Values[$rowOffset, $colOffset]
+    }
+  }
+}
+
 function Convert-ExcelComValueToText {
   param(
     [Parameter(Mandatory = $false)]
@@ -603,7 +725,7 @@ function Convert-ExcelComValueToText {
   return [string]::Join(', ', $flattened)
 }
 
-function Get-ExcelCellResolvedValueText {
+function Get-ExcelCellResolvedValue {
   param(
     [Parameter(Mandatory = $true)]
     $Cell
@@ -640,6 +762,16 @@ function Get-ExcelCellResolvedValueText {
     }
   }
 
+  return $value
+}
+
+function Get-ExcelCellResolvedValueText {
+  param(
+    [Parameter(Mandatory = $true)]
+    $Cell
+  )
+
+  $value = Get-ExcelCellResolvedValue -Cell $Cell
   return Convert-ExcelComValueToText -Value $value
 }
 
@@ -856,6 +988,12 @@ function Expand-VeergLambdaReferences {
         $body = $definition.Body.Trim()
         if ($body -match '^"(?:[^"]|"")*"$') {
           $sourceDataStringLambdas[$nameKey] = (Convert-ExcelLiteralToValue -Token $body)
+          continue
+        }
+
+        $arrayValue = Parse-ExcelArrayConstant -Text (Remove-OuterWrappingParentheses -Text $body)
+        if ($null -ne $arrayValue) {
+          $sourceDataStringLambdas[$nameKey] = $arrayValue
         }
       }
     }
@@ -919,7 +1057,7 @@ function Expand-VeergLambdaReferences {
 
         if ($formula -match '(?i)\b(?:Common_InputFunctions\.)?Utility_DisplayArrayInTable\b') {
           if (-not $DryRun) {
-            $cell.Value2 = Get-ExcelCellResolvedValueText -Cell $cell
+            Write-ExcelValueToCells -Cell $cell -Value (Get-ExcelCellResolvedValue -Cell $cell)
           }
           $updatedCells++
           continue
@@ -928,7 +1066,7 @@ function Expand-VeergLambdaReferences {
         $wholeFunctionName = Get-WholeFormulaZeroArgFunctionName -Formula $formula
         if ($null -ne $wholeFunctionName -and $sourceDataStringLambdas.ContainsKey($wholeFunctionName)) {
           if (-not $DryRun) {
-            $cell.Value2 = [string] $sourceDataStringLambdas[$wholeFunctionName]
+            Write-ExcelValueToCells -Cell $cell -Value $sourceDataStringLambdas[$wholeFunctionName]
           }
           $updatedCells++
           continue
@@ -936,7 +1074,7 @@ function Expand-VeergLambdaReferences {
 
         if ($null -ne $wholeFunctionName -and $wholeFunctionName -match 'SourceData') {
           if (-not $DryRun) {
-            $cell.Value2 = Get-ExcelCellResolvedValueText -Cell $cell
+            Write-ExcelValueToCells -Cell $cell -Value (Get-ExcelCellResolvedValue -Cell $cell)
           }
           $updatedCells++
           continue
