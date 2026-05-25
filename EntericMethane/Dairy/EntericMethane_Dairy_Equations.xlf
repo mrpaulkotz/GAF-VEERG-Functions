@@ -320,6 +320,13 @@ VEERG_3_3_1_1__6_MetabolisabilityOfDiet
     0.795 * (DMD_j * 100) - 0.0014
   );
 
+VEERG_3_3_1_1__6_MetabolisabilityOfDietVariation
+  =LAMBDA(
+    DMD_j,
+    0.00795 * (DMD_j * 100) - 0.0014
+  );
+
+
 VEERG_3_3_1_1__6_MetabolisabilityOfDiet_Title
   =LAMBDA("Metabolisability of diet");
 
@@ -338,6 +345,9 @@ VEERG_3_3_1_1__6_MetabolisabilityOfDiet_NIRReference
 VEERG_3_3_1_1__6_MetabolisabilityOfDiet_LatexEquation
   =LAMBDA("qm_j=0.795\times (DMD_j\times 100)-0.0014");
 
+VEERG_3_3_1_1__6_MetabolisabilityOfDiet_LatexEquationVariation
+  =LAMBDA("qm_j=0.00795\times (DMD_j\times 100)-0.0014");
+
 VEERG_3_3_1_1__6_MetabolisabilityOfDiet_Arguments
   =LAMBDA(
     MAKEARRAY(1, 4,
@@ -348,4 +358,7 @@ VEERG_3_3_1_1__6_MetabolisabilityOfDiet_Arguments
       )
     )
   );
+
+VEERG_3_3_1_1__6_MetabolisabilityOfDiet_Variation
+  =LAMBDA("VARIATION ON SOURCE: changed 0.795 to 0.00795 which is the value used in the National Inventory Report");
 
