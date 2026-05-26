@@ -19,32 +19,32 @@ Scope3_InorganicFertilisers_Data
   MAKEARRAY(26, 7,
     LAMBDA(r,c,
       INDEX({
-        "Category", "Product", "Source", "Product Unit", "Emission Factor", "Embedded Emissions Unit", "Emissions Intensity Unit";
-        "Inorganic Fertilisers", "Ammonia", "Location not specified", "t", 010101, "t", "t CO2-e / t";
-        "Inorganic Fertilisers", "Ammonia", "China", "t", 010102, "t", "t CO2-e / t";
-        "Inorganic Fertilisers", "Ammonia", "Yemen", "t", 010103, "t", "t CO2-e / t";
-        "Inorganic Fertilisers", "Ammonia", "Canada", "t", 010104, "t", "t CO2-e / t";
-        "Inorganic Fertilisers", "Urea", "Location not specified", "t", 010201, "t", "t CO2-e / t";
-        "Inorganic Fertilisers", "Urea", "China", "t", 010202, "t", "t CO2-e / t";
-        "Inorganic Fertilisers", "Urea", "Yemen", "t", 010203, "t", "t CO2-e / t";
-        "Inorganic Fertilisers", "Urea", "Canada", "t", 010204, "t", "t CO2-e / t";
-        "Inorganic Fertilisers", "Monoammonium phosphate (MAP)", "Location not specified", "t", 010301, "t", "t CO2-e / t";
-        "Inorganic Fertilisers", "Diammonium Phosphate (DAP)", "Location not specified", "t", 010401, "t", "t CO2-e / t";
-        "Inorganic Fertilisers", "Urea-Ammonium Nitrate (UAN)", "Location not specified", "t", 010501, "t", "t CO2-e / t";
-        "Inorganic Fertilisers", "Ammonium Nitrate (AN)", "Location not specified", "t", 010601, "t", "t CO2-e / t";
-        "Inorganic Fertilisers", "Calcium Ammonium Nitrate (CAN)", "Location not specified", "t", 010701, "t", "t CO2-e / t";
-        "Inorganic Fertilisers", "Sulphate of Ammonia (SOA)", "Location not specified", "t", 010801, "t", "t CO2-e / t";
-        "Inorganic Fertilisers", "Nitrogen - Generic", "Location not specified", "t", 010901, "t", "t CO2-e / t";
-        "Inorganic Fertilisers", "Nitrogen - Nitrate", "Location not specified", "t", 011001, "t", "t CO2-e / t";
-        "Inorganic Fertilisers", "Nitrogen - Ammoniacal", "Location not specified", "t", 011101, "t", "t CO2-e / t";
-        "Inorganic Fertilisers", "Muriate of Potash (MOP / KCL)", "Location not specified", "t", 011201, "t", "t CO2-e / t";
-        "Inorganic Fertilisers", "Single superphosphate", "Location not specified", "t", 011301, "t", "t CO2-e / t";
-        "Inorganic Fertilisers", "Double superphosphate", "Location not specified", "t", 011401, "t", "t CO2-e / t";
-        "Inorganic Fertilisers", "Phosphorus - Generic", "Location not specified", "t", 011501, "t", "t CO2-e / t";
-        "Inorganic Fertilisers", "Potassium - Generic", "Location not specified", "t", 011601, "t", "t CO2-e / t";
-        "Inorganic Fertilisers", "Sulfur - Generic", "Location not specified", "t", 011701, "t", "t CO2-e / t";
-        "Inorganic Fertilisers", "Zinc - Generic", "Location not specified", "t", 011801, "t", "t CO2-e / t";
-        "Inorganic Fertilisers", "Calcium - Generic", "Location not specified", "t", 011901, "t", "t CO2-e / t"
+        "Category", "Sub-category", "Product name", "Region of origin", "Product Unit", "GHG emission intensity", "System boundary";
+        "Fertilisers", "Inorganic fertilisers", "Ammonia, AU market mix", "Global", "kg", 2.32, "at market";
+        "Fertilisers", "Inorganic fertilisers", "Ammonia, Canada", "Canada", "kg", 2.12, "at market";
+        "Fertilisers", "Inorganic fertilisers", "Ammonia, China", "China", "kg", 4.17, "at market";
+        "Fertilisers", "Inorganic fertilisers", "Ammonia, Yemen", "Yemen", "kg", 2.26, "at market";
+        "Fertilisers", "Inorganic fertilisers", "Ammonium nitrate, AU market mix", "Global", "kg", 2.21, "at market";
+        "Fertilisers", "Inorganic fertilisers", "Calcium ammonium nitrate, AU market mix", "Global", "kg", 1.15, "at market";
+        "Fertilisers", "Inorganic fertilisers", "Calcium nitrate", "Global", "kg", 0.75, "at market";
+        "Fertilisers", "Inorganic fertilisers", "Diammonium phosphate, AU market mix", "Global", "kg", 1.34, "at market";
+        "Fertilisers", "Inorganic fertilisers", "Double superphosphate, AU market mix", "Global", "kg", 0.392, "at market";
+        "Fertilisers", "Inorganic fertilisers", "Monoammonium phosphate, AU market mix", "Global", "kg", 0.827, "at market";
+        "Fertilisers", "Inorganic fertilisers", "Muriate of potash, AU market mix", "Global", "kg", 0.549, "at market";
+        "Fertilisers", "Inorganic fertilisers", "Nitrogen from ammonia, AU market mix", "Global", "kg N", 2.83, "at market";
+        "Fertilisers", "Inorganic fertilisers", "Nitrogen from fertilizer, AU market mix", "Global", "kg N", 4.2, "at market";
+        "Fertilisers", "Inorganic fertilisers", "Nitrogen from nitrate fertilizer, AU market mix", "Global", "kg N", 5.47, "at market";
+        "Fertilisers", "Inorganic fertilisers", "Phosphorus from fertilizer, AU market mix", "Global", "kg P", 3.96, "at market";
+        "Fertilisers", "Inorganic fertilisers", "Potassium from fertilizer, AU market mix", "Global", "kg K", 0.909, "at market";
+        "Fertilisers", "Inorganic fertilisers", "Single superphosphate, AU market mix", "Global", "kg", 0.227, "at market";
+        "Fertilisers", "Inorganic fertilisers", "Sulfur from fertilizer, AU market mix", "Global", "kg S", 2.5, "at market";
+        "Fertilisers", "Inorganic fertilisers", "Ammonium sulphate, AU market mix", "Global", "kg", 0.865, "at market";
+        "Fertilisers", "Inorganic fertilisers", "Urea ammonium nitrate, AU market mix", "Global", "kg", 1.75, "at market";
+        "Fertilisers", "Inorganic fertilisers", "Urea, AU market mix", "Global", "kg", 0.968, "at market";
+        "Fertilisers", "Inorganic fertilisers", "Urea, Canada", "Canada", "kg", 0.823, "at market";
+        "Fertilisers", "Inorganic fertilisers", "Urea, China", "China", "kg", 2.09, "at market";
+        "Fertilisers", "Inorganic fertilisers", "Urea, Yemen", "Yemen", "kg", 0.963, "at market";
+        "Fertilisers", "Inorganic fertilisers", "Zinc from fertilizer", "Global", "kg Zn", 4.82, "at market"
       }, r, c)
 )));
 

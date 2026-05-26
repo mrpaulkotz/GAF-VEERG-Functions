@@ -12,7 +12,7 @@ Fertiliser_ChemicalCompoundElements_Source
 
 Fertiliser_ChemicalCompoundElements_Data
 =LAMBDA(
- MAKEARRAY(19, 6,
+ MAKEARRAY(20, 6,
  LAMBDA(r,c,
   INDEX({
   "Fertiliser Type f", "FNinorganic,f", "FUf", "Basis", "LifeCycles Scope 3 definition", "Source";
@@ -33,7 +33,8 @@ Fertiliser_ChemicalCompoundElements_Data
   "Muriate of potash (MOP)", 0, 0, "Other fertilisers", "Muriate of potash (MOP)", "LifeCycles";
   "Double superphosphate", 0, 0, "Other fertilisers", "Double superphosphate", "LifeCycles";
   "Single superphosphate (SSP)", 0, 0, "Other fertilisers", "Single superphosphate (SSP)", "LifeCycles";
-  "Ammonia", 0.8235, 0, "Ammonium-based fertilisers", "Ammonia", "LifeCycles"
+  "Ammonia", 0.8235, 0, "Ammonium-based fertilisers", "Ammonia", "LifeCycles";
+  "Calcium nitrate", 0.155, 0, "Nitrate-based fertilisers", "Calcium nitrate", "VEERG"
   }, r, c)
 )));
 
@@ -286,6 +287,32 @@ Fertiliser_FractionUreaCommonFertilisers_Data
 
 Fertiliser_FractionUreaCommonFertilisers_Variation
 =LAMBDA((""));
+
+
+/*
+============================================================================
+Source regions for urea and ammonia
+============================================================================
+*/
+
+Fertiliser_UreaAmmoniaSourceRegions_Title
+=LAMBDA("Source regions for urea and ammonia");
+
+Fertiliser_UreaAmmoniaSourceRegions_Source
+=LAMBDA("Lifecycles. (2026). Greenhouse Gas Emission Intensities for Material Inputs to Australian Agriculture, Fisheries and Forestry. Version 48. doi 10.5281/zenodo.19656580");
+
+Fertiliser_UreaAmmoniaSourceRegions_Data
+=LAMBDA(
+ MAKEARRAY(5, 1,
+ LAMBDA(r,c,
+  INDEX({
+  "Source";
+  "Global";
+  "Canada";
+  "China";
+  "Yemen"
+  }, r, c)
+)));
 
 /*
 ============================================================================
