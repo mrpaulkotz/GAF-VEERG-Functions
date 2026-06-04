@@ -48,8 +48,6 @@ Waste_EmissionFactorsForWasteTreatment_Data
 Waste_EmissionFactorsForWasteTreatment_Variation
 =LAMBDA(("VARIATION ON SOURCE: Fixed typo 'paper and carboard' to 'paper and cardboard'. Added EF source column with specific references."));
 
-Waste_EmissionFactorsForWasteTreatment_Variation
-=LAMBDA((""));
 
 /*
 ============================================================================

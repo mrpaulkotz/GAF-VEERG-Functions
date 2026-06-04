@@ -316,3 +316,37 @@ SourceData_Poultry_FracGAMSSoil_Variation
 SourceData_Poultry_FracGAMSSoil_Data
   =LAMBDA(0.21);
 
+
+/* 
+--------------------------------------
+SourceData_Poultry_Liveweights
+Table A.1.7.5: Poultry - Liveweights (Wco) (kg)
+--------------------------------------
+*/
+
+SourceData_Poultry_Liveweights_Title
+  =LAMBDA("Poultry - Liveweights (Wco) (kg)");
+
+SourceData_Poultry_Liveweights_Unit
+  =LAMBDA("kg");
+
+SourceData_Poultry_Liveweights_Source
+  =LAMBDA("VEERG 2026: Table A.1.7.5");
+
+SourceData_Poultry_Liveweights_Variation
+  =LAMBDA("");
+
+SourceData_Poultry_Liveweights_Data
+  =LAMBDA(
+    MAKEARRAY(9, 3, 
+      LAMBDA(r,c, 
+        INDEX({
+          "Livestock Class j", "Average Liveweight (kg)";
+          "Chicken", 1.3;
+          "Hen >/=1 yr", 2;
+          "Pullets", 1.4;
+          "Broilers", 1.2
+        }, r, c)
+      )
+    )
+  );

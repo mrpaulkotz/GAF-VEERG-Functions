@@ -39,15 +39,18 @@ Utility_LookupValueInTableNumber
 
 Utility_LookupValueInTableTwoColumns
 =LAMBDA(
-    LookupValue1, LookupValue2, LookupArray1, LookupArray2, ReturnArray,
-    XLOOKUP(1, (LookupArray1=LookupValue1)*(LookupArray2=LookupValue2), ReturnArray, "")
+    LookupValue1, LookupValue2, LookupArray1, LookupArray2, ReturnArray, [ValueIFFalse],
+    XLOOKUP(1, (LookupArray1=LookupValue1)*(LookupArray2=LookupValue2), ReturnArray, IF(ISOMITTED(ValueIFFalse), "", ValueIFFalse))
 );
 
 Utility_LookupValueInTableOneColumnAndHeader
 =LAMBDA(
-    LookupValue1, LookupValue2, LookupArray1, LookupArray2, ReturnArray,
-    XLOOKUP(LookupValue1, LookupArray1,
-        XLOOKUP(LookupValue2, LookupArray2, ReturnArray)
+    LookupValue1, LookupValue2, LookupArray1, LookupArray2, ReturnArray, [ValueIfFalse],
+    IFERROR(
+        XLOOKUP(LookupValue1, LookupArray1,
+            XLOOKUP(LookupValue2, LookupArray2, ReturnArray)
+        ),
+        IF(ISOMITTED(ValueIfFalse), "", ValueIfFalse)
     )
 );
 

@@ -1,0 +1,23 @@
+
+GetLiveweight_PastureBeef
+=LAMBDA(
+  PurchaseDate, LivestockClass, SourceRegion,
+  SourceRegionLeftArray, SourceRegionRightArray, SeasonArray, LivestockClassArray, LiveweightArray,
+  LET(
+    Season, IFS(
+      MONTH(PurchaseDate) <= 2,  "Summer",
+      MONTH(PurchaseDate) <= 5,  "Autumn",
+      MONTH(PurchaseDate) <= 8,  "Winter",
+      MONTH(PurchaseDate) <= 11, "Spring",
+      MONTH(PurchaseDate) = 12,  "Summer"
+    ),
+    SourceRegionRight, IF(ISNUMBER(FIND(" - ", SourceRegion)), MID(SourceRegion, FIND(" - ", SourceRegion) + 3, LEN(SourceRegion)), "n/a"),
+    SourceRegionLeft,  IF(ISNUMBER(FIND(" - ", SourceRegion)), LEFT(SourceRegion, FIND(" - ", SourceRegion) - 1), SourceRegion),
+    IFERROR(
+      XLOOKUP(1,
+        (SourceRegionLeftArray = SourceRegionLeft) * (SourceRegionRightArray = SourceRegionRight) * (SeasonArray = Season),
+        XLOOKUP(LivestockClass, LivestockClassArray, LiveweightArray, 0),
+      0),
+    0)
+  )
+);

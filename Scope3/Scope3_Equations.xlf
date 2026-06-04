@@ -1,0 +1,1024 @@
+﻿/*
+============================================================================
+15: Scope 3 Emissions
+============================================================================
+*/
+
+/*
+--------------------------------------
+VEERG_15_1_1_1__1_EmissionsFromPurchasedLivestock
+Total emissions from purchased livestock
+E
+t CO2e
+E=\sum\nolimits_c\sum\nolimits_o\left(N_{co}\times W_{co}\times EF_{co}\right)\times 10^{-3}
+N_co = number of animals purchased in livestock type c from origin o
+W_co = average liveweight of purchased livestock at point of purchase
+EF_co = emission factor per livestock type and origin
+--------------------------------------
+*/
+
+VEERG_15_1_1_1__1_EmissionsFromPurchasedLivestock
+  =LAMBDA(
+    N_co, W_co, EF_co,
+    (N_co * W_co * EF_co) * 10 ^ -3
+  );
+
+VEERG_15_1_1_1__1_EmissionsFromPurchasedLivestock_Title
+  =LAMBDA("Total emissions from purchased livestock");
+
+VEERG_15_1_1_1__1_EmissionsFromPurchasedLivestock_Variable
+  =LAMBDA("E");
+
+VEERG_15_1_1_1__1_EmissionsFromPurchasedLivestock_Unit
+  =LAMBDA("t CO2e");
+
+VEERG_15_1_1_1__1_EmissionsFromPurchasedLivestock_Source
+  =LAMBDA("VEERG 2026: 15.1.1.1, Equation (1)");
+
+VEERG_15_1_1_1__1_EmissionsFromPurchasedLivestock_NIRReference
+  =LAMBDA("");
+
+VEERG_15_1_1_1__1_EmissionsFromPurchasedLivestock_LatexEquation
+  =LAMBDA("E=\sum\nolimits_c\sum\nolimits_o\left(N_{co}\times W_{co}\times EF_{co}\right)\times 10^{-3}");
+
+VEERG_15_1_1_1__1_EmissionsFromPurchasedLivestock_Arguments
+  =LAMBDA(
+    MAKEARRAY(5, 4,
+      LAMBDA(r,c,
+        INDEX({
+          "N_co", "number of animals purchased in livestock type c from origin o", "head", "Input";
+          "W_co", "average liveweight of purchased livestock at point of purchase", "kg/head", "Input";
+          "EF_co", "emission factor per livestock type and origin", "kg CO2e/kg", "Constant";
+          "c", "livestock type", "", "Input";
+          "o", "origin", "", "Input"
+        }, r, c)
+      )
+    )
+  );
+
+/*
+--------------------------------------
+VEERG_15_2_1_1__1_EmissionsFromPurchasedFeed
+Emissions from purchased feed
+E
+t CO2e
+E=\sum\nolimits_j\left(Q_j\times EF_j\right)
+Q_j = quantity of feed type j purchased
+EF_j = emission factor of purchased feed
+--------------------------------------
+*/
+
+VEERG_15_2_1_1__1_EmissionsFromPurchasedFeed
+  =LAMBDA(
+    Q_j, EF_j,
+    Q_j * EF_j
+  );
+
+VEERG_15_2_1_1__1_EmissionsFromPurchasedFeed_Title
+  =LAMBDA("Emissions from purchased feed");
+
+VEERG_15_2_1_1__1_EmissionsFromPurchasedFeed_Variable
+  =LAMBDA("E");
+
+VEERG_15_2_1_1__1_EmissionsFromPurchasedFeed_Unit
+  =LAMBDA("t CO2e");
+
+VEERG_15_2_1_1__1_EmissionsFromPurchasedFeed_Source
+  =LAMBDA("VEERG 2026: 15.2.1.1, Equation (1)");
+
+VEERG_15_2_1_1__1_EmissionsFromPurchasedFeed_NIRReference
+  =LAMBDA("");
+
+VEERG_15_2_1_1__1_EmissionsFromPurchasedFeed_LatexEquation
+  =LAMBDA("E=\sum\nolimits_j\left(Q_j\times EF_j\right)");
+
+VEERG_15_2_1_1__1_EmissionsFromPurchasedFeed_Arguments
+  =LAMBDA(
+    MAKEARRAY(3, 4,
+      LAMBDA(r,c,
+        INDEX({
+          "Q_j", "quantity of feed type j purchased", "t", "Input";
+          "EF_j", "emission factor of purchased feed", "kg CO2e/kg", "Constant";
+          "j", "feed type", "", "Input"
+        }, r, c)
+      )
+    )
+  );
+
+/*
+--------------------------------------
+VEERG_15_3_1_1__1_EmissionsFromPurchasedMineralSupplements
+Total emissions from purchased mineral supplements
+E
+t CO2e
+E=\sum\nolimits_m\left(Q_m\times EF_m\right)
+Q_m = total quantity of mineral supplement type m used
+EF_m = emission factor of purchased mineral supplement
+--------------------------------------
+*/
+
+VEERG_15_3_1_1__1_EmissionsFromPurchasedMineralSupplements
+  =LAMBDA(
+    Q_m, EF_m,
+    Q_m * EF_m
+  );
+
+VEERG_15_3_1_1__1_EmissionsFromPurchasedMineralSupplements_Title
+  =LAMBDA("Total emissions from purchased mineral supplements");
+
+VEERG_15_3_1_1__1_EmissionsFromPurchasedMineralSupplements_Variable
+  =LAMBDA("E");
+
+VEERG_15_3_1_1__1_EmissionsFromPurchasedMineralSupplements_Unit
+  =LAMBDA("t CO2e");
+
+VEERG_15_3_1_1__1_EmissionsFromPurchasedMineralSupplements_Source
+  =LAMBDA("VEERG 2026: 15.3.1.1, Equation (1)");
+
+VEERG_15_3_1_1__1_EmissionsFromPurchasedMineralSupplements_NIRReference
+  =LAMBDA("");
+
+VEERG_15_3_1_1__1_EmissionsFromPurchasedMineralSupplements_LatexEquation
+  =LAMBDA("E=\sum\nolimits_m\left(Q_m\times EF_m\right)");
+
+VEERG_15_3_1_1__1_EmissionsFromPurchasedMineralSupplements_Arguments
+  =LAMBDA(
+    MAKEARRAY(3, 4,
+      LAMBDA(r,c,
+        INDEX({
+          "Q_m", "total quantity of mineral supplement type m used", "t", "Input";
+          "EF_m", "emission factor of purchased mineral supplement", "kg CO2e/kg", "Constant";
+          "m", "mineral supplement type", "", "Input"
+        }, r, c)
+      )
+    )
+  );
+
+/*
+--------------------------------------
+VEERG_15_4_1_1__1_EmissionsFromPurchasedFertiliser
+Emissions from purchased fertiliser
+E
+t CO2e
+E=\sum\nolimits_f\sum\nolimits_j\left(TM_{jf}\times EF_f\right)\times 10^{-3}
+TM_jf = quantity of inorganic fertiliser type f purchased and applied to production system j
+EF_f = emission factor of purchased inorganic fertiliser
+--------------------------------------
+*/
+
+VEERG_15_4_1_1__1_EmissionsFromPurchasedFertiliser
+  =LAMBDA(
+    TM_jf, EF_f,
+    (TM_jf * EF_f) * 10 ^ -3
+  );
+
+VEERG_15_4_1_1__1_EmissionsFromPurchasedFertiliser_Title
+  =LAMBDA("Emissions from purchased fertiliser");
+
+VEERG_15_4_1_1__1_EmissionsFromPurchasedFertiliser_Variable
+  =LAMBDA("E");
+
+VEERG_15_4_1_1__1_EmissionsFromPurchasedFertiliser_Unit
+  =LAMBDA("t CO2e");
+
+VEERG_15_4_1_1__1_EmissionsFromPurchasedFertiliser_Source
+  =LAMBDA("VEERG 2026: 15.4.1.1, Equation (1)");
+
+VEERG_15_4_1_1__1_EmissionsFromPurchasedFertiliser_NIRReference
+  =LAMBDA("");
+
+VEERG_15_4_1_1__1_EmissionsFromPurchasedFertiliser_LatexEquation
+  =LAMBDA("E=\sum\nolimits_f\sum\nolimits_j\left(TM_{jf}\times EF_f\right)\times 10^{-3}");
+
+VEERG_15_4_1_1__1_EmissionsFromPurchasedFertiliser_Arguments
+  =LAMBDA(
+    MAKEARRAY(4, 4,
+      LAMBDA(r,c,
+        INDEX({
+          "TM_jf", "quantity of inorganic fertiliser type f purchased and applied to production system j", "kg", "Input";
+          "EF_f", "emission factor of purchased inorganic fertiliser", "kg CO2e/kg", "Constant";
+          "j", "production system", "", "Input";
+          "f", "inorganic fertiliser type", "", "Input"
+        }, r, c)
+      )
+    )
+  );
+
+/*
+--------------------------------------
+VEERG_15_4_1_1__2_EmissionsFromPurchasedFertiliserComponents
+Emissions from purchased fertiliser components
+E
+t CO2e
+E=\sum\nolimits_f\sum\nolimits_c\sum\nolimits_j\left((F_{cf}\times TM_{jf})/100\times EF_c\right)
+F_cf = fraction of component c contained within the inorganic fertiliser f
+TM_jf = quantity of inorganic fertiliser type f purchased and applied to production system j
+EF_c = emission factor for the production of component c
+--------------------------------------
+*/
+
+VEERG_15_4_1_1__2_EmissionsFromPurchasedFertiliserComponents
+  =LAMBDA(
+    F_cf, TM_jf, EF_c,
+    ((F_cf * TM_jf) / 100) * EF_c
+  );
+
+VEERG_15_4_1_1__2_EmissionsFromPurchasedFertiliserComponentsVariation
+  =LAMBDA(
+    F_cf, TM_jf, EF_c,
+    (F_cf * TM_jf) * EF_c * 10^-3
+  );
+
+VEERG_15_4_1_1__2_EmissionsFromPurchasedFertiliserComponents_Title
+  =LAMBDA("Emissions from purchased fertiliser components");
+
+VEERG_15_4_1_1__2_EmissionsFromPurchasedFertiliserComponents_Variable
+  =LAMBDA("E");
+
+VEERG_15_4_1_1__2_EmissionsFromPurchasedFertiliserComponents_Unit
+  =LAMBDA("t CO2e");
+
+VEERG_15_4_1_1__2_EmissionsFromPurchasedFertiliserComponents_Source
+  =LAMBDA("VEERG 2026: 15.4.1.1, Equation (2)");
+
+VEERG_15_4_1_1__2_EmissionsFromPurchasedFertiliserComponents_NIRReference
+  =LAMBDA("");
+
+VEERG_15_4_1_1__2_EmissionsFromPurchasedFertiliserComponents_LatexEquation
+  =LAMBDA("E=\sum\nolimits_f\sum\nolimits_c\sum\nolimits_j\left(\frac{F_{cf}\times TM_{jf}}{100}\times EF_c\right)");
+
+VEERG_15_4_1_1__2_EmissionsFromPurchasedFertiliserComponents_LatexEquationVariation
+  =LAMBDA("E=\sum\nolimits_f\sum\nolimits_c\sum\nolimits_j\left(F_{cf}\times TM_{jf}\times EF_c\right)\times 10^{-3}");
+
+VEERG_15_4_1_1__2_EmissionsFromPurchasedFertiliserComponents_Arguments
+  =LAMBDA(
+    MAKEARRAY(6, 4,
+      LAMBDA(r,c,
+        INDEX({
+          "F_cf", "fraction of component c contained within the inorganic fertiliser f", "wt%", "Input";
+          "TM_jf", "quantity of inorganic fertiliser type f purchased and applied to production system j", "kg", "Input";
+          "EF_c", "emission factor for the production of component c", "kg CO2e/kg component", "Constant";
+          "c", "fertiliser component", "", "Input";
+          "f", "inorganic fertiliser type", "", "Input";
+          "j", "production system", "", "Input"
+        }, r, c)
+      )
+    )
+  );
+
+VEERG_15_4_1_1__2_EmissionsFromPurchasedFertiliserComponents_Variation
+  =LAMBDA("VARIATION ON SOURCE: removes division by 100 for F_cf, treating F_cf as fraction instead of percent because it is a fraction in scope 1 equations. Convert kg to tonnes by mutiplying by 10^-3.");
+
+
+
+
+/*
+--------------------------------------
+VEERG_15_4_1_1__X_EmissionFactorFromPurchasedFertiliserComponents
+Emission factor for fertiliser product derived from components
+--------------------------------------
+*/
+
+VEERG_15_4_1_1__X_EmissionFactorFromPurchasedFertiliserComponents
+  =LAMBDA(
+    F_cf, EF_c,
+    F_cf * EF_c
+  );
+
+VEERG_15_4_1_1__X_EmissionFactorFromPurchasedFertiliserComponents_Title
+  =LAMBDA("Emission factor for fertiliser product derived from components");
+
+VEERG_15_4_1_1__X_EmissionFactorFromPurchasedFertiliserComponents_Variable
+  =LAMBDA("EF_f");
+
+VEERG_15_4_1_1__X_EmissionFactorFromPurchasedFertiliserComponents_Unit
+  =LAMBDA("kg CO2e/kg fertiliser");
+
+VEERG_15_4_1_1__X_EmissionFactorFromPurchasedFertiliserComponents_Source
+  =LAMBDA("GAF");
+
+VEERG_15_4_1_1__X_EmissionFactorFromPurchasedFertiliserComponents_NIRReference
+  =LAMBDA("");
+
+VEERG_15_4_1_1__X_EmissionFactorFromPurchasedFertiliserComponents_LatexEquation
+  =LAMBDA("EF_f=\sum\nolimits_c\left(F_{cf}\times EF_c\right)");
+
+VEERG_15_4_1_1__X_EmissionFactorFromPurchasedFertiliserComponents_Arguments
+  =LAMBDA(
+    MAKEARRAY(4, 4,
+      LAMBDA(r,c,
+        INDEX({
+          "F_cf", "fraction of component c contained within the inorganic fertiliser f", "wt%", "Input";
+          "EF_c", "emission factor for the production of component c", "kg CO2e/kg component", "Constant";
+          "c", "fertiliser component", "", "Input";
+          "f", "inorganic fertiliser type", "", "Input"
+        }, r, c)
+      )
+    )
+  );
+
+VEERG_15_4_1_1__X_EmissionFactorFromPurchasedFertiliserComponents_Variation
+  =LAMBDA("VARIATION ON SOURCE: This equation is added to calculate an EF value from fertiliser components that can be used in 15.4.1.1 (1)");
+
+/*
+--------------------------------------
+VEERG_15_5_1_1__1_EmissionsFromPurchasedAgrichemicals
+Total emissions from purchased agrichemicals
+E
+t CO2e
+E=\sum\nolimits_h\left(Q_h\times EF_h\right)\times 10^{-3}
+Q_h = quantity of active ingredients in agrichemical type h purchased and applied to soils
+EF_h = emission factor for purchased agrichemical active ingredient
+--------------------------------------
+*/
+
+VEERG_15_5_1_1__1_EmissionsFromPurchasedAgrichemicals
+  =LAMBDA(
+    Q_h, EF_h,
+    (Q_h * EF_h) * 10 ^ -3
+  );
+
+VEERG_15_5_1_1__1_EmissionsFromPurchasedAgrichemicals_Title
+  =LAMBDA("Total emissions from purchased agrichemicals");
+
+VEERG_15_5_1_1__1_EmissionsFromPurchasedAgrichemicals_Variable
+  =LAMBDA("E");
+
+VEERG_15_5_1_1__1_EmissionsFromPurchasedAgrichemicals_Unit
+  =LAMBDA("t CO2e");
+
+VEERG_15_5_1_1__1_EmissionsFromPurchasedAgrichemicals_Source
+  =LAMBDA("VEERG 2026: 15.5.1.1, Equation (1)");
+
+VEERG_15_5_1_1__1_EmissionsFromPurchasedAgrichemicals_NIRReference
+  =LAMBDA("");
+
+VEERG_15_5_1_1__1_EmissionsFromPurchasedAgrichemicals_LatexEquation
+  =LAMBDA("E=\sum\nolimits_h\left(Q_h\times EF_h\right)\times 10^{-3}");
+
+VEERG_15_5_1_1__1_EmissionsFromPurchasedAgrichemicals_Arguments
+  =LAMBDA(
+    MAKEARRAY(3, 4,
+      LAMBDA(r,c,
+        INDEX({
+          "Q_h", "quantity of active ingredients in agrichemical type h purchased and applied to soils", "kg ai", "Input";
+          "EF_h", "emission factor for purchased agrichemical active ingredient", "kg CO2e/kg ai", "Constant";
+          "h", "agrichemical type", "", "Input"
+        }, r, c)
+      )
+    )
+  );
+
+/*
+--------------------------------------
+VEERG_15_6_1_1__1_EmissionsFromPurchasedLime
+Embedded emissions for purchased lime
+E
+t CO2e
+E=M_lime\times EF_l
+M_lime = total quantity of lime applied to soils
+EF_l = emission factor for purchased lime
+--------------------------------------
+*/
+
+VEERG_15_6_1_1__1_EmissionsFromPurchasedLime
+  =LAMBDA(
+    M_lime, EF_l,
+    M_lime * EF_l
+  );
+
+VEERG_15_6_1_1__1_EmissionsFromPurchasedLime_Title
+  =LAMBDA("Embedded emissions for purchased lime");
+
+VEERG_15_6_1_1__1_EmissionsFromPurchasedLime_Variable
+  =LAMBDA("E");
+
+VEERG_15_6_1_1__1_EmissionsFromPurchasedLime_Unit
+  =LAMBDA("t CO2e");
+
+VEERG_15_6_1_1__1_EmissionsFromPurchasedLime_Source
+  =LAMBDA("VEERG 2026: 15.6.1.1, Equation (1)");
+
+VEERG_15_6_1_1__1_EmissionsFromPurchasedLime_NIRReference
+  =LAMBDA("");
+
+VEERG_15_6_1_1__1_EmissionsFromPurchasedLime_LatexEquation
+  =LAMBDA("E=M_{lime}\times EF_l");
+
+VEERG_15_6_1_1__1_EmissionsFromPurchasedLime_Arguments
+  =LAMBDA(
+    MAKEARRAY(2, 4,
+      LAMBDA(r,c,
+        INDEX({
+          "M_lime", "total quantity of lime applied to soils", "t", "Input";
+          "EF_l", "emission factor for purchased lime", "t CO2e/t", "Constant"
+        }, r, c)
+      )
+    )
+  );
+
+/*
+--------------------------------------
+VEERG_15_7_1_1__1_EmissionsFromPurchasedServices
+Emissions of purchased services and contractor operations
+E
+t CO2e
+E=\sum\nolimits_p\left(A_p\times EF_p\right)\times 10^{-3}
+A_p = activity data of the service that was purchased
+EF_p = life cycle emission factor for the purchased service
+--------------------------------------
+*/
+
+VEERG_15_7_1_1__1_EmissionsFromPurchasedServices
+  =LAMBDA(
+    A_p, EF_p,
+    (A_p * EF_p) * 10 ^ -3
+  );
+
+VEERG_15_7_1_1__1_EmissionsFromPurchasedServices_Title
+  =LAMBDA("Emissions of purchased services and contractor operations");
+
+VEERG_15_7_1_1__1_EmissionsFromPurchasedServices_Variable
+  =LAMBDA("E");
+
+VEERG_15_7_1_1__1_EmissionsFromPurchasedServices_Unit
+  =LAMBDA("t CO2e");
+
+VEERG_15_7_1_1__1_EmissionsFromPurchasedServices_Source
+  =LAMBDA("VEERG 2026: 15.7.1.1, Equation (1)");
+
+VEERG_15_7_1_1__1_EmissionsFromPurchasedServices_NIRReference
+  =LAMBDA("");
+
+VEERG_15_7_1_1__1_EmissionsFromPurchasedServices_LatexEquation
+  =LAMBDA("E=\sum\nolimits_p\left(A_p\times EF_p\right)\times 10^{-3}");
+
+VEERG_15_7_1_1__1_EmissionsFromPurchasedServices_Arguments
+  =LAMBDA(
+    MAKEARRAY(3, 4,
+      LAMBDA(r,c,
+        INDEX({
+          "A_p", "activity data of the service that was purchased", "ha or h", "Input";
+          "EF_p", "life cycle emission factor for the purchased service", "kg CO2e/ha or kg CO2e/h", "Constant";
+          "p", "service type", "", "Input"
+        }, r, c)
+      )
+    )
+  );
+
+/*
+--------------------------------------
+VEERG_15_8_1_1__1_EmissionsFromPurchasedPackaging
+Embedded emissions from use of packaging materials
+E
+t CO2e
+E=\sum\nolimits_p\left(Q_p\times EF_p\right)\times 10^{-3}
+Q_p = units of packaging type p
+EF_p = emission factor for packaging type p
+--------------------------------------
+*/
+
+VEERG_15_8_1_1__1_EmissionsFromPurchasedPackaging
+  =LAMBDA(
+    Q_p, EF_p,
+    (Q_p * EF_p) * 10 ^ -3
+  );
+
+VEERG_15_8_1_1__1_EmissionsFromPurchasedPackaging_Title
+  =LAMBDA("Embedded emissions from use of packaging materials");
+
+VEERG_15_8_1_1__1_EmissionsFromPurchasedPackaging_Variable
+  =LAMBDA("E");
+
+VEERG_15_8_1_1__1_EmissionsFromPurchasedPackaging_Unit
+  =LAMBDA("t CO2e");
+
+VEERG_15_8_1_1__1_EmissionsFromPurchasedPackaging_Source
+  =LAMBDA("VEERG 2026: 15.8.1.1, Equation (1)");
+
+VEERG_15_8_1_1__1_EmissionsFromPurchasedPackaging_NIRReference
+  =LAMBDA("");
+
+VEERG_15_8_1_1__1_EmissionsFromPurchasedPackaging_LatexEquation
+  =LAMBDA("E=\sum\nolimits_p\left(Q_p\times EF_p\right)\times 10^{-3}");
+
+VEERG_15_8_1_1__1_EmissionsFromPurchasedPackaging_Arguments
+  =LAMBDA(
+    MAKEARRAY(3, 4,
+      LAMBDA(r,c,
+        INDEX({
+          "Q_p", "units of packaging type p", "units", "Input";
+          "EF_p", "emission factor for packaging type p", "kg CO2e/unit", "Constant";
+          "p", "packaging type", "", "Input"
+        }, r, c)
+      )
+    )
+  );
+
+VEERG_15_8_1_1__1_EmissionsFromPurchasedPackaging_Variation
+  =LAMBDA("VARIATION ON SOURCE: Changed unit of Q from 'units' to 'kg' as EF data is in kg.");
+  
+
+/*
+--------------------------------------
+VEERG_15_9_1_1__1_EmissionsFromPurchasedGrowMedia
+Embedded emissions from use of grow media products
+E
+t CO2e
+E=\sum\nolimits_g\left(Q_g\times EF_g\right)\times 10^{-3}
+Q_g = total quantity of grow media type g
+EF_g = emission factor for grow media type g
+--------------------------------------
+*/
+
+VEERG_15_9_1_1__1_EmissionsFromPurchasedGrowMedia
+  =LAMBDA(
+    Q_g, EF_g,
+    (Q_g * EF_g) * 10 ^ -3
+  );
+
+VEERG_15_9_1_1__1_EmissionsFromPurchasedGrowMedia_Title
+  =LAMBDA("Embedded emissions from use of grow media products");
+
+VEERG_15_9_1_1__1_EmissionsFromPurchasedGrowMedia_Variable
+  =LAMBDA("E");
+
+VEERG_15_9_1_1__1_EmissionsFromPurchasedGrowMedia_Unit
+  =LAMBDA("t CO2e");
+
+VEERG_15_9_1_1__1_EmissionsFromPurchasedGrowMedia_Source
+  =LAMBDA("VEERG 2026: 15.9.1.1, Equation (1)");
+
+VEERG_15_9_1_1__1_EmissionsFromPurchasedGrowMedia_NIRReference
+  =LAMBDA("");
+
+VEERG_15_9_1_1__1_EmissionsFromPurchasedGrowMedia_LatexEquation
+  =LAMBDA("E=\sum\nolimits_g\left(Q_g\times EF_g\right)\times 10^{-3}");
+
+VEERG_15_9_1_1__1_EmissionsFromPurchasedGrowMedia_Arguments
+  =LAMBDA(
+    MAKEARRAY(3, 4,
+      LAMBDA(r,c,
+        INDEX({
+          "Q_g", "total quantity of grow media type g", "kg or m3", "Input";
+          "EF_g", "emission factor for grow media type g", "kg CO2e/kg or kg CO2e/m3", "Constant";
+          "g", "grow media type", "", "Input"
+        }, r, c)
+      )
+    )
+  );
+
+/*
+--------------------------------------
+VEERG_15_10_1_1__1_OtherPurchasedGoodsAndServices
+Other purchased goods and services generic estimate
+emissions
+t CO2e
+emissions=activity_data\times emission_factor
+activity_data = measured activity for the purchased good or service
+emission_factor = lifecycle emissions per unit of activity
+--------------------------------------
+*/
+
+VEERG_15_10_1_1__1_OtherPurchasedGoodsAndServices
+  =LAMBDA(
+    activity_data, emission_factor,
+    activity_data * emission_factor
+  );
+
+VEERG_15_10_1_1__1_OtherPurchasedGoodsAndServices_Title
+  =LAMBDA("Other purchased goods and services generic estimate");
+
+VEERG_15_10_1_1__1_OtherPurchasedGoodsAndServices_Variable
+  =LAMBDA("emissions");
+
+VEERG_15_10_1_1__1_OtherPurchasedGoodsAndServices_Unit
+  =LAMBDA("t CO2e");
+
+VEERG_15_10_1_1__1_OtherPurchasedGoodsAndServices_Source
+  =LAMBDA("VEERG 2026: 15.10, generic placeholder equation");
+
+VEERG_15_10_1_1__1_OtherPurchasedGoodsAndServices_NIRReference
+  =LAMBDA("");
+
+VEERG_15_10_1_1__1_OtherPurchasedGoodsAndServices_LatexEquation
+  =LAMBDA("emissions=activity\_data\times emission\_factor");
+
+VEERG_15_10_1_1__1_OtherPurchasedGoodsAndServices_Arguments
+  =LAMBDA(
+    MAKEARRAY(2, 4,
+      LAMBDA(r,c,
+        INDEX({
+          "activity_data", "measured activity for the purchased good or service", "varies", "Input";
+          "emission_factor", "lifecycle emissions per unit of activity", "varies", "Constant"
+        }, r, c)
+      )
+    )
+  );
+
+/*
+--------------------------------------
+VEERG_15_11_1_1__1_TotalUpstreamEmissionsFromFuel
+Total upstream emissions from scope 1 fuel consumption
+E
+t CO2e
+E=\sum\nolimits_qE_{WTT,trans,q}+\sum\nolimits_qE_{WTT,SC,q}
+E_WTTtransq = upstream emissions from scope 1 transport fuel use
+E_WTTSCq = upstream emissions from scope 1 stationary combustion fuel use
+--------------------------------------
+*/
+
+VEERG_15_11_1_1__1_TotalUpstreamEmissionsFromFuel
+  =LAMBDA(
+    E_WTTtransq, E_WTTSCq,
+    E_WTTtransq + E_WTTSCq
+  );
+
+VEERG_15_11_1_1__1_TotalUpstreamEmissionsFromFuel_Title
+  =LAMBDA("Total upstream emissions from scope 1 fuel consumption");
+
+VEERG_15_11_1_1__1_TotalUpstreamEmissionsFromFuel_Variable
+  =LAMBDA("E");
+
+VEERG_15_11_1_1__1_TotalUpstreamEmissionsFromFuel_Unit
+  =LAMBDA("t CO2e");
+
+VEERG_15_11_1_1__1_TotalUpstreamEmissionsFromFuel_Source
+  =LAMBDA("VEERG 2026: 15.11.1.1, Equation (1)");
+
+VEERG_15_11_1_1__1_TotalUpstreamEmissionsFromFuel_NIRReference
+  =LAMBDA("");
+
+VEERG_15_11_1_1__1_TotalUpstreamEmissionsFromFuel_LatexEquation
+  =LAMBDA("E=\sum\nolimits_qE_{WTT,trans,q}+\sum\nolimits_qE_{WTT,SC,q}");
+
+VEERG_15_11_1_1__1_TotalUpstreamEmissionsFromFuel_Arguments
+  =LAMBDA(
+    MAKEARRAY(2, 4,
+      LAMBDA(r,c,
+        INDEX({
+          "E_WTTtransq", "upstream emissions from scope 1 transport fuel use", "t CO2e", "Calculated by 15.11.1.1 (2)";
+          "E_WTTSCq", "upstream emissions from scope 1 stationary combustion fuel use", "t CO2e", "Calculated by 15.11.1.1 (3)"
+        }, r, c)
+      )
+    )
+  );
+
+/*
+--------------------------------------
+VEERG_15_11_1_1__2_UpstreamTransportFuelEmissions
+Upstream emissions from scope 1 fuel use for transport purposes
+E_WTTtransq
+t CO2e
+E_{WTT,trans,q}=Q_{Trans,q}\times EC_{Trans,q}\times EF_{Trans,3,q}\times 10^{-3}
+Q_Transq = amount of fuel q combusted for transport energy purposes
+EC_Transq = energy content factor for transport energy purposes
+EF_Trans3q = scope 3 emission factor for transport energy purposes
+--------------------------------------
+*/
+
+VEERG_15_11_1_1__2_UpstreamTransportFuelEmissions
+  =LAMBDA(
+    Q_Transq, EC_Transq, EF_Trans3q,
+    (Q_Transq * EC_Transq * EF_Trans3q) * 10 ^ -3
+  );
+
+VEERG_15_11_1_1__2_UpstreamTransportFuelEmissions_Title
+  =LAMBDA("Upstream emissions from scope 1 fuel use for transport purposes");
+
+VEERG_15_11_1_1__2_UpstreamTransportFuelEmissions_Variable
+  =LAMBDA("E_WTTtransq");
+
+VEERG_15_11_1_1__2_UpstreamTransportFuelEmissions_Unit
+  =LAMBDA("t CO2e");
+
+VEERG_15_11_1_1__2_UpstreamTransportFuelEmissions_Source
+  =LAMBDA("VEERG 2026: 15.11.1.1, Equation (2)");
+
+VEERG_15_11_1_1__2_UpstreamTransportFuelEmissions_NIRReference
+  =LAMBDA("");
+
+VEERG_15_11_1_1__2_UpstreamTransportFuelEmissions_LatexEquation
+  =LAMBDA("E_{WTT,trans,q}=Q_{Trans,q}\times EC_{Trans,q}\times EF_{Trans,3,q}\times 10^{-3}");
+
+VEERG_15_11_1_1__2_UpstreamTransportFuelEmissions_Arguments
+  =LAMBDA(
+    MAKEARRAY(3, 4,
+      LAMBDA(r,c,
+        INDEX({
+          "Q_Transq", "amount of fuel q combusted for transport energy purposes", "kL", "Input";
+          "EC_Transq", "energy content factor for transport energy purposes", "GJ/kL or GJ/m3", "Constant";
+          "EF_Trans3q", "scope 3 emission factor for transport energy purposes", "kg CO2e/GJ", "Constant"
+        }, r, c)
+      )
+    )
+  );
+
+/*
+--------------------------------------
+VEERG_15_11_1_1__3_UpstreamStationaryFuelEmissions
+Upstream emissions from scope 1 stationary combustion fuel use
+E_WTTSCq
+t CO2e
+E_{WTT,SC,q}=Q_{SC,q}\times EC_{SC,q}\times EF_{SC,3,q}\times 10^{-3}
+Q_SCq = amount of fuel q used for stationary combustion operations
+EC_SCq = energy content factor for stationary combustion operations
+EF_SC3q = scope 3 emission factor for stationary combustion operations
+--------------------------------------
+*/
+
+VEERG_15_11_1_1__3_UpstreamStationaryFuelEmissions
+  =LAMBDA(
+    Q_SCq, EC_SCq, EF_SC3q,
+    (Q_SCq * EC_SCq * EF_SC3q) * 10 ^ -3
+  );
+
+VEERG_15_11_1_1__3_UpstreamStationaryFuelEmissions_Title
+  =LAMBDA("Upstream emissions from scope 1 stationary combustion fuel use");
+
+VEERG_15_11_1_1__3_UpstreamStationaryFuelEmissions_Variable
+  =LAMBDA("E_WTTSCq");
+
+VEERG_15_11_1_1__3_UpstreamStationaryFuelEmissions_Unit
+  =LAMBDA("t CO2e");
+
+VEERG_15_11_1_1__3_UpstreamStationaryFuelEmissions_Source
+  =LAMBDA("VEERG 2026: 15.11.1.1, Equation (3)");
+
+VEERG_15_11_1_1__3_UpstreamStationaryFuelEmissions_NIRReference
+  =LAMBDA("");
+
+VEERG_15_11_1_1__3_UpstreamStationaryFuelEmissions_LatexEquation
+  =LAMBDA("E_{WTT,SC,q}=Q_{SC,q}\times EC_{SC,q}\times EF_{SC,3,q}\times 10^{-3}");
+
+VEERG_15_11_1_1__3_UpstreamStationaryFuelEmissions_Arguments
+  =LAMBDA(
+    MAKEARRAY(5, 4,
+      LAMBDA(r,c,
+        INDEX({
+          "Q_SCq", "amount of fuel q used for stationary combustion operations", "kL", "Input";
+          "EC_SCq", "energy content factor for stationary combustion operations", "GJ/kL", "Constant";
+          "EF_SC3q", "scope 3 emission factor for stationary combustion operations", "kg CO2e/GJ", "Constant";
+          "i", "state", "", "Input";
+          "m", "metropolitan/non-metropolitan location", "", "Input"
+        }, r, c)
+      )
+    )
+  );
+
+VEERG_15_11_1_1__3_UpstreamStationaryFuelEmissions_Variation
+  =LAMBDA("VARIATION ON SOURCE: Added 'state' and 'metro/non-metro' arguments as gaseous scope 3 EFs are state and metro/non-metro location-based.");
+
+/*
+--------------------------------------
+VEERG_15_12_1_1__1_UpstreamPurchasedElectricityLocationBased
+Scope 3 emissions from purchased electricity location based
+E_3elec
+t CO2e
+E_{3,elec}=Q_{elec}\times EF_{3,elec}\times 10^{-3}
+Q_elec = amount of electricity purchased from the grid
+EF_3elec = scope 3 emission factor for purchased electricity
+--------------------------------------
+*/
+
+VEERG_15_12_1_1__1_UpstreamPurchasedElectricityLocationBased
+  =LAMBDA(
+    Q_elec, EF_3elec,
+    (Q_elec * EF_3elec) * 10 ^ -3
+  );
+
+VEERG_15_12_1_1__1_UpstreamPurchasedElectricityLocationBased_Title
+  =LAMBDA("Scope 3 emissions from purchased electricity location based");
+
+VEERG_15_12_1_1__1_UpstreamPurchasedElectricityLocationBased_Variable
+  =LAMBDA("E_3elec");
+
+VEERG_15_12_1_1__1_UpstreamPurchasedElectricityLocationBased_Unit
+  =LAMBDA("t CO2e");
+
+VEERG_15_12_1_1__1_UpstreamPurchasedElectricityLocationBased_Source
+  =LAMBDA("VEERG 2026: 15.12.1.1, Equation (1)");
+
+VEERG_15_12_1_1__1_UpstreamPurchasedElectricityLocationBased_NIRReference
+  =LAMBDA("");
+
+VEERG_15_12_1_1__1_UpstreamPurchasedElectricityLocationBased_LatexEquation
+  =LAMBDA("E_{3,elec}=Q_{elec}\times EF_{3,elec}\times 10^{-3}");
+
+VEERG_15_12_1_1__1_UpstreamPurchasedElectricityLocationBased_Arguments
+  =LAMBDA(
+    MAKEARRAY(3, 4,
+      LAMBDA(r,c,
+        INDEX({
+          "Q_elec", "amount of electricity purchased from the grid", "kWh", "Input";
+          "EF_3elec", "scope 3 emission factor for purchased electricity", "kg CO2e/kWh", "Constant";
+          "g", "grid electricity was purchased from", "", "Input"
+        }, r, c)
+      )
+    )
+  );
+
+/*
+--------------------------------------
+VEERG_15_12_1_2__1_UpstreamPurchasedElectricityMarketBased
+Scope 3 emissions from purchased electricity market based
+E_3elec
+t CO2e
+E_{3,elec}=\left[Q_{elec}\times\left(1-(RPP+JRPP)\right)-\left(REC_{surrendered}-REC_{onsite}\right)\times 10^{-3}\right]\times EF_{RMF3,elec}\times 10^{-3}
+Q_elec = amount of electricity purchased from the grid
+RPP = renewable power percentage under LRET for the applicable period
+JRPP = jurisdictional renewable power percentage for the applicable period
+REC_surrendered = eligible renewable energy certificates voluntarily surrendered
+REC_onsite = eligible renewable energy certificates issued for onsite generated electricity
+EF_RMF3elec = scope 3 residual mix emission factor for electricity
+--------------------------------------
+*/
+
+VEERG_15_12_1_2__1_UpstreamPurchasedElectricityMarketBased
+  =LAMBDA(
+    Q_elec, RPP, JRPP, REC_surrendered, REC_onsite, EF_RMF3elec,
+    ((Q_elec * (1 - (RPP + JRPP))) - ((REC_surrendered - REC_onsite) * 10 ^ -3)) * EF_RMF3elec * 10 ^ -3
+  );
+
+VEERG_15_12_1_2__1_UpstreamPurchasedElectricityMarketBasedVariation
+  =LAMBDA(
+    Q_elec, RPP, JRPP, REC_surrendered, REC_onsite, EF_RMF3elec,
+    ((Q_elec * (1 - (RPP + JRPP))) - ((REC_surrendered - REC_onsite) * 10 ^ 3)) * EF_RMF3elec * 10 ^ -3
+  );
+
+VEERG_15_12_1_2__1_UpstreamPurchasedElectricityMarketBased_Title
+  =LAMBDA("Scope 3 emissions from purchased electricity market based");
+
+VEERG_15_12_1_2__1_UpstreamPurchasedElectricityMarketBased_Variable
+  =LAMBDA("E_3elec");
+
+VEERG_15_12_1_2__1_UpstreamPurchasedElectricityMarketBased_Unit
+  =LAMBDA("t CO2e");
+
+VEERG_15_12_1_2__1_UpstreamPurchasedElectricityMarketBased_Source
+  =LAMBDA("VEERG 2026: 15.12.1.2, Equation (1)");
+
+VEERG_15_12_1_2__1_UpstreamPurchasedElectricityMarketBased_NIRReference
+  =LAMBDA("");
+
+VEERG_15_12_1_2__1_UpstreamPurchasedElectricityMarketBased_LatexEquation
+  =LAMBDA("E_{3,elec}= [ Q_{elec}\times\left(1-(RPP+JRPP)\right)-\left\left((REC_{surrendered}-REC_{onsite}\right)\times 10^{-3}\right)\right]\times EF_{RMF3,elec}\times 10^{-3}");
+
+VEERG_15_12_1_2__1_UpstreamPurchasedElectricityMarketBased_LatexEquationVariation
+  =LAMBDA("E_{3,elec}= [ Q_{elec}\times\left(1-(RPP+JRPP)\right)-\left\left((REC_{surrendered}-REC_{onsite}\right)\times 10^{3}\right)\right]\times EF_{RMF3,elec}\times 10^{-3}");
+
+VEERG_15_12_1_2__1_UpstreamPurchasedElectricityMarketBased_Arguments
+  =LAMBDA(
+    MAKEARRAY(7, 4,
+      LAMBDA(r,c,
+        INDEX({
+          "Q_elec", "amount of electricity purchased from the grid", "kWh", "Input";
+          "RPP", "renewable power percentage under LRET for the applicable period", "fraction", "Input";
+          "JRPP", "jurisdictional renewable power percentage for the applicable period", "fraction", "Input";
+          "REC_surrendered", "eligible renewable energy certificates voluntarily surrendered", "MWh", "Input";
+          "REC_onsite", "eligible renewable energy certificates issued for onsite generated electricity", "MWh", "Input";
+          "EF_RMF3elec", "scope 3 residual mix emission factor for electricity", "kg CO2e/kWh", "Constant";
+          "i", "state", "", "Input"
+        }, r, c)
+      )
+    )
+  );
+
+VEERG_15_12_1_2__1_UpstreamPurchasedElectricityMarketBased_Variation
+  =LAMBDA("VARIATION ON SOURCE: In order to convert megawatt hours to kilowatt hours, the REC_surrendered and REC_onsite variables are multiplied by 10^3 instead of 10^-3.");
+
+/*
+--------------------------------------
+VEERG_15_13_1_1__1_EmissionsFromManureSentOffSite
+Emissions from manure sent off site applied to soils in another farming system or enterprise
+E
+t N2O
+E=E_{N2O}+E_{ad}+E_{leach}
+E_N2O = direct nitrous oxide emissions from application of manure to soils outside of scope 1 boundary
+E_ad = nitrous oxide emissions from atmospheric deposition of manure to soils
+E_leach = nitrous oxide emissions from nitrogen leaching and runoff of manure to soils
+--------------------------------------
+*/
+
+VEERG_15_13_1_1__1_EmissionsFromManureSentOffSite
+  =LAMBDA(
+    E_N2O, E_ad, E_leach,
+    E_N2O + E_ad + E_leach
+  );
+
+VEERG_15_13_1_1__1_EmissionsFromManureSentOffSite_Title
+  =LAMBDA("Emissions from manure sent off site applied to soils in another farming system or enterprise");
+
+VEERG_15_13_1_1__1_EmissionsFromManureSentOffSite_Variable
+  =LAMBDA("E");
+
+VEERG_15_13_1_1__1_EmissionsFromManureSentOffSite_Unit
+  =LAMBDA("t N2O");
+
+VEERG_15_13_1_1__1_EmissionsFromManureSentOffSite_Source
+  =LAMBDA("VEERG 2026: 15.13.1.1, Equation (1)");
+
+VEERG_15_13_1_1__1_EmissionsFromManureSentOffSite_NIRReference
+  =LAMBDA("");
+
+VEERG_15_13_1_1__1_EmissionsFromManureSentOffSite_LatexEquation
+  =LAMBDA("E=E_{N2O}+E_{ad}+E_{leach}");
+
+VEERG_15_13_1_1__1_EmissionsFromManureSentOffSite_Arguments
+  =LAMBDA(
+    MAKEARRAY(3, 4,
+      LAMBDA(r,c,
+        INDEX({
+          "E_N2O", "direct nitrous oxide emissions from application of manure to soils outside of scope 1 boundary", "t N2O", "Calculated";
+          "E_ad", "nitrous oxide emissions from atmospheric deposition of manure to soils", "t N2O", "Calculated";
+          "E_leach", "nitrous oxide emissions from nitrogen leaching and runoff of manure to soils", "t N2O", "Calculated"
+        }, r, c)
+      )
+    )
+  );
+
+
+/*
+--------------------------------------
+VEERG_15_13_1_3__1_EmissionsFromSolidWasteTreatmentFacility
+--------------------------------------
+*/
+
+VEERG_15_13_1_3__1_EmissionsFromSolidWasteTreatmentFacility
+  =LAMBDA(
+    E_N2O, E_ad, E_leach,
+    E_N2O + E_ad + E_leach
+  );
+
+VEERG_15_13_1_3__1_EmissionsFromSolidWasteTreatmentFacility_Title
+  =LAMBDA("Emissions from solid waste sent to a treatment facility");
+
+VEERG_15_13_1_3__1_EmissionsFromSolidWasteTreatmentFacility_Variable
+  =LAMBDA("E");
+
+VEERG_15_13_1_3__1_EmissionsFromSolidWasteTreatmentFacility_Unit
+  =LAMBDA("t CO2e");
+
+VEERG_15_13_1_3__1_EmissionsFromSolidWasteTreatmentFacility_Source
+  =LAMBDA("VEERG 2026: 15.13.1.3");
+
+VEERG_15_13_1_3__1_EmissionsFromSolidWasteTreatmentFacility_NIRReference
+  =LAMBDA("");
+
+VEERG_15_13_1_3__1_EmissionsFromSolidWasteTreatmentFacility_LatexEquation
+  =LAMBDA("");
+
+VEERG_15_13_1_3__1_EmissionsFromSolidWasteTreatmentFacility_Arguments
+  =LAMBDA("");
+
+
+/*
+--------------------------------------
+VEERG_15_14_1_1__1_EmbeddedEmissionsFromUpstreamFreight
+Embedded emissions from upstream freight
+E
+t CO2e
+E=\sum\nolimits_f\left((W_f\times D_f)\times EF_f\right)
+W_f = total mass of goods transported per freight type f
+D_f = total distance transported per freight type f
+EF_f = emission factor for freight type f
+--------------------------------------
+*/
+
+VEERG_15_14_1_1__1_EmbeddedEmissionsFromUpstreamFreight
+  =LAMBDA(
+    W_f, D_f, EF_f,
+    (W_f * D_f) * EF_f
+  );
+
+VEERG_15_14_1_1__1_EmbeddedEmissionsFromUpstreamFreight_Title
+  =LAMBDA("Embedded emissions from upstream freight");
+
+VEERG_15_14_1_1__1_EmbeddedEmissionsFromUpstreamFreight_Variable
+  =LAMBDA("E");
+
+VEERG_15_14_1_1__1_EmbeddedEmissionsFromUpstreamFreight_Unit
+  =LAMBDA("t CO2e");
+
+VEERG_15_14_1_1__1_EmbeddedEmissionsFromUpstreamFreight_Source
+  =LAMBDA("VEERG 2026: 15.14.1.1, Equation (1)");
+
+VEERG_15_14_1_1__1_EmbeddedEmissionsFromUpstreamFreight_NIRReference
+  =LAMBDA("");
+
+VEERG_15_14_1_1__1_EmbeddedEmissionsFromUpstreamFreight_LatexEquation
+  =LAMBDA("E=\sum\nolimits_f\left((W_f\times D_f)\times EF_f\right)");
+
+VEERG_15_14_1_1__1_EmbeddedEmissionsFromUpstreamFreight_Arguments
+  =LAMBDA(
+    MAKEARRAY(4, 4,
+      LAMBDA(r,c,
+        INDEX({
+          "W_f", "total mass of goods transported per freight type f", "t", "Input";
+          "D_f", "total distance transported per freight type f", "km", "Input";
+          "EF_f", "emission factor for freight type f", "t CO2e/(t km)", "Constant";
+          "f", "freight type", "", "Input"
+        }, r, c)
+      )
+    )
+  );

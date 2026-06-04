@@ -120,3 +120,169 @@ SourceData_Livestock_Common_SymbolsMMS_Data
     )
   );
 
+
+/* 
+--------------------------------------
+SourceData_Livestock_Product_BeefCattle
+--------------------------------------
+*/
+
+SourceData_Livestock_Product_BeefCattle_Title
+  =LAMBDA("Beef cattle products for scope 3");
+
+SourceData_Livestock_Product_BeefCattle_Vairable
+  =LAMBDA("");
+
+SourceData_Livestock_Product_BeefCattle_Unit
+  =LAMBDA("");
+
+SourceData_Livestock_Product_BeefCattle_Source
+  =LAMBDA("Lifecycles. (2026). Greenhouse Gas Emission Intensities for Material Inputs to Australian Agriculture, Fisheries and Forestry. Version 48. doi 10.5281/zenodo.19656580");
+
+SourceData_Livestock_Product_BeefCattle_Data
+  =LAMBDA(
+    MAKEARRAY(9, 2, 
+      LAMBDA(r,c, 
+        INDEX({
+          "Product", "Source region";
+            "Cattle, for manufacturing beef", "Australia";
+            "Cattle, for prime beef", "NSW";
+            "Cattle, weaners", "NT";
+            "", "QLD";
+            "", "SA";
+            "", "TAS";
+            "", "VIC";
+            "", "WA"
+        }, r, c)
+      )
+    )
+  );
+
+/* 
+--------------------------------------
+SourceData_Livestock_Product_Chickens
+--------------------------------------
+*/
+
+SourceData_Livestock_Product_Chickens_Title
+  =LAMBDA("Chickens products for scope 3");
+
+SourceData_Livestock_Product_Chickens_Vairable
+  =LAMBDA("");
+
+SourceData_Livestock_Product_Chickens_Unit
+  =LAMBDA("");
+
+SourceData_Livestock_Product_Chickens_Source
+  =LAMBDA("Lifecycles. (2026). Greenhouse Gas Emission Intensities for Material Inputs to Australian Agriculture, Fisheries and Forestry. Version 48. doi 10.5281/zenodo.19656580");
+
+SourceData_Livestock_Product_Chickens_Data
+  =LAMBDA(
+    MAKEARRAY(2, 2, 
+      LAMBDA(r,c, 
+        INDEX({
+          "Product", "Source region";
+            "Chickens", "Australia"
+        }, r, c)
+      )
+    )
+  );
+
+
+/* 
+--------------------------------------
+SourceData_Livestock_Product_Dairycattle
+--------------------------------------
+*/
+
+SourceData_Livestock_Product_Dairycattle_Title
+  =LAMBDA("Dairy cattle products for scope 3");
+
+SourceData_Livestock_Product_Dairycattle_Vairable
+  =LAMBDA("");
+
+SourceData_Livestock_Product_Dairycattle_Unit
+  =LAMBDA("");
+
+SourceData_Livestock_Product_Dairycattle_Source
+  =LAMBDA("Lifecycles. (2026). Greenhouse Gas Emission Intensities for Material Inputs to Australian Agriculture, Fisheries and Forestry. Version 48. doi 10.5281/zenodo.19656580");
+
+SourceData_Livestock_Product_Dairycattle_Data
+  =LAMBDA(
+    MAKEARRAY(2, 2, 
+      LAMBDA(r,c, 
+        INDEX({
+          "Product", "Source region";
+            "Dairy cows", "VIC"
+        }, r, c)
+      )
+    )
+  );
+
+
+/* 
+--------------------------------------
+SourceData_Livestock_Product_Pigs
+--------------------------------------
+*/
+
+SourceData_Livestock_Product_Pigs_Title
+  =LAMBDA("Pigs products for scope 3");
+
+SourceData_Livestock_Product_Pigs_Vairable
+  =LAMBDA("");
+
+SourceData_Livestock_Product_Pigs_Unit
+  =LAMBDA("");
+
+SourceData_Livestock_Product_Pigs_Source
+  =LAMBDA("Lifecycles. (2026). Greenhouse Gas Emission Intensities for Material Inputs to Australian Agriculture, Fisheries and Forestry. Version 48. doi 10.5281/zenodo.19656580");
+
+SourceData_Livestock_Product_Pigs_Data
+  =LAMBDA(
+    MAKEARRAY(2, 2, 
+      LAMBDA(r,c, 
+        INDEX({
+          "Product", "Source region";
+            "Pigs", "Australia"
+        }, r, c)
+      )
+    )
+  );
+
+/* 
+--------------------------------------
+SourceData_Livestock_Product_Sheep
+--------------------------------------
+*/
+
+SourceData_Livestock_Product_Sheep_Title
+  =LAMBDA("Sheep products for scope 3");
+
+SourceData_Livestock_Product_Sheep_Vairable
+  =LAMBDA("");
+
+SourceData_Livestock_Product_Sheep_Unit
+  =LAMBDA("");
+
+SourceData_Livestock_Product_Sheep_Source
+  =LAMBDA("Lifecycles. (2026). Greenhouse Gas Emission Intensities for Material Inputs to Australian Agriculture, Fisheries and Forestry. Version 48. doi 10.5281/zenodo.19656580");
+
+SourceData_Livestock_Product_Sheep_Data
+  =LAMBDA(
+    MAKEARRAY(8, 2, 
+      LAMBDA(r,c, 
+        INDEX({
+          "Product", "Source region";
+            "Sheep, for mutton", "Australia";
+            "Sheep, for prime lamb", "NSW";
+            "", "QLD";
+            "", "SA";
+            "", "TAS";
+            "", "VIC";
+            "", "WA"
+        }, r, c)
+      )
+    )
+  );
+
