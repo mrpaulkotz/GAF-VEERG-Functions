@@ -654,19 +654,45 @@ SourceData_Dairy_EmissionFactorForLeachingAndRunoff_Data
 
 /* 
 --------------------------------------
+SourceData_Dairy_FractionOfNitrogenLostThroughLeachingAndRunoffSolidStorage
+Fraction of nitrogen lost through leaching and runoff for solid storage MMS only (fraction)
+--------------------------------------
+*/
+
+SourceData_Dairy_FractionOfNitrogenLostThroughLeachingAndRunoffSolidStorage_Title
+  =LAMBDA("Fraction of nitrogen lost through leaching and runoff for solid storage MMS only");
+
+SourceData_Dairy_FractionOfNitrogenLostThroughLeachingAndRunoffSolidStorage_Variable
+  =LAMBDA("Frac_LEACH_MS");
+
+SourceData_Dairy_FractionOfNitrogenLostThroughLeachingAndRunoffSolidStorage_Unit
+  =LAMBDA("Fraction");
+
+SourceData_Dairy_FractionOfNitrogenLostThroughLeachingAndRunoffSolidStorage_Source
+  =LAMBDA("VEERG 2026: 4.3.2.3 CONSTANTS");
+
+SourceData_Dairy_FractionOfNitrogenLostThroughLeachingAndRunoffSolidStorage_Variation
+  =LAMBDA("");
+
+SourceData_Dairy_FractionOfNitrogenLostThroughLeachingAndRunoffSolidStorage_Data
+  =LAMBDA(0.02);
+
+
+/* 
+--------------------------------------
 SourceData_Dairy_FractionOfNitrogenLostThroughLeachingAndRunoff
-Fraction of N that is lost through leaching and runoff (dimensionless)
+Default fraction of N that is lost through leaching and runoff when manure is excreted to pasture, range and paddock (m=14). 
 --------------------------------------
 */
 
 SourceData_Dairy_FractionOfNitrogenLostThroughLeachingAndRunoff_Title
-  =LAMBDA("Fraction of N that is lost through leaching and runoff");
+  =LAMBDA("Default fraction of N that is lost through leaching and runoff when manure is excreted to pasture, range and paddock (m=14).");
 
 SourceData_Dairy_FractionOfNitrogenLostThroughLeachingAndRunoff_Variable
   =LAMBDA("Frac_LEACH_MS");
 
 SourceData_Dairy_FractionOfNitrogenLostThroughLeachingAndRunoff_Unit
-  =LAMBDA("Dimensionless");
+  =LAMBDA("Fraction");
 
 SourceData_Dairy_FractionOfNitrogenLostThroughLeachingAndRunoff_Source
   =LAMBDA("VEERG 2026: 4.3.2.3 CONSTANTS");
@@ -675,7 +701,7 @@ SourceData_Dairy_FractionOfNitrogenLostThroughLeachingAndRunoff_Variation
   =LAMBDA("");
 
 SourceData_Dairy_FractionOfNitrogenLostThroughLeachingAndRunoff_Data
-  =LAMBDA(0.02);
+  =LAMBDA(0.24);
 
 
 /* 

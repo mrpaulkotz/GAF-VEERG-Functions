@@ -218,6 +218,15 @@ Utility_SourceHyperlink
   )
 );
 
+Utility_SourceHyperlinkDifferentSheet
+=LAMBDA(TargetCell,
+  LET(
+    sh, TEXTAFTER(CELL("filename", TargetCell), "]"),
+    addr, CELL("address", TargetCell),
+    "#" & addr
+  )
+);
+
 Utility_DisplayArguments_1_2
 =LAMBDA(
     ArgumentsArray,
@@ -242,4 +251,11 @@ Common_GetMCFTemperatureZone
         TemperatureArray,
         XLOOKUP(MMS, MMSArray, ReturnArray)
     )
-)
+);
+
+
+Utility_ResultsItemFromEquationTitleAndSource
+=LAMBDA(
+    TitleCell, SourceCell,
+    SUBSTITUTE(LEFT(SourceCell, FIND(",", SourceCell) -1), "VEERG 2026: ", "") & " " & TitleCell
+);
