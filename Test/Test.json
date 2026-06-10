@@ -1,0 +1,12 @@
+{
+    "Tests": {
+        "EntericMethane": {
+            "Feedlot": {
+                "TestID": "3_1_Enteric_Feedlot",
+                "TestExcelFile": "3_1_Enteric_Feedlot",
+                "TestInputFile": "EntericMethane/Feedlot/TestInput_EntericMethane_Feedlot.json",
+                "TestResultsFile": "EntericMethane/Feedlot/TestResults_EntericMethane_Feedlot.json"
+            }
+        }
+    }
+}
