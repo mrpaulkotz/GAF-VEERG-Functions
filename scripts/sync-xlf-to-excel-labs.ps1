@@ -270,9 +270,16 @@ function Sync-Workbook {
 $repoRootPath = (Resolve-Path $RepoRoot).Path
 $allWorkbooks = @(Get-ChildItem -Path (Join-Path $repoRootPath 'Excel') -Filter '*.xlsx' -File)
 $workbooks = $allWorkbooks
+$propagationWorkbooks = $allWorkbooks
 if (-not [string]::IsNullOrWhiteSpace($WorkbookPath)) {
   $resolvedWorkbookPath = (Resolve-Path -LiteralPath $WorkbookPath).Path
   $workbooks = @($allWorkbooks | Where-Object { $_.FullName -eq $resolvedWorkbookPath })
+  $propagationWorkbooks = @(
+    $allWorkbooks |
+      Where-Object {
+        $_.BaseName -like 'Common*' -or $_.FullName -eq $resolvedWorkbookPath
+      }
+  )
 }
 if ($workbooks.Count -eq 0) {
   Write-Host 'No Excel workbooks found under Excel/; nothing to sync.'
@@ -1077,4 +1084,4 @@ function Sync-CommonSheetsAcrossWorkbooks {
   }
 }
 
-Sync-CommonSheetsAcrossWorkbooks -Workbooks $allWorkbooks -DryRun:$DryRun
+Sync-CommonSheetsAcrossWorkbooks -Workbooks $propagationWorkbooks -DryRun:$DryRun
