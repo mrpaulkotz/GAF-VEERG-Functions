@@ -1,4 +1,5 @@
 param(
+  [string] $WorkbookPath,
   [Parameter(ValueFromRemainingArguments = $true)]
   [string[]] $Command
 )
@@ -9,7 +10,11 @@ $ErrorActionPreference = 'Stop'
 $repoRoot = $PSScriptRoot
 $syncScript = Join-Path $repoRoot 'scripts\sync-xlf-to-excel-labs.ps1'
 
-& $syncScript -RepoRoot $repoRoot
+$syncArgs = @{ RepoRoot = $repoRoot }
+if (-not [string]::IsNullOrWhiteSpace($WorkbookPath)) {
+  $syncArgs['WorkbookPath'] = $WorkbookPath
+}
+& $syncScript @syncArgs
 
 $commandArgsInput = @($Command)
 if ($commandArgsInput.Count -gt 0 -and -not [string]::IsNullOrWhiteSpace($commandArgsInput[0])) {
@@ -25,7 +30,15 @@ if ($commandArgsInput.Count -gt 0 -and -not [string]::IsNullOrWhiteSpace($comman
   }
 
   & $commandName @commandArgs
-  exit $LASTEXITCODE
+  if (Test-Path -LiteralPath variable:LASTEXITCODE) {
+    exit $LASTEXITCODE
+  }
+
+  if ($?) {
+    exit 0
+  }
+
+  exit 1
 }
 
 Write-Host 'Sync complete. No downstream command was provided.'

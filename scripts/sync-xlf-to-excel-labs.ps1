@@ -1,5 +1,6 @@
 param(
   [string] $RepoRoot = $(Split-Path $PSScriptRoot -Parent),
+  [string] $WorkbookPath,
   [switch] $DryRun
 )
 
@@ -267,7 +268,12 @@ function Sync-Workbook {
 }
 
 $repoRootPath = (Resolve-Path $RepoRoot).Path
-$workbooks = Get-ChildItem -Path (Join-Path $repoRootPath 'Excel') -Filter '*.xlsx' -File
+$allWorkbooks = @(Get-ChildItem -Path (Join-Path $repoRootPath 'Excel') -Filter '*.xlsx' -File)
+$workbooks = $allWorkbooks
+if (-not [string]::IsNullOrWhiteSpace($WorkbookPath)) {
+  $resolvedWorkbookPath = (Resolve-Path -LiteralPath $WorkbookPath).Path
+  $workbooks = @($allWorkbooks | Where-Object { $_.FullName -eq $resolvedWorkbookPath })
+}
 if ($workbooks.Count -eq 0) {
   Write-Host 'No Excel workbooks found under Excel/; nothing to sync.'
   exit 0
@@ -933,7 +939,14 @@ function Sync-CommonSheetsAcrossWorkbooks {
               $needsQuoting = { param([string] $n) $n -match "[^A-Za-z0-9_]" -or $n -match "^\d" }
               $sheetRefOld = if (& $needsQuoting $oldSheetName) { "'" + $oldSheetName.Replace("'", "''") + "'!" } else { $oldSheetName + "!" }
               $sheetRefNew = if (& $needsQuoting $sheetName)    { "'" + $sheetName.Replace("'",   "''") + "'!" } else { $sheetName    + "!" }
-              $wsCount2 = [int] $targetWorkbook.Worksheets.Count
+              $wsCount2 = 0
+              try {
+                if ($null -ne $targetWorkbook.Worksheets) {
+                  $wsCount2 = [int] $targetWorkbook.Worksheets.Count
+                }
+              } catch {
+                $wsCount2 = 0
+              }
               for ($wsIndex2 = 1; $wsIndex2 -le $wsCount2; $wsIndex2++) {
                 $ws2 = $targetWorkbook.Worksheets.Item($wsIndex2)
                 if ($ws2.Name -eq $sheetName -or $ws2.Name -eq $oldSheetName) { continue }
@@ -1064,4 +1077,4 @@ function Sync-CommonSheetsAcrossWorkbooks {
   }
 }
 
-Sync-CommonSheetsAcrossWorkbooks -Workbooks $workbooks -DryRun:$DryRun
+Sync-CommonSheetsAcrossWorkbooks -Workbooks $allWorkbooks -DryRun:$DryRun
