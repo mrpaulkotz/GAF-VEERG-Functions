@@ -177,14 +177,64 @@ Copy-Item -LiteralPath $sourceFile.FullName -Destination $targetPath
 $excel = $null
 $workbook = $null
 $updated = 0
+$updatedInputTableCells = 0
 $missing = New-Object System.Collections.Generic.List[string]
 $failed = New-Object System.Collections.Generic.List[string]
 $failedDetails = New-Object System.Collections.Generic.List[string]
+$tableMissing = New-Object System.Collections.Generic.List[string]
+$tableFailed = New-Object System.Collections.Generic.List[string]
+$tableFailedDetails = New-Object System.Collections.Generic.List[string]
 $resultsMissing = New-Object System.Collections.Generic.List[string]
 $resultsNonNumeric = New-Object System.Collections.Generic.List[string]
 $resultDiffs = New-Object System.Collections.Generic.List[psobject]
 $resultFailCount = 0
 $resultPassCount = 0
+
+function Get-WorkbookNameEntry {
+  param(
+    [Parameter(Mandatory = $true)]
+    [object] $Workbook,
+
+    [Parameter(Mandatory = $true)]
+    [string[]] $CandidateNames,
+
+    [Parameter(Mandatory = $false)]
+    [ref] $MatchedName
+  )
+
+  $allNames = New-Object System.Collections.Generic.List[object]
+  foreach ($n in $Workbook.Names) {
+    [void] $allNames.Add($n)
+  }
+  foreach ($candidate in @($CandidateNames)) {
+    $candidateText = [string] $candidate
+    if ([string]::IsNullOrWhiteSpace($candidateText)) {
+      continue
+    }
+
+    foreach ($entry in $allNames) {
+      if ($null -eq $entry) {
+        continue
+      }
+
+      $nameLocal = [string] $entry.NameLocal
+      $shortName = $nameLocal
+      $bangIndex = $nameLocal.LastIndexOf('!')
+      if ($bangIndex -ge 0 -and $bangIndex -lt ($nameLocal.Length - 1)) {
+        $shortName = $nameLocal.Substring($bangIndex + 1)
+      }
+
+      if ([string]::Equals($shortName, $candidateText, [System.StringComparison]::OrdinalIgnoreCase)) {
+        if ($null -ne $MatchedName) {
+          $MatchedName.Value = $shortName
+        }
+        return $entry
+      }
+    }
+  }
+
+  return $null
+}
 
 try {
   $excel = New-Object -ComObject Excel.Application
@@ -200,7 +250,8 @@ try {
     'TestExcelFile',
     'TestID',
     'TestInputFile',
-    'TestResultsFile'
+    'TestResultsFile',
+    'InputTables'
   )
 
   foreach ($prop in $jsonProperties) {
@@ -255,6 +306,176 @@ try {
     } catch {
       [void] $failed.Add([string] $prop.Name)
       [void] $failedDetails.Add(([string] $prop.Name + ': ' + $_.Exception.Message))
+    }
+  }
+
+  $inputTables = @($jsonObject.InputTables)
+  foreach ($table in $inputTables) {
+    if ($null -eq $table) {
+      continue
+    }
+
+    $tableName = [string] $table.TableName
+    if ([string]::IsNullOrWhiteSpace($tableName)) {
+      [void] $tableFailed.Add('InputTables')
+      [void] $tableFailedDetails.Add('InputTables: missing TableName')
+      continue
+    }
+
+    $columns = @($table.Cols)
+    foreach ($col in $columns) {
+      if ($null -eq $col) {
+        continue
+      }
+
+      $columnName = [string] $col.ColumnName
+      if ([string]::IsNullOrWhiteSpace($columnName)) {
+        $tableCellLabel = ('X_Table_{0}: missing ColumnName' -f $tableName)
+        [void] $tableFailed.Add($tableCellLabel)
+        [void] $tableFailedDetails.Add($tableCellLabel)
+        continue
+      }
+
+      $columnCandidateNames = [string[]] @(
+        ('X_Table_' + $tableName + 'Col_' + $columnName),
+        ('X_Table_' + $tableName + '_Col_' + $columnName),
+        ('X_Coord_' + $tableName + '_Col_' + $columnName)
+      )
+      $columnCellName = ''
+      $columnNameEntry = Get-WorkbookNameEntry -Workbook $workbook -CandidateNames $columnCandidateNames -MatchedName ([ref] $columnCellName)
+
+      if ($null -eq $columnNameEntry) {
+        [void] $tableMissing.Add([string] $columnCandidateNames[0])
+        continue
+      }
+
+      $columnHeaderRange = $null
+      try {
+        $columnHeaderRange = $columnNameEntry.RefersToRange
+      } catch {
+        $columnHeaderRange = $null
+      }
+
+      if ($null -eq $columnHeaderRange) {
+        [void] $tableFailed.Add($columnCellName)
+        [void] $tableFailedDetails.Add($columnCellName + ': column name does not refer to a range')
+        continue
+      }
+
+      $rows = @($col.Rows)
+      foreach ($row in $rows) {
+        if ($null -eq $row) {
+          continue
+        }
+
+        $rowName = [string] $row.RowName
+        if ([string]::IsNullOrWhiteSpace($rowName)) {
+          $tableCellLabel = ('X_Table_{0}Col_{1}: missing RowName' -f $tableName, $columnName)
+          [void] $tableFailed.Add($tableCellLabel)
+          [void] $tableFailedDetails.Add($tableCellLabel)
+          continue
+        }
+
+        $rowCandidateNames = [string[]] @(
+          ('X_Table_' + $tableName + 'Row_' + $rowName),
+          ('X_Table_' + $tableName + '_Row_' + $rowName),
+          ('X_Coord_' + $tableName + '_Row_' + $rowName)
+        )
+        $rowCellName = ''
+        $rowNameEntry = Get-WorkbookNameEntry -Workbook $workbook -CandidateNames $rowCandidateNames -MatchedName ([ref] $rowCellName)
+
+        $rowHeaderRange = $null
+        if ($null -ne $rowNameEntry) {
+          try {
+            $rowHeaderRange = $rowNameEntry.RefersToRange
+          } catch {
+            $rowHeaderRange = $null
+          }
+        }
+
+        if ($null -eq $rowHeaderRange) {
+          $springName = ''
+          $springCandidateNames = [string[]] @(
+            ('X_Table_' + $tableName + 'Row_Spring'),
+            ('X_Table_' + $tableName + '_Row_Spring'),
+            ('X_Coord_' + $tableName + '_Row_Spring')
+          )
+          $springEntry = Get-WorkbookNameEntry -Workbook $workbook -CandidateNames $springCandidateNames -MatchedName ([ref] $springName)
+
+          if ($null -ne $springEntry) {
+            $springRange = $null
+            try {
+              $springRange = $springEntry.RefersToRange
+            } catch {
+              $springRange = $null
+            }
+
+            if ($null -ne $springRange) {
+              $scanWorksheet = $springRange.Worksheet
+              $scanColumn = [int] $springRange.Column
+              $scanStartRow = [int] $springRange.Row
+              $scanEndRow = $scanStartRow + 200
+              for ($scanRow = $scanStartRow; $scanRow -le $scanEndRow; $scanRow++) {
+                $scanValue = $scanWorksheet.Cells.Item($scanRow, $scanColumn).Value2
+                if ($null -eq $scanValue) {
+                  continue
+                }
+
+                if ([string]::Equals(([string] $scanValue).Trim(), $rowName, [System.StringComparison]::OrdinalIgnoreCase)) {
+                  $rowHeaderRange = $scanWorksheet.Cells.Item($scanRow, $scanColumn)
+                  $rowCellName = $springName + '->' + $rowName
+                  break
+                }
+              }
+            }
+          }
+        }
+
+        if ($null -eq $rowHeaderRange) {
+          [void] $tableMissing.Add([string] $rowCandidateNames[0])
+          continue
+        }
+
+        if ($columnHeaderRange.Worksheet.Name -ne $rowHeaderRange.Worksheet.Name) {
+          $tableCellLabel = ('{0} + {1}' -f $columnCellName, $rowCellName)
+          [void] $tableFailed.Add($tableCellLabel)
+          [void] $tableFailedDetails.Add($tableCellLabel + ': row and column headers are on different worksheets')
+          continue
+        }
+
+        try {
+          $targetCell = $rowHeaderRange.Worksheet.Cells.Item($rowHeaderRange.Row, $columnHeaderRange.Column)
+          $tableValue = if ($row.PSObject.Properties.Name -contains 'Value') { $row.Value } else { $rowName }
+
+          if ($null -eq $tableValue) {
+            $targetCell.Value2 = ''
+          } elseif ($tableValue -is [bool]) {
+            $targetCell.Value2 = if ($tableValue) { 1 } else { 0 }
+          } elseif (
+            $tableValue -is [byte] -or
+            $tableValue -is [sbyte] -or
+            $tableValue -is [int16] -or
+            $tableValue -is [uint16] -or
+            $tableValue -is [int32] -or
+            $tableValue -is [uint32] -or
+            $tableValue -is [int64] -or
+            $tableValue -is [uint64] -or
+            $tableValue -is [single] -or
+            $tableValue -is [double] -or
+            $tableValue -is [decimal]
+          ) {
+            $targetCell.Value2 = [string] $tableValue
+          } else {
+            $targetCell.Value2 = $tableValue
+          }
+
+          $updatedInputTableCells++
+        } catch {
+          $tableCellLabel = ('{0} + {1}' -f $columnCellName, $rowCellName)
+          [void] $tableFailed.Add($tableCellLabel)
+          [void] $tableFailedDetails.Add($tableCellLabel + ': ' + $_.Exception.Message)
+        }
+      }
     }
   }
 
@@ -338,6 +559,7 @@ Write-Host ("Test config: {0}" -f $resolvedConfigPath)
 Write-Host ("JSON file: {0}" -f $resolvedJsonPath)
 Write-Host ("Results file: {0}" -f $resolvedResultsPath)
 Write-Host ("Named cells updated: {0}" -f $updated)
+Write-Host ("Input table cells updated: {0}" -f $updatedInputTableCells)
 
 if ($missing.Count -gt 0) {
   Write-Warning ("JSON keys not found as workbook names ({0}): {1}" -f $missing.Count, (($missing | Sort-Object) -join ', '))
@@ -347,6 +569,18 @@ if ($failed.Count -gt 0) {
   Write-Warning ("Workbook names found but failed to write ({0}): {1}" -f $failed.Count, (($failed | Sort-Object) -join ', '))
   Write-Warning ('Failure details:')
   foreach ($detail in @($failedDetails | Sort-Object)) {
+    Write-Warning ('  - ' + $detail)
+  }
+}
+
+if ($tableMissing.Count -gt 0) {
+  Write-Warning ("Input table name lookups not found ({0}): {1}" -f $tableMissing.Count, (($tableMissing | Sort-Object -Unique) -join ', '))
+}
+
+if ($tableFailed.Count -gt 0) {
+  Write-Warning ("Input table writes failed ({0}): {1}" -f $tableFailed.Count, (($tableFailed | Sort-Object -Unique) -join ', '))
+  Write-Warning ('Input table failure details:')
+  foreach ($detail in @($tableFailedDetails | Sort-Object -Unique)) {
     Write-Warning ('  - ' + $detail)
   }
 }

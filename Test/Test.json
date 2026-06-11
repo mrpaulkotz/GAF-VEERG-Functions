@@ -6,6 +6,12 @@
                 "TestExcelFile": "3_1_Enteric_Feedlot",
                 "TestInputFile": "EntericMethane/Feedlot/TestInput_EntericMethane_Feedlot.json",
                 "TestResultsFile": "EntericMethane/Feedlot/TestResults_EntericMethane_Feedlot.json"
+            },
+            "PastureBeef": {
+                "TestID": "3_2_Enteric_BeefPasture",
+                "TestExcelFile": "3_2_Enteric_BeefPasture",
+                "TestInputFile": "EntericMethane/PastureBeef/TestInput_EntericMethane_PastureBeef.json",
+                "TestResultsFile": "EntericMethane/PastureBeef/TestResults_EntericMethane_PastureBeef.json"
             }
         }
     }
