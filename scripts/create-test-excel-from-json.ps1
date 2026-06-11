@@ -309,7 +309,27 @@ try {
     }
   }
 
-  $inputTables = @($jsonObject.InputTables)
+  $inputTables = New-Object System.Collections.Generic.List[object]
+  $inputTablesRaw = $null
+  if ($jsonObject.PSObject.Properties.Name -contains 'InputTables') {
+    $inputTablesRaw = $jsonObject.InputTables
+  }
+
+  if ($null -ne $inputTablesRaw) {
+    if ($inputTablesRaw -is [System.Collections.IEnumerable] -and -not ($inputTablesRaw -is [string])) {
+      foreach ($candidateTable in $inputTablesRaw) {
+        if ($null -eq $candidateTable) {
+          continue
+        }
+        if ($candidateTable.PSObject.Properties.Name -contains 'TableName') {
+          [void] $inputTables.Add($candidateTable)
+        }
+      }
+    } elseif ($inputTablesRaw.PSObject.Properties.Name -contains 'TableName') {
+      [void] $inputTables.Add($inputTablesRaw)
+    }
+  }
+
   foreach ($table in $inputTables) {
     if ($null -eq $table) {
       continue
@@ -322,129 +342,68 @@ try {
       continue
     }
 
+    if (-not ($table.PSObject.Properties.Name -contains 'Cols')) {
+      [void] $tableFailed.Add('X_Table_' + $tableName)
+      [void] $tableFailedDetails.Add('X_Table_' + $tableName + ': missing Cols array')
+      continue
+    }
+
+    $tableRangeName = 'X_Table_' + $tableName
+    $tableNameEntry = Get-WorkbookNameEntry -Workbook $workbook -CandidateNames ([string[]] @($tableRangeName))
+    if ($null -eq $tableNameEntry) {
+      [void] $tableMissing.Add($tableRangeName)
+      continue
+    }
+
+    $tableRange = $null
+    try {
+      $tableRange = $tableNameEntry.RefersToRange
+    } catch {
+      $tableRange = $null
+    }
+
+    if ($null -eq $tableRange) {
+      [void] $tableFailed.Add($tableRangeName)
+      [void] $tableFailedDetails.Add($tableRangeName + ': table name does not refer to a writable range')
+      continue
+    }
+
+    $tableRangeRowCount = [int] $tableRange.Rows.Count
+    $tableRangeColumnCount = [int] $tableRange.Columns.Count
+
     $columns = @($table.Cols)
-    foreach ($col in $columns) {
+    for ($colIndex = 0; $colIndex -lt $columns.Count; $colIndex++) {
+      $col = $columns[$colIndex]
       if ($null -eq $col) {
         continue
       }
 
-      $columnName = [string] $col.ColumnName
-      if ([string]::IsNullOrWhiteSpace($columnName)) {
-        $tableCellLabel = ('X_Table_{0}: missing ColumnName' -f $tableName)
-        [void] $tableFailed.Add($tableCellLabel)
-        [void] $tableFailedDetails.Add($tableCellLabel)
-        continue
-      }
-
-      $columnCandidateNames = [string[]] @(
-        ('X_Table_' + $tableName + 'Col_' + $columnName),
-        ('X_Table_' + $tableName + '_Col_' + $columnName),
-        ('X_Coord_' + $tableName + '_Col_' + $columnName)
-      )
-      $columnCellName = ''
-      $columnNameEntry = Get-WorkbookNameEntry -Workbook $workbook -CandidateNames $columnCandidateNames -MatchedName ([ref] $columnCellName)
-
-      if ($null -eq $columnNameEntry) {
-        [void] $tableMissing.Add([string] $columnCandidateNames[0])
-        continue
-      }
-
-      $columnHeaderRange = $null
-      try {
-        $columnHeaderRange = $columnNameEntry.RefersToRange
-      } catch {
-        $columnHeaderRange = $null
-      }
-
-      if ($null -eq $columnHeaderRange) {
-        [void] $tableFailed.Add($columnCellName)
-        [void] $tableFailedDetails.Add($columnCellName + ': column name does not refer to a range')
+      $columnPosition = $colIndex + 2
+      if ($columnPosition -gt $tableRangeColumnCount) {
+        [void] $tableFailed.Add($tableRangeName)
+        [void] $tableFailedDetails.Add(($tableRangeName + ': column position ' + $columnPosition + ' is outside range width ' + $tableRangeColumnCount))
         continue
       }
 
       $rows = @($col.Rows)
-      foreach ($row in $rows) {
+      for ($rowIndex = 0; $rowIndex -lt $rows.Count; $rowIndex++) {
+        $row = $rows[$rowIndex]
         if ($null -eq $row) {
           continue
         }
 
+        $rowPosition = $rowIndex + 2
+        if ($rowPosition -gt $tableRangeRowCount) {
+          [void] $tableFailed.Add($tableRangeName)
+          [void] $tableFailedDetails.Add(($tableRangeName + ': row position ' + $rowPosition + ' is outside range height ' + $tableRangeRowCount))
+          continue
+        }
+
         $rowName = [string] $row.RowName
-        if ([string]::IsNullOrWhiteSpace($rowName)) {
-          $tableCellLabel = ('X_Table_{0}Col_{1}: missing RowName' -f $tableName, $columnName)
-          [void] $tableFailed.Add($tableCellLabel)
-          [void] $tableFailedDetails.Add($tableCellLabel)
-          continue
-        }
-
-        $rowCandidateNames = [string[]] @(
-          ('X_Table_' + $tableName + 'Row_' + $rowName),
-          ('X_Table_' + $tableName + '_Row_' + $rowName),
-          ('X_Coord_' + $tableName + '_Row_' + $rowName)
-        )
-        $rowCellName = ''
-        $rowNameEntry = Get-WorkbookNameEntry -Workbook $workbook -CandidateNames $rowCandidateNames -MatchedName ([ref] $rowCellName)
-
-        $rowHeaderRange = $null
-        if ($null -ne $rowNameEntry) {
-          try {
-            $rowHeaderRange = $rowNameEntry.RefersToRange
-          } catch {
-            $rowHeaderRange = $null
-          }
-        }
-
-        if ($null -eq $rowHeaderRange) {
-          $springName = ''
-          $springCandidateNames = [string[]] @(
-            ('X_Table_' + $tableName + 'Row_Spring'),
-            ('X_Table_' + $tableName + '_Row_Spring'),
-            ('X_Coord_' + $tableName + '_Row_Spring')
-          )
-          $springEntry = Get-WorkbookNameEntry -Workbook $workbook -CandidateNames $springCandidateNames -MatchedName ([ref] $springName)
-
-          if ($null -ne $springEntry) {
-            $springRange = $null
-            try {
-              $springRange = $springEntry.RefersToRange
-            } catch {
-              $springRange = $null
-            }
-
-            if ($null -ne $springRange) {
-              $scanWorksheet = $springRange.Worksheet
-              $scanColumn = [int] $springRange.Column
-              $scanStartRow = [int] $springRange.Row
-              $scanEndRow = $scanStartRow + 200
-              for ($scanRow = $scanStartRow; $scanRow -le $scanEndRow; $scanRow++) {
-                $scanValue = $scanWorksheet.Cells.Item($scanRow, $scanColumn).Value2
-                if ($null -eq $scanValue) {
-                  continue
-                }
-
-                if ([string]::Equals(([string] $scanValue).Trim(), $rowName, [System.StringComparison]::OrdinalIgnoreCase)) {
-                  $rowHeaderRange = $scanWorksheet.Cells.Item($scanRow, $scanColumn)
-                  $rowCellName = $springName + '->' + $rowName
-                  break
-                }
-              }
-            }
-          }
-        }
-
-        if ($null -eq $rowHeaderRange) {
-          [void] $tableMissing.Add([string] $rowCandidateNames[0])
-          continue
-        }
-
-        if ($columnHeaderRange.Worksheet.Name -ne $rowHeaderRange.Worksheet.Name) {
-          $tableCellLabel = ('{0} + {1}' -f $columnCellName, $rowCellName)
-          [void] $tableFailed.Add($tableCellLabel)
-          [void] $tableFailedDetails.Add($tableCellLabel + ': row and column headers are on different worksheets')
-          continue
-        }
 
         try {
-          $targetCell = $rowHeaderRange.Worksheet.Cells.Item($rowHeaderRange.Row, $columnHeaderRange.Column)
+          # Cells.Item is 1-based within the named range; +2 skips header row/column.
+          $targetCell = $tableRange.Cells.Item($rowPosition, $columnPosition)
           $tableValue = if ($row.PSObject.Properties.Name -contains 'Value') { $row.Value } else { $rowName }
 
           if ($null -eq $tableValue) {
@@ -471,7 +430,7 @@ try {
 
           $updatedInputTableCells++
         } catch {
-          $tableCellLabel = ('{0} + {1}' -f $columnCellName, $rowCellName)
+          $tableCellLabel = ($tableRangeName + ': row=' + $rowPosition + ', col=' + $columnPosition)
           [void] $tableFailed.Add($tableCellLabel)
           [void] $tableFailedDetails.Add($tableCellLabel + ': ' + $_.Exception.Message)
         }
