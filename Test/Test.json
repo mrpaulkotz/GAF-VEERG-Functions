@@ -13,6 +13,14 @@
                 "TestInputFile": "EntericMethane/PastureBeef/TestInput_EntericMethane_PastureBeef.json",
                 "TestResultsFile": "EntericMethane/PastureBeef/TestResults_EntericMethane_PastureBeef.json"
             }
+        },
+        "ManureManagement": {
+            "Feedlot": {
+                "TestID": "4_1_ManureManagement_Feedlot",
+                "TestExcelFile": "4_1_ManureManagement_Feedlot",
+                "TestInputFile": "ManureManagement/Feedlot/TestInput_ManureManagement_Feedlot.json",
+                "TestResultsFile": "ManureManagement/Feedlot/TestResults_ManureManagement_Feedlot.json"
+            }
         }
     }
 }

@@ -1,0 +1,32 @@
+﻿{
+    "RunStamp":  "1028_20260612_2",
+    "OutputDirectory":  "C:\\htdocs\\zneagcrc\\GAF-VEERG-Functions\\tmp_batch_test\\1028_20260612_2",
+    "OutputDirectoryRelativePath":  "tmp_batch_test\\\\1028_20260612_2",
+    "Items":  [
+                  {
+                      "TestID":  "3_1_Enteric_Feedlot",
+                      "SourceWorkbook":  "C:\\htdocs\\zneagcrc\\GAF-VEERG-Functions\\Excel\\3_1_Enteric_Feedlot_WIP_v01.xlsx",
+                      "InputFileUsed":  "C:\\htdocs\\zneagcrc\\GAF-VEERG-Functions\\Test\\EntericMethane\\Feedlot\\TestInput_EntericMethane_Feedlot.json",
+                      "CreatedWorkbookPath":  "C:\\htdocs\\zneagcrc\\GAF-VEERG-Functions\\tmp_batch_test\\1028_20260612_2\\3_1_Enteric_Feedlot_WIP_v01_1028_20260612_2_3_1_Enteric_Feedlot.xlsx",
+                      "CreatedWorkbookRelativePath":  "tmp_batch_test\\\\1028_20260612_2\\\\3_1_Enteric_Feedlot_WIP_v01_1028_20260612_2_3_1_Enteric_Feedlot.xlsx",
+                      "CreatedWorkbookFileName":  "3_1_Enteric_Feedlot_WIP_v01_1028_20260612_2_3_1_Enteric_Feedlot.xlsx",
+                      "Results":  {
+                                      "VEERG_3_1_1_1__1_TotalAnnualMethaneFromEntericFermentation_Result":  36.995640000000009
+                                  }
+                  },
+                  {
+                      "TestID":  "3_2_Enteric_BeefPasture",
+                      "SourceWorkbook":  "C:\\htdocs\\zneagcrc\\GAF-VEERG-Functions\\Excel\\3_2_Enteric_BeefPasture_WIP_v01.xlsx",
+                      "InputFileUsed":  "C:\\htdocs\\zneagcrc\\GAF-VEERG-Functions\\Test\\EntericMethane\\PastureBeef\\TestInput_EntericMethane_PastureBeef.json",
+                      "CreatedWorkbookPath":  "C:\\htdocs\\zneagcrc\\GAF-VEERG-Functions\\tmp_batch_test\\1028_20260612_2\\3_2_Enteric_BeefPasture_WIP_v01_1028_20260612_2_3_2_Enteric_BeefPasture.xlsx",
+                      "CreatedWorkbookRelativePath":  "tmp_batch_test\\\\1028_20260612_2\\\\3_2_Enteric_BeefPasture_WIP_v01_1028_20260612_2_3_2_Enteric_BeefPasture.xlsx",
+                      "CreatedWorkbookFileName":  "3_2_Enteric_BeefPasture_WIP_v01_1028_20260612_2_3_2_Enteric_BeefPasture.xlsx",
+                      "Results":  {
+                                      "VEERG_3_2_1_1__1_TotalAnnualMethaneFromEntericFermentation_Result":  55.678061774650885
+                                  }
+                  }
+              ],
+    "ValidationWarnings":  [
+
+                           ]
+}

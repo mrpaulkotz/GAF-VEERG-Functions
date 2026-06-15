@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VEERG Bulk Input Processor</title>
+  <link rel="manifest" href="/manifest.webmanifest" />
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <main class="page">
+    <section class="panel hero">
+      <h1>VEERG Bulk Input Processor</h1>
+      <p>Upload your bulk process manifest and either JSON files or a ZIP bundle, then generate date-stamped Excel outputs.</p>
+    </section>
+
+    <section class="panel">
+      <form id="bulk-form">
+        <label class="field">
+          <span>Bulk process manifest (JSON)</span>
+          <input id="manifest-file" type="file" name="manifest" accept=".json,application/json" required />
+        </label>
+
+        <label class="field">
+          <span>Bulk input data files (JSON or ZIP)</span>
+          <input id="input-files" type="file" name="inputFiles" accept=".json,.zip,application/json,application/zip" multiple required />
+        </label>
+
+        <button id="process-btn" type="submit">Process bulk input data</button>
+      </form>
+      <p id="status" class="status" aria-live="polite"></p>
+    </section>
+
+    <section class="panel" id="results-panel" hidden>
+      <h2>Processing Results</h2>
+      <div id="summary"></div>
+      <div id="result-list" class="result-list"></div>
+    </section>
+  </main>
+
+  <script type="module" src="/dist/app.js"></script>
+</body>
+</html>

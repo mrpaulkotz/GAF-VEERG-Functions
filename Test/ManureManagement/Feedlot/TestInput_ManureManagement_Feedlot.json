@@ -1,0 +1,252 @@
+{
+	"X_Cell_Site_FarmName": "My test farm",
+	"X_Cell_Site_ReportingEntityName": "My test Farms Pty Ltd",
+	"X_Cell_Site_StartDate": "1/1/2025",
+	"X_Cell_Site_State": "Western Australia",
+
+	"X_Cell_Site_Region": "Western Australia - Outback (South)",
+	"X_Cell_Site_LeachingZone": "NO - Not in leaching zone",
+	"X_Cell_Site_Elevation": 307.7,
+	"X_Cell_Site_AverageTemperature": 18,
+	"X_Cell_Site_TotalRainfall": 601,
+	"X_Cell_Site_PotentialEvapotranspiration": 1326,
+	"X_Cell_Site_FrostDays": 7,
+
+
+	 "InputTables": [
+    {
+      "TableName": "Feedlot_HerdMovement",
+	  "ColumnOffset": null,
+	  "RowOffset": null,
+      "Cols": [
+        {
+          "ColumnName": "Domestic",
+          "Rows": [
+            { "RowName": "Head", "Value": 1000 },
+            { "RowName": "Duration", "Value": 90 }
+          ]
+        },
+		{
+          "ColumnName": "MidFed",
+          "Rows": [
+            { "RowName": "Head", "Value": 1000 },
+            { "RowName": "Duration", "Value": 140 }
+          ]
+        },
+		{
+          "ColumnName": "LongFed",
+          "Rows": [
+            { "RowName": "Head", "Value": 1000 },
+            { "RowName": "Duration", "Value": 250 }
+          ]
+        }
+      ]
+    },
+	{
+      "TableName": "Feedlot_Intake_Method1",
+	  "ColumnOffset": null,
+	  "RowOffset": null,
+      "Cols": [
+        {
+          "ColumnName": "Domestic",
+          "Rows": [
+            { "RowName": "FeedIntake", "Value": 10.4 },
+            { "RowName": "DryMatterDigestibility", "Value": 0.81 },
+			{ "RowName": "CrudeProtein", "Value": 0.14 },
+			{ "RowName": "NRetention", "Value": 20.4 }
+          ]
+        },
+		{
+          "ColumnName": "MidFed",
+          "Rows": [
+            { "RowName": "FeedIntake", "Value": 10.8 },
+            { "RowName": "DryMatterDigestibility", "Value": 0.81 },
+			{ "RowName": "CrudeProtein", "Value": 0.12 },
+			{ "RowName": "NRetention", "Value": 12.7 }
+          ]
+        },
+		{
+          "ColumnName": "LongFed",
+          "Rows": [
+            { "RowName": "FeedIntake", "Value": 8.2 },
+            { "RowName": "DryMatterDigestibility", "Value": 0.81 },
+			{ "RowName": "CrudeProtein", "Value": 0.12 },
+			{ "RowName": "NRetention", "Value": 7 }
+          ]
+        }
+      ]
+    },
+	{
+      "TableName": "Feedlot_Intake_Method2",
+	  "ColumnOffset": null,
+	  "RowOffset": null,
+      "Cols": [
+        {
+          "ColumnName": "Domestic",
+          "Rows": [
+            { "RowName": "FeedIntake", "Value": 10.4 },
+            { "RowName": "DryMatterDigestibility", "Value": 0.81 },
+			{ "RowName": "CrudeProtein", "Value": 0.14 },
+			{ "RowName": "NRetention", "Value": 20.4 }
+          ]
+        },
+		{
+          "ColumnName": "MidFed",
+          "Rows": [
+            { "RowName": "FeedIntake", "Value": 10.8 },
+            { "RowName": "DryMatterDigestibility", "Value": 0.81 },
+			{ "RowName": "CrudeProtein", "Value": 0.12 },
+			{ "RowName": "NRetention", "Value": 12.7 }
+          ]
+        },
+		{
+          "ColumnName": "LongFed",
+          "Rows": [
+            { "RowName": "FeedIntake", "Value": 8.2 },
+            { "RowName": "DryMatterDigestibility", "Value": 0.81 },
+			{ "RowName": "CrudeProtein", "Value": 0.12 },
+			{ "RowName": "NRetention", "Value": 7 }
+          ]
+        }
+      ]
+    },
+	{
+      "TableName": "Feedlot_MMS_Stage1",
+	  "ColumnOffset": null,
+	  "RowOffset": null,
+      "Cols": [
+        {
+          "ColumnName": "Domestic",
+          "Rows": [
+            { "RowName": "Drylot", "Value": "100%" }
+          ]
+        },
+		{
+          "ColumnName": "MidFed",
+          "Rows": [
+            { "RowName": "Drylot", "Value": "100%" }
+          ]
+        },
+		{
+          "ColumnName": "LongFed",
+          "Rows": [
+            { "RowName": "Drylot", "Value": "100%" }
+          ]
+        }
+      ]
+    },
+	{
+      "TableName": "Feedlot_MMS_Stage2",
+	  "ColumnOffset": null,
+	  "RowOffset": 2,
+      "Cols": [
+        {
+          "ColumnName": "Domestic",
+          "Rows": [
+            { "RowName": "SolidStorage", "Value": "20%" },
+			{ "RowName": "Composting", "Value": "20%" },
+			{ "RowName": "DirectApplication", "Value": "60%" }
+          ]
+        },
+		{
+          "ColumnName": "MidFed",
+          "Rows": [
+            { "RowName": "SolidStorage", "Value": "20%" },
+			{ "RowName": "Composting", "Value": "20%" },
+			{ "RowName": "DirectApplication", "Value": "60%" }
+          ]
+        },
+		{
+          "ColumnName": "LongFed",
+          "Rows": [
+            { "RowName": "SolidStorage", "Value": "20%" },
+			{ "RowName": "Composting", "Value": "20%" },
+			{ "RowName": "DirectApplication", "Value": "60%" }
+          ]
+        }
+      ]
+    },
+	{
+      "TableName": "Feedlot_MMS_Stage2_Destinations",
+	  "ColumnOffset": 0,
+	  "RowOffset": 2,
+      "Cols": [
+        {
+          "ColumnName": "Sold",
+          "Rows": [
+            { "RowName": "SolidStorage", "Value": "25%" },
+			{ "RowName": "Composting", "Value": "25%" },
+			{ "RowName": "DirectApplication", "Value": "0%" }
+          ]
+        },
+		{
+          "ColumnName": "FertOwnFarms",
+          "Rows": [
+            { "RowName": "SolidStorage", "Value": "25%" },
+			{ "RowName": "Composting", "Value": "25%" },
+			{ "RowName": "DirectApplication", "Value": "0%" }
+          ]
+        },
+		{
+          "ColumnName": "DirectApplication",
+          "Rows": [
+            { "RowName": "SolidStorage", "Value": "50%" },
+			{ "RowName": "Composting", "Value": "50%" },
+			{ "RowName": "DirectApplication", "Value": "100%" }
+          ]
+        }
+      ]
+    },
+	{
+      "TableName": "Feedlot_MMS_Stage3",
+	  "ColumnOffset": null,
+	  "RowOffset": 2,
+      "Cols": [
+        {
+          "ColumnName": "Domestic",
+          "Rows": [
+            { "RowName": "AnaerobicLagoon", "Value": "2%" }
+          ]
+        },
+		{
+          "ColumnName": "MidFed",
+          "Rows": [
+            { "RowName": "AnaerobicLagoon", "Value": "2%" }
+          ]
+        },
+		{
+          "ColumnName": "LongFed",
+          "Rows": [
+            { "RowName": "AnaerobicLagoon", "Value": "2%" }
+          ]
+        }
+      ]
+    },
+	{
+      "TableName": "Feedlot_MMS_Stage3_Destinations",
+	  "ColumnOffset": 0,
+	  "RowOffset": 2,
+      "Cols": [
+        {
+          "ColumnName": "Sold",
+          "Rows": [
+            { "RowName": "AnaerobicLagoon", "Value": "25%" }
+          ]
+        },
+		{
+          "ColumnName": "FertOwnFarms",
+          "Rows": [
+            { "RowName": "AnaerobicLagoon", "Value": "25%" }
+          ]
+        },
+		{
+          "ColumnName": "DirectApplication",
+          "Rows": [
+            { "RowName": "AnaerobicLagoon", "Value": "50%" }
+          ]
+        }
+      ]
+    }
+]
+
+}

@@ -1,0 +1,133 @@
+:root {
+  --bg: #f7f1e5;
+  --panel: #fffdfa;
+  --ink: #1f2a2e;
+  --muted: #4f6058;
+  --accent: #1f4b3f;
+  --accent-2: #c44b2d;
+  --edge: #d7d1c4;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "IBM Plex Sans", "Segoe UI", sans-serif;
+  color: var(--ink);
+  background:
+    radial-gradient(circle at 15% 10%, #efe3cf 0 20%, transparent 21%),
+    radial-gradient(circle at 85% 85%, #d9e8df 0 18%, transparent 19%),
+    var(--bg);
+  min-height: 100vh;
+}
+
+.page {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 20px;
+  display: grid;
+  gap: 18px;
+}
+
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--edge);
+  border-radius: 16px;
+  padding: 18px;
+  box-shadow: 0 8px 24px rgba(31, 42, 46, 0.08);
+}
+
+.hero h1 {
+  margin: 0 0 8px;
+  font-family: "IBM Plex Serif", Georgia, serif;
+  font-size: clamp(1.6rem, 1.2rem + 1.8vw, 2.4rem);
+}
+
+.hero p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.field {
+  display: grid;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.field span {
+  font-weight: 600;
+}
+
+input[type="file"] {
+  border: 1px solid var(--edge);
+  background: #fff;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+button {
+  border: none;
+  border-radius: 999px;
+  padding: 11px 20px;
+  background: linear-gradient(120deg, var(--accent), #2a6656);
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+.status {
+  min-height: 24px;
+  margin: 10px 0 0;
+  color: var(--accent-2);
+  font-weight: 600;
+}
+
+.result-list {
+  display: grid;
+  gap: 12px;
+}
+
+.result-item {
+  border: 1px solid var(--edge);
+  border-radius: 12px;
+  padding: 12px;
+  background: #fff;
+}
+
+.result-item h3 {
+  margin: 0 0 6px;
+}
+
+.result-item p {
+  margin: 4px 0;
+}
+
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.links a {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+@media (max-width: 640px) {
+  .page {
+    padding: 14px;
+  }
+
+  .panel {
+    border-radius: 12px;
+    padding: 14px;
+  }
+}

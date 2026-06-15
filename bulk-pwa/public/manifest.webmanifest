@@ -1,0 +1,9 @@
+{
+  "name": "VEERG Bulk Input Processor",
+  "short_name": "VEERG Bulk",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f7f1e5",
+  "theme_color": "#1f4b3f",
+  "icons": []
+}

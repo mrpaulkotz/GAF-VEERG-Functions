@@ -371,6 +371,22 @@ try {
     $tableRangeRowCount = [int] $tableRange.Rows.Count
     $tableRangeColumnCount = [int] $tableRange.Columns.Count
 
+    $columnOffset = 1
+    if ($table.PSObject.Properties.Name -contains 'ColumnOffset' -and $null -ne $table.ColumnOffset) {
+      $parsedColumnOffset = 0
+      if ([int]::TryParse([string] $table.ColumnOffset, [ref] $parsedColumnOffset)) {
+        $columnOffset = $parsedColumnOffset
+      }
+    }
+
+    $rowOffset = 1
+    if ($table.PSObject.Properties.Name -contains 'RowOffset' -and $null -ne $table.RowOffset) {
+      $parsedRowOffset = 0
+      if ([int]::TryParse([string] $table.RowOffset, [ref] $parsedRowOffset)) {
+        $rowOffset = $parsedRowOffset
+      }
+    }
+
     $columns = @($table.Cols)
     for ($colIndex = 0; $colIndex -lt $columns.Count; $colIndex++) {
       $col = $columns[$colIndex]
@@ -378,8 +394,8 @@ try {
         continue
       }
 
-      $columnPosition = $colIndex + 2
-      if ($columnPosition -gt $tableRangeColumnCount) {
+      $columnPosition = $colIndex + 1 + $columnOffset
+      if ($columnPosition -lt 1 -or $columnPosition -gt $tableRangeColumnCount) {
         [void] $tableFailed.Add($tableRangeName)
         [void] $tableFailedDetails.Add(($tableRangeName + ': column position ' + $columnPosition + ' is outside range width ' + $tableRangeColumnCount))
         continue
@@ -392,8 +408,8 @@ try {
           continue
         }
 
-        $rowPosition = $rowIndex + 2
-        if ($rowPosition -gt $tableRangeRowCount) {
+        $rowPosition = $rowIndex + 1 + $rowOffset
+        if ($rowPosition -lt 1 -or $rowPosition -gt $tableRangeRowCount) {
           [void] $tableFailed.Add($tableRangeName)
           [void] $tableFailedDetails.Add(($tableRangeName + ': row position ' + $rowPosition + ' is outside range height ' + $tableRangeRowCount))
           continue
@@ -402,7 +418,7 @@ try {
         $rowName = [string] $row.RowName
 
         try {
-          # Cells.Item is 1-based within the named range; +2 skips header row/column.
+          # Cells.Item is 1-based within the named range; default offset is 1 for row/column headers.
           $targetCell = $tableRange.Cells.Item($rowPosition, $columnPosition)
           $tableValue = if ($row.PSObject.Properties.Name -contains 'Value') { $row.Value } else { $rowName }
 

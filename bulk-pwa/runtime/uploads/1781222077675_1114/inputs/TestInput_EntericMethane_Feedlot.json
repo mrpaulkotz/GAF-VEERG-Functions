@@ -1,0 +1,21 @@
+{
+	"Input_Site_FarmName": "My test farm",
+	"Input_Site_ReportingEntityName": "My test Farms Pty Ltd",
+	"Input_Site_StartDate": "1/1/2025",
+	"Input_Feedlot_AverageHead_Domestic": 1000,
+	"Input_Feedlot_AverageHead_MidFed": 1000,
+	"Input_Feedlot_AverageHead_LongFed": 1000,
+	"Input_Feedlot_DurationOfStay_Domestic": 90,
+	"Input_Feedlot_DurationOfStay_MidFed": 120,
+	"Input_Feedlot_DurationOfStay_LongFed": 260,
+	"Input_Feedlot_FeedIntake_Domestic": 10.4,
+	"Input_Feedlot_FeedIntake_MidFed": 11.2,
+	"Input_Feedlot_FeedIntake_LongFed": 12.0,
+	"Input_Feedlot_EtherExtract_Domestic": 4.9,
+	"Input_Feedlot_EtherExtract_MidFed": 5.1,
+	"Input_Feedlot_EtherExtract_LongFed": 5.6,
+	"Input_Feedlot_NDF_Domestic": 23,
+	"Input_Feedlot_NDF_MidFed": 23,
+	"Input_Feedlot_NDF_LongFed": 25
+
+}

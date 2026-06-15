@@ -11,6 +11,8 @@
   "InputTables": [
     {
       "TableName": "PastureBeef_Duration_Method1",
+      "ColumnOffset": null,
+	    "RowOffset": null,
       "Cols": [
         {
           "ColumnName": "BullsUnder1Year",
@@ -106,6 +108,8 @@
     },
     {
       "TableName": "PastureBeef_Duration_Method2",
+      "ColumnOffset": null,
+	    "RowOffset": null,
       "Cols": [
         {
           "ColumnName": "BullsUnder1Year",
@@ -281,6 +285,8 @@
     },
     {
       "TableName": "PastureBeef_Head_Method1",
+      "ColumnOffset": null,
+	    "RowOffset": null,
       "Cols": [
         {
           "ColumnName": "BullsUnder1Year",
@@ -376,6 +382,8 @@
     },
     {
       "TableName": "PastureBeef_Head_Method2",
+      "ColumnOffset": null,
+	    "RowOffset": null,
       "Cols": [
         {
           "ColumnName": "BullsUnder1Year",
@@ -551,6 +559,8 @@
     },
     {
       "TableName": "PastureBeef_Liveweight_Method1",
+      "ColumnOffset": null,
+	    "RowOffset": null,
       "Cols": [
         {
           "ColumnName": "BullsUnder1Year",
@@ -646,6 +656,8 @@
     },
     {
       "TableName": "PastureBeef_Liveweight_Method2",
+      "ColumnOffset": null,
+	    "RowOffset": null,
       "Cols": [
         {
           "ColumnName": "BullsUnder1Year",
@@ -821,6 +833,8 @@
     },
     {
       "TableName": "PastureBeef_LiveweightGain_Method1",
+      "ColumnOffset": null,
+	    "RowOffset": null,
       "Cols": [
         {
           "ColumnName": "BullsUnder1Year",
@@ -916,6 +930,8 @@
     },
     {
       "TableName": "PastureBeef_LiveweightGain_Method2",
+      "ColumnOffset": null,
+	    "RowOffset": null,
       "Cols": [
         {
           "ColumnName": "BullsUnder1Year",
@@ -1103,6 +1119,8 @@
     },
     {
       "TableName": "PastureBeef_DryMatterDigestibility_Method1",
+      "ColumnOffset": null,
+	    "RowOffset": null,
       "Cols": [
         {
           "ColumnName": "BullsUnder1Year",
@@ -1198,6 +1216,8 @@
     },
     {
       "TableName": "PastureBeef_DryMatterDigestibility_Method2",
+      "ColumnOffset": null,
+	    "RowOffset": null,
       "Cols": [
         {
           "ColumnName": "BullsUnder1Year",
@@ -1373,6 +1393,8 @@
     },
     {
       "TableName": "PastureBeef_CrudeProtein_Method1",
+      "ColumnOffset": null,
+	    "RowOffset": null,
       "Cols": [
         {
           "ColumnName": "BullsUnder1Year",
@@ -1468,6 +1490,8 @@
     },
     {
       "TableName": "PastureBeef_CrudeProtein_Method2",
+      "ColumnOffset": null,
+	    "RowOffset": null,
       "Cols": [
         {
           "ColumnName": "BullsUnder1Year",
