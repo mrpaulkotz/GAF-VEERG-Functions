@@ -51,9 +51,9 @@ VEERG_4_6_1_12__1_AtmosphericDepositionEmissionsFromPoultryManureOnPasture_Argum
           "M_vol_m14", "mass of nitrogen volatilised from manure deposited on pasture","kg N", "Calculated from 4.6.1.12 (2)";
           "EF_N2O", "emission factor for atmospheric deposition (kg N2O-N/kg N)", "kg N2O-N/kg N", "Constant";
           "C_N2O", "factor to convert elemental mass of N2O to molecular mass", "ratio", "Constant";
-          "j", "production system", "dimensionless", "Input";
-          "ir", "irrigation method", "dimensionless", "Input";
-          "r", "rainfall region", "dimensionless", "Input"
+          "j", "production system", "", "Input";
+          "ir", "irrigation method", "", "Input";
+          "r", "rainfall region", "", "Input"
         }, r, c)
       )
     )
