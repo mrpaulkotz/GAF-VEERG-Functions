@@ -130,6 +130,54 @@ function Get-WorkbookNameEntry {
   return $null
 }
 
+function Get-WorkbookTableRange {
+  param(
+    [Parameter(Mandatory = $true)]
+    [object] $Workbook,
+
+    [Parameter(Mandatory = $true)]
+    [string] $TableName
+  )
+
+  if ([string]::IsNullOrWhiteSpace($TableName)) {
+    return $null
+  }
+
+  foreach ($worksheet in @($Workbook.Worksheets)) {
+    if ($null -eq $worksheet) {
+      continue
+    }
+
+    $listObject = $null
+    try {
+      $listObject = $worksheet.ListObjects.Item($TableName)
+    } catch {
+      $listObject = $null
+    }
+
+    if ($null -eq $listObject) {
+      continue
+    }
+
+    $tableRange = $null
+    try {
+      if ($null -ne $listObject.DataBodyRange) {
+        $tableRange = $listObject.DataBodyRange
+      } else {
+        $tableRange = $listObject.Range
+      }
+    } catch {
+      $tableRange = $null
+    }
+
+    if ($null -ne $tableRange) {
+      return ,$tableRange
+    }
+  }
+
+  return $null
+}
+
 function Get-RelativePathSafe {
   param(
     [Parameter(Mandatory = $true)]
@@ -224,6 +272,214 @@ function Write-NamedInputs {
   return $updated
 }
 
+function Convert-TableRowsToList {
+  param(
+    [Parameter(Mandatory = $false)]
+    [AllowNull()]
+    [object] $RowsRaw
+  )
+
+  $rows = New-Object System.Collections.Generic.List[object]
+  if ($null -eq $RowsRaw) {
+    return $rows
+  }
+
+  if ($RowsRaw.PSObject.Properties.Name -contains 'RowName' -or $RowsRaw.PSObject.Properties.Name -contains 'Value') {
+    $rowNameValue = if ($RowsRaw.PSObject.Properties.Name -contains 'RowName') { [string] $RowsRaw.RowName } else { '' }
+    $rowCellValue = if ($RowsRaw.PSObject.Properties.Name -contains 'Value') { $RowsRaw.Value } else { $null }
+    [void] $rows.Add([pscustomobject]@{ RowName = $rowNameValue; Value = $rowCellValue })
+    return $rows
+  }
+
+  $isRowsArrayLike = $RowsRaw.GetType().IsArray -or $RowsRaw -is [System.Collections.IList]
+  if ($isRowsArrayLike) {
+    foreach ($candidateRow in @($RowsRaw)) {
+      if ($null -eq $candidateRow) {
+        continue
+      }
+
+      if ($candidateRow.PSObject.Properties.Name -contains 'RowName' -or $candidateRow.PSObject.Properties.Name -contains 'Value') {
+        $rowNameValue = if ($candidateRow.PSObject.Properties.Name -contains 'RowName') { [string] $candidateRow.RowName } else { '' }
+        $rowCellValue = if ($candidateRow.PSObject.Properties.Name -contains 'Value') { $candidateRow.Value } else { $null }
+        [void] $rows.Add([pscustomobject]@{ RowName = $rowNameValue; Value = $rowCellValue })
+        continue
+      }
+
+      foreach ($p in @($candidateRow.PSObject.Properties)) {
+        [void] $rows.Add([pscustomobject]@{ RowName = [string] $p.Name; Value = $p.Value })
+      }
+    }
+
+    return $rows
+  }
+
+  foreach ($p in @($RowsRaw.PSObject.Properties)) {
+    [void] $rows.Add([pscustomobject]@{ RowName = [string] $p.Name; Value = $p.Value })
+  }
+
+  return $rows
+}
+
+function Convert-TableColumnsToList {
+  param(
+    [Parameter(Mandatory = $false)]
+    [AllowNull()]
+    [object] $ColsRaw
+  )
+
+  $columns = New-Object System.Collections.Generic.List[object]
+  if ($null -eq $ColsRaw) {
+    return $columns
+  }
+
+  if ($ColsRaw.PSObject.Properties.Name -contains 'ColumnName') {
+    $colName = [string] $ColsRaw.ColumnName
+    if (-not [string]::IsNullOrWhiteSpace($colName)) {
+      [void] $columns.Add([pscustomobject]@{
+        ColumnName = $colName
+        Rows       = Convert-TableRowsToList -RowsRaw (if ($ColsRaw.PSObject.Properties.Name -contains 'Rows') { $ColsRaw.Rows } else { $null })
+      })
+    }
+
+    return $columns
+  }
+
+  $isColsArrayLike = $ColsRaw.GetType().IsArray -or $ColsRaw -is [System.Collections.IList]
+  if ($isColsArrayLike) {
+    foreach ($candidateCol in @($ColsRaw)) {
+      if ($null -eq $candidateCol) {
+        continue
+      }
+
+      if ($candidateCol.PSObject.Properties.Name -contains 'ColumnName') {
+        $colName = [string] $candidateCol.ColumnName
+        if ([string]::IsNullOrWhiteSpace($colName)) {
+          continue
+        }
+
+        [void] $columns.Add([pscustomobject]@{
+          ColumnName = $colName
+          Rows       = Convert-TableRowsToList -RowsRaw (if ($candidateCol.PSObject.Properties.Name -contains 'Rows') { $candidateCol.Rows } else { $null })
+        })
+        continue
+      }
+
+      foreach ($p in @($candidateCol.PSObject.Properties)) {
+        [void] $columns.Add([pscustomobject]@{
+          ColumnName = [string] $p.Name
+          Rows       = Convert-TableRowsToList -RowsRaw $p.Value
+        })
+      }
+    }
+
+    return $columns
+  }
+
+  foreach ($p in @($ColsRaw.PSObject.Properties)) {
+    [void] $columns.Add([pscustomobject]@{
+      ColumnName = [string] $p.Name
+      Rows       = Convert-TableRowsToList -RowsRaw $p.Value
+    })
+  }
+
+  return $columns
+}
+
+function Convert-InputTableToColumns {
+  param(
+    [Parameter(Mandatory = $true)]
+    [object] $Table
+  )
+
+  if ($Table.PSObject.Properties.Name -contains 'Cols' -and $null -ne $Table.Cols) {
+    return @(Convert-TableColumnsToList -ColsRaw $Table.Cols)
+  }
+
+  if (-not ($Table.PSObject.Properties.Name -contains 'Rows') -or $null -eq $Table.Rows) {
+    return @()
+  }
+
+  $rowEntries = @()
+  $rowsRaw = $Table.Rows
+
+  $isRowsArrayLike = $rowsRaw.GetType().IsArray -or $rowsRaw -is [System.Collections.IList]
+  if ($isRowsArrayLike) {
+    foreach ($candidateRow in @($rowsRaw)) {
+      if ($null -eq $candidateRow) {
+        continue
+      }
+
+      if ($candidateRow.PSObject.Properties.Name -contains 'RowName') {
+        $entryName = [string] $candidateRow.RowName
+        $entryData = if ($candidateRow.PSObject.Properties.Name -contains 'Value') { $candidateRow.Value } else { $candidateRow }
+        $rowEntries += ,([pscustomobject]@{ RowName = $entryName; Data = $entryData })
+      } else {
+        foreach ($p in @($candidateRow.PSObject.Properties)) {
+          $rowEntries += ,([pscustomobject]@{ RowName = [string] $p.Name; Data = $p.Value })
+        }
+      }
+    }
+  } else {
+    foreach ($p in @($rowsRaw.PSObject.Properties)) {
+      $rowEntries += ,([pscustomobject]@{ RowName = [string] $p.Name; Data = $p.Value })
+    }
+  }
+
+  $columnRowsMap = @{}
+  $columnOrder = @()
+  foreach ($entry in $rowEntries) {
+    $rowName = [string] $entry.RowName
+    $rowData = $entry.Data
+
+    if ($null -eq $rowData) {
+      if (-not $columnRowsMap.ContainsKey('Value')) {
+        $columnRowsMap['Value'] = @()
+        $columnOrder += 'Value'
+      }
+      $columnRowsMap['Value'] += ,([pscustomobject]@{ RowName = $rowName; Value = $null })
+      continue
+    }
+
+    $rowDataProps = @()
+    if ($null -ne $rowData.PSObject -and $null -ne $rowData.PSObject.Properties) {
+      $rowDataProps = @($rowData.PSObject.Properties)
+    }
+    $hasDataProps = $rowDataProps.Count -gt 0
+    if ($hasDataProps -and -not ($rowData -is [string])) {
+      foreach ($prop in $rowDataProps) {
+        if ([string]::Equals([string] $prop.Name, 'RowName', [System.StringComparison]::OrdinalIgnoreCase)) {
+          continue
+        }
+
+        $columnName = [string] $prop.Name
+        if (-not $columnRowsMap.ContainsKey($columnName)) {
+          $columnRowsMap[$columnName] = @()
+          $columnOrder += $columnName
+        }
+
+        $columnRowsMap[$columnName] += ,([pscustomobject]@{ RowName = $rowName; Value = $prop.Value })
+      }
+      continue
+    }
+
+    if (-not $columnRowsMap.ContainsKey('Value')) {
+      $columnRowsMap['Value'] = @()
+      $columnOrder += 'Value'
+    }
+    $columnRowsMap['Value'] += ,([pscustomobject]@{ RowName = $rowName; Value = $rowData })
+  }
+
+  $columns = @()
+  foreach ($columnName in @($columnOrder)) {
+    $columns += ,([pscustomobject]@{
+      ColumnName = [string] $columnName
+      Rows       = @($columnRowsMap[$columnName])
+    })
+  }
+
+  return @($columns)
+}
+
 function Write-InputTables {
   param(
     [Parameter(Mandatory = $true)]
@@ -268,34 +524,59 @@ function Write-InputTables {
       continue
     }
 
-    if (-not ($table.PSObject.Properties.Name -contains 'Cols')) {
-      [void] $Warnings.Add('Input table ' + $tableName + ' has no Cols')
+    $hasCols = $table.PSObject.Properties.Name -contains 'Cols'
+    $hasRows = $table.PSObject.Properties.Name -contains 'Rows'
+    if ((-not $hasCols -or $null -eq $table.Cols) -and (-not $hasRows -or $null -eq $table.Rows)) {
+      [void] $Warnings.Add('Input table ' + $tableName + ' has no Cols/Rows data')
       continue
     }
 
-    $tableRangeName = 'X_Table_' + $tableName
-    $tableNameEntry = Get-WorkbookNameEntry -Workbook $Workbook -CandidateNames ([string[]] @($tableRangeName))
-    if ($null -eq $tableNameEntry) {
-      [void] $Warnings.Add('Missing named table range: ' + $tableRangeName)
-      continue
-    }
-
-    $tableRange = $null
-    try {
-      $tableRange = $tableNameEntry.RefersToRange
-    } catch {
-      $tableRange = $null
+    $tableRangeName = $tableName
+    $tableRangeFromExcelTable = $false
+    $tableRange = Get-WorkbookTableRange -Workbook $Workbook -TableName $tableRangeName
+    if ($null -ne $tableRange) {
+      $tableRangeFromExcelTable = $true
     }
 
     if ($null -eq $tableRange) {
-      [void] $Warnings.Add('Table range is not writable: ' + $tableRangeName)
+      $tableNameEntry = Get-WorkbookNameEntry -Workbook $Workbook -CandidateNames ([string[]] @($tableRangeName))
+      if ($null -ne $tableNameEntry) {
+        try {
+          $tableRange = $tableNameEntry.RefersToRange
+        } catch {
+          $tableRange = $null
+        }
+      }
+    }
+
+    $tableRangeSupportsGridAddressing = $false
+    if ($null -ne $tableRange) {
+      try {
+        $probeCell = $tableRange.Rows.Item(1).Columns.Item(1)
+        if ($null -ne $probeCell) {
+          $tableRangeSupportsGridAddressing = $true
+        }
+      } catch {
+        $tableRangeSupportsGridAddressing = $false
+      }
+    }
+
+    if (-not $tableRangeSupportsGridAddressing) {
+      $fallbackTableRange = Get-WorkbookTableRange -Workbook $Workbook -TableName $tableRangeName
+      if ($null -ne $fallbackTableRange) {
+        $tableRange = $fallbackTableRange
+      }
+    }
+
+    if ($null -eq $tableRange) {
+      [void] $Warnings.Add('Missing named range or Excel table: ' + $tableRangeName)
       continue
     }
 
     $tableRangeRowCount = [int] $tableRange.Rows.Count
     $tableRangeColumnCount = [int] $tableRange.Columns.Count
 
-    $columnOffset = 1
+    $columnOffset = if ($tableRangeFromExcelTable) { 0 } else { 1 }
     if ($table.PSObject.Properties.Name -contains 'ColumnOffset' -and $null -ne $table.ColumnOffset) {
       $parsedColumnOffset = 0
       if ([int]::TryParse([string] $table.ColumnOffset, [ref] $parsedColumnOffset)) {
@@ -303,7 +584,7 @@ function Write-InputTables {
       }
     }
 
-    $rowOffset = 1
+    $rowOffset = if ($tableRangeFromExcelTable) { 0 } else { 1 }
     if ($table.PSObject.Properties.Name -contains 'RowOffset' -and $null -ne $table.RowOffset) {
       $parsedRowOffset = 0
       if ([int]::TryParse([string] $table.RowOffset, [ref] $parsedRowOffset)) {
@@ -311,34 +592,176 @@ function Write-InputTables {
       }
     }
 
-    $columns = @($table.Cols)
-    for ($colIndex = 0; $colIndex -lt $columns.Count; $colIndex++) {
-      $col = $columns[$colIndex]
+    $matrixType = 'RowsToCols'
+    if ($table.PSObject.Properties.Name -contains 'MatrixType' -and -not [string]::IsNullOrWhiteSpace([string] $table.MatrixType)) {
+      $matrixType = [string] $table.MatrixType
+    }
+
+    $hasColsData = $table.PSObject.Properties.Name -contains 'Cols' -and $null -ne $table.Cols
+    $hasRowsData = $table.PSObject.Properties.Name -contains 'Rows' -and $null -ne $table.Rows
+    if (-not $hasColsData -and $hasRowsData) {
+      $rowsRaw = $table.Rows
+      $rowEntries = @()
+      $isRowsArrayLike = $rowsRaw.GetType().IsArray -or $rowsRaw -is [System.Collections.IList]
+      if ($isRowsArrayLike) {
+        foreach ($candidateRow in @($rowsRaw)) {
+          if ($null -eq $candidateRow) {
+            continue
+          }
+
+          if ($candidateRow.PSObject.Properties.Name -contains 'RowName') {
+            $entryName = [string] $candidateRow.RowName
+            $entryData = if ($candidateRow.PSObject.Properties.Name -contains 'Value') { $candidateRow.Value } else { $candidateRow }
+            $rowEntries += ,([pscustomobject]@{ RowName = $entryName; Data = $entryData })
+          } else {
+            foreach ($p in @($candidateRow.PSObject.Properties)) {
+              $rowEntries += ,([pscustomobject]@{ RowName = [string] $p.Name; Data = $p.Value })
+            }
+          }
+        }
+      } else {
+        foreach ($p in @($rowsRaw.PSObject.Properties)) {
+          $rowEntries += ,([pscustomobject]@{ RowName = [string] $p.Name; Data = $p.Value })
+        }
+      }
+
+      $requestedColsToRows = [string]::Equals($matrixType, 'ColsToRows', [System.StringComparison]::OrdinalIgnoreCase)
+      for ($rowIndex = 0; $rowIndex -lt $rowEntries.Count; $rowIndex++) {
+        $entry = $rowEntries[$rowIndex]
+        if ($null -eq $entry) {
+          continue
+        }
+
+        $entryData = $entry.Data
+        $entryProps = @()
+        if ($null -ne $entryData -and $null -ne $entryData.PSObject -and $null -ne $entryData.PSObject.Properties -and -not ($entryData -is [string])) {
+          $entryProps = @($entryData.PSObject.Properties)
+        }
+
+        if ($entryProps.Count -eq 0) {
+          $entryProps = @([pscustomobject]@{ Name = 'Value'; Value = $entryData })
+        }
+
+        for ($colIndex = 0; $colIndex -lt $entryProps.Count; $colIndex++) {
+          $prop = $entryProps[$colIndex]
+          if ($null -eq $prop) {
+            continue
+          }
+
+          $targetRowPosition = if ($requestedColsToRows) { $colIndex + 1 + $rowOffset } else { $rowIndex + 1 + $rowOffset }
+          $targetColumnPosition = if ($requestedColsToRows) { $rowIndex + 1 + $columnOffset } else { $colIndex + 1 + $columnOffset }
+
+          if ($targetColumnPosition -lt 1 -or $targetColumnPosition -gt $tableRangeColumnCount) {
+            [void] $Warnings.Add(($tableRangeName + ': column position ' + $targetColumnPosition + ' outside width ' + $tableRangeColumnCount))
+            continue
+          }
+
+          if ($targetRowPosition -lt 1 -or $targetRowPosition -gt $tableRangeRowCount) {
+            [void] $Warnings.Add(($tableRangeName + ': row position ' + $targetRowPosition + ' outside height ' + $tableRangeRowCount))
+            continue
+          }
+
+          try {
+            $targetCell = $tableRange.Rows.Item($targetRowPosition).Columns.Item($targetColumnPosition)
+            $tableValue = $prop.Value
+
+            if ($null -eq $tableValue) {
+              $targetCell.Value2 = ''
+            } elseif ($tableValue -is [bool]) {
+              $targetCell.Value2 = if ($tableValue) { 1 } else { 0 }
+            } elseif (
+              $tableValue -is [byte] -or
+              $tableValue -is [sbyte] -or
+              $tableValue -is [int16] -or
+              $tableValue -is [uint16] -or
+              $tableValue -is [int32] -or
+              $tableValue -is [uint32] -or
+              $tableValue -is [int64] -or
+              $tableValue -is [uint64] -or
+              $tableValue -is [single] -or
+              $tableValue -is [double] -or
+              $tableValue -is [decimal]
+            ) {
+              $targetCell.Value2 = [string] $tableValue
+            } else {
+              $targetCell.Value2 = $tableValue
+            }
+
+            $updated++
+          } catch {
+            [void] $Warnings.Add(($tableRangeName + ': row=' + $targetRowPosition + ', col=' + $targetColumnPosition + ': ' + $_.Exception.Message))
+          }
+        }
+      }
+
+      continue
+    }
+
+    $columns = @(Convert-InputTableToColumns -Table $table)
+    $preparedColumns = New-Object System.Collections.Generic.List[object]
+    $maxRowsPerColumn = 0
+    foreach ($col in $columns) {
       if ($null -eq $col) {
         continue
       }
 
-      $columnPosition = $colIndex + 1 + $columnOffset
-      if ($columnPosition -lt 1 -or $columnPosition -gt $tableRangeColumnCount) {
-        [void] $Warnings.Add(($tableRangeName + ': column position ' + $columnPosition + ' outside width ' + $tableRangeColumnCount))
+      $rows = @(Convert-TableRowsToList -RowsRaw $col.Rows)
+      if ($rows.Count -gt $maxRowsPerColumn) {
+        $maxRowsPerColumn = $rows.Count
+      }
+
+      [void] $preparedColumns.Add([pscustomobject]@{
+        Column = $col
+        Rows   = $rows
+      })
+    }
+
+    $requestedColsToRows = [string]::Equals($matrixType, 'ColsToRows', [System.StringComparison]::OrdinalIgnoreCase)
+    $isColsToRows = $false
+
+    $requiredRowsRowsToCols = $rowOffset + $maxRowsPerColumn
+    $requiredColsRowsToCols = $columnOffset + $preparedColumns.Count
+    $requiredRowsColsToRows = $rowOffset + $preparedColumns.Count
+    $requiredColsColsToRows = $columnOffset + $maxRowsPerColumn
+
+    $rowsToColsFits = ($requiredRowsRowsToCols -le $tableRangeRowCount) -and ($requiredColsRowsToCols -le $tableRangeColumnCount)
+    $colsToRowsFits = ($requiredRowsColsToRows -le $tableRangeRowCount) -and ($requiredColsColsToRows -le $tableRangeColumnCount)
+
+    if ($requestedColsToRows -and -not $rowsToColsFits -and $colsToRowsFits) {
+      $isColsToRows = $true
+    } elseif ($requestedColsToRows -and -not $colsToRowsFits -and $rowsToColsFits) {
+      [void] $Warnings.Add(($tableRangeName + ': MatrixType=ColsToRows does not fit named range; using RowsToCols fallback'))
+    }
+
+    for ($colIndex = 0; $colIndex -lt $preparedColumns.Count; $colIndex++) {
+      $colEntry = $preparedColumns[$colIndex]
+      if ($null -eq $colEntry) {
         continue
       }
 
-      $rows = @($col.Rows)
+      $rows = @($colEntry.Rows)
+
       for ($rowIndex = 0; $rowIndex -lt $rows.Count; $rowIndex++) {
         $row = $rows[$rowIndex]
         if ($null -eq $row) {
           continue
         }
 
-        $rowPosition = $rowIndex + 1 + $rowOffset
-        if ($rowPosition -lt 1 -or $rowPosition -gt $tableRangeRowCount) {
-          [void] $Warnings.Add(($tableRangeName + ': row position ' + $rowPosition + ' outside height ' + $tableRangeRowCount))
+        $targetRowPosition = if ($isColsToRows) { $colIndex + 1 + $rowOffset } else { $rowIndex + 1 + $rowOffset }
+        $targetColumnPosition = if ($isColsToRows) { $rowIndex + 1 + $columnOffset } else { $colIndex + 1 + $columnOffset }
+
+        if ($targetColumnPosition -lt 1 -or $targetColumnPosition -gt $tableRangeColumnCount) {
+          [void] $Warnings.Add(($tableRangeName + ': column position ' + $targetColumnPosition + ' outside width ' + $tableRangeColumnCount))
+          continue
+        }
+
+        if ($targetRowPosition -lt 1 -or $targetRowPosition -gt $tableRangeRowCount) {
+          [void] $Warnings.Add(($tableRangeName + ': row position ' + $targetRowPosition + ' outside height ' + $tableRangeRowCount))
           continue
         }
 
         try {
-          $targetCell = $tableRange.Cells.Item($rowPosition, $columnPosition)
+          $targetCell = $tableRange.Rows.Item($targetRowPosition).Columns.Item($targetColumnPosition)
           $tableValue = if ($row.PSObject.Properties.Name -contains 'Value') { $row.Value } else { [string] $row.RowName }
 
           if ($null -eq $tableValue) {
@@ -365,7 +788,7 @@ function Write-InputTables {
 
           $updated++
         } catch {
-          [void] $Warnings.Add(($tableRangeName + ': row=' + $rowPosition + ', col=' + $columnPosition + ': ' + $_.Exception.Message))
+          [void] $Warnings.Add(($tableRangeName + ': row=' + $targetRowPosition + ', col=' + $targetColumnPosition + ': ' + $_.Exception.Message))
         }
       }
     }

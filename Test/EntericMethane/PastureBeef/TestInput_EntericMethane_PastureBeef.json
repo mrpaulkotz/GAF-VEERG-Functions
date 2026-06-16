@@ -1,4 +1,4 @@
-﻿{
+{
   "X_Cell_Site_FarmName": "My test farm",
   "X_Cell_Site_ReportingEntityName": "My test Farms Pty Ltd",
   "X_Cell_Site_StartDate": "1/1/2025",
@@ -10,1661 +10,1300 @@
   "X_Cell_PastureBeef_GrazingIrrigationMethod": "Not irrigated",
   "InputTables": [
     {
-      "TableName": "PastureBeef_Duration_Method1",
+      "TableName": "X_Table_PastureBeef_Duration_Method1",
       "ColumnOffset": null,
-	    "RowOffset": null,
-      "Cols": [
-        {
-          "ColumnName": "BullsUnder1Year",
-          "Rows": [
-            { "RowName": "Spring", "Value": 91.25 },
-            { "RowName": "Summer", "Value": 91.25 },
-            { "RowName": "Autumn", "Value": 91.25 },
-            { "RowName": "Winter", "Value": 91.25 }
-          ]
+      "RowOffset": null,
+      "Cols": {
+        "BullsUnder1Year": {
+          "Spring": 91.25,
+          "Summer": 91.25,
+          "Autumn": 91.25,
+          "Winter": 91.25
         },
-        {
-          "ColumnName": "BullsOver1Year",
-          "Rows": [
-            { "RowName": "Spring", "Value": 91.25 },
-            { "RowName": "Summer", "Value": 91.25 },
-            { "RowName": "Autumn", "Value": 91.25 },
-            { "RowName": "Winter", "Value": 91.25 }
-          ]
+        "BullsOver1Year": {
+          "Spring": 91.25,
+          "Summer": 91.25,
+          "Autumn": 91.25,
+          "Winter": 91.25
         },
-        {
-          "ColumnName": "CowsUnder1Year",
-          "Rows": [
-            { "RowName": "Spring", "Value": 91.25 },
-            { "RowName": "Summer", "Value": 91.25 },
-            { "RowName": "Autumn", "Value": 91.25 },
-            { "RowName": "Winter", "Value": 91.25 }
-          ]
+        "CowsUnder1Year": {
+          "Spring": 91.25,
+          "Summer": 91.25,
+          "Autumn": 91.25,
+          "Winter": 91.25
         },
-        {
-          "ColumnName": "Cows1To2Years",
-          "Rows": [
-            { "RowName": "Spring", "Value": 91.25 },
-            { "RowName": "Summer", "Value": 91.25 },
-            { "RowName": "Autumn", "Value": 91.25 },
-            { "RowName": "Winter", "Value": 91.25 }
-          ]
+        "Cows1To2Years": {
+          "Spring": 91.25,
+          "Summer": 91.25,
+          "Autumn": 91.25,
+          "Winter": 91.25
         },
-        {
-          "ColumnName": "Cows2to3Years",
-          "Rows": [
-            { "RowName": "Spring", "Value": 91.25 },
-            { "RowName": "Summer", "Value": 91.25 },
-            { "RowName": "Autumn", "Value": 91.25 },
-            { "RowName": "Winter", "Value": 91.25 }
-          ]
+        "Cows2to3Years": {
+          "Spring": 91.25,
+          "Summer": 91.25,
+          "Autumn": 91.25,
+          "Winter": 91.25
         },
-        {
-          "ColumnName": "CowsOver3Years",
-          "Rows": [
-            { "RowName": "Spring", "Value": 91.25 },
-            { "RowName": "Summer", "Value": 91.25 },
-            { "RowName": "Autumn", "Value": 91.25 },
-            { "RowName": "Winter", "Value": 91.25 }
-          ]
+        "CowsOver3Years": {
+          "Spring": 91.25,
+          "Summer": 91.25,
+          "Autumn": 91.25,
+          "Winter": 91.25
         },
-        {
-          "ColumnName": "SteersUnder1Year",
-          "Rows": [
-            { "RowName": "Spring", "Value": 91.25 },
-            { "RowName": "Summer", "Value": 91.25 },
-            { "RowName": "Autumn", "Value": 91.25 },
-            { "RowName": "Winter", "Value": 91.25 }
-          ]
+        "SteersUnder1Year": {
+          "Spring": 91.25,
+          "Summer": 91.25,
+          "Autumn": 91.25,
+          "Winter": 91.25
         },
-        {
-          "ColumnName": "Steers1To2Years",
-          "Rows": [
-            { "RowName": "Spring", "Value": 91.25 },
-            { "RowName": "Summer", "Value": 91.25 },
-            { "RowName": "Autumn", "Value": 91.25 },
-            { "RowName": "Winter", "Value": 91.25 }
-          ]
+        "Steers1To2Years": {
+          "Spring": 91.25,
+          "Summer": 91.25,
+          "Autumn": 91.25,
+          "Winter": 91.25
         },
-        {
-          "ColumnName": "Steers2to3Years",
-          "Rows": [
-            { "RowName": "Spring", "Value": 91.25 },
-            { "RowName": "Summer", "Value": 91.25 },
-            { "RowName": "Autumn", "Value": 91.25 },
-            { "RowName": "Winter", "Value": 91.25 }
-          ]
+        "Steers2to3Years": {
+          "Spring": 91.25,
+          "Summer": 91.25,
+          "Autumn": 91.25,
+          "Winter": 91.25
         },
-        {
-          "ColumnName": "SteersOver3Years",
-          "Rows": [
-            { "RowName": "Spring", "Value": 91.25 },
-            { "RowName": "Summer", "Value": 91.25 },
-            { "RowName": "Autumn", "Value": 91.25 },
-            { "RowName": "Winter", "Value": 91.25 }
-          ]
+        "SteersOver3Years": {
+          "Spring": 91.25,
+          "Summer": 91.25,
+          "Autumn": 91.25,
+          "Winter": 91.25
         }
-      ]
+      },
+      "MatrixType": "ColsToRows"
     },
     {
-      "TableName": "PastureBeef_Duration_Method2",
+      "TableName": "X_Table_PastureBeef_Duration_Method2",
       "ColumnOffset": null,
-	    "RowOffset": null,
-      "Cols": [
-        {
-          "ColumnName": "BullsUnder1Year",
-          "Rows": [
-            { "RowName": "January 2025", "Value": 31 },
-            { "RowName": "February 2025", "Value": 29 },
-            { "RowName": "March 2025", "Value": 31 },
-            { "RowName": "April 2025", "Value": 30 },
-            { "RowName": "May 2025", "Value": 31 },
-            { "RowName": "June 2025", "Value": 30 },
-            { "RowName": "July 2025", "Value": 31 },
-            { "RowName": "August 2025", "Value": 31 },
-            { "RowName": "September 2025", "Value": 30 },
-            { "RowName": "October 2025", "Value": 31 },
-            { "RowName": "November 2025", "Value": 30 },
-            { "RowName": "December 2025", "Value": 31 }
-          ]
+      "RowOffset": null,
+      "Cols": {
+        "BullsUnder1Year": {
+          "January 2025": 31,
+          "February 2025": 29,
+          "March 2025": 31,
+          "April 2025": 30,
+          "May 2025": 31,
+          "June 2025": 30,
+          "July 2025": 31,
+          "August 2025": 31,
+          "September 2025": 30,
+          "October 2025": 31,
+          "November 2025": 30,
+          "December 2025": 31
         },
-        {
-          "ColumnName": "BullsOver1Year",
-          "Rows": [
-            { "RowName": "January 2025", "Value": 31 },
-            { "RowName": "February 2025", "Value": 29 },
-            { "RowName": "March 2025", "Value": 31 },
-            { "RowName": "April 2025", "Value": 30 },
-            { "RowName": "May 2025", "Value": 31 },
-            { "RowName": "June 2025", "Value": 30 },
-            { "RowName": "July 2025", "Value": 31 },
-            { "RowName": "August 2025", "Value": 31 },
-            { "RowName": "September 2025", "Value": 30 },
-            { "RowName": "October 2025", "Value": 31 },
-            { "RowName": "November 2025", "Value": 30 },
-            { "RowName": "December 2025", "Value": 31 }
-          ]
+        "BullsOver1Year": {
+          "January 2025": 31,
+          "February 2025": 29,
+          "March 2025": 31,
+          "April 2025": 30,
+          "May 2025": 31,
+          "June 2025": 30,
+          "July 2025": 31,
+          "August 2025": 31,
+          "September 2025": 30,
+          "October 2025": 31,
+          "November 2025": 30,
+          "December 2025": 31
         },
-        {
-          "ColumnName": "CowsUnder1Year",
-          "Rows": [
-            { "RowName": "January 2025", "Value": 31 },
-            { "RowName": "February 2025", "Value": 29 },
-            { "RowName": "March 2025", "Value": 31 },
-            { "RowName": "April 2025", "Value": 30 },
-            { "RowName": "May 2025", "Value": 31 },
-            { "RowName": "June 2025", "Value": 30 },
-            { "RowName": "July 2025", "Value": 31 },
-            { "RowName": "August 2025", "Value": 31 },
-            { "RowName": "September 2025", "Value": 30 },
-            { "RowName": "October 2025", "Value": 31 },
-            { "RowName": "November 2025", "Value": 30 },
-            { "RowName": "December 2025", "Value": 31 }
-          ]
+        "CowsUnder1Year": {
+          "January 2025": 31,
+          "February 2025": 29,
+          "March 2025": 31,
+          "April 2025": 30,
+          "May 2025": 31,
+          "June 2025": 30,
+          "July 2025": 31,
+          "August 2025": 31,
+          "September 2025": 30,
+          "October 2025": 31,
+          "November 2025": 30,
+          "December 2025": 31
         },
-        {
-          "ColumnName": "Cows1To2Years",
-          "Rows": [
-            { "RowName": "January 2025", "Value": 31 },
-            { "RowName": "February 2025", "Value": 29 },
-            { "RowName": "March 2025", "Value": 31 },
-            { "RowName": "April 2025", "Value": 30 },
-            { "RowName": "May 2025", "Value": 31 },
-            { "RowName": "June 2025", "Value": 30 },
-            { "RowName": "July 2025", "Value": 31 },
-            { "RowName": "August 2025", "Value": 31 },
-            { "RowName": "September 2025", "Value": 30 },
-            { "RowName": "October 2025", "Value": 31 },
-            { "RowName": "November 2025", "Value": 30 },
-            { "RowName": "December 2025", "Value": 31 }
-          ]
+        "Cows1To2Years": {
+          "January 2025": 31,
+          "February 2025": 29,
+          "March 2025": 31,
+          "April 2025": 30,
+          "May 2025": 31,
+          "June 2025": 30,
+          "July 2025": 31,
+          "August 2025": 31,
+          "September 2025": 30,
+          "October 2025": 31,
+          "November 2025": 30,
+          "December 2025": 31
         },
-        {
-          "ColumnName": "Cows2to3Years",
-          "Rows": [
-            { "RowName": "January 2025", "Value": 31 },
-            { "RowName": "February 2025", "Value": 29 },
-            { "RowName": "March 2025", "Value": 31 },
-            { "RowName": "April 2025", "Value": 30 },
-            { "RowName": "May 2025", "Value": 31 },
-            { "RowName": "June 2025", "Value": 30 },
-            { "RowName": "July 2025", "Value": 31 },
-            { "RowName": "August 2025", "Value": 31 },
-            { "RowName": "September 2025", "Value": 30 },
-            { "RowName": "October 2025", "Value": 31 },
-            { "RowName": "November 2025", "Value": 30 },
-            { "RowName": "December 2025", "Value": 31 }
-          ]
+        "Cows2to3Years": {
+          "January 2025": 31,
+          "February 2025": 29,
+          "March 2025": 31,
+          "April 2025": 30,
+          "May 2025": 31,
+          "June 2025": 30,
+          "July 2025": 31,
+          "August 2025": 31,
+          "September 2025": 30,
+          "October 2025": 31,
+          "November 2025": 30,
+          "December 2025": 31
         },
-        {
-          "ColumnName": "CowsOver3Years",
-          "Rows": [
-            { "RowName": "January 2025", "Value": 31 },
-            { "RowName": "February 2025", "Value": 29 },
-            { "RowName": "March 2025", "Value": 31 },
-            { "RowName": "April 2025", "Value": 30 },
-            { "RowName": "May 2025", "Value": 31 },
-            { "RowName": "June 2025", "Value": 30 },
-            { "RowName": "July 2025", "Value": 31 },
-            { "RowName": "August 2025", "Value": 31 },
-            { "RowName": "September 2025", "Value": 30 },
-            { "RowName": "October 2025", "Value": 31 },
-            { "RowName": "November 2025", "Value": 30 },
-            { "RowName": "December 2025", "Value": 31 }
-          ]
+        "CowsOver3Years": {
+          "January 2025": 31,
+          "February 2025": 29,
+          "March 2025": 31,
+          "April 2025": 30,
+          "May 2025": 31,
+          "June 2025": 30,
+          "July 2025": 31,
+          "August 2025": 31,
+          "September 2025": 30,
+          "October 2025": 31,
+          "November 2025": 30,
+          "December 2025": 31
         },
-        {
-          "ColumnName": "SteersUnder1Year",
-          "Rows": [
-            { "RowName": "January 2025", "Value": 31 },
-            { "RowName": "February 2025", "Value": 29 },
-            { "RowName": "March 2025", "Value": 31 },
-            { "RowName": "April 2025", "Value": 30 },
-            { "RowName": "May 2025", "Value": 31 },
-            { "RowName": "June 2025", "Value": 30 },
-            { "RowName": "July 2025", "Value": 31 },
-            { "RowName": "August 2025", "Value": 31 },
-            { "RowName": "September 2025", "Value": 30 },
-            { "RowName": "October 2025", "Value": 31 },
-            { "RowName": "November 2025", "Value": 30 },
-            { "RowName": "December 2025", "Value": 31 }
-          ]
+        "SteersUnder1Year": {
+          "January 2025": 31,
+          "February 2025": 29,
+          "March 2025": 31,
+          "April 2025": 30,
+          "May 2025": 31,
+          "June 2025": 30,
+          "July 2025": 31,
+          "August 2025": 31,
+          "September 2025": 30,
+          "October 2025": 31,
+          "November 2025": 30,
+          "December 2025": 31
         },
-        {
-          "ColumnName": "Steers1To2Years",
-          "Rows": [
-            { "RowName": "January 2025", "Value": 31 },
-            { "RowName": "February 2025", "Value": 29 },
-            { "RowName": "March 2025", "Value": 31 },
-            { "RowName": "April 2025", "Value": 30 },
-            { "RowName": "May 2025", "Value": 31 },
-            { "RowName": "June 2025", "Value": 30 },
-            { "RowName": "July 2025", "Value": 31 },
-            { "RowName": "August 2025", "Value": 31 },
-            { "RowName": "September 2025", "Value": 30 },
-            { "RowName": "October 2025", "Value": 31 },
-            { "RowName": "November 2025", "Value": 30 },
-            { "RowName": "December 2025", "Value": 31 }
-          ]
+        "Steers1To2Years": {
+          "January 2025": 31,
+          "February 2025": 29,
+          "March 2025": 31,
+          "April 2025": 30,
+          "May 2025": 31,
+          "June 2025": 30,
+          "July 2025": 31,
+          "August 2025": 31,
+          "September 2025": 30,
+          "October 2025": 31,
+          "November 2025": 30,
+          "December 2025": 31
         },
-        {
-          "ColumnName": "Steers2to3Years",
-          "Rows": [
-            { "RowName": "January 2025", "Value": 31 },
-            { "RowName": "February 2025", "Value": 29 },
-            { "RowName": "March 2025", "Value": 31 },
-            { "RowName": "April 2025", "Value": 30 },
-            { "RowName": "May 2025", "Value": 31 },
-            { "RowName": "June 2025", "Value": 30 },
-            { "RowName": "July 2025", "Value": 31 },
-            { "RowName": "August 2025", "Value": 31 },
-            { "RowName": "September 2025", "Value": 30 },
-            { "RowName": "October 2025", "Value": 31 },
-            { "RowName": "November 2025", "Value": 30 },
-            { "RowName": "December 2025", "Value": 31 }
-          ]
+        "Steers2to3Years": {
+          "January 2025": 31,
+          "February 2025": 29,
+          "March 2025": 31,
+          "April 2025": 30,
+          "May 2025": 31,
+          "June 2025": 30,
+          "July 2025": 31,
+          "August 2025": 31,
+          "September 2025": 30,
+          "October 2025": 31,
+          "November 2025": 30,
+          "December 2025": 31
         },
-        {
-          "ColumnName": "SteersOver3Years",
-          "Rows": [
-            { "RowName": "January 2025", "Value": 31 },
-            { "RowName": "February 2025", "Value": 29 },
-            { "RowName": "March 2025", "Value": 31 },
-            { "RowName": "April 2025", "Value": 30 },
-            { "RowName": "May 2025", "Value": 31 },
-            { "RowName": "June 2025", "Value": 30 },
-            { "RowName": "July 2025", "Value": 31 },
-            { "RowName": "August 2025", "Value": 31 },
-            { "RowName": "September 2025", "Value": 30 },
-            { "RowName": "October 2025", "Value": 31 },
-            { "RowName": "November 2025", "Value": 30 },
-            { "RowName": "December 2025", "Value": 31 }
-          ]
+        "SteersOver3Years": {
+          "January 2025": 31,
+          "February 2025": 29,
+          "March 2025": 31,
+          "April 2025": 30,
+          "May 2025": 31,
+          "June 2025": 30,
+          "July 2025": 31,
+          "August 2025": 31,
+          "September 2025": 30,
+          "October 2025": 31,
+          "November 2025": 30,
+          "December 2025": 31
         }
-      ]
+      },
+      "MatrixType": "ColsToRows"
     },
     {
-      "TableName": "PastureBeef_Head_Method1",
+      "TableName": "X_Table_PastureBeef_Head_Method1",
       "ColumnOffset": null,
-	    "RowOffset": null,
-      "Cols": [
-        {
-          "ColumnName": "BullsUnder1Year",
-          "Rows": [
-            { "RowName": "Spring", "Value": 100 },
-            { "RowName": "Summer", "Value": 100 },
-            { "RowName": "Autumn", "Value": 100 },
-            { "RowName": "Winter", "Value": 100 }
-          ]
+      "RowOffset": null,
+      "Cols": {
+        "BullsUnder1Year": {
+          "Spring": 100,
+          "Summer": 100,
+          "Autumn": 100,
+          "Winter": 100
         },
-        {
-          "ColumnName": "BullsOver1Year",
-          "Rows": [
-            { "RowName": "Spring", "Value": 100 },
-            { "RowName": "Summer", "Value": 100 },
-            { "RowName": "Autumn", "Value": 100 },
-            { "RowName": "Winter", "Value": 100 }
-          ]
+        "BullsOver1Year": {
+          "Spring": 100,
+          "Summer": 100,
+          "Autumn": 100,
+          "Winter": 100
         },
-        {
-          "ColumnName": "CowsUnder1Year",
-          "Rows": [
-            { "RowName": "Spring", "Value": 100 },
-            { "RowName": "Summer", "Value": 100 },
-            { "RowName": "Autumn", "Value": 100 },
-            { "RowName": "Winter", "Value": 100 }
-          ]
+        "CowsUnder1Year": {
+          "Spring": 100,
+          "Summer": 100,
+          "Autumn": 100,
+          "Winter": 100
         },
-        {
-          "ColumnName": "Cows1To2Years",
-          "Rows": [
-            { "RowName": "Spring", "Value": 100 },
-            { "RowName": "Summer", "Value": 100 },
-            { "RowName": "Autumn", "Value": 100 },
-            { "RowName": "Winter", "Value": 100 }
-          ]
+        "Cows1To2Years": {
+          "Spring": 100,
+          "Summer": 100,
+          "Autumn": 100,
+          "Winter": 100
         },
-        {
-          "ColumnName": "Cows2to3Years",
-          "Rows": [
-            { "RowName": "Spring", "Value": 100 },
-            { "RowName": "Summer", "Value": 100 },
-            { "RowName": "Autumn", "Value": 100 },
-            { "RowName": "Winter", "Value": 100 }
-          ]
+        "Cows2to3Years": {
+          "Spring": 100,
+          "Summer": 100,
+          "Autumn": 100,
+          "Winter": 100
         },
-        {
-          "ColumnName": "CowsOver3Years",
-          "Rows": [
-            { "RowName": "Spring", "Value": 100 },
-            { "RowName": "Summer", "Value": 100 },
-            { "RowName": "Autumn", "Value": 100 },
-            { "RowName": "Winter", "Value": 100 }
-          ]
+        "CowsOver3Years": {
+          "Spring": 100,
+          "Summer": 100,
+          "Autumn": 100,
+          "Winter": 100
         },
-        {
-          "ColumnName": "SteersUnder1Year",
-          "Rows": [
-            { "RowName": "Spring", "Value": 100 },
-            { "RowName": "Summer", "Value": 100 },
-            { "RowName": "Autumn", "Value": 100 },
-            { "RowName": "Winter", "Value": 100 }
-          ]
+        "SteersUnder1Year": {
+          "Spring": 100,
+          "Summer": 100,
+          "Autumn": 100,
+          "Winter": 100
         },
-        {
-          "ColumnName": "Steers1To2Years",
-          "Rows": [
-            { "RowName": "Spring", "Value": 100 },
-            { "RowName": "Summer", "Value": 100 },
-            { "RowName": "Autumn", "Value": 100 },
-            { "RowName": "Winter", "Value": 100 }
-          ]
+        "Steers1To2Years": {
+          "Spring": 100,
+          "Summer": 100,
+          "Autumn": 100,
+          "Winter": 100
         },
-        {
-          "ColumnName": "Steers2to3Years",
-          "Rows": [
-            { "RowName": "Spring", "Value": 100 },
-            { "RowName": "Summer", "Value": 100 },
-            { "RowName": "Autumn", "Value": 100 },
-            { "RowName": "Winter", "Value": 100 }
-          ]
+        "Steers2to3Years": {
+          "Spring": 100,
+          "Summer": 100,
+          "Autumn": 100,
+          "Winter": 100
         },
-        {
-          "ColumnName": "SteersOver3Years",
-          "Rows": [
-            { "RowName": "Spring", "Value": 100 },
-            { "RowName": "Summer", "Value": 100 },
-            { "RowName": "Autumn", "Value": 100 },
-            { "RowName": "Winter", "Value": 100 }
-          ]
+        "SteersOver3Years": {
+          "Spring": 100,
+          "Summer": 100,
+          "Autumn": 100,
+          "Winter": 100
         }
-      ]
+      },
+      "MatrixType": "ColsToRows"
     },
     {
-      "TableName": "PastureBeef_Head_Method2",
+      "TableName": "X_Table_PastureBeef_Head_Method2",
       "ColumnOffset": null,
-	    "RowOffset": null,
-      "Cols": [
-        {
-          "ColumnName": "BullsUnder1Year",
-          "Rows": [
-            { "RowName": "January 2025", "Value": 100 },
-            { "RowName": "February 2025", "Value": 100 },
-            { "RowName": "March 2025", "Value": 100 },
-            { "RowName": "April 2025", "Value": 100 },
-            { "RowName": "May 2025", "Value": 100 },
-            { "RowName": "June 2025", "Value": 100 },
-            { "RowName": "July 2025", "Value": 100 },
-            { "RowName": "August 2025", "Value": 100 },
-            { "RowName": "September 2025", "Value": 100 },
-            { "RowName": "October 2025", "Value": 100 },
-            { "RowName": "November 2025", "Value": 100 },
-            { "RowName": "December 2025", "Value": 100 }
-          ]
+      "RowOffset": null,
+      "Cols": {
+        "BullsUnder1Year": {
+          "January 2025": 100,
+          "February 2025": 100,
+          "March 2025": 100,
+          "April 2025": 100,
+          "May 2025": 100,
+          "June 2025": 100,
+          "July 2025": 100,
+          "August 2025": 100,
+          "September 2025": 100,
+          "October 2025": 100,
+          "November 2025": 100,
+          "December 2025": 100
         },
-        {
-          "ColumnName": "BullsOver1Year",
-          "Rows": [
-            { "RowName": "January 2025", "Value": 100 },
-            { "RowName": "February 2025", "Value": 100 },
-            { "RowName": "March 2025", "Value": 100 },
-            { "RowName": "April 2025", "Value": 100 },
-            { "RowName": "May 2025", "Value": 100 },
-            { "RowName": "June 2025", "Value": 100 },
-            { "RowName": "July 2025", "Value": 100 },
-            { "RowName": "August 2025", "Value": 100 },
-            { "RowName": "September 2025", "Value": 100 },
-            { "RowName": "October 2025", "Value": 100 },
-            { "RowName": "November 2025", "Value": 100 },
-            { "RowName": "December 2025", "Value": 100 }
-          ]
+        "BullsOver1Year": {
+          "January 2025": 100,
+          "February 2025": 100,
+          "March 2025": 100,
+          "April 2025": 100,
+          "May 2025": 100,
+          "June 2025": 100,
+          "July 2025": 100,
+          "August 2025": 100,
+          "September 2025": 100,
+          "October 2025": 100,
+          "November 2025": 100,
+          "December 2025": 100
         },
-        {
-          "ColumnName": "CowsUnder1Year",
-          "Rows": [
-            { "RowName": "January 2025", "Value": 100 },
-            { "RowName": "February 2025", "Value": 100 },
-            { "RowName": "March 2025", "Value": 100 },
-            { "RowName": "April 2025", "Value": 100 },
-            { "RowName": "May 2025", "Value": 100 },
-            { "RowName": "June 2025", "Value": 100 },
-            { "RowName": "July 2025", "Value": 100 },
-            { "RowName": "August 2025", "Value": 100 },
-            { "RowName": "September 2025", "Value": 100 },
-            { "RowName": "October 2025", "Value": 100 },
-            { "RowName": "November 2025", "Value": 100 },
-            { "RowName": "December 2025", "Value": 100 }
-          ]
+        "CowsUnder1Year": {
+          "January 2025": 100,
+          "February 2025": 100,
+          "March 2025": 100,
+          "April 2025": 100,
+          "May 2025": 100,
+          "June 2025": 100,
+          "July 2025": 100,
+          "August 2025": 100,
+          "September 2025": 100,
+          "October 2025": 100,
+          "November 2025": 100,
+          "December 2025": 100
         },
-        {
-          "ColumnName": "Cows1To2Years",
-          "Rows": [
-            { "RowName": "January 2025", "Value": 100 },
-            { "RowName": "February 2025", "Value": 100 },
-            { "RowName": "March 2025", "Value": 100 },
-            { "RowName": "April 2025", "Value": 100 },
-            { "RowName": "May 2025", "Value": 100 },
-            { "RowName": "June 2025", "Value": 100 },
-            { "RowName": "July 2025", "Value": 100 },
-            { "RowName": "August 2025", "Value": 100 },
-            { "RowName": "September 2025", "Value": 100 },
-            { "RowName": "October 2025", "Value": 100 },
-            { "RowName": "November 2025", "Value": 100 },
-            { "RowName": "December 2025", "Value": 100 }
-          ]
+        "Cows1To2Years": {
+          "January 2025": 100,
+          "February 2025": 100,
+          "March 2025": 100,
+          "April 2025": 100,
+          "May 2025": 100,
+          "June 2025": 100,
+          "July 2025": 100,
+          "August 2025": 100,
+          "September 2025": 100,
+          "October 2025": 100,
+          "November 2025": 100,
+          "December 2025": 100
         },
-        {
-          "ColumnName": "Cows2to3Years",
-          "Rows": [
-            { "RowName": "January 2025", "Value": 100 },
-            { "RowName": "February 2025", "Value": 100 },
-            { "RowName": "March 2025", "Value": 100 },
-            { "RowName": "April 2025", "Value": 100 },
-            { "RowName": "May 2025", "Value": 100 },
-            { "RowName": "June 2025", "Value": 100 },
-            { "RowName": "July 2025", "Value": 100 },
-            { "RowName": "August 2025", "Value": 100 },
-            { "RowName": "September 2025", "Value": 100 },
-            { "RowName": "October 2025", "Value": 100 },
-            { "RowName": "November 2025", "Value": 100 },
-            { "RowName": "December 2025", "Value": 100 }
-          ]
+        "Cows2to3Years": {
+          "January 2025": 100,
+          "February 2025": 100,
+          "March 2025": 100,
+          "April 2025": 100,
+          "May 2025": 100,
+          "June 2025": 100,
+          "July 2025": 100,
+          "August 2025": 100,
+          "September 2025": 100,
+          "October 2025": 100,
+          "November 2025": 100,
+          "December 2025": 100
         },
-        {
-          "ColumnName": "CowsOver3Years",
-          "Rows": [
-            { "RowName": "January 2025", "Value": 100 },
-            { "RowName": "February 2025", "Value": 100 },
-            { "RowName": "March 2025", "Value": 100 },
-            { "RowName": "April 2025", "Value": 100 },
-            { "RowName": "May 2025", "Value": 100 },
-            { "RowName": "June 2025", "Value": 100 },
-            { "RowName": "July 2025", "Value": 100 },
-            { "RowName": "August 2025", "Value": 100 },
-            { "RowName": "September 2025", "Value": 100 },
-            { "RowName": "October 2025", "Value": 100 },
-            { "RowName": "November 2025", "Value": 100 },
-            { "RowName": "December 2025", "Value": 100 }
-          ]
+        "CowsOver3Years": {
+          "January 2025": 100,
+          "February 2025": 100,
+          "March 2025": 100,
+          "April 2025": 100,
+          "May 2025": 100,
+          "June 2025": 100,
+          "July 2025": 100,
+          "August 2025": 100,
+          "September 2025": 100,
+          "October 2025": 100,
+          "November 2025": 100,
+          "December 2025": 100
         },
-        {
-          "ColumnName": "SteersUnder1Year",
-          "Rows": [
-            { "RowName": "January 2025", "Value": 100 },
-            { "RowName": "February 2025", "Value": 100 },
-            { "RowName": "March 2025", "Value": 100 },
-            { "RowName": "April 2025", "Value": 100 },
-            { "RowName": "May 2025", "Value": 100 },
-            { "RowName": "June 2025", "Value": 100 },
-            { "RowName": "July 2025", "Value": 100 },
-            { "RowName": "August 2025", "Value": 100 },
-            { "RowName": "September 2025", "Value": 100 },
-            { "RowName": "October 2025", "Value": 100 },
-            { "RowName": "November 2025", "Value": 100 },
-            { "RowName": "December 2025", "Value": 100 }
-          ]
+        "SteersUnder1Year": {
+          "January 2025": 100,
+          "February 2025": 100,
+          "March 2025": 100,
+          "April 2025": 100,
+          "May 2025": 100,
+          "June 2025": 100,
+          "July 2025": 100,
+          "August 2025": 100,
+          "September 2025": 100,
+          "October 2025": 100,
+          "November 2025": 100,
+          "December 2025": 100
         },
-        {
-          "ColumnName": "Steers1To2Years",
-          "Rows": [
-            { "RowName": "January 2025", "Value": 100 },
-            { "RowName": "February 2025", "Value": 100 },
-            { "RowName": "March 2025", "Value": 100 },
-            { "RowName": "April 2025", "Value": 100 },
-            { "RowName": "May 2025", "Value": 100 },
-            { "RowName": "June 2025", "Value": 100 },
-            { "RowName": "July 2025", "Value": 100 },
-            { "RowName": "August 2025", "Value": 100 },
-            { "RowName": "September 2025", "Value": 100 },
-            { "RowName": "October 2025", "Value": 100 },
-            { "RowName": "November 2025", "Value": 100 },
-            { "RowName": "December 2025", "Value": 100 }
-          ]
+        "Steers1To2Years": {
+          "January 2025": 100,
+          "February 2025": 100,
+          "March 2025": 100,
+          "April 2025": 100,
+          "May 2025": 100,
+          "June 2025": 100,
+          "July 2025": 100,
+          "August 2025": 100,
+          "September 2025": 100,
+          "October 2025": 100,
+          "November 2025": 100,
+          "December 2025": 100
         },
-        {
-          "ColumnName": "Steers2to3Years",
-          "Rows": [
-            { "RowName": "January 2025", "Value": 100 },
-            { "RowName": "February 2025", "Value": 100 },
-            { "RowName": "March 2025", "Value": 100 },
-            { "RowName": "April 2025", "Value": 100 },
-            { "RowName": "May 2025", "Value": 100 },
-            { "RowName": "June 2025", "Value": 100 },
-            { "RowName": "July 2025", "Value": 100 },
-            { "RowName": "August 2025", "Value": 100 },
-            { "RowName": "September 2025", "Value": 100 },
-            { "RowName": "October 2025", "Value": 100 },
-            { "RowName": "November 2025", "Value": 100 },
-            { "RowName": "December 2025", "Value": 100 }
-          ]
+        "Steers2to3Years": {
+          "January 2025": 100,
+          "February 2025": 100,
+          "March 2025": 100,
+          "April 2025": 100,
+          "May 2025": 100,
+          "June 2025": 100,
+          "July 2025": 100,
+          "August 2025": 100,
+          "September 2025": 100,
+          "October 2025": 100,
+          "November 2025": 100,
+          "December 2025": 100
         },
-        {
-          "ColumnName": "SteersOver3Years",
-          "Rows": [
-            { "RowName": "January 2025", "Value": 100 },
-            { "RowName": "February 2025", "Value": 100 },
-            { "RowName": "March 2025", "Value": 100 },
-            { "RowName": "April 2025", "Value": 100 },
-            { "RowName": "May 2025", "Value": 100 },
-            { "RowName": "June 2025", "Value": 100 },
-            { "RowName": "July 2025", "Value": 100 },
-            { "RowName": "August 2025", "Value": 100 },
-            { "RowName": "September 2025", "Value": 100 },
-            { "RowName": "October 2025", "Value": 100 },
-            { "RowName": "November 2025", "Value": 100 },
-            { "RowName": "December 2025", "Value": 100 }
-          ]
+        "SteersOver3Years": {
+          "January 2025": 100,
+          "February 2025": 100,
+          "March 2025": 100,
+          "April 2025": 100,
+          "May 2025": 100,
+          "June 2025": 100,
+          "July 2025": 100,
+          "August 2025": 100,
+          "September 2025": 100,
+          "October 2025": 100,
+          "November 2025": 100,
+          "December 2025": 100
         }
-      ]
+      },
+      "MatrixType": "ColsToRows"
     },
     {
-      "TableName": "PastureBeef_Liveweight_Method1",
+      "TableName": "X_Table_PastureBeef_Liveweight_Method1",
       "ColumnOffset": null,
-	    "RowOffset": null,
-      "Cols": [
-        {
-          "ColumnName": "BullsUnder1Year",
-          "Rows": [
-            { "RowName": "Spring", "Value": 340 },
-            { "RowName": "Summer", "Value": 380 },
-            { "RowName": "Autumn", "Value": 100 },
-            { "RowName": "Winter", "Value": 190 }
-          ]
+      "RowOffset": null,
+      "Cols": {
+        "BullsUnder1Year": {
+          "Spring": 340,
+          "Summer": 380,
+          "Autumn": 100,
+          "Winter": 190
         },
-        {
-          "ColumnName": "BullsOver1Year",
-          "Rows": [
-            { "RowName": "Spring", "Value": 800 },
-            { "RowName": "Summer", "Value": 780 },
-            { "RowName": "Autumn", "Value": 680 },
-            { "RowName": "Winter", "Value": 700 }
-          ]
+        "BullsOver1Year": {
+          "Spring": 800,
+          "Summer": 780,
+          "Autumn": 680,
+          "Winter": 700
         },
-        {
-          "ColumnName": "CowsUnder1Year",
-          "Rows": [
-            { "RowName": "Spring", "Value": 260 },
-            { "RowName": "Summer", "Value": 300 },
-            { "RowName": "Autumn", "Value": 80 },
-            { "RowName": "Winter", "Value": 150 }
-          ]
+        "CowsUnder1Year": {
+          "Spring": 260,
+          "Summer": 300,
+          "Autumn": 80,
+          "Winter": 150
         },
-        {
-          "ColumnName": "Cows1To2Years",
-          "Rows": [
-            { "RowName": "Spring", "Value": 420 },
-            { "RowName": "Summer", "Value": 450 },
-            { "RowName": "Autumn", "Value": 320 },
-            { "RowName": "Winter", "Value": 330 }
-          ]
+        "Cows1To2Years": {
+          "Spring": 420,
+          "Summer": 450,
+          "Autumn": 320,
+          "Winter": 330
         },
-        {
-          "ColumnName": "Cows2to3Years",
-          "Rows": [
-            { "RowName": "Spring", "Value": 550 },
-            { "RowName": "Summer", "Value": 530 },
-            { "RowName": "Autumn", "Value": 480 },
-            { "RowName": "Winter", "Value": 490 }
-          ]
+        "Cows2to3Years": {
+          "Spring": 550,
+          "Summer": 530,
+          "Autumn": 480,
+          "Winter": 490
         },
-        {
-          "ColumnName": "CowsOver3Years",
-          "Rows": [
-            { "RowName": "Spring", "Value": 550 },
-            { "RowName": "Summer", "Value": 530 },
-            { "RowName": "Autumn", "Value": 480 },
-            { "RowName": "Winter", "Value": 490 }
-          ]
+        "CowsOver3Years": {
+          "Spring": 550,
+          "Summer": 530,
+          "Autumn": 480,
+          "Winter": 490
         },
-        {
-          "ColumnName": "SteersUnder1Year",
-          "Rows": [
-            { "RowName": "Spring", "Value": 300 },
-            { "RowName": "Summer", "Value": 340 },
-            { "RowName": "Autumn", "Value": 100 },
-            { "RowName": "Winter", "Value": 170 }
-          ]
+        "SteersUnder1Year": {
+          "Spring": 300,
+          "Summer": 340,
+          "Autumn": 100,
+          "Winter": 170
         },
-        {
-          "ColumnName": "Steers1To2Years",
-          "Rows": [
-            { "RowName": "Spring", "Value": 480 },
-            { "RowName": "Summer", "Value": 470 },
-            { "RowName": "Autumn", "Value": 340 },
-            { "RowName": "Winter", "Value": 360 }
-          ]
+        "Steers1To2Years": {
+          "Spring": 480,
+          "Summer": 470,
+          "Autumn": 340,
+          "Winter": 360
         },
-        {
-          "ColumnName": "Steers2to3Years",
-          "Rows": [
-            { "RowName": "Spring", "Value": 480 },
-            { "RowName": "Summer", "Value": 470 },
-            { "RowName": "Autumn", "Value": 340 },
-            { "RowName": "Winter", "Value": 360 }
-          ]
+        "Steers2to3Years": {
+          "Spring": 480,
+          "Summer": 470,
+          "Autumn": 340,
+          "Winter": 360
         },
-        {
-          "ColumnName": "SteersOver3Years",
-          "Rows": [
-            { "RowName": "Spring", "Value": 480 },
-            { "RowName": "Summer", "Value": 470 },
-            { "RowName": "Autumn", "Value": 340 },
-            { "RowName": "Winter", "Value": 360 }
-          ]
+        "SteersOver3Years": {
+          "Spring": 480,
+          "Summer": 470,
+          "Autumn": 340,
+          "Winter": 360
         }
-      ]
+      },
+      "MatrixType": "ColsToRows"
     },
     {
-      "TableName": "PastureBeef_Liveweight_Method2",
+      "TableName": "X_Table_PastureBeef_Liveweight_Method2",
       "ColumnOffset": null,
-	    "RowOffset": null,
-      "Cols": [
-        {
-          "ColumnName": "BullsUnder1Year",
-          "Rows": [
-            { "RowName": "January 2025", "Value": 380 },
-            { "RowName": "February 2025", "Value": 380 },
-            { "RowName": "March 2025", "Value": 100 },
-            { "RowName": "April 2025", "Value": 100 },
-            { "RowName": "May 2025", "Value": 100 },
-            { "RowName": "June 2025", "Value": 190 },
-            { "RowName": "July 2025", "Value": 190 },
-            { "RowName": "August 2025", "Value": 190 },
-            { "RowName": "September 2025", "Value": 340 },
-            { "RowName": "October 2025", "Value": 340 },
-            { "RowName": "November 2025", "Value": 340 },
-            { "RowName": "December 2025", "Value": 380 }
-          ]
+      "RowOffset": null,
+      "Cols": {
+        "BullsUnder1Year": {
+          "January 2025": 380,
+          "February 2025": 380,
+          "March 2025": 100,
+          "April 2025": 100,
+          "May 2025": 100,
+          "June 2025": 190,
+          "July 2025": 190,
+          "August 2025": 190,
+          "September 2025": 340,
+          "October 2025": 340,
+          "November 2025": 340,
+          "December 2025": 380
         },
-        {
-          "ColumnName": "BullsOver1Year",
-          "Rows": [
-            { "RowName": "January 2025", "Value": 780 },
-            { "RowName": "February 2025", "Value": 780 },
-            { "RowName": "March 2025", "Value": 680 },
-            { "RowName": "April 2025", "Value": 680 },
-            { "RowName": "May 2025", "Value": 680 },
-            { "RowName": "June 2025", "Value": 700 },
-            { "RowName": "July 2025", "Value": 700 },
-            { "RowName": "August 2025", "Value": 700 },
-            { "RowName": "September 2025", "Value": 800 },
-            { "RowName": "October 2025", "Value": 800 },
-            { "RowName": "November 2025", "Value": 800 },
-            { "RowName": "December 2025", "Value": 780 }
-          ]
+        "BullsOver1Year": {
+          "January 2025": 780,
+          "February 2025": 780,
+          "March 2025": 680,
+          "April 2025": 680,
+          "May 2025": 680,
+          "June 2025": 700,
+          "July 2025": 700,
+          "August 2025": 700,
+          "September 2025": 800,
+          "October 2025": 800,
+          "November 2025": 800,
+          "December 2025": 780
         },
-        {
-          "ColumnName": "CowsUnder1Year",
-          "Rows": [
-            { "RowName": "January 2025", "Value": 300 },
-            { "RowName": "February 2025", "Value": 300 },
-            { "RowName": "March 2025", "Value": 80 },
-            { "RowName": "April 2025", "Value": 80 },
-            { "RowName": "May 2025", "Value": 80 },
-            { "RowName": "June 2025", "Value": 150 },
-            { "RowName": "July 2025", "Value": 150 },
-            { "RowName": "August 2025", "Value": 150 },
-            { "RowName": "September 2025", "Value": 260 },
-            { "RowName": "October 2025", "Value": 260 },
-            { "RowName": "November 2025", "Value": 260 },
-            { "RowName": "December 2025", "Value": 300 }
-          ]
+        "CowsUnder1Year": {
+          "January 2025": 300,
+          "February 2025": 300,
+          "March 2025": 80,
+          "April 2025": 80,
+          "May 2025": 80,
+          "June 2025": 150,
+          "July 2025": 150,
+          "August 2025": 150,
+          "September 2025": 260,
+          "October 2025": 260,
+          "November 2025": 260,
+          "December 2025": 300
         },
-        {
-          "ColumnName": "Cows1To2Years",
-          "Rows": [
-            { "RowName": "January 2025", "Value": 450 },
-            { "RowName": "February 2025", "Value": 450 },
-            { "RowName": "March 2025", "Value": 320 },
-            { "RowName": "April 2025", "Value": 320 },
-            { "RowName": "May 2025", "Value": 320 },
-            { "RowName": "June 2025", "Value": 330 },
-            { "RowName": "July 2025", "Value": 330 },
-            { "RowName": "August 2025", "Value": 330 },
-            { "RowName": "September 2025", "Value": 420 },
-            { "RowName": "October 2025", "Value": 420 },
-            { "RowName": "November 2025", "Value": 420 },
-            { "RowName": "December 2025", "Value": 450 }
-          ]
+        "Cows1To2Years": {
+          "January 2025": 450,
+          "February 2025": 450,
+          "March 2025": 320,
+          "April 2025": 320,
+          "May 2025": 320,
+          "June 2025": 330,
+          "July 2025": 330,
+          "August 2025": 330,
+          "September 2025": 420,
+          "October 2025": 420,
+          "November 2025": 420,
+          "December 2025": 450
         },
-        {
-          "ColumnName": "Cows2to3Years",
-          "Rows": [
-            { "RowName": "January 2025", "Value": 530 },
-            { "RowName": "February 2025", "Value": 530 },
-            { "RowName": "March 2025", "Value": 480 },
-            { "RowName": "April 2025", "Value": 480 },
-            { "RowName": "May 2025", "Value": 480 },
-            { "RowName": "June 2025", "Value": 490 },
-            { "RowName": "July 2025", "Value": 490 },
-            { "RowName": "August 2025", "Value": 490 },
-            { "RowName": "September 2025", "Value": 550 },
-            { "RowName": "October 2025", "Value": 550 },
-            { "RowName": "November 2025", "Value": 550 },
-            { "RowName": "December 2025", "Value": 530 }
-          ]
+        "Cows2to3Years": {
+          "January 2025": 530,
+          "February 2025": 530,
+          "March 2025": 480,
+          "April 2025": 480,
+          "May 2025": 480,
+          "June 2025": 490,
+          "July 2025": 490,
+          "August 2025": 490,
+          "September 2025": 550,
+          "October 2025": 550,
+          "November 2025": 550,
+          "December 2025": 530
         },
-        {
-          "ColumnName": "CowsOver3Years",
-          "Rows": [
-            { "RowName": "January 2025", "Value": 530 },
-            { "RowName": "February 2025", "Value": 530 },
-            { "RowName": "March 2025", "Value": 480 },
-            { "RowName": "April 2025", "Value": 480 },
-            { "RowName": "May 2025", "Value": 480 },
-            { "RowName": "June 2025", "Value": 490 },
-            { "RowName": "July 2025", "Value": 490 },
-            { "RowName": "August 2025", "Value": 490 },
-            { "RowName": "September 2025", "Value": 550 },
-            { "RowName": "October 2025", "Value": 550 },
-            { "RowName": "November 2025", "Value": 550 },
-            { "RowName": "December 2025", "Value": 530 }
-          ]
+        "CowsOver3Years": {
+          "January 2025": 530,
+          "February 2025": 530,
+          "March 2025": 480,
+          "April 2025": 480,
+          "May 2025": 480,
+          "June 2025": 490,
+          "July 2025": 490,
+          "August 2025": 490,
+          "September 2025": 550,
+          "October 2025": 550,
+          "November 2025": 550,
+          "December 2025": 530
         },
-        {
-          "ColumnName": "SteersUnder1Year",
-          "Rows": [
-            { "RowName": "January 2025", "Value": 340 },
-            { "RowName": "February 2025", "Value": 340 },
-            { "RowName": "March 2025", "Value": 100 },
-            { "RowName": "April 2025", "Value": 100 },
-            { "RowName": "May 2025", "Value": 100 },
-            { "RowName": "June 2025", "Value": 170 },
-            { "RowName": "July 2025", "Value": 170 },
-            { "RowName": "August 2025", "Value": 170 },
-            { "RowName": "September 2025", "Value": 300 },
-            { "RowName": "October 2025", "Value": 300 },
-            { "RowName": "November 2025", "Value": 300 },
-            { "RowName": "December 2025", "Value": 340 }
-          ]
+        "SteersUnder1Year": {
+          "January 2025": 340,
+          "February 2025": 340,
+          "March 2025": 100,
+          "April 2025": 100,
+          "May 2025": 100,
+          "June 2025": 170,
+          "July 2025": 170,
+          "August 2025": 170,
+          "September 2025": 300,
+          "October 2025": 300,
+          "November 2025": 300,
+          "December 2025": 340
         },
-        {
-          "ColumnName": "Steers1To2Years",
-          "Rows": [
-            { "RowName": "January 2025", "Value": 470 },
-            { "RowName": "February 2025", "Value": 470 },
-            { "RowName": "March 2025", "Value": 340 },
-            { "RowName": "April 2025", "Value": 340 },
-            { "RowName": "May 2025", "Value": 340 },
-            { "RowName": "June 2025", "Value": 360 },
-            { "RowName": "July 2025", "Value": 360 },
-            { "RowName": "August 2025", "Value": 360 },
-            { "RowName": "September 2025", "Value": 480 },
-            { "RowName": "October 2025", "Value": 480 },
-            { "RowName": "November 2025", "Value": 480 },
-            { "RowName": "December 2025", "Value": 470 }
-          ]
+        "Steers1To2Years": {
+          "January 2025": 470,
+          "February 2025": 470,
+          "March 2025": 340,
+          "April 2025": 340,
+          "May 2025": 340,
+          "June 2025": 360,
+          "July 2025": 360,
+          "August 2025": 360,
+          "September 2025": 480,
+          "October 2025": 480,
+          "November 2025": 480,
+          "December 2025": 470
         },
-        {
-          "ColumnName": "Steers2to3Years",
-          "Rows": [
-            { "RowName": "January 2025", "Value": 470 },
-            { "RowName": "February 2025", "Value": 470 },
-            { "RowName": "March 2025", "Value": 340 },
-            { "RowName": "April 2025", "Value": 340 },
-            { "RowName": "May 2025", "Value": 340 },
-            { "RowName": "June 2025", "Value": 360 },
-            { "RowName": "July 2025", "Value": 360 },
-            { "RowName": "August 2025", "Value": 360 },
-            { "RowName": "September 2025", "Value": 480 },
-            { "RowName": "October 2025", "Value": 480 },
-            { "RowName": "November 2025", "Value": 480 },
-            { "RowName": "December 2025", "Value": 470 }
-          ]
+        "Steers2to3Years": {
+          "January 2025": 470,
+          "February 2025": 470,
+          "March 2025": 340,
+          "April 2025": 340,
+          "May 2025": 340,
+          "June 2025": 360,
+          "July 2025": 360,
+          "August 2025": 360,
+          "September 2025": 480,
+          "October 2025": 480,
+          "November 2025": 480,
+          "December 2025": 470
         },
-        {
-          "ColumnName": "SteersOver3Years",
-          "Rows": [
-            { "RowName": "January 2025", "Value": 470 },
-            { "RowName": "February 2025", "Value": 470 },
-            { "RowName": "March 2025", "Value": 340 },
-            { "RowName": "April 2025", "Value": 340 },
-            { "RowName": "May 2025", "Value": 340 },
-            { "RowName": "June 2025", "Value": 360 },
-            { "RowName": "July 2025", "Value": 360 },
-            { "RowName": "August 2025", "Value": 360 },
-            { "RowName": "September 2025", "Value": 480 },
-            { "RowName": "October 2025", "Value": 480 },
-            { "RowName": "November 2025", "Value": 480 },
-            { "RowName": "December 2025", "Value": 470 }
-          ]
+        "SteersOver3Years": {
+          "January 2025": 470,
+          "February 2025": 470,
+          "March 2025": 340,
+          "April 2025": 340,
+          "May 2025": 340,
+          "June 2025": 360,
+          "July 2025": 360,
+          "August 2025": 360,
+          "September 2025": 480,
+          "October 2025": 480,
+          "November 2025": 480,
+          "December 2025": 470
         }
-      ]
+      },
+      "MatrixType": "ColsToRows"
     },
     {
-      "TableName": "PastureBeef_LiveweightGain_Method1",
+      "TableName": "X_Table_PastureBeef_LiveweightGain_Method1",
       "ColumnOffset": null,
-	    "RowOffset": null,
-      "Cols": [
-        {
-          "ColumnName": "BullsUnder1Year",
-          "Rows": [
-            { "RowName": "Spring", "Value": 1.64 },
-            { "RowName": "Summer", "Value": 0.44 },
-            { "RowName": "Autumn", "Value": 0.6 },
-            { "RowName": "Winter", "Value": 0.99 }
-          ]
+      "RowOffset": null,
+      "Cols": {
+        "BullsUnder1Year": {
+          "Spring": 1.64,
+          "Summer": 0.44,
+          "Autumn": 0.6,
+          "Winter": 0.99
         },
-        {
-          "ColumnName": "BullsOver1Year",
-          "Rows": [
-            { "RowName": "Spring", "Value": 1.1 },
-            { "RowName": "Summer", "Value": -0.22 },
-            { "RowName": "Autumn", "Value": 0 },
-            { "RowName": "Winter", "Value": 0.22 }
-          ]
+        "BullsOver1Year": {
+          "Spring": 1.1,
+          "Summer": -0.22,
+          "Autumn": 0,
+          "Winter": 0.22
         },
-        {
-          "ColumnName": "CowsUnder1Year",
-          "Rows": [
-            { "RowName": "Spring", "Value": 1.21 },
-            { "RowName": "Summer", "Value": 0.44 },
-            { "RowName": "Autumn", "Value": 0.6 },
-            { "RowName": "Winter", "Value": 0.77 }
-          ]
+        "CowsUnder1Year": {
+          "Spring": 1.21,
+          "Summer": 0.44,
+          "Autumn": 0.6,
+          "Winter": 0.77
         },
-        {
-          "ColumnName": "Cows1To2Years",
-          "Rows": [
-            { "RowName": "Spring", "Value": 0.99 },
-            { "RowName": "Summer", "Value": 0.33 },
-            { "RowName": "Autumn", "Value": 0.22 },
-            { "RowName": "Winter", "Value": 0.11 }
-          ]
+        "Cows1To2Years": {
+          "Spring": 0.99,
+          "Summer": 0.33,
+          "Autumn": 0.22,
+          "Winter": 0.11
         },
-        {
-          "ColumnName": "Cows2to3Years",
-          "Rows": [
-            { "RowName": "Spring", "Value": 0.66 },
-            { "RowName": "Summer", "Value": -0.22 },
-            { "RowName": "Autumn", "Value": -0.55 },
-            { "RowName": "Winter", "Value": 0.11 }
-          ]
+        "Cows2to3Years": {
+          "Spring": 0.66,
+          "Summer": -0.22,
+          "Autumn": -0.55,
+          "Winter": 0.11
         },
-        {
-          "ColumnName": "CowsOver3Years",
-          "Rows": [
-            { "RowName": "Spring", "Value": 0.66 },
-            { "RowName": "Summer", "Value": -0.22 },
-            { "RowName": "Autumn", "Value": -0.55 },
-            { "RowName": "Winter", "Value": 0.11 }
-          ]
+        "CowsOver3Years": {
+          "Spring": 0.66,
+          "Summer": -0.22,
+          "Autumn": -0.55,
+          "Winter": 0.11
         },
-        {
-          "ColumnName": "SteersUnder1Year",
-          "Rows": [
-            { "RowName": "Spring", "Value": 1.42 },
-            { "RowName": "Summer", "Value": 0.44 },
-            { "RowName": "Autumn", "Value": 0.6 },
-            { "RowName": "Winter", "Value": 0.77 }
-          ]
+        "SteersUnder1Year": {
+          "Spring": 1.42,
+          "Summer": 0.44,
+          "Autumn": 0.6,
+          "Winter": 0.77
         },
-        {
-          "ColumnName": "Steers1To2Years",
-          "Rows": [
-            { "RowName": "Spring", "Value": 1.1 },
-            { "RowName": "Summer", "Value": -0.11 },
-            { "RowName": "Autumn", "Value": 0 },
-            { "RowName": "Winter", "Value": 0.44 }
-          ]
+        "Steers1To2Years": {
+          "Spring": 1.1,
+          "Summer": -0.11,
+          "Autumn": 0,
+          "Winter": 0.44
         },
-        {
-          "ColumnName": "Steers2to3Years",
-          "Rows": [
-            { "RowName": "Spring", "Value": 1.1 },
-            { "RowName": "Summer", "Value": -0.11 },
-            { "RowName": "Autumn", "Value": 0 },
-            { "RowName": "Winter", "Value": 0.44 }
-          ]
+        "Steers2to3Years": {
+          "Spring": 1.1,
+          "Summer": -0.11,
+          "Autumn": 0,
+          "Winter": 0.44
         },
-        {
-          "ColumnName": "SteersOver3Years",
-          "Rows": [
-            { "RowName": "Spring", "Value": 1.1 },
-            { "RowName": "Summer", "Value": -0.11 },
-            { "RowName": "Autumn", "Value": 0 },
-            { "RowName": "Winter", "Value": 0.44 }
-          ]
+        "SteersOver3Years": {
+          "Spring": 1.1,
+          "Summer": -0.11,
+          "Autumn": 0,
+          "Winter": 0.44
         }
-      ]
+      },
+      "MatrixType": "ColsToRows"
     },
     {
-      "TableName": "PastureBeef_LiveweightGain_Method2",
+      "TableName": "X_Table_PastureBeef_LiveweightGain_Method2",
       "ColumnOffset": null,
-	    "RowOffset": null,
-      "Cols": [
-        {
-          "ColumnName": "BullsUnder1Year",
-          "Rows": [
-            { "RowName": "January 2025", "Value": 0.44 },
-            { "RowName": "February 2025", "Value": 0.44 },
-            { "RowName": "March 2025", "Value": 0.6 },
-            { "RowName": "April 2025", "Value": 0.6 },
-            { "RowName": "May 2025", "Value": 0.6 },
-            { "RowName": "June 2025", "Value": 0.99 },
-            { "RowName": "July 2025", "Value": 0.99 },
-            { "RowName": "August 2025", "Value": 0.99 },
-            { "RowName": "September 2025", "Value": 1.64 },
-            { "RowName": "October 2025", "Value": 1.64 },
-            { "RowName": "November 2025", "Value": 1.64 },
-            { "RowName": "December 2025", "Value": 0.44 }
-          ]
+      "RowOffset": null,
+      "Cols": {
+        "BullsUnder1Year": {
+          "January 2025": 0.44,
+          "February 2025": 0.44,
+          "March 2025": 0.6,
+          "April 2025": 0.6,
+          "May 2025": 0.6,
+          "June 2025": 0.99,
+          "July 2025": 0.99,
+          "August 2025": 0.99,
+          "September 2025": 1.64,
+          "October 2025": 1.64,
+          "November 2025": 1.64,
+          "December 2025": 0.44
         },
-        {
-          "ColumnName": "BullsOver1Year",
-          "Rows": [
-            { "RowName": "January 2025", "Value": -0.22 },
-            { "RowName": "February 2025", "Value": -0.22 },
-            { "RowName": "March 2025", "Value": 0 },
-            { "RowName": "April 2025", "Value": 0 },
-            { "RowName": "May 2025", "Value": 0 },
-            { "RowName": "June 2025", "Value": 0.22 },
-            { "RowName": "July 2025", "Value": 0.22 },
-            { "RowName": "August 2025", "Value": 0.22 },
-            { "RowName": "September 2025", "Value": 1.1 },
-            { "RowName": "October 2025", "Value": 1.1 },
-            { "RowName": "November 2025", "Value": 1.1 },
-            { "RowName": "December 2025", "Value": -0.22 }
-          ]
+        "BullsOver1Year": {
+          "January 2025": -0.22,
+          "February 2025": -0.22,
+          "March 2025": 0,
+          "April 2025": 0,
+          "May 2025": 0,
+          "June 2025": 0.22,
+          "July 2025": 0.22,
+          "August 2025": 0.22,
+          "September 2025": 1.1,
+          "October 2025": 1.1,
+          "November 2025": 1.1,
+          "December 2025": -0.22
         },
-        {
-          "ColumnName": "CowsUnder1Year",
-          "Rows": [
-            { "RowName": "January 2025", "Value": 0.44 },
-            { "RowName": "February 2025", "Value": 0.44 },
-            { "RowName": "March 2025", "Value": 0.6 },
-            { "RowName": "April 2025", "Value": 0.6 },
-            { "RowName": "May 2025", "Value": 0.6 },
-            { "RowName": "June 2025", "Value": 0.77 },
-            { "RowName": "July 2025", "Value": 0.77 },
-            { "RowName": "August 2025", "Value": 0.77 },
-            { "RowName": "September 2025", "Value": 1.21 },
-            { "RowName": "October 2025", "Value": 1.21 },
-            { "RowName": "November 2025", "Value": 1.21 },
-            { "RowName": "December 2025", "Value": 0.44 }
-          ]
+        "CowsUnder1Year": {
+          "January 2025": 0.44,
+          "February 2025": 0.44,
+          "March 2025": 0.6,
+          "April 2025": 0.6,
+          "May 2025": 0.6,
+          "June 2025": 0.77,
+          "July 2025": 0.77,
+          "August 2025": 0.77,
+          "September 2025": 1.21,
+          "October 2025": 1.21,
+          "November 2025": 1.21,
+          "December 2025": 0.44
         },
-        {
-          "ColumnName": "Cows1To2Years",
-          "Rows": [
-            { "RowName": "January 2025", "Value": 0.33 },
-            { "RowName": "February 2025", "Value": 0.33 },
-            { "RowName": "March 2025", "Value": 0.22 },
-            { "RowName": "April 2025", "Value": 0.22 },
-            { "RowName": "May 2025", "Value": 0.22 },
-            { "RowName": "June 2025", "Value": 0.11 },
-            { "RowName": "July 2025", "Value": 0.11 },
-            { "RowName": "August 2025", "Value": 0.11 },
-            { "RowName": "September 2025", "Value": 0.99 },
-            { "RowName": "October 2025", "Value": 0.99 },
-            { "RowName": "November 2025", "Value": 0.99 },
-            { "RowName": "December 2025", "Value": 0.33 }
-          ]
+        "Cows1To2Years": {
+          "January 2025": 0.33,
+          "February 2025": 0.33,
+          "March 2025": 0.22,
+          "April 2025": 0.22,
+          "May 2025": 0.22,
+          "June 2025": 0.11,
+          "July 2025": 0.11,
+          "August 2025": 0.11,
+          "September 2025": 0.99,
+          "October 2025": 0.99,
+          "November 2025": 0.99,
+          "December 2025": 0.33
         },
-        {
-          "ColumnName": "Cows2to3Years",
-          "Rows": [
-            { "RowName": "January 2025", "Value": -0.22 },
-            { "RowName": "February 2025", "Value": -0.22 },
-            { "RowName": "March 2025", "Value": -0.55 },
-            { "RowName": "April 2025", "Value": -0.55 },
-            { "RowName": "May 2025", "Value": -0.55 },
-            { "RowName": "June 2025", "Value": 0.11 },
-            { "RowName": "July 2025", "Value": 0.11 },
-            { "RowName": "August 2025", "Value": 0.11 },
-            { "RowName": "September 2025", "Value": 0.66 },
-            { "RowName": "October 2025", "Value": 0.66 },
-            { "RowName": "November 2025", "Value": 0.66 },
-            { "RowName": "December 2025", "Value": -0.22 }
-          ]
+        "Cows2to3Years": {
+          "January 2025": -0.22,
+          "February 2025": -0.22,
+          "March 2025": -0.55,
+          "April 2025": -0.55,
+          "May 2025": -0.55,
+          "June 2025": 0.11,
+          "July 2025": 0.11,
+          "August 2025": 0.11,
+          "September 2025": 0.66,
+          "October 2025": 0.66,
+          "November 2025": 0.66,
+          "December 2025": -0.22
         },
-        {
-          "ColumnName": "CowsOver3Years",
-          "Rows": [
-            { "RowName": "January 2025", "Value": -0.22 },
-            { "RowName": "February 2025", "Value": -0.22 },
-            { "RowName": "March 2025", "Value": -0.55 },
-            { "RowName": "April 2025", "Value": -0.55 },
-            { "RowName": "May 2025", "Value": -0.55 },
-            { "RowName": "June 2025", "Value": 0.11 },
-            { "RowName": "July 2025", "Value": 0.11 },
-            { "RowName": "August 2025", "Value": 0.11 },
-            { "RowName": "September 2025", "Value": 0.66 },
-            { "RowName": "October 2025", "Value": 0.66 },
-            { "RowName": "November 2025", "Value": 0.66 },
-            { "RowName": "December 2025", "Value": -0.22 }
-          ]
+        "CowsOver3Years": {
+          "January 2025": -0.22,
+          "February 2025": -0.22,
+          "March 2025": -0.55,
+          "April 2025": -0.55,
+          "May 2025": -0.55,
+          "June 2025": 0.11,
+          "July 2025": 0.11,
+          "August 2025": 0.11,
+          "September 2025": 0.66,
+          "October 2025": 0.66,
+          "November 2025": 0.66,
+          "December 2025": -0.22
         },
-        {
-          "ColumnName": "SteersUnder1Year",
-          "Rows": [
-            { "RowName": "January 2025", "Value": 0.44 },
-            { "RowName": "February 2025", "Value": 0.44 },
-            { "RowName": "March 2025", "Value": 0.6 },
-            { "RowName": "April 2025", "Value": 0.6 },
-            { "RowName": "May 2025", "Value": 0.6 },
-            { "RowName": "June 2025", "Value": 0.77 },
-            { "RowName": "July 2025", "Value": 0.77 },
-            { "RowName": "August 2025", "Value": 0.77 },
-            { "RowName": "September 2025", "Value": 1.42 },
-            { "RowName": "October 2025", "Value": 1.42 },
-            { "RowName": "November 2025", "Value": 1.42 },
-            { "RowName": "December 2025", "Value": 0.44 }
-          ]
+        "SteersUnder1Year": {
+          "January 2025": 0.44,
+          "February 2025": 0.44,
+          "March 2025": 0.6,
+          "April 2025": 0.6,
+          "May 2025": 0.6,
+          "June 2025": 0.77,
+          "July 2025": 0.77,
+          "August 2025": 0.77,
+          "September 2025": 1.42,
+          "October 2025": 1.42,
+          "November 2025": 1.42,
+          "December 2025": 0.44
         },
-        {
-          "ColumnName": "Steers1To2Years",
-          "Rows": [
-            { "RowName": "January 2025", "Value": -0.11 },
-            { "RowName": "February 2025", "Value": -0.11 },
-            { "RowName": "March 2025", "Value": 0 },
-            { "RowName": "April 2025", "Value": 0 },
-            { "RowName": "May 2025", "Value": 0 },
-            { "RowName": "June 2025", "Value": 0.44 },
-            { "RowName": "July 2025", "Value": 0.44 },
-            { "RowName": "August 2025", "Value": 0.44 },
-            { "RowName": "September 2025", "Value": 1.1 },
-            { "RowName": "October 2025", "Value": 1.1 },
-            { "RowName": "November 2025", "Value": 1.1 },
-            { "RowName": "December 2025", "Value": -0.11 }
-          ]
+        "Steers1To2Years": {
+          "January 2025": -0.11,
+          "February 2025": -0.11,
+          "March 2025": 0,
+          "April 2025": 0,
+          "May 2025": 0,
+          "June 2025": 0.44,
+          "July 2025": 0.44,
+          "August 2025": 0.44,
+          "September 2025": 1.1,
+          "October 2025": 1.1,
+          "November 2025": 1.1,
+          "December 2025": -0.11
         },
-        {
-          "ColumnName": "Steers2to3Years",
-          "Rows": [
-            { "RowName": "January 2025", "Value": -0.11 },
-            { "RowName": "February 2025", "Value": -0.11 },
-            { "RowName": "March 2025", "Value": 0 },
-            { "RowName": "April 2025", "Value": 0 },
-            { "RowName": "May 2025", "Value": 0 },
-            { "RowName": "June 2025", "Value": 0.44 },
-            { "RowName": "July 2025", "Value": 0.44 },
-            { "RowName": "August 2025", "Value": 0.44 },
-            { "RowName": "September 2025", "Value": 1.1 },
-            { "RowName": "October 2025", "Value": 1.1 },
-            { "RowName": "November 2025", "Value": 1.1 },
-            { "RowName": "December 2025", "Value": -0.11 }
-          ]
+        "Steers2to3Years": {
+          "January 2025": -0.11,
+          "February 2025": -0.11,
+          "March 2025": 0,
+          "April 2025": 0,
+          "May 2025": 0,
+          "June 2025": 0.44,
+          "July 2025": 0.44,
+          "August 2025": 0.44,
+          "September 2025": 1.1,
+          "October 2025": 1.1,
+          "November 2025": 1.1,
+          "December 2025": -0.11
         },
-        {
-          "ColumnName": "SteersOver3Years",
-          "Rows": [
-            { "RowName": "January 2025", "Value": -0.11 },
-            { "RowName": "February 2025", "Value": -0.11 },
-            { "RowName": "March 2025", "Value": 0 },
-            { "RowName": "April 2025", "Value": 0 },
-            { "RowName": "May 2025", "Value": 0 },
-            { "RowName": "June 2025", "Value": 0.44},
-            {
-              "RowName": "July 2025", "Value": 0.44
-            },
-            {
-              "RowName": "August 2025", "Value": 0.44
-            },
-            {
-              "RowName": "September 2025", "Value": 1.1
-            },
-            {
-              "RowName": "October 2025", "Value": 1.1
-            },
-            {
-              "RowName": "November 2025", "Value": 1.1
-            },
-            {
-              "RowName": "December 2025", "Value": -0.11
-            }
-          ]
+        "SteersOver3Years": {
+          "January 2025": -0.11,
+          "February 2025": -0.11,
+          "March 2025": 0,
+          "April 2025": 0,
+          "May 2025": 0,
+          "June 2025": 0.44,
+          "July 2025": 0.44,
+          "August 2025": 0.44,
+          "September 2025": 1.1,
+          "October 2025": 1.1,
+          "November 2025": 1.1,
+          "December 2025": -0.11
         }
-      ]
+      },
+      "MatrixType": "ColsToRows"
     },
     {
-      "TableName": "PastureBeef_DryMatterDigestibility_Method1",
+      "TableName": "X_Table_PastureBeef_DryMatterDigestibility_Method1",
       "ColumnOffset": null,
-	    "RowOffset": null,
-      "Cols": [
-        {
-          "ColumnName": "BullsUnder1Year",
-          "Rows": [
-            { "RowName": "Spring", "Value": 0.8 },
-            { "RowName": "Summer", "Value": 0.58 },
-            { "RowName": "Autumn", "Value": 0.5 },
-            { "RowName": "Winter", "Value": 0.75 }
-          ]
+      "RowOffset": null,
+      "Cols": {
+        "BullsUnder1Year": {
+          "Spring": 0.8,
+          "Summer": 0.58,
+          "Autumn": 0.5,
+          "Winter": 0.75
         },
-        {
-          "ColumnName": "BullsOver1Year",
-          "Rows": [
-            { "RowName": "Spring", "Value": 0.8 },
-            { "RowName": "Summer", "Value": 0.58 },
-            { "RowName": "Autumn", "Value": 0.5 },
-            { "RowName": "Winter", "Value": 0.75 }
-          ]
+        "BullsOver1Year": {
+          "Spring": 0.8,
+          "Summer": 0.58,
+          "Autumn": 0.5,
+          "Winter": 0.75
         },
-        {
-          "ColumnName": "CowsUnder1Year",
-          "Rows": [
-            { "RowName": "Spring", "Value": 0.8 },
-            { "RowName": "Summer", "Value": 0.58 },
-            { "RowName": "Autumn", "Value": 0.5 },
-            { "RowName": "Winter", "Value": 0.75 }
-          ]
+        "CowsUnder1Year": {
+          "Spring": 0.8,
+          "Summer": 0.58,
+          "Autumn": 0.5,
+          "Winter": 0.75
         },
-        {
-          "ColumnName": "Cows1To2Years",
-          "Rows": [
-            { "RowName": "Spring", "Value": 0.8 },
-            { "RowName": "Summer", "Value": 0.58 },
-            { "RowName": "Autumn", "Value": 0.5 },
-            { "RowName": "Winter", "Value": 0.75 }
-          ]
+        "Cows1To2Years": {
+          "Spring": 0.8,
+          "Summer": 0.58,
+          "Autumn": 0.5,
+          "Winter": 0.75
         },
-        {
-          "ColumnName": "Cows2to3Years",
-          "Rows": [
-            { "RowName": "Spring", "Value": 0.8 },
-            { "RowName": "Summer", "Value": 0.58 },
-            { "RowName": "Autumn", "Value": 0.5 },
-            { "RowName": "Winter", "Value": 0.75 }
-          ]
+        "Cows2to3Years": {
+          "Spring": 0.8,
+          "Summer": 0.58,
+          "Autumn": 0.5,
+          "Winter": 0.75
         },
-        {
-          "ColumnName": "CowsOver3Years",
-          "Rows": [
-            { "RowName": "Spring", "Value": 0.8 },
-            { "RowName": "Summer", "Value": 0.58 },
-            { "RowName": "Autumn", "Value": 0.5 },
-            { "RowName": "Winter", "Value": 0.75 }
-          ]
+        "CowsOver3Years": {
+          "Spring": 0.8,
+          "Summer": 0.58,
+          "Autumn": 0.5,
+          "Winter": 0.75
         },
-        {
-          "ColumnName": "SteersUnder1Year",
-          "Rows": [
-            { "RowName": "Spring", "Value": 0.8 },
-            { "RowName": "Summer", "Value": 0.58 },
-            { "RowName": "Autumn", "Value": 0.5 },
-            { "RowName": "Winter", "Value": 0.75 }
-          ]
+        "SteersUnder1Year": {
+          "Spring": 0.8,
+          "Summer": 0.58,
+          "Autumn": 0.5,
+          "Winter": 0.75
         },
-        {
-          "ColumnName": "Steers1To2Years",
-          "Rows": [
-            { "RowName": "Spring", "Value": 0.8 },
-            { "RowName": "Summer", "Value": 0.58 },
-            { "RowName": "Autumn", "Value": 0.5 },
-            { "RowName": "Winter", "Value": 0.75 }
-          ]
+        "Steers1To2Years": {
+          "Spring": 0.8,
+          "Summer": 0.58,
+          "Autumn": 0.5,
+          "Winter": 0.75
         },
-        {
-          "ColumnName": "Steers2to3Years",
-          "Rows": [
-            { "RowName": "Spring", "Value": 0.8 },
-            { "RowName": "Summer", "Value": 0.58 },
-            { "RowName": "Autumn", "Value": 0.5 },
-            { "RowName": "Winter", "Value": 0.75 }
-          ]
+        "Steers2to3Years": {
+          "Spring": 0.8,
+          "Summer": 0.58,
+          "Autumn": 0.5,
+          "Winter": 0.75
         },
-        {
-          "ColumnName": "SteersOver3Years",
-          "Rows": [
-            { "RowName": "Spring", "Value": 0.8 },
-            { "RowName": "Summer", "Value": 0.58 },
-            { "RowName": "Autumn", "Value": 0.5 },
-            { "RowName": "Winter", "Value": 0.75 }
-          ]
+        "SteersOver3Years": {
+          "Spring": 0.8,
+          "Summer": 0.58,
+          "Autumn": 0.5,
+          "Winter": 0.75
         }
-      ]
+      },
+      "MatrixType": "ColsToRows"
     },
     {
-      "TableName": "PastureBeef_DryMatterDigestibility_Method2",
+      "TableName": "X_Table_PastureBeef_DryMatterDigestibility_Method2",
       "ColumnOffset": null,
-	    "RowOffset": null,
-      "Cols": [
-        {
-          "ColumnName": "BullsUnder1Year",
-          "Rows": [
-            { "RowName": "January 2025", "Value": 0.58 },
-            { "RowName": "February 2025", "Value": 0.58 },
-            { "RowName": "March 2025", "Value": 0.5 },
-            { "RowName": "April 2025", "Value": 0.5 },
-            { "RowName": "May 2025", "Value": 0.5 },
-            { "RowName": "June 2025", "Value": 0.75 },
-            { "RowName": "July 2025", "Value": 0.75 },
-            { "RowName": "August 2025", "Value": 0.75 },
-            { "RowName": "September 2025", "Value": 0.8 },
-            { "RowName": "October 2025", "Value": 0.8 },
-            { "RowName": "November 2025", "Value": 0.8 },
-            { "RowName": "December 2025", "Value": 0.58 }
-          ]
+      "RowOffset": null,
+      "Cols": {
+        "BullsUnder1Year": {
+          "January 2025": 0.58,
+          "February 2025": 0.58,
+          "March 2025": 0.5,
+          "April 2025": 0.5,
+          "May 2025": 0.5,
+          "June 2025": 0.75,
+          "July 2025": 0.75,
+          "August 2025": 0.75,
+          "September 2025": 0.8,
+          "October 2025": 0.8,
+          "November 2025": 0.8,
+          "December 2025": 0.58
         },
-        {
-          "ColumnName": "BullsOver1Year",
-          "Rows": [
-            { "RowName": "January 2025", "Value": 0.58 },
-            { "RowName": "February 2025", "Value": 0.58 },
-            { "RowName": "March 2025", "Value": 0.5 },
-            { "RowName": "April 2025", "Value": 0.5 },
-            { "RowName": "May 2025", "Value": 0.5 },
-            { "RowName": "June 2025", "Value": 0.75 },
-            { "RowName": "July 2025", "Value": 0.75 },
-            { "RowName": "August 2025", "Value": 0.75 },
-            { "RowName": "September 2025", "Value": 0.8 },
-            { "RowName": "October 2025", "Value": 0.8 },
-            { "RowName": "November 2025", "Value": 0.8 },
-            { "RowName": "December 2025", "Value": 0.58 }
-          ]
+        "BullsOver1Year": {
+          "January 2025": 0.58,
+          "February 2025": 0.58,
+          "March 2025": 0.5,
+          "April 2025": 0.5,
+          "May 2025": 0.5,
+          "June 2025": 0.75,
+          "July 2025": 0.75,
+          "August 2025": 0.75,
+          "September 2025": 0.8,
+          "October 2025": 0.8,
+          "November 2025": 0.8,
+          "December 2025": 0.58
         },
-        {
-          "ColumnName": "CowsUnder1Year",
-          "Rows": [
-            { "RowName": "January 2025", "Value": 0.58 },
-            { "RowName": "February 2025", "Value": 0.58 },
-            { "RowName": "March 2025", "Value": 0.5 },
-            { "RowName": "April 2025", "Value": 0.5 },
-            { "RowName": "May 2025", "Value": 0.5 },
-            { "RowName": "June 2025", "Value": 0.75 },
-            { "RowName": "July 2025", "Value": 0.75 },
-            { "RowName": "August 2025", "Value": 0.75 },
-            { "RowName": "September 2025", "Value": 0.8 },
-            { "RowName": "October 2025", "Value": 0.8 },
-            { "RowName": "November 2025", "Value": 0.8 },
-            { "RowName": "December 2025", "Value": 0.58 }
-          ]
+        "CowsUnder1Year": {
+          "January 2025": 0.58,
+          "February 2025": 0.58,
+          "March 2025": 0.5,
+          "April 2025": 0.5,
+          "May 2025": 0.5,
+          "June 2025": 0.75,
+          "July 2025": 0.75,
+          "August 2025": 0.75,
+          "September 2025": 0.8,
+          "October 2025": 0.8,
+          "November 2025": 0.8,
+          "December 2025": 0.58
         },
-        {
-          "ColumnName": "Cows1To2Years",
-          "Rows": [
-            { "RowName": "January 2025", "Value": 0.58 },
-            { "RowName": "February 2025", "Value": 0.58 },
-            { "RowName": "March 2025", "Value": 0.5 },
-            { "RowName": "April 2025", "Value": 0.5 },
-            { "RowName": "May 2025", "Value": 0.5 },
-            { "RowName": "June 2025", "Value": 0.75 },
-            { "RowName": "July 2025", "Value": 0.75 },
-            { "RowName": "August 2025", "Value": 0.75 },
-            { "RowName": "September 2025", "Value": 0.8 },
-            { "RowName": "October 2025", "Value": 0.8 },
-            { "RowName": "November 2025", "Value": 0.8 },
-            { "RowName": "December 2025", "Value": 0.58 }
-          ]
+        "Cows1To2Years": {
+          "January 2025": 0.58,
+          "February 2025": 0.58,
+          "March 2025": 0.5,
+          "April 2025": 0.5,
+          "May 2025": 0.5,
+          "June 2025": 0.75,
+          "July 2025": 0.75,
+          "August 2025": 0.75,
+          "September 2025": 0.8,
+          "October 2025": 0.8,
+          "November 2025": 0.8,
+          "December 2025": 0.58
         },
-        {
-          "ColumnName": "Cows2to3Years",
-          "Rows": [
-            { "RowName": "January 2025", "Value": 0.58 },
-            { "RowName": "February 2025", "Value": 0.58 },
-            { "RowName": "March 2025", "Value": 0.5 },
-            { "RowName": "April 2025", "Value": 0.5 },
-            { "RowName": "May 2025", "Value": 0.5 },
-            { "RowName": "June 2025", "Value": 0.75 },
-            { "RowName": "July 2025", "Value": 0.75 },
-            { "RowName": "August 2025", "Value": 0.75 },
-            { "RowName": "September 2025", "Value": 0.8 },
-            { "RowName": "October 2025", "Value": 0.8 },
-            { "RowName": "November 2025", "Value": 0.8 },
-            { "RowName": "December 2025", "Value": 0.58 }
-          ]
+        "Cows2to3Years": {
+          "January 2025": 0.58,
+          "February 2025": 0.58,
+          "March 2025": 0.5,
+          "April 2025": 0.5,
+          "May 2025": 0.5,
+          "June 2025": 0.75,
+          "July 2025": 0.75,
+          "August 2025": 0.75,
+          "September 2025": 0.8,
+          "October 2025": 0.8,
+          "November 2025": 0.8,
+          "December 2025": 0.58
         },
-        {
-          "ColumnName": "CowsOver3Years",
-          "Rows": [
-            { "RowName": "January 2025", "Value": 0.58 },
-            { "RowName": "February 2025", "Value": 0.58 },
-            { "RowName": "March 2025", "Value": 0.5 },
-            { "RowName": "April 2025", "Value": 0.5 },
-            { "RowName": "May 2025", "Value": 0.5 },
-            { "RowName": "June 2025", "Value": 0.75 },
-            { "RowName": "July 2025", "Value": 0.75 },
-            { "RowName": "August 2025", "Value": 0.75 },
-            { "RowName": "September 2025", "Value": 0.8 },
-            { "RowName": "October 2025", "Value": 0.8 },
-            { "RowName": "November 2025", "Value": 0.8 },
-            { "RowName": "December 2025", "Value": 0.58 }
-          ]
+        "CowsOver3Years": {
+          "January 2025": 0.58,
+          "February 2025": 0.58,
+          "March 2025": 0.5,
+          "April 2025": 0.5,
+          "May 2025": 0.5,
+          "June 2025": 0.75,
+          "July 2025": 0.75,
+          "August 2025": 0.75,
+          "September 2025": 0.8,
+          "October 2025": 0.8,
+          "November 2025": 0.8,
+          "December 2025": 0.58
         },
-        {
-          "ColumnName": "SteersUnder1Year",
-          "Rows": [
-            { "RowName": "January 2025", "Value": 0.58 },
-            { "RowName": "February 2025", "Value": 0.58 },
-            { "RowName": "March 2025", "Value": 0.5 },
-            { "RowName": "April 2025", "Value": 0.5 },
-            { "RowName": "May 2025", "Value": 0.5 },
-            { "RowName": "June 2025", "Value": 0.75 },
-            { "RowName": "July 2025", "Value": 0.75 },
-            { "RowName": "August 2025", "Value": 0.75 },
-            { "RowName": "September 2025", "Value": 0.8 },
-            { "RowName": "October 2025", "Value": 0.8 },
-            { "RowName": "November 2025", "Value": 0.8 },
-            { "RowName": "December 2025", "Value": 0.58 }
-          ]
+        "SteersUnder1Year": {
+          "January 2025": 0.58,
+          "February 2025": 0.58,
+          "March 2025": 0.5,
+          "April 2025": 0.5,
+          "May 2025": 0.5,
+          "June 2025": 0.75,
+          "July 2025": 0.75,
+          "August 2025": 0.75,
+          "September 2025": 0.8,
+          "October 2025": 0.8,
+          "November 2025": 0.8,
+          "December 2025": 0.58
         },
-        {
-          "ColumnName": "Steers1To2Years",
-          "Rows": [
-            { "RowName": "January 2025", "Value": 0.58 },
-            { "RowName": "February 2025", "Value": 0.58 },
-            { "RowName": "March 2025", "Value": 0.5 },
-            { "RowName": "April 2025", "Value": 0.5 },
-            { "RowName": "May 2025", "Value": 0.5 },
-            { "RowName": "June 2025", "Value": 0.75 },
-            { "RowName": "July 2025", "Value": 0.75 },
-            { "RowName": "August 2025", "Value": 0.75 },
-            { "RowName": "September 2025", "Value": 0.8 },
-            { "RowName": "October 2025", "Value": 0.8 },
-            { "RowName": "November 2025", "Value": 0.8 },
-            { "RowName": "December 2025", "Value": 0.58 }
-          ]
+        "Steers1To2Years": {
+          "January 2025": 0.58,
+          "February 2025": 0.58,
+          "March 2025": 0.5,
+          "April 2025": 0.5,
+          "May 2025": 0.5,
+          "June 2025": 0.75,
+          "July 2025": 0.75,
+          "August 2025": 0.75,
+          "September 2025": 0.8,
+          "October 2025": 0.8,
+          "November 2025": 0.8,
+          "December 2025": 0.58
         },
-        {
-          "ColumnName": "Steers2to3Years",
-          "Rows": [
-            { "RowName": "January 2025", "Value": 0.58 },
-            { "RowName": "February 2025", "Value": 0.58 },
-            { "RowName": "March 2025", "Value": 0.5 },
-            { "RowName": "April 2025", "Value": 0.5 },
-            { "RowName": "May 2025", "Value": 0.5 },
-            { "RowName": "June 2025", "Value": 0.75 },
-            { "RowName": "July 2025", "Value": 0.75 },
-            { "RowName": "August 2025", "Value": 0.75 },
-            { "RowName": "September 2025", "Value": 0.8 },
-            { "RowName": "October 2025", "Value": 0.8 },
-            { "RowName": "November 2025", "Value": 0.8 },
-            { "RowName": "December 2025", "Value": 0.58 }
-          ]
+        "Steers2to3Years": {
+          "January 2025": 0.58,
+          "February 2025": 0.58,
+          "March 2025": 0.5,
+          "April 2025": 0.5,
+          "May 2025": 0.5,
+          "June 2025": 0.75,
+          "July 2025": 0.75,
+          "August 2025": 0.75,
+          "September 2025": 0.8,
+          "October 2025": 0.8,
+          "November 2025": 0.8,
+          "December 2025": 0.58
         },
-        {
-          "ColumnName": "SteersOver3Years",
-          "Rows": [
-            { "RowName": "January 2025", "Value": 0.58 },
-            { "RowName": "February 2025", "Value": 0.58 },
-            { "RowName": "March 2025", "Value": 0.5 },
-            { "RowName": "April 2025", "Value": 0.5 },
-            { "RowName": "May 2025", "Value": 0.5 },
-            { "RowName": "June 2025", "Value": 0.75 },
-            { "RowName": "July 2025", "Value": 0.75 },
-            { "RowName": "August 2025", "Value": 0.75 },
-            { "RowName": "September 2025", "Value": 0.8 },
-            { "RowName": "October 2025", "Value": 0.8 },
-            { "RowName": "November 2025", "Value": 0.8 },
-            { "RowName": "December 2025", "Value": 0.58 }
-          ]
+        "SteersOver3Years": {
+          "January 2025": 0.58,
+          "February 2025": 0.58,
+          "March 2025": 0.5,
+          "April 2025": 0.5,
+          "May 2025": 0.5,
+          "June 2025": 0.75,
+          "July 2025": 0.75,
+          "August 2025": 0.75,
+          "September 2025": 0.8,
+          "October 2025": 0.8,
+          "November 2025": 0.8,
+          "December 2025": 0.58
         }
-      ]
+      },
+      "MatrixType": "ColsToRows"
     },
     {
-      "TableName": "PastureBeef_CrudeProtein_Method1",
+      "TableName": "X_Table_PastureBeef_CrudeProtein_Method1",
       "ColumnOffset": null,
-	    "RowOffset": null,
-      "Cols": [
-        {
-          "ColumnName": "BullsUnder1Year",
-          "Rows": [
-            { "RowName": "Spring", "Value": 0.2 },
-            { "RowName": "Summer", "Value": 0.09 },
-            { "RowName": "Autumn", "Value": 0.06 },
-            { "RowName": "Winter", "Value": 0.2 }
-          ]
+      "RowOffset": null,
+      "Cols": {
+        "BullsUnder1Year": {
+          "Spring": 0.2,
+          "Summer": 0.09,
+          "Autumn": 0.06,
+          "Winter": 0.2
         },
-        {
-          "ColumnName": "BullsOver1Year",
-          "Rows": [
-            { "RowName": "Spring", "Value": 0.2 },
-            { "RowName": "Summer", "Value": 0.09 },
-            { "RowName": "Autumn", "Value": 0.06 },
-            { "RowName": "Winter", "Value": 0.2 }
-          ]
+        "BullsOver1Year": {
+          "Spring": 0.2,
+          "Summer": 0.09,
+          "Autumn": 0.06,
+          "Winter": 0.2
         },
-        {
-          "ColumnName": "CowsUnder1Year",
-          "Rows": [
-            { "RowName": "Spring", "Value": 0.2 },
-            { "RowName": "Summer", "Value": 0.09 },
-            { "RowName": "Autumn", "Value": 0.06 },
-            { "RowName": "Winter", "Value": 0.2 }
-          ]
+        "CowsUnder1Year": {
+          "Spring": 0.2,
+          "Summer": 0.09,
+          "Autumn": 0.06,
+          "Winter": 0.2
         },
-        {
-          "ColumnName": "Cows1To2Years",
-          "Rows": [
-            { "RowName": "Spring", "Value": 0.2 },
-            { "RowName": "Summer", "Value": 0.09 },
-            { "RowName": "Autumn", "Value": 0.06 },
-            { "RowName": "Winter", "Value": 0.2 }
-          ]
+        "Cows1To2Years": {
+          "Spring": 0.2,
+          "Summer": 0.09,
+          "Autumn": 0.06,
+          "Winter": 0.2
         },
-        {
-          "ColumnName": "Cows2to3Years",
-          "Rows": [
-            { "RowName": "Spring", "Value": 0.2 },
-            { "RowName": "Summer", "Value": 0.09 },
-            { "RowName": "Autumn", "Value": 0.06 },
-            { "RowName": "Winter", "Value": 0.2 }
-          ]
+        "Cows2to3Years": {
+          "Spring": 0.2,
+          "Summer": 0.09,
+          "Autumn": 0.06,
+          "Winter": 0.2
         },
-        {
-          "ColumnName": "CowsOver3Years",
-          "Rows": [
-            { "RowName": "Spring", "Value": 0.2 },
-            { "RowName": "Summer", "Value": 0.09 },
-            { "RowName": "Autumn", "Value": 0.06 },
-            { "RowName": "Winter", "Value": 0.2 }
-          ]
+        "CowsOver3Years": {
+          "Spring": 0.2,
+          "Summer": 0.09,
+          "Autumn": 0.06,
+          "Winter": 0.2
         },
-        {
-          "ColumnName": "SteersUnder1Year",
-          "Rows": [
-            { "RowName": "Spring", "Value": 0.2 },
-            { "RowName": "Summer", "Value": 0.09 },
-            { "RowName": "Autumn", "Value": 0.06 },
-            { "RowName": "Winter", "Value": 0.2 }
-          ]
+        "SteersUnder1Year": {
+          "Spring": 0.2,
+          "Summer": 0.09,
+          "Autumn": 0.06,
+          "Winter": 0.2
         },
-        {
-          "ColumnName": "Steers1To2Years",
-          "Rows": [
-            { "RowName": "Spring", "Value": 0.2 },
-            { "RowName": "Summer", "Value": 0.09 },
-            { "RowName": "Autumn", "Value": 0.06 },
-            { "RowName": "Winter", "Value": 0.2 }
-          ]
+        "Steers1To2Years": {
+          "Spring": 0.2,
+          "Summer": 0.09,
+          "Autumn": 0.06,
+          "Winter": 0.2
         },
-        {
-          "ColumnName": "Steers2to3Years",
-          "Rows": [
-            { "RowName": "Spring", "Value": 0.2 },
-            { "RowName": "Summer", "Value": 0.09 },
-            { "RowName": "Autumn", "Value": 0.06 },
-            { "RowName": "Winter", "Value": 0.2 }
-          ]
+        "Steers2to3Years": {
+          "Spring": 0.2,
+          "Summer": 0.09,
+          "Autumn": 0.06,
+          "Winter": 0.2
         },
-        {
-          "ColumnName": "SteersOver3Years",
-          "Rows": [
-            { "RowName": "Spring", "Value": 0.2 },
-            { "RowName": "Summer", "Value": 0.09 },
-            { "RowName": "Autumn", "Value": 0.06 },
-            { "RowName": "Winter", "Value": 0.2 }
-          ]
+        "SteersOver3Years": {
+          "Spring": 0.2,
+          "Summer": 0.09,
+          "Autumn": 0.06,
+          "Winter": 0.2
         }
-      ]
+      },
+      "MatrixType": "ColsToRows"
     },
     {
-      "TableName": "PastureBeef_CrudeProtein_Method2",
+      "TableName": "X_Table_PastureBeef_CrudeProtein_Method2",
       "ColumnOffset": null,
-	    "RowOffset": null,
-      "Cols": [
-        {
-          "ColumnName": "BullsUnder1Year",
-          "Rows": [
-            { "RowName": "January 2025", "Value": 0.09 },
-            { "RowName": "February 2025", "Value": 0.09 },
-            { "RowName": "March 2025", "Value": 0.06 },
-            { "RowName": "April 2025", "Value": 0.06 },
-            { "RowName": "May 2025", "Value": 0.06 },
-            { "RowName": "June 2025", "Value": 0.2 },
-            { "RowName": "July 2025", "Value": 0.2 },
-            { "RowName": "August 2025", "Value": 0.2 },
-            { "RowName": "September 2025", "Value": 0.2 },
-            { "RowName": "October 2025", "Value": 0.2 },
-            { "RowName": "November 2025", "Value": 0.2 },
-            { "RowName": "December 2025", "Value": 0.09 }
-          ]
+      "RowOffset": null,
+      "Cols": {
+        "BullsUnder1Year": {
+          "January 2025": 0.09,
+          "February 2025": 0.09,
+          "March 2025": 0.06,
+          "April 2025": 0.06,
+          "May 2025": 0.06,
+          "June 2025": 0.2,
+          "July 2025": 0.2,
+          "August 2025": 0.2,
+          "September 2025": 0.2,
+          "October 2025": 0.2,
+          "November 2025": 0.2,
+          "December 2025": 0.09
         },
-        {
-          "ColumnName": "BullsOver1Year",
-          "Rows": [
-            { "RowName": "January 2025", "Value": 0.09 },
-            { "RowName": "February 2025", "Value": 0.09 },
-            { "RowName": "March 2025", "Value": 0.06 },
-            { "RowName": "April 2025", "Value": 0.06 },
-            { "RowName": "May 2025", "Value": 0.06 },
-            { "RowName": "June 2025", "Value": 0.2 },
-            { "RowName": "July 2025", "Value": 0.2 },
-            { "RowName": "August 2025", "Value": 0.2 },
-            { "RowName": "September 2025", "Value": 0.2 },
-            { "RowName": "October 2025", "Value": 0.2 },
-            { "RowName": "November 2025", "Value": 0.2 },
-            { "RowName": "December 2025", "Value": 0.09 }
-          ]
+        "BullsOver1Year": {
+          "January 2025": 0.09,
+          "February 2025": 0.09,
+          "March 2025": 0.06,
+          "April 2025": 0.06,
+          "May 2025": 0.06,
+          "June 2025": 0.2,
+          "July 2025": 0.2,
+          "August 2025": 0.2,
+          "September 2025": 0.2,
+          "October 2025": 0.2,
+          "November 2025": 0.2,
+          "December 2025": 0.09
         },
-        {
-          "ColumnName": "CowsUnder1Year",
-          "Rows": [
-            { "RowName": "January 2025", "Value": 0.09 },
-            { "RowName": "February 2025", "Value": 0.09 },
-            { "RowName": "March 2025", "Value": 0.06 },
-            { "RowName": "April 2025", "Value": 0.06 },
-            { "RowName": "May 2025", "Value": 0.06 },
-            { "RowName": "June 2025", "Value": 0.2 },
-            { "RowName": "July 2025", "Value": 0.2 },
-            { "RowName": "August 2025", "Value": 0.2 },
-            { "RowName": "September 2025", "Value": 0.2 },
-            { "RowName": "October 2025", "Value": 0.2 },
-            { "RowName": "November 2025", "Value": 0.2 },
-            { "RowName": "December 2025", "Value": 0.09 }
-          ]
+        "CowsUnder1Year": {
+          "January 2025": 0.09,
+          "February 2025": 0.09,
+          "March 2025": 0.06,
+          "April 2025": 0.06,
+          "May 2025": 0.06,
+          "June 2025": 0.2,
+          "July 2025": 0.2,
+          "August 2025": 0.2,
+          "September 2025": 0.2,
+          "October 2025": 0.2,
+          "November 2025": 0.2,
+          "December 2025": 0.09
         },
-        {
-          "ColumnName": "Cows1To2Years",
-          "Rows": [
-            { "RowName": "January 2025", "Value": 0.09 },
-            { "RowName": "February 2025", "Value": 0.09 },
-            { "RowName": "March 2025", "Value": 0.06 },
-            { "RowName": "April 2025", "Value": 0.06 },
-            { "RowName": "May 2025", "Value": 0.06 },
-            { "RowName": "June 2025", "Value": 0.2 },
-            { "RowName": "July 2025", "Value": 0.2 },
-            { "RowName": "August 2025", "Value": 0.2 },
-            { "RowName": "September 2025", "Value": 0.2 },
-            { "RowName": "October 2025", "Value": 0.2 },
-            { "RowName": "November 2025", "Value": 0.2 },
-            { "RowName": "December 2025", "Value": 0.09 }
-          ]
+        "Cows1To2Years": {
+          "January 2025": 0.09,
+          "February 2025": 0.09,
+          "March 2025": 0.06,
+          "April 2025": 0.06,
+          "May 2025": 0.06,
+          "June 2025": 0.2,
+          "July 2025": 0.2,
+          "August 2025": 0.2,
+          "September 2025": 0.2,
+          "October 2025": 0.2,
+          "November 2025": 0.2,
+          "December 2025": 0.09
         },
-        {
-          "ColumnName": "Cows2to3Years",
-          "Rows": [
-            { "RowName": "January 2025", "Value": 0.09 },
-            { "RowName": "February 2025", "Value": 0.09 },
-            { "RowName": "March 2025", "Value": 0.06 },
-            { "RowName": "April 2025", "Value": 0.06 },
-            { "RowName": "May 2025", "Value": 0.06 },
-            { "RowName": "June 2025", "Value": 0.2 },
-            { "RowName": "July 2025", "Value": 0.2 },
-            { "RowName": "August 2025", "Value": 0.2 },
-            { "RowName": "September 2025", "Value": 0.2 },
-            { "RowName": "October 2025", "Value": 0.2 },
-            { "RowName": "November 2025", "Value": 0.2 },
-            { "RowName": "December 2025", "Value": 0.09 }
-          ]
+        "Cows2to3Years": {
+          "January 2025": 0.09,
+          "February 2025": 0.09,
+          "March 2025": 0.06,
+          "April 2025": 0.06,
+          "May 2025": 0.06,
+          "June 2025": 0.2,
+          "July 2025": 0.2,
+          "August 2025": 0.2,
+          "September 2025": 0.2,
+          "October 2025": 0.2,
+          "November 2025": 0.2,
+          "December 2025": 0.09
         },
-        {
-          "ColumnName": "CowsOver3Years",
-          "Rows": [
-            { "RowName": "January 2025", "Value": 0.09 },
-            { "RowName": "February 2025", "Value": 0.09 },
-            { "RowName": "March 2025", "Value": 0.06 },
-            { "RowName": "April 2025", "Value": 0.06 },
-            { "RowName": "May 2025", "Value": 0.06 },
-            { "RowName": "June 2025", "Value": 0.2 },
-            { "RowName": "July 2025", "Value": 0.2 },
-            { "RowName": "August 2025", "Value": 0.2 },
-            { "RowName": "September 2025", "Value": 0.2 },
-            { "RowName": "October 2025", "Value": 0.2 },
-            { "RowName": "November 2025", "Value": 0.2 },
-            { "RowName": "December 2025", "Value": 0.09 }
-          ]
+        "CowsOver3Years": {
+          "January 2025": 0.09,
+          "February 2025": 0.09,
+          "March 2025": 0.06,
+          "April 2025": 0.06,
+          "May 2025": 0.06,
+          "June 2025": 0.2,
+          "July 2025": 0.2,
+          "August 2025": 0.2,
+          "September 2025": 0.2,
+          "October 2025": 0.2,
+          "November 2025": 0.2,
+          "December 2025": 0.09
         },
-        {
-          "ColumnName": "SteersUnder1Year",
-          "Rows": [
-            { "RowName": "January 2025", "Value": 0.09 },
-            { "RowName": "February 2025", "Value": 0.09 },
-            { "RowName": "March 2025", "Value": 0.06 },
-            { "RowName": "April 2025", "Value": 0.06 },
-            { "RowName": "May 2025", "Value": 0.06 },
-            { "RowName": "June 2025", "Value": 0.2 },
-            { "RowName": "July 2025", "Value": 0.2 },
-            { "RowName": "August 2025", "Value": 0.2 },
-            { "RowName": "September 2025", "Value": 0.2 },
-            { "RowName": "October 2025", "Value": 0.2 },
-            { "RowName": "November 2025", "Value": 0.2 },
-            { "RowName": "December 2025", "Value": 0.09 }
-          ]
+        "SteersUnder1Year": {
+          "January 2025": 0.09,
+          "February 2025": 0.09,
+          "March 2025": 0.06,
+          "April 2025": 0.06,
+          "May 2025": 0.06,
+          "June 2025": 0.2,
+          "July 2025": 0.2,
+          "August 2025": 0.2,
+          "September 2025": 0.2,
+          "October 2025": 0.2,
+          "November 2025": 0.2,
+          "December 2025": 0.09
         },
-        {
-          "ColumnName": "Steers1To2Years",
-          "Rows": [
-            { "RowName": "January 2025", "Value": 0.09 },
-            { "RowName": "February 2025", "Value": 0.09 },
-            { "RowName": "March 2025", "Value": 0.06 },
-            { "RowName": "April 2025", "Value": 0.06 },
-            { "RowName": "May 2025", "Value": 0.06 },
-            { "RowName": "June 2025", "Value": 0.2 },
-            { "RowName": "July 2025", "Value": 0.2 },
-            { "RowName": "August 2025", "Value": 0.2 },
-            { "RowName": "September 2025", "Value": 0.2 },
-            { "RowName": "October 2025", "Value": 0.2 },
-            { "RowName": "November 2025", "Value": 0.2 },
-            { "RowName": "December 2025", "Value": 0.09 }
-          ]
+        "Steers1To2Years": {
+          "January 2025": 0.09,
+          "February 2025": 0.09,
+          "March 2025": 0.06,
+          "April 2025": 0.06,
+          "May 2025": 0.06,
+          "June 2025": 0.2,
+          "July 2025": 0.2,
+          "August 2025": 0.2,
+          "September 2025": 0.2,
+          "October 2025": 0.2,
+          "November 2025": 0.2,
+          "December 2025": 0.09
         },
-        {
-          "ColumnName": "Steers2to3Years",
-          "Rows": [
-            { "RowName": "January 2025", "Value": 0.09 },
-            { "RowName": "February 2025", "Value": 0.09 },
-            { "RowName": "March 2025", "Value": 0.06 },
-            { "RowName": "April 2025", "Value": 0.06 },
-            { "RowName": "May 2025", "Value": 0.06 },
-            { "RowName": "June 2025", "Value": 0.2 },
-            { "RowName": "July 2025", "Value": 0.2 },
-            { "RowName": "August 2025", "Value": 0.2 },
-            { "RowName": "September 2025", "Value": 0.2 },
-            { "RowName": "October 2025", "Value": 0.2 },
-            { "RowName": "November 2025", "Value": 0.2 },
-            { "RowName": "December 2025", "Value": 0.09 }
-          ]
+        "Steers2to3Years": {
+          "January 2025": 0.09,
+          "February 2025": 0.09,
+          "March 2025": 0.06,
+          "April 2025": 0.06,
+          "May 2025": 0.06,
+          "June 2025": 0.2,
+          "July 2025": 0.2,
+          "August 2025": 0.2,
+          "September 2025": 0.2,
+          "October 2025": 0.2,
+          "November 2025": 0.2,
+          "December 2025": 0.09
         },
-        {
-          "ColumnName": "SteersOver3Years",
-          "Rows": [
-            { "RowName": "January 2025", "Value": 0.09 },
-            { "RowName": "February 2025", "Value": 0.09 },
-            { "RowName": "March 2025", "Value": 0.06 },
-            { "RowName": "April 2025", "Value": 0.06 },
-            { "RowName": "May 2025", "Value": 0.06 },
-            { "RowName": "June 2025", "Value": 0.2 },
-            { "RowName": "July 2025", "Value": 0.2 },
-            { "RowName": "August 2025", "Value": 0.2 },
-            { "RowName": "September 2025", "Value": 0.2 },
-            { "RowName": "October 2025", "Value": 0.2 },
-            { "RowName": "November 2025", "Value": 0.2 },
-            { "RowName": "December 2025", "Value": 0.09 }
-          ]
+        "SteersOver3Years": {
+          "January 2025": 0.09,
+          "February 2025": 0.09,
+          "March 2025": 0.06,
+          "April 2025": 0.06,
+          "May 2025": 0.06,
+          "June 2025": 0.2,
+          "July 2025": 0.2,
+          "August 2025": 0.2,
+          "September 2025": 0.2,
+          "October 2025": 0.2,
+          "November 2025": 0.2,
+          "December 2025": 0.09
         }
-      ]
+      },
+      "MatrixType": "ColsToRows"
     }
   ]
 }
-

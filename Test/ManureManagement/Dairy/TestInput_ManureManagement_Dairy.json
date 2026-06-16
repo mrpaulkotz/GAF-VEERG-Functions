@@ -1,954 +1,632 @@
 {
-	"X_Cell_Site_FarmName": "My test farm",
-	"X_Cell_Site_ReportingEntityName": "My test Farms Pty Ltd",
-	"X_Cell_Site_StartDate": "1/1/2025",
-	"X_Cell_Site_State": "Western Australia",
-
-	"X_Cell_Site_Region": "Western Australia - Outback (South)",
-	"X_Cell_Site_LeachingZone": "NO - Not in leaching zone",
-	"X_Cell_Site_Elevation": 307.7,
-	"X_Cell_Site_AverageTemperature": 18,
-	"X_Cell_Site_TotalRainfall": 601,
-	"X_Cell_Site_PotentialEvapotranspiration": 1326,
-	"X_Cell_Site_FrostDays": 7,
-
+  "X_Cell_Site_FarmName": "My test farm",
+  "X_Cell_Site_ReportingEntityName": "My test Farms Pty Ltd",
+  "X_Cell_Site_StartDate": "1/1/2025",
+  "X_Cell_Site_State": "Western Australia",
+  "X_Cell_Site_Region": "Western Australia - Outback (South)",
+  "X_Cell_Site_LeachingZone": "NO - Not in leaching zone",
+  "X_Cell_Site_Elevation": 307.7,
+  "X_Cell_Site_AverageTemperature": 18,
+  "X_Cell_Site_TotalRainfall": 601,
+  "X_Cell_Site_PotentialEvapotranspiration": 1326,
+  "X_Cell_Site_FrostDays": 7,
   "X_Cell_Dairy_Breed": "Medium Friesian",
   "X_Cell_Dairy_MilkProductionUnit": "Litres of milk",
   "X_Cell_Dairy_MilkProductionAmount": 20,
-
   "X_Cell_Dairy_ProductionSystemTemplate": "System 3: Pasture-grazed 3-9 months/year",
-
   "X_Cell_Dairy_Stage1MMS_1_AnaerobicLagoon_SolidsSeparated": "Yes",
   "X_Cell_Dairy_Stage1MMS_1_AnaerobicLagoon_AmountSeparated_Method1": "20%",
   "X_Cell_Dairy_Stage1MMS_1_AnaerobicLagoon_AmountSeparated_Method2": "20%",
-
   "X_Cell_Dairy_Stage1MMS_1_SumpAndDispersal_SolidsSeparated": "Yes",
   "X_Cell_Dairy_Stage1MMS_1_SumpAndDispersal_AmountSeparated_Method1": "20%",
   "X_Cell_Dairy_Stage1MMS_1_SumpAndDispersal_AmountSeparated_Method2": "20%",
-
   "X_Cell_Dairy_Stage1MMS_1_DrainsToPaddock_SolidsSeparated": "Yes",
   "X_Cell_Dairy_Stage1MMS_1_DrainsToPaddock_AmountSeparated_Method1": "20%",
   "X_Cell_Dairy_Stage1MMS_1_DrainsToPaddock_AmountSeparated_Method2": "20%",
-
   "X_Cell_Dairy_Stage1MMS_2_AnaerobicLagoon_SolidsSeparated": "No",
   "X_Cell_Dairy_Stage1MMS_2_AnaerobicLagoon_AmountSeparated_Method1": "0%",
   "X_Cell_Dairy_Stage1MMS_2_AnaerobicLagoon_AmountSeparated_Method2": "0%",
-
   "X_Cell_Dairy_Stage1MMS_2_SumpAndDispersal_SolidsSeparated": "Yes",
   "X_Cell_Dairy_Stage1MMS_2_SumpAndDispersal_AmountSeparated_Method1": "20%",
   "X_Cell_Dairy_Stage1MMS_2_SumpAndDispersal_AmountSeparated_Method2": "20%",
-
   "X_Cell_Dairy_Stage1MMS_2_DrainsToPaddock_SolidsSeparated": "Yes",
   "X_Cell_Dairy_Stage1MMS_2_DrainsToPaddock_AmountSeparated_Method1": "20%",
   "X_Cell_Dairy_Stage1MMS_2_DrainsToPaddock_AmountSeparated_Method2": "20%",
-
   "X_Cell_Dairy_ManureAppliedProductionSystem": "Pasture",
   "X_Cell_Dairy_ManureAppliedIrrigationMethod": "Sprinkler Irrigation",
-
-
-
-	 "InputTables": [
+  "InputTables": [
     {
-    "TableName": "Dairy_HerdMovement",
-	  "ColumnOffset": null,
-	  "RowOffset": null,
-      "Cols": [
-        {
-          "ColumnName": "MilkingCows",
-          "Rows": [
-            { "RowName": "Head", "Value": 100 }
-          ]
+      "TableName": "X_Table_Dairy_HerdMovement",
+      "MatrixType": "ColsToRows",
+      "ColumnOffset": null,
+      "RowOffset": null,
+      "Cols": {
+        "MilkingCows": {
+          "Head": 100
         },
-		    {
-          "ColumnName": "HeifersOver1Year",
-          "Rows": [
-            { "RowName": "Head", "Value": 100 }
-          ]
+        "HeifersOver1Year": {
+          "Head": 100
         },
-		    {
-          "ColumnName": "HeifersUnder1Year",
-          "Rows": [
-            { "RowName": "Head", "Value": 100 }
-          ]
+        "HeifersUnder1Year": {
+          "Head": 100
         },
-        {
-          "ColumnName": "BullsOver1Year",
-          "Rows": [
-            { "RowName": "Head", "Value": 100 }
-          ]
+        "BullsOver1Year": {
+          "Head": 100
         },
-		    {
-          "ColumnName": "BullsUnder1Year",
-          "Rows": [
-            { "RowName": "Head", "Value": 100 }
-          ]
+        "BullsUnder1Year": {
+          "Head": 100
         }
-      ]
-    },
-	{
-    "TableName": "Dairy_Liveweight_Method1",
-	  "ColumnOffset": null,
-	  "RowOffset": null,
-      "Cols": [
-        {
-          "ColumnName": "MilkingCows",
-          "Rows": [
-            { "RowName": "AverageLiveweight", "Value": 550 },
-            { "RowName": "LiveweightGain", "Value": 0.016 }
-          ]
-        },
-        {
-          "ColumnName": "HeifersOver1Year",
-          "Rows": [
-            { "RowName": "AverageLiveweight", "Value": 380 },
-            { "RowName": "LiveweightGain", "Value": 0.6 }
-          ]
-        },
-        {
-          "ColumnName": "HeifersUnder1Year",
-          "Rows": [
-            { "RowName": "AverageLiveweight", "Value": 155 },
-            { "RowName": "LiveweightGain", "Value": 0.57 }
-          ]
-        },
-        {
-          "ColumnName": "BullsOver1Year",
-          "Rows": [
-            { "RowName": "AverageLiveweight", "Value": 600 },
-            { "RowName": "LiveweightGain", "Value": 0.1 }
-          ]
-        },
-        {
-          "ColumnName": "BullsUnder1Year",
-          "Rows": [
-            { "RowName": "AverageLiveweight", "Value": 225 },
-            { "RowName": "LiveweightGain", "Value": 0.8 }
-          ]
-        }
-      ]
+      }
     },
     {
-    "TableName": "Dairy_Liveweight_Method2",
-	  "ColumnOffset": null,
-	  "RowOffset": null,
-      "Cols": [
-        {
-          "ColumnName": "MilkingCows",
-          "Rows": [
-            { "RowName": "AverageLiveweight", "Value": 550 },
-            { "RowName": "LiveweightGain", "Value": 0.016 }
-          ]
+      "TableName": "X_Table_Dairy_Liveweight_Method1",
+      "MatrixType": "ColsToRows",
+      "ColumnOffset": null,
+      "RowOffset": null,
+      "Cols": {
+        "MilkingCows": {
+          "AverageLiveweight": 550,
+          "LiveweightGain": 0.016
         },
-        {
-          "ColumnName": "HeifersOver1Year",
-          "Rows": [
-            { "RowName": "AverageLiveweight", "Value": 380 },
-            { "RowName": "LiveweightGain", "Value": 0.6 }
-          ]
+        "HeifersOver1Year": {
+          "AverageLiveweight": 380,
+          "LiveweightGain": 0.6
         },
-        {
-          "ColumnName": "HeifersUnder1Year",
-          "Rows": [
-            { "RowName": "AverageLiveweight", "Value": 155 },
-            { "RowName": "LiveweightGain", "Value": 0.57 }
-          ]
+        "HeifersUnder1Year": {
+          "AverageLiveweight": 155,
+          "LiveweightGain": 0.57
         },
-        {
-          "ColumnName": "BullsOver1Year",
-          "Rows": [
-            { "RowName": "AverageLiveweight", "Value": 600 },
-            { "RowName": "LiveweightGain", "Value": 0.1 }
-          ]
+        "BullsOver1Year": {
+          "AverageLiveweight": 600,
+          "LiveweightGain": 0.1
         },
-        {
-          "ColumnName": "BullsUnder1Year",
-          "Rows": [
-            { "RowName": "AverageLiveweight", "Value": 225 },
-            { "RowName": "LiveweightGain", "Value": 0.8 }
-          ]
+        "BullsUnder1Year": {
+          "AverageLiveweight": 225,
+          "LiveweightGain": 0.8
         }
-      ]
-    },
-
-    {
-    "TableName": "Dairy_DurationOfStay_Method1",
-	  "ColumnOffset": null,
-	  "RowOffset": null,
-      "Cols": [
-        {
-          "ColumnName": "MilkingCows",
-          "Rows": [
-            { "RowName": "DurationWeaned", "Value": 365 },
-            { "RowName": "DurationPreWeaned", "Value": 0 }
-          ]
-        },
-        {
-          "ColumnName": "HeifersOver1Year",
-          "Rows": [
-            { "RowName": "DurationWeaned", "Value": 365 },
-            { "RowName": "DurationPreWeaned", "Value": 0 }
-          ]
-        },
-        {
-          "ColumnName": "HeifersUnder1Year",
-          "Rows": [
-            { "RowName": "DurationWeaned", "Value": 281 },
-            { "RowName": "DurationPreWeaned", "Value": 84 }
-          ]
-        },
-        {
-          "ColumnName": "BullsOver1Year",
-          "Rows": [
-            { "RowName": "DurationWeaned", "Value": 365 },
-            { "RowName": "DurationPreWeaned", "Value": 0 }
-          ]
-        },
-        {
-          "ColumnName": "BullsUnder1Year",
-          "Rows": [
-            { "RowName": "DurationWeaned", "Value": 281 },
-            { "RowName": "DurationPreWeaned", "Value": 84 }
-          ]
-        }
-      ]
+      }
     },
     {
-    "TableName": "Dairy_DurationOfStay_Method2",
-	  "ColumnOffset": null,
-	  "RowOffset": null,
-      "Cols": [
-        {
-          "ColumnName": "MilkingCows",
-          "Rows": [
-            { "RowName": "DurationWeaned", "Value": 365 },
-            { "RowName": "DurationPreWeaned", "Value": 0 }
-          ]
+      "TableName": "X_Table_Dairy_Liveweight_Method2",
+      "MatrixType": "ColsToRows",
+      "ColumnOffset": null,
+      "RowOffset": null,
+      "Cols": {
+        "MilkingCows": {
+          "AverageLiveweight": 550,
+          "LiveweightGain": 0.016
         },
-        {
-          "ColumnName": "HeifersOver1Year",
-          "Rows": [
-            { "RowName": "DurationWeaned", "Value": 365 },
-            { "RowName": "DurationPreWeaned", "Value": 0 }
-          ]
+        "HeifersOver1Year": {
+          "AverageLiveweight": 380,
+          "LiveweightGain": 0.6
         },
-        {
-          "ColumnName": "HeifersUnder1Year",
-          "Rows": [
-            { "RowName": "DurationWeaned", "Value": 281 },
-            { "RowName": "DurationPreWeaned", "Value": 84 }
-          ]
+        "HeifersUnder1Year": {
+          "AverageLiveweight": 155,
+          "LiveweightGain": 0.57
         },
-        {
-          "ColumnName": "BullsOver1Year",
-          "Rows": [
-            { "RowName": "DurationWeaned", "Value": 365 },
-            { "RowName": "DurationPreWeaned", "Value": 0 }
-          ]
+        "BullsOver1Year": {
+          "AverageLiveweight": 600,
+          "LiveweightGain": 0.1
         },
-        {
-          "ColumnName": "BullsUnder1Year",
-          "Rows": [
-            { "RowName": "DurationWeaned", "Value": 281 },
-            { "RowName": "DurationPreWeaned", "Value": 84 }
-          ]
+        "BullsUnder1Year": {
+          "AverageLiveweight": 225,
+          "LiveweightGain": 0.8
         }
-      ]
+      }
     },
     {
-    "TableName": "Dairy_Diet_Method1",
-	  "ColumnOffset": null,
-	  "RowOffset": null,
-      "Cols": [
-        {
-          "ColumnName": "MilkingCows",
-          "Rows": [
-            { "RowName": "DryMatterDigestibility", "Value": 0.75 },
-            { "RowName": "CrudeProtein", "Value": 0.2 }
-          ]
+      "TableName": "X_Table_Dairy_DurationOfStay_Method1",
+      "MatrixType": "ColsToRows",
+      "ColumnOffset": null,
+      "RowOffset": null,
+      "Cols": {
+        "MilkingCows": {
+          "DurationWeaned": 365,
+          "DurationPreWeaned": 0
         },
-        {
-          "ColumnName": "HeifersOver1Year",
-          "Rows": [
-            { "RowName": "DryMatterDigestibility", "Value": 0.75 },
-            { "RowName": "CrudeProtein", "Value": 0.2 }
-          ]
+        "HeifersOver1Year": {
+          "DurationWeaned": 365,
+          "DurationPreWeaned": 0
         },
-        {
-          "ColumnName": "HeifersUnder1Year",
-          "Rows": [
-            { "RowName": "DryMatterDigestibility", "Value": 0.75 },
-            { "RowName": "CrudeProtein", "Value": 0.2 }
-          ]
+        "HeifersUnder1Year": {
+          "DurationWeaned": 281,
+          "DurationPreWeaned": 84
         },
-        {
-          "ColumnName": "BullsOver1Year",
-          "Rows": [
-            { "RowName": "DryMatterDigestibility", "Value": 0.75 },
-            { "RowName": "CrudeProtein", "Value": 0.2 }
-          ]
+        "BullsOver1Year": {
+          "DurationWeaned": 365,
+          "DurationPreWeaned": 0
         },
-        {
-          "ColumnName": "BullsUnder1Year",
-          "Rows": [
-            { "RowName": "DryMatterDigestibility", "Value": 0.75 },
-            { "RowName": "CrudeProtein", "Value": 0.2 }
-          ]
+        "BullsUnder1Year": {
+          "DurationWeaned": 281,
+          "DurationPreWeaned": 84
         }
-      ]
+      }
     },
     {
-    "TableName": "Dairy_Diet_Method2",
-	  "ColumnOffset": null,
-	  "RowOffset": null,
-      "Cols": [
-        {
-          "ColumnName": "MilkingCows",
-          "Rows": [
-            { "RowName": "DryMatterDigestibility", "Value": 0.75 },
-            { "RowName": "CrudeProtein", "Value": 0.2 }
-          ]
+      "TableName": "X_Table_Dairy_DurationOfStay_Method2",
+      "MatrixType": "ColsToRows",
+      "ColumnOffset": null,
+      "RowOffset": null,
+      "Cols": {
+        "MilkingCows": {
+          "DurationWeaned": 365,
+          "DurationPreWeaned": 0
         },
-        {
-          "ColumnName": "HeifersOver1Year",
-          "Rows": [
-            { "RowName": "DryMatterDigestibility", "Value": 0.75 },
-            { "RowName": "CrudeProtein", "Value": 0.2 }
-          ]
+        "HeifersOver1Year": {
+          "DurationWeaned": 365,
+          "DurationPreWeaned": 0
         },
-        {
-          "ColumnName": "HeifersUnder1Year",
-          "Rows": [
-            { "RowName": "DryMatterDigestibility", "Value": 0.75 },
-            { "RowName": "CrudeProtein", "Value": 0.2 }
-          ]
+        "HeifersUnder1Year": {
+          "DurationWeaned": 281,
+          "DurationPreWeaned": 84
         },
-        {
-          "ColumnName": "BullsOver1Year",
-          "Rows": [
-            { "RowName": "DryMatterDigestibility", "Value": 0.75 },
-            { "RowName": "CrudeProtein", "Value": 0.2 }
-          ]
+        "BullsOver1Year": {
+          "DurationWeaned": 365,
+          "DurationPreWeaned": 0
         },
-        {
-          "ColumnName": "BullsUnder1Year",
-          "Rows": [
-            { "RowName": "DryMatterDigestibility", "Value": 0.75 },
-            { "RowName": "CrudeProtein", "Value": 0.2 }
-          ]
+        "BullsUnder1Year": {
+          "DurationWeaned": 281,
+          "DurationPreWeaned": 84
         }
-      ]
+      }
     },
     {
-    "TableName": "Dairy_MilkSolidAttributes",
-	  "ColumnOffset": null,
-	  "RowOffset": null,
-      "Cols": [
-        {
-          "ColumnName": "Method1",
-          "Rows": [
-            { "RowName": "FatContent", "Value": "4.0%" },
-            { "RowName": "ProteinContent", "Value": "3.3%" }
-          ]
+      "TableName": "X_Table_Dairy_Diet_Method1",
+      "MatrixType": "ColsToRows",
+      "ColumnOffset": null,
+      "RowOffset": null,
+      "Cols": {
+        "MilkingCows": {
+          "DryMatterDigestibility": 0.75,
+          "CrudeProtein": 0.2
         },
-		    {
-          "ColumnName": "Method2",
-          "Rows": [
-            { "RowName": "FatContent", "Value": "4.0%" },
-            { "RowName": "ProteinContent", "Value": "3.3%" }
-          ]
+        "HeifersOver1Year": {
+          "DryMatterDigestibility": 0.75,
+          "CrudeProtein": 0.2
+        },
+        "HeifersUnder1Year": {
+          "DryMatterDigestibility": 0.75,
+          "CrudeProtein": 0.2
+        },
+        "BullsOver1Year": {
+          "DryMatterDigestibility": 0.75,
+          "CrudeProtein": 0.2
+        },
+        "BullsUnder1Year": {
+          "DryMatterDigestibility": 0.75,
+          "CrudeProtein": 0.2
         }
-      ]
+      }
     },
     {
-    "TableName": "Dairy_ProductionSystems_Method1",
-	  "ColumnOffset": null,
-	  "RowOffset": null,
-      "Cols": [
-        {
-          "ColumnName": "MilkingCows",
-          "Rows": [
-            { "RowName": "Pasture", "Value": "53.4%" },
-            { "RowName": "MilkingShed", "Value": "11.0%" },
-            { "RowName": "FeedPad", "Value": "35.6%" }
-          ]
+      "TableName": "X_Table_Dairy_Diet_Method2",
+      "MatrixType": "ColsToRows",
+      "ColumnOffset": null,
+      "RowOffset": null,
+      "Cols": {
+        "MilkingCows": {
+          "DryMatterDigestibility": 0.75,
+          "CrudeProtein": 0.2
         },
-        {
-          "ColumnName": "HeifersOver1Year",
-          "Rows": [
-            { "RowName": "Pasture", "Value": "53.4%" },
-            { "RowName": "MilkingShed", "Value": "11.0%" },
-            { "RowName": "FeedPad", "Value": "35.6%" }
-          ]
+        "HeifersOver1Year": {
+          "DryMatterDigestibility": 0.75,
+          "CrudeProtein": 0.2
         },
-        {
-          "ColumnName": "HeifersUnder1Year",
-          "Rows": [
-            { "RowName": "Pasture", "Value": "53.4%" },
-            { "RowName": "MilkingShed", "Value": "11.0%" },
-            { "RowName": "FeedPad", "Value": "35.6%" }
-          ]
+        "HeifersUnder1Year": {
+          "DryMatterDigestibility": 0.75,
+          "CrudeProtein": 0.2
         },
-        {
-          "ColumnName": "BullsOver1Year",
-          "Rows": [
-            { "RowName": "Pasture", "Value": "53.4%" },
-            { "RowName": "MilkingShed", "Value": "11.0%" },
-            { "RowName": "FeedPad", "Value": "35.6%" }
-          ]
+        "BullsOver1Year": {
+          "DryMatterDigestibility": 0.75,
+          "CrudeProtein": 0.2
         },
-        {
-          "ColumnName": "BullsUnder1Year",
-          "Rows": [
-            { "RowName": "Pasture", "Value": "53.4%" },
-            { "RowName": "MilkingShed", "Value": "11.0%" },
-            { "RowName": "FeedPad", "Value": "35.6%" }
-          ]
+        "BullsUnder1Year": {
+          "DryMatterDigestibility": 0.75,
+          "CrudeProtein": 0.2
         }
-      ]
+      }
     },
     {
-    "TableName": "Dairy_ProductionSystems_Method2",
-	  "ColumnOffset": null,
-	  "RowOffset": null,
-      "Cols": [
-        {
-          "ColumnName": "MilkingCows",
-          "Rows": [
-            { "RowName": "Pasture", "Value": "53.4%" },
-            { "RowName": "MilkingShed", "Value": "11.0%" },
-            { "RowName": "FeedPad", "Value": "35.6%" }
-          ]
+      "TableName": "X_Table_Dairy_MilkSolidAttributes",
+      "MatrixType": "ColsToRows",
+      "ColumnOffset": null,
+      "RowOffset": null,
+      "Cols": {
+        "Method1": {
+          "FatContent": "4.0%",
+          "ProteinContent": "3.3%"
         },
-        {
-          "ColumnName": "HeifersOver1Year",
-          "Rows": [
-            { "RowName": "Pasture", "Value": "53.4%" },
-            { "RowName": "MilkingShed", "Value": "11.0%" },
-            { "RowName": "FeedPad", "Value": "35.6%" }
-          ]
-        },
-        {
-          "ColumnName": "HeifersUnder1Year",
-          "Rows": [
-            { "RowName": "Pasture", "Value": "53.4%" },
-            { "RowName": "MilkingShed", "Value": "11.0%" },
-            { "RowName": "FeedPad", "Value": "35.6%" }
-          ]
-        },
-        {
-          "ColumnName": "BullsOver1Year",
-          "Rows": [
-            { "RowName": "Pasture", "Value": "53.4%" },
-            { "RowName": "MilkingShed", "Value": "11.0%" },
-            { "RowName": "FeedPad", "Value": "35.6%" }
-          ]
-        },
-        {
-          "ColumnName": "BullsUnder1Year",
-          "Rows": [
-            { "RowName": "Pasture", "Value": "53.4%" },
-            { "RowName": "MilkingShed", "Value": "11.0%" },
-            { "RowName": "FeedPad", "Value": "35.6%" }
-          ]
+        "Method2": {
+          "FatContent": "4.0%",
+          "ProteinContent": "3.3%"
         }
-      ]
+      }
     },
     {
-    "TableName": "Dairy_Stage1MMS_1_AnaerobicLagoon",
-	  "ColumnOffset": null,
-	  "RowOffset": 0,
-      "Cols": [
-        {
-          "ColumnName": "MilkingCows",
-          "Rows": [
-            { "RowName": "AnaerobicLagoon", "Value": "25%" }
-          ]
+      "TableName": "X_Table_Dairy_ProductionSystems_Method1",
+      "MatrixType": "ColsToRows",
+      "ColumnOffset": null,
+      "RowOffset": null,
+      "Cols": {
+        "MilkingCows": {
+          "Pasture": "53.4%",
+          "MilkingShed": "11.0%",
+          "FeedPad": "35.6%"
         },
-        {
-          "ColumnName": "HeifersOver1Year",
-          "Rows": [
-            { "RowName": "AnaerobicLagoon", "Value": "25%" }
-          ]
+        "HeifersOver1Year": {
+          "Pasture": "53.4%",
+          "MilkingShed": "11.0%",
+          "FeedPad": "35.6%"
         },
-        {
-          "ColumnName": "HeifersUnder1Year",
-          "Rows": [
-            { "RowName": "AnaerobicLagoon", "Value": "25%" }
-          ]
+        "HeifersUnder1Year": {
+          "Pasture": "53.4%",
+          "MilkingShed": "11.0%",
+          "FeedPad": "35.6%"
         },
-        {
-          "ColumnName": "BullsOver1Year",
-          "Rows": [
-            { "RowName": "AnaerobicLagoon", "Value": "25%" }
-          ]
+        "BullsOver1Year": {
+          "Pasture": "53.4%",
+          "MilkingShed": "11.0%",
+          "FeedPad": "35.6%"
         },
-        {
-          "ColumnName": "BullsUnder1Year",
-          "Rows": [
-            { "RowName": "AnaerobicLagoon", "Value": "25%" }
-          ]
+        "BullsUnder1Year": {
+          "Pasture": "53.4%",
+          "MilkingShed": "11.0%",
+          "FeedPad": "35.6%"
         }
-      ]
+      }
     },
     {
-    "TableName": "Dairy_Stage1MMS_1_SumpAndDispersal",
-	  "ColumnOffset": null,
-	  "RowOffset": 0,
-      "Cols": [
-        {
-          "ColumnName": "MilkingCows",
-          "Rows": [
-            { "RowName": "SumpAndDispersal", "Value": "25%" }
-          ]
+      "TableName": "X_Table_Dairy_ProductionSystems_Method2",
+      "MatrixType": "ColsToRows",
+      "ColumnOffset": null,
+      "RowOffset": null,
+      "Cols": {
+        "MilkingCows": {
+          "Pasture": "53.4%",
+          "MilkingShed": "11.0%",
+          "FeedPad": "35.6%"
         },
-        {
-          "ColumnName": "HeifersOver1Year",
-          "Rows": [
-            { "RowName": "SumpAndDispersal", "Value": "25%" }
-          ]
+        "HeifersOver1Year": {
+          "Pasture": "53.4%",
+          "MilkingShed": "11.0%",
+          "FeedPad": "35.6%"
         },
-        {
-          "ColumnName": "HeifersUnder1Year",
-          "Rows": [
-            { "RowName": "SumpAndDispersal", "Value": "25%" }
-          ]
+        "HeifersUnder1Year": {
+          "Pasture": "53.4%",
+          "MilkingShed": "11.0%",
+          "FeedPad": "35.6%"
         },
-        {
-          "ColumnName": "BullsOver1Year",
-          "Rows": [
-            { "RowName": "SumpAndDispersal", "Value": "25%" }
-          ]
+        "BullsOver1Year": {
+          "Pasture": "53.4%",
+          "MilkingShed": "11.0%",
+          "FeedPad": "35.6%"
         },
-        {
-          "ColumnName": "BullsUnder1Year",
-          "Rows": [
-            { "RowName": "SumpAndDispersal", "Value": "25%" }
-          ]
+        "BullsUnder1Year": {
+          "Pasture": "53.4%",
+          "MilkingShed": "11.0%",
+          "FeedPad": "35.6%"
         }
-      ]
+      }
     },
     {
-    "TableName": "Dairy_Stage1MMS_1_DrainsToPaddock",
-	  "ColumnOffset": null,
-	  "RowOffset": 0,
-      "Cols": [
-        {
-          "ColumnName": "MilkingCows",
-          "Rows": [
-            { "RowName": "DrainsToPaddock", "Value": "25%" }
-          ]
+      "TableName": "X_Table_Dairy_Stage1MMS_1_AnaerobicLagoon",
+      "MatrixType": "ColsToRows",
+      "ColumnOffset": null,
+      "RowOffset": 0,
+      "Cols": {
+        "MilkingCows": {
+          "AnaerobicLagoon": "25%"
         },
-        {
-          "ColumnName": "HeifersOver1Year",
-          "Rows": [
-            { "RowName": "DrainsToPaddock", "Value": "25%" }
-          ]
+        "HeifersOver1Year": {
+          "AnaerobicLagoon": "25%"
         },
-        {
-          "ColumnName": "HeifersUnder1Year",
-          "Rows": [
-            { "RowName": "DrainsToPaddock", "Value": "25%" }
-          ]
+        "HeifersUnder1Year": {
+          "AnaerobicLagoon": "25%"
         },
-        {
-          "ColumnName": "BullsOver1Year",
-          "Rows": [
-            { "RowName": "DrainsToPaddock", "Value": "25%" }
-          ]
+        "BullsOver1Year": {
+          "AnaerobicLagoon": "25%"
         },
-        {
-          "ColumnName": "BullsUnder1Year",
-          "Rows": [
-            { "RowName": "DrainsToPaddock", "Value": "25%" }
-          ]
+        "BullsUnder1Year": {
+          "AnaerobicLagoon": "25%"
         }
-      ]
+      }
     },
     {
-    "TableName": "Dairy_Stage1MMS_1_SolidStorage",
-	  "ColumnOffset": null,
-	  "RowOffset": 0,
-      "Cols": [
-        {
-          "ColumnName": "MilkingCows",
-          "Rows": [
-            { "RowName": "SolidStorage", "Value": "25%" }
-          ]
+      "TableName": "X_Table_Dairy_Stage1MMS_1_SumpAndDispersal",
+      "MatrixType": "ColsToRows",
+      "ColumnOffset": null,
+      "RowOffset": 0,
+      "Cols": {
+        "MilkingCows": {
+          "SumpAndDispersal": "25%"
         },
-        {
-          "ColumnName": "HeifersOver1Year",
-          "Rows": [
-            { "RowName": "SolidStorage", "Value": "25%" }
-          ]
+        "HeifersOver1Year": {
+          "SumpAndDispersal": "25%"
         },
-        {
-          "ColumnName": "HeifersUnder1Year",
-          "Rows": [
-            { "RowName": "SolidStorage", "Value": "25%" }
-          ]
+        "HeifersUnder1Year": {
+          "SumpAndDispersal": "25%"
         },
-        {
-          "ColumnName": "BullsOver1Year",
-          "Rows": [
-            { "RowName": "SolidStorage", "Value": "25%" }
-          ]
+        "BullsOver1Year": {
+          "SumpAndDispersal": "25%"
         },
-        {
-          "ColumnName": "BullsUnder1Year",
-          "Rows": [
-            { "RowName": "SolidStorage", "Value": "25%" }
-          ]
+        "BullsUnder1Year": {
+          "SumpAndDispersal": "25%"
         }
-      ]
+      }
     },
     {
-    "TableName": "Dairy_Stage1MMS_1_AnaerobicLagoon_Destinations",
-	  "ColumnOffset": 0,
-	  "RowOffset": 0,
-      "Cols": [
-        {
-          "ColumnName": "Sold",
-          "Rows": [
-            { "RowName": "AnaerobicLagoon", "Value": "25%" }
-          ]
+      "TableName": "X_Table_Dairy_Stage1MMS_1_DrainsToPaddock",
+      "MatrixType": "ColsToRows",
+      "ColumnOffset": null,
+      "RowOffset": 0,
+      "Cols": {
+        "MilkingCows": {
+          "DrainsToPaddock": "25%"
         },
-        {
-          "ColumnName": "FertOwnFarm",
-          "Rows": [
-            { "RowName": "AnaerobicLagoon", "Value": "25%" }
-          ]
+        "HeifersOver1Year": {
+          "DrainsToPaddock": "25%"
         },
-        {
-          "ColumnName": "DirectApplication",
-          "Rows": [
-            { "RowName": "AnaerobicLagoon", "Value": "50%" }
-          ]
+        "HeifersUnder1Year": {
+          "DrainsToPaddock": "25%"
+        },
+        "BullsOver1Year": {
+          "DrainsToPaddock": "25%"
+        },
+        "BullsUnder1Year": {
+          "DrainsToPaddock": "25%"
         }
-      ]
+      }
     },
     {
-    "TableName": "Dairy_Stage1MMS_1_SumpAndDispersal_Destinations",
-	  "ColumnOffset": 0,
-	  "RowOffset": 0,
-      "Cols": [
-        {
-          "ColumnName": "Sold",
-          "Rows": [
-            { "RowName": "SumpAndDispersal", "Value": "25%" }
-          ]
+      "TableName": "X_Table_Dairy_Stage1MMS_1_SolidStorage",
+      "MatrixType": "ColsToRows",
+      "ColumnOffset": null,
+      "RowOffset": 0,
+      "Cols": {
+        "MilkingCows": {
+          "SolidStorage": "25%"
         },
-        {
-          "ColumnName": "FertOwnFarm",
-          "Rows": [
-            { "RowName": "SumpAndDispersal", "Value": "25%" }
-          ]
+        "HeifersOver1Year": {
+          "SolidStorage": "25%"
         },
-        {
-          "ColumnName": "DirectApplication",
-          "Rows": [
-            { "RowName": "SumpAndDispersal", "Value": "50%" }
-          ]
+        "HeifersUnder1Year": {
+          "SolidStorage": "25%"
+        },
+        "BullsOver1Year": {
+          "SolidStorage": "25%"
+        },
+        "BullsUnder1Year": {
+          "SolidStorage": "25%"
         }
-      ]
+      }
     },
     {
-    "TableName": "Dairy_Stage1MMS_1_DrainsToPaddock_Destinations",
-	  "ColumnOffset": 0,
-	  "RowOffset": 0,
-      "Cols": [
-        {
-          "ColumnName": "Sold",
-          "Rows": [
-            { "RowName": "DrainsToPaddock", "Value": "25%" }
-          ]
+      "TableName": "X_Table_Dairy_Stage1MMS_1_AnaerobicLagoon_Destinations",
+      "MatrixType": "ColsToRows",
+      "ColumnOffset": 0,
+      "RowOffset": 0,
+      "Cols": {
+        "Sold": {
+          "AnaerobicLagoon": "25%"
         },
-        {
-          "ColumnName": "FertOwnFarm",
-          "Rows": [
-            { "RowName": "DrainsToPaddock", "Value": "25%" }
-          ]
+        "FertOwnFarm": {
+          "AnaerobicLagoon": "25%"
         },
-        {
-          "ColumnName": "DirectApplication",
-          "Rows": [
-            { "RowName": "DrainsToPaddock", "Value": "50%" }
-          ]
+        "DirectApplication": {
+          "AnaerobicLagoon": "50%"
         }
-      ]
+      }
     },
     {
-    "TableName": "Dairy_Stage1MMS_1_SolidStorage_Destinations",
-	  "ColumnOffset": 0,
-	  "RowOffset": 0,
-      "Cols": [
-        {
-          "ColumnName": "Sold",
-          "Rows": [
-            { "RowName": "SolidStorage", "Value": "25%" }
-          ]
+      "TableName": "X_Table_Dairy_Stage1MMS_1_SumpAndDispersal_Destinations",
+      "MatrixType": "ColsToRows",
+      "ColumnOffset": 0,
+      "RowOffset": 0,
+      "Cols": {
+        "Sold": {
+          "SumpAndDispersal": "25%"
         },
-        {
-          "ColumnName": "FertOwnFarm",
-          "Rows": [
-            { "RowName": "SolidStorage", "Value": "25%" }
-          ]
+        "FertOwnFarm": {
+          "SumpAndDispersal": "25%"
         },
-        {
-          "ColumnName": "DirectApplication",
-          "Rows": [
-            { "RowName": "SolidStorage", "Value": "50%" }
-          ]
+        "DirectApplication": {
+          "SumpAndDispersal": "50%"
         }
-      ]
+      }
     },
     {
-    "TableName": "Dairy_Stage1MMS_2_AnaerobicLagoon",
-	  "ColumnOffset": null,
-	  "RowOffset": 0,
-      "Cols": [
-        {
-          "ColumnName": "MilkingCows",
-          "Rows": [
-            { "RowName": "AnaerobicLagoon", "Value": "25%" }
-          ]
+      "TableName": "X_Table_Dairy_Stage1MMS_1_DrainsToPaddock_Destinations",
+      "MatrixType": "ColsToRows",
+      "ColumnOffset": 0,
+      "RowOffset": 0,
+      "Cols": {
+        "Sold": {
+          "DrainsToPaddock": "25%"
         },
-        {
-          "ColumnName": "HeifersOver1Year",
-          "Rows": [
-            { "RowName": "AnaerobicLagoon", "Value": "25%" }
-          ]
+        "FertOwnFarm": {
+          "DrainsToPaddock": "25%"
         },
-        {
-          "ColumnName": "HeifersUnder1Year",
-          "Rows": [
-            { "RowName": "AnaerobicLagoon", "Value": "25%" }
-          ]
-        },
-        {
-          "ColumnName": "BullsOver1Year",
-          "Rows": [
-            { "RowName": "AnaerobicLagoon", "Value": "25%" }
-          ]
-        },
-        {
-          "ColumnName": "BullsUnder1Year",
-          "Rows": [
-            { "RowName": "AnaerobicLagoon", "Value": "25%" }
-          ]
+        "DirectApplication": {
+          "DrainsToPaddock": "50%"
         }
-      ]
+      }
     },
     {
-    "TableName": "Dairy_Stage1MMS_2_SumpAndDispersal",
-	  "ColumnOffset": null,
-	  "RowOffset": 0,
-      "Cols": [
-        {
-          "ColumnName": "MilkingCows",
-          "Rows": [
-            { "RowName": "SumpAndDispersal", "Value": "25%" }
-          ]
+      "TableName": "X_Table_Dairy_Stage1MMS_1_SolidStorage_Destinations",
+      "MatrixType": "ColsToRows",
+      "ColumnOffset": 0,
+      "RowOffset": 0,
+      "Cols": {
+        "Sold": {
+          "SolidStorage": "25%"
         },
-        {
-          "ColumnName": "HeifersOver1Year",
-          "Rows": [
-            { "RowName": "SumpAndDispersal", "Value": "25%" }
-          ]
+        "FertOwnFarm": {
+          "SolidStorage": "25%"
         },
-        {
-          "ColumnName": "HeifersUnder1Year",
-          "Rows": [
-            { "RowName": "SumpAndDispersal", "Value": "25%" }
-          ]
-        },
-        {
-          "ColumnName": "BullsOver1Year",
-          "Rows": [
-            { "RowName": "SumpAndDispersal", "Value": "25%" }
-          ]
-        },
-        {
-          "ColumnName": "BullsUnder1Year",
-          "Rows": [
-            { "RowName": "SumpAndDispersal", "Value": "25%" }
-          ]
+        "DirectApplication": {
+          "SolidStorage": "50%"
         }
-      ]
+      }
     },
     {
-    "TableName": "Dairy_Stage1MMS_2_DrainsToPaddock",
-	  "ColumnOffset": null,
-	  "RowOffset": 0,
-      "Cols": [
-        {
-          "ColumnName": "MilkingCows",
-          "Rows": [
-            { "RowName": "DrainsToPaddock", "Value": "25%" }
-          ]
+      "TableName": "X_Table_Dairy_Stage1MMS_2_AnaerobicLagoon",
+      "MatrixType": "ColsToRows",
+      "ColumnOffset": null,
+      "RowOffset": 0,
+      "Cols": {
+        "MilkingCows": {
+          "AnaerobicLagoon": "25%"
         },
-        {
-          "ColumnName": "HeifersOver1Year",
-          "Rows": [
-            { "RowName": "DrainsToPaddock", "Value": "25%" }
-          ]
+        "HeifersOver1Year": {
+          "AnaerobicLagoon": "25%"
         },
-        {
-          "ColumnName": "HeifersUnder1Year",
-          "Rows": [
-            { "RowName": "DrainsToPaddock", "Value": "25%" }
-          ]
+        "HeifersUnder1Year": {
+          "AnaerobicLagoon": "25%"
         },
-        {
-          "ColumnName": "BullsOver1Year",
-          "Rows": [
-            { "RowName": "DrainsToPaddock", "Value": "25%" }
-          ]
+        "BullsOver1Year": {
+          "AnaerobicLagoon": "25%"
         },
-        {
-          "ColumnName": "BullsUnder1Year",
-          "Rows": [
-            { "RowName": "DrainsToPaddock", "Value": "25%" }
-          ]
+        "BullsUnder1Year": {
+          "AnaerobicLagoon": "25%"
         }
-      ]
+      }
     },
     {
-    "TableName": "Dairy_Stage1MMS_2_SolidStorage",
-	  "ColumnOffset": null,
-	  "RowOffset": 0,
-      "Cols": [
-        {
-          "ColumnName": "MilkingCows",
-          "Rows": [
-            { "RowName": "SolidStorage", "Value": "25%" }
-          ]
+      "TableName": "X_Table_Dairy_Stage1MMS_2_SumpAndDispersal",
+      "MatrixType": "ColsToRows",
+      "ColumnOffset": null,
+      "RowOffset": 0,
+      "Cols": {
+        "MilkingCows": {
+          "SumpAndDispersal": "25%"
         },
-        {
-          "ColumnName": "HeifersOver1Year",
-          "Rows": [
-            { "RowName": "SolidStorage", "Value": "25%" }
-          ]
+        "HeifersOver1Year": {
+          "SumpAndDispersal": "25%"
         },
-        {
-          "ColumnName": "HeifersUnder1Year",
-          "Rows": [
-            { "RowName": "SolidStorage", "Value": "25%" }
-          ]
+        "HeifersUnder1Year": {
+          "SumpAndDispersal": "25%"
         },
-        {
-          "ColumnName": "BullsOver1Year",
-          "Rows": [
-            { "RowName": "SolidStorage", "Value": "25%" }
-          ]
+        "BullsOver1Year": {
+          "SumpAndDispersal": "25%"
         },
-        {
-          "ColumnName": "BullsUnder1Year",
-          "Rows": [
-            { "RowName": "SolidStorage", "Value": "25%" }
-          ]
+        "BullsUnder1Year": {
+          "SumpAndDispersal": "25%"
         }
-      ]
+      }
     },
     {
-    "TableName": "Dairy_Stage1MMS_2_AnaerobicLagoon_Destinations",
-	  "ColumnOffset": 0,
-	  "RowOffset": 0,
-      "Cols": [
-        {
-          "ColumnName": "Sold",
-          "Rows": [
-            { "RowName": "AnaerobicLagoon", "Value": "25%" }
-          ]
+      "TableName": "X_Table_Dairy_Stage1MMS_2_DrainsToPaddock",
+      "MatrixType": "ColsToRows",
+      "ColumnOffset": null,
+      "RowOffset": 0,
+      "Cols": {
+        "MilkingCows": {
+          "DrainsToPaddock": "25%"
         },
-        {
-          "ColumnName": "FertOwnFarm",
-          "Rows": [
-            { "RowName": "AnaerobicLagoon", "Value": "25%" }
-          ]
+        "HeifersOver1Year": {
+          "DrainsToPaddock": "25%"
         },
-        {
-          "ColumnName": "DirectApplication",
-          "Rows": [
-            { "RowName": "AnaerobicLagoon", "Value": "50%" }
-          ]
+        "HeifersUnder1Year": {
+          "DrainsToPaddock": "25%"
+        },
+        "BullsOver1Year": {
+          "DrainsToPaddock": "25%"
+        },
+        "BullsUnder1Year": {
+          "DrainsToPaddock": "25%"
         }
-      ]
+      }
     },
     {
-    "TableName": "Dairy_Stage1MMS_2_SumpAndDispersal_Destinations",
-	  "ColumnOffset": 0,
-	  "RowOffset": 0,
-      "Cols": [
-        {
-          "ColumnName": "Sold",
-          "Rows": [
-            { "RowName": "SumpAndDispersal", "Value": "25%" }
-          ]
+      "TableName": "X_Table_Dairy_Stage1MMS_2_SolidStorage",
+      "MatrixType": "ColsToRows",
+      "ColumnOffset": null,
+      "RowOffset": 0,
+      "Cols": {
+        "MilkingCows": {
+          "SolidStorage": "25%"
         },
-        {
-          "ColumnName": "FertOwnFarm",
-          "Rows": [
-            { "RowName": "SumpAndDispersal", "Value": "25%" }
-          ]
+        "HeifersOver1Year": {
+          "SolidStorage": "25%"
         },
-        {
-          "ColumnName": "DirectApplication",
-          "Rows": [
-            { "RowName": "SumpAndDispersal", "Value": "50%" }
-          ]
+        "HeifersUnder1Year": {
+          "SolidStorage": "25%"
+        },
+        "BullsOver1Year": {
+          "SolidStorage": "25%"
+        },
+        "BullsUnder1Year": {
+          "SolidStorage": "25%"
         }
-      ]
+      }
     },
     {
-    "TableName": "Dairy_Stage1MMS_2_DrainsToPaddock_Destinations",
-	  "ColumnOffset": 0,
-	  "RowOffset": 0,
-      "Cols": [
-        {
-          "ColumnName": "Sold",
-          "Rows": [
-            { "RowName": "DrainsToPaddock", "Value": "25%" }
-          ]
+      "TableName": "X_Table_Dairy_Stage1MMS_2_AnaerobicLagoon_Destinations",
+      "MatrixType": "ColsToRows",
+      "ColumnOffset": 0,
+      "RowOffset": 0,
+      "Cols": {
+        "Sold": {
+          "AnaerobicLagoon": "25%"
         },
-        {
-          "ColumnName": "FertOwnFarm",
-          "Rows": [
-            { "RowName": "DrainsToPaddock", "Value": "25%" }
-          ]
+        "FertOwnFarm": {
+          "AnaerobicLagoon": "25%"
         },
-        {
-          "ColumnName": "DirectApplication",
-          "Rows": [
-            { "RowName": "DrainsToPaddock", "Value": "50%" }
-          ]
+        "DirectApplication": {
+          "AnaerobicLagoon": "50%"
         }
-      ]
+      }
     },
     {
-    "TableName": "Dairy_Stage1MMS_2_SolidStorage_Destinations",
-	  "ColumnOffset": 0,
-	  "RowOffset": 0,
-      "Cols": [
-        {
-          "ColumnName": "Sold",
-          "Rows": [
-            { "RowName": "SolidStorage", "Value": "25%" }
-          ]
+      "TableName": "X_Table_Dairy_Stage1MMS_2_SumpAndDispersal_Destinations",
+      "MatrixType": "ColsToRows",
+      "ColumnOffset": 0,
+      "RowOffset": 0,
+      "Cols": {
+        "Sold": {
+          "SumpAndDispersal": "25%"
         },
-        {
-          "ColumnName": "FertOwnFarm",
-          "Rows": [
-            { "RowName": "SolidStorage", "Value": "25%" }
-          ]
+        "FertOwnFarm": {
+          "SumpAndDispersal": "25%"
         },
-        {
-          "ColumnName": "DirectApplication",
-          "Rows": [
-            { "RowName": "SolidStorage", "Value": "50%" }
-          ]
+        "DirectApplication": {
+          "SumpAndDispersal": "50%"
         }
-      ]
+      }
+    },
+    {
+      "TableName": "X_Table_Dairy_Stage1MMS_2_DrainsToPaddock_Destinations",
+      "MatrixType": "ColsToRows",
+      "ColumnOffset": 0,
+      "RowOffset": 0,
+      "Cols": {
+        "Sold": {
+          "DrainsToPaddock": "25%"
+        },
+        "FertOwnFarm": {
+          "DrainsToPaddock": "25%"
+        },
+        "DirectApplication": {
+          "DrainsToPaddock": "50%"
+        }
+      }
+    },
+    {
+      "TableName": "X_Table_Dairy_Stage1MMS_2_SolidStorage_Destinations",
+      "MatrixType": "ColsToRows",
+      "ColumnOffset": 0,
+      "RowOffset": 0,
+      "Cols": {
+        "Sold": {
+          "SolidStorage": "25%"
+        },
+        "FertOwnFarm": {
+          "SolidStorage": "25%"
+        },
+        "DirectApplication": {
+          "SolidStorage": "50%"
+        }
+      }
     }
-]
-
+  ]
 }

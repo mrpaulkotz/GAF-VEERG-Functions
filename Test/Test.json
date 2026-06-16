@@ -1,5 +1,11 @@
 {
     "Tests": {
+        "Fertiliser": {
+            "TestID": "5_Fertiliser",
+            "TestExcelFile": "5_Fertiliser",
+            "TestInputFile": "Fertiliser/TestInput_Fertiliser.json",
+            "TestResultsFile": "Fertiliser/TestResults_Fertiliser.json"
+        },
         "EntericMethane": {
             "Feedlot": {
                 "TestID": "3_1_Enteric_Feedlot",
