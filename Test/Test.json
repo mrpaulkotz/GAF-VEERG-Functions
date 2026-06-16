@@ -20,6 +20,18 @@
                 "TestExcelFile": "4_1_ManureManagement_Feedlot",
                 "TestInputFile": "ManureManagement/Feedlot/TestInput_ManureManagement_Feedlot.json",
                 "TestResultsFile": "ManureManagement/Feedlot/TestResults_ManureManagement_Feedlot.json"
+            },
+            "Dairy": {
+                "TestID": "4_3_ManureManagement_Dairy",
+                "TestExcelFile": "4_3_ManureManagement_Dairy",
+                "TestInputFile": "ManureManagement/Dairy/TestInput_ManureManagement_Dairy.json",
+                "TestResultsFile": "ManureManagement/Dairy/TestResults_ManureManagement_Dairy.json"
+            },
+            "Poultry": {
+                "TestID": "4_6_ManureManagement_Poultry",
+                "TestExcelFile": "4_6_ManureManagement_Poultry",
+                "TestInputFile": "ManureManagement/Poultry/TestInput_ManureManagement_Poultry.json",
+                "TestResultsFile": "ManureManagement/Poultry/TestResults_ManureManagement_Poultry.json"
             }
         }
     }

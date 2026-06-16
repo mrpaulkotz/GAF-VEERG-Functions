@@ -1,0 +1,433 @@
+{
+	"X_Cell_Site_FarmName": "My test farm",
+	"X_Cell_Site_ReportingEntityName": "My test Farms Pty Ltd",
+	"X_Cell_Site_StartDate": "1/1/2025",
+	"X_Cell_Site_State": "Western Australia",
+
+	"X_Cell_Site_Region": "Western Australia - Outback (South)",
+	"X_Cell_Site_LeachingZone": "NO - Not in leaching zone",
+	"X_Cell_Site_Elevation": 307.7,
+	"X_Cell_Site_AverageTemperature": 18,
+	"X_Cell_Site_TotalRainfall": 601,
+	"X_Cell_Site_PotentialEvapotranspiration": 1326,
+	"X_Cell_Site_FrostDays": 7,
+
+  "X_Cell_Poultry_ProductionSystem": "Cage",
+
+  "X_Cell_Dairy_ManureAppliedProductionSystem": "Crop",
+  "X_Cell_Dairy_ManureAppliedIrrigationMethod": "Sprinkler Irrigation",
+
+
+
+	 "InputTables": [
+    {
+    "TableName": "Poultry_Movement",
+	  "ColumnOffset": null,
+	  "RowOffset": null,
+      "Cols": [
+        {
+          "ColumnName": "Layers",
+          "Rows": [
+            { "RowName": "Duration", "Value": 365 },
+            { "RowName": "Head", "Value": 100 }
+          ]
+        },
+		    {
+          "ColumnName": "MeatChickenGrowers",
+          "Rows": [
+            { "RowName": "Duration", "Value": 365 },
+            { "RowName": "Head", "Value": 100 }
+          ]
+        },
+		    {
+          "ColumnName": "MeatChickenBreeders",
+          "Rows": [
+            { "RowName": "Duration", "Value": 365 },
+            { "RowName": "Head", "Value": 100 }
+          ]
+        },
+        {
+          "ColumnName": "Others",
+          "Rows": [
+            { "RowName": "Duration", "Value": 365 },
+            { "RowName": "Head", "Value": 100 }
+          ]
+        }
+      ]
+    },
+    {
+    "TableName": "Poultry_Diet_Method1",
+	  "ColumnOffset": null,
+	  "RowOffset": null,
+      "Cols": [
+        {
+          "ColumnName": "Layers",
+          "Rows": [
+            { "RowName": "DryMatterIntake", "Value": 0.086 },
+            { "RowName": "DryMatterDigestibility", "Value": 0.8 },
+            { "RowName": "CrudeProtein", "Value": 0.19 }
+          ]
+        },
+		    {
+          "ColumnName": "MeatChickenGrowers",
+          "Rows": [
+            { "RowName": "DryMatterIntake", "Value": 0.093 },
+            { "RowName": "DryMatterDigestibility", "Value": 0.8 },
+            { "RowName": "CrudeProtein", "Value": 0.23 }
+          ]
+        },
+		    {
+          "ColumnName": "MeatChickenBreeders",
+          "Rows": [
+            { "RowName": "DryMatterIntake", "Value": 0.103 },
+            { "RowName": "DryMatterDigestibility", "Value": 0.8 },
+            { "RowName": "CrudeProtein", "Value": 0.19 }
+          ]
+        },
+        {
+          "ColumnName": "Others",
+          "Rows": [
+            { "RowName": "DryMatterIntake", "Value": 0.093 },
+            { "RowName": "DryMatterDigestibility", "Value": 0.8 },
+            { "RowName": "CrudeProtein", "Value": 0.23 }
+          ]
+        }
+      ]
+    },
+      {
+      "TableName": "Poultry_Diet_Method2",
+      "ColumnOffset": null,
+      "RowOffset": null,
+        "Cols": [
+          {
+            "ColumnName": "Layers",
+            "Rows": [
+              { "RowName": "DryMatterIntake", "Value": 0.086 },
+              { "RowName": "DryMatterDigestibility", "Value": 0.8 },
+              { "RowName": "CrudeProtein", "Value": 0.19 }
+            ]
+          },
+          {
+            "ColumnName": "MeatChickenGrowers",
+            "Rows": [
+              { "RowName": "DryMatterIntake", "Value": 0.093 },
+              { "RowName": "DryMatterDigestibility", "Value": 0.8 },
+              { "RowName": "CrudeProtein", "Value": 0.23 }
+            ]
+          },
+          {
+            "ColumnName": "MeatChickenBreeders",
+            "Rows": [
+              { "RowName": "DryMatterIntake", "Value": 0.103 },
+              { "RowName": "DryMatterDigestibility", "Value": 0.8 },
+              { "RowName": "CrudeProtein", "Value": 0.19 }
+            ]
+          },
+          {
+            "ColumnName": "Others",
+            "Rows": [
+              { "RowName": "DryMatterIntake", "Value": 0.093 },
+              { "RowName": "DryMatterDigestibility", "Value": 0.8 },
+              { "RowName": "CrudeProtein", "Value": 0.23 }
+            ]
+          }
+        ]
+      },
+     {
+    "TableName": "Poultry_Stage1MMS",
+	  "ColumnOffset": null,
+	  "RowOffset": null,
+      "Cols": [
+        {
+          "ColumnName": "Layers",
+          "Rows": [
+            { "RowName": "PoultryManureWithBedding", "Value":"30%"},
+            { "RowName": "BeltManureRemoval", "Value": "30%" },
+            { "RowName": "ManureStoredInHouse", "Value": "30%" },
+            { "RowName": "PastureRangeAndPaddock", "Value": "10%" }
+          ]
+        },
+		    {
+          "ColumnName": "MeatChickenGrowers",
+          "Rows": [
+            { "RowName": "PoultryManureWithBedding", "Value":"30%"},
+            { "RowName": "BeltManureRemoval", "Value": "30%" },
+            { "RowName": "ManureStoredInHouse", "Value": "30%" },
+            { "RowName": "PastureRangeAndPaddock", "Value": "10%" }
+          ]
+        },
+		    {
+          "ColumnName": "MeatChickenBreeders",
+          "Rows": [
+            { "RowName": "PoultryManureWithBedding", "Value":"30%"},
+            { "RowName": "BeltManureRemoval", "Value": "30%" },
+            { "RowName": "ManureStoredInHouse", "Value": "30%" },
+            { "RowName": "PastureRangeAndPaddock", "Value": "10%" }
+          ]
+        },
+        {
+          "ColumnName": "Others",
+          "Rows": [
+            { "RowName": "PoultryManureWithBedding", "Value":"30%"},
+            { "RowName": "BeltManureRemoval", "Value": "30%" },
+            { "RowName": "ManureStoredInHouse", "Value": "30%" },
+            { "RowName": "PastureRangeAndPaddock", "Value": "10%" }
+          ]
+        }
+      ]
+    },
+    {
+    "TableName": "Poultry_Stage2MMS_PoultryManureWithBedding",
+	  "ColumnOffset": null,
+	  "RowOffset": null,
+      "Cols": [
+        {
+          "ColumnName": "Layers",
+          "Rows": [
+            { "RowName": "SolidStorage", "Value":"20%"},
+            { "RowName": "CompostingPassiveWindrow", "Value": "20%" },
+            { "RowName": "DigesterCoveredLagoons", "Value": "20%" },
+            { "RowName": "DirectProcessing", "Value": "20%" },
+            { "RowName": "DirectApplication", "Value": "20%" }
+          ]
+        },
+		    {
+          "ColumnName": "MeatChickenGrowers",
+          "Rows": [
+            { "RowName": "SolidStorage", "Value":"20%"},
+            { "RowName": "CompostingPassiveWindrow", "Value": "20%" },
+            { "RowName": "DigesterCoveredLagoons", "Value": "20%" },
+            { "RowName": "DirectProcessing", "Value": "20%" },
+            { "RowName": "DirectApplication", "Value": "20%" }
+          ]
+        },
+		    {
+          "ColumnName": "MeatChickenBreeders",
+          "Rows": [
+            { "RowName": "SolidStorage", "Value":"20%"},
+            { "RowName": "CompostingPassiveWindrow", "Value": "20%" },
+            { "RowName": "DigesterCoveredLagoons", "Value": "20%" },
+            { "RowName": "DirectProcessing", "Value": "20%" },
+            { "RowName": "DirectApplication", "Value": "20%" }
+          ]
+        },
+        {
+          "ColumnName": "Others",
+          "Rows": [
+            { "RowName": "SolidStorage", "Value":"20%"},
+            { "RowName": "CompostingPassiveWindrow", "Value": "20%" },
+            { "RowName": "DigesterCoveredLagoons", "Value": "20%" },
+            { "RowName": "DirectProcessing", "Value": "20%" },
+            { "RowName": "DirectApplication", "Value": "20%" }
+          ]
+        }
+      ]
+    },
+    {
+    "TableName": "Poultry_Stage2MMS_BeltManureRemoval",
+	  "ColumnOffset": null,
+	  "RowOffset": null,
+      "Cols": [
+        {
+          "ColumnName": "Layers",
+          "Rows": [
+            { "RowName": "SolidStorage", "Value":"20%"},
+            { "RowName": "CompostingPassiveWindrow", "Value": "20%" },
+            { "RowName": "DigesterCoveredLagoons", "Value": "20%" },
+            { "RowName": "DirectProcessing", "Value": "20%" },
+            { "RowName": "DirectApplication", "Value": "20%" }
+          ]
+        },
+		    {
+          "ColumnName": "MeatChickenGrowers",
+          "Rows": [
+            { "RowName": "SolidStorage", "Value":"20%"},
+            { "RowName": "CompostingPassiveWindrow", "Value": "20%" },
+            { "RowName": "DigesterCoveredLagoons", "Value": "20%" },
+            { "RowName": "DirectProcessing", "Value": "20%" },
+            { "RowName": "DirectApplication", "Value": "20%" }
+          ]
+        },
+		    {
+          "ColumnName": "MeatChickenBreeders",
+          "Rows": [
+            { "RowName": "SolidStorage", "Value":"20%"},
+            { "RowName": "CompostingPassiveWindrow", "Value": "20%" },
+            { "RowName": "DigesterCoveredLagoons", "Value": "20%" },
+            { "RowName": "DirectProcessing", "Value": "20%" },
+            { "RowName": "DirectApplication", "Value": "20%" }
+          ]
+        },
+        {
+          "ColumnName": "Others",
+          "Rows": [
+            { "RowName": "SolidStorage", "Value":"20%"},
+            { "RowName": "CompostingPassiveWindrow", "Value": "20%" },
+            { "RowName": "DigesterCoveredLagoons", "Value": "20%" },
+            { "RowName": "DirectProcessing", "Value": "20%" },
+            { "RowName": "DirectApplication", "Value": "20%" }
+          ]
+        }
+      ]
+    },
+    {
+    "TableName": "Poultry_Stage2MMS_ManureStoredInHouse",
+	  "ColumnOffset": null,
+	  "RowOffset": null,
+      "Cols": [
+        {
+          "ColumnName": "Layers",
+          "Rows": [
+            { "RowName": "SolidStorage", "Value":"20%"},
+            { "RowName": "CompostingPassiveWindrow", "Value": "20%" },
+            { "RowName": "DigesterCoveredLagoons", "Value": "20%" },
+            { "RowName": "DirectProcessing", "Value": "20%" },
+            { "RowName": "DirectApplication", "Value": "20%" }
+          ]
+        },
+		    {
+          "ColumnName": "MeatChickenGrowers",
+          "Rows": [
+            { "RowName": "SolidStorage", "Value":"20%"},
+            { "RowName": "CompostingPassiveWindrow", "Value": "20%" },
+            { "RowName": "DigesterCoveredLagoons", "Value": "20%" },
+            { "RowName": "DirectProcessing", "Value": "20%" },
+            { "RowName": "DirectApplication", "Value": "20%" }
+          ]
+        },
+		    {
+          "ColumnName": "MeatChickenBreeders",
+          "Rows": [
+            { "RowName": "SolidStorage", "Value":"20%"},
+            { "RowName": "CompostingPassiveWindrow", "Value": "20%" },
+            { "RowName": "DigesterCoveredLagoons", "Value": "20%" },
+            { "RowName": "DirectProcessing", "Value": "20%" },
+            { "RowName": "DirectApplication", "Value": "20%" }
+          ]
+        },
+        {
+          "ColumnName": "Others",
+          "Rows": [
+            { "RowName": "SolidStorage", "Value":"20%"},
+            { "RowName": "CompostingPassiveWindrow", "Value": "20%" },
+            { "RowName": "DigesterCoveredLagoons", "Value": "20%" },
+            { "RowName": "DirectProcessing", "Value": "20%" },
+            { "RowName": "DirectApplication", "Value": "20%" }
+          ]
+        }
+      ]
+    },
+    {
+    "TableName": "Poultry_Stage2MMS_PoultryManureWithBedding_Destinations",
+	  "ColumnOffset": 0,
+	  "RowOffset": null,
+      "Cols": [
+        {
+          "ColumnName": "Sold",
+          "Rows": [
+            { "RowName": "SolidStorage", "Value":"25%"},
+            { "RowName": "CompostingPassiveWindrow", "Value": "25%" },
+            { "RowName": "DigesterCoveredLagoons", "Value": "25%" },
+            { "RowName": "DirectProcessing", "Value": "25%" },
+            { "RowName": "DirectApplication", "Value": "0%" }
+          ]
+        },
+		    {
+          "ColumnName": "FertOwnFarm",
+          "Rows": [
+            { "RowName": "SolidStorage", "Value":"25%"},
+            { "RowName": "CompostingPassiveWindrow", "Value": "25%" },
+            { "RowName": "DigesterCoveredLagoons", "Value": "25%" },
+            { "RowName": "DirectProcessing", "Value": "25%" },
+            { "RowName": "DirectApplication", "Value": "0%" }
+          ]
+        },
+		    {
+          "ColumnName": "DirectApplication",
+          "Rows": [
+            { "RowName": "SolidStorage", "Value":"50%"},
+            { "RowName": "CompostingPassiveWindrow", "Value": "50%" },
+            { "RowName": "DigesterCoveredLagoons", "Value": "50%" },
+            { "RowName": "DirectProcessing", "Value": "50%" },
+            { "RowName": "DirectApplication", "Value": "100%" }
+          ]
+        }
+      ]
+    },
+    {
+    "TableName": "Poultry_Stage2MMS_BeltManureRemoval_Destinations",
+	  "ColumnOffset": 0,
+	  "RowOffset": null,
+      "Cols": [
+        {
+          "ColumnName": "Sold",
+          "Rows": [
+            { "RowName": "SolidStorage", "Value":"25%"},
+            { "RowName": "CompostingPassiveWindrow", "Value": "25%" },
+            { "RowName": "DigesterCoveredLagoons", "Value": "25%" },
+            { "RowName": "DirectProcessing", "Value": "25%" },
+            { "RowName": "DirectApplication", "Value": "0%" }
+          ]
+        },
+		    {
+          "ColumnName": "FertOwnFarm",
+          "Rows": [
+            { "RowName": "SolidStorage", "Value":"25%"},
+            { "RowName": "CompostingPassiveWindrow", "Value": "25%" },
+            { "RowName": "DigesterCoveredLagoons", "Value": "25%" },
+            { "RowName": "DirectProcessing", "Value": "25%" },
+            { "RowName": "DirectApplication", "Value": "0%" }
+          ]
+        },
+		    {
+          "ColumnName": "DirectApplication",
+          "Rows": [
+            { "RowName": "SolidStorage", "Value":"50%"},
+            { "RowName": "CompostingPassiveWindrow", "Value": "50%" },
+            { "RowName": "DigesterCoveredLagoons", "Value": "50%" },
+            { "RowName": "DirectProcessing", "Value": "50%" },
+            { "RowName": "DirectApplication", "Value": "100%" }
+          ]
+        }
+      ]
+    },
+    {
+    "TableName": "Poultry_Stage2MMS_ManureStoredInHouse_Destinations",
+	  "ColumnOffset": 0,
+	  "RowOffset": null,
+      "Cols": [
+        {
+          "ColumnName": "Sold",
+          "Rows": [
+            { "RowName": "SolidStorage", "Value":"25%"},
+            { "RowName": "CompostingPassiveWindrow", "Value": "25%" },
+            { "RowName": "DigesterCoveredLagoons", "Value": "25%" },
+            { "RowName": "DirectProcessing", "Value": "25%" },
+            { "RowName": "DirectApplication", "Value": "0%" }
+          ]
+        },
+		    {
+          "ColumnName": "FertOwnFarm",
+          "Rows": [
+            { "RowName": "SolidStorage", "Value":"25%"},
+            { "RowName": "CompostingPassiveWindrow", "Value": "25%" },
+            { "RowName": "DigesterCoveredLagoons", "Value": "25%" },
+            { "RowName": "DirectProcessing", "Value": "25%" },
+            { "RowName": "DirectApplication", "Value": "0%" }
+          ]
+        },
+		    {
+          "ColumnName": "DirectApplication",
+          "Rows": [
+            { "RowName": "SolidStorage", "Value":"50%"},
+            { "RowName": "CompostingPassiveWindrow", "Value": "50%" },
+            { "RowName": "DigesterCoveredLagoons", "Value": "50%" },
+            { "RowName": "DirectProcessing", "Value": "50%" },
+            { "RowName": "DirectApplication", "Value": "100%" }
+          ]
+        }
+      ]
+    }
+]
+
+}

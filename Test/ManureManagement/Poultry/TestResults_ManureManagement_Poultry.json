@@ -1,0 +1,29 @@
+{
+	"VEERG_4_6_1_1__1_TotalAnnualMethaneEmissions_Result_Method1": 0.019999321,
+	"VEERG_4_6_1_1__1_TotalAnnualMethaneEmissions_Result_Method2": 0.019245864,
+
+	"VEERG_4_6_1_3__1_TotalAnnualDirectNitrousOxideEmissionsFromMMS_Result_Method1": 0.00057675,
+	"VEERG_4_6_1_3__1_TotalAnnualDirectNitrousOxideEmissionsFromMMS_Result_Method2": 0.00057675,
+
+	"VEERG_4_6_1_5__1_TotalAnnualAtmosphericDepositionEmissionsFromMMS_Result_Method1": 0.000228775,
+	"VEERG_4_6_1_5__1_TotalAnnualAtmosphericDepositionEmissionsFromMMS_Result_Method2": 0.000228775,
+
+	"VEERG_4_6_1_7__1_AnnualEmissionsFromLeachingAndRunoffFromMMS_Result_Method1": 3.47533E-06,
+	"VEERG_4_6_1_7__1_AnnualEmissionsFromLeachingAndRunoffFromMMS_Result_Method2": 3.47533E-06,
+
+	"VEERG_4_6_1_9__1_MassOfNitrogenAppliedToSoilsScope1_Result_Method1": 36.93077828,
+	"VEERG_4_6_1_9__1_MassOfNitrogenAppliedToSoilsScope1_Result_Method2": 36.93077828,
+
+	"VEERG_4_6_1_9__2_MassOfNitrogenAppliedToSoilsScope3_Result_Method1": 8.959389219,
+	"VEERG_4_6_1_9__2_MassOfNitrogenAppliedToSoilsScope3_Result_Method2": 8.959389219,
+
+	"VEERG_4_6_1_10__1_DirectNitrousOxideEmissionsFromPoultryManure_Result_Method1": 0.000234341,
+	"VEERG_4_6_1_10__1_DirectNitrousOxideEmissionsFromPoultryManure_Result_Method2": 0.000234341,
+
+	"VEERG_4_6_1_12__1_AtmosphericDepositionEmissionsFromPoultryManureOnPasture_Result_Method1": 1.72241E-05,
+	"VEERG_4_6_1_12__1_AtmosphericDepositionEmissionsFromPoultryManureOnPasture_Result_Method2": 1.72241E-05,
+
+	"VEERG_4_6_1_14__1_LeachingAndRunoffEmissionsFromPoultryManureOnPasture_Result_Method1": 2.57776E-06,
+	"VEERG_4_6_1_14__1_LeachingAndRunoffEmissionsFromPoultryManureOnPasture_Result_Method2": 2.57776E-06
+}
+
