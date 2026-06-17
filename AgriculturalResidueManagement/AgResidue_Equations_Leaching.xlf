@@ -100,8 +100,8 @@ VEERG_6_3_1_1__2__MassOfNitrogenLostThroughLeachingAndRunoff_Arguments
       LAMBDA(r,c, 
         INDEX({
           "M_cp","mass of nitrogen in crop residues c or pasture residues p applied to soils", "kg N", "Calc from 6.1.1.1 (2) and 6.2.1.1 (2)";
-          "FracWET_j","fraction of N that is available for leaching and runoff from the leaching zone z and irrigation type ir", "dimensionless", "Constant";
-          "FracLEACH","fraction of N that is lost through leaching and runoff", "dimensionless", "Constant";
+          "FracWET_j","fraction of N that is available for leaching and runoff from the leaching zone z and irrigation type ir", "fraction", "Constant";
+          "FracLEACH","fraction of N that is lost through leaching and runoff", "fraction", "Constant";
           "z", "Location in leaching zone", "", "Input";
           "c","Crop residue type", "", "Input";
           "p","Pasture residue type", "", "Input";

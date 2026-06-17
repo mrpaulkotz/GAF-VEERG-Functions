@@ -101,9 +101,9 @@ VEERG_6_2_1_1__2__MassOfNitrogenInPastureResidues_Arguments
           "A_p","area of pasture renewed or removed", "ha", "Input";
           "Y_p","average yield of pasture crop", "t DM/ha", "Constant";
           "NC_AGp","N content of above-ground pasture residue", "kg N/kg DM", "Constant";
-          "R_BGp","below-ground residue to above-ground residue ratio for pasture crop", "dimensionless", "Constant";
+          "R_BGp","below-ground residue to above-ground residue ratio for pasture crop", "", "Constant";
           "NC_BGp","N content of below-ground pasture crop residue", "kg N/kg DM", "Constant";
-          "FFOD_p","fraction of pasture yield that is removed", "dimensionless", "Constant";
+          "FFOD_p","fraction of pasture yield that is removed", "fraction", "Constant";
           "p","Pasture type", "", "Input"
         }, r, c)
       )
@@ -119,9 +119,9 @@ VEERG_6_2_1_1__2__MassOfNitrogenInPastureResidues_Arguments_Method2
           "A_p","area of pasture renewed or removed", "ha", "Input";
           "Y_p","average yield of pasture crop", "t DM/ha", "Input";
           "NC_AGp","N content of above-ground pasture residue", "kg N/kg DM", "Constant";
-          "R_BGp","below-ground residue to above-ground residue ratio for pasture crop", "dimensionless", "Constant";
+          "R_BGp","below-ground residue to above-ground residue ratio for pasture crop", "", "Constant";
           "NC_BGp","N content of below-ground pasture crop residue", "kg N/kg DM", "Constant";
-          "FFOD_p","fraction of pasture yield that is removed", "dimensionless", "Constant";
+          "FFOD_p","fraction of pasture yield that is removed", "fraction", "Constant";
           "p","Pasture type", "", "Input"
         }, r, c)
       )

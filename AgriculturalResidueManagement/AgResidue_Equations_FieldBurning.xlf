@@ -47,7 +47,7 @@ VEERG_6_4_1_1__1__MethaneEmissionsFromBurningOfCropResidues_Arguments
       LAMBDA(r,c,
         INDEX({
           "M_burnc","mass of residue burnt for crop type c", "kg", "Calculated from 6.4.1.1 (3)";
-          "CC_c","carbon mass fraction in the residues of crop type c", "dimensionless", "Constant";
+          "CC_c","carbon mass fraction in the residues of crop type c", "fraction", "Constant";
           "EF_CH4","emission factor for methane from burning of crop residues", "kg CH4 / kg CH4 burnt", "Constant";
           "C_CH4","factor to convert elemental mass of methane to molecular mass", "dimensionless", "Constant";
           "c","Crop type", "", "Input"
@@ -164,10 +164,10 @@ VEERG_6_4_1_1__3__MassOfCropResidueBurnt_Arguments
         INDEX({
           "P_c","annual production of crop type c", "kg", "Input";
           "R_AGc","residue to crop ratio of crop type c", "kg crop residue/kg crop", "Constant";
-          "S_c","fraction of residues of crop type c remaining at burning", "dimensionless", "Constant";
+          "S_c","fraction of residues of crop type c remaining at burning", "fraction", "Constant";
           "DM_c","dry matter content of crop type c", "kg dry weight/kg crop residue", "Constant";
-          "Z_c","burning efficiency (ratio of fuel burnt to fuel load) of crop type c", "dimensionless", "Constant";
-          "F_c","fraction of the annual production of crop type c that is burnt", "dimensionless", "Constant";
+          "Z_c","burning efficiency (ratio of fuel burnt to fuel load) of crop type c", "", "Constant";
+          "F_c","fraction of the annual production of crop type c that is burnt", "fraction", "Constant";
           "c","Crop type", "", "Input"
         }, r, c)
       )

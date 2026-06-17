@@ -1,0 +1,33 @@
+{
+	"X_Cell_Site_FarmName": "My test farm",
+	"X_Cell_Site_ReportingEntityName": "My test Farms Pty Ltd",
+	"X_Cell_Site_StartDate": "1/1/2025",
+	"X_Cell_Site_State": "Western Australia",
+
+	"X_Cell_Site_Region": "Western Australia - Outback (South)",
+	"X_Cell_Site_LeachingZone": "NO - Not in leaching zone",
+	"X_Cell_Site_Elevation": 307.7,
+	"X_Cell_Site_AverageTemperature": 18,
+	"X_Cell_Site_TotalRainfall": 601,
+	"X_Cell_Site_PotentialEvapotranspiration": 1326,
+	"X_Cell_Site_FrostDays": 7,
+
+  "X_Cell_Crop_CropType": "Wheat",
+  "X_Cell_Crop_CropPurpose": "Cash grain crop",
+  "X_Cell_Crop_IrrigationMethod": "Sprinkler Irrigation",
+  "X_Cell_Crop_AreaUnderCropping": 1000,
+  "X_Cell_Crop_YieldPerHectare": 10,
+  "X_Cell_Crop_PercentResidueBaled": "10%",
+  "X_Cell_Crop_AverageWeightPerBale": 60,
+  "X_Cell_Crop_NumberOfBales": 25000,
+  "X_Cell_Crop_PercentResidueGrazed": "1%",
+  "X_Cell_Crop_PercentResidueBurned": "30%",
+
+  "X_Cell_Pasture_PastureType": "Grass clover mixture",
+  "X_Cell_Pasture_IrrigationMethod": "Surface irrigation",
+  "X_Cell_Pasture_AreaUnderPasture": 1000,
+  "X_Cell_Pasture_YieldPerHectare": 8.34,
+  "X_Cell_Pasture_AreaRemovedOrRenewed": 500
+  
+}
+

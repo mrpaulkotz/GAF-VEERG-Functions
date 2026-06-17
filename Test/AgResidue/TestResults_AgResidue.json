@@ -1,0 +1,16 @@
+{
+	"VEERG_6_1_1_1__1__NitrousOxideEmissionsFromCropResidues_Result_Method1": 0.00066792,
+	"VEERG_6_1_1_1__1__NitrousOxideEmissionsFromCropResidues_Result_Method2": 0.00066792,
+
+	"VEERG_6_2_1_1__1__NitrousOxideEmissionsFromPastureResidues_Result_Method1": 5.83204E-07,
+	"VEERG_6_2_1_1__1__NitrousOxideEmissionsFromPastureResidues_Result_Method2": 5.83204E-07,
+
+	"VEERG_6_3_1_1__1__LeachingAndRunoffEmissionsCropAndPastureResidue_Result_Method1": 0.00035297,
+	"VEERG_6_3_1_1__1__LeachingAndRunoffEmissionsCropAndPastureResidue_Result_Method2": 0.00035297,
+
+	"VEERG_6_4_1_1__2__NitrousOxideEmissionsFromBurningOfCropResidues_Result_Method1": 0.000127693,
+	
+	"VEERG_6_4_1_1__1__MethaneEmissionsFromBurningOfCropResidues_Result_Method1": 0.0033264
+
+}
+

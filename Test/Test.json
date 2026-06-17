@@ -1,5 +1,11 @@
 {
     "Tests": {
+        "AgResidue": {
+            "TestID": "6_AgResidue",
+            "TestExcelFile": "6_AgriculturalResidue",
+            "TestInputFile": "AgResidue/TestInput_AgResidue.json",
+            "TestResultsFile": "AgResidue/TestResults_AgResidue.json"
+        },
         "Fertiliser": {
             "TestID": "5_Fertiliser",
             "TestExcelFile": "5_Fertiliser",

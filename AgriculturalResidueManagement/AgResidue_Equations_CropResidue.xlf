@@ -105,10 +105,10 @@ VEERG_6_1_1_1__2__MassOfNitrogenInCropResidues_Arguments
       LAMBDA(r,c, 
         INDEX({
           "P_c","annual production of crop c", "kg", "Input";
-          "R_AGc","residue to crop ratio for crop c", "dimensionless", "Constant";
-          "R_BGc","below ground-residue to above ground residue ratio for crop c", "dimensionless", "Constant";
-          "F_c","fraction of crop residue that is burnt for crop c", "dimensionless", "Input";
-          "FFOD_c","fraction of the crop residue that is removed for crop c", "dimensionless", "Constant";
+          "R_AGc","residue to crop ratio for crop c", "", "Constant";
+          "R_BGc","below ground-residue to above ground residue ratio for crop c", "", "Constant";
+          "F_c","fraction of crop residue that is burnt for crop c", "fraction", "Input";
+          "FFOD_c","fraction of the crop residue that is removed for crop c", "fraction", "Constant";
           "DM_c","dry matter content of crop c", "kg dry weight/kg crop residue", "Constant";
           "NC_AGc","nitrogen content of above-ground crop residue of crop c", "kg N/kg DM", "Constant";
           "NC_BGc","nitrogen content of below-ground crop residue of crop c", "kg N/kg DM", "Constant";
@@ -125,10 +125,10 @@ VEERG_6_1_1_1__2__MassOfNitrogenInCropResidues_Arguments_Method2
       LAMBDA(r,c, 
         INDEX({
           "P_c","annual production of crop c", "kg", "Input";
-          "R_AGc","residue to crop ratio for crop c", "dimensionless", "Constant";
-          "R_BGc","below ground-residue to above ground residue ratio for crop c", "dimensionless", "Constant";
-          "F_c","fraction of crop residue that is burnt for crop c", "dimensionless", "Input";
-          "FFOD_c","fraction of the crop residue that is removed for crop c", "dimensionless", "Calculated from 6.1.1.2 (1)";
+          "R_AGc","residue to crop ratio for crop c", "", "Constant";
+          "R_BGc","below ground-residue to above ground residue ratio for crop c", "", "Constant";
+          "F_c","fraction of crop residue that is burnt for crop c", "fraction", "Input";
+          "FFOD_c","fraction of the crop residue that is removed for crop c", "fraction", "Calculated from 6.1.1.2 (1)";
           "DM_c","dry matter content of crop c", "kg dry weight/kg crop residue", "Constant";
           "NC_AGc","nitrogen content of above-ground crop residue of crop c", "kg N/kg DM", "Constant";
           "NC_BGc","nitrogen content of below-ground crop residue of crop c", "kg N/kg DM", "Constant";
@@ -184,10 +184,10 @@ VEERG_6_1_1_2__1__FractionOfCropResidueRemovedBaled_Arguments
     MAKEARRAY(5, 4, 
       LAMBDA(r,c, 
         INDEX({
-          "B","number of bales generated", "dimensionless", "Input";
+          "B","number of bales generated", "", "Input";
           "M_B","mass of each bale", "kg", "Input";
           "P_c","annual production of crop c", "kg", "Input";
-          "R_AGc","residue to crop ratio for crop c", "dimensionless", "Input";
+          "R_AGc","residue to crop ratio for crop c", "", "Input";
           "c","Crop type", "", "Input"
         }, r, c)
       )
