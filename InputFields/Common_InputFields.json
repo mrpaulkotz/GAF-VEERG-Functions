@@ -1,0 +1,97 @@
+{
+    "InputCells":[
+        {
+            "CellName": "X_Cell_Site_FarmName",
+            "CellType": "text",
+            "ValidationRules": ""
+        },
+        {
+            "CellName": "X_Cell_Site_ReportingEntityName",
+            "CellType": "text",
+            "ValidationRules": ""
+        },
+        {
+            "CellName": "X_Cell_Site_StartDate",
+            "CellType": "date",
+            "ValidationRules": ""
+        },
+        {
+            "CellName": "X_Cell_Site_State",
+            "CellType": "select",
+            "Options": {
+                "New South Wales": "New South Wales",
+                "ACT": "ACT",
+                "Victoria": "Victoria",
+                "Queensland": "Queensland",
+                "South Australia": "South Australia",
+                "Western Australia": "Western Australia",
+                "Tasmania": "Tasmania",
+                "Northern Territory": "Northern Territory"
+            }
+        },
+        {
+            "CellName": "X_Cell_Site_Region",
+            "CellType": "select",
+            "Options": {
+                "New South Wales": "not used",
+                "ACT": "not used",
+                "Victoria": "not used",
+                "Queensland": "not used",
+                "South Australia": "not used",
+                "Western Australia": {
+                    "Bunbury": "Bunbury",
+                    "Mandurah": "Mandurah",
+                    "Perth - Inner": "Perth - Inner",
+                    "Perth - North East": "Perth - North East",
+                    "Perth - North West": "Perth - North West",
+                    "Perth - South East": "Perth - South East",
+                    "Perth - South West": "Perth - South West",
+                    "Western Australia - Wheat Belt": "Western Australia - Wheat Belt",
+                    "Western Australia - Outback (North)": "Western Australia - Outback (North)",
+                    "Western Australia - Outback (South)": "Western Australia - Outback (South)"
+
+                },
+                "Tasmania": "not used",
+                "Northern Territory": "not used"
+            }
+        },
+         {
+            "CellName": "X_Cell_Site_LeachingZone",
+            "CellType": "select",
+            "Options": {
+                "NO - Not in leaching zone": "NO - Not in leaching zone",
+                "YES - In leaching zone": "YES - In leaching zone"
+            }
+        },
+        {
+            "CellName": "X_Cell_Site_Elevation",
+            "CellType": "number",
+            "ValidationRules": ""
+        },
+        {
+            "CellName": "X_Cell_Site_AverageTemperature",
+            "CellType": "number",
+            "ValidationRules": ""
+        },
+        {
+            "CellName": "X_Cell_Site_TotalRainfall",
+            "CellType": "number",
+            "ValidationRules": ""
+        },
+        {
+            "CellName": "X_Cell_Site_PotentialEvapotranspiration",
+            "CellType": "number",
+            "ValidationRules": ""
+        },
+        {
+            "CellName": "X_Cell_Site_FrostDays",
+            "CellType": "number",
+            "ValidationRules": ""
+        },
+        {
+          "CellName": "X_Cell_Fertiliser_ProductionSystem",
+          "CellType": "text",
+          "ValidationRules": ""
+        }
+    ]
+  }
