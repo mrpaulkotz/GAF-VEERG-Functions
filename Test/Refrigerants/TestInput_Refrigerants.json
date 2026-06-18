@@ -1,0 +1,49 @@
+{
+"InputTables": [
+    {
+      "TableName": "Table_Input_Refrigerant",
+      "MatrixType": "RowsToCols",
+      "ColumnOffset": 0,
+      "RowOffset": null,
+      "Rows": {
+        "RefrigerantUnit1": {
+          "UnitName": "Cool room",
+          "ApplianceType": "Domestic refrigerators",
+          "Refrigerant": "R-402A",
+          "RefrigerantGasCapacity": 10,
+          "NumberOfUnits": 5
+        },
+        "RefrigerantUnit2": {
+          "UnitName": "Office air con units",
+          "ApplianceType": "Domestic A/C split",
+          "Refrigerant": "R-422B",
+          "RefrigerantGasCapacity": 10,
+          "NumberOfUnits": 5
+        },
+        "RefrigerantUnit3": {
+          "UnitName": "Car AC",
+          "ApplianceType": "Light vehicle A/C",
+          "Refrigerant": "R-400 60/40",
+          "RefrigerantGasCapacity": 10,
+          "NumberOfUnits": 13
+        },
+        "RefrigerantUnit4": {
+          "UnitName": "Storage AC",
+          "ApplianceType": "Domestic A/C split",
+          "Refrigerant": "R-400 60/40",
+          "RefrigerantGasCapacity": 10,
+          "NumberOfUnits": 10
+        },
+        "RefrigerantUnit5": {
+          "UnitName": "Refrigerated trucks",
+          "ApplianceType": "Transport refrigeration",
+          "Refrigerant": "R-504",
+          "RefrigerantGasCapacity": 10,
+          "NumberOfUnits": 10
+        }
+      }
+    }
+  ]
+
+}
+

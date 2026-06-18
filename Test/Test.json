@@ -45,6 +45,24 @@
                 "TestInputFile": "ManureManagement/Poultry/TestInput_ManureManagement_Poultry.json",
                 "TestResultsFile": "ManureManagement/Poultry/TestResults_ManureManagement_Poultry.json"
             }
+        },
+        "Refrigerants": {
+            "TestID": "9_Refrigerants",
+            "TestExcelFile": "9_Refrigerants",
+            "TestInputFile": "Refrigerants/TestInput_Refrigerants.json",
+            "TestResultsFile": "Refrigerants/TestResults_Refrigerants.json"
+        },
+        "RiceCultivation": {
+            "TestID": "7_RiceCultivation",
+            "TestExcelFile": "7_RiceCultivation",
+            "TestInputFile": "RiceCultivation/TestInput_RiceCultivation.json",
+            "TestResultsFile": "RiceCultivation/TestResults_RiceCultivation.json"
+        },
+        "WasteSolid": {
+            "TestID": "10_WasteSolid",
+            "TestExcelFile": "10_SolidWaste",
+            "TestInputFile": "WasteSolid/TestInput_WasteSolid.json",
+            "TestResultsFile": "WasteSolid/TestResults_WasteSolid.json"
         }
     }
 }

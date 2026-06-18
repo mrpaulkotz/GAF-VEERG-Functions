@@ -1,0 +1,201 @@
+{
+"InputTables": [
+    {
+      "TableName": "Table_Input_SolidWaste",
+      "MatrixType": "RowsToCols",
+      "ColumnOffset": 0,
+      "RowOffset": null,
+      "Rows": {
+        "Treatment1": {
+          "Description": "Compost paper and cardboard on site (tonnes)",
+          "TreatmentType": "Composting",
+          "WasteType": "Paper and cardboard",
+          "TreatmentLocation": "Removed and treated off-site",
+          "Amount": 50,
+          "AmountUnit": "tonnes"
+        },
+        "Treatment2": {
+          "Description": "Compost paper and cardboard on site (m3)",
+          "TreatmentType": "Composting",
+          "WasteType": "Paper and cardboard",
+          "TreatmentLocation": "Treated on-site",
+          "Amount": 50,
+          "AmountUnit": "cubic metres m3"
+        },
+        "Treatment3": {
+          "Description": "Compost food waste on site (tonnes)",
+          "TreatmentType": "Composting",
+          "WasteType": "Food waste (including animal carcasses, spoiled animal feed or crop)",
+          "TreatmentLocation": "Removed and treated off-site",
+          "Amount": 50,
+          "AmountUnit": "tonnes"
+        },
+        "Treatment4": {
+          "Description": "Compost food waste on site (m3)",
+          "TreatmentType": "Composting",
+          "WasteType": "Food waste (including animal carcasses, spoiled animal feed or crop)",
+          "TreatmentLocation": "Treated on-site",
+          "Amount": 50,
+          "AmountUnit": "cubic metres m3"
+        },
+        "Treatment5": {
+          "Description": "Landfill food waste offsite (tonnes)",
+          "TreatmentType": "Landfill",
+          "WasteType": "Food waste (including animal carcasses, spoiled animal feed or crop)",
+          "TreatmentLocation": "Removed and treated off-site",
+          "Amount": 50,
+          "AmountUnit": "tonnes"
+        },
+        "Treatment6": {
+          "Description": "Landfill food waste offsite (m3)",
+          "TreatmentType": "Landfill",
+          "WasteType": "Food waste (including animal carcasses, spoiled animal feed or crop)",
+          "TreatmentLocation": "Removed and treated off-site",
+          "Amount": 50,
+          "AmountUnit": "cubic metres m3"
+        },
+        "Treatment7": {
+          "Description": "Landfill food waste on site (tonnes)",
+          "TreatmentType": "Landfill",
+          "WasteType": "Food waste (including animal carcasses, spoiled animal feed or crop)",
+          "TreatmentLocation": "Treated on-site",
+          "Amount": 50,
+          "AmountUnit": "tonnes"
+        },
+        "Treatment8": {
+          "Description": "Landfill food waste on site (m3)",
+          "TreatmentType": "Landfill",
+          "WasteType": "Food waste (including animal carcasses, spoiled animal feed or crop)",
+          "TreatmentLocation": "Treated on-site",
+          "Amount": 50,
+          "AmountUnit": "cubic metres m3"
+        },
+        "Treatment9": {
+          "Description": "Landfill Paper offsite (tonnes)",
+          "TreatmentType": "Landfill",
+          "WasteType": "Paper and cardboard",
+          "TreatmentLocation": "Removed and treated off-site",
+          "Amount": 50,
+          "AmountUnit": "tonnes"
+        },
+        "Treatment10": {
+          "Description": "Landfill Paper waste offsite (m3)",
+          "TreatmentType": "Landfill",
+          "WasteType": "Paper and cardboard",
+          "TreatmentLocation": "Removed and treated off-site",
+          "Amount": 50,
+          "AmountUnit": "cubic metres m3"
+        },
+        "Treatment11": {
+          "Description": "Landfill Paper waste on site (tonnes)",
+          "TreatmentType": "Landfill",
+          "WasteType": "Paper and cardboard",
+          "TreatmentLocation": "Treated on-site",
+          "Amount": 50,
+          "AmountUnit": "tonnes"
+        },
+        "Treatment12": {
+          "Description": "Landfill Paper on site (m3)",
+          "TreatmentType": "Landfill",
+          "WasteType": "Paper and cardboard",
+          "TreatmentLocation": "Treated on-site",
+          "Amount": 50,
+          "AmountUnit": "cubic metres m3"
+        },
+        "Treatment13": {
+          "Description": "Landfill Green waste offsite (tonnes)",
+          "TreatmentType": "Landfill",
+          "WasteType": "Green waste (including crop residues or prunings)",
+          "TreatmentLocation": "Removed and treated off-site",
+          "Amount": 50,
+          "AmountUnit": "tonnes"
+        },
+        "Treatment14": {
+          "Description": "Landfill Green waste offsite (m3)",
+          "TreatmentType": "Landfill",
+          "WasteType": "Green waste (including crop residues or prunings)",
+          "TreatmentLocation": "Removed and treated off-site",
+          "Amount": 50,
+          "AmountUnit": "cubic metres m3"
+        },
+        "Treatment15": {
+          "Description": "Landfill Green waste on site (tonnes)",
+          "TreatmentType": "Landfill",
+          "WasteType": "Green waste (including crop residues or prunings)",
+          "TreatmentLocation": "Treated on-site",
+          "Amount": 50,
+          "AmountUnit": "tonnes"
+        },
+        "Treatment16": {
+          "Description": "Landfill Green waste on site (m3)",
+          "TreatmentType": "Landfill",
+          "WasteType": "Green waste (including crop residues or prunings)",
+          "TreatmentLocation": "Treated on-site",
+          "Amount": 50,
+          "AmountUnit": "cubic metres m3"
+        },
+        "Treatment17": {
+          "Description": "Incineration paper and cardboard on site (tonnes)",
+          "TreatmentType": "Incineration",
+          "WasteType": "Paper and cardboard",
+          "TreatmentLocation": "Treated on-site",
+          "Amount": 50,
+          "AmountUnit": "tonnes"
+        },
+        "Treatment18": {
+          "Description": "Incineration paper and cardboard on site (m3)",
+          "TreatmentType": "Incineration",
+          "WasteType": "Paper and cardboard",
+          "TreatmentLocation": "Treated on-site",
+          "Amount": 50,
+          "AmountUnit": "cubic metres m3"
+        },
+        "Treatment19": {
+          "Description": "Incineration green waste on site (tonnes)",
+          "TreatmentType": "Incineration",
+          "WasteType": "Green waste (including crop residues or prunings)",
+          "TreatmentLocation": "Treated on-site",
+          "Amount": 50,
+          "AmountUnit": "tonnes"
+        },
+        "Treatment20": {
+          "Description": "Incineration green waste on site (m3)",
+          "TreatmentType": "Incineration",
+          "WasteType": "Green waste (including crop residues or prunings)",
+          "TreatmentLocation": "Treated on-site",
+          "Amount": 50,
+          "AmountUnit": "cubic metres m3"
+        },
+        "Treatment21": {
+          "Description": "Incineration green waste offsite (tonnes)",
+          "TreatmentType": "Incineration",
+          "WasteType": "Green waste (including crop residues or prunings)",
+          "TreatmentLocation": "Removed and treated off-site",
+          "Amount": 50,
+          "AmountUnit": "tonnes"
+        },
+        "Treatment22": {
+          "Description": "Incineration green waste offsite (m3)",
+          "TreatmentType": "Incineration",
+          "WasteType": "Green waste (including crop residues or prunings)",
+          "TreatmentLocation": "Removed and treated off-site",
+          "Amount": 50,
+          "AmountUnit": "cubic metres m3"
+        },
+        "Treatment23": {
+          "Description": "Incineration green waste on site (m3)",
+          "TreatmentType": "Incineration",
+          "WasteType": "Green waste (including crop residues or prunings)",
+          "TreatmentLocation": "Treated on-site",
+          "Amount": 50,
+          "AmountUnit": "cubic metres m3"
+        }
+      }
+    }
+  ]
+  
+}
+
+
+
+

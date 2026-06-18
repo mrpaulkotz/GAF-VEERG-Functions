@@ -1,0 +1,64 @@
+{
+	"X_Cell_Site_FarmName": "My test farm",
+	"X_Cell_Site_ReportingEntityName": "My test Farms Pty Ltd",
+	"X_Cell_Site_StartDate": "1/1/2025",
+	
+  "X_Cell_NumberGorwingSeasons": 2,
+
+"InputTables": [
+    {
+      "TableName": "Table_Input_AmendmentBlends",
+      "MatrixType": "RowsToCols",
+      "ColumnOffset": 0,
+      "RowOffset": null,
+      "Rows": {
+        "AmendmentMix1": {
+          "MixName": "Mix 1",
+          "StrawAdded30DaysBefore": 2,
+          "StrawAdded30DaysAfter": 0,
+          "Compost": 2,
+          "FarmYardManure": 0,
+          "GreenManure": 2,
+          "InorganicFertiliser": 0
+        },
+        "AmendmentMix2": {
+          "MixName": "Mix 2",
+          "StrawAdded30DaysBefore": 0,
+          "StrawAdded30DaysAfter": 2,
+          "Compost": 0,
+          "FarmYardManure": 2,
+          "GreenManure": 0,
+          "InorganicFertiliser": 2
+        }
+      }
+    },
+    {
+      "TableName": "Table_Input_Regimes",
+      "MatrixType": "RowsToCols",
+      "ColumnOffset": 0,
+      "RowOffset": null,
+      "Rows": {
+        "Regime1": {
+          "RegimeName": "Regime 1",
+          "AreaUnderCultivation": 100,
+          "PreCultivationWaterRegime": "Non flooded pre-season <180 days",
+          "WaterRegime": "Rainfed and deep water",
+          "WaterRegimeSubType": "Drought prone",
+          "AmendmentBlend": "Mix 1",
+          "CultivationPeriod": 100
+        },
+        "Regime2": {
+          "RegimeName": "Regime 2",
+          "AreaUnderCultivation": 100,
+          "PreCultivationWaterRegime": "Flooded pre-season >30 days",
+          "WaterRegime": "Irrigated",
+          "WaterRegimeSubType": "Single drainage period",
+          "AmendmentBlend": "Mix 2",
+          "CultivationPeriod": 100
+        }
+      }
+    }
+  ]
+  
+}
+
