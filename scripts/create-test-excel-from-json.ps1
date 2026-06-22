@@ -1,6 +1,7 @@
 param(
   [string] $RepoRoot = $(Split-Path $PSScriptRoot -Parent),
   [string] $ExcelSearchRoot,
+  [string] $InputFieldsRoot,
   [string] $ConfigPath,
   [string] $TestID,
   [string] $Suffix = '_test',
@@ -27,6 +28,10 @@ if ([string]::IsNullOrWhiteSpace($ExcelSearchRoot)) {
 
 if ([string]::IsNullOrWhiteSpace($ConfigPath)) {
   $ConfigPath = Join-Path $RepoRoot 'Test\Test.json'
+}
+
+if ([string]::IsNullOrWhiteSpace($InputFieldsRoot)) {
+  $InputFieldsRoot = Join-Path $RepoRoot 'InputFields'
 }
 
 $resolvedExcelRoot = (Resolve-Path -LiteralPath $ExcelSearchRoot).Path
@@ -160,15 +165,41 @@ if ($excelFiles.Count -eq 0) {
 $preferredExcelFiles = @(
   $excelFiles |
     Where-Object {
+      $_.FullName -notmatch '(?i)[\\/]TestExcel[\\/]' -and
       $_.BaseName -notmatch '(?i)_expanded(?:_tmp\d*)?$' -and
       $_.BaseName -notmatch '(?i)_test(?:_\d{4}_\d{8})?(?:_\d+)?$'
     }
 )
 
-$sourceCandidates = if ($preferredExcelFiles.Count -gt 0) { $preferredExcelFiles } else { $excelFiles }
+$nonTestExcelFiles = @(
+  $excelFiles |
+    Where-Object { $_.FullName -notmatch '(?i)[\\/]TestExcel[\\/]' }
+)
+
+$sourceCandidates = if ($preferredExcelFiles.Count -gt 0) {
+  $preferredExcelFiles
+} elseif ($nonTestExcelFiles.Count -gt 0) {
+  $nonTestExcelFiles
+} else {
+  $excelFiles
+}
 
 $sourceFile = $sourceCandidates[0]
 $baseName = [System.IO.Path]::GetFileNameWithoutExtension($sourceFile.Name)
+$sourceIsInTestExcel = $sourceFile.FullName -match '(?i)[\\/]TestExcel[\\/]'
+if ($sourceIsInTestExcel -or [string]::IsNullOrWhiteSpace($baseName)) {
+  $baseName = [string] $nameContains
+}
+
+$baseName = [regex]::Replace($baseName, '[^A-Za-z0-9._-]+', '_')
+if ([string]::IsNullOrWhiteSpace($baseName)) {
+  $baseName = 'GeneratedWorkbook'
+}
+
+if ($baseName.Length -gt 64) {
+  $baseName = $baseName.Substring(0, 64).TrimEnd('_')
+}
+
 $ext = $sourceFile.Extension
 $timestamp = Get-Date -Format 'HHmm_yyyyMMdd'
 $testExcelDirectory = Join-Path $resolvedExcelRoot 'TestExcel'
@@ -204,6 +235,7 @@ $formulaWriteSkips = 0
 $formulaWriteSkipDetails = New-Object System.Collections.Generic.List[string]
 $formulaOverwriteCellNames = New-Object System.Collections.Generic.HashSet[string] ([System.StringComparer]::OrdinalIgnoreCase)
 $formulaOverwriteTableFields = @{}
+$formulaOverwriteTableNames = New-Object System.Collections.Generic.HashSet[string] ([System.StringComparer]::OrdinalIgnoreCase)
 
 function Add-FormulaOverwriteTableField {
   param(
@@ -224,6 +256,19 @@ function Add-FormulaOverwriteTableField {
   }
 
   [void] $formulaOverwriteTableFields[$normalizedTableName].Add($FieldName)
+}
+
+function Add-FormulaOverwriteTableName {
+  param(
+    [Parameter(Mandatory = $false)]
+    [string] $TableName
+  )
+
+  if ([string]::IsNullOrWhiteSpace($TableName)) {
+    return
+  }
+
+  [void] $formulaOverwriteTableNames.Add($TableName)
 }
 
 function Test-IsTruthyFlag {
@@ -325,9 +370,24 @@ function Add-OverwritePolicyFromInputFieldDefinition {
     return $property.Value
   }
 
+  $getFormulaOverwriteFlag = {
+    param(
+      [Parameter(Mandatory = $false)]
+      [AllowNull()]
+      [object] $Source
+    )
+
+    $value = & $getOptionalPropertyValue -Source $Source -PropertyName 'CanOverWriteFormula'
+    if ($null -eq $value) {
+      $value = & $getOptionalPropertyValue -Source $Source -PropertyName 'CanOverwriteFormula'
+    }
+
+    return $value
+  }
+
   foreach ($inputCell in @($Definition.InputCells)) {
     if ($null -eq $inputCell) { continue }
-    $cellOverwriteFlag = & $getOptionalPropertyValue -Source $inputCell -PropertyName 'CanOverWriteFormula'
+    $cellOverwriteFlag = & $getFormulaOverwriteFlag -Source $inputCell
     if (Test-IsTruthyFlag -Value $cellOverwriteFlag) {
       $cellName = [string] $inputCell.CellName
       if (-not [string]::IsNullOrWhiteSpace($cellName)) {
@@ -341,20 +401,35 @@ function Add-OverwritePolicyFromInputFieldDefinition {
     $tableName = [string] $inputTable.TableName
     if ([string]::IsNullOrWhiteSpace($tableName)) { continue }
 
-    foreach ($rowDefinition in @($inputTable.Rows.PSObject.Properties)) {
-      if ($null -eq $rowDefinition -or $null -eq $rowDefinition.Value) { continue }
-      foreach ($field in @($rowDefinition.Value.PSObject.Properties)) {
-        if ($null -eq $field -or $null -eq $field.Value) { continue }
-        $fieldOverwriteFlag = & $getOptionalPropertyValue -Source $field.Value -PropertyName 'CanOverWriteFormula'
-        if (Test-IsTruthyFlag -Value $fieldOverwriteFlag) {
-          Add-FormulaOverwriteTableField -TableName $tableName -FieldName ([string] $field.Name)
+    foreach ($tableBranchName in @('Rows', 'Cols')) {
+      if (-not ($inputTable.PSObject.Properties.Name -contains $tableBranchName)) {
+        continue
+      }
+
+      $tableBranch = $inputTable.$tableBranchName
+      if ($null -eq $tableBranch -or $null -eq $tableBranch.PSObject -or $null -eq $tableBranch.PSObject.Properties) {
+        continue
+      }
+
+      foreach ($branchDefinition in @($tableBranch.PSObject.Properties)) {
+        if ($null -eq $branchDefinition -or $null -eq $branchDefinition.Value) { continue }
+        $branchValue = $branchDefinition.Value
+        if ($null -eq $branchValue.PSObject -or $null -eq $branchValue.PSObject.Properties) { continue }
+
+        foreach ($field in @($branchValue.PSObject.Properties)) {
+          if ($null -eq $field -or $null -eq $field.Value) { continue }
+          $fieldOverwriteFlag = & $getFormulaOverwriteFlag -Source $field.Value
+          if (Test-IsTruthyFlag -Value $fieldOverwriteFlag) {
+            Add-FormulaOverwriteTableField -TableName $tableName -FieldName ([string] $field.Name)
+            Add-FormulaOverwriteTableName -TableName $tableName
+          }
         }
       }
     }
   }
 }
 
-$inputFieldsRoot = Join-Path $RepoRoot 'InputFields'
+$inputFieldsRoot = $InputFieldsRoot
 if (Test-Path -LiteralPath $inputFieldsRoot) {
   $inputFieldFileCandidates = @(Get-InputFieldFileCandidates -TestInputFile $testInputFile -TestExcelFile $nameContains)
   foreach ($candidate in $inputFieldFileCandidates) {
@@ -403,6 +478,7 @@ if ($null -ne $overwritePolicy) {
 
       $tableName = [string] $tableProp.Name
       if ([string]::IsNullOrWhiteSpace($tableName)) { continue }
+      Add-FormulaOverwriteTableName -TableName $tableName
 
       $fieldsRaw = $tableProp.Value
       if ($fieldsRaw -is [System.Collections.IEnumerable] -and -not ($fieldsRaw -is [string])) {
@@ -442,6 +518,15 @@ if ($debugFormulaPolicy) {
   } else {
     Write-Host 'Formula overwrite table-field policy: none'
   }
+
+  if ($formulaOverwriteTableNames.Count -gt 0) {
+    Write-Host 'Formula overwrite table-name policy:'
+    foreach ($tableName in @($formulaOverwriteTableNames | Sort-Object)) {
+      Write-Host ('  - ' + $tableName)
+    }
+  } else {
+    Write-Host 'Formula overwrite table-name policy: none'
+  }
 }
 
 function Test-AllowFormulaOverwriteNamedCell {
@@ -466,7 +551,15 @@ function Test-AllowFormulaOverwriteTableField {
     [string] $FieldName
   )
 
-  if ([string]::IsNullOrWhiteSpace($TableName) -or [string]::IsNullOrWhiteSpace($FieldName)) {
+  if ([string]::IsNullOrWhiteSpace($TableName)) {
+    return $false
+  }
+
+  if ($formulaOverwriteTableNames.Contains($TableName)) {
+    return $true
+  }
+
+  if ([string]::IsNullOrWhiteSpace($FieldName)) {
     return $false
   }
 
@@ -481,6 +574,32 @@ function Test-AllowFormulaOverwriteTableField {
   }
 
   return $fieldSet.Contains($FieldName)
+}
+
+function Test-AllowFormulaOverwriteTableFieldAny {
+  param(
+    [Parameter(Mandatory = $false)]
+    [string] $TableName,
+
+    [Parameter(Mandatory = $false)]
+    [string[]] $FieldNames
+  )
+
+  if ([string]::IsNullOrWhiteSpace($TableName) -or $null -eq $FieldNames -or $FieldNames.Count -eq 0) {
+    return $false
+  }
+
+  if ($formulaOverwriteTableNames.Contains($TableName)) {
+    return $true
+  }
+
+  foreach ($fieldName in $FieldNames) {
+    if (Test-AllowFormulaOverwriteTableField -TableName $TableName -FieldName $fieldName) {
+      return $true
+    }
+  }
+
+  return $false
 }
 
 function Test-CellContainsFormula {
@@ -1195,12 +1314,12 @@ try {
           $tableValue = if ($row.PSObject.Properties.Name -contains 'Value') { $row.Value } else { $rowName }
 
           $columnName = [string] $colEntry.Column.ColumnName
-          $allowFormulaOverwrite = Test-AllowFormulaOverwriteTableField -TableName $tableRangeName -FieldName $columnName
+          $allowFormulaOverwrite = Test-AllowFormulaOverwriteTableFieldAny -TableName $tableRangeName -FieldNames @($rowName, $columnName)
           if (Set-CellValueIfWritable -Cell $targetCell -Value $tableValue -AllowFormulaOverwrite $allowFormulaOverwrite) {
             $updatedInputTableCells++
           } else {
             $formulaWriteSkips++
-            [void] $formulaWriteSkipDetails.Add(($tableRangeName + ': row=' + $targetRowPosition + ', col=' + $targetColumnPosition + ', field=' + $columnName + ', allowOverwrite=' + [string] $allowFormulaOverwrite + ': skipped write because target cell contains formula'))
+            [void] $formulaWriteSkipDetails.Add(($tableRangeName + ': row=' + $targetRowPosition + ', col=' + $targetColumnPosition + ', field=' + $rowName + '/' + $columnName + ', allowOverwrite=' + [string] $allowFormulaOverwrite + ': skipped write because target cell contains formula'))
           }
         } catch {
           $tableCellLabel = ($tableRangeName + ': row=' + $targetRowPosition + ', col=' + $targetColumnPosition)
