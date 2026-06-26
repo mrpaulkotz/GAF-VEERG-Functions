@@ -1,0 +1,489 @@
+﻿{
+    "generatedFrom":  "SourceData_Dairy.xlf",
+    "generatedAt":  "2026-06-26T02:27:47Z",
+    "schemaVersion":  1,
+    "tables":  [
+                   {
+                       "name":  "SourceData_Dairy_LiveweightCowsAndHeifers",
+                       "title":  "Table A.1.3.1: Dairy cattle - Liveweight (kg) - Cows and Heifers (Wj)",
+                       "variable":  "Wj",
+                       "unit":  "kg",
+                       "source":  "VEERG 2026: Table A.1.3.1",
+                       "variation":  "VARIATION OF SOURCE: Excluded 'Reference', as the value is consistently 'Dairy Australia [1]' and is not used in calculation.",
+                       "header":  [
+                                      "Breed",
+                                      "Milking Cows",
+                                      "Heifers >1",
+                                      "Heifers <1 (weaned)"
+                                  ],
+                       "rows":  [
+                                    [
+                                        "Medium Friesian",
+                                        550,
+                                        380,
+                                        155
+                                    ],
+                                    [
+                                        "Large Friesian",
+                                        600,
+                                        415,
+                                        170
+                                    ],
+                                    [
+                                        "Holstein-Friesian",
+                                        650,
+                                        450,
+                                        185
+                                    ],
+                                    [
+                                        "Friesian crossbred",
+                                        500,
+                                        350,
+                                        145
+                                    ],
+                                    [
+                                        "Jersey",
+                                        400,
+                                        275,
+                                        115
+                                    ],
+                                    [
+                                        "Jersey crossbred",
+                                        450,
+                                        315,
+                                        130
+                                    ],
+                                    [
+                                        "Ayrshire",
+                                        540,
+                                        375,
+                                        150
+                                    ],
+                                    [
+                                        "Guernsey",
+                                        480,
+                                        335,
+                                        140
+                                    ],
+                                    [
+                                        "Brown Swiss",
+                                        600,
+                                        415,
+                                        170
+                                    ],
+                                    [
+                                        "Illawarra/Aussie Red",
+                                        550,
+                                        375,
+                                        150
+                                    ]
+                                ]
+                   },
+                   {
+                       "name":  "SourceData_Dairy_LiveweightBulls",
+                       "title":  "Table A.1.3.2: Dairy cattle - Liveweight (kg) - Bulls (Wj)",
+                       "variable":  "Wj",
+                       "unit":  "kg",
+                       "source":  "VEERG 2026: Table A.1.3.2",
+                       "variation":  "",
+                       "header":  [
+                                      "Breed",
+                                      "Bulls >1",
+                                      "Bulls <1 (weaned)"
+                                  ],
+                       "rows":  [
+                                    [
+                                        "All breeds",
+                                        600,
+                                        225
+                                    ]
+                                ]
+                   },
+                   {
+                       "name":  "SourceData_Dairy_LiveweightGain",
+                       "title":  "Table A.1.3.3: Dairy cattle - Liveweight gain (kg) (LWGj)",
+                       "variable":  "LWGj",
+                       "unit":  "kg",
+                       "source":  "VEERG 2026: Table A.1.3.3",
+                       "variation":  "",
+                       "header":  [
+                                      "Milking Cows",
+                                      "Heifers >1",
+                                      "Heifers <1 (weaned)",
+                                      "Bulls >1",
+                                      "Bulls <1 (weaned)"
+                                  ],
+                       "rows":  [
+                                    [
+                                        0.016,
+                                        0.6,
+                                        0.57,
+                                        0.1,
+                                        0.8
+                                    ]
+                                ]
+                   },
+                   {
+                       "name":  "SourceData_Dairy_ReferenceWeights",
+                       "title":  "Table A.1.3.4: Dairy cattle - Reference weights (kg) (WRj)",
+                       "variable":  "WRj",
+                       "unit":  "kg",
+                       "source":  "VEERG 2026: Table A.1.3.4",
+                       "variation":  "",
+                       "header":  [
+                                      "Milking Cows",
+                                      "Heifers >1",
+                                      "Heifers <1 (weaned)",
+                                      "Bulls >1",
+                                      "Bulls <1 (weaned)"
+                                  ],
+                       "rows":  [
+                                    [
+                                        590,
+                                        590,
+                                        590,
+                                        770,
+                                        770
+                                    ]
+                                ]
+                   },
+                   {
+                       "name":  "SourceData_Dairy_PreWeanedCalves",
+                       "title":  "Table A.1.3.5: Dairy cattle - Data for pre - weaned calves",
+                       "variable":  "VSj=3,5; NPWj=3,5",
+                       "unit":  "kg/day",
+                       "source":  "VEERG 2026: Table A.1.3.5",
+                       "variation":  "VARIATION OF SOURCE: Added 'Animal class j' column header",
+                       "header":  [
+                                      "Animal class j",
+                                      "CH4 production",
+                                      "Volatile solids (VSj=3,5)",
+                                      "Nitrogen Excreted (NPWj=3,5)"
+                                  ],
+                       "rows":  [
+                                    [
+                                        "",
+                                        "(kg/day)",
+                                        "(kg/day)",
+                                        "(kg/day)"
+                                    ],
+                                    [
+                                        "Heifers<1",
+                                        0.0176,
+                                        0.2685,
+                                        0.0137
+                                    ],
+                                    [
+                                        "Bulls<1",
+                                        0.0204,
+                                        0.3003,
+                                        0.0092
+                                    ]
+                                ]
+                   },
+                   {
+                       "name":  "SourceData_Dairy_MCF",
+                       "title":  "Table A.1.3.6: Dairy cattle - Dairy cattle - MCFs (fraction) (MCFjm)",
+                       "variable":  "MCFjm",
+                       "unit":  "fraction",
+                       "source":  "VEERG 2026: Table A.1.3.6",
+                       "variation":  "VARIATION OF SOURCE: Added 'NIR reference' column to aid lookup",
+                       "header":  [
+                                      "MMS m",
+                                      "ACT",
+                                      "NSW",
+                                      "NT",
+                                      "QLD",
+                                      "SA",
+                                      "TAS",
+                                      "VIC",
+                                      "WA",
+                                      "NIR reference"
+                                  ],
+                       "rows":  [
+                                    [
+                                        "Pasture",
+                                        0.01,
+                                        0.01,
+                                        0.02,
+                                        0.01,
+                                        0.01,
+                                        0.01,
+                                        0.01,
+                                        0.01,
+                                        "Pasture range and paddock"
+                                    ],
+                                    [
+                                        "Anaerobic lagoon",
+                                        0.72,
+                                        0.76,
+                                        0.8,
+                                        0.78,
+                                        0.74,
+                                        0.69,
+                                        0.73,
+                                        0.76,
+                                        "Anaerobic lagoon"
+                                    ],
+                                    [
+                                        "Daily spread - Sump and dispersal systems",
+                                        0.005,
+                                        0.005,
+                                        0.01,
+                                        0.005,
+                                        0.005,
+                                        0.001,
+                                        0.005,
+                                        0.005,
+                                        "Sump and dispersal system"
+                                    ],
+                                    [
+                                        "Daily spread - Drains to paddocks (a)",
+                                        0.15,
+                                        0.18,
+                                        0.5,
+                                        0.24,
+                                        0.17,
+                                        0.13,
+                                        0.17,
+                                        0.18,
+                                        "Drains to paddock"
+                                    ],
+                                    [
+                                        "Solid Storage",
+                                        0.02,
+                                        0.02,
+                                        0.02,
+                                        0.02,
+                                        0.02,
+                                        0.02,
+                                        0.02,
+                                        0.02,
+                                        "Solid storage"
+                                    ],
+                                    [
+                                        "Direct Application to soil",
+                                        0,
+                                        0,
+                                        0,
+                                        0,
+                                        0,
+                                        0,
+                                        0,
+                                        0,
+                                        "Direct application"
+                                    ]
+                                ]
+                   },
+                   {
+                       "name":  "SourceData_Dairy_NitrousOxideEFsAndFracGASM",
+                       "title":  "Table A.1.3.7: Dairy cattle - Nitrous oxide EFs and fraction of N volatilised by MMS",
+                       "variable":  "EFm; FracGASMm",
+                       "unit":  "kg N2O-N/kg N excreted",
+                       "source":  "VEERG 2026: Table A.1.3.7",
+                       "variation":  "VARIATION OF SOURCE: Added 'NIR reference' column to aid lookup",
+                       "header":  [
+                                      "MMS m",
+                                      "EFm (kg N2O-N/kg N excreted)",
+                                      "FracGASMm (kg N2O-N/kg N excreted)",
+                                      "NIR reference"
+                                  ],
+                       "rows":  [
+                                    [
+                                        "M=14 Pasture",
+                                        0,
+                                        0,
+                                        "Pasture range and paddock"
+                                    ],
+                                    [
+                                        "M=1 Anaerobic lagoon",
+                                        0,
+                                        0.35,
+                                        "Anaerobic lagoon"
+                                    ],
+                                    [
+                                        "M=2 Daily Spread - Sump and Dispersal",
+                                        0,
+                                        0.07,
+                                        "Sump and dispersal system"
+                                    ],
+                                    [
+                                        "M=3 Daily Spread - Drains to Paddock",
+                                        0,
+                                        0.2,
+                                        "Drains to paddock"
+                                    ],
+                                    [
+                                        "M=3 Solid Storage",
+                                        0.005,
+                                        0.3,
+                                        "Solid storage"
+                                    ]
+                                ]
+                   },
+                   {
+                       "name":  "SourceData_Dairy_MethaneProductionPreWeanedCalves",
+                       "title":  "Table A.1.3.8: Dairy cattle - Methane production for pre-weaned heifer and bull calves (kg CH4/head/day) (MPWENTERIC,j=3,5)",
+                       "variable":  "MPWENTERIC,j=3,5",
+                       "unit":  "kg CH4/head/day",
+                       "source":  "VEERG 2026: Table A.1.3.8",
+                       "variation":  "",
+                       "header":  [
+                                      "Animal Class j",
+                                      "MPWENTERIC"
+                                  ],
+                       "rows":  [
+                                    [
+                                        "Heifers < 1 year",
+                                        0.0176
+                                    ],
+                                    [
+                                        "Bulls < 1 year",
+                                        0.0204
+                                    ]
+                                ]
+                   },
+                   {
+                       "name":  "SourceData_Dairy_IncreasedMetabolicRateMilk",
+                       "title":  "Table A.1.3.9: Dairy cattle - Increased metabolic rate when producing milk (MRj)",
+                       "variable":  "MRj",
+                       "unit":  "",
+                       "source":  "VEERG 2026: Table A.1.3.9",
+                       "variation":  "",
+                       "header":  [
+                                      "Animal Class j",
+                                      "MRj"
+                                  ],
+                       "rows":  [
+                                    [
+                                        "Milking cows, and house cows",
+                                        1.1
+                                    ],
+                                    [
+                                        "All other cattle classes",
+                                        1
+                                    ]
+                                ]
+                   },
+                   {
+                       "name":  "SourceData_Dairy_FractionVolatileSolidsVoidedMMS",
+                       "title":  "Table A.1.3.10: Dairy cattle - Fraction of volatile solids voided to each manure management system (fraction) (MMSjm)",
+                       "variable":  "MMSjm",
+                       "unit":  "fraction",
+                       "source":  "VEERG 2026: Table A.1.3.10",
+                       "variation":  "VARIATION OF SOURCE: Excluded 'Annual fraction of time spent per area' row as this information is in the table title.",
+                       "header":  [
+                                      "Area",
+                                      "Pasture",
+                                      "Milking Shed",
+                                      "Feedpad"
+                                  ],
+                       "rows":  [
+                                    [
+                                        "System 1: Grazed Only",
+                                        0.89,
+                                        0.11,
+                                        0
+                                    ],
+                                    [
+                                        "System 2: On feedpad for <10 hr/day for <3 months/year",
+                                        0.79,
+                                        0.11,
+                                        0.1
+                                    ],
+                                    [
+                                        "System 3: Pasture-grazed 3-9 months/year",
+                                        0.534,
+                                        0.11,
+                                        0.356
+                                    ],
+                                    [
+                                        "System 4: Zero grazing",
+                                        0,
+                                        0.11,
+                                        0.89
+                                    ]
+                                ]
+                   },
+                   {
+                       "name":  "SourceData_Dairy_EFNitrousOxidePerMMS",
+                       "title":  "Table A.1.3.11: Dairy cattle - EF for nitrous oxide per MMS (kg N2O-N/kg N) (EFm)",
+                       "variable":  "EFm",
+                       "unit":  "kg N2O-N/kg N",
+                       "source":  "VEERG 2026: Table A.1.3.11",
+                       "variation":  "VARIATION OF SOURCE: Added 'NIR reference' column to aid lookup",
+                       "header":  [
+                                      "MMS m",
+                                      "EFm",
+                                      "NIR reference"
+                                  ],
+                       "rows":  [
+                                    [
+                                        "m=14 Pasture",
+                                        0,
+                                        "Pasture range and paddock"
+                                    ],
+                                    [
+                                        "m=1 Anerobic Lagoon",
+                                        0,
+                                        "Anaerobic lagoon"
+                                    ],
+                                    [
+                                        "m=2 Daily Spread: Sump and dispersal",
+                                        0,
+                                        "Sump and dispersal system"
+                                    ],
+                                    [
+                                        "m=3 Daily Spread: Drains to paddocks",
+                                        0,
+                                        "Drains to paddock"
+                                    ],
+                                    [
+                                        "m=4 Solid Storage",
+                                        0.005,
+                                        "Solid storage"
+                                    ]
+                                ]
+                   },
+                   {
+                       "name":  "SourceData_Dairy_DurationOfStay",
+                       "title":  "Duration of stay for each dairy cattle input class",
+                       "variable":  "D",
+                       "unit":  "days",
+                       "source":  "VEERG 2026: 4.3.2.2\tDATA (METHOD 1 AND 2 OPTIONS)",
+                       "variation":  "VARIATION OF SOURCE: Converted free text in document to table, matching livestock class names.",
+                       "header":  [
+                                      "Animal class j",
+                                      "Duration (weaned)",
+                                      "Duration (pre-weaned)"
+                                  ],
+                       "rows":  [
+                                    [
+                                        "Milking cows",
+                                        365,
+                                        0
+                                    ],
+                                    [
+                                        "Heifers > 1 year",
+                                        365,
+                                        0
+                                    ],
+                                    [
+                                        "Heifers < 1 year",
+                                        281,
+                                        84
+                                    ],
+                                    [
+                                        "Bulls > 1 year",
+                                        365,
+                                        0
+                                    ],
+                                    [
+                                        "Bulls < 1 year",
+                                        281,
+                                        84
+                                    ]
+                                ]
+                   }
+               ]
+}

@@ -6,6 +6,12 @@
             "TestInputFile": "AgResidue/TestInput_AgResidue.json",
             "TestResultsFile": "AgResidue/TestResults_AgResidue.json"
         },
+        "Electricity": {
+            "TestID": "14_Electricity",
+            "TestExcelFile": "14_Electricity",
+            "TestInputFile": "Electricity/TestInput_Electricity.json",
+            "TestResultsFile": "Electricity/TestResults_Electricity.json"
+        },
         "Fertiliser": {
             "TestID": "5_Fertiliser",
             "TestExcelFile": "5_Fertiliser",
@@ -58,11 +64,23 @@
             "TestInputFile": "RiceCultivation/TestInput_RiceCultivation.json",
             "TestResultsFile": "RiceCultivation/TestResults_RiceCultivation.json"
         },
+        "SupplementaryCO2": {
+            "TestID": "12_SupplementaryCO2",
+            "TestExcelFile": "12_SupplementaryCO2",
+            "TestInputFile": "SupplementaryCO2/TestInput_SupplementaryCO2.json",
+            "TestResultsFile": "SupplementaryCO2/TestResults_SupplementaryCO2.json"
+        },
         "WasteSolid": {
             "TestID": "10_WasteSolid",
             "TestExcelFile": "10_SolidWaste",
             "TestInputFile": "WasteSolid/TestInput_WasteSolid.json",
             "TestResultsFile": "WasteSolid/TestResults_WasteSolid.json"
+        },
+        "Wastewater": {
+            "TestID": "11_Wastewater",
+            "TestExcelFile": "11_Wastewater",
+            "TestInputFile": "Wastewater/TestInput_Wastewater.json",
+            "TestResultsFile": "Wastewater/TestResults_Wastewater.json"
         }
     }
 }

@@ -16,6 +16,10 @@ if (-not [string]::IsNullOrWhiteSpace($WorkbookPath)) {
 }
 & $syncScript @syncArgs
 
+# Refresh the derived source-data JSON artifacts from the .xlf source of truth.
+$sourceDataScript = Join-Path $repoRoot 'scripts\build-source-data-json.ps1'
+& $sourceDataScript -RepoRoot $repoRoot
+
 $commandArgsInput = @($Command)
 if ($commandArgsInput.Count -gt 0 -and -not [string]::IsNullOrWhiteSpace($commandArgsInput[0])) {
   $commandName = $commandArgsInput[0]

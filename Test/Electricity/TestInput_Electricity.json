@@ -1,0 +1,68 @@
+{
+	"X_Cell_Site_FarmName": "My test farm",
+	"X_Cell_Site_ReportingEntityName": "My test Farms Pty Ltd",
+	"X_Cell_Site_StartDate": "1/1/2025",
+	"X_Cell_Site_State": "Western Australia",
+	"X_Cell_Site_Region": "Western Australia - Outback (South)",
+
+  "X_Cell_Electricity_Location_AmountPurchasedInkWh": 30000,
+  "X_Cell_Electricity_Location_GridElectricityPurchasedFrom": "Western Australia - North Western Interconnected System (NWIS)",
+
+  "X_Cell_Electricity_Market_AmountPurchasedExcludingGreenPower": 30000,
+  "X_Cell_Electricity_Market_RenewablePowerPercentage": "10%",
+  "X_Cell_Electricity_Market_JurisdictionalRenewablePowerPercentage": "10%",
+  "X_Cell_Electricity_Market_AmountPurchasedGreenPower": 10000,
+  
+"InputTables": [
+    {
+      "TableName": "Table_Input_RECSurrendered",
+      "MatrixType": "RowsToCols",
+      "ColumnOffset": 0,
+      "RowOffset": null,
+      "Rows": {
+        "Row1": {
+          "Description": "Dec 2020 certs",
+          "Source": "Purchased certificate",
+          "GenerationDate": "20 December 2020",
+          "NumberOfCertificates": 12
+        },
+        "Row2": {
+          "Description": "Jan 2022 certs",
+          "Source": "Issued for generated electricity",
+          "GenerationDate": "14 January 2022",
+          "NumberOfCertificates": 5
+        },
+        "Row3": {
+          "Description": "2024 certs",
+          "Source": "Purchased certificate",
+          "GenerationDate": "26 May 2024",
+          "NumberOfCertificates": 5
+        }
+      }
+    },
+    {
+      "TableName": "Table_Input_RECConsumedByEntity",
+      "MatrixType": "RowsToCols",
+      "ColumnOffset": 0,
+      "RowOffset": null,
+      "Rows": {
+        "Row1": {
+          "Description": "May 2022 generated",
+          "GenerationDate": "16 May 2022",
+          "NumberOfCertificates": 10
+        },
+        "Row2": {
+          "Description": "Jul 24 certs generated",
+          "GenerationDate": "10 July 2024",
+          "NumberOfCertificates": 4
+        },
+        "Row3": {
+          "Description": "Nov-24",
+          "GenerationDate": "11 November 2024",
+          "NumberOfCertificates": 75
+        }
+      }
+    }
+  ]
+}
+

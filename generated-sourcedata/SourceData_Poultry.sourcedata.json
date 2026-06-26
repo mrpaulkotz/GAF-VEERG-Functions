@@ -1,0 +1,408 @@
+﻿{
+    "generatedFrom":  "SourceData_Poultry.xlf",
+    "generatedAt":  "2026-06-26T02:27:47Z",
+    "schemaVersion":  1,
+    "tables":  [
+                   {
+                       "name":  "SourceData_Poultry_DietProperties",
+                       "title":  "Poultry - Diet properties",
+                       "variable":  "",
+                       "unit":  "",
+                       "source":  "VEERG 2026: Table A.1.7.1: Poultry - Diet properties",
+                       "variation":  "",
+                       "header":  [
+                                      "Nutrient analysis",
+                                      "Layers",
+                                      "Meat chicken growers",
+                                      "Meat chicken breeder",
+                                      "Meat other"
+                                  ],
+                       "rows":  [
+                                    [
+                                        "Dry matter intake (kg/head/day)",
+                                        0.086,
+                                        0.093,
+                                        0.103,
+                                        0.093
+                                    ],
+                                    [
+                                        "Dry matter digestibility",
+                                        0.8,
+                                        0.8,
+                                        0.8,
+                                        0.8
+                                    ],
+                                    [
+                                        "Crude protein",
+                                        0.19,
+                                        0.23,
+                                        0.19,
+                                        0.23
+                                    ],
+                                    [
+                                        "Nitrogen retention rate",
+                                        0.35,
+                                        0.47,
+                                        0.32,
+                                        0.47
+                                    ],
+                                    [
+                                        "Manure ash",
+                                        0.18,
+                                        0.15,
+                                        0.18,
+                                        0.15
+                                    ]
+                                ]
+                   },
+                   {
+                       "name":  "SourceData_Poultry_MCF",
+                       "title":  "Poultry - MCFs",
+                       "variable":  "",
+                       "unit":  "",
+                       "source":  "VEERG 2026: Table A.1.7.4: Poultry - MCFs",
+                       "variation":  "",
+                       "header":  [
+                                      "MMS m",
+                                      "All states",
+                                      "NSW",
+                                      "ACT",
+                                      "QLD",
+                                      "NT",
+                                      "VIC",
+                                      "SA",
+                                      "WA",
+                                      "TAS",
+                                      "NIR definition"
+                                  ],
+                       "rows":  [
+                                    [
+                                        "Poultry manure with litter",
+                                        0.015,
+                                        0.015,
+                                        0.015,
+                                        0.015,
+                                        0.015,
+                                        0.015,
+                                        0.015,
+                                        0.015,
+                                        0.015,
+                                        "Poultry manure with bedding"
+                                    ],
+                                    [
+                                        "Poultry manure without litter",
+                                        0.015,
+                                        0.015,
+                                        0.015,
+                                        0.015,
+                                        0.015,
+                                        0.015,
+                                        0.015,
+                                        0.015,
+                                        0.015,
+                                        "Belt manure removal"
+                                    ],
+                                    [
+                                        "Poultry manure without litter",
+                                        0.015,
+                                        0.015,
+                                        0.015,
+                                        0.015,
+                                        0.015,
+                                        0.015,
+                                        0.015,
+                                        0.015,
+                                        0.015,
+                                        "Manure stored in house"
+                                    ],
+                                    [
+                                        "Pasture range and paddock",
+                                        "n/a",
+                                        0.01,
+                                        0.01,
+                                        0.03,
+                                        0.03,
+                                        0.01,
+                                        0.01,
+                                        0.01,
+                                        0.01,
+                                        "Pasture range and paddock"
+                                    ],
+                                    [
+                                        "Solid storage",
+                                        0.02,
+                                        0.02,
+                                        0.02,
+                                        0.02,
+                                        0.02,
+                                        0.02,
+                                        0.02,
+                                        0.02,
+                                        0.02,
+                                        "Solid storage"
+                                    ],
+                                    [
+                                        "Composting (passive windrow)",
+                                        "n/a",
+                                        0.01,
+                                        0.01,
+                                        0.01,
+                                        0.01,
+                                        0.01,
+                                        0.01,
+                                        0.01,
+                                        0.005,
+                                        "Composting (passive windrow)"
+                                    ],
+                                    [
+                                        "Anaerobic digester / Covered pond",
+                                        0.1,
+                                        0.1,
+                                        0.1,
+                                        0.1,
+                                        0.1,
+                                        0.1,
+                                        0.1,
+                                        0.1,
+                                        0.1,
+                                        "Digester / covered lagoons"
+                                    ],
+                                    [
+                                        "Direct processing",
+                                        0,
+                                        0,
+                                        0,
+                                        0,
+                                        0,
+                                        0,
+                                        0,
+                                        0,
+                                        0,
+                                        "Direct processing"
+                                    ],
+                                    [
+                                        "Direct application to soil",
+                                        0,
+                                        0,
+                                        0,
+                                        0,
+                                        0,
+                                        0,
+                                        0,
+                                        0,
+                                        0,
+                                        "Direct application"
+                                    ]
+                                ]
+                   },
+                   {
+                       "name":  "SourceData_Poultry_MethaneEmissionsPotential",
+                       "title":  "Poultry - Methane emissions potential per class",
+                       "variable":  "",
+                       "unit":  "m3 CH4/kg VS",
+                       "source":  "VEERG 2026: 4.6.2.3 CONSTANT: Poultry - Methane emissions potential per class",
+                       "variation":  "",
+                       "header":  [
+                                      "Poultry class",
+                                      "B0"
+                                  ],
+                       "rows":  [
+                                    [
+                                        "Layers",
+                                        0.39
+                                    ],
+                                    [
+                                        "Meat chickens",
+                                        0.36
+                                    ]
+                                ]
+                   },
+                   {
+                       "name":  "SourceData_Poultry_ProductionSystems",
+                       "title":  "Poultry - Production systems",
+                       "variable":  "",
+                       "unit":  "",
+                       "source":  "VEERG 2026: 4.6 Poultry",
+                       "variation":  "",
+                       "header":  [
+                                      "Production system"
+                                  ],
+                       "rows":  [
+                                    [
+                                        "Free range"
+                                    ],
+                                    [
+                                        "Barn"
+                                    ],
+                                    [
+                                        "Cage"
+                                    ]
+                                ]
+                   },
+                   {
+                       "name":  "SourceData_Poultry_VSL",
+                       "title":  "Poultry - Fraction of volatile solids lost in the primary MMS",
+                       "variable":  "",
+                       "unit":  "",
+                       "source":  "VEERG 2026: 4.6.2.3 CONSTANT",
+                       "variation":  "VARIATION ON SOURCE: Table generated from line items. Added 'NIR definition column'.",
+                       "header":  [
+                                      "MMS",
+                                      "VSL",
+                                      "NIR definition"
+                                  ],
+                       "rows":  [
+                                    [
+                                        "Poultry manure with litter",
+                                        0.15,
+                                        "Poultry manure with bedding"
+                                    ],
+                                    [
+                                        "Poultry manure without litter - stored in house",
+                                        0.2,
+                                        "Manure stored in house"
+                                    ],
+                                    [
+                                        "Poultry manure without litter - belt removal",
+                                        0,
+                                        "Belt manure removal"
+                                    ]
+                                ]
+                   },
+                   {
+                       "name":  "SourceData_Poultry_FracGASMmT",
+                       "title":  "Poultry - Fraction of N volatilised by MMS ((kg NH3-N + NOx-N)/kgN) (FracGASMmT)",
+                       "variable":  "",
+                       "unit":  "(kg NH3-N + NOx-N)/kgN",
+                       "source":  "VEERG 2026: Table A.1.7.2",
+                       "variation":  "VARIATION ON SOURCE: Added 'NIR definition column'.",
+                       "header":  [
+                                      "MMS m",
+                                      "FracGASMmT",
+                                      "NIR reference"
+                                  ],
+                       "rows":  [
+                                    [
+                                        "Poultry manure with litter (housing)",
+                                        0.3,
+                                        "Poultry manure with bedding"
+                                    ],
+                                    [
+                                        "Poultry manure without litter (housing) Belt manure removal",
+                                        0.05,
+                                        "Belt manure removal"
+                                    ],
+                                    [
+                                        "Poultry manure without litter (housing) Manure stored in house under cages or slat",
+                                        0.4,
+                                        "Manure stored in house"
+                                    ],
+                                    [
+                                        "Solid storage (stockpile)",
+                                        0.2,
+                                        "Solid storage"
+                                    ],
+                                    [
+                                        "Composting (passive windrow)",
+                                        0.2,
+                                        "Composting (passive windrow)"
+                                    ],
+                                    [
+                                        "Direct processing",
+                                        0,
+                                        "Direct processing"
+                                    ],
+                                    [
+                                        "Anaerobic digester / covered pond",
+                                        0,
+                                        "Digester / covered lagoons"
+                                    ]
+                                ]
+                   },
+                   {
+                       "name":  "SourceData_Poultry_EFmT",
+                       "title":  "Poultry - Nitrous oxide EFs by MMS (kgN2O-N/kgN) (EFmT)",
+                       "variable":  "",
+                       "unit":  "kgN2O - N / kgN",
+                       "source":  "VEERG 2026: Table A.1.7.3",
+                       "variation":  "VARIATION ON SOURCE: Added 'NIR definition column'. Duplicated 'Poultry manure without litter' row for NIR MMS 'Belt manure removal' and 'Manure stored in house'.",
+                       "header":  [
+                                      "MMS m",
+                                      "EFmT",
+                                      "NIR reference"
+                                  ],
+                       "rows":  [
+                                    [
+                                        "Poultry manure with litter (housing)",
+                                        0.001,
+                                        "Poultry manure with bedding"
+                                    ],
+                                    [
+                                        "Poultry manure without litter (housing)",
+                                        0.001,
+                                        "Belt manure removal"
+                                    ],
+                                    [
+                                        "Poultry manure without litter (housing)",
+                                        0.001,
+                                        "Manure stored in house"
+                                    ],
+                                    [
+                                        "Pasture range and paddock (free range)",
+                                        0.02,
+                                        "Pasture range and paddock"
+                                    ],
+                                    [
+                                        "Solid storage (stockpile)",
+                                        0.005,
+                                        "Solid storage"
+                                    ],
+                                    [
+                                        "Composting (passive windrow)",
+                                        0.01,
+                                        "Composting (passive windrow)"
+                                    ],
+                                    [
+                                        "Direct processing",
+                                        0,
+                                        "Direct processing"
+                                    ],
+                                    [
+                                        "Anaerobic digester / covered pond",
+                                        0,
+                                        "Digester / covered lagoons"
+                                    ]
+                                ]
+                   },
+                   {
+                       "name":  "SourceData_Poultry_Liveweights",
+                       "title":  "Poultry - Liveweights (Wco) (kg)",
+                       "variable":  "",
+                       "unit":  "kg",
+                       "source":  "VEERG 2026: Table A.1.7.5",
+                       "variation":  "",
+                       "header":  [
+                                      "Livestock Class j",
+                                      "Average Liveweight (kg)"
+                                  ],
+                       "rows":  [
+                                    [
+                                        "Chicken",
+                                        1.3
+                                    ],
+                                    [
+                                        "Hen >/=1 yr",
+                                        2
+                                    ],
+                                    [
+                                        "Pullets",
+                                        1.4
+                                    ],
+                                    [
+                                        "Broilers",
+                                        1.2
+                                    ]
+                                ]
+                   }
+               ]
+}

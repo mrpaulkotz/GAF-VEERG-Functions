@@ -1,0 +1,359 @@
+﻿{
+    "generatedFrom":  "SourceData_Swine.xlf",
+    "generatedAt":  "2026-06-26T02:27:48Z",
+    "schemaVersion":  1,
+    "tables":  [
+                   {
+                       "name":  "SourceData_Swine_VolatileSolids",
+                       "title":  "Swine - Volatile solids (VSj) - 2020 to 2024",
+                       "variable":  "",
+                       "unit":  "kg/head/day",
+                       "source":  "VEERG 2026: Table A.1.6.1: Swine - Intake and manure characteristics derived from PigBal",
+                       "variation":  "VARIATION ON SOURCE DATA: Only uses data for 2020-2024. Use 'Slaughter pigs' data for 'Other j=4' class.",
+                       "header":  [
+                                      "Class",
+                                      "VSj"
+                                  ],
+                       "rows":  [
+                                    [
+                                        "Boars",
+                                        0.4
+                                    ],
+                                    [
+                                        "Sows",
+                                        0.46
+                                    ],
+                                    [
+                                        "Gilts",
+                                        0.55
+                                    ],
+                                    [
+                                        "Others",
+                                        0.39
+                                    ]
+                                ]
+                   },
+                   {
+                       "name":  "SourceData_Swine_FeedIntake",
+                       "title":  "Swine - Feed intake - ingested as fed  (Ij) - 2020 to 2024",
+                       "variable":  "",
+                       "unit":  "kg/head/day",
+                       "source":  "VEERG 2026: Table A.1.6.1: Swine - Intake and manure characteristics derived from PigBal",
+                       "variation":  "VARIATION ON SOURCE DATA: Only uses data for 2020-2024. Use 'Slaughter pigs' data for 'Other j=4' class.",
+                       "header":  [
+                                      "Class",
+                                      "Ij"
+                                  ],
+                       "rows":  [
+                                    [
+                                        "Boars",
+                                        2.62
+                                    ],
+                                    [
+                                        "Sows",
+                                        2.3
+                                    ],
+                                    [
+                                        "Gilts",
+                                        2.5
+                                    ],
+                                    [
+                                        "Others",
+                                        1.71
+                                    ]
+                                ]
+                   },
+                   {
+                       "name":  "SourceData_Swine_NitrogenInWaste",
+                       "title":  "Swine - Nitrogen in waste (NWj) - 2020 to 2024",
+                       "variable":  "",
+                       "unit":  "kg/head/day",
+                       "source":  "VEERG 2026: Table A.1.6.1: Swine - Intake and manure characteristics derived from PigBal",
+                       "variation":  "VARIATION ON SOURCE DATA: Only uses data for 2020-2024. Use 'Slaughter pigs' data for 'Other j=4' class. Added 'NWj daily' column to provide daily value for Others class. Added 'Class name' column to aid lookup.",
+                       "header":  [
+                                      "Class",
+                                      "NWj",
+                                      "NWj daily",
+                                      "Class name"
+                                  ],
+                       "rows":  [
+                                    [
+                                        "Boars",
+                                        0.046,
+                                        0.046,
+                                        "Boars"
+                                    ],
+                                    [
+                                        "Sows",
+                                        0.049,
+                                        0.049,
+                                        "Sows"
+                                    ],
+                                    [
+                                        "Gilts",
+                                        0.046,
+                                        0.046,
+                                        "Gilts"
+                                    ],
+                                    [
+                                        "Others (kg/head/year)",
+                                        11.4,
+                                        0.0312,
+                                        "Others"
+                                    ]
+                                ]
+                   },
+                   {
+                       "name":  "SourceData_Swine_FractionNVolatilised",
+                       "title":  "Swine - Fraction of nitrogen volatilised (FracGASMmT)",
+                       "variable":  "",
+                       "unit":  "(kg NH3-N + NOx-N)/kgN",
+                       "source":  "VEERG 2026: Table A.1.6.2: Swine - Fraction of N volatilised by MMS ((kg NH3-N + NOx-N)/kgN) (FracGASMmT)",
+                       "variation":  "VARIATION ON SOURCE DATA: Added 'NIR reference column to aid lookup.",
+                       "header":  [
+                                      "MMSm",
+                                      "FracGASMmT",
+                                      "NIR reference"
+                                  ],
+                       "rows":  [
+                                    [
+                                        "Outdoor (Dry lot)",
+                                        0.3,
+                                        "Drylot (feed pad)"
+                                    ],
+                                    [
+                                        "Deep litter",
+                                        0.125,
+                                        "Deep litter"
+                                    ],
+                                    [
+                                        "Stockpile (Solid storage)",
+                                        0.2,
+                                        "Solid storage"
+                                    ],
+                                    [
+                                        "Effluent pond (Uncovered anaerobic lagoon)",
+                                        0.55,
+                                        "Anaerobic lagoon"
+                                    ],
+                                    [
+                                        "Anaerobic digester / Covered lagoon",
+                                        0,
+                                        "Digester / covered lagoons"
+                                    ],
+                                    [
+                                        "Short HRT tank storage < 1 month (pit storage)",
+                                        0.25,
+                                        "Pit storage"
+                                    ]
+                                ]
+                   },
+                   {
+                       "name":  "SourceData_Swine_NitrousOxideEFs",
+                       "title":  "Swine - Nitrous oxide EFs by MMS (EFmT)",
+                       "variable":  "",
+                       "unit":  "kgN2O - N / kgN",
+                       "source":  "VEERG 2026: Table A.1.6.3: Swine - Nitrous oxide EFs by MMS (kgN2O-N/kgN) (EFmT)",
+                       "variation":  "VARIATION ON SOURCE DATA: Added 'NIR reference column to aid lookup.",
+                       "header":  [
+                                      "MMSm",
+                                      "EFmT",
+                                      "NIR reference"
+                                  ],
+                       "rows":  [
+                                    [
+                                        "Outdoor (Dry lot)",
+                                        0.02,
+                                        "Drylot (feed pad)"
+                                    ],
+                                    [
+                                        "Deep litter",
+                                        0.01,
+                                        "Deep litter"
+                                    ],
+                                    [
+                                        "Stockpile (Solid storage)",
+                                        0.005,
+                                        "Solid storage"
+                                    ],
+                                    [
+                                        "Effluent pond (Uncovered anaerobic lagoon)",
+                                        0,
+                                        "Anaerobic lagoon"
+                                    ],
+                                    [
+                                        "Anaerobic digestor / Covered lagoon",
+                                        0,
+                                        "Digester / covered lagoons"
+                                    ],
+                                    [
+                                        "Short HRT tank storage < 1 month (pit storage)",
+                                        0.002,
+                                        "Pit storage"
+                                    ]
+                                ]
+                   },
+                   {
+                       "name":  "SourceData_Swine_MMS_MCFs",
+                       "title":  "Methane conversion factor for temperature zone and manure management system.",
+                       "variable":  "",
+                       "unit":  "",
+                       "source":  "VEERG 2026: Table A.1.6.4: Swine - MCFs (MCFim)",
+                       "variation":  "VARIATION ON SOURCE DATA: Added columns for ACT, split QLD and NT. Added extra column with MMS names that match NIR definitions",
+                       "header":  [
+                                      "MMS",
+                                      "NSW",
+                                      "ACT",
+                                      "QLD",
+                                      "NT",
+                                      "SA",
+                                      "TAS",
+                                      "VIC",
+                                      "WA",
+                                      "NIR definition"
+                                  ],
+                       "rows":  [
+                                    [
+                                        "Outdoor (Dry lot)",
+                                        0.01,
+                                        0.01,
+                                        0.03,
+                                        0.03,
+                                        0.01,
+                                        0.01,
+                                        0.01,
+                                        0.01,
+                                        "Drylot (feed pad)"
+                                    ],
+                                    [
+                                        "Deep litter",
+                                        0.04,
+                                        0.04,
+                                        0.04,
+                                        0.04,
+                                        0.04,
+                                        0.04,
+                                        0.04,
+                                        0.04,
+                                        "Deep litter"
+                                    ],
+                                    [
+                                        "Stockpile (Solid storage)",
+                                        0.02,
+                                        0.02,
+                                        0.02,
+                                        0.02,
+                                        0.02,
+                                        0.02,
+                                        0.02,
+                                        0.02,
+                                        "Solid storage"
+                                    ],
+                                    [
+                                        "Effluent pond (Uncovered anaerobic lagoon)",
+                                        0.75,
+                                        0.75,
+                                        0.78,
+                                        0.78,
+                                        0.75,
+                                        0.7,
+                                        0.74,
+                                        0.76,
+                                        "Anaerobic lagoon"
+                                    ],
+                                    [
+                                        "Anaerobic digester / Covered lagoon",
+                                        0.1,
+                                        0.1,
+                                        0.1,
+                                        0.1,
+                                        0.1,
+                                        0.1,
+                                        0.1,
+                                        0.1,
+                                        "Digester / covered lagoons"
+                                    ],
+                                    [
+                                        "Short HRT tank storage < 1 month (pit storage)",
+                                        0.03,
+                                        0.03,
+                                        0.03,
+                                        0.03,
+                                        0.03,
+                                        0.03,
+                                        0.03,
+                                        0.03,
+                                        "Pit storage"
+                                    ],
+                                    [
+                                        "Direct Application to soil",
+                                        0,
+                                        0,
+                                        0,
+                                        0,
+                                        0,
+                                        0,
+                                        0,
+                                        0,
+                                        "Direct application"
+                                    ]
+                                ]
+                   },
+                   {
+                       "name":  "SourceData_Swine_AverageLiveweight",
+                       "title":  "Swine - Average liveweight (inventory defaults) (kg) (Wco)",
+                       "variable":  "",
+                       "unit":  "kg",
+                       "source":  "VEERG 2026: Table A.1.6.5: Swine - Average liveweight (inventory defaults) (kg) (Wco)",
+                       "variation":  ".",
+                       "header":  [
+                                      "Livestock Type j",
+                                      "Average Liveweight (kg)"
+                                  ],
+                       "rows":  [
+                                    [
+                                        "Sows",
+                                        188
+                                    ],
+                                    [
+                                        "Boars",
+                                        206
+                                    ],
+                                    [
+                                        "Gilts",
+                                        125
+                                    ],
+                                    [
+                                        "Slaughter pigs",
+                                        39
+                                    ],
+                                    [
+                                        "Slaughter pigs at turnoff",
+                                        97
+                                    ]
+                                ]
+                   },
+                   {
+                       "name":  "SourceData_Swine_ProductionSystems",
+                       "title":  "Swine production systems",
+                       "variable":  "",
+                       "unit":  "",
+                       "source":  "VEERG 2026: 4.5 Swine Figure 4.8",
+                       "variation":  "",
+                       "header":  [
+                                      "Production system"
+                                  ],
+                       "rows":  [
+                                    [
+                                        "Conventional housing"
+                                    ],
+                                    [
+                                        "Deep litter housing"
+                                    ],
+                                    [
+                                        "Outdoor/free range"
+                                    ]
+                                ]
+                   }
+               ]
+}

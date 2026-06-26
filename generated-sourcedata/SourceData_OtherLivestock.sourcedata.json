@@ -1,0 +1,375 @@
+﻿{
+    "generatedFrom":  "SourceData_OtherLivestock.xlf",
+    "generatedAt":  "2026-06-26T02:27:47Z",
+    "schemaVersion":  1,
+    "tables":  [
+                   {
+                       "name":  "SourceData_OtherLivestock_EntericFermentationEmissionFactor",
+                       "title":  "Other Livestock - Enteric fermentation emission factor for each other livestock type",
+                       "variable":  "Mj",
+                       "unit":  "kg CH4 / head / year",
+                       "source":  "VEERG 2026: Table A.1.5.1",
+                       "variation":  "",
+                       "header":  [
+                                      "Other Livestock Type",
+                                      "Mj"
+                                  ],
+                       "rows":  [
+                                    [
+                                        "Buffalo",
+                                        68
+                                    ],
+                                    [
+                                        "Goats",
+                                        5
+                                    ],
+                                    [
+                                        "Deer",
+                                        20
+                                    ],
+                                    [
+                                        "Camels",
+                                        46
+                                    ],
+                                    [
+                                        "Alpacas",
+                                        8
+                                    ],
+                                    [
+                                        "Horses",
+                                        18
+                                    ],
+                                    [
+                                        "Mules/asses",
+                                        10
+                                    ],
+                                    [
+                                        "Emus/ostriches",
+                                        5
+                                    ]
+                                ]
+                   },
+                   {
+                       "name":  "SourceData_OtherLivestock_VolatileSolidsProduced",
+                       "title":  "Other Livestock - Volatile solids produced by each other livestock type",
+                       "variable":  "VSj",
+                       "unit":  "kg VS / head / day",
+                       "source":  "VEERG 2026: Table A.1.5.2",
+                       "variation":  "",
+                       "header":  [
+                                      "Other Livestock Type",
+                                      "VSj"
+                                  ],
+                       "rows":  [
+                                    [
+                                        "Buffalo",
+                                        2.73
+                                    ],
+                                    [
+                                        "Goats",
+                                        0.34
+                                    ],
+                                    [
+                                        "Deer",
+                                        0.91
+                                    ],
+                                    [
+                                        "Camels",
+                                        2.73
+                                    ],
+                                    [
+                                        "Alpacas",
+                                        0.34
+                                    ],
+                                    [
+                                        "Horses",
+                                        2.73
+                                    ],
+                                    [
+                                        "Mules/asses",
+                                        0.91
+                                    ],
+                                    [
+                                        "Emus/ostriches",
+                                        0.34
+                                    ]
+                                ]
+                   },
+                   {
+                       "name":  "SourceData_OtherLivestock_NitrogenExcreted",
+                       "title":  "Other Livestock - Nitrogen excreted per livestock type",
+                       "variable":  "NEj",
+                       "unit":  "kg N2O / head / year",
+                       "source":  "VEERG 2026: Table A.1.5.3",
+                       "variation":  "",
+                       "header":  [
+                                      "Other Livestock Type",
+                                      "NEj"
+                                  ],
+                       "rows":  [
+                                    [
+                                        "Buffalo",
+                                        39.5
+                                    ],
+                                    [
+                                        "Goats",
+                                        7
+                                    ],
+                                    [
+                                        "Deer",
+                                        13.2
+                                    ],
+                                    [
+                                        "Camels",
+                                        39.5
+                                    ],
+                                    [
+                                        "Alpacas",
+                                        7
+                                    ],
+                                    [
+                                        "Horses",
+                                        39.5
+                                    ],
+                                    [
+                                        "Mules/asses",
+                                        13.2
+                                    ],
+                                    [
+                                        "Emus/ostriches",
+                                        7
+                                    ]
+                                ]
+                   },
+                   {
+                       "name":  "SourceData_OtherLivestock_AverageLiveweight",
+                       "title":  "Other Livestock - Average Liveweights",
+                       "variable":  "Wco",
+                       "unit":  "kg",
+                       "source":  "VEERG 2026: Table A.1.5.4",
+                       "variation":  "",
+                       "header":  [
+                                      "Other Livestock Type j",
+                                      "Average Liveweight",
+                                      "Average Liveweight"
+                                  ],
+                       "rows":  [
+                                    [
+                                        "Buffalo",
+                                        336,
+                                        "-"
+                                    ],
+                                    [
+                                        "Goats",
+                                        33,
+                                        "28kg - low productivity systems"
+                                    ],
+                                    [
+                                        "Goats",
+                                        33,
+                                        "50kg - high productivity systems"
+                                    ],
+                                    [
+                                        "Deer",
+                                        120,
+                                        120
+                                    ],
+                                    [
+                                        "Camels",
+                                        217,
+                                        570
+                                    ],
+                                    [
+                                        "Alpacas",
+                                        "-",
+                                        65
+                                    ],
+                                    [
+                                        "Horses",
+                                        377,
+                                        550
+                                    ],
+                                    [
+                                        "Mules/asses",
+                                        130,
+                                        245
+                                    ],
+                                    [
+                                        "Emus/ostriches",
+                                        120,
+                                        120
+                                    ],
+                                    [
+                                        "Reference",
+                                        "IPCC 2019 Table 10A.5 [2]",
+                                        "IPCC 2019 Table 10.10 [2]"
+                                    ]
+                                ]
+                   },
+                   {
+                       "name":  "SourceData_OtherLivestock_FractionWasteInMMS",
+                       "title":  "Other Livestock - Fraction of waste in each manure management system",
+                       "variable":  "MMSm",
+                       "unit":  "fraction",
+                       "source":  "VEERG 2026: Table A.1.5.5",
+                       "variation":  "",
+                       "header":  [
+                                      "State",
+                                      "Pasture range and paddock",
+                                      "Uncovered Anaerobic lagoon"
+                                  ],
+                       "rows":  [
+                                    [
+                                        "ACT",
+                                        99.66,
+                                        0.34
+                                    ],
+                                    [
+                                        "NSW",
+                                        99.66,
+                                        0.34
+                                    ],
+                                    [
+                                        "NT",
+                                        99.66,
+                                        0.34
+                                    ],
+                                    [
+                                        "QLD",
+                                        99.66,
+                                        0.34
+                                    ],
+                                    [
+                                        "SA",
+                                        99.66,
+                                        0.34
+                                    ],
+                                    [
+                                        "TAS",
+                                        99.66,
+                                        0.34
+                                    ],
+                                    [
+                                        "VIC",
+                                        99.66,
+                                        0.34
+                                    ],
+                                    [
+                                        "WA",
+                                        99.66,
+                                        0.34
+                                    ]
+                                ]
+                   },
+                   {
+                       "name":  "SourceData_OtherLivestock_MethaneConversionFactor",
+                       "title":  "Other Livestock - Methane conversion factor per region",
+                       "variable":  "MCFim",
+                       "unit":  "fraction",
+                       "source":  "VEERG 2026: Table A.1.5.6",
+                       "variation":  "",
+                       "header":  [
+                                      "State",
+                                      "Pasture range and paddock",
+                                      "Uncovered Anaerobic lagoon"
+                                  ],
+                       "rows":  [
+                                    [
+                                        "ACT",
+                                        0.0047,
+                                        0.71
+                                    ],
+                                    [
+                                        "NSW",
+                                        0.0047,
+                                        0.75
+                                    ],
+                                    [
+                                        "NT",
+                                        0.0047,
+                                        0.8
+                                    ],
+                                    [
+                                        "QLD",
+                                        0.0047,
+                                        0.78
+                                    ],
+                                    [
+                                        "SA",
+                                        0.0047,
+                                        0.74
+                                    ],
+                                    [
+                                        "TAS",
+                                        0.0047,
+                                        0.7
+                                    ],
+                                    [
+                                        "VIC",
+                                        0.0047,
+                                        0.74
+                                    ],
+                                    [
+                                        "WA",
+                                        0.0047,
+                                        0.76
+                                    ]
+                                ]
+                   },
+                   {
+                       "name":  "SourceData_OtherLivestock_MethaneEmissionsPotential",
+                       "title":  "Other Livestock - Methane emissions potential",
+                       "variable":  "BO",
+                       "unit":  "m3 CH4 / kg VS",
+                       "source":  "VEERG 2026: Table A.1.5.X",
+                       "variation":  "VARIATION ON SOURCE: There were no values in VEERG so this data has been generated by using documented BO values from other livestock",
+                       "header":  [
+                                      "Other Livestock Type",
+                                      "BO",
+                                      "Taken from"
+                                  ],
+                       "rows":  [
+                                    [
+                                        "Buffalo",
+                                        0.19,
+                                        "Feedlot, Pasture beef"
+                                    ],
+                                    [
+                                        "Goats",
+                                        0.24,
+                                        "Sheep"
+                                    ],
+                                    [
+                                        "Deer",
+                                        0.24,
+                                        "Sheep"
+                                    ],
+                                    [
+                                        "Camels",
+                                        0.24,
+                                        "Sheep"
+                                    ],
+                                    [
+                                        "Alpacas",
+                                        0.24,
+                                        "Sheep"
+                                    ],
+                                    [
+                                        "Horses",
+                                        0.19,
+                                        "Feedlot, Pasture beef"
+                                    ],
+                                    [
+                                        "Mules/asses",
+                                        0.24,
+                                        "Sheep"
+                                    ],
+                                    [
+                                        "Emus/ostriches",
+                                        0.36,
+                                        "Poultry - meat chickens"
+                                    ]
+                                ]
+                   }
+               ]
+}

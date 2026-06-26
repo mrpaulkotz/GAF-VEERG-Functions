@@ -1,0 +1,16 @@
+{
+	"X_Cell_Wastewater_TreatmentFacilityType": "Unmanaged aerobic treatment",
+	"X_Cell_Wastewater_QuantityInM3": 1000,
+	"X_Cell_Wastewater_InletCOD": 0.9,
+  "X_Cell_Wastewater_FractionCODRemovedAsSludge": 0.5,
+  "X_Cell_Wastewater_FractionCODRemovedAndTransferred": 0.2,
+  "X_Cell_Wastewater_OutletCOD": 0.1,
+  "X_Cell_Wastewater_SludgeMethaneCapturedForCombustion": 100,
+  "X_Cell_Wastewater_SludgeMethaneFlared": 100,
+  "X_Cell_Wastewater_SludgeMethaneTransferred": 100
+  
+}
+
+
+
+

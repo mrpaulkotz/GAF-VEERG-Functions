@@ -1,0 +1,453 @@
+﻿{
+    "generatedFrom":  "SourceData_Feedlot.xlf",
+    "generatedAt":  "2026-06-26T02:27:47Z",
+    "schemaVersion":  1,
+    "tables":  [
+                   {
+                       "name":  "SourceData_Feedlot_DurationOfStay",
+                       "title":  "Beef feedlot cattle - Duration of stay (days)",
+                       "variable":  "",
+                       "unit":  "",
+                       "source":  "VEERG 2026: Table A.1.1.1: Beef feedlot cattle - Duration of stay (days)",
+                       "variation":  "",
+                       "header":  [
+                                      "Feedlot type",
+                                      "Length of Stay"
+                                  ],
+                       "rows":  [
+                                    [
+                                        "Domestic",
+                                        "1-80 days"
+                                    ],
+                                    [
+                                        "Mid-fed",
+                                        "81-200 days"
+                                    ],
+                                    [
+                                        "Long-fed",
+                                        "201+ days"
+                                    ]
+                                ]
+                   },
+                   {
+                       "name":  "SourceData_Feedlot_AnimalCharacteristics",
+                       "title":  "Beef feedlot cattle - Animal characteristics",
+                       "variable":  "",
+                       "unit":  "",
+                       "source":  "VEERG 2026: Table A.1.1.2: Beef feedlot cattle - Animal characteristics",
+                       "variation":  "",
+                       "header":  [
+                                      "Feedlot type",
+                                      "Characteristic",
+                                      "Unit",
+                                      "2005-2009",
+                                      "2010-2014",
+                                      "2015-2019",
+                                      "2020-2023"
+                                  ],
+                       "rows":  [
+                                    [
+                                        "Domestic",
+                                        "Days on feed",
+                                        "days",
+                                        70,
+                                        70,
+                                        70,
+                                        75
+                                    ],
+                                    [
+                                        "Domestic",
+                                        "Feed intake",
+                                        "kg DM/day",
+                                        10,
+                                        10,
+                                        10.4,
+                                        10.4
+                                    ],
+                                    [
+                                        "Domestic",
+                                        "N retention",
+                                        "per cent of intake",
+                                        21.1,
+                                        20.4,
+                                        20.4,
+                                        20.4
+                                    ],
+                                    [
+                                        "Mid-fed",
+                                        "Days on feed",
+                                        "days",
+                                        115,
+                                        115,
+                                        120,
+                                        150
+                                    ],
+                                    [
+                                        "Mid-fed",
+                                        "Feed intake",
+                                        "kg DM/day",
+                                        11.2,
+                                        10.8,
+                                        10.8,
+                                        10.8
+                                    ],
+                                    [
+                                        "Mid-fed",
+                                        "N retention",
+                                        "per cent of intake",
+                                        12.5,
+                                        12.7,
+                                        12.7,
+                                        12.7
+                                    ],
+                                    [
+                                        "Long-fed",
+                                        "Days on feed",
+                                        "days",
+                                        250,
+                                        250,
+                                        250,
+                                        250
+                                    ],
+                                    [
+                                        "Long-fed",
+                                        "Feed intake",
+                                        "kg DM/day",
+                                        9,
+                                        8.5,
+                                        8.2,
+                                        8.2
+                                    ],
+                                    [
+                                        "Long-fed",
+                                        "N retention",
+                                        "per cent of intake",
+                                        6.6,
+                                        7,
+                                        7,
+                                        7
+                                    ]
+                                ]
+                   },
+                   {
+                       "name":  "SourceData_Feedlot_DietProperties",
+                       "title":  "Beef feedlot cattle - Diet properties",
+                       "variable":  "",
+                       "unit":  "",
+                       "source":  "VEERG 2026: Table A.1.1.3: Beef feedlot cattle - Diet properties",
+                       "variation":  "",
+                       "header":  [
+                                      "Feedlot type",
+                                      "Nutrient analysis",
+                                      "Unit",
+                                      "2005-2009",
+                                      "2010-2014",
+                                      "2015-2019",
+                                      "2020-2023",
+                                      "Converted to fraction"
+                                  ],
+                       "rows":  [
+                                    [
+                                        "Domestic",
+                                        "Dry matter digestibility",
+                                        "fraction",
+                                        0.81,
+                                        0.81,
+                                        0.81,
+                                        0.81,
+                                        0.81
+                                    ],
+                                    [
+                                        "Domestic",
+                                        "Crude protein",
+                                        "fraction",
+                                        0.14,
+                                        0.14,
+                                        0.14,
+                                        0.14,
+                                        0.14
+                                    ],
+                                    [
+                                        "Domestic",
+                                        "NDF",
+                                        "per cent",
+                                        23,
+                                        22,
+                                        22,
+                                        22,
+                                        0.22
+                                    ],
+                                    [
+                                        "Domestic",
+                                        "Ether Extract",
+                                        "per cent",
+                                        4.5,
+                                        4.5,
+                                        4.8,
+                                        4.8,
+                                        0.048
+                                    ],
+                                    [
+                                        "Mid-fed",
+                                        "Dry matter digestibility",
+                                        "fraction",
+                                        0.81,
+                                        0.81,
+                                        0.81,
+                                        0.81,
+                                        0.81
+                                    ],
+                                    [
+                                        "Mid-fed",
+                                        "Crude protein",
+                                        "fraction",
+                                        0.13,
+                                        0.125,
+                                        0.12,
+                                        0.12,
+                                        0.12
+                                    ],
+                                    [
+                                        "Mid-fed",
+                                        "NDF",
+                                        "per cent",
+                                        24,
+                                        22,
+                                        22,
+                                        22,
+                                        0.22
+                                    ],
+                                    [
+                                        "Mid-fed",
+                                        "Ether Extract",
+                                        "per cent",
+                                        5,
+                                        5,
+                                        5,
+                                        5,
+                                        0.05
+                                    ],
+                                    [
+                                        "Long-Fed",
+                                        "Dry matter digestibility",
+                                        "fraction",
+                                        0.81,
+                                        0.81,
+                                        0.81,
+                                        0.81,
+                                        0.81
+                                    ],
+                                    [
+                                        "Long-Fed",
+                                        "Crude protein",
+                                        "fraction",
+                                        0.13,
+                                        0.125,
+                                        0.12,
+                                        0.12,
+                                        0.12
+                                    ],
+                                    [
+                                        "Long-Fed",
+                                        "NDF",
+                                        "per cent",
+                                        24,
+                                        24,
+                                        24,
+                                        24,
+                                        0.24
+                                    ],
+                                    [
+                                        "Long-Fed",
+                                        "Ether Extract",
+                                        "per cent",
+                                        5,
+                                        5,
+                                        5.5,
+                                        5.5,
+                                        0.055
+                                    ]
+                                ]
+                   },
+                   {
+                       "name":  "SourceData_Feedlot_MCF",
+                       "title":  "Feedlot - MCFs",
+                       "variable":  "",
+                       "unit":  "",
+                       "source":  "VEERG 2026: Table A.1.1.4: Beef feedlot cattle - MCFs (fraction) (MCFimT)",
+                       "variation":  "",
+                       "header":  [
+                                      "Treatment stage T",
+                                      "MMS m",
+                                      "NSW",
+                                      "ACT",
+                                      "QLD",
+                                      "NT",
+                                      "SA",
+                                      "VIC",
+                                      "WA",
+                                      "TAS",
+                                      "NIR definition"
+                                  ],
+                       "rows":  [
+                                    [
+                                        "Primary",
+                                        "Dry lot (Feedpad)",
+                                        0.01,
+                                        0.01,
+                                        0.03,
+                                        0.03,
+                                        0.01,
+                                        0.01,
+                                        0.01,
+                                        0.01,
+                                        "Drylot (feed pad)"
+                                    ],
+                                    [
+                                        "Secondary",
+                                        "Solid Storage (Stockpile)",
+                                        0.02,
+                                        0.02,
+                                        0.02,
+                                        0.02,
+                                        0.02,
+                                        0.02,
+                                        0.02,
+                                        0.02,
+                                        "Solid storage"
+                                    ],
+                                    [
+                                        "Secondary",
+                                        "Composting (Passive Windrow)",
+                                        0.01,
+                                        0.01,
+                                        0.01,
+                                        0.01,
+                                        0.01,
+                                        0.01,
+                                        0.01,
+                                        0.01,
+                                        "Composting (passive windrow)"
+                                    ],
+                                    [
+                                        "Secondary",
+                                        "Direct Application to soil",
+                                        0,
+                                        0,
+                                        0,
+                                        0,
+                                        0,
+                                        0,
+                                        0,
+                                        0,
+                                        "Direct application"
+                                    ],
+                                    [
+                                        "Tertiary",
+                                        "Uncovered anaerobic lagoon (Effluent pond)",
+                                        0.75,
+                                        0.75,
+                                        0.77,
+                                        0.77,
+                                        0.75,
+                                        0.75,
+                                        0.77,
+                                        0.75,
+                                        "Anaerobic lagoon"
+                                    ]
+                                ]
+                   },
+                   {
+                       "name":  "SourceData_Feedlot_NitrousOxideEFs",
+                       "title":  "Feedlot - Nitrous oxide EFs",
+                       "variable":  "",
+                       "unit":  "",
+                       "source":  "VEERG 2026: Table A.1.1.5: Beef feedlot cattle - Nitrous oxide EFs (EFmT)",
+                       "variation":  "",
+                       "header":  [
+                                      "Treatment stage T",
+                                      "MMS m",
+                                      "EFmT (kg N2O-N/kg N)",
+                                      "NIR definition"
+                                  ],
+                       "rows":  [
+                                    [
+                                        "Primary",
+                                        "Dry lot (Feedpad)",
+                                        0.0054,
+                                        "Drylot (feed pad)"
+                                    ],
+                                    [
+                                        "Secondary",
+                                        "Solid Storage (Stockpile)",
+                                        0.005,
+                                        "Solid storage"
+                                    ],
+                                    [
+                                        "Secondary",
+                                        "Composting (Passive Windrow)",
+                                        0.01,
+                                        "Composting (passive windrow)"
+                                    ],
+                                    [
+                                        "Secondary",
+                                        "Direct Application to soil",
+                                        0,
+                                        "Direct application"
+                                    ],
+                                    [
+                                        "Tertiary",
+                                        "Uncovered anaerobic lagoon (Effluent Pond)",
+                                        0,
+                                        "Anaerobic lagoon"
+                                    ]
+                                ]
+                   },
+                   {
+                       "name":  "SourceData_Feedlot_FracNVolatilised",
+                       "title":  "Feedlot - Fraction of N volatilised by MMS (FracGASMmT)",
+                       "variable":  "",
+                       "unit":  "",
+                       "source":  "VEERG 2026: Table A.1.1.6: Beef feedlot cattle - Fraction of N volatilised by MMS (FracGASMmT)",
+                       "variation":  "",
+                       "header":  [
+                                      "Treatment stage T",
+                                      "MMS m",
+                                      "FracGASMmT (kg NH3-N + NOx-N)/kg N",
+                                      "NIR definition"
+                                  ],
+                       "rows":  [
+                                    [
+                                        "Primary",
+                                        "Dry lot (Feedpad)",
+                                        0.6,
+                                        "Drylot (feed pad)"
+                                    ],
+                                    [
+                                        "Secondary",
+                                        "Solid Storage (Stockpile)",
+                                        0.25,
+                                        "Solid storage"
+                                    ],
+                                    [
+                                        "Secondary",
+                                        "Composting (Passive Windrow)",
+                                        0.4,
+                                        "Composting (passive windrow)"
+                                    ],
+                                    [
+                                        "Secondary",
+                                        "Direct Application to soil",
+                                        0,
+                                        "Direct application"
+                                    ],
+                                    [
+                                        "Tertiary",
+                                        "Uncovered anaerobic lagoon (Effluent pond)",
+                                        0.35,
+                                        "Anaerobic lagoon"
+                                    ]
+                                ]
+                   }
+               ]
+}

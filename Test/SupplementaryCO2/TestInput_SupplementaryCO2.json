@@ -1,0 +1,25 @@
+{
+"InputTables": [
+    {
+      "TableName": "Table_Input_SupplementaryCO2",
+      "MatrixType": "RowsToCols",
+      "ColumnOffset": 0,
+      "RowOffset": null,
+      "Rows": {
+        "Treatment1": {
+          "Description": "Carbonating",
+          "Amount": 100
+        },
+        "Treatment2": {
+          "Description": "Dry ice usage",
+          "Amount": 100
+        }
+      }
+    }
+  ]
+  
+}
+
+
+
+
