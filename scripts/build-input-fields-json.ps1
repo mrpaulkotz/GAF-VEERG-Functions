@@ -83,6 +83,12 @@ function Get-FieldKeyFromHeader {
 
   # Strip any parenthetical (unit) annotation, then PascalCase the remaining words.
   $noParen = [regex]::Replace($Header, '\([^)]*\)', '')
+  # Preserve comparison / range semantics that would otherwise be erased when the
+  # symbols are dropped, so e.g. "Bulls < 1 year" and "Bulls > 1 year" stay distinct
+  # machine keys ("BullsUnder1Year" / "BullsOver1Year") instead of colliding.
+  $noParen = [regex]::Replace($noParen, '<', ' Under ')
+  $noParen = [regex]::Replace($noParen, '>', ' Over ')
+  $noParen = [regex]::Replace($noParen, '(?<=\d)\s*-\s*(?=\d)', ' To ')
   $parts = @([regex]::Split($noParen.Trim(), '[^A-Za-z0-9]+') | Where-Object { $_ -ne '' })
   if ($parts.Count -eq 0) {
     return ($Header -replace '[^A-Za-z0-9]+', '')
@@ -339,11 +345,15 @@ function Resolve-ValidationList {
   $hasConcat = $expr.Contains('&')
 
   # --- Cascading INDIRECT($Parent) / INDIRECT(SUBSTITUTE($Parent," ","")) ---
-  # A '$'-prefixed reference immediately inside INDIRECT() drives the dependent list.
-  $cascadeMatch = [regex]::Match($expr, '(?i)^INDIRECT\(\s*(?:SUBSTITUTE\(\s*)?\$([A-Za-z0-9_\.]+)')
+  # The reference immediately inside INDIRECT() (optionally space-stripped via
+  # SUBSTITUTE) drives the dependent list. The parent may be a named cell
+  # (e.g. X_Cell_Site_State, no $) or a $-prefixed address. The terminator lookahead
+  # (?=[),]) requires the captured token to be a bare reference, so string-wrapper
+  # functions like UNIQUE(/TRIMRANGE( (followed by '(') never false-match.
+  $cascadeMatch = [regex]::Match($expr, '(?i)^INDIRECT\(\s*(?:SUBSTITUTE\(\s*)?(\$?[A-Za-z_][\w.$]*)\s*(?=[),])')
   if ($cascadeMatch.Success) {
     $stripSpaces = $expr -match '(?i)SUBSTITUTE\('
-    $parentRef = $cascadeMatch.Groups[1].Value
+    $parentRef = ($cascadeMatch.Groups[1].Value -replace '\$', '')
     $result['DependentOn'] = $parentRef
 
     $parentValues = @(Get-ParentAllowedValues -ParentRef $parentRef -Worksheet $Worksheet -Workbook $Workbook -NameIndex $NameIndex)
@@ -377,10 +387,64 @@ function Resolve-ValidationList {
     }
   }
 
-  # --- Runtime concatenated cascade (e.g. INDIRECT("Table_" & $Cell & "[Col]")) ---
-  # The target column/table is chosen at runtime from a sibling cell, so there is no
-  # single static option list. Emit as a select with empty Options for manual override.
+  # --- Concatenated cascade (e.g. INDIRECT("Table_" & SUBSTITUTE($Parent," ","") & "[Col]")) ---
+  # When a SUBSTITUTE() normalises a parent reference, the parent's allowed values are
+  # known, so each branch can be expanded statically: build <prefix><stripped value><suffix>
+  # and resolve it. Produces nested Options keyed by the space-stripped parent value, with
+  # "n/a" for branches that resolve to nothing. Falls back to a warning when there is no
+  # SUBSTITUTE-normalised parent to enumerate (target chosen purely at runtime).
   if ($isIndirect -and $hasConcat) {
+    $subMatch = [regex]::Match($expr, '(?i)SUBSTITUTE\(\s*([^,]+?)\s*,\s*"[^"]*"\s*,\s*"[^"]*"\s*\)')
+    if ($subMatch.Success) {
+      $parentRaw = $subMatch.Groups[1].Value.Trim()
+
+      # Split the INDIRECT(...) argument into the static literals before/after the driver.
+      $indArg = ''
+      $im = [regex]::Match($expr, '(?is)^INDIRECT\((.*)\)\s*$')
+      if ($im.Success) { $indArg = $im.Groups[1].Value }
+      $subSpan = $subMatch.Value
+      $idx = $indArg.IndexOf($subSpan)
+      $prefixExpr = if ($idx -ge 0) { $indArg.Substring(0, $idx) } else { '' }
+      $suffixExpr = if ($idx -ge 0) { $indArg.Substring($idx + $subSpan.Length) } else { '' }
+      $prefix = -join ([regex]::Matches($prefixExpr, '"([^"]*)"') | ForEach-Object { $_.Groups[1].Value })
+      $suffix = -join ([regex]::Matches($suffixExpr, '"([^"]*)"') | ForEach-Object { $_.Groups[1].Value })
+
+      $pinfo = Resolve-ParentInfo -Ref $parentRaw -Worksheet $Worksheet -NameIndex $NameIndex
+      $result['DependentOn'] = $pinfo.Name
+
+      # Enumerate the parent's allowed values by resolving the parent cell's own validation
+      # list (handles static, INDIRECT-structured and named-range parent lists alike).
+      $parentValues = @()
+      if ($null -ne $pinfo.Range) {
+        $parentWorksheet = $Worksheet
+        try { $parentWorksheet = $pinfo.Range.Worksheet } catch { $parentWorksheet = $Worksheet }
+        $parentList = Resolve-ValidationList -Cell $pinfo.Range -Worksheet $parentWorksheet -Workbook $Workbook -NameIndex $NameIndex -ContextName $pinfo.Name
+        if ($null -ne $parentList -and $parentList.Contains('Options')) {
+          $parentValues = @($parentList.Options.Keys)
+        }
+      }
+      foreach ($pv in $parentValues) {
+        $stripped = ($pv -replace '\s', '')
+        $built = "$prefix$stripped$suffix"
+        $childValues = @(Resolve-StructuredOrEvaluated -Worksheet $Worksheet -Workbook $Workbook -Expression $built)
+        # A branch that resolves to nothing - or only to a literal "n/a" placeholder cell -
+        # collapses to the bare string "n/a".
+        $realValues = @($childValues | Where-Object { $_ -notmatch '(?i)^\s*n/?a\s*$' })
+        if ($realValues.Count -eq 0) {
+          $result.Options[$stripped] = 'n/a'
+        }
+        else {
+          $nested = [ordered]@{}
+          foreach ($cv in $realValues) { $nested[$cv] = $cv }
+          $result.Options[$stripped] = $nested
+        }
+      }
+      if ($parentValues.Count -eq 0) {
+        Add-ValidationWarning "Select cell '$ContextName' cascading list has no resolvable parent values: $formula1"
+      }
+      return $result
+    }
+
     Add-ValidationWarning "Select cell '$ContextName' has runtime-dependent cascading list (not resolved): $formula1"
     return $result
   }
@@ -423,12 +487,21 @@ function Get-ParentAllowedValues {
   if ($null -eq $parentCell) {
     $parentCell = Invoke-WorksheetEvaluate -Worksheet $Worksheet -Expression $ParentRef
   }
-  if ($null -eq $parentCell) {
-    return (New-Object System.Collections.Generic.List[string])
-  }
+  return (Get-AllowedValuesFromCell -Cell $parentCell -Worksheet $Worksheet)
+}
+
+function Get-AllowedValuesFromCell {
+  # Reads the data-validation allowed values from a specific cell (a COM Range) as a flat
+  # string list. Handles static literal lists and reference/formula-based lists.
+  param(
+    [AllowNull()] $Cell,
+    [Parameter(Mandatory = $true)] $Worksheet
+  )
+
+  if ($null -eq $Cell) { return (New-Object System.Collections.Generic.List[string]) }
 
   $validation = $null
-  try { $validation = $parentCell.Validation } catch { $validation = $null }
+  try { $validation = $Cell.Validation } catch { $validation = $null }
   if ($null -ne $validation) {
     $f1 = ''
     try { $f1 = [string]$validation.Formula1 } catch { $f1 = '' }
@@ -447,6 +520,64 @@ function Get-ParentAllowedValues {
     }
   }
   return (New-Object System.Collections.Generic.List[string])
+}
+
+function Resolve-ParentInfo {
+  # Resolves a cascade parent reference (a defined name or a cell address like $E$7) to its
+  # ultimate source cell, following simple passthrough formulas (='Sheet'!$X$Y or =Name)
+  # so mirror cells are tunnelled through. Returns @{ Name = <defined name or raw ref>;
+  # Range = <source COM Range or $null> }.
+  param(
+    [Parameter(Mandatory = $true)] [string] $Ref,
+    [Parameter(Mandatory = $true)] $Worksheet,
+    [Parameter(Mandatory = $true)] [hashtable] $NameIndex
+  )
+
+  $range = $null
+  if ($NameIndex.ContainsKey($Ref)) {
+    try { $range = $NameIndex[$Ref].Range } catch { $range = $null }
+  }
+  if ($null -eq $range) {
+    $range = Invoke-WorksheetEvaluate -Worksheet $Worksheet -Expression $Ref
+  }
+
+  $matchedName = $null
+  $visited = New-Object 'System.Collections.Generic.HashSet[string]'
+
+  for ($hops = 0; $hops -lt 8 -and $null -ne $range; $hops++) {
+    $addr = $null; $sheetName = $null
+    try { $addr = [string]$range.Address($true, $true) } catch { $addr = $null }
+    try { $sheetName = [string]$range.Worksheet.Name } catch { $sheetName = $null }
+    if ($null -ne $addr) {
+      if (-not $visited.Add("$sheetName!$addr")) { break }
+      foreach ($k in @($NameIndex.Keys)) {
+        $rng = $NameIndex[$k].Range
+        if ($null -eq $rng) { continue }
+        try {
+          if (([string]$rng.Address($true, $true)) -eq $addr -and
+              ([string]$rng.Worksheet.Name) -eq $sheetName) { $matchedName = $k; break }
+        }
+        catch { }
+      }
+    }
+
+    # Stop once we reach a cell that holds its own list validation (the true source).
+    $isList = $false
+    try { $isList = ([int]$range.Validation.Type) -eq $xlValidateList } catch { $isList = $false }
+    if ($isList) { break }
+
+    # Otherwise follow a single-cell passthrough formula (=Sheet!$X$Y or =Name).
+    $formula = ''
+    try { if ([bool]$range.HasFormula) { $formula = [string]$range.Formula } } catch { $formula = '' }
+    $fm = [regex]::Match($formula, '^=\s*(?:(?:''[^'']+''|[A-Za-z0-9_. ]+)!)?\$?[A-Za-z]{1,3}\$?[0-9]+\s*$')
+    if (-not $fm.Success) { break }
+    $next = Invoke-WorksheetEvaluate -Worksheet $range.Worksheet -Expression ($formula.Substring(1).Trim())
+    if ($null -eq $next) { break }
+    $range = $next
+  }
+
+  $name = if ($matchedName) { $matchedName } else { ($Ref -replace '\$', '') }
+  return @{ Name = $name; Range = $range }
 }
 
 # ---------------------------------------------------------------------------
@@ -637,12 +768,11 @@ function Get-InputTables {
       $matrixType = if ($periodCount -ge 2) { 'ColsToRows' } else { 'RowsToCols' }
 
       $tableObj = [ordered]@{
-        TableName    = $tableName
-        MatrixType   = $matrixType
-        NumberOfCols = $headers.Count
-        ColumnNames  = @($headers)
+        TableName  = $tableName
+        MatrixType = $matrixType
       }
 
+      $columnNames = [ordered]@{}
       $fieldDefs = [ordered]@{}
       foreach ($col in $columns) {
         $header = ''
@@ -651,8 +781,12 @@ function Get-InputTables {
         if (Test-IsPeriodLabel -Label $header) { continue }
         $fieldKey = Get-FieldKeyFromHeader -Header $header
         if ([string]::IsNullOrWhiteSpace($fieldKey)) { continue }
+        if (-not $columnNames.Contains($fieldKey)) { $columnNames[$fieldKey] = $header }
         $fieldDefs[$fieldKey] = Get-TableFieldDef -Column $col -Worksheet $worksheet -Workbook $Workbook -NameIndex $NameIndex -Header $header -ContextName ("{0}.{1}" -f $tableName, $header)
       }
+
+      $tableObj['NumberOfCols'] = $columnNames.Count
+      $tableObj['ColumnNames'] = $columnNames
 
       if ($matrixType -eq 'ColsToRows') {
         $tableObj['Cols'] = [ordered]@{ 'Column' = $fieldDefs }
@@ -766,8 +900,6 @@ function Get-NamedRangeTables {
       TableName    = $shortName
       MatrixType   = if ($labelColumn) { 'ColsToRows' } else { 'RowsToCols' }
       NumberOfRows = $rowCount
-      NumberOfCols = $colCount
-      ColumnNames  = @($headerRow)
     }
 
     if ($labelColumn) {
@@ -782,6 +914,19 @@ function Get-NamedRangeTables {
         & $addField $fieldDefs (Get-FieldKeyFromHeader -Header $label) ("Row$i") $i 2 $label 'Label' $cellDef
       }
 
+      # The class axis is the header row, columns 2..C. Column 1 holds the row-label
+      # header ("Method 1 default values...") and is excluded from ColumnNames/NumberOfCols.
+      $columnNames = [ordered]@{}
+      for ($jx = 2; $jx -le $colCount; $jx++) {
+        $hdr = [string]$headerRow[$jx - 1]
+        $ckey = Get-FieldKeyFromHeader -Header $hdr
+        if ([string]::IsNullOrWhiteSpace($ckey)) { $ckey = "Col$jx" }
+        $candidate = $ckey; $n = 2
+        while ($columnNames.Contains($candidate)) { $candidate = "$ckey$n"; $n++ }
+        $columnNames[$candidate] = $hdr
+      }
+      $tableObj['NumberOfCols'] = $columnNames.Count
+      $tableObj['ColumnNames'] = $columnNames
       $tableObj['Cols'] = [ordered]@{ 'Column' = $fieldDefs }
     }
     else {
@@ -795,6 +940,17 @@ function Get-NamedRangeTables {
         $cellDef = Get-FieldDefFromCell -BodyCell $bodyCell -Header $header -Worksheet $worksheet -Workbook $Workbook -NameIndex $NameIndex -ContextName $ctx -ForceOverwrite $forceOverwrite
         & $addField $fieldDefs (Get-FieldKeyFromHeader -Header $header) ("Col$jx") 2 $jx $header 'Header' $cellDef
       }
+
+      # The field/column axis is the set of fields just built; key it by machine key
+      # mapping to the raw header so it matches the keys under Rows.Row.*.
+      $columnNames = [ordered]@{}
+      foreach ($k in $fieldDefs.Keys) {
+        $lbl = ''
+        if ($fieldDefs[$k].Contains('Header')) { $lbl = [string]$fieldDefs[$k]['Header'] }
+        $columnNames[$k] = $lbl
+      }
+      $tableObj['NumberOfCols'] = $colCount
+      $tableObj['ColumnNames'] = $columnNames
       $tableObj['Rows'] = [ordered]@{ 'Row' = $fieldDefs }
     }
 
@@ -839,8 +995,12 @@ function ConvertTo-InputFieldsModel {
 
   $nameIndex = Build-NameIndex -Workbook $Workbook
 
-  $inputCells = Get-InputCells -Workbook $Workbook -NameIndex $nameIndex
-  $inputTables = Get-InputTables -Workbook $Workbook -NameIndex $nameIndex
+  # Wrap in @() so the result is ALWAYS a real array: a function returning an empty
+  # List unrolls to $null (which ConvertTo-Json renders as {}), and a single-element
+  # result unrolls to a scalar (rendered as a bare object). @() re-collects the
+  # unrolled pipeline into an [object[]] for 0, 1 or N items alike.
+  $inputCells = @(Get-InputCells -Workbook $Workbook -NameIndex $nameIndex)
+  $inputTables = @(Get-InputTables -Workbook $Workbook -NameIndex $nameIndex)
 
   $model = [ordered]@{
     schemaVersion = $schemaVersion

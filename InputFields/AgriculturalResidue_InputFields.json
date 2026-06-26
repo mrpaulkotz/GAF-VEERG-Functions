@@ -1,7 +1,7 @@
 {
     "schemaVersion":  1,
     "generatedFrom":  "6_AgriculturalResidue_WIP_v02.xlsx",
-    "generatedAt":  "2026-06-26T05:00:28Z",
+    "generatedAt":  "2026-06-26T05:49:41Z",
     "InputCells":  [
                        {
                            "CellName":  "X_Cell_Crop_AreaUnderCropping",
@@ -180,7 +180,7 @@
                            "CellType":  "number"
                        }
                    ],
-    "InputTables":  {
+    "InputTables":  [
 
-                    }
+                    ]
 }

@@ -1,7 +1,7 @@
 {
     "schemaVersion":  1,
     "generatedFrom":  "14_Electricity_Scope2_WIP_v01.xlsx",
-    "generatedAt":  "2026-06-26T04:59:53Z",
+    "generatedAt":  "2026-06-26T05:49:09Z",
     "InputCells":  [
                        {
                            "CellName":  "X_Cell_Electricity_Location_AmountPurchasedInkWh",
@@ -87,14 +87,14 @@
                             "TableName":  "Table_Input_RECSurrendered",
                             "MatrixType":  "RowsToCols",
                             "NumberOfCols":  6,
-                            "ColumnNames":  [
-                                                "Description",
-                                                "Source (select)",
-                                                "Generation date",
-                                                "Number of certificates",
-                                                "MWh",
-                                                "Elegibility"
-                                            ],
+                            "ColumnNames":  {
+                                                "Description":  "Description",
+                                                "Source":  "Source (select)",
+                                                "GenerationDate":  "Generation date",
+                                                "NumberOfCertificates":  "Number of certificates",
+                                                "MWh":  "MWh",
+                                                "Elegibility":  "Elegibility"
+                                            },
                             "Rows":  {
                                          "Row":  {
                                                      "Description":  {
@@ -126,14 +126,14 @@
                             "TableName":  "Table_Input_RECConsumedByEntity",
                             "MatrixType":  "RowsToCols",
                             "NumberOfCols":  6,
-                            "ColumnNames":  [
-                                                "Description",
-                                                "Source",
-                                                "Generation date",
-                                                "Number of certificates",
-                                                "MWh",
-                                                "Elegibility"
-                                            ],
+                            "ColumnNames":  {
+                                                "Description":  "Description",
+                                                "Source":  "Source",
+                                                "GenerationDate":  "Generation date",
+                                                "NumberOfCertificates":  "Number of certificates",
+                                                "MWh":  "MWh",
+                                                "Elegibility":  "Elegibility"
+                                            },
                             "Rows":  {
                                          "Row":  {
                                                      "Description":  {

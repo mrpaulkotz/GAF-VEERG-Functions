@@ -1,7 +1,7 @@
 {
     "schemaVersion":  1,
     "generatedFrom":  "4_1_ManureManagement_Feedlot_WIP_v08.xlsx",
-    "generatedAt":  "2026-06-26T05:00:06Z",
+    "generatedAt":  "2026-06-26T05:49:22Z",
     "InputCells":  [
                        {
                            "CellName":  "X_Cell_Site_AverageTemperature",
@@ -79,13 +79,12 @@
                             "TableName":  "X_Table_Feedlot_HerdMovement",
                             "MatrixType":  "ColsToRows",
                             "NumberOfRows":  3,
-                            "NumberOfCols":  4,
-                            "ColumnNames":  [
-                                                "",
-                                                "Domestic",
-                                                "Mid-fed",
-                                                "Long-fed"
-                                            ],
+                            "NumberOfCols":  3,
+                            "ColumnNames":  {
+                                                "Domestic":  "Domestic",
+                                                "MidFed":  "Mid-fed",
+                                                "LongFed":  "Long-fed"
+                                            },
                             "Cols":  {
                                          "Column":  {
                                                         "AverageNumberOfHeadBetween01Jan24And31Dec24":  {
@@ -107,13 +106,12 @@
                             "TableName":  "X_Table_Feedlot_Intake_Method1",
                             "MatrixType":  "ColsToRows",
                             "NumberOfRows":  5,
-                            "NumberOfCols":  4,
-                            "ColumnNames":  [
-                                                "Method 1 default values (Do not edit)",
-                                                "Domestic",
-                                                "Mid-fed",
-                                                "Long-fed"
-                                            ],
+                            "NumberOfCols":  3,
+                            "ColumnNames":  {
+                                                "Domestic":  "Domestic",
+                                                "MidFed":  "Mid-fed",
+                                                "LongFed":  "Long-fed"
+                                            },
                             "Cols":  {
                                          "Column":  {
                                                         "FeedIntake":  {
@@ -147,13 +145,12 @@
                             "TableName":  "X_Table_Feedlot_Intake_Method2",
                             "MatrixType":  "ColsToRows",
                             "NumberOfRows":  5,
-                            "NumberOfCols":  4,
-                            "ColumnNames":  [
-                                                "Method 2 custom values (Edit if known)",
-                                                "Domestic",
-                                                "Mid-fed",
-                                                "Long-fed"
-                                            ],
+                            "NumberOfCols":  3,
+                            "ColumnNames":  {
+                                                "Domestic":  "Domestic",
+                                                "MidFed":  "Mid-fed",
+                                                "LongFed":  "Long-fed"
+                                            },
                             "Cols":  {
                                          "Column":  {
                                                         "FeedIntake":  {
@@ -191,13 +188,12 @@
                             "TableName":  "X_Table_Feedlot_MMS_Stage1",
                             "MatrixType":  "ColsToRows",
                             "NumberOfRows":  2,
-                            "NumberOfCols":  4,
-                            "ColumnNames":  [
-                                                "Stage 1 MMS",
-                                                "Domestic",
-                                                "Mid-fed",
-                                                "Long-fed"
-                                            ],
+                            "NumberOfCols":  3,
+                            "ColumnNames":  {
+                                                "Domestic":  "Domestic",
+                                                "MidFed":  "Mid-fed",
+                                                "LongFed":  "Long-fed"
+                                            },
                             "Cols":  {
                                          "Column":  {
                                                         "Drylot":  {
@@ -214,13 +210,12 @@
                             "TableName":  "X_Table_Feedlot_MMS_Stage2",
                             "MatrixType":  "ColsToRows",
                             "NumberOfRows":  5,
-                            "NumberOfCols":  4,
-                            "ColumnNames":  [
-                                                "Stage 2 MMS",
-                                                "Domestic",
-                                                "Mid-fed",
-                                                "Long-fed"
-                                            ],
+                            "NumberOfCols":  3,
+                            "ColumnNames":  {
+                                                "Domestic":  "Domestic",
+                                                "MidFed":  "Mid-fed",
+                                                "LongFed":  "Long-fed"
+                                            },
                             "Cols":  {
                                          "Column":  {
                                                         "FromStage1DrylotTo":  {
@@ -257,11 +252,11 @@
                             "MatrixType":  "RowsToCols",
                             "NumberOfRows":  5,
                             "NumberOfCols":  3,
-                            "ColumnNames":  [
-                                                "Destination after stage 2 MMS (Percent)",
-                                                "",
-                                                ""
-                                            ],
+                            "ColumnNames":  {
+                                                "DestinationAfterStage2MMS":  "Destination after stage 2 MMS (Percent)",
+                                                "Col2":  "",
+                                                "Col3":  ""
+                                            },
                             "Rows":  {
                                          "Row":  {
                                                      "DestinationAfterStage2MMS":  {
@@ -288,13 +283,12 @@
                             "TableName":  "X_Table_Feedlot_MMS_Stage3",
                             "MatrixType":  "ColsToRows",
                             "NumberOfRows":  3,
-                            "NumberOfCols":  4,
-                            "ColumnNames":  [
-                                                "Stage 3 MMS",
-                                                "Domestic",
-                                                "Mid-fed",
-                                                "Long-fed"
-                                            ],
+                            "NumberOfCols":  3,
+                            "ColumnNames":  {
+                                                "Domestic":  "Domestic",
+                                                "MidFed":  "Mid-fed",
+                                                "LongFed":  "Long-fed"
+                                            },
                             "Cols":  {
                                          "Column":  {
                                                         "FromStage1DrylotTo":  {
@@ -317,12 +311,11 @@
                             "TableName":  "X_Table_Feedlot_MMS_Stage3_Destinations",
                             "MatrixType":  "ColsToRows",
                             "NumberOfRows":  3,
-                            "NumberOfCols":  3,
-                            "ColumnNames":  [
-                                                "Destination after stage 3 MMS (Percent)",
-                                                "",
-                                                ""
-                                            ],
+                            "NumberOfCols":  2,
+                            "ColumnNames":  {
+                                                "Col2":  "",
+                                                "Col3":  ""
+                                            },
                             "Cols":  {
                                          "Column":  {
                                                         "Sold":  {

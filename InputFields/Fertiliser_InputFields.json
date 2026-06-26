@@ -1,7 +1,7 @@
 {
     "schemaVersion":  1,
     "generatedFrom":  "5_Fertiliser_WIP_v07.xlsx",
-    "generatedAt":  "2026-06-26T05:00:25Z",
+    "generatedAt":  "2026-06-26T05:49:38Z",
     "InputCells":  [
                        {
                            "CellName":  "X_Cell_Fertiliser_AreaUnderCropping",
@@ -112,29 +112,29 @@
                             "TableName":  "Table_Input_InorganicFertiliser_Brands",
                             "MatrixType":  "RowsToCols",
                             "NumberOfCols":  21,
-                            "ColumnNames":  [
-                                                "Product (select)",
-                                                "Amount applied per hectare",
-                                                "Application unit",
-                                                "Density",
-                                                "Application area (ha)",
-                                                "Total applied (kg)",
-                                                "Ingredient 1",
-                                                "Ingredient 1 percent",
-                                                "Ingredient 2",
-                                                "Ingredient 2 percent",
-                                                "Ingredient 3",
-                                                "Ingredient 3 percent",
-                                                "Ingredient 4",
-                                                "Ingredient 4 percent",
-                                                "Ingredient 5",
-                                                "Ingredient 5 percent",
-                                                "Ingredient 6",
-                                                "Ingredient 6 percent",
-                                                "N application rate (kg/ha)",
-                                                "Urea source",
-                                                "Ammonia source"
-                                            ],
+                            "ColumnNames":  {
+                                                "Product":  "Product (select)",
+                                                "AmountAppliedPerHectare":  "Amount applied per hectare",
+                                                "ApplicationUnit":  "Application unit",
+                                                "Density":  "Density",
+                                                "ApplicationArea":  "Application area (ha)",
+                                                "TotalApplied":  "Total applied (kg)",
+                                                "Ingredient1":  "Ingredient 1",
+                                                "Ingredient1Percent":  "Ingredient 1 percent",
+                                                "Ingredient2":  "Ingredient 2",
+                                                "Ingredient2Percent":  "Ingredient 2 percent",
+                                                "Ingredient3":  "Ingredient 3",
+                                                "Ingredient3Percent":  "Ingredient 3 percent",
+                                                "Ingredient4":  "Ingredient 4",
+                                                "Ingredient4Percent":  "Ingredient 4 percent",
+                                                "Ingredient5":  "Ingredient 5",
+                                                "Ingredient5Percent":  "Ingredient 5 percent",
+                                                "Ingredient6":  "Ingredient 6",
+                                                "Ingredient6Percent":  "Ingredient 6 percent",
+                                                "NApplicationRate":  "N application rate (kg/ha)",
+                                                "UreaSource":  "Urea source",
+                                                "AmmoniaSource":  "Ammonia source"
+                                            },
                             "Rows":  {
                                          "Row":  {
                                                      "Product":  {
@@ -235,23 +235,23 @@
                             "TableName":  "Table_Input_InorganicFertiliser_Custom",
                             "MatrixType":  "RowsToCols",
                             "NumberOfCols":  15,
-                            "ColumnNames":  [
-                                                "Custom blend name",
-                                                "Amount applied (kg / ha)",
-                                                "Application area (ha)",
-                                                "Total applied (kg)",
-                                                "Ingredient 1 (select)",
-                                                "Ingredient 1 percent",
-                                                "Ingredient 2",
-                                                "Ingredient 2 percent",
-                                                "Ingredient 3",
-                                                "Ingredient 3 percent",
-                                                "Ingredient 4",
-                                                "Ingredient 4 percent",
-                                                "N application rate (kg/ha)",
-                                                "Urea source (Select)",
-                                                "Ammonia source (select)"
-                                            ],
+                            "ColumnNames":  {
+                                                "CustomBlendName":  "Custom blend name",
+                                                "AmountApplied":  "Amount applied (kg / ha)",
+                                                "ApplicationArea":  "Application area (ha)",
+                                                "TotalApplied":  "Total applied (kg)",
+                                                "Ingredient1":  "Ingredient 1 (select)",
+                                                "Ingredient1Percent":  "Ingredient 1 percent",
+                                                "Ingredient2":  "Ingredient 2",
+                                                "Ingredient2Percent":  "Ingredient 2 percent",
+                                                "Ingredient3":  "Ingredient 3",
+                                                "Ingredient3Percent":  "Ingredient 3 percent",
+                                                "Ingredient4":  "Ingredient 4",
+                                                "Ingredient4Percent":  "Ingredient 4 percent",
+                                                "NApplicationRate":  "N application rate (kg/ha)",
+                                                "UreaSource":  "Urea source (Select)",
+                                                "AmmoniaSource":  "Ammonia source (select)"
+                                            },
                             "Rows":  {
                                          "Row":  {
                                                      "CustomBlendName":  {
@@ -406,16 +406,16 @@
                             "TableName":  "Table_Input_Lime",
                             "MatrixType":  "RowsToCols",
                             "NumberOfCols":  8,
-                            "ColumnNames":  [
-                                                "Product",
-                                                "Amount applied (t/hectare)",
-                                                "Application area (ha)",
-                                                "Total amount applied (t)",
-                                                "Percent Lime CaCO3",
-                                                "Percent Dolomite CaMg(CO3)2",
-                                                "Percent Gypsum",
-                                                "Total"
-                                            ],
+                            "ColumnNames":  {
+                                                "Product":  "Product",
+                                                "AmountApplied":  "Amount applied (t/hectare)",
+                                                "ApplicationArea":  "Application area (ha)",
+                                                "TotalAmountApplied":  "Total amount applied (t)",
+                                                "PercentLimeCaCO3":  "Percent Lime CaCO3",
+                                                "PercentDolomiteCaMg2":  "Percent Dolomite CaMg(CO3)2",
+                                                "PercentGypsum":  "Percent Gypsum",
+                                                "Total":  "Total"
+                                            },
                             "Rows":  {
                                          "Row":  {
                                                      "Product":  {
@@ -453,15 +453,15 @@
                             "TableName":  "Table_Input_OrganicFertiliser",
                             "MatrixType":  "RowsToCols",
                             "NumberOfCols":  7,
-                            "ColumnNames":  [
-                                                "Organic fertiliser type (select)",
-                                                "Percentage of N in fertiliser",
-                                                "Amount applied (kg/hectare)",
-                                                "Amount N applied (kg/hectare)",
-                                                "Application area (ha)",
-                                                "Total organic fertliser applied",
-                                                "Total nitrogen applied (kg)"
-                                            ],
+                            "ColumnNames":  {
+                                                "OrganicFertiliserType":  "Organic fertiliser type (select)",
+                                                "PercentageOfNInFertiliser":  "Percentage of N in fertiliser",
+                                                "AmountApplied":  "Amount applied (kg/hectare)",
+                                                "AmountNApplied":  "Amount N applied (kg/hectare)",
+                                                "ApplicationArea":  "Application area (ha)",
+                                                "TotalOrganicFertliserApplied":  "Total organic fertliser applied",
+                                                "TotalNitrogenApplied":  "Total nitrogen applied (kg)"
+                                            },
                             "Rows":  {
                                          "Row":  {
                                                      "OrganicFertiliserType":  {

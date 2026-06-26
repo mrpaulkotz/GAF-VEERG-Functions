@@ -101,12 +101,27 @@ npm run build:input-fields
    `formula` or `select`) plus, for dropdowns, an `Options` map. Validation lists are
    resolved from static comma literals, range references, named ranges, and
    `INDIRECT("Table[Column]")` structured-table references (read directly from the
-   matching `ListObject` column), including cascading `INDIRECT($Parent)` dropdowns.
+   matching `ListObject` column). **Cascading (dependent) dropdowns** whose validation
+   reads `INDIRECT(... SUBSTITUTE($Parent," ","") ...)` are fully resolved: the parent
+   cell is recorded as `DependentOn` (following single-cell passthrough formulas to the
+   ultimate source defined name), the parent's allowed values are enumerated, and
+   `Options` becomes a **nested** map keyed by the space-stripped parent value. A branch
+   that resolves to nothing — or only to a literal `n/a` placeholder — collapses to the
+   bare string `"n/a"`.
 3. **InputTables** — collects both Excel `ListObjects` and **defined names** (named
    ranges) matching `^X_Table_` or `^Table_Input` and describes each as a `MatrixType`
-   (`RowsToCols` vs `ColsToRows`), `NumberOfRows` / `NumberOfCols` counts, the raw
-   `ColumnNames`, and a per-field definition (`CellType`, optional `Unit` parsed from the
-   header parenthetical, optional `Options`, and `CanOverWriteFormula`). For
+   (`RowsToCols` vs `ColsToRows`), `NumberOfRows` / `NumberOfCols` counts, a
+   `ColumnNames` map, and a per-field definition (`CellType`, optional `Unit` parsed from
+   the header parenthetical, optional `Options`, and `CanOverWriteFormula`).
+   `ColumnNames` is an **ordered object** mapping each column's machine key →
+   display label (in column order), for both orientations. The machine key is derived
+   from the header text, preserving comparison/range semantics that bare PascalCasing
+   would lose: `<` → `Under`, `>` → `Over`, and a numeric `a-b` range → `aTob` (so
+   `Bulls < 1 year` → `BullsUnder1Year`, `Cows 1-2 years` → `Cows1To2Years`). For
+   `RowsToCols` tables these keys match the field keys under `Rows.Row.*`. For
+   `ColsToRows` tables the leading row-label/header column (e.g.
+   `Method 1 default values (do not edit)`) is **excluded** from both `ColumnNames` and
+   `NumberOfCols`. For
    `X_Table_*` named ranges, population is **position-based**: row 1 is treated as the
    header row and each field carries its 1-based `Row`/`Col` within the range plus a
    `Label` (ColsToRows) or `Header` (RowsToCols). Blank headers/labels never drop a
@@ -134,12 +149,21 @@ protected formula.
   "schemaVersion": 1,
   "generatedFrom": "5_Fertiliser_WIP_v07.xlsx",
   "generatedAt": "2026-06-26T00:00:00Z",
-  "InputCells": [
+  "InputCells": [                       // always an array (empty -> [], never {})
     { "CellName": "X_Cell_Fertiliser_AreaUnderCropping", "CellType": "number" },
     {
       "CellName": "X_Cell_Fertiliser_CropType",
       "CellType": "select",
       "Options": { "Pasture": "Pasture", "Grains": "Grains" }
+    },
+    {
+      "CellName": "X_Cell_PastureBeef_ProductionRegion",
+      "CellType": "select",
+      "DependentOn": "X_Cell_Site_State",     // cascading dropdown
+      "Options": {                            // keyed by space-stripped parent value
+        "Queensland": { "High": "High", "Low": "Low" },
+        "NewSouthWales": "n/a"                // bare string when the branch is empty
+      }
     }
   ],
   "InputTables": [
@@ -147,7 +171,10 @@ protected formula.
       "TableName": "Table_Input_OrganicFertiliser",
       "MatrixType": "RowsToCols",       // or "ColsToRows" for period-keyed tables
       "NumberOfCols": 7,
-      "ColumnNames": ["Organic fertiliser type (select)", "..."],
+      "ColumnNames": {                  // machineKey -> display label (keys match Rows.Row.*)
+        "OrganicFertiliserType": "Organic fertiliser type (select)",
+        "AmountApplied": "Amount applied (kg/hectare)"
+      },
       "Rows": {
         "Row": {
           "OrganicFertiliserType": { "CellType": "select", "Options": { "...": "..." } },
@@ -160,8 +187,11 @@ protected formula.
       "TableName": "X_Table_Poultry_Movement",   // X_Table_* named range
       "MatrixType": "ColsToRows",
       "NumberOfRows": 3,
-      "NumberOfCols": 5,
-      "ColumnNames": ["", "Layers", "Meat chicken growers", "..."],
+      "NumberOfCols": 4,                  // leading row-label column excluded
+      "ColumnNames": {                    // class axis: machineKey -> display label
+        "Layers": "Layers",
+        "MeatChickenGrowers": "Meat chicken growers"
+      },
       "Cols": {
         "Column": {
           "AverageDurationOfStay": {

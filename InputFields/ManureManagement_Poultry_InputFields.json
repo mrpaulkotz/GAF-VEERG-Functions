@@ -1,7 +1,7 @@
 {
     "schemaVersion":  1,
     "generatedFrom":  "4_6_ManureManagement_Poultry_WIP_v03.xlsx",
-    "generatedAt":  "2026-06-26T05:00:19Z",
+    "generatedAt":  "2026-06-26T05:49:33Z",
     "InputCells":  [
                        {
                            "CellName":  "X_Cell_Dairy_ManureAppliedIrrigationMethod",
@@ -102,14 +102,13 @@
                             "TableName":  "X_Table_Poultry_Diet_Method1",
                             "MatrixType":  "ColsToRows",
                             "NumberOfRows":  4,
-                            "NumberOfCols":  5,
-                            "ColumnNames":  [
-                                                "Method 1 default values (Do not edit)",
-                                                "Layers",
-                                                "Meat chicken growers",
-                                                "Meat chicken breeders",
-                                                "Other"
-                                            ],
+                            "NumberOfCols":  4,
+                            "ColumnNames":  {
+                                                "Layers":  "Layers",
+                                                "MeatChickenGrowers":  "Meat chicken growers",
+                                                "MeatChickenBreeders":  "Meat chicken breeders",
+                                                "Other":  "Other"
+                                            },
                             "Cols":  {
                                          "Column":  {
                                                         "DryMatterIntake":  {
@@ -139,14 +138,13 @@
                             "TableName":  "X_Table_Poultry_Diet_Method2",
                             "MatrixType":  "ColsToRows",
                             "NumberOfRows":  4,
-                            "NumberOfCols":  5,
-                            "ColumnNames":  [
-                                                "Method 2 custom values (Edit if known)",
-                                                "Layers",
-                                                "Meat chicken growers",
-                                                "Meat chicken breeders",
-                                                "Other"
-                                            ],
+                            "NumberOfCols":  4,
+                            "ColumnNames":  {
+                                                "Layers":  "Layers",
+                                                "MeatChickenGrowers":  "Meat chicken growers",
+                                                "MeatChickenBreeders":  "Meat chicken breeders",
+                                                "Other":  "Other"
+                                            },
                             "Cols":  {
                                          "Column":  {
                                                         "DryMatterIntake":  {
@@ -179,14 +177,13 @@
                             "TableName":  "X_Table_Poultry_Movement",
                             "MatrixType":  "ColsToRows",
                             "NumberOfRows":  3,
-                            "NumberOfCols":  5,
-                            "ColumnNames":  [
-                                                "",
-                                                "Layers",
-                                                "Meat chicken growers",
-                                                "Meat chicken breeders",
-                                                "Other"
-                                            ],
+                            "NumberOfCols":  4,
+                            "ColumnNames":  {
+                                                "Layers":  "Layers",
+                                                "MeatChickenGrowers":  "Meat chicken growers",
+                                                "MeatChickenBreeders":  "Meat chicken breeders",
+                                                "Other":  "Other"
+                                            },
                             "Cols":  {
                                          "Column":  {
                                                         "AverageDurationOfStayBetween01Jan24And31Dec24":  {
@@ -208,14 +205,13 @@
                             "TableName":  "X_Table_Poultry_Stage1MMS",
                             "MatrixType":  "ColsToRows",
                             "NumberOfRows":  5,
-                            "NumberOfCols":  5,
-                            "ColumnNames":  [
-                                                "Stage 1 MMS",
-                                                "Layers",
-                                                "Meat chicken growers",
-                                                "Meat chicken breeders",
-                                                "Other"
-                                            ],
+                            "NumberOfCols":  4,
+                            "ColumnNames":  {
+                                                "Layers":  "Layers",
+                                                "MeatChickenGrowers":  "Meat chicken growers",
+                                                "MeatChickenBreeders":  "Meat chicken breeders",
+                                                "Other":  "Other"
+                                            },
                             "Cols":  {
                                          "Column":  {
                                                         "PoultryManureWithBedding":  {
@@ -249,14 +245,13 @@
                             "TableName":  "X_Table_Poultry_Stage2MMS_BeltManureRemoval",
                             "MatrixType":  "ColsToRows",
                             "NumberOfRows":  6,
-                            "NumberOfCols":  5,
-                            "ColumnNames":  [
-                                                "From stage 1: Belt manure removal",
-                                                "Manure was sent to this MMS, please complete this section.",
-                                                "",
-                                                "",
-                                                ""
-                                            ],
+                            "NumberOfCols":  4,
+                            "ColumnNames":  {
+                                                "ManureWasSentToThisMMSPleaseCompleteThisSection":  "Manure was sent to this MMS, please complete this section.",
+                                                "Col3":  "",
+                                                "Col4":  "",
+                                                "Col5":  ""
+                                            },
                             "Cols":  {
                                          "Column":  {
                                                         "SolidStorage":  {
@@ -298,12 +293,12 @@
                             "MatrixType":  "RowsToCols",
                             "NumberOfRows":  6,
                             "NumberOfCols":  4,
-                            "ColumnNames":  [
-                                                "",
-                                                "Sold",
-                                                "Fert for own farm (eg crop)",
-                                                "Direct application to soil"
-                                            ],
+                            "ColumnNames":  {
+                                                "Col1":  "",
+                                                "Sold":  "Sold",
+                                                "FertForOwnFarm":  "Fert for own farm (eg crop)",
+                                                "DirectApplicationToSoil":  "Direct application to soil"
+                                            },
                             "Rows":  {
                                          "Row":  {
                                                      "Col1":  {
@@ -337,14 +332,13 @@
                             "TableName":  "X_Table_Poultry_Stage2MMS_ManureStoredInHouse",
                             "MatrixType":  "ColsToRows",
                             "NumberOfRows":  6,
-                            "NumberOfCols":  5,
-                            "ColumnNames":  [
-                                                "From stage 1: Manure stored in house",
-                                                "Manure was sent to this MMS, please complete this section.",
-                                                "",
-                                                "",
-                                                ""
-                                            ],
+                            "NumberOfCols":  4,
+                            "ColumnNames":  {
+                                                "ManureWasSentToThisMMSPleaseCompleteThisSection":  "Manure was sent to this MMS, please complete this section.",
+                                                "Col3":  "",
+                                                "Col4":  "",
+                                                "Col5":  ""
+                                            },
                             "Cols":  {
                                          "Column":  {
                                                         "SolidStorage":  {
@@ -386,12 +380,12 @@
                             "MatrixType":  "RowsToCols",
                             "NumberOfRows":  6,
                             "NumberOfCols":  4,
-                            "ColumnNames":  [
-                                                "",
-                                                "Sold",
-                                                "Fert for own farm (eg crop)",
-                                                "Direct application to soil"
-                                            ],
+                            "ColumnNames":  {
+                                                "Col1":  "",
+                                                "Sold":  "Sold",
+                                                "FertForOwnFarm":  "Fert for own farm (eg crop)",
+                                                "DirectApplicationToSoil":  "Direct application to soil"
+                                            },
                             "Rows":  {
                                          "Row":  {
                                                      "Col1":  {
@@ -425,14 +419,13 @@
                             "TableName":  "X_Table_Poultry_Stage2MMS_PoultryManureWithBedding",
                             "MatrixType":  "ColsToRows",
                             "NumberOfRows":  6,
-                            "NumberOfCols":  5,
-                            "ColumnNames":  [
-                                                "From stage 1: Poultry manure with bedding",
-                                                "Manure was sent to this MMS, please complete this section.",
-                                                "",
-                                                "",
-                                                ""
-                                            ],
+                            "NumberOfCols":  4,
+                            "ColumnNames":  {
+                                                "ManureWasSentToThisMMSPleaseCompleteThisSection":  "Manure was sent to this MMS, please complete this section.",
+                                                "Col3":  "",
+                                                "Col4":  "",
+                                                "Col5":  ""
+                                            },
                             "Cols":  {
                                          "Column":  {
                                                         "SolidStorage":  {
@@ -474,12 +467,12 @@
                             "MatrixType":  "RowsToCols",
                             "NumberOfRows":  6,
                             "NumberOfCols":  4,
-                            "ColumnNames":  [
-                                                "",
-                                                "Sold",
-                                                "Fert for own farm (eg crop)",
-                                                "Direct application to soil"
-                                            ],
+                            "ColumnNames":  {
+                                                "Col1":  "",
+                                                "Sold":  "Sold",
+                                                "FertForOwnFarm":  "Fert for own farm (eg crop)",
+                                                "DirectApplicationToSoil":  "Direct application to soil"
+                                            },
                             "Rows":  {
                                          "Row":  {
                                                      "Col1":  {

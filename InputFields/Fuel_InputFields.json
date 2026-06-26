@@ -1,55 +1,57 @@
 {
     "schemaVersion":  1,
     "generatedFrom":  "8_Fuel_WIP_v04.xlsx",
-    "generatedAt":  "2026-06-26T05:00:32Z",
-    "InputCells":  {
+    "generatedAt":  "2026-06-26T05:49:45Z",
+    "InputCells":  [
 
-                   },
-    "InputTables":  {
-                        "TableName":  "Table_Input_Fuel",
-                        "MatrixType":  "RowsToCols",
-                        "NumberOfCols":  6,
-                        "ColumnNames":  [
-                                            "Fuel use (select)",
-                                            "Fuel type (select)",
-                                            "Amount purchased",
-                                            "Amount unit",
-                                            "Percent consumed",
-                                            "Amount consumed"
-                                        ],
-                        "Rows":  {
-                                     "Row":  {
-                                                 "FuelUse":  {
-                                                                 "CellType":  "select",
-                                                                 "Options":  {
-                                                                                 "Generators":  "Generators",
-                                                                                 "Power standalone machinery or heating":  "Power standalone machinery or heating",
-                                                                                 "Aviation":  "Aviation",
-                                                                                 "Cars and light commercial vehicles":  "Cars and light commercial vehicles",
-                                                                                 "Off-road Agriculture and forestry equipment":  "Off-road Agriculture and forestry equipment",
-                                                                                 "Vessels":  "Vessels",
-                                                                                 "General use":  "General use"
-                                                                             }
-                                                             },
-                                                 "FuelType":  {
-                                                                  "CellType":  "select",
-                                                                  "Options":  {
+                   ],
+    "InputTables":  [
+                        {
+                            "TableName":  "Table_Input_Fuel",
+                            "MatrixType":  "RowsToCols",
+                            "NumberOfCols":  6,
+                            "ColumnNames":  {
+                                                "FuelUse":  "Fuel use (select)",
+                                                "FuelType":  "Fuel type (select)",
+                                                "AmountPurchased":  "Amount purchased",
+                                                "AmountUnit":  "Amount unit",
+                                                "PercentConsumed":  "Percent consumed",
+                                                "AmountConsumed":  "Amount consumed"
+                                            },
+                            "Rows":  {
+                                         "Row":  {
+                                                     "FuelUse":  {
+                                                                     "CellType":  "select",
+                                                                     "Options":  {
+                                                                                     "Generators":  "Generators",
+                                                                                     "Power standalone machinery or heating":  "Power standalone machinery or heating",
+                                                                                     "Aviation":  "Aviation",
+                                                                                     "Cars and light commercial vehicles":  "Cars and light commercial vehicles",
+                                                                                     "Off-road Agriculture and forestry equipment":  "Off-road Agriculture and forestry equipment",
+                                                                                     "Vessels":  "Vessels",
+                                                                                     "General use":  "General use"
+                                                                                 }
+                                                                 },
+                                                     "FuelType":  {
+                                                                      "CellType":  "select",
+                                                                      "Options":  {
 
-                                                                              }
-                                                              },
-                                                 "AmountPurchased":  {
-                                                                         "CellType":  "number"
-                                                                     },
-                                                 "AmountUnit":  {
-                                                                    "CellType":  "formula"
-                                                                },
-                                                 "PercentConsumed":  {
-                                                                         "CellType":  "formula"
-                                                                     },
-                                                 "AmountConsumed":  {
+                                                                                  }
+                                                                  },
+                                                     "AmountPurchased":  {
+                                                                             "CellType":  "number"
+                                                                         },
+                                                     "AmountUnit":  {
                                                                         "CellType":  "formula"
-                                                                    }
-                                             }
-                                 }
-                    }
+                                                                    },
+                                                     "PercentConsumed":  {
+                                                                             "CellType":  "formula"
+                                                                         },
+                                                     "AmountConsumed":  {
+                                                                            "CellType":  "formula"
+                                                                        }
+                                                 }
+                                     }
+                        }
+                    ]
 }

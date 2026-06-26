@@ -1,7 +1,7 @@
 {
     "schemaVersion":  1,
     "generatedFrom":  "3_2_Enteric_BeefPasture_WIP_v02.xlsx",
-    "generatedAt":  "2026-06-26T04:59:58Z",
+    "generatedAt":  "2026-06-26T05:49:15Z",
     "InputCells":  [
                        {
                            "CellName":  "X_Cell_PastureBeef_Breed",
@@ -41,8 +41,29 @@
                        {
                            "CellName":  "X_Cell_PastureBeef_ProductionRegion",
                            "CellType":  "select",
+                           "DependentOn":  "X_Cell_Site_State",
                            "Options":  {
-
+                                           "NewSouthWales":  "n/a",
+                                           "ACT":  "n/a",
+                                           "Victoria":  "n/a",
+                                           "Queensland":  {
+                                                              "High":  "High",
+                                                              "Moderate/High":  "Moderate/High",
+                                                              "Moderate/Low":  "Moderate/Low",
+                                                              "Low":  "Low"
+                                                          },
+                                           "SouthAustralia":  "n/a",
+                                           "WesternAustralia":  {
+                                                                    "South West":  "South West",
+                                                                    "Pilbara":  "Pilbara",
+                                                                    "Kimberley":  "Kimberley"
+                                                                },
+                                           "Tasmania":  "n/a",
+                                           "NorthernTerritory":  {
+                                                                     "Alice Springs":  "Alice Springs",
+                                                                     "Barkly":  "Barkly",
+                                                                     "Northern":  "Northern"
+                                                                 }
                                        }
                        },
                        {
@@ -77,20 +98,19 @@
                             "TableName":  "X_Table_PastureBeef_CrudeProtein_Method1",
                             "MatrixType":  "ColsToRows",
                             "NumberOfRows":  5,
-                            "NumberOfCols":  11,
-                            "ColumnNames":  [
-                                                "Method 1 default values (do not edit)",
-                                                "Bulls < 1 year",
-                                                "Bulls > 1 year",
-                                                "Cows < 1 year",
-                                                "Cows 1-2 years",
-                                                "Cows 2-3 years",
-                                                "Cows > 3 years",
-                                                "Steers < 1 year",
-                                                "Steers 1-2 years",
-                                                "Steers 2-3 years",
-                                                "Steers >3 years"
-                                            ],
+                            "NumberOfCols":  10,
+                            "ColumnNames":  {
+                                                "BullsUnder1Year":  "Bulls < 1 year",
+                                                "BullsOver1Year":  "Bulls > 1 year",
+                                                "CowsUnder1Year":  "Cows < 1 year",
+                                                "Cows1To2Years":  "Cows 1-2 years",
+                                                "Cows2To3Years":  "Cows 2-3 years",
+                                                "CowsOver3Years":  "Cows > 3 years",
+                                                "SteersUnder1Year":  "Steers < 1 year",
+                                                "Steers1To2Years":  "Steers 1-2 years",
+                                                "Steers2To3Years":  "Steers 2-3 years",
+                                                "SteersOver3Years":  "Steers >3 years"
+                                            },
                             "Cols":  {
                                          "Column":  {
                                                         "Spring":  {
@@ -124,20 +144,19 @@
                             "TableName":  "X_Table_PastureBeef_CrudeProtein_Method2",
                             "MatrixType":  "ColsToRows",
                             "NumberOfRows":  13,
-                            "NumberOfCols":  11,
-                            "ColumnNames":  [
-                                                "Method 2 custom values (edit if known)",
-                                                "Bulls < 1 year",
-                                                "Bulls > 1 year",
-                                                "Cows < 1 year",
-                                                "Cows 1-2 years",
-                                                "Cows 2-3 years",
-                                                "Cows > 3 years",
-                                                "Steers < 1 year",
-                                                "Steers 1-2 years",
-                                                "Steers 2-3 years",
-                                                "Steers >3 years"
-                                            ],
+                            "NumberOfCols":  10,
+                            "ColumnNames":  {
+                                                "BullsUnder1Year":  "Bulls < 1 year",
+                                                "BullsOver1Year":  "Bulls > 1 year",
+                                                "CowsUnder1Year":  "Cows < 1 year",
+                                                "Cows1To2Years":  "Cows 1-2 years",
+                                                "Cows2To3Years":  "Cows 2-3 years",
+                                                "CowsOver3Years":  "Cows > 3 years",
+                                                "SteersUnder1Year":  "Steers < 1 year",
+                                                "Steers1To2Years":  "Steers 1-2 years",
+                                                "Steers2To3Years":  "Steers 2-3 years",
+                                                "SteersOver3Years":  "Steers >3 years"
+                                            },
                             "Cols":  {
                                          "Column":  {
                                                         "January2024":  {
@@ -231,20 +250,19 @@
                             "TableName":  "X_Table_PastureBeef_DryMatterDigestibility_Method1",
                             "MatrixType":  "ColsToRows",
                             "NumberOfRows":  5,
-                            "NumberOfCols":  11,
-                            "ColumnNames":  [
-                                                "Method 1 default values (do not edit)",
-                                                "Bulls < 1 year",
-                                                "Bulls > 1 year",
-                                                "Cows < 1 year",
-                                                "Cows 1-2 years",
-                                                "Cows 2-3 years",
-                                                "Cows > 3 years",
-                                                "Steers < 1 year",
-                                                "Steers 1-2 years",
-                                                "Steers 2-3 years",
-                                                "Steers >3 years"
-                                            ],
+                            "NumberOfCols":  10,
+                            "ColumnNames":  {
+                                                "BullsUnder1Year":  "Bulls < 1 year",
+                                                "BullsOver1Year":  "Bulls > 1 year",
+                                                "CowsUnder1Year":  "Cows < 1 year",
+                                                "Cows1To2Years":  "Cows 1-2 years",
+                                                "Cows2To3Years":  "Cows 2-3 years",
+                                                "CowsOver3Years":  "Cows > 3 years",
+                                                "SteersUnder1Year":  "Steers < 1 year",
+                                                "Steers1To2Years":  "Steers 1-2 years",
+                                                "Steers2To3Years":  "Steers 2-3 years",
+                                                "SteersOver3Years":  "Steers >3 years"
+                                            },
                             "Cols":  {
                                          "Column":  {
                                                         "Spring":  {
@@ -278,20 +296,19 @@
                             "TableName":  "X_Table_PastureBeef_DryMatterDigestibility_Method2",
                             "MatrixType":  "ColsToRows",
                             "NumberOfRows":  13,
-                            "NumberOfCols":  11,
-                            "ColumnNames":  [
-                                                "Method 2 custom values (edit if known)",
-                                                "Bulls < 1 year",
-                                                "Bulls > 1 year",
-                                                "Cows < 1 year",
-                                                "Cows 1-2 years",
-                                                "Cows 2-3 years",
-                                                "Cows > 3 years",
-                                                "Steers < 1 year",
-                                                "Steers 1-2 years",
-                                                "Steers 2-3 years",
-                                                "Steers >3 years"
-                                            ],
+                            "NumberOfCols":  10,
+                            "ColumnNames":  {
+                                                "BullsUnder1Year":  "Bulls < 1 year",
+                                                "BullsOver1Year":  "Bulls > 1 year",
+                                                "CowsUnder1Year":  "Cows < 1 year",
+                                                "Cows1To2Years":  "Cows 1-2 years",
+                                                "Cows2To3Years":  "Cows 2-3 years",
+                                                "CowsOver3Years":  "Cows > 3 years",
+                                                "SteersUnder1Year":  "Steers < 1 year",
+                                                "Steers1To2Years":  "Steers 1-2 years",
+                                                "Steers2To3Years":  "Steers 2-3 years",
+                                                "SteersOver3Years":  "Steers >3 years"
+                                            },
                             "Cols":  {
                                          "Column":  {
                                                         "January2024":  {
@@ -385,20 +402,19 @@
                             "TableName":  "X_Table_PastureBeef_Duration_Method1",
                             "MatrixType":  "ColsToRows",
                             "NumberOfRows":  5,
-                            "NumberOfCols":  11,
-                            "ColumnNames":  [
-                                                "Method 1 default values (do not edit)",
-                                                "Bulls < 1 year",
-                                                "Bulls > 1 year",
-                                                "Cows < 1 year",
-                                                "Cows 1-2 years",
-                                                "Cows 2-3 years",
-                                                "Cows > 3 years",
-                                                "Steers < 1 year",
-                                                "Steers 1-2 years",
-                                                "Steers 2-3 years",
-                                                "Steers >3 years"
-                                            ],
+                            "NumberOfCols":  10,
+                            "ColumnNames":  {
+                                                "BullsUnder1Year":  "Bulls < 1 year",
+                                                "BullsOver1Year":  "Bulls > 1 year",
+                                                "CowsUnder1Year":  "Cows < 1 year",
+                                                "Cows1To2Years":  "Cows 1-2 years",
+                                                "Cows2To3Years":  "Cows 2-3 years",
+                                                "CowsOver3Years":  "Cows > 3 years",
+                                                "SteersUnder1Year":  "Steers < 1 year",
+                                                "Steers1To2Years":  "Steers 1-2 years",
+                                                "Steers2To3Years":  "Steers 2-3 years",
+                                                "SteersOver3Years":  "Steers >3 years"
+                                            },
                             "Cols":  {
                                          "Column":  {
                                                         "Spring":  {
@@ -432,20 +448,19 @@
                             "TableName":  "X_Table_PastureBeef_Duration_Method2",
                             "MatrixType":  "ColsToRows",
                             "NumberOfRows":  13,
-                            "NumberOfCols":  11,
-                            "ColumnNames":  [
-                                                "Method 2 custom values (edit if known)",
-                                                "Bulls < 1 year",
-                                                "Bulls > 1 year",
-                                                "Cows < 1 year",
-                                                "Cows 1-2 years",
-                                                "Cows 2-3 years",
-                                                "Cows > 3 years",
-                                                "Steers < 1 year",
-                                                "Steers 1-2 years",
-                                                "Steers 2-3 years",
-                                                "Steers >3 years"
-                                            ],
+                            "NumberOfCols":  10,
+                            "ColumnNames":  {
+                                                "BullsUnder1Year":  "Bulls < 1 year",
+                                                "BullsOver1Year":  "Bulls > 1 year",
+                                                "CowsUnder1Year":  "Cows < 1 year",
+                                                "Cows1To2Years":  "Cows 1-2 years",
+                                                "Cows2To3Years":  "Cows 2-3 years",
+                                                "CowsOver3Years":  "Cows > 3 years",
+                                                "SteersUnder1Year":  "Steers < 1 year",
+                                                "Steers1To2Years":  "Steers 1-2 years",
+                                                "Steers2To3Years":  "Steers 2-3 years",
+                                                "SteersOver3Years":  "Steers >3 years"
+                                            },
                             "Cols":  {
                                          "Column":  {
                                                         "January2024":  {
@@ -539,20 +554,19 @@
                             "TableName":  "X_Table_PastureBeef_Head_Method1",
                             "MatrixType":  "ColsToRows",
                             "NumberOfRows":  5,
-                            "NumberOfCols":  11,
-                            "ColumnNames":  [
-                                                "Method 1 values",
-                                                "Bulls < 1 year",
-                                                "Bulls > 1 year",
-                                                "Cows < 1 year",
-                                                "Cows 1-2 years",
-                                                "Cows 2-3 years",
-                                                "Cows > 3 years",
-                                                "Steers < 1 year",
-                                                "Steers 1-2 years",
-                                                "Steers 2-3 years",
-                                                "Steers >3 years"
-                                            ],
+                            "NumberOfCols":  10,
+                            "ColumnNames":  {
+                                                "BullsUnder1Year":  "Bulls < 1 year",
+                                                "BullsOver1Year":  "Bulls > 1 year",
+                                                "CowsUnder1Year":  "Cows < 1 year",
+                                                "Cows1To2Years":  "Cows 1-2 years",
+                                                "Cows2To3Years":  "Cows 2-3 years",
+                                                "CowsOver3Years":  "Cows > 3 years",
+                                                "SteersUnder1Year":  "Steers < 1 year",
+                                                "Steers1To2Years":  "Steers 1-2 years",
+                                                "Steers2To3Years":  "Steers 2-3 years",
+                                                "SteersOver3Years":  "Steers >3 years"
+                                            },
                             "Cols":  {
                                          "Column":  {
                                                         "Spring":  {
@@ -586,20 +600,19 @@
                             "TableName":  "X_Table_PastureBeef_Head_Method2",
                             "MatrixType":  "ColsToRows",
                             "NumberOfRows":  13,
-                            "NumberOfCols":  11,
-                            "ColumnNames":  [
-                                                "Method 2 values",
-                                                "Bulls < 1 year",
-                                                "Bulls > 1 year",
-                                                "Cows < 1 year",
-                                                "Cows 1-2 years",
-                                                "Cows 2-3 years",
-                                                "Cows > 3 years",
-                                                "Steers < 1 year",
-                                                "Steers 1-2 years",
-                                                "Steers 2-3 years",
-                                                "Steers >3 years"
-                                            ],
+                            "NumberOfCols":  10,
+                            "ColumnNames":  {
+                                                "BullsUnder1Year":  "Bulls < 1 year",
+                                                "BullsOver1Year":  "Bulls > 1 year",
+                                                "CowsUnder1Year":  "Cows < 1 year",
+                                                "Cows1To2Years":  "Cows 1-2 years",
+                                                "Cows2To3Years":  "Cows 2-3 years",
+                                                "CowsOver3Years":  "Cows > 3 years",
+                                                "SteersUnder1Year":  "Steers < 1 year",
+                                                "Steers1To2Years":  "Steers 1-2 years",
+                                                "Steers2To3Years":  "Steers 2-3 years",
+                                                "SteersOver3Years":  "Steers >3 years"
+                                            },
                             "Cols":  {
                                          "Column":  {
                                                         "January2024":  {
@@ -693,20 +706,19 @@
                             "TableName":  "X_Table_PastureBeef_Liveweight_Method1",
                             "MatrixType":  "ColsToRows",
                             "NumberOfRows":  5,
-                            "NumberOfCols":  11,
-                            "ColumnNames":  [
-                                                "Method 1 default values (do not edit)",
-                                                "Bulls < 1 year",
-                                                "Bulls > 1 year",
-                                                "Cows < 1 year",
-                                                "Cows 1-2 years",
-                                                "Cows 2-3 years",
-                                                "Cows > 3 years",
-                                                "Steers < 1 year",
-                                                "Steers 1-2 years",
-                                                "Steers 2-3 years",
-                                                "Steers >3 years"
-                                            ],
+                            "NumberOfCols":  10,
+                            "ColumnNames":  {
+                                                "BullsUnder1Year":  "Bulls < 1 year",
+                                                "BullsOver1Year":  "Bulls > 1 year",
+                                                "CowsUnder1Year":  "Cows < 1 year",
+                                                "Cows1To2Years":  "Cows 1-2 years",
+                                                "Cows2To3Years":  "Cows 2-3 years",
+                                                "CowsOver3Years":  "Cows > 3 years",
+                                                "SteersUnder1Year":  "Steers < 1 year",
+                                                "Steers1To2Years":  "Steers 1-2 years",
+                                                "Steers2To3Years":  "Steers 2-3 years",
+                                                "SteersOver3Years":  "Steers >3 years"
+                                            },
                             "Cols":  {
                                          "Column":  {
                                                         "Spring":  {
@@ -740,20 +752,19 @@
                             "TableName":  "X_Table_PastureBeef_Liveweight_Method2",
                             "MatrixType":  "ColsToRows",
                             "NumberOfRows":  13,
-                            "NumberOfCols":  11,
-                            "ColumnNames":  [
-                                                "Method 2 custom values (edit if known)",
-                                                "Bulls < 1 year",
-                                                "Bulls > 1 year",
-                                                "Cows < 1 year",
-                                                "Cows 1-2 years",
-                                                "Cows 2-3 years",
-                                                "Cows > 3 years",
-                                                "Steers < 1 year",
-                                                "Steers 1-2 years",
-                                                "Steers 2-3 years",
-                                                "Steers >3 years"
-                                            ],
+                            "NumberOfCols":  10,
+                            "ColumnNames":  {
+                                                "BullsUnder1Year":  "Bulls < 1 year",
+                                                "BullsOver1Year":  "Bulls > 1 year",
+                                                "CowsUnder1Year":  "Cows < 1 year",
+                                                "Cows1To2Years":  "Cows 1-2 years",
+                                                "Cows2To3Years":  "Cows 2-3 years",
+                                                "CowsOver3Years":  "Cows > 3 years",
+                                                "SteersUnder1Year":  "Steers < 1 year",
+                                                "Steers1To2Years":  "Steers 1-2 years",
+                                                "Steers2To3Years":  "Steers 2-3 years",
+                                                "SteersOver3Years":  "Steers >3 years"
+                                            },
                             "Cols":  {
                                          "Column":  {
                                                         "January2024":  {
@@ -847,20 +858,19 @@
                             "TableName":  "X_Table_PastureBeef_LiveweightGain_Method1",
                             "MatrixType":  "ColsToRows",
                             "NumberOfRows":  5,
-                            "NumberOfCols":  11,
-                            "ColumnNames":  [
-                                                "Method 1 default values (do not edit)",
-                                                "Bulls < 1 year",
-                                                "Bulls > 1 year",
-                                                "Cows < 1 year",
-                                                "Cows 1-2 years",
-                                                "Cows 2-3 years",
-                                                "Cows > 3 years",
-                                                "Steers < 1 year",
-                                                "Steers 1-2 years",
-                                                "Steers 2-3 years",
-                                                "Steers >3 years"
-                                            ],
+                            "NumberOfCols":  10,
+                            "ColumnNames":  {
+                                                "BullsUnder1Year":  "Bulls < 1 year",
+                                                "BullsOver1Year":  "Bulls > 1 year",
+                                                "CowsUnder1Year":  "Cows < 1 year",
+                                                "Cows1To2Years":  "Cows 1-2 years",
+                                                "Cows2To3Years":  "Cows 2-3 years",
+                                                "CowsOver3Years":  "Cows > 3 years",
+                                                "SteersUnder1Year":  "Steers < 1 year",
+                                                "Steers1To2Years":  "Steers 1-2 years",
+                                                "Steers2To3Years":  "Steers 2-3 years",
+                                                "SteersOver3Years":  "Steers >3 years"
+                                            },
                             "Cols":  {
                                          "Column":  {
                                                         "Spring":  {
@@ -894,20 +904,19 @@
                             "TableName":  "X_Table_PastureBeef_LiveweightGain_Method2",
                             "MatrixType":  "ColsToRows",
                             "NumberOfRows":  13,
-                            "NumberOfCols":  11,
-                            "ColumnNames":  [
-                                                "Method 2 custom values (edit if known)",
-                                                "Bulls < 1 year",
-                                                "Bulls > 1 year",
-                                                "Cows < 1 year",
-                                                "Cows 1-2 years",
-                                                "Cows 2-3 years",
-                                                "Cows > 3 years",
-                                                "Steers < 1 year",
-                                                "Steers 1-2 years",
-                                                "Steers 2-3 years",
-                                                "Steers >3 years"
-                                            ],
+                            "NumberOfCols":  10,
+                            "ColumnNames":  {
+                                                "BullsUnder1Year":  "Bulls < 1 year",
+                                                "BullsOver1Year":  "Bulls > 1 year",
+                                                "CowsUnder1Year":  "Cows < 1 year",
+                                                "Cows1To2Years":  "Cows 1-2 years",
+                                                "Cows2To3Years":  "Cows 2-3 years",
+                                                "CowsOver3Years":  "Cows > 3 years",
+                                                "SteersUnder1Year":  "Steers < 1 year",
+                                                "Steers1To2Years":  "Steers 1-2 years",
+                                                "Steers2To3Years":  "Steers 2-3 years",
+                                                "SteersOver3Years":  "Steers >3 years"
+                                            },
                             "Cols":  {
                                          "Column":  {
                                                         "January2024":  {
