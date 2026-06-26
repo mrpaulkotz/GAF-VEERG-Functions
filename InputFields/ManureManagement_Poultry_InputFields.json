@@ -1,7 +1,7 @@
 {
     "schemaVersion":  1,
     "generatedFrom":  "4_6_ManureManagement_Poultry_WIP_v03.xlsx",
-    "generatedAt":  "2026-06-26T04:50:27Z",
+    "generatedAt":  "2026-06-26T05:00:19Z",
     "InputCells":  [
                        {
                            "CellName":  "X_Cell_Dairy_ManureAppliedIrrigationMethod",
@@ -111,7 +111,7 @@
                                                 "Other"
                                             ],
                             "Cols":  {
-                                         "Layers":  {
+                                         "Column":  {
                                                         "DryMatterIntake":  {
                                                                                 "Row":  2,
                                                                                 "Col":  2,
@@ -148,7 +148,7 @@
                                                 "Other"
                                             ],
                             "Cols":  {
-                                         "Layers":  {
+                                         "Column":  {
                                                         "DryMatterIntake":  {
                                                                                 "Row":  2,
                                                                                 "Col":  2,
@@ -188,7 +188,7 @@
                                                 "Other"
                                             ],
                             "Cols":  {
-                                         "Layers":  {
+                                         "Column":  {
                                                         "AverageDurationOfStayBetween01Jan24And31Dec24":  {
                                                                                                               "Row":  2,
                                                                                                               "Col":  2,
@@ -217,7 +217,7 @@
                                                 "Other"
                                             ],
                             "Cols":  {
-                                         "Layers":  {
+                                         "Column":  {
                                                         "PoultryManureWithBedding":  {
                                                                                          "Row":  2,
                                                                                          "Col":  2,
@@ -258,39 +258,39 @@
                                                 ""
                                             ],
                             "Cols":  {
-                                         "Manure was sent to this MMS, please complete this section.":  {
-                                                                                                            "SolidStorage":  {
-                                                                                                                                 "Row":  2,
-                                                                                                                                 "Col":  2,
-                                                                                                                                 "Label":  "Solid storage",
-                                                                                                                                 "CellType":  "percent"
-                                                                                                                             },
-                                                                                                            "Composting":  {
-                                                                                                                               "Row":  3,
-                                                                                                                               "Col":  2,
-                                                                                                                               "Label":  "Composting (passive windrow)",
-                                                                                                                               "CellType":  "percent",
-                                                                                                                               "Unit":  "passive windrow"
-                                                                                                                           },
-                                                                                                            "DigesterCoveredLagoons":  {
-                                                                                                                                           "Row":  4,
-                                                                                                                                           "Col":  2,
-                                                                                                                                           "Label":  "Digester / covered lagoons",
-                                                                                                                                           "CellType":  "percent"
-                                                                                                                                       },
-                                                                                                            "DirectProcessing":  {
-                                                                                                                                     "Row":  5,
-                                                                                                                                     "Col":  2,
-                                                                                                                                     "Label":  "Direct processing",
-                                                                                                                                     "CellType":  "percent"
-                                                                                                                                 },
-                                                                                                            "DirectApplication":  {
-                                                                                                                                      "Row":  6,
-                                                                                                                                      "Col":  2,
-                                                                                                                                      "Label":  "Direct application",
-                                                                                                                                      "CellType":  "formula"
-                                                                                                                                  }
-                                                                                                        }
+                                         "Column":  {
+                                                        "SolidStorage":  {
+                                                                             "Row":  2,
+                                                                             "Col":  2,
+                                                                             "Label":  "Solid storage",
+                                                                             "CellType":  "percent"
+                                                                         },
+                                                        "Composting":  {
+                                                                           "Row":  3,
+                                                                           "Col":  2,
+                                                                           "Label":  "Composting (passive windrow)",
+                                                                           "CellType":  "percent",
+                                                                           "Unit":  "passive windrow"
+                                                                       },
+                                                        "DigesterCoveredLagoons":  {
+                                                                                       "Row":  4,
+                                                                                       "Col":  2,
+                                                                                       "Label":  "Digester / covered lagoons",
+                                                                                       "CellType":  "percent"
+                                                                                   },
+                                                        "DirectProcessing":  {
+                                                                                 "Row":  5,
+                                                                                 "Col":  2,
+                                                                                 "Label":  "Direct processing",
+                                                                                 "CellType":  "percent"
+                                                                             },
+                                                        "DirectApplication":  {
+                                                                                  "Row":  6,
+                                                                                  "Col":  2,
+                                                                                  "Label":  "Direct application",
+                                                                                  "CellType":  "formula"
+                                                                              }
+                                                    }
                                      }
                         },
                         {
@@ -305,32 +305,32 @@
                                                 "Direct application to soil"
                                             ],
                             "Rows":  {
-                                         "Entry1":  {
-                                                        "Col1":  {
-                                                                     "Row":  2,
-                                                                     "Col":  1,
-                                                                     "CellType":  "number"
-                                                                 },
-                                                        "Sold":  {
-                                                                     "Row":  2,
-                                                                     "Col":  2,
-                                                                     "Header":  "Sold",
-                                                                     "CellType":  "percent"
-                                                                 },
-                                                        "FertForOwnFarm":  {
-                                                                               "Row":  2,
-                                                                               "Col":  3,
-                                                                               "Header":  "Fert for own farm (eg crop)",
-                                                                               "CellType":  "percent",
-                                                                               "Unit":  "eg crop"
-                                                                           },
-                                                        "DirectApplicationToSoil":  {
-                                                                                        "Row":  2,
-                                                                                        "Col":  4,
-                                                                                        "Header":  "Direct application to soil",
-                                                                                        "CellType":  "formula"
-                                                                                    }
-                                                    }
+                                         "Row":  {
+                                                     "Col1":  {
+                                                                  "Row":  2,
+                                                                  "Col":  1,
+                                                                  "CellType":  "number"
+                                                              },
+                                                     "Sold":  {
+                                                                  "Row":  2,
+                                                                  "Col":  2,
+                                                                  "Header":  "Sold",
+                                                                  "CellType":  "percent"
+                                                              },
+                                                     "FertForOwnFarm":  {
+                                                                            "Row":  2,
+                                                                            "Col":  3,
+                                                                            "Header":  "Fert for own farm (eg crop)",
+                                                                            "CellType":  "percent",
+                                                                            "Unit":  "eg crop"
+                                                                        },
+                                                     "DirectApplicationToSoil":  {
+                                                                                     "Row":  2,
+                                                                                     "Col":  4,
+                                                                                     "Header":  "Direct application to soil",
+                                                                                     "CellType":  "formula"
+                                                                                 }
+                                                 }
                                      }
                         },
                         {
@@ -346,39 +346,39 @@
                                                 ""
                                             ],
                             "Cols":  {
-                                         "Manure was sent to this MMS, please complete this section.":  {
-                                                                                                            "SolidStorage":  {
-                                                                                                                                 "Row":  2,
-                                                                                                                                 "Col":  2,
-                                                                                                                                 "Label":  "Solid storage",
-                                                                                                                                 "CellType":  "percent"
-                                                                                                                             },
-                                                                                                            "Composting":  {
-                                                                                                                               "Row":  3,
-                                                                                                                               "Col":  2,
-                                                                                                                               "Label":  "Composting (passive windrow)",
-                                                                                                                               "CellType":  "percent",
-                                                                                                                               "Unit":  "passive windrow"
-                                                                                                                           },
-                                                                                                            "DigesterCoveredLagoons":  {
-                                                                                                                                           "Row":  4,
-                                                                                                                                           "Col":  2,
-                                                                                                                                           "Label":  "Digester / covered lagoons",
-                                                                                                                                           "CellType":  "percent"
-                                                                                                                                       },
-                                                                                                            "DirectProcessing":  {
-                                                                                                                                     "Row":  5,
-                                                                                                                                     "Col":  2,
-                                                                                                                                     "Label":  "Direct processing",
-                                                                                                                                     "CellType":  "percent"
-                                                                                                                                 },
-                                                                                                            "DirectApplication":  {
-                                                                                                                                      "Row":  6,
-                                                                                                                                      "Col":  2,
-                                                                                                                                      "Label":  "Direct application",
-                                                                                                                                      "CellType":  "formula"
-                                                                                                                                  }
-                                                                                                        }
+                                         "Column":  {
+                                                        "SolidStorage":  {
+                                                                             "Row":  2,
+                                                                             "Col":  2,
+                                                                             "Label":  "Solid storage",
+                                                                             "CellType":  "percent"
+                                                                         },
+                                                        "Composting":  {
+                                                                           "Row":  3,
+                                                                           "Col":  2,
+                                                                           "Label":  "Composting (passive windrow)",
+                                                                           "CellType":  "percent",
+                                                                           "Unit":  "passive windrow"
+                                                                       },
+                                                        "DigesterCoveredLagoons":  {
+                                                                                       "Row":  4,
+                                                                                       "Col":  2,
+                                                                                       "Label":  "Digester / covered lagoons",
+                                                                                       "CellType":  "percent"
+                                                                                   },
+                                                        "DirectProcessing":  {
+                                                                                 "Row":  5,
+                                                                                 "Col":  2,
+                                                                                 "Label":  "Direct processing",
+                                                                                 "CellType":  "percent"
+                                                                             },
+                                                        "DirectApplication":  {
+                                                                                  "Row":  6,
+                                                                                  "Col":  2,
+                                                                                  "Label":  "Direct application",
+                                                                                  "CellType":  "formula"
+                                                                              }
+                                                    }
                                      }
                         },
                         {
@@ -393,32 +393,32 @@
                                                 "Direct application to soil"
                                             ],
                             "Rows":  {
-                                         "Entry1":  {
-                                                        "Col1":  {
-                                                                     "Row":  2,
-                                                                     "Col":  1,
-                                                                     "CellType":  "number"
-                                                                 },
-                                                        "Sold":  {
-                                                                     "Row":  2,
-                                                                     "Col":  2,
-                                                                     "Header":  "Sold",
-                                                                     "CellType":  "percent"
-                                                                 },
-                                                        "FertForOwnFarm":  {
-                                                                               "Row":  2,
-                                                                               "Col":  3,
-                                                                               "Header":  "Fert for own farm (eg crop)",
-                                                                               "CellType":  "percent",
-                                                                               "Unit":  "eg crop"
-                                                                           },
-                                                        "DirectApplicationToSoil":  {
-                                                                                        "Row":  2,
-                                                                                        "Col":  4,
-                                                                                        "Header":  "Direct application to soil",
-                                                                                        "CellType":  "formula"
-                                                                                    }
-                                                    }
+                                         "Row":  {
+                                                     "Col1":  {
+                                                                  "Row":  2,
+                                                                  "Col":  1,
+                                                                  "CellType":  "number"
+                                                              },
+                                                     "Sold":  {
+                                                                  "Row":  2,
+                                                                  "Col":  2,
+                                                                  "Header":  "Sold",
+                                                                  "CellType":  "percent"
+                                                              },
+                                                     "FertForOwnFarm":  {
+                                                                            "Row":  2,
+                                                                            "Col":  3,
+                                                                            "Header":  "Fert for own farm (eg crop)",
+                                                                            "CellType":  "percent",
+                                                                            "Unit":  "eg crop"
+                                                                        },
+                                                     "DirectApplicationToSoil":  {
+                                                                                     "Row":  2,
+                                                                                     "Col":  4,
+                                                                                     "Header":  "Direct application to soil",
+                                                                                     "CellType":  "formula"
+                                                                                 }
+                                                 }
                                      }
                         },
                         {
@@ -434,39 +434,39 @@
                                                 ""
                                             ],
                             "Cols":  {
-                                         "Manure was sent to this MMS, please complete this section.":  {
-                                                                                                            "SolidStorage":  {
-                                                                                                                                 "Row":  2,
-                                                                                                                                 "Col":  2,
-                                                                                                                                 "Label":  "Solid storage",
-                                                                                                                                 "CellType":  "percent"
-                                                                                                                             },
-                                                                                                            "Composting":  {
-                                                                                                                               "Row":  3,
-                                                                                                                               "Col":  2,
-                                                                                                                               "Label":  "Composting (passive windrow)",
-                                                                                                                               "CellType":  "percent",
-                                                                                                                               "Unit":  "passive windrow"
-                                                                                                                           },
-                                                                                                            "DigesterCoveredLagoons":  {
-                                                                                                                                           "Row":  4,
-                                                                                                                                           "Col":  2,
-                                                                                                                                           "Label":  "Digester / covered lagoons",
-                                                                                                                                           "CellType":  "percent"
-                                                                                                                                       },
-                                                                                                            "DirectProcessing":  {
-                                                                                                                                     "Row":  5,
-                                                                                                                                     "Col":  2,
-                                                                                                                                     "Label":  "Direct processing",
-                                                                                                                                     "CellType":  "percent"
-                                                                                                                                 },
-                                                                                                            "DirectApplication":  {
-                                                                                                                                      "Row":  6,
-                                                                                                                                      "Col":  2,
-                                                                                                                                      "Label":  "Direct application",
-                                                                                                                                      "CellType":  "formula"
-                                                                                                                                  }
-                                                                                                        }
+                                         "Column":  {
+                                                        "SolidStorage":  {
+                                                                             "Row":  2,
+                                                                             "Col":  2,
+                                                                             "Label":  "Solid storage",
+                                                                             "CellType":  "percent"
+                                                                         },
+                                                        "Composting":  {
+                                                                           "Row":  3,
+                                                                           "Col":  2,
+                                                                           "Label":  "Composting (passive windrow)",
+                                                                           "CellType":  "percent",
+                                                                           "Unit":  "passive windrow"
+                                                                       },
+                                                        "DigesterCoveredLagoons":  {
+                                                                                       "Row":  4,
+                                                                                       "Col":  2,
+                                                                                       "Label":  "Digester / covered lagoons",
+                                                                                       "CellType":  "percent"
+                                                                                   },
+                                                        "DirectProcessing":  {
+                                                                                 "Row":  5,
+                                                                                 "Col":  2,
+                                                                                 "Label":  "Direct processing",
+                                                                                 "CellType":  "percent"
+                                                                             },
+                                                        "DirectApplication":  {
+                                                                                  "Row":  6,
+                                                                                  "Col":  2,
+                                                                                  "Label":  "Direct application",
+                                                                                  "CellType":  "formula"
+                                                                              }
+                                                    }
                                      }
                         },
                         {
@@ -481,32 +481,32 @@
                                                 "Direct application to soil"
                                             ],
                             "Rows":  {
-                                         "Entry1":  {
-                                                        "Col1":  {
-                                                                     "Row":  2,
-                                                                     "Col":  1,
-                                                                     "CellType":  "number"
-                                                                 },
-                                                        "Sold":  {
-                                                                     "Row":  2,
-                                                                     "Col":  2,
-                                                                     "Header":  "Sold",
-                                                                     "CellType":  "percent"
-                                                                 },
-                                                        "FertForOwnFarm":  {
-                                                                               "Row":  2,
-                                                                               "Col":  3,
-                                                                               "Header":  "Fert for own farm (eg crop)",
-                                                                               "CellType":  "percent",
-                                                                               "Unit":  "eg crop"
-                                                                           },
-                                                        "DirectApplicationToSoil":  {
-                                                                                        "Row":  2,
-                                                                                        "Col":  4,
-                                                                                        "Header":  "Direct application to soil",
-                                                                                        "CellType":  "formula"
-                                                                                    }
-                                                    }
+                                         "Row":  {
+                                                     "Col1":  {
+                                                                  "Row":  2,
+                                                                  "Col":  1,
+                                                                  "CellType":  "number"
+                                                              },
+                                                     "Sold":  {
+                                                                  "Row":  2,
+                                                                  "Col":  2,
+                                                                  "Header":  "Sold",
+                                                                  "CellType":  "percent"
+                                                              },
+                                                     "FertForOwnFarm":  {
+                                                                            "Row":  2,
+                                                                            "Col":  3,
+                                                                            "Header":  "Fert for own farm (eg crop)",
+                                                                            "CellType":  "percent",
+                                                                            "Unit":  "eg crop"
+                                                                        },
+                                                     "DirectApplicationToSoil":  {
+                                                                                     "Row":  2,
+                                                                                     "Col":  4,
+                                                                                     "Header":  "Direct application to soil",
+                                                                                     "CellType":  "formula"
+                                                                                 }
+                                                 }
                                      }
                         }
                     ]

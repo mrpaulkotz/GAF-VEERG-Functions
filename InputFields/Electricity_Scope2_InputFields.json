@@ -1,7 +1,7 @@
 {
     "schemaVersion":  1,
     "generatedFrom":  "14_Electricity_Scope2_WIP_v01.xlsx",
-    "generatedAt":  "2026-06-26T04:49:59Z",
+    "generatedAt":  "2026-06-26T04:59:53Z",
     "InputCells":  [
                        {
                            "CellName":  "X_Cell_Electricity_Location_AmountPurchasedInkWh",
@@ -96,30 +96,30 @@
                                                 "Elegibility"
                                             ],
                             "Rows":  {
-                                         "Entry1":  {
-                                                        "Description":  {
-                                                                            "CellType":  "text"
-                                                                        },
-                                                        "Source":  {
-                                                                       "CellType":  "select",
-                                                                       "Options":  {
-                                                                                       "Purchased certificate":  "Purchased certificate",
-                                                                                       "Issued for generated electricity":  "Issued for generated electricity"
-                                                                                   }
-                                                                   },
-                                                        "GenerationDate":  {
-                                                                               "CellType":  "number"
-                                                                           },
-                                                        "NumberOfCertificates":  {
-                                                                                     "CellType":  "number"
-                                                                                 },
-                                                        "MWh":  {
-                                                                    "CellType":  "formula"
+                                         "Row":  {
+                                                     "Description":  {
+                                                                         "CellType":  "text"
+                                                                     },
+                                                     "Source":  {
+                                                                    "CellType":  "select",
+                                                                    "Options":  {
+                                                                                    "Purchased certificate":  "Purchased certificate",
+                                                                                    "Issued for generated electricity":  "Issued for generated electricity"
+                                                                                }
                                                                 },
-                                                        "Elegibility":  {
-                                                                            "CellType":  "formula"
-                                                                        }
-                                                    }
+                                                     "GenerationDate":  {
+                                                                            "CellType":  "number"
+                                                                        },
+                                                     "NumberOfCertificates":  {
+                                                                                  "CellType":  "number"
+                                                                              },
+                                                     "MWh":  {
+                                                                 "CellType":  "formula"
+                                                             },
+                                                     "Elegibility":  {
+                                                                         "CellType":  "formula"
+                                                                     }
+                                                 }
                                      }
                         },
                         {
@@ -135,26 +135,26 @@
                                                 "Elegibility"
                                             ],
                             "Rows":  {
-                                         "Entry1":  {
-                                                        "Description":  {
-                                                                            "CellType":  "text"
-                                                                        },
-                                                        "Source":  {
-                                                                       "CellType":  "formula"
-                                                                   },
-                                                        "GenerationDate":  {
-                                                                               "CellType":  "number"
-                                                                           },
-                                                        "NumberOfCertificates":  {
-                                                                                     "CellType":  "number"
-                                                                                 },
-                                                        "MWh":  {
+                                         "Row":  {
+                                                     "Description":  {
+                                                                         "CellType":  "text"
+                                                                     },
+                                                     "Source":  {
                                                                     "CellType":  "formula"
                                                                 },
-                                                        "Elegibility":  {
-                                                                            "CellType":  "formula"
-                                                                        }
-                                                    }
+                                                     "GenerationDate":  {
+                                                                            "CellType":  "number"
+                                                                        },
+                                                     "NumberOfCertificates":  {
+                                                                                  "CellType":  "number"
+                                                                              },
+                                                     "MWh":  {
+                                                                 "CellType":  "formula"
+                                                             },
+                                                     "Elegibility":  {
+                                                                         "CellType":  "formula"
+                                                                     }
+                                                 }
                                      }
                         }
                     ]

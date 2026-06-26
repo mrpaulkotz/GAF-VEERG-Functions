@@ -655,15 +655,13 @@ function Get-InputTables {
       }
 
       if ($matrixType -eq 'ColsToRows') {
-        $repCol = ($headers | Where-Object { Test-IsPeriodLabel -Label $_ } | Select-Object -First 1)
-        if ([string]::IsNullOrWhiteSpace($repCol)) { $repCol = 'Period1' }
-        $tableObj['Cols'] = [ordered]@{ $repCol = $fieldDefs }
+        $tableObj['Cols'] = [ordered]@{ 'Column' = $fieldDefs }
       }
       else {
         if ($fieldDefs.Count -eq 0) {
           Add-ValidationWarning "Input table '$tableName' produced no field definitions."
         }
-        $tableObj['Rows'] = [ordered]@{ 'Entry1' = $fieldDefs }
+        $tableObj['Rows'] = [ordered]@{ 'Row' = $fieldDefs }
       }
 
       [void]$tables.Add($tableObj)
@@ -784,9 +782,7 @@ function Get-NamedRangeTables {
         & $addField $fieldDefs (Get-FieldKeyFromHeader -Header $label) ("Row$i") $i 2 $label 'Label' $cellDef
       }
 
-      $repEntry = @($headerRow[1..($colCount - 1)] | Where-Object { -not [string]::IsNullOrWhiteSpace($_) } | Select-Object -First 1)
-      $repKey = if ($repEntry.Count -gt 0) { [string]$repEntry[0] } else { 'Entry1' }
-      $tableObj['Cols'] = [ordered]@{ $repKey = $fieldDefs }
+      $tableObj['Cols'] = [ordered]@{ 'Column' = $fieldDefs }
     }
     else {
       # RowsToCols: fields = header columns 1..C; data rows are entries.
@@ -799,7 +795,7 @@ function Get-NamedRangeTables {
         $cellDef = Get-FieldDefFromCell -BodyCell $bodyCell -Header $header -Worksheet $worksheet -Workbook $Workbook -NameIndex $NameIndex -ContextName $ctx -ForceOverwrite $forceOverwrite
         & $addField $fieldDefs (Get-FieldKeyFromHeader -Header $header) ("Col$jx") 2 $jx $header 'Header' $cellDef
       }
-      $tableObj['Rows'] = [ordered]@{ 'Entry1' = $fieldDefs }
+      $tableObj['Rows'] = [ordered]@{ 'Row' = $fieldDefs }
     }
 
     if ($fieldDefs.Count -eq 0) {

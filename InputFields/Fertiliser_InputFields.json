@@ -1,7 +1,7 @@
 {
     "schemaVersion":  1,
     "generatedFrom":  "5_Fertiliser_WIP_v07.xlsx",
-    "generatedAt":  "2026-06-26T04:50:32Z",
+    "generatedAt":  "2026-06-26T05:00:25Z",
     "InputCells":  [
                        {
                            "CellName":  "X_Cell_Fertiliser_AreaUnderCropping",
@@ -136,99 +136,99 @@
                                                 "Ammonia source"
                                             ],
                             "Rows":  {
-                                         "Entry1":  {
-                                                        "Product":  {
-                                                                        "CellType":  "select",
-                                                                        "Options":  {
-                                                                                        "Aqua Finish":  "Aqua Finish",
-                                                                                        "Aqua Grow":  "Aqua Grow",
-                                                                                        "Aqua Nitro AN":  "Aqua Nitro AN",
-                                                                                        "Aqua NitroCal":  "Aqua NitroCal",
-                                                                                        "Aqua NitroCal (VI)":  "Aqua NitroCal (VI)",
-                                                                                        "Aqua NitroCal Ultimate":  "Aqua NitroCal Ultimate",
-                                                                                        "Aqua Start":  "Aqua Start",
-                                                                                        "Aqua Thio-Complete":  "Aqua Thio-Complete",
-                                                                                        "Aqua Thio-Emerge":  "Aqua Thio-Emerge",
-                                                                                        "Aqua Thio-Flourish":  "Aqua Thio-Flourish",
-                                                                                        "Asco Fol Plus":  "Asco Fol Plus",
-                                                                                        "Asco Plus":  "Asco Plus",
-                                                                                        "Asco Rhizo Plus":  "Asco Rhizo Plus",
-                                                                                        "Benefit PZ":  "Benefit PZ",
-                                                                                        "Boost-It":  "Boost-It",
-                                                                                        "Boroplus":  "Boroplus",
-                                                                                        "Brevisol Range":  "Brevisol Range",
-                                                                                        "Brexil Line":  "Brexil Line",
-                                                                                        "Bronze":  "Bronze",
-                                                                                        "Bud-Wiser Dry":  "Bud-Wiser Dry",
-                                                                                        "Calbit C":  "Calbit C",
-                                                                                        "Calcium 175":  "Calcium 175",
-                                                                                        "CalPhos":  "CalPhos"
-                                                                                    }
-                                                                    },
-                                                        "AmountAppliedPerHectare":  {
-                                                                                        "CellType":  "number"
-                                                                                    },
-                                                        "ApplicationUnit":  {
+                                         "Row":  {
+                                                     "Product":  {
+                                                                     "CellType":  "select",
+                                                                     "Options":  {
+                                                                                     "Aqua Finish":  "Aqua Finish",
+                                                                                     "Aqua Grow":  "Aqua Grow",
+                                                                                     "Aqua Nitro AN":  "Aqua Nitro AN",
+                                                                                     "Aqua NitroCal":  "Aqua NitroCal",
+                                                                                     "Aqua NitroCal (VI)":  "Aqua NitroCal (VI)",
+                                                                                     "Aqua NitroCal Ultimate":  "Aqua NitroCal Ultimate",
+                                                                                     "Aqua Start":  "Aqua Start",
+                                                                                     "Aqua Thio-Complete":  "Aqua Thio-Complete",
+                                                                                     "Aqua Thio-Emerge":  "Aqua Thio-Emerge",
+                                                                                     "Aqua Thio-Flourish":  "Aqua Thio-Flourish",
+                                                                                     "Asco Fol Plus":  "Asco Fol Plus",
+                                                                                     "Asco Plus":  "Asco Plus",
+                                                                                     "Asco Rhizo Plus":  "Asco Rhizo Plus",
+                                                                                     "Benefit PZ":  "Benefit PZ",
+                                                                                     "Boost-It":  "Boost-It",
+                                                                                     "Boroplus":  "Boroplus",
+                                                                                     "Brevisol Range":  "Brevisol Range",
+                                                                                     "Brexil Line":  "Brexil Line",
+                                                                                     "Bronze":  "Bronze",
+                                                                                     "Bud-Wiser Dry":  "Bud-Wiser Dry",
+                                                                                     "Calbit C":  "Calbit C",
+                                                                                     "Calcium 175":  "Calcium 175",
+                                                                                     "CalPhos":  "CalPhos"
+                                                                                 }
+                                                                 },
+                                                     "AmountAppliedPerHectare":  {
+                                                                                     "CellType":  "number"
+                                                                                 },
+                                                     "ApplicationUnit":  {
+                                                                             "CellType":  "formula"
+                                                                         },
+                                                     "Density":  {
+                                                                     "CellType":  "formula"
+                                                                 },
+                                                     "ApplicationArea":  {
+                                                                             "CellType":  "formula",
+                                                                             "Unit":  "ha"
+                                                                         },
+                                                     "TotalApplied":  {
+                                                                          "CellType":  "formula",
+                                                                          "Unit":  "kg"
+                                                                      },
+                                                     "Ingredient1":  {
+                                                                         "CellType":  "formula"
+                                                                     },
+                                                     "Ingredient1Percent":  {
                                                                                 "CellType":  "formula"
                                                                             },
-                                                        "Density":  {
+                                                     "Ingredient2":  {
+                                                                         "CellType":  "formula"
+                                                                     },
+                                                     "Ingredient2Percent":  {
+                                                                                "CellType":  "formula"
+                                                                            },
+                                                     "Ingredient3":  {
+                                                                         "CellType":  "formula"
+                                                                     },
+                                                     "Ingredient3Percent":  {
+                                                                                "CellType":  "formula"
+                                                                            },
+                                                     "Ingredient4":  {
+                                                                         "CellType":  "formula"
+                                                                     },
+                                                     "Ingredient4Percent":  {
+                                                                                "CellType":  "formula"
+                                                                            },
+                                                     "Ingredient5":  {
+                                                                         "CellType":  "formula"
+                                                                     },
+                                                     "Ingredient5Percent":  {
+                                                                                "CellType":  "formula"
+                                                                            },
+                                                     "Ingredient6":  {
+                                                                         "CellType":  "formula"
+                                                                     },
+                                                     "Ingredient6Percent":  {
+                                                                                "CellType":  "formula"
+                                                                            },
+                                                     "NApplicationRate":  {
+                                                                              "CellType":  "formula",
+                                                                              "Unit":  "kg/ha"
+                                                                          },
+                                                     "UreaSource":  {
                                                                         "CellType":  "formula"
                                                                     },
-                                                        "ApplicationArea":  {
-                                                                                "CellType":  "formula",
-                                                                                "Unit":  "ha"
-                                                                            },
-                                                        "TotalApplied":  {
-                                                                             "CellType":  "formula",
-                                                                             "Unit":  "kg"
-                                                                         },
-                                                        "Ingredient1":  {
-                                                                            "CellType":  "formula"
-                                                                        },
-                                                        "Ingredient1Percent":  {
-                                                                                   "CellType":  "formula"
-                                                                               },
-                                                        "Ingredient2":  {
-                                                                            "CellType":  "formula"
-                                                                        },
-                                                        "Ingredient2Percent":  {
-                                                                                   "CellType":  "formula"
-                                                                               },
-                                                        "Ingredient3":  {
-                                                                            "CellType":  "formula"
-                                                                        },
-                                                        "Ingredient3Percent":  {
-                                                                                   "CellType":  "formula"
-                                                                               },
-                                                        "Ingredient4":  {
-                                                                            "CellType":  "formula"
-                                                                        },
-                                                        "Ingredient4Percent":  {
-                                                                                   "CellType":  "formula"
-                                                                               },
-                                                        "Ingredient5":  {
-                                                                            "CellType":  "formula"
-                                                                        },
-                                                        "Ingredient5Percent":  {
-                                                                                   "CellType":  "formula"
-                                                                               },
-                                                        "Ingredient6":  {
-                                                                            "CellType":  "formula"
-                                                                        },
-                                                        "Ingredient6Percent":  {
-                                                                                   "CellType":  "formula"
-                                                                               },
-                                                        "NApplicationRate":  {
-                                                                                 "CellType":  "formula",
-                                                                                 "Unit":  "kg/ha"
-                                                                             },
-                                                        "UreaSource":  {
+                                                     "AmmoniaSource":  {
                                                                            "CellType":  "formula"
-                                                                       },
-                                                        "AmmoniaSource":  {
-                                                                              "CellType":  "formula"
-                                                                          }
-                                                    }
+                                                                       }
+                                                 }
                                      }
                         },
                         {
@@ -253,135 +253,144 @@
                                                 "Ammonia source (select)"
                                             ],
                             "Rows":  {
-                                         "Entry1":  {
-                                                        "CustomBlendName":  {
-                                                                                "CellType":  "text"
-                                                                            },
-                                                        "AmountApplied":  {
-                                                                              "CellType":  "number",
-                                                                              "Unit":  "kg / ha"
-                                                                          },
-                                                        "ApplicationArea":  {
-                                                                                "CellType":  "formula",
-                                                                                "Unit":  "ha"
-                                                                            },
-                                                        "TotalApplied":  {
-                                                                             "CellType":  "formula",
-                                                                             "Unit":  "kg"
+                                         "Row":  {
+                                                     "CustomBlendName":  {
+                                                                             "CellType":  "text"
                                                                          },
-                                                        "Ingredient1":  {
-                                                                            "CellType":  "select",
-                                                                            "Options":  {
-                                                                                            "Monoammonium phosphate (MAP)":  "Monoammonium phosphate (MAP)",
-                                                                                            "Diammonium phosphate (DAP)":  "Diammonium phosphate (DAP)",
-                                                                                            "Urea":  "Urea",
-                                                                                            "Sulphate of ammonia (SOA)":  "Sulphate of ammonia (SOA)",
-                                                                                            "Urea-ammonium nitrate (UAN)":  "Urea-ammonium nitrate (UAN)",
-                                                                                            "Ammonium nitrate (AN)":  "Ammonium nitrate (AN)",
-                                                                                            "Calcium ammonium nitrate (CAN)":  "Calcium ammonium nitrate (CAN)",
-                                                                                            "Nitrogen - Ammoniacal":  "Nitrogen - Ammoniacal",
-                                                                                            "Nitrogen - Nitrate":  "Nitrogen - Nitrate",
-                                                                                            "Nitrogen - Generic":  "Nitrogen - Generic",
-                                                                                            "Phosphorus - Generic":  "Phosphorus - Generic",
-                                                                                            "Potassium - Generic":  "Potassium - Generic",
-                                                                                            "Sulfur - Generic":  "Sulfur - Generic",
-                                                                                            "Zinc - Generic":  "Zinc - Generic",
-                                                                                            "Muriate of potash (MOP)":  "Muriate of potash (MOP)",
-                                                                                            "Double superphosphate":  "Double superphosphate",
-                                                                                            "Single superphosphate (SSP)":  "Single superphosphate (SSP)",
-                                                                                            "Ammonia":  "Ammonia",
-                                                                                            "Calcium nitrate":  "Calcium nitrate"
-                                                                                        }
-                                                                        },
-                                                        "Ingredient1Percent":  {
-                                                                                   "CellType":  "percent"
-                                                                               },
-                                                        "Ingredient2":  {
-                                                                            "CellType":  "select",
-                                                                            "Options":  {
-                                                                                            "Monoammonium phosphate (MAP)":  "Monoammonium phosphate (MAP)",
-                                                                                            "Diammonium phosphate (DAP)":  "Diammonium phosphate (DAP)",
-                                                                                            "Urea":  "Urea",
-                                                                                            "Sulphate of ammonia (SOA)":  "Sulphate of ammonia (SOA)",
-                                                                                            "Urea-ammonium nitrate (UAN)":  "Urea-ammonium nitrate (UAN)",
-                                                                                            "Ammonium nitrate (AN)":  "Ammonium nitrate (AN)",
-                                                                                            "Calcium ammonium nitrate (CAN)":  "Calcium ammonium nitrate (CAN)",
-                                                                                            "Nitrogen - Ammoniacal":  "Nitrogen - Ammoniacal",
-                                                                                            "Nitrogen - Nitrate":  "Nitrogen - Nitrate",
-                                                                                            "Nitrogen - Generic":  "Nitrogen - Generic",
-                                                                                            "Phosphorus - Generic":  "Phosphorus - Generic",
-                                                                                            "Potassium - Generic":  "Potassium - Generic",
-                                                                                            "Sulfur - Generic":  "Sulfur - Generic",
-                                                                                            "Zinc - Generic":  "Zinc - Generic",
-                                                                                            "Muriate of potash (MOP)":  "Muriate of potash (MOP)",
-                                                                                            "Double superphosphate":  "Double superphosphate",
-                                                                                            "Single superphosphate (SSP)":  "Single superphosphate (SSP)",
-                                                                                            "Ammonia":  "Ammonia",
-                                                                                            "Calcium nitrate":  "Calcium nitrate"
-                                                                                        }
-                                                                        },
-                                                        "Ingredient2Percent":  {
-                                                                                   "CellType":  "percent"
-                                                                               },
-                                                        "Ingredient3":  {
-                                                                            "CellType":  "select",
-                                                                            "Options":  {
-                                                                                            "Monoammonium phosphate (MAP)":  "Monoammonium phosphate (MAP)",
-                                                                                            "Diammonium phosphate (DAP)":  "Diammonium phosphate (DAP)",
-                                                                                            "Urea":  "Urea",
-                                                                                            "Sulphate of ammonia (SOA)":  "Sulphate of ammonia (SOA)",
-                                                                                            "Urea-ammonium nitrate (UAN)":  "Urea-ammonium nitrate (UAN)",
-                                                                                            "Ammonium nitrate (AN)":  "Ammonium nitrate (AN)",
-                                                                                            "Calcium ammonium nitrate (CAN)":  "Calcium ammonium nitrate (CAN)",
-                                                                                            "Nitrogen - Ammoniacal":  "Nitrogen - Ammoniacal",
-                                                                                            "Nitrogen - Nitrate":  "Nitrogen - Nitrate",
-                                                                                            "Nitrogen - Generic":  "Nitrogen - Generic",
-                                                                                            "Phosphorus - Generic":  "Phosphorus - Generic",
-                                                                                            "Potassium - Generic":  "Potassium - Generic",
-                                                                                            "Sulfur - Generic":  "Sulfur - Generic",
-                                                                                            "Zinc - Generic":  "Zinc - Generic",
-                                                                                            "Muriate of potash (MOP)":  "Muriate of potash (MOP)",
-                                                                                            "Double superphosphate":  "Double superphosphate",
-                                                                                            "Single superphosphate (SSP)":  "Single superphosphate (SSP)",
-                                                                                            "Ammonia":  "Ammonia",
-                                                                                            "Calcium nitrate":  "Calcium nitrate"
-                                                                                        }
-                                                                        },
-                                                        "Ingredient3Percent":  {
-                                                                                   "CellType":  "percent"
-                                                                               },
-                                                        "Ingredient4":  {
-                                                                            "CellType":  "select",
-                                                                            "Options":  {
-                                                                                            "Monoammonium phosphate (MAP)":  "Monoammonium phosphate (MAP)",
-                                                                                            "Diammonium phosphate (DAP)":  "Diammonium phosphate (DAP)",
-                                                                                            "Urea":  "Urea",
-                                                                                            "Sulphate of ammonia (SOA)":  "Sulphate of ammonia (SOA)",
-                                                                                            "Urea-ammonium nitrate (UAN)":  "Urea-ammonium nitrate (UAN)",
-                                                                                            "Ammonium nitrate (AN)":  "Ammonium nitrate (AN)",
-                                                                                            "Calcium ammonium nitrate (CAN)":  "Calcium ammonium nitrate (CAN)",
-                                                                                            "Nitrogen - Ammoniacal":  "Nitrogen - Ammoniacal",
-                                                                                            "Nitrogen - Nitrate":  "Nitrogen - Nitrate",
-                                                                                            "Nitrogen - Generic":  "Nitrogen - Generic",
-                                                                                            "Phosphorus - Generic":  "Phosphorus - Generic",
-                                                                                            "Potassium - Generic":  "Potassium - Generic",
-                                                                                            "Sulfur - Generic":  "Sulfur - Generic",
-                                                                                            "Zinc - Generic":  "Zinc - Generic",
-                                                                                            "Muriate of potash (MOP)":  "Muriate of potash (MOP)",
-                                                                                            "Double superphosphate":  "Double superphosphate",
-                                                                                            "Single superphosphate (SSP)":  "Single superphosphate (SSP)",
-                                                                                            "Ammonia":  "Ammonia",
-                                                                                            "Calcium nitrate":  "Calcium nitrate"
-                                                                                        }
-                                                                        },
-                                                        "Ingredient4Percent":  {
-                                                                                   "CellType":  "percent"
-                                                                               },
-                                                        "NApplicationRate":  {
-                                                                                 "CellType":  "formula",
-                                                                                 "Unit":  "kg/ha"
-                                                                             },
-                                                        "UreaSource":  {
+                                                     "AmountApplied":  {
+                                                                           "CellType":  "number",
+                                                                           "Unit":  "kg / ha"
+                                                                       },
+                                                     "ApplicationArea":  {
+                                                                             "CellType":  "formula",
+                                                                             "Unit":  "ha"
+                                                                         },
+                                                     "TotalApplied":  {
+                                                                          "CellType":  "formula",
+                                                                          "Unit":  "kg"
+                                                                      },
+                                                     "Ingredient1":  {
+                                                                         "CellType":  "select",
+                                                                         "Options":  {
+                                                                                         "Monoammonium phosphate (MAP)":  "Monoammonium phosphate (MAP)",
+                                                                                         "Diammonium phosphate (DAP)":  "Diammonium phosphate (DAP)",
+                                                                                         "Urea":  "Urea",
+                                                                                         "Sulphate of ammonia (SOA)":  "Sulphate of ammonia (SOA)",
+                                                                                         "Urea-ammonium nitrate (UAN)":  "Urea-ammonium nitrate (UAN)",
+                                                                                         "Ammonium nitrate (AN)":  "Ammonium nitrate (AN)",
+                                                                                         "Calcium ammonium nitrate (CAN)":  "Calcium ammonium nitrate (CAN)",
+                                                                                         "Nitrogen - Ammoniacal":  "Nitrogen - Ammoniacal",
+                                                                                         "Nitrogen - Nitrate":  "Nitrogen - Nitrate",
+                                                                                         "Nitrogen - Generic":  "Nitrogen - Generic",
+                                                                                         "Phosphorus - Generic":  "Phosphorus - Generic",
+                                                                                         "Potassium - Generic":  "Potassium - Generic",
+                                                                                         "Sulfur - Generic":  "Sulfur - Generic",
+                                                                                         "Zinc - Generic":  "Zinc - Generic",
+                                                                                         "Muriate of potash (MOP)":  "Muriate of potash (MOP)",
+                                                                                         "Double superphosphate":  "Double superphosphate",
+                                                                                         "Single superphosphate (SSP)":  "Single superphosphate (SSP)",
+                                                                                         "Ammonia":  "Ammonia",
+                                                                                         "Calcium nitrate":  "Calcium nitrate"
+                                                                                     }
+                                                                     },
+                                                     "Ingredient1Percent":  {
+                                                                                "CellType":  "percent"
+                                                                            },
+                                                     "Ingredient2":  {
+                                                                         "CellType":  "select",
+                                                                         "Options":  {
+                                                                                         "Monoammonium phosphate (MAP)":  "Monoammonium phosphate (MAP)",
+                                                                                         "Diammonium phosphate (DAP)":  "Diammonium phosphate (DAP)",
+                                                                                         "Urea":  "Urea",
+                                                                                         "Sulphate of ammonia (SOA)":  "Sulphate of ammonia (SOA)",
+                                                                                         "Urea-ammonium nitrate (UAN)":  "Urea-ammonium nitrate (UAN)",
+                                                                                         "Ammonium nitrate (AN)":  "Ammonium nitrate (AN)",
+                                                                                         "Calcium ammonium nitrate (CAN)":  "Calcium ammonium nitrate (CAN)",
+                                                                                         "Nitrogen - Ammoniacal":  "Nitrogen - Ammoniacal",
+                                                                                         "Nitrogen - Nitrate":  "Nitrogen - Nitrate",
+                                                                                         "Nitrogen - Generic":  "Nitrogen - Generic",
+                                                                                         "Phosphorus - Generic":  "Phosphorus - Generic",
+                                                                                         "Potassium - Generic":  "Potassium - Generic",
+                                                                                         "Sulfur - Generic":  "Sulfur - Generic",
+                                                                                         "Zinc - Generic":  "Zinc - Generic",
+                                                                                         "Muriate of potash (MOP)":  "Muriate of potash (MOP)",
+                                                                                         "Double superphosphate":  "Double superphosphate",
+                                                                                         "Single superphosphate (SSP)":  "Single superphosphate (SSP)",
+                                                                                         "Ammonia":  "Ammonia",
+                                                                                         "Calcium nitrate":  "Calcium nitrate"
+                                                                                     }
+                                                                     },
+                                                     "Ingredient2Percent":  {
+                                                                                "CellType":  "percent"
+                                                                            },
+                                                     "Ingredient3":  {
+                                                                         "CellType":  "select",
+                                                                         "Options":  {
+                                                                                         "Monoammonium phosphate (MAP)":  "Monoammonium phosphate (MAP)",
+                                                                                         "Diammonium phosphate (DAP)":  "Diammonium phosphate (DAP)",
+                                                                                         "Urea":  "Urea",
+                                                                                         "Sulphate of ammonia (SOA)":  "Sulphate of ammonia (SOA)",
+                                                                                         "Urea-ammonium nitrate (UAN)":  "Urea-ammonium nitrate (UAN)",
+                                                                                         "Ammonium nitrate (AN)":  "Ammonium nitrate (AN)",
+                                                                                         "Calcium ammonium nitrate (CAN)":  "Calcium ammonium nitrate (CAN)",
+                                                                                         "Nitrogen - Ammoniacal":  "Nitrogen - Ammoniacal",
+                                                                                         "Nitrogen - Nitrate":  "Nitrogen - Nitrate",
+                                                                                         "Nitrogen - Generic":  "Nitrogen - Generic",
+                                                                                         "Phosphorus - Generic":  "Phosphorus - Generic",
+                                                                                         "Potassium - Generic":  "Potassium - Generic",
+                                                                                         "Sulfur - Generic":  "Sulfur - Generic",
+                                                                                         "Zinc - Generic":  "Zinc - Generic",
+                                                                                         "Muriate of potash (MOP)":  "Muriate of potash (MOP)",
+                                                                                         "Double superphosphate":  "Double superphosphate",
+                                                                                         "Single superphosphate (SSP)":  "Single superphosphate (SSP)",
+                                                                                         "Ammonia":  "Ammonia",
+                                                                                         "Calcium nitrate":  "Calcium nitrate"
+                                                                                     }
+                                                                     },
+                                                     "Ingredient3Percent":  {
+                                                                                "CellType":  "percent"
+                                                                            },
+                                                     "Ingredient4":  {
+                                                                         "CellType":  "select",
+                                                                         "Options":  {
+                                                                                         "Monoammonium phosphate (MAP)":  "Monoammonium phosphate (MAP)",
+                                                                                         "Diammonium phosphate (DAP)":  "Diammonium phosphate (DAP)",
+                                                                                         "Urea":  "Urea",
+                                                                                         "Sulphate of ammonia (SOA)":  "Sulphate of ammonia (SOA)",
+                                                                                         "Urea-ammonium nitrate (UAN)":  "Urea-ammonium nitrate (UAN)",
+                                                                                         "Ammonium nitrate (AN)":  "Ammonium nitrate (AN)",
+                                                                                         "Calcium ammonium nitrate (CAN)":  "Calcium ammonium nitrate (CAN)",
+                                                                                         "Nitrogen - Ammoniacal":  "Nitrogen - Ammoniacal",
+                                                                                         "Nitrogen - Nitrate":  "Nitrogen - Nitrate",
+                                                                                         "Nitrogen - Generic":  "Nitrogen - Generic",
+                                                                                         "Phosphorus - Generic":  "Phosphorus - Generic",
+                                                                                         "Potassium - Generic":  "Potassium - Generic",
+                                                                                         "Sulfur - Generic":  "Sulfur - Generic",
+                                                                                         "Zinc - Generic":  "Zinc - Generic",
+                                                                                         "Muriate of potash (MOP)":  "Muriate of potash (MOP)",
+                                                                                         "Double superphosphate":  "Double superphosphate",
+                                                                                         "Single superphosphate (SSP)":  "Single superphosphate (SSP)",
+                                                                                         "Ammonia":  "Ammonia",
+                                                                                         "Calcium nitrate":  "Calcium nitrate"
+                                                                                     }
+                                                                     },
+                                                     "Ingredient4Percent":  {
+                                                                                "CellType":  "percent"
+                                                                            },
+                                                     "NApplicationRate":  {
+                                                                              "CellType":  "formula",
+                                                                              "Unit":  "kg/ha"
+                                                                          },
+                                                     "UreaSource":  {
+                                                                        "CellType":  "select",
+                                                                        "Options":  {
+                                                                                        "Global":  "Global",
+                                                                                        "Canada":  "Canada",
+                                                                                        "China":  "China",
+                                                                                        "Yemen":  "Yemen"
+                                                                                    }
+                                                                    },
+                                                     "AmmoniaSource":  {
                                                                            "CellType":  "select",
                                                                            "Options":  {
                                                                                            "Global":  "Global",
@@ -389,17 +398,8 @@
                                                                                            "China":  "China",
                                                                                            "Yemen":  "Yemen"
                                                                                        }
-                                                                       },
-                                                        "AmmoniaSource":  {
-                                                                              "CellType":  "select",
-                                                                              "Options":  {
-                                                                                              "Global":  "Global",
-                                                                                              "Canada":  "Canada",
-                                                                                              "China":  "China",
-                                                                                              "Yemen":  "Yemen"
-                                                                                          }
-                                                                          }
-                                                    }
+                                                                       }
+                                                 }
                                      }
                         },
                         {
@@ -417,36 +417,36 @@
                                                 "Total"
                                             ],
                             "Rows":  {
-                                         "Entry1":  {
-                                                        "Product":  {
-                                                                        "CellType":  "text"
-                                                                    },
-                                                        "AmountApplied":  {
-                                                                              "CellType":  "number",
-                                                                              "Unit":  "t/hectare"
-                                                                          },
-                                                        "ApplicationArea":  {
+                                         "Row":  {
+                                                     "Product":  {
+                                                                     "CellType":  "text"
+                                                                 },
+                                                     "AmountApplied":  {
+                                                                           "CellType":  "number",
+                                                                           "Unit":  "t/hectare"
+                                                                       },
+                                                     "ApplicationArea":  {
+                                                                             "CellType":  "formula",
+                                                                             "Unit":  "ha"
+                                                                         },
+                                                     "TotalAmountApplied":  {
                                                                                 "CellType":  "formula",
-                                                                                "Unit":  "ha"
+                                                                                "Unit":  "t"
                                                                             },
-                                                        "TotalAmountApplied":  {
-                                                                                   "CellType":  "formula",
-                                                                                   "Unit":  "t"
-                                                                               },
-                                                        "PercentLimeCaCO3":  {
-                                                                                 "CellType":  "percent"
-                                                                             },
-                                                        "PercentDolomiteCaMg2":  {
-                                                                                     "CellType":  "percent",
-                                                                                     "Unit":  "CO3"
-                                                                                 },
-                                                        "PercentGypsum":  {
+                                                     "PercentLimeCaCO3":  {
                                                                               "CellType":  "percent"
                                                                           },
-                                                        "Total":  {
-                                                                      "CellType":  "formula"
-                                                                  }
-                                                    }
+                                                     "PercentDolomiteCaMg2":  {
+                                                                                  "CellType":  "percent",
+                                                                                  "Unit":  "CO3"
+                                                                              },
+                                                     "PercentGypsum":  {
+                                                                           "CellType":  "percent"
+                                                                       },
+                                                     "Total":  {
+                                                                   "CellType":  "formula"
+                                                               }
+                                                 }
                                      }
                         },
                         {
@@ -463,40 +463,40 @@
                                                 "Total nitrogen applied (kg)"
                                             ],
                             "Rows":  {
-                                         "Entry1":  {
-                                                        "OrganicFertiliserType":  {
-                                                                                      "CellType":  "select",
-                                                                                      "Options":  {
-                                                                                                      "Manure - Cattle":  "Manure - Cattle",
-                                                                                                      "Manure - Poultry":  "Manure - Poultry",
-                                                                                                      "Manure - Swine":  "Manure - Swine",
-                                                                                                      "Manure - Other":  "Manure - Other",
-                                                                                                      "Other organic fertiliser":  "Other organic fertiliser"
-                                                                                                  }
-                                                                                  },
-                                                        "PercentageOfNInFertiliser":  {
-                                                                                          "CellType":  "percent"
+                                         "Row":  {
+                                                     "OrganicFertiliserType":  {
+                                                                                   "CellType":  "select",
+                                                                                   "Options":  {
+                                                                                                   "Manure - Cattle":  "Manure - Cattle",
+                                                                                                   "Manure - Poultry":  "Manure - Poultry",
+                                                                                                   "Manure - Swine":  "Manure - Swine",
+                                                                                                   "Manure - Other":  "Manure - Other",
+                                                                                                   "Other organic fertiliser":  "Other organic fertiliser"
+                                                                                               }
+                                                                               },
+                                                     "PercentageOfNInFertiliser":  {
+                                                                                       "CellType":  "percent"
+                                                                                   },
+                                                     "AmountApplied":  {
+                                                                           "CellType":  "number",
+                                                                           "Unit":  "kg/hectare"
+                                                                       },
+                                                     "AmountNApplied":  {
+                                                                            "CellType":  "formula",
+                                                                            "Unit":  "kg/hectare"
+                                                                        },
+                                                     "ApplicationArea":  {
+                                                                             "CellType":  "formula",
+                                                                             "Unit":  "ha"
+                                                                         },
+                                                     "TotalOrganicFertliserApplied":  {
+                                                                                          "CellType":  "formula"
                                                                                       },
-                                                        "AmountApplied":  {
-                                                                              "CellType":  "number",
-                                                                              "Unit":  "kg/hectare"
-                                                                          },
-                                                        "AmountNApplied":  {
-                                                                               "CellType":  "formula",
-                                                                               "Unit":  "kg/hectare"
-                                                                           },
-                                                        "ApplicationArea":  {
-                                                                                "CellType":  "formula",
-                                                                                "Unit":  "ha"
-                                                                            },
-                                                        "TotalOrganicFertliserApplied":  {
-                                                                                             "CellType":  "formula"
-                                                                                         },
-                                                        "TotalNitrogenApplied":  {
-                                                                                     "CellType":  "formula",
-                                                                                     "Unit":  "kg"
-                                                                                 }
-                                                    }
+                                                     "TotalNitrogenApplied":  {
+                                                                                  "CellType":  "formula",
+                                                                                  "Unit":  "kg"
+                                                                              }
+                                                 }
                                      }
                         }
                     ]

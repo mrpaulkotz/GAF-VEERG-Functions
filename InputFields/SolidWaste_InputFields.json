@@ -1,7 +1,7 @@
 {
     "schemaVersion":  1,
     "generatedFrom":  "10_SolidWaste_WIP_v02.xlsx",
-    "generatedAt":  "2026-06-26T04:49:41Z",
+    "generatedAt":  "2026-06-26T04:59:39Z",
     "InputCells":  {
 
                    },
@@ -18,43 +18,43 @@
                                             "Amount unit (select)"
                                         ],
                         "Rows":  {
-                                     "Entry1":  {
-                                                    "Description":  {
-                                                                        "CellType":  "text"
-                                                                    },
-                                                    "TreatmentType":  {
-                                                                          "CellType":  "select",
-                                                                          "Options":  {
-                                                                                          "Landfill":  "Landfill",
-                                                                                          "Incineration":  "Incineration",
-                                                                                          "Composting":  "Composting",
-                                                                                          "Anaerobic digestion":  "Anaerobic digestion"
-                                                                                      }
-                                                                      },
-                                                    "WasteType":  {
-                                                                      "CellType":  "select",
-                                                                      "Options":  {
-
-                                                                                  }
-                                                                  },
-                                                    "TreatmentLocation":  {
-                                                                              "CellType":  "select",
-                                                                              "Options":  {
-                                                                                              "Treated on-site":  "Treated on-site",
-                                                                                              "Removed and treated off-site":  "Removed and treated off-site"
-                                                                                          }
-                                                                          },
-                                                    "Amount":  {
-                                                                   "CellType":  "number"
-                                                               },
-                                                    "AmountUnit":  {
+                                     "Row":  {
+                                                 "Description":  {
+                                                                     "CellType":  "text"
+                                                                 },
+                                                 "TreatmentType":  {
                                                                        "CellType":  "select",
                                                                        "Options":  {
-                                                                                       "tonnes":  "tonnes",
-                                                                                       "cubic metres m3":  "cubic metres m3"
+                                                                                       "Landfill":  "Landfill",
+                                                                                       "Incineration":  "Incineration",
+                                                                                       "Composting":  "Composting",
+                                                                                       "Anaerobic digestion":  "Anaerobic digestion"
                                                                                    }
-                                                                   }
-                                                }
+                                                                   },
+                                                 "WasteType":  {
+                                                                   "CellType":  "select",
+                                                                   "Options":  {
+
+                                                                               }
+                                                               },
+                                                 "TreatmentLocation":  {
+                                                                           "CellType":  "select",
+                                                                           "Options":  {
+                                                                                           "Treated on-site":  "Treated on-site",
+                                                                                           "Removed and treated off-site":  "Removed and treated off-site"
+                                                                                       }
+                                                                       },
+                                                 "Amount":  {
+                                                                "CellType":  "number"
+                                                            },
+                                                 "AmountUnit":  {
+                                                                    "CellType":  "select",
+                                                                    "Options":  {
+                                                                                    "tonnes":  "tonnes",
+                                                                                    "cubic metres m3":  "cubic metres m3"
+                                                                                }
+                                                                }
+                                             }
                                  }
                     }
 }

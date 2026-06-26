@@ -1,7 +1,7 @@
 {
     "schemaVersion":  1,
     "generatedFrom":  "4_1_ManureManagement_Feedlot_WIP_v08.xlsx",
-    "generatedAt":  "2026-06-26T04:50:14Z",
+    "generatedAt":  "2026-06-26T05:00:06Z",
     "InputCells":  [
                        {
                            "CellName":  "X_Cell_Site_AverageTemperature",
@@ -87,20 +87,20 @@
                                                 "Long-fed"
                                             ],
                             "Cols":  {
-                                         "Domestic":  {
-                                                          "AverageNumberOfHeadBetween01Jan24And31Dec24":  {
-                                                                                                              "Row":  2,
+                                         "Column":  {
+                                                        "AverageNumberOfHeadBetween01Jan24And31Dec24":  {
+                                                                                                            "Row":  2,
+                                                                                                            "Col":  2,
+                                                                                                            "Label":  "Average number of head between 01 Jan 24 and 31 Dec 24",
+                                                                                                            "CellType":  "number"
+                                                                                                        },
+                                                        "AverageDurationOfStayBetween01Jan24And31Dec24":  {
+                                                                                                              "Row":  3,
                                                                                                               "Col":  2,
-                                                                                                              "Label":  "Average number of head between 01 Jan 24 and 31 Dec 24",
+                                                                                                              "Label":  "Average duration of stay between 01 Jan 24 and 31 Dec 24",
                                                                                                               "CellType":  "number"
-                                                                                                          },
-                                                          "AverageDurationOfStayBetween01Jan24And31Dec24":  {
-                                                                                                                "Row":  3,
-                                                                                                                "Col":  2,
-                                                                                                                "Label":  "Average duration of stay between 01 Jan 24 and 31 Dec 24",
-                                                                                                                "CellType":  "number"
-                                                                                                            }
-                                                      }
+                                                                                                          }
+                                                    }
                                      }
                         },
                         {
@@ -115,32 +115,32 @@
                                                 "Long-fed"
                                             ],
                             "Cols":  {
-                                         "Domestic":  {
-                                                          "FeedIntake":  {
-                                                                             "Row":  2,
+                                         "Column":  {
+                                                        "FeedIntake":  {
+                                                                           "Row":  2,
+                                                                           "Col":  2,
+                                                                           "Label":  "Feed intake",
+                                                                           "CellType":  "formula"
+                                                                       },
+                                                        "DryMatterDigestibility":  {
+                                                                                       "Row":  3,
+                                                                                       "Col":  2,
+                                                                                       "Label":  "Dry matter digestibility",
+                                                                                       "CellType":  "formula"
+                                                                                   },
+                                                        "CrudeProtein":  {
+                                                                             "Row":  4,
                                                                              "Col":  2,
-                                                                             "Label":  "Feed intake",
+                                                                             "Label":  "Crude protein",
                                                                              "CellType":  "formula"
                                                                          },
-                                                          "DryMatterDigestibility":  {
-                                                                                         "Row":  3,
-                                                                                         "Col":  2,
-                                                                                         "Label":  "Dry matter digestibility",
-                                                                                         "CellType":  "formula"
-                                                                                     },
-                                                          "CrudeProtein":  {
-                                                                               "Row":  4,
-                                                                               "Col":  2,
-                                                                               "Label":  "Crude protein",
-                                                                               "CellType":  "formula"
-                                                                           },
-                                                          "NRetention":  {
-                                                                             "Row":  5,
-                                                                             "Col":  2,
-                                                                             "Label":  "N retention",
-                                                                             "CellType":  "formula"
-                                                                         }
-                                                      }
+                                                        "NRetention":  {
+                                                                           "Row":  5,
+                                                                           "Col":  2,
+                                                                           "Label":  "N retention",
+                                                                           "CellType":  "formula"
+                                                                       }
+                                                    }
                                      }
                         },
                         {
@@ -155,36 +155,36 @@
                                                 "Long-fed"
                                             ],
                             "Cols":  {
-                                         "Domestic":  {
-                                                          "FeedIntake":  {
-                                                                             "Row":  2,
+                                         "Column":  {
+                                                        "FeedIntake":  {
+                                                                           "Row":  2,
+                                                                           "Col":  2,
+                                                                           "Label":  "Feed intake",
+                                                                           "CellType":  "number",
+                                                                           "CanOverWriteFormula":  true
+                                                                       },
+                                                        "DryMatterDigestibility":  {
+                                                                                       "Row":  3,
+                                                                                       "Col":  2,
+                                                                                       "Label":  "Dry matter digestibility",
+                                                                                       "CellType":  "number",
+                                                                                       "CanOverWriteFormula":  true
+                                                                                   },
+                                                        "CrudeProtein":  {
+                                                                             "Row":  4,
                                                                              "Col":  2,
-                                                                             "Label":  "Feed intake",
+                                                                             "Label":  "Crude protein",
                                                                              "CellType":  "number",
                                                                              "CanOverWriteFormula":  true
                                                                          },
-                                                          "DryMatterDigestibility":  {
-                                                                                         "Row":  3,
-                                                                                         "Col":  2,
-                                                                                         "Label":  "Dry matter digestibility",
-                                                                                         "CellType":  "number",
-                                                                                         "CanOverWriteFormula":  true
-                                                                                     },
-                                                          "CrudeProtein":  {
-                                                                               "Row":  4,
-                                                                               "Col":  2,
-                                                                               "Label":  "Crude protein",
-                                                                               "CellType":  "number",
-                                                                               "CanOverWriteFormula":  true
-                                                                           },
-                                                          "NRetention":  {
-                                                                             "Row":  5,
-                                                                             "Col":  2,
-                                                                             "Label":  "N retention",
-                                                                             "CellType":  "number",
-                                                                             "CanOverWriteFormula":  true
-                                                                         }
-                                                      }
+                                                        "NRetention":  {
+                                                                           "Row":  5,
+                                                                           "Col":  2,
+                                                                           "Label":  "N retention",
+                                                                           "CellType":  "number",
+                                                                           "CanOverWriteFormula":  true
+                                                                       }
+                                                    }
                                      }
                         },
                         {
@@ -199,15 +199,15 @@
                                                 "Long-fed"
                                             ],
                             "Cols":  {
-                                         "Domestic":  {
-                                                          "Drylot":  {
-                                                                         "Row":  2,
-                                                                         "Col":  2,
-                                                                         "Label":  "Drylot (feed pad)",
-                                                                         "CellType":  "percent",
-                                                                         "Unit":  "feed pad"
-                                                                     }
-                                                      }
+                                         "Column":  {
+                                                        "Drylot":  {
+                                                                       "Row":  2,
+                                                                       "Col":  2,
+                                                                       "Label":  "Drylot (feed pad)",
+                                                                       "CellType":  "percent",
+                                                                       "Unit":  "feed pad"
+                                                                   }
+                                                    }
                                      }
                         },
                         {
@@ -222,34 +222,34 @@
                                                 "Long-fed"
                                             ],
                             "Cols":  {
-                                         "Domestic":  {
-                                                          "FromStage1DrylotTo":  {
-                                                                                     "Row":  2,
-                                                                                     "Col":  2,
-                                                                                     "Label":  "From Stage 1: Drylot (feed pad) to:",
-                                                                                     "CellType":  "number",
-                                                                                     "Unit":  "feed pad"
-                                                                                 },
-                                                          "SolidStorage":  {
-                                                                               "Row":  3,
-                                                                               "Col":  2,
-                                                                               "Label":  "Solid storage",
-                                                                               "CellType":  "percent"
-                                                                           },
-                                                          "Composting":  {
-                                                                             "Row":  4,
+                                         "Column":  {
+                                                        "FromStage1DrylotTo":  {
+                                                                                   "Row":  2,
+                                                                                   "Col":  2,
+                                                                                   "Label":  "From Stage 1: Drylot (feed pad) to:",
+                                                                                   "CellType":  "number",
+                                                                                   "Unit":  "feed pad"
+                                                                               },
+                                                        "SolidStorage":  {
+                                                                             "Row":  3,
                                                                              "Col":  2,
-                                                                             "Label":  "Composting (passive windrow)",
-                                                                             "CellType":  "percent",
-                                                                             "Unit":  "passive windrow"
+                                                                             "Label":  "Solid storage",
+                                                                             "CellType":  "percent"
                                                                          },
-                                                          "DirectApplication":  {
-                                                                                    "Row":  5,
-                                                                                    "Col":  2,
-                                                                                    "Label":  "Direct application",
-                                                                                    "CellType":  "formula"
-                                                                                }
-                                                      }
+                                                        "Composting":  {
+                                                                           "Row":  4,
+                                                                           "Col":  2,
+                                                                           "Label":  "Composting (passive windrow)",
+                                                                           "CellType":  "percent",
+                                                                           "Unit":  "passive windrow"
+                                                                       },
+                                                        "DirectApplication":  {
+                                                                                  "Row":  5,
+                                                                                  "Col":  2,
+                                                                                  "Label":  "Direct application",
+                                                                                  "CellType":  "formula"
+                                                                              }
+                                                    }
                                      }
                         },
                         {
@@ -263,25 +263,25 @@
                                                 ""
                                             ],
                             "Rows":  {
-                                         "Entry1":  {
-                                                        "DestinationAfterStage2MMS":  {
-                                                                                          "Row":  2,
-                                                                                          "Col":  1,
-                                                                                          "Header":  "Destination after stage 2 MMS (Percent)",
-                                                                                          "CellType":  "text",
-                                                                                          "Unit":  "Percent"
-                                                                                      },
-                                                        "Col2":  {
-                                                                     "Row":  2,
-                                                                     "Col":  2,
-                                                                     "CellType":  "text"
-                                                                 },
-                                                        "Col3":  {
-                                                                     "Row":  2,
-                                                                     "Col":  3,
-                                                                     "CellType":  "text"
-                                                                 }
-                                                    }
+                                         "Row":  {
+                                                     "DestinationAfterStage2MMS":  {
+                                                                                       "Row":  2,
+                                                                                       "Col":  1,
+                                                                                       "Header":  "Destination after stage 2 MMS (Percent)",
+                                                                                       "CellType":  "text",
+                                                                                       "Unit":  "Percent"
+                                                                                   },
+                                                     "Col2":  {
+                                                                  "Row":  2,
+                                                                  "Col":  2,
+                                                                  "CellType":  "text"
+                                                              },
+                                                     "Col3":  {
+                                                                  "Row":  2,
+                                                                  "Col":  3,
+                                                                  "CellType":  "text"
+                                                              }
+                                                 }
                                      }
                         },
                         {
@@ -296,21 +296,21 @@
                                                 "Long-fed"
                                             ],
                             "Cols":  {
-                                         "Domestic":  {
-                                                          "FromStage1DrylotTo":  {
-                                                                                     "Row":  2,
-                                                                                     "Col":  2,
-                                                                                     "Label":  "From Stage 1: Drylot (feed pad) to:",
-                                                                                     "CellType":  "number",
-                                                                                     "Unit":  "feed pad"
-                                                                                 },
-                                                          "AnaerobicLagoon":  {
-                                                                                  "Row":  3,
-                                                                                  "Col":  2,
-                                                                                  "Label":  "Anaerobic lagoon",
-                                                                                  "CellType":  "formula"
-                                                                              }
-                                                      }
+                                         "Column":  {
+                                                        "FromStage1DrylotTo":  {
+                                                                                   "Row":  2,
+                                                                                   "Col":  2,
+                                                                                   "Label":  "From Stage 1: Drylot (feed pad) to:",
+                                                                                   "CellType":  "number",
+                                                                                   "Unit":  "feed pad"
+                                                                               },
+                                                        "AnaerobicLagoon":  {
+                                                                                "Row":  3,
+                                                                                "Col":  2,
+                                                                                "Label":  "Anaerobic lagoon",
+                                                                                "CellType":  "formula"
+                                                                            }
+                                                    }
                                      }
                         },
                         {
@@ -324,7 +324,7 @@
                                                 ""
                                             ],
                             "Cols":  {
-                                         "Entry1":  {
+                                         "Column":  {
                                                         "Sold":  {
                                                                      "Row":  2,
                                                                      "Col":  2,

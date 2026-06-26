@@ -113,7 +113,8 @@ npm run build:input-fields
    field — a positional fallback key (`RowN` / `ColN`) is used instead. A `_Method2`
    segment in the table name marks the whole table as user-overwritable. Named ranges
    that resolve to a single row (header only, no data rows) are reported as a non-fatal
-   warning and skipped.
+   warning and skipped. The `Cols`/`Rows` container uses a single generic key
+   (`Column` for ColsToRows, `Row` for RowsToCols) rather than a value pulled from a cell.
 4. Merges a shallow override file `InputFields/_overrides/<Module>.json` over the
    generated result when present, so manual corrections survive regeneration.
 5. Writes one `<Module>_InputFields.json` per workbook as UTF-8 **without** a BOM.
@@ -148,7 +149,7 @@ protected formula.
       "NumberOfCols": 7,
       "ColumnNames": ["Organic fertiliser type (select)", "..."],
       "Rows": {
-        "Entry1": {
+        "Row": {
           "OrganicFertiliserType": { "CellType": "select", "Options": { "...": "..." } },
           "AmountApplied": { "CellType": "number", "Unit": "kg/hectare" },
           "ApplicationArea": { "CellType": "formula", "Unit": "ha" }
@@ -162,7 +163,7 @@ protected formula.
       "NumberOfCols": 5,
       "ColumnNames": ["", "Layers", "Meat chicken growers", "..."],
       "Cols": {
-        "Layers": {
+        "Column": {
           "AverageDurationOfStay": {
             "CellType": "number", "Row": 2, "Col": 2,
             "Label": "Average duration of stay between 01 Jan 24 and 31 Dec 24"
