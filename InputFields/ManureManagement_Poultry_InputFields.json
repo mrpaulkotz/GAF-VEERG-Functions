@@ -1,0 +1,513 @@
+{
+    "schemaVersion":  1,
+    "generatedFrom":  "4_6_ManureManagement_Poultry_WIP_v03.xlsx",
+    "generatedAt":  "2026-06-26T04:50:27Z",
+    "InputCells":  [
+                       {
+                           "CellName":  "X_Cell_Dairy_ManureAppliedIrrigationMethod",
+                           "CellType":  "select",
+                           "Options":  {
+
+                                       }
+                       },
+                       {
+                           "CellName":  "X_Cell_Dairy_ManureAppliedProductionSystem",
+                           "CellType":  "select",
+                           "Options":  {
+
+                                       }
+                       },
+                       {
+                           "CellName":  "X_Cell_Poultry_ProductionSystem",
+                           "CellType":  "select",
+                           "Options":  {
+                                           "Free range":  "Free range",
+                                           "Barn":  "Barn",
+                                           "Cage":  "Cage"
+                                       }
+                       },
+                       {
+                           "CellName":  "X_Cell_Site_AverageTemperature",
+                           "CellType":  "number"
+                       },
+                       {
+                           "CellName":  "X_Cell_Site_Elevation",
+                           "CellType":  "number"
+                       },
+                       {
+                           "CellName":  "X_Cell_Site_FarmName",
+                           "CellType":  "text"
+                       },
+                       {
+                           "CellName":  "X_Cell_Site_FrostDays",
+                           "CellType":  "number"
+                       },
+                       {
+                           "CellName":  "X_Cell_Site_LeachingZone",
+                           "CellType":  "select",
+                           "Options":  {
+                                           "YES - In leaching zone":  "YES - In leaching zone",
+                                           "NO - Not in leaching zone":  "NO - Not in leaching zone"
+                                       }
+                       },
+                       {
+                           "CellName":  "X_Cell_Site_PotentialEvapotranspiration",
+                           "CellType":  "number"
+                       },
+                       {
+                           "CellName":  "X_Cell_Site_Region",
+                           "CellType":  "select",
+                           "Options":  {
+                                           "Bunbury":  "Bunbury",
+                                           "Mandurah":  "Mandurah",
+                                           "Perth - Inner":  "Perth - Inner",
+                                           "Perth - North East":  "Perth - North East",
+                                           "Perth - North West":  "Perth - North West",
+                                           "Perth - South East":  "Perth - South East",
+                                           "Perth - South West":  "Perth - South West",
+                                           "Western Australia - Wheat Belt":  "Western Australia - Wheat Belt",
+                                           "Western Australia - Outback (North)":  "Western Australia - Outback (North)",
+                                           "Western Australia - Outback (South)":  "Western Australia - Outback (South)"
+                                       }
+                       },
+                       {
+                           "CellName":  "X_Cell_Site_ReportingEntityName",
+                           "CellType":  "text"
+                       },
+                       {
+                           "CellName":  "X_Cell_Site_StartDate",
+                           "CellType":  "number"
+                       },
+                       {
+                           "CellName":  "X_Cell_Site_State",
+                           "CellType":  "select",
+                           "Options":  {
+                                           "New South Wales":  "New South Wales",
+                                           "ACT":  "ACT",
+                                           "Victoria":  "Victoria",
+                                           "Queensland":  "Queensland",
+                                           "South Australia":  "South Australia",
+                                           "Western Australia":  "Western Australia",
+                                           "Tasmania":  "Tasmania",
+                                           "Northern Territory":  "Northern Territory"
+                                       }
+                       },
+                       {
+                           "CellName":  "X_Cell_Site_TotalRainfall",
+                           "CellType":  "number"
+                       }
+                   ],
+    "InputTables":  [
+                        {
+                            "TableName":  "X_Table_Poultry_Diet_Method1",
+                            "MatrixType":  "ColsToRows",
+                            "NumberOfRows":  4,
+                            "NumberOfCols":  5,
+                            "ColumnNames":  [
+                                                "Method 1 default values (Do not edit)",
+                                                "Layers",
+                                                "Meat chicken growers",
+                                                "Meat chicken breeders",
+                                                "Other"
+                                            ],
+                            "Cols":  {
+                                         "Layers":  {
+                                                        "DryMatterIntake":  {
+                                                                                "Row":  2,
+                                                                                "Col":  2,
+                                                                                "Label":  "Dry matter intake",
+                                                                                "CellType":  "formula"
+                                                                            },
+                                                        "DryMatterDigestibility":  {
+                                                                                       "Row":  3,
+                                                                                       "Col":  2,
+                                                                                       "Label":  "Dry matter digestibility (DMD)",
+                                                                                       "CellType":  "formula",
+                                                                                       "Unit":  "DMD"
+                                                                                   },
+                                                        "CrudeProtein":  {
+                                                                             "Row":  4,
+                                                                             "Col":  2,
+                                                                             "Label":  "Crude protein (CP)",
+                                                                             "CellType":  "formula",
+                                                                             "Unit":  "CP"
+                                                                         }
+                                                    }
+                                     }
+                        },
+                        {
+                            "TableName":  "X_Table_Poultry_Diet_Method2",
+                            "MatrixType":  "ColsToRows",
+                            "NumberOfRows":  4,
+                            "NumberOfCols":  5,
+                            "ColumnNames":  [
+                                                "Method 2 custom values (Edit if known)",
+                                                "Layers",
+                                                "Meat chicken growers",
+                                                "Meat chicken breeders",
+                                                "Other"
+                                            ],
+                            "Cols":  {
+                                         "Layers":  {
+                                                        "DryMatterIntake":  {
+                                                                                "Row":  2,
+                                                                                "Col":  2,
+                                                                                "Label":  "Dry matter intake",
+                                                                                "CellType":  "number",
+                                                                                "CanOverWriteFormula":  true
+                                                                            },
+                                                        "DryMatterDigestibility":  {
+                                                                                       "Row":  3,
+                                                                                       "Col":  2,
+                                                                                       "Label":  "Dry matter digestibility (DMD)",
+                                                                                       "CellType":  "number",
+                                                                                       "Unit":  "DMD",
+                                                                                       "CanOverWriteFormula":  true
+                                                                                   },
+                                                        "CrudeProtein":  {
+                                                                             "Row":  4,
+                                                                             "Col":  2,
+                                                                             "Label":  "Crude protein (CP)",
+                                                                             "CellType":  "number",
+                                                                             "Unit":  "CP",
+                                                                             "CanOverWriteFormula":  true
+                                                                         }
+                                                    }
+                                     }
+                        },
+                        {
+                            "TableName":  "X_Table_Poultry_Movement",
+                            "MatrixType":  "ColsToRows",
+                            "NumberOfRows":  3,
+                            "NumberOfCols":  5,
+                            "ColumnNames":  [
+                                                "",
+                                                "Layers",
+                                                "Meat chicken growers",
+                                                "Meat chicken breeders",
+                                                "Other"
+                                            ],
+                            "Cols":  {
+                                         "Layers":  {
+                                                        "AverageDurationOfStayBetween01Jan24And31Dec24":  {
+                                                                                                              "Row":  2,
+                                                                                                              "Col":  2,
+                                                                                                              "Label":  "Average duration of stay between 01 Jan 24 and 31 Dec 24",
+                                                                                                              "CellType":  "number"
+                                                                                                          },
+                                                        "AverageNumberOfBirdsBetween01Jan24And31Dec24":  {
+                                                                                                             "Row":  3,
+                                                                                                             "Col":  2,
+                                                                                                             "Label":  "Average number of birds between 01 Jan 24 and 31 Dec 24",
+                                                                                                             "CellType":  "number"
+                                                                                                         }
+                                                    }
+                                     }
+                        },
+                        {
+                            "TableName":  "X_Table_Poultry_Stage1MMS",
+                            "MatrixType":  "ColsToRows",
+                            "NumberOfRows":  5,
+                            "NumberOfCols":  5,
+                            "ColumnNames":  [
+                                                "Stage 1 MMS",
+                                                "Layers",
+                                                "Meat chicken growers",
+                                                "Meat chicken breeders",
+                                                "Other"
+                                            ],
+                            "Cols":  {
+                                         "Layers":  {
+                                                        "PoultryManureWithBedding":  {
+                                                                                         "Row":  2,
+                                                                                         "Col":  2,
+                                                                                         "Label":  "Poultry manure with bedding",
+                                                                                         "CellType":  "percent"
+                                                                                     },
+                                                        "BeltManureRemoval":  {
+                                                                                  "Row":  3,
+                                                                                  "Col":  2,
+                                                                                  "Label":  "Belt manure removal",
+                                                                                  "CellType":  "percent"
+                                                                              },
+                                                        "ManureStoredInHouse":  {
+                                                                                    "Row":  4,
+                                                                                    "Col":  2,
+                                                                                    "Label":  "Manure stored in house",
+                                                                                    "CellType":  "percent"
+                                                                                },
+                                                        "PastureRangeAndPaddock":  {
+                                                                                       "Row":  5,
+                                                                                       "Col":  2,
+                                                                                       "Label":  "Pasture range and paddock",
+                                                                                       "CellType":  "percent"
+                                                                                   }
+                                                    }
+                                     }
+                        },
+                        {
+                            "TableName":  "X_Table_Poultry_Stage2MMS_BeltManureRemoval",
+                            "MatrixType":  "ColsToRows",
+                            "NumberOfRows":  6,
+                            "NumberOfCols":  5,
+                            "ColumnNames":  [
+                                                "From stage 1: Belt manure removal",
+                                                "Manure was sent to this MMS, please complete this section.",
+                                                "",
+                                                "",
+                                                ""
+                                            ],
+                            "Cols":  {
+                                         "Manure was sent to this MMS, please complete this section.":  {
+                                                                                                            "SolidStorage":  {
+                                                                                                                                 "Row":  2,
+                                                                                                                                 "Col":  2,
+                                                                                                                                 "Label":  "Solid storage",
+                                                                                                                                 "CellType":  "percent"
+                                                                                                                             },
+                                                                                                            "Composting":  {
+                                                                                                                               "Row":  3,
+                                                                                                                               "Col":  2,
+                                                                                                                               "Label":  "Composting (passive windrow)",
+                                                                                                                               "CellType":  "percent",
+                                                                                                                               "Unit":  "passive windrow"
+                                                                                                                           },
+                                                                                                            "DigesterCoveredLagoons":  {
+                                                                                                                                           "Row":  4,
+                                                                                                                                           "Col":  2,
+                                                                                                                                           "Label":  "Digester / covered lagoons",
+                                                                                                                                           "CellType":  "percent"
+                                                                                                                                       },
+                                                                                                            "DirectProcessing":  {
+                                                                                                                                     "Row":  5,
+                                                                                                                                     "Col":  2,
+                                                                                                                                     "Label":  "Direct processing",
+                                                                                                                                     "CellType":  "percent"
+                                                                                                                                 },
+                                                                                                            "DirectApplication":  {
+                                                                                                                                      "Row":  6,
+                                                                                                                                      "Col":  2,
+                                                                                                                                      "Label":  "Direct application",
+                                                                                                                                      "CellType":  "formula"
+                                                                                                                                  }
+                                                                                                        }
+                                     }
+                        },
+                        {
+                            "TableName":  "X_Table_Poultry_Stage2MMS_BeltManureRemoval_Destinations",
+                            "MatrixType":  "RowsToCols",
+                            "NumberOfRows":  6,
+                            "NumberOfCols":  4,
+                            "ColumnNames":  [
+                                                "",
+                                                "Sold",
+                                                "Fert for own farm (eg crop)",
+                                                "Direct application to soil"
+                                            ],
+                            "Rows":  {
+                                         "Entry1":  {
+                                                        "Col1":  {
+                                                                     "Row":  2,
+                                                                     "Col":  1,
+                                                                     "CellType":  "number"
+                                                                 },
+                                                        "Sold":  {
+                                                                     "Row":  2,
+                                                                     "Col":  2,
+                                                                     "Header":  "Sold",
+                                                                     "CellType":  "percent"
+                                                                 },
+                                                        "FertForOwnFarm":  {
+                                                                               "Row":  2,
+                                                                               "Col":  3,
+                                                                               "Header":  "Fert for own farm (eg crop)",
+                                                                               "CellType":  "percent",
+                                                                               "Unit":  "eg crop"
+                                                                           },
+                                                        "DirectApplicationToSoil":  {
+                                                                                        "Row":  2,
+                                                                                        "Col":  4,
+                                                                                        "Header":  "Direct application to soil",
+                                                                                        "CellType":  "formula"
+                                                                                    }
+                                                    }
+                                     }
+                        },
+                        {
+                            "TableName":  "X_Table_Poultry_Stage2MMS_ManureStoredInHouse",
+                            "MatrixType":  "ColsToRows",
+                            "NumberOfRows":  6,
+                            "NumberOfCols":  5,
+                            "ColumnNames":  [
+                                                "From stage 1: Manure stored in house",
+                                                "Manure was sent to this MMS, please complete this section.",
+                                                "",
+                                                "",
+                                                ""
+                                            ],
+                            "Cols":  {
+                                         "Manure was sent to this MMS, please complete this section.":  {
+                                                                                                            "SolidStorage":  {
+                                                                                                                                 "Row":  2,
+                                                                                                                                 "Col":  2,
+                                                                                                                                 "Label":  "Solid storage",
+                                                                                                                                 "CellType":  "percent"
+                                                                                                                             },
+                                                                                                            "Composting":  {
+                                                                                                                               "Row":  3,
+                                                                                                                               "Col":  2,
+                                                                                                                               "Label":  "Composting (passive windrow)",
+                                                                                                                               "CellType":  "percent",
+                                                                                                                               "Unit":  "passive windrow"
+                                                                                                                           },
+                                                                                                            "DigesterCoveredLagoons":  {
+                                                                                                                                           "Row":  4,
+                                                                                                                                           "Col":  2,
+                                                                                                                                           "Label":  "Digester / covered lagoons",
+                                                                                                                                           "CellType":  "percent"
+                                                                                                                                       },
+                                                                                                            "DirectProcessing":  {
+                                                                                                                                     "Row":  5,
+                                                                                                                                     "Col":  2,
+                                                                                                                                     "Label":  "Direct processing",
+                                                                                                                                     "CellType":  "percent"
+                                                                                                                                 },
+                                                                                                            "DirectApplication":  {
+                                                                                                                                      "Row":  6,
+                                                                                                                                      "Col":  2,
+                                                                                                                                      "Label":  "Direct application",
+                                                                                                                                      "CellType":  "formula"
+                                                                                                                                  }
+                                                                                                        }
+                                     }
+                        },
+                        {
+                            "TableName":  "X_Table_Poultry_Stage2MMS_ManureStoredInHouse_Destinations",
+                            "MatrixType":  "RowsToCols",
+                            "NumberOfRows":  6,
+                            "NumberOfCols":  4,
+                            "ColumnNames":  [
+                                                "",
+                                                "Sold",
+                                                "Fert for own farm (eg crop)",
+                                                "Direct application to soil"
+                                            ],
+                            "Rows":  {
+                                         "Entry1":  {
+                                                        "Col1":  {
+                                                                     "Row":  2,
+                                                                     "Col":  1,
+                                                                     "CellType":  "number"
+                                                                 },
+                                                        "Sold":  {
+                                                                     "Row":  2,
+                                                                     "Col":  2,
+                                                                     "Header":  "Sold",
+                                                                     "CellType":  "percent"
+                                                                 },
+                                                        "FertForOwnFarm":  {
+                                                                               "Row":  2,
+                                                                               "Col":  3,
+                                                                               "Header":  "Fert for own farm (eg crop)",
+                                                                               "CellType":  "percent",
+                                                                               "Unit":  "eg crop"
+                                                                           },
+                                                        "DirectApplicationToSoil":  {
+                                                                                        "Row":  2,
+                                                                                        "Col":  4,
+                                                                                        "Header":  "Direct application to soil",
+                                                                                        "CellType":  "formula"
+                                                                                    }
+                                                    }
+                                     }
+                        },
+                        {
+                            "TableName":  "X_Table_Poultry_Stage2MMS_PoultryManureWithBedding",
+                            "MatrixType":  "ColsToRows",
+                            "NumberOfRows":  6,
+                            "NumberOfCols":  5,
+                            "ColumnNames":  [
+                                                "From stage 1: Poultry manure with bedding",
+                                                "Manure was sent to this MMS, please complete this section.",
+                                                "",
+                                                "",
+                                                ""
+                                            ],
+                            "Cols":  {
+                                         "Manure was sent to this MMS, please complete this section.":  {
+                                                                                                            "SolidStorage":  {
+                                                                                                                                 "Row":  2,
+                                                                                                                                 "Col":  2,
+                                                                                                                                 "Label":  "Solid storage",
+                                                                                                                                 "CellType":  "percent"
+                                                                                                                             },
+                                                                                                            "Composting":  {
+                                                                                                                               "Row":  3,
+                                                                                                                               "Col":  2,
+                                                                                                                               "Label":  "Composting (passive windrow)",
+                                                                                                                               "CellType":  "percent",
+                                                                                                                               "Unit":  "passive windrow"
+                                                                                                                           },
+                                                                                                            "DigesterCoveredLagoons":  {
+                                                                                                                                           "Row":  4,
+                                                                                                                                           "Col":  2,
+                                                                                                                                           "Label":  "Digester / covered lagoons",
+                                                                                                                                           "CellType":  "percent"
+                                                                                                                                       },
+                                                                                                            "DirectProcessing":  {
+                                                                                                                                     "Row":  5,
+                                                                                                                                     "Col":  2,
+                                                                                                                                     "Label":  "Direct processing",
+                                                                                                                                     "CellType":  "percent"
+                                                                                                                                 },
+                                                                                                            "DirectApplication":  {
+                                                                                                                                      "Row":  6,
+                                                                                                                                      "Col":  2,
+                                                                                                                                      "Label":  "Direct application",
+                                                                                                                                      "CellType":  "formula"
+                                                                                                                                  }
+                                                                                                        }
+                                     }
+                        },
+                        {
+                            "TableName":  "X_Table_Poultry_Stage2MMS_PoultryManureWithBedding_Destinations",
+                            "MatrixType":  "RowsToCols",
+                            "NumberOfRows":  6,
+                            "NumberOfCols":  4,
+                            "ColumnNames":  [
+                                                "",
+                                                "Sold",
+                                                "Fert for own farm (eg crop)",
+                                                "Direct application to soil"
+                                            ],
+                            "Rows":  {
+                                         "Entry1":  {
+                                                        "Col1":  {
+                                                                     "Row":  2,
+                                                                     "Col":  1,
+                                                                     "CellType":  "number"
+                                                                 },
+                                                        "Sold":  {
+                                                                     "Row":  2,
+                                                                     "Col":  2,
+                                                                     "Header":  "Sold",
+                                                                     "CellType":  "percent"
+                                                                 },
+                                                        "FertForOwnFarm":  {
+                                                                               "Row":  2,
+                                                                               "Col":  3,
+                                                                               "Header":  "Fert for own farm (eg crop)",
+                                                                               "CellType":  "percent",
+                                                                               "Unit":  "eg crop"
+                                                                           },
+                                                        "DirectApplicationToSoil":  {
+                                                                                        "Row":  2,
+                                                                                        "Col":  4,
+                                                                                        "Header":  "Direct application to soil",
+                                                                                        "CellType":  "formula"
+                                                                                    }
+                                                    }
+                                     }
+                        }
+                    ]
+}

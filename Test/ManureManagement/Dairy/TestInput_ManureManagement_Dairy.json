@@ -312,7 +312,7 @@
       "TableName": "X_Table_Dairy_Stage1MMS_1_AnaerobicLagoon",
       "MatrixType": "ColsToRows",
       "ColumnOffset": null,
-      "RowOffset": 0,
+      "RowOffset": null,
       "Cols": {
         "MilkingCows": {
           "AnaerobicLagoon": "25%"
@@ -335,7 +335,7 @@
       "TableName": "X_Table_Dairy_Stage1MMS_1_SumpAndDispersal",
       "MatrixType": "ColsToRows",
       "ColumnOffset": null,
-      "RowOffset": 0,
+      "RowOffset": null,
       "Cols": {
         "MilkingCows": {
           "SumpAndDispersal": "25%"
@@ -358,7 +358,7 @@
       "TableName": "X_Table_Dairy_Stage1MMS_1_DrainsToPaddock",
       "MatrixType": "ColsToRows",
       "ColumnOffset": null,
-      "RowOffset": 0,
+      "RowOffset": null,
       "Cols": {
         "MilkingCows": {
           "DrainsToPaddock": "25%"
@@ -381,7 +381,7 @@
       "TableName": "X_Table_Dairy_Stage1MMS_1_SolidStorage",
       "MatrixType": "ColsToRows",
       "ColumnOffset": null,
-      "RowOffset": 0,
+      "RowOffset": null,
       "Cols": {
         "MilkingCows": {
           "SolidStorage": "25%"
@@ -403,8 +403,8 @@
     {
       "TableName": "X_Table_Dairy_Stage1MMS_1_AnaerobicLagoon_Destinations",
       "MatrixType": "ColsToRows",
-      "ColumnOffset": 0,
-      "RowOffset": 0,
+      "ColumnOffset": null,
+      "RowOffset": null,
       "Cols": {
         "Sold": {
           "AnaerobicLagoon": "25%"
@@ -420,8 +420,8 @@
     {
       "TableName": "X_Table_Dairy_Stage1MMS_1_SumpAndDispersal_Destinations",
       "MatrixType": "ColsToRows",
-      "ColumnOffset": 0,
-      "RowOffset": 0,
+      "ColumnOffset": null,
+      "RowOffset": null,
       "Cols": {
         "Sold": {
           "SumpAndDispersal": "25%"
@@ -437,8 +437,8 @@
     {
       "TableName": "X_Table_Dairy_Stage1MMS_1_DrainsToPaddock_Destinations",
       "MatrixType": "ColsToRows",
-      "ColumnOffset": 0,
-      "RowOffset": 0,
+      "ColumnOffset": null,
+      "RowOffset": null,
       "Cols": {
         "Sold": {
           "DrainsToPaddock": "25%"
@@ -454,8 +454,8 @@
     {
       "TableName": "X_Table_Dairy_Stage1MMS_1_SolidStorage_Destinations",
       "MatrixType": "ColsToRows",
-      "ColumnOffset": 0,
-      "RowOffset": 0,
+      "ColumnOffset": null,
+      "RowOffset": null,
       "Cols": {
         "Sold": {
           "SolidStorage": "25%"
@@ -472,7 +472,7 @@
       "TableName": "X_Table_Dairy_Stage1MMS_2_AnaerobicLagoon",
       "MatrixType": "ColsToRows",
       "ColumnOffset": null,
-      "RowOffset": 0,
+      "RowOffset": null,
       "Cols": {
         "MilkingCows": {
           "AnaerobicLagoon": "25%"
@@ -495,7 +495,7 @@
       "TableName": "X_Table_Dairy_Stage1MMS_2_SumpAndDispersal",
       "MatrixType": "ColsToRows",
       "ColumnOffset": null,
-      "RowOffset": 0,
+      "RowOffset": null,
       "Cols": {
         "MilkingCows": {
           "SumpAndDispersal": "25%"
@@ -518,7 +518,7 @@
       "TableName": "X_Table_Dairy_Stage1MMS_2_DrainsToPaddock",
       "MatrixType": "ColsToRows",
       "ColumnOffset": null,
-      "RowOffset": 0,
+      "RowOffset": null,
       "Cols": {
         "MilkingCows": {
           "DrainsToPaddock": "25%"
@@ -541,7 +541,7 @@
       "TableName": "X_Table_Dairy_Stage1MMS_2_SolidStorage",
       "MatrixType": "ColsToRows",
       "ColumnOffset": null,
-      "RowOffset": 0,
+      "RowOffset": null,
       "Cols": {
         "MilkingCows": {
           "SolidStorage": "25%"
@@ -563,8 +563,8 @@
     {
       "TableName": "X_Table_Dairy_Stage1MMS_2_AnaerobicLagoon_Destinations",
       "MatrixType": "ColsToRows",
-      "ColumnOffset": 0,
-      "RowOffset": 0,
+      "ColumnOffset": null,
+      "RowOffset": null,
       "Cols": {
         "Sold": {
           "AnaerobicLagoon": "25%"
@@ -580,8 +580,8 @@
     {
       "TableName": "X_Table_Dairy_Stage1MMS_2_SumpAndDispersal_Destinations",
       "MatrixType": "ColsToRows",
-      "ColumnOffset": 0,
-      "RowOffset": 0,
+      "ColumnOffset": null,
+      "RowOffset": null,
       "Cols": {
         "Sold": {
           "SumpAndDispersal": "25%"
@@ -597,8 +597,8 @@
     {
       "TableName": "X_Table_Dairy_Stage1MMS_2_DrainsToPaddock_Destinations",
       "MatrixType": "ColsToRows",
-      "ColumnOffset": 0,
-      "RowOffset": 0,
+      "ColumnOffset": null,
+      "RowOffset": null,
       "Cols": {
         "Sold": {
           "DrainsToPaddock": "25%"
@@ -614,8 +614,8 @@
     {
       "TableName": "X_Table_Dairy_Stage1MMS_2_SolidStorage_Destinations",
       "MatrixType": "ColsToRows",
-      "ColumnOffset": 0,
-      "RowOffset": 0,
+      "ColumnOffset": null,
+      "RowOffset": null,
       "Cols": {
         "Sold": {
           "SolidStorage": "25%"

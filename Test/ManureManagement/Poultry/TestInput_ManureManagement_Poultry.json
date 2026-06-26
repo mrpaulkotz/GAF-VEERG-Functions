@@ -236,7 +236,7 @@
     },
     {
       "TableName": "X_Table_Poultry_Stage2MMS_PoultryManureWithBedding_Destinations",
-      "ColumnOffset": 0,
+      "ColumnOffset": null,
       "RowOffset": null,
       "Cols": {
         "Sold": {
@@ -265,7 +265,7 @@
     },
     {
       "TableName": "X_Table_Poultry_Stage2MMS_BeltManureRemoval_Destinations",
-      "ColumnOffset": 0,
+      "ColumnOffset": null,
       "RowOffset": null,
       "Cols": {
         "Sold": {
@@ -294,7 +294,7 @@
     },
     {
       "TableName": "X_Table_Poultry_Stage2MMS_ManureStoredInHouse_Destinations",
-      "ColumnOffset": 0,
+      "ColumnOffset": null,
       "RowOffset": null,
       "Cols": {
         "Sold": {

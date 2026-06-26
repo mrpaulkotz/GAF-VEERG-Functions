@@ -1,0 +1,1001 @@
+{
+    "schemaVersion":  1,
+    "generatedFrom":  "3_2_Enteric_BeefPasture_WIP_v02.xlsx",
+    "generatedAt":  "2026-06-26T04:50:05Z",
+    "InputCells":  [
+                       {
+                           "CellName":  "X_Cell_PastureBeef_Breed",
+                           "CellType":  "select",
+                           "Options":  {
+                                           "Hereford or Shorthorn breeds":  "Hereford or Shorthorn breeds",
+                                           "Northern Brahman cross breed":  "Northern Brahman cross breed"
+                                       }
+                       },
+                       {
+                           "CellName":  "X_Cell_PastureBeef_FencedWater",
+                           "CellType":  "select",
+                           "Options":  {
+                                           "Yes":  "Yes",
+                                           "No":  "No"
+                                       }
+                       },
+                       {
+                           "CellName":  "X_Cell_PastureBeef_GrazingIrrigationMethod",
+                           "CellType":  "select",
+                           "Options":  {
+                                           "Not irrigated":  "Not irrigated",
+                                           "Drip irrigation":  "Drip irrigation",
+                                           "Sprinkler irrigation":  "Sprinkler irrigation",
+                                           "Surface irrigation":  "Surface irrigation",
+                                           "Other irrigation":  "Other irrigation"
+                                       }
+                       },
+                       {
+                           "CellName":  "X_Cell_PastureBeef_GrazingProductionSystem",
+                           "CellType":  "select",
+                           "Options":  {
+                                           "Pasture":  "Pasture",
+                                           "Crop":  "Crop"
+                                       }
+                       },
+                       {
+                           "CellName":  "X_Cell_PastureBeef_ProductionRegion",
+                           "CellType":  "select",
+                           "Options":  {
+
+                                       }
+                       },
+                       {
+                           "CellName":  "X_Cell_Site_FarmName",
+                           "CellType":  "text"
+                       },
+                       {
+                           "CellName":  "X_Cell_Site_ReportingEntityName",
+                           "CellType":  "text"
+                       },
+                       {
+                           "CellName":  "X_Cell_Site_StartDate",
+                           "CellType":  "number"
+                       },
+                       {
+                           "CellName":  "X_Cell_Site_State",
+                           "CellType":  "select",
+                           "Options":  {
+                                           "New South Wales":  "New South Wales",
+                                           "ACT":  "ACT",
+                                           "Victoria":  "Victoria",
+                                           "Queensland":  "Queensland",
+                                           "South Australia":  "South Australia",
+                                           "Western Australia":  "Western Australia",
+                                           "Tasmania":  "Tasmania",
+                                           "Northern Territory":  "Northern Territory"
+                                       }
+                       }
+                   ],
+    "InputTables":  [
+                        {
+                            "TableName":  "X_Table_PastureBeef_CrudeProtein_Method1",
+                            "MatrixType":  "ColsToRows",
+                            "NumberOfRows":  5,
+                            "NumberOfCols":  11,
+                            "ColumnNames":  [
+                                                "Method 1 default values (do not edit)",
+                                                "Bulls < 1 year",
+                                                "Bulls > 1 year",
+                                                "Cows < 1 year",
+                                                "Cows 1-2 years",
+                                                "Cows 2-3 years",
+                                                "Cows > 3 years",
+                                                "Steers < 1 year",
+                                                "Steers 1-2 years",
+                                                "Steers 2-3 years",
+                                                "Steers >3 years"
+                                            ],
+                            "Cols":  {
+                                         "Bulls < 1 year":  {
+                                                                     "Spring":  {
+                                                                                    "Row":  2,
+                                                                                    "Col":  2,
+                                                                                    "Label":  "Spring",
+                                                                                    "CellType":  "formula"
+                                                                                },
+                                                                     "Summer":  {
+                                                                                    "Row":  3,
+                                                                                    "Col":  2,
+                                                                                    "Label":  "Summer",
+                                                                                    "CellType":  "formula"
+                                                                                },
+                                                                     "Autumn":  {
+                                                                                    "Row":  4,
+                                                                                    "Col":  2,
+                                                                                    "Label":  "Autumn",
+                                                                                    "CellType":  "formula"
+                                                                                },
+                                                                     "Winter":  {
+                                                                                    "Row":  5,
+                                                                                    "Col":  2,
+                                                                                    "Label":  "Winter",
+                                                                                    "CellType":  "formula"
+                                                                                }
+                                                                 }
+                                     }
+                        },
+                        {
+                            "TableName":  "X_Table_PastureBeef_CrudeProtein_Method2",
+                            "MatrixType":  "ColsToRows",
+                            "NumberOfRows":  13,
+                            "NumberOfCols":  11,
+                            "ColumnNames":  [
+                                                "Method 2 custom values (edit if known)",
+                                                "Bulls < 1 year",
+                                                "Bulls > 1 year",
+                                                "Cows < 1 year",
+                                                "Cows 1-2 years",
+                                                "Cows 2-3 years",
+                                                "Cows > 3 years",
+                                                "Steers < 1 year",
+                                                "Steers 1-2 years",
+                                                "Steers 2-3 years",
+                                                "Steers >3 years"
+                                            ],
+                            "Cols":  {
+                                         "Bulls < 1 year":  {
+                                                                     "January2024":  {
+                                                                                         "Row":  2,
+                                                                                         "Col":  2,
+                                                                                         "Label":  "January 2024",
+                                                                                         "CellType":  "number",
+                                                                                         "CanOverWriteFormula":  true
+                                                                                     },
+                                                                     "February2024":  {
+                                                                                          "Row":  3,
+                                                                                          "Col":  2,
+                                                                                          "Label":  "February 2024",
+                                                                                          "CellType":  "number",
+                                                                                          "CanOverWriteFormula":  true
+                                                                                      },
+                                                                     "March2024":  {
+                                                                                       "Row":  4,
+                                                                                       "Col":  2,
+                                                                                       "Label":  "March 2024",
+                                                                                       "CellType":  "number",
+                                                                                       "CanOverWriteFormula":  true
+                                                                                   },
+                                                                     "April2024":  {
+                                                                                       "Row":  5,
+                                                                                       "Col":  2,
+                                                                                       "Label":  "April 2024",
+                                                                                       "CellType":  "number",
+                                                                                       "CanOverWriteFormula":  true
+                                                                                   },
+                                                                     "May2024":  {
+                                                                                     "Row":  6,
+                                                                                     "Col":  2,
+                                                                                     "Label":  "May 2024",
+                                                                                     "CellType":  "number",
+                                                                                     "CanOverWriteFormula":  true
+                                                                                 },
+                                                                     "June2024":  {
+                                                                                      "Row":  7,
+                                                                                      "Col":  2,
+                                                                                      "Label":  "June 2024",
+                                                                                      "CellType":  "number",
+                                                                                      "CanOverWriteFormula":  true
+                                                                                  },
+                                                                     "July2024":  {
+                                                                                      "Row":  8,
+                                                                                      "Col":  2,
+                                                                                      "Label":  "July 2024",
+                                                                                      "CellType":  "number",
+                                                                                      "CanOverWriteFormula":  true
+                                                                                  },
+                                                                     "August2024":  {
+                                                                                        "Row":  9,
+                                                                                        "Col":  2,
+                                                                                        "Label":  "August 2024",
+                                                                                        "CellType":  "number",
+                                                                                        "CanOverWriteFormula":  true
+                                                                                    },
+                                                                     "September2024":  {
+                                                                                           "Row":  10,
+                                                                                           "Col":  2,
+                                                                                           "Label":  "September 2024",
+                                                                                           "CellType":  "number",
+                                                                                           "CanOverWriteFormula":  true
+                                                                                       },
+                                                                     "October2024":  {
+                                                                                         "Row":  11,
+                                                                                         "Col":  2,
+                                                                                         "Label":  "October 2024",
+                                                                                         "CellType":  "number",
+                                                                                         "CanOverWriteFormula":  true
+                                                                                     },
+                                                                     "November2024":  {
+                                                                                          "Row":  12,
+                                                                                          "Col":  2,
+                                                                                          "Label":  "November 2024",
+                                                                                          "CellType":  "number",
+                                                                                          "CanOverWriteFormula":  true
+                                                                                      },
+                                                                     "December2024":  {
+                                                                                          "Row":  13,
+                                                                                          "Col":  2,
+                                                                                          "Label":  "December 2024",
+                                                                                          "CellType":  "number",
+                                                                                          "CanOverWriteFormula":  true
+                                                                                      }
+                                                                 }
+                                     }
+                        },
+                        {
+                            "TableName":  "X_Table_PastureBeef_DryMatterDigestibility_Method1",
+                            "MatrixType":  "ColsToRows",
+                            "NumberOfRows":  5,
+                            "NumberOfCols":  11,
+                            "ColumnNames":  [
+                                                "Method 1 default values (do not edit)",
+                                                "Bulls < 1 year",
+                                                "Bulls > 1 year",
+                                                "Cows < 1 year",
+                                                "Cows 1-2 years",
+                                                "Cows 2-3 years",
+                                                "Cows > 3 years",
+                                                "Steers < 1 year",
+                                                "Steers 1-2 years",
+                                                "Steers 2-3 years",
+                                                "Steers >3 years"
+                                            ],
+                            "Cols":  {
+                                         "Bulls < 1 year":  {
+                                                                     "Spring":  {
+                                                                                    "Row":  2,
+                                                                                    "Col":  2,
+                                                                                    "Label":  "Spring",
+                                                                                    "CellType":  "formula"
+                                                                                },
+                                                                     "Summer":  {
+                                                                                    "Row":  3,
+                                                                                    "Col":  2,
+                                                                                    "Label":  "Summer",
+                                                                                    "CellType":  "formula"
+                                                                                },
+                                                                     "Autumn":  {
+                                                                                    "Row":  4,
+                                                                                    "Col":  2,
+                                                                                    "Label":  "Autumn",
+                                                                                    "CellType":  "formula"
+                                                                                },
+                                                                     "Winter":  {
+                                                                                    "Row":  5,
+                                                                                    "Col":  2,
+                                                                                    "Label":  "Winter",
+                                                                                    "CellType":  "formula"
+                                                                                }
+                                                                 }
+                                     }
+                        },
+                        {
+                            "TableName":  "X_Table_PastureBeef_DryMatterDigestibility_Method2",
+                            "MatrixType":  "ColsToRows",
+                            "NumberOfRows":  13,
+                            "NumberOfCols":  11,
+                            "ColumnNames":  [
+                                                "Method 2 custom values (edit if known)",
+                                                "Bulls < 1 year",
+                                                "Bulls > 1 year",
+                                                "Cows < 1 year",
+                                                "Cows 1-2 years",
+                                                "Cows 2-3 years",
+                                                "Cows > 3 years",
+                                                "Steers < 1 year",
+                                                "Steers 1-2 years",
+                                                "Steers 2-3 years",
+                                                "Steers >3 years"
+                                            ],
+                            "Cols":  {
+                                         "Bulls < 1 year":  {
+                                                                     "January2024":  {
+                                                                                         "Row":  2,
+                                                                                         "Col":  2,
+                                                                                         "Label":  "January 2024",
+                                                                                         "CellType":  "number",
+                                                                                         "CanOverWriteFormula":  true
+                                                                                     },
+                                                                     "February2024":  {
+                                                                                          "Row":  3,
+                                                                                          "Col":  2,
+                                                                                          "Label":  "February 2024",
+                                                                                          "CellType":  "number",
+                                                                                          "CanOverWriteFormula":  true
+                                                                                      },
+                                                                     "March2024":  {
+                                                                                       "Row":  4,
+                                                                                       "Col":  2,
+                                                                                       "Label":  "March 2024",
+                                                                                       "CellType":  "number",
+                                                                                       "CanOverWriteFormula":  true
+                                                                                   },
+                                                                     "April2024":  {
+                                                                                       "Row":  5,
+                                                                                       "Col":  2,
+                                                                                       "Label":  "April 2024",
+                                                                                       "CellType":  "number",
+                                                                                       "CanOverWriteFormula":  true
+                                                                                   },
+                                                                     "May2024":  {
+                                                                                     "Row":  6,
+                                                                                     "Col":  2,
+                                                                                     "Label":  "May 2024",
+                                                                                     "CellType":  "number",
+                                                                                     "CanOverWriteFormula":  true
+                                                                                 },
+                                                                     "June2024":  {
+                                                                                      "Row":  7,
+                                                                                      "Col":  2,
+                                                                                      "Label":  "June 2024",
+                                                                                      "CellType":  "number",
+                                                                                      "CanOverWriteFormula":  true
+                                                                                  },
+                                                                     "July2024":  {
+                                                                                      "Row":  8,
+                                                                                      "Col":  2,
+                                                                                      "Label":  "July 2024",
+                                                                                      "CellType":  "number",
+                                                                                      "CanOverWriteFormula":  true
+                                                                                  },
+                                                                     "August2024":  {
+                                                                                        "Row":  9,
+                                                                                        "Col":  2,
+                                                                                        "Label":  "August 2024",
+                                                                                        "CellType":  "number",
+                                                                                        "CanOverWriteFormula":  true
+                                                                                    },
+                                                                     "September2024":  {
+                                                                                           "Row":  10,
+                                                                                           "Col":  2,
+                                                                                           "Label":  "September 2024",
+                                                                                           "CellType":  "number",
+                                                                                           "CanOverWriteFormula":  true
+                                                                                       },
+                                                                     "October2024":  {
+                                                                                         "Row":  11,
+                                                                                         "Col":  2,
+                                                                                         "Label":  "October 2024",
+                                                                                         "CellType":  "number",
+                                                                                         "CanOverWriteFormula":  true
+                                                                                     },
+                                                                     "November2024":  {
+                                                                                          "Row":  12,
+                                                                                          "Col":  2,
+                                                                                          "Label":  "November 2024",
+                                                                                          "CellType":  "number",
+                                                                                          "CanOverWriteFormula":  true
+                                                                                      },
+                                                                     "December2024":  {
+                                                                                          "Row":  13,
+                                                                                          "Col":  2,
+                                                                                          "Label":  "December 2024",
+                                                                                          "CellType":  "number",
+                                                                                          "CanOverWriteFormula":  true
+                                                                                      }
+                                                                 }
+                                     }
+                        },
+                        {
+                            "TableName":  "X_Table_PastureBeef_Duration_Method1",
+                            "MatrixType":  "ColsToRows",
+                            "NumberOfRows":  5,
+                            "NumberOfCols":  11,
+                            "ColumnNames":  [
+                                                "Method 1 default values (do not edit)",
+                                                "Bulls < 1 year",
+                                                "Bulls > 1 year",
+                                                "Cows < 1 year",
+                                                "Cows 1-2 years",
+                                                "Cows 2-3 years",
+                                                "Cows > 3 years",
+                                                "Steers < 1 year",
+                                                "Steers 1-2 years",
+                                                "Steers 2-3 years",
+                                                "Steers >3 years"
+                                            ],
+                            "Cols":  {
+                                         "Bulls < 1 year":  {
+                                                                     "Spring":  {
+                                                                                    "Row":  2,
+                                                                                    "Col":  2,
+                                                                                    "Label":  "Spring",
+                                                                                    "CellType":  "number"
+                                                                                },
+                                                                     "Summer":  {
+                                                                                    "Row":  3,
+                                                                                    "Col":  2,
+                                                                                    "Label":  "Summer",
+                                                                                    "CellType":  "number"
+                                                                                },
+                                                                     "Autumn":  {
+                                                                                    "Row":  4,
+                                                                                    "Col":  2,
+                                                                                    "Label":  "Autumn",
+                                                                                    "CellType":  "number"
+                                                                                },
+                                                                     "Winter":  {
+                                                                                    "Row":  5,
+                                                                                    "Col":  2,
+                                                                                    "Label":  "Winter",
+                                                                                    "CellType":  "number"
+                                                                                }
+                                                                 }
+                                     }
+                        },
+                        {
+                            "TableName":  "X_Table_PastureBeef_Duration_Method2",
+                            "MatrixType":  "ColsToRows",
+                            "NumberOfRows":  13,
+                            "NumberOfCols":  11,
+                            "ColumnNames":  [
+                                                "Method 2 custom values (edit if known)",
+                                                "Bulls < 1 year",
+                                                "Bulls > 1 year",
+                                                "Cows < 1 year",
+                                                "Cows 1-2 years",
+                                                "Cows 2-3 years",
+                                                "Cows > 3 years",
+                                                "Steers < 1 year",
+                                                "Steers 1-2 years",
+                                                "Steers 2-3 years",
+                                                "Steers >3 years"
+                                            ],
+                            "Cols":  {
+                                         "Bulls < 1 year":  {
+                                                                     "January2024":  {
+                                                                                         "Row":  2,
+                                                                                         "Col":  2,
+                                                                                         "Label":  "January 2024",
+                                                                                         "CellType":  "number",
+                                                                                         "CanOverWriteFormula":  true
+                                                                                     },
+                                                                     "February2024":  {
+                                                                                          "Row":  3,
+                                                                                          "Col":  2,
+                                                                                          "Label":  "February 2024",
+                                                                                          "CellType":  "number",
+                                                                                          "CanOverWriteFormula":  true
+                                                                                      },
+                                                                     "March2024":  {
+                                                                                       "Row":  4,
+                                                                                       "Col":  2,
+                                                                                       "Label":  "March 2024",
+                                                                                       "CellType":  "number",
+                                                                                       "CanOverWriteFormula":  true
+                                                                                   },
+                                                                     "April2024":  {
+                                                                                       "Row":  5,
+                                                                                       "Col":  2,
+                                                                                       "Label":  "April 2024",
+                                                                                       "CellType":  "number",
+                                                                                       "CanOverWriteFormula":  true
+                                                                                   },
+                                                                     "May2024":  {
+                                                                                     "Row":  6,
+                                                                                     "Col":  2,
+                                                                                     "Label":  "May 2024",
+                                                                                     "CellType":  "number",
+                                                                                     "CanOverWriteFormula":  true
+                                                                                 },
+                                                                     "June2024":  {
+                                                                                      "Row":  7,
+                                                                                      "Col":  2,
+                                                                                      "Label":  "June 2024",
+                                                                                      "CellType":  "number",
+                                                                                      "CanOverWriteFormula":  true
+                                                                                  },
+                                                                     "July2024":  {
+                                                                                      "Row":  8,
+                                                                                      "Col":  2,
+                                                                                      "Label":  "July 2024",
+                                                                                      "CellType":  "number",
+                                                                                      "CanOverWriteFormula":  true
+                                                                                  },
+                                                                     "August2024":  {
+                                                                                        "Row":  9,
+                                                                                        "Col":  2,
+                                                                                        "Label":  "August 2024",
+                                                                                        "CellType":  "number",
+                                                                                        "CanOverWriteFormula":  true
+                                                                                    },
+                                                                     "September2024":  {
+                                                                                           "Row":  10,
+                                                                                           "Col":  2,
+                                                                                           "Label":  "September 2024",
+                                                                                           "CellType":  "number",
+                                                                                           "CanOverWriteFormula":  true
+                                                                                       },
+                                                                     "October2024":  {
+                                                                                         "Row":  11,
+                                                                                         "Col":  2,
+                                                                                         "Label":  "October 2024",
+                                                                                         "CellType":  "number",
+                                                                                         "CanOverWriteFormula":  true
+                                                                                     },
+                                                                     "November2024":  {
+                                                                                          "Row":  12,
+                                                                                          "Col":  2,
+                                                                                          "Label":  "November 2024",
+                                                                                          "CellType":  "number",
+                                                                                          "CanOverWriteFormula":  true
+                                                                                      },
+                                                                     "December2024":  {
+                                                                                          "Row":  13,
+                                                                                          "Col":  2,
+                                                                                          "Label":  "December 2024",
+                                                                                          "CellType":  "number",
+                                                                                          "CanOverWriteFormula":  true
+                                                                                      }
+                                                                 }
+                                     }
+                        },
+                        {
+                            "TableName":  "X_Table_PastureBeef_Head_Method1",
+                            "MatrixType":  "ColsToRows",
+                            "NumberOfRows":  5,
+                            "NumberOfCols":  11,
+                            "ColumnNames":  [
+                                                "Method 1 values",
+                                                "Bulls < 1 year",
+                                                "Bulls > 1 year",
+                                                "Cows < 1 year",
+                                                "Cows 1-2 years",
+                                                "Cows 2-3 years",
+                                                "Cows > 3 years",
+                                                "Steers < 1 year",
+                                                "Steers 1-2 years",
+                                                "Steers 2-3 years",
+                                                "Steers >3 years"
+                                            ],
+                            "Cols":  {
+                                         "Bulls < 1 year":  {
+                                                                     "Spring":  {
+                                                                                    "Row":  2,
+                                                                                    "Col":  2,
+                                                                                    "Label":  "Spring",
+                                                                                    "CellType":  "number"
+                                                                                },
+                                                                     "Summer":  {
+                                                                                    "Row":  3,
+                                                                                    "Col":  2,
+                                                                                    "Label":  "Summer",
+                                                                                    "CellType":  "number"
+                                                                                },
+                                                                     "Autumn":  {
+                                                                                    "Row":  4,
+                                                                                    "Col":  2,
+                                                                                    "Label":  "Autumn",
+                                                                                    "CellType":  "number"
+                                                                                },
+                                                                     "Winter":  {
+                                                                                    "Row":  5,
+                                                                                    "Col":  2,
+                                                                                    "Label":  "Winter",
+                                                                                    "CellType":  "number"
+                                                                                }
+                                                                 }
+                                     }
+                        },
+                        {
+                            "TableName":  "X_Table_PastureBeef_Head_Method2",
+                            "MatrixType":  "ColsToRows",
+                            "NumberOfRows":  13,
+                            "NumberOfCols":  11,
+                            "ColumnNames":  [
+                                                "Method 2 values",
+                                                "Bulls < 1 year",
+                                                "Bulls > 1 year",
+                                                "Cows < 1 year",
+                                                "Cows 1-2 years",
+                                                "Cows 2-3 years",
+                                                "Cows > 3 years",
+                                                "Steers < 1 year",
+                                                "Steers 1-2 years",
+                                                "Steers 2-3 years",
+                                                "Steers >3 years"
+                                            ],
+                            "Cols":  {
+                                         "Bulls < 1 year":  {
+                                                                     "January2024":  {
+                                                                                         "Row":  2,
+                                                                                         "Col":  2,
+                                                                                         "Label":  "January 2024",
+                                                                                         "CellType":  "number",
+                                                                                         "CanOverWriteFormula":  true
+                                                                                     },
+                                                                     "February2024":  {
+                                                                                          "Row":  3,
+                                                                                          "Col":  2,
+                                                                                          "Label":  "February 2024",
+                                                                                          "CellType":  "number",
+                                                                                          "CanOverWriteFormula":  true
+                                                                                      },
+                                                                     "March2024":  {
+                                                                                       "Row":  4,
+                                                                                       "Col":  2,
+                                                                                       "Label":  "March 2024",
+                                                                                       "CellType":  "number",
+                                                                                       "CanOverWriteFormula":  true
+                                                                                   },
+                                                                     "April2024":  {
+                                                                                       "Row":  5,
+                                                                                       "Col":  2,
+                                                                                       "Label":  "April 2024",
+                                                                                       "CellType":  "number",
+                                                                                       "CanOverWriteFormula":  true
+                                                                                   },
+                                                                     "May2024":  {
+                                                                                     "Row":  6,
+                                                                                     "Col":  2,
+                                                                                     "Label":  "May 2024",
+                                                                                     "CellType":  "number",
+                                                                                     "CanOverWriteFormula":  true
+                                                                                 },
+                                                                     "June2024":  {
+                                                                                      "Row":  7,
+                                                                                      "Col":  2,
+                                                                                      "Label":  "June 2024",
+                                                                                      "CellType":  "number",
+                                                                                      "CanOverWriteFormula":  true
+                                                                                  },
+                                                                     "July2024":  {
+                                                                                      "Row":  8,
+                                                                                      "Col":  2,
+                                                                                      "Label":  "July 2024",
+                                                                                      "CellType":  "number",
+                                                                                      "CanOverWriteFormula":  true
+                                                                                  },
+                                                                     "August2024":  {
+                                                                                        "Row":  9,
+                                                                                        "Col":  2,
+                                                                                        "Label":  "August 2024",
+                                                                                        "CellType":  "number",
+                                                                                        "CanOverWriteFormula":  true
+                                                                                    },
+                                                                     "September2024":  {
+                                                                                           "Row":  10,
+                                                                                           "Col":  2,
+                                                                                           "Label":  "September 2024",
+                                                                                           "CellType":  "number",
+                                                                                           "CanOverWriteFormula":  true
+                                                                                       },
+                                                                     "October2024":  {
+                                                                                         "Row":  11,
+                                                                                         "Col":  2,
+                                                                                         "Label":  "October 2024",
+                                                                                         "CellType":  "number",
+                                                                                         "CanOverWriteFormula":  true
+                                                                                     },
+                                                                     "November2024":  {
+                                                                                          "Row":  12,
+                                                                                          "Col":  2,
+                                                                                          "Label":  "November 2024",
+                                                                                          "CellType":  "number",
+                                                                                          "CanOverWriteFormula":  true
+                                                                                      },
+                                                                     "December2024":  {
+                                                                                          "Row":  13,
+                                                                                          "Col":  2,
+                                                                                          "Label":  "December 2024",
+                                                                                          "CellType":  "number",
+                                                                                          "CanOverWriteFormula":  true
+                                                                                      }
+                                                                 }
+                                     }
+                        },
+                        {
+                            "TableName":  "X_Table_PastureBeef_Liveweight_Method1",
+                            "MatrixType":  "ColsToRows",
+                            "NumberOfRows":  5,
+                            "NumberOfCols":  11,
+                            "ColumnNames":  [
+                                                "Method 1 default values (do not edit)",
+                                                "Bulls < 1 year",
+                                                "Bulls > 1 year",
+                                                "Cows < 1 year",
+                                                "Cows 1-2 years",
+                                                "Cows 2-3 years",
+                                                "Cows > 3 years",
+                                                "Steers < 1 year",
+                                                "Steers 1-2 years",
+                                                "Steers 2-3 years",
+                                                "Steers >3 years"
+                                            ],
+                            "Cols":  {
+                                         "Bulls < 1 year":  {
+                                                                     "Spring":  {
+                                                                                    "Row":  2,
+                                                                                    "Col":  2,
+                                                                                    "Label":  "Spring",
+                                                                                    "CellType":  "formula"
+                                                                                },
+                                                                     "Summer":  {
+                                                                                    "Row":  3,
+                                                                                    "Col":  2,
+                                                                                    "Label":  "Summer",
+                                                                                    "CellType":  "formula"
+                                                                                },
+                                                                     "Autumn":  {
+                                                                                    "Row":  4,
+                                                                                    "Col":  2,
+                                                                                    "Label":  "Autumn",
+                                                                                    "CellType":  "formula"
+                                                                                },
+                                                                     "Winter":  {
+                                                                                    "Row":  5,
+                                                                                    "Col":  2,
+                                                                                    "Label":  "Winter",
+                                                                                    "CellType":  "formula"
+                                                                                }
+                                                                 }
+                                     }
+                        },
+                        {
+                            "TableName":  "X_Table_PastureBeef_Liveweight_Method2",
+                            "MatrixType":  "ColsToRows",
+                            "NumberOfRows":  13,
+                            "NumberOfCols":  11,
+                            "ColumnNames":  [
+                                                "Method 2 custom values (edit if known)",
+                                                "Bulls < 1 year",
+                                                "Bulls > 1 year",
+                                                "Cows < 1 year",
+                                                "Cows 1-2 years",
+                                                "Cows 2-3 years",
+                                                "Cows > 3 years",
+                                                "Steers < 1 year",
+                                                "Steers 1-2 years",
+                                                "Steers 2-3 years",
+                                                "Steers >3 years"
+                                            ],
+                            "Cols":  {
+                                         "Bulls < 1 year":  {
+                                                                     "January2024":  {
+                                                                                         "Row":  2,
+                                                                                         "Col":  2,
+                                                                                         "Label":  "January 2024",
+                                                                                         "CellType":  "number",
+                                                                                         "CanOverWriteFormula":  true
+                                                                                     },
+                                                                     "February2024":  {
+                                                                                          "Row":  3,
+                                                                                          "Col":  2,
+                                                                                          "Label":  "February 2024",
+                                                                                          "CellType":  "number",
+                                                                                          "CanOverWriteFormula":  true
+                                                                                      },
+                                                                     "March2024":  {
+                                                                                       "Row":  4,
+                                                                                       "Col":  2,
+                                                                                       "Label":  "March 2024",
+                                                                                       "CellType":  "number",
+                                                                                       "CanOverWriteFormula":  true
+                                                                                   },
+                                                                     "April2024":  {
+                                                                                       "Row":  5,
+                                                                                       "Col":  2,
+                                                                                       "Label":  "April 2024",
+                                                                                       "CellType":  "number",
+                                                                                       "CanOverWriteFormula":  true
+                                                                                   },
+                                                                     "May2024":  {
+                                                                                     "Row":  6,
+                                                                                     "Col":  2,
+                                                                                     "Label":  "May 2024",
+                                                                                     "CellType":  "number",
+                                                                                     "CanOverWriteFormula":  true
+                                                                                 },
+                                                                     "June2024":  {
+                                                                                      "Row":  7,
+                                                                                      "Col":  2,
+                                                                                      "Label":  "June 2024",
+                                                                                      "CellType":  "number",
+                                                                                      "CanOverWriteFormula":  true
+                                                                                  },
+                                                                     "July2024":  {
+                                                                                      "Row":  8,
+                                                                                      "Col":  2,
+                                                                                      "Label":  "July 2024",
+                                                                                      "CellType":  "number",
+                                                                                      "CanOverWriteFormula":  true
+                                                                                  },
+                                                                     "August2024":  {
+                                                                                        "Row":  9,
+                                                                                        "Col":  2,
+                                                                                        "Label":  "August 2024",
+                                                                                        "CellType":  "number",
+                                                                                        "CanOverWriteFormula":  true
+                                                                                    },
+                                                                     "September2024":  {
+                                                                                           "Row":  10,
+                                                                                           "Col":  2,
+                                                                                           "Label":  "September 2024",
+                                                                                           "CellType":  "number",
+                                                                                           "CanOverWriteFormula":  true
+                                                                                       },
+                                                                     "October2024":  {
+                                                                                         "Row":  11,
+                                                                                         "Col":  2,
+                                                                                         "Label":  "October 2024",
+                                                                                         "CellType":  "number",
+                                                                                         "CanOverWriteFormula":  true
+                                                                                     },
+                                                                     "November2024":  {
+                                                                                          "Row":  12,
+                                                                                          "Col":  2,
+                                                                                          "Label":  "November 2024",
+                                                                                          "CellType":  "number",
+                                                                                          "CanOverWriteFormula":  true
+                                                                                      },
+                                                                     "December2024":  {
+                                                                                          "Row":  13,
+                                                                                          "Col":  2,
+                                                                                          "Label":  "December 2024",
+                                                                                          "CellType":  "number",
+                                                                                          "CanOverWriteFormula":  true
+                                                                                      }
+                                                                 }
+                                     }
+                        },
+                        {
+                            "TableName":  "X_Table_PastureBeef_LiveweightGain_Method1",
+                            "MatrixType":  "ColsToRows",
+                            "NumberOfRows":  5,
+                            "NumberOfCols":  11,
+                            "ColumnNames":  [
+                                                "Method 1 default values (do not edit)",
+                                                "Bulls < 1 year",
+                                                "Bulls > 1 year",
+                                                "Cows < 1 year",
+                                                "Cows 1-2 years",
+                                                "Cows 2-3 years",
+                                                "Cows > 3 years",
+                                                "Steers < 1 year",
+                                                "Steers 1-2 years",
+                                                "Steers 2-3 years",
+                                                "Steers >3 years"
+                                            ],
+                            "Cols":  {
+                                         "Bulls < 1 year":  {
+                                                                     "Spring":  {
+                                                                                    "Row":  2,
+                                                                                    "Col":  2,
+                                                                                    "Label":  "Spring",
+                                                                                    "CellType":  "formula"
+                                                                                },
+                                                                     "Summer":  {
+                                                                                    "Row":  3,
+                                                                                    "Col":  2,
+                                                                                    "Label":  "Summer",
+                                                                                    "CellType":  "formula"
+                                                                                },
+                                                                     "Autumn":  {
+                                                                                    "Row":  4,
+                                                                                    "Col":  2,
+                                                                                    "Label":  "Autumn",
+                                                                                    "CellType":  "formula"
+                                                                                },
+                                                                     "Winter":  {
+                                                                                    "Row":  5,
+                                                                                    "Col":  2,
+                                                                                    "Label":  "Winter",
+                                                                                    "CellType":  "formula"
+                                                                                }
+                                                                 }
+                                     }
+                        },
+                        {
+                            "TableName":  "X_Table_PastureBeef_LiveweightGain_Method2",
+                            "MatrixType":  "ColsToRows",
+                            "NumberOfRows":  13,
+                            "NumberOfCols":  11,
+                            "ColumnNames":  [
+                                                "Method 2 custom values (edit if known)",
+                                                "Bulls < 1 year",
+                                                "Bulls > 1 year",
+                                                "Cows < 1 year",
+                                                "Cows 1-2 years",
+                                                "Cows 2-3 years",
+                                                "Cows > 3 years",
+                                                "Steers < 1 year",
+                                                "Steers 1-2 years",
+                                                "Steers 2-3 years",
+                                                "Steers >3 years"
+                                            ],
+                            "Cols":  {
+                                         "Bulls < 1 year":  {
+                                                                     "January2024":  {
+                                                                                         "Row":  2,
+                                                                                         "Col":  2,
+                                                                                         "Label":  "January 2024",
+                                                                                         "CellType":  "number",
+                                                                                         "CanOverWriteFormula":  true
+                                                                                     },
+                                                                     "February2024":  {
+                                                                                          "Row":  3,
+                                                                                          "Col":  2,
+                                                                                          "Label":  "February 2024",
+                                                                                          "CellType":  "number",
+                                                                                          "CanOverWriteFormula":  true
+                                                                                      },
+                                                                     "March2024":  {
+                                                                                       "Row":  4,
+                                                                                       "Col":  2,
+                                                                                       "Label":  "March 2024",
+                                                                                       "CellType":  "number",
+                                                                                       "CanOverWriteFormula":  true
+                                                                                   },
+                                                                     "April2024":  {
+                                                                                       "Row":  5,
+                                                                                       "Col":  2,
+                                                                                       "Label":  "April 2024",
+                                                                                       "CellType":  "number",
+                                                                                       "CanOverWriteFormula":  true
+                                                                                   },
+                                                                     "May2024":  {
+                                                                                     "Row":  6,
+                                                                                     "Col":  2,
+                                                                                     "Label":  "May 2024",
+                                                                                     "CellType":  "number",
+                                                                                     "CanOverWriteFormula":  true
+                                                                                 },
+                                                                     "June2024":  {
+                                                                                      "Row":  7,
+                                                                                      "Col":  2,
+                                                                                      "Label":  "June 2024",
+                                                                                      "CellType":  "number",
+                                                                                      "CanOverWriteFormula":  true
+                                                                                  },
+                                                                     "July2024":  {
+                                                                                      "Row":  8,
+                                                                                      "Col":  2,
+                                                                                      "Label":  "July 2024",
+                                                                                      "CellType":  "number",
+                                                                                      "CanOverWriteFormula":  true
+                                                                                  },
+                                                                     "August2024":  {
+                                                                                        "Row":  9,
+                                                                                        "Col":  2,
+                                                                                        "Label":  "August 2024",
+                                                                                        "CellType":  "number",
+                                                                                        "CanOverWriteFormula":  true
+                                                                                    },
+                                                                     "September2024":  {
+                                                                                           "Row":  10,
+                                                                                           "Col":  2,
+                                                                                           "Label":  "September 2024",
+                                                                                           "CellType":  "number",
+                                                                                           "CanOverWriteFormula":  true
+                                                                                       },
+                                                                     "October2024":  {
+                                                                                         "Row":  11,
+                                                                                         "Col":  2,
+                                                                                         "Label":  "October 2024",
+                                                                                         "CellType":  "number",
+                                                                                         "CanOverWriteFormula":  true
+                                                                                     },
+                                                                     "November2024":  {
+                                                                                          "Row":  12,
+                                                                                          "Col":  2,
+                                                                                          "Label":  "November 2024",
+                                                                                          "CellType":  "number",
+                                                                                          "CanOverWriteFormula":  true
+                                                                                      },
+                                                                     "December2024":  {
+                                                                                          "Row":  13,
+                                                                                          "Col":  2,
+                                                                                          "Label":  "December 2024",
+                                                                                          "CellType":  "number",
+                                                                                          "CanOverWriteFormula":  true
+                                                                                      }
+                                                                 }
+                                     }
+                        }
+                    ]
+}

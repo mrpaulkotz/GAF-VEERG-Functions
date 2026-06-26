@@ -82,6 +82,120 @@ npm run build:source-data:dry
 
 ---
 
+## npm run build:input-fields
+
+Generates JSON descriptions of the user-input fields in the VEERG module workbooks
+under `Excel/`. The workbooks remain the source of truth; the JSON is a derived build
+output so the bulk-input UI and other consumers can read each module's input schema
+without opening Excel. This step also runs automatically as part of `npm run build`.
+
+```powershell
+npm run build:input-fields
+```
+
+**What it does** (via Excel COM automation, one workbook at a time):
+1. Opens every eligible `Excel/*.xlsx` workbook read-only, skipping `~$` lock files and
+   `*_expanded` copies.
+2. **InputCells** — collects workbook-scoped defined names matching `^X_Cell_` and
+   resolves each cell's data-validation into a `CellType` (`number`, `text`, `percent`,
+   `formula` or `select`) plus, for dropdowns, an `Options` map. Validation lists are
+   resolved from static comma literals, range references, named ranges, and
+   `INDIRECT("Table[Column]")` structured-table references (read directly from the
+   matching `ListObject` column), including cascading `INDIRECT($Parent)` dropdowns.
+3. **InputTables** — collects both Excel `ListObjects` and **defined names** (named
+   ranges) matching `^X_Table_` or `^Table_Input` and describes each as a `MatrixType`
+   (`RowsToCols` vs `ColsToRows`), `NumberOfRows` / `NumberOfCols` counts, the raw
+   `ColumnNames`, and a per-field definition (`CellType`, optional `Unit` parsed from the
+   header parenthetical, optional `Options`, and `CanOverWriteFormula`). For
+   `X_Table_*` named ranges, population is **position-based**: row 1 is treated as the
+   header row and each field carries its 1-based `Row`/`Col` within the range plus a
+   `Label` (ColsToRows) or `Header` (RowsToCols). Blank headers/labels never drop a
+   field — a positional fallback key (`RowN` / `ColN`) is used instead. A `_Method2`
+   segment in the table name marks the whole table as user-overwritable. Named ranges
+   that resolve to a single row (header only, no data rows) are reported as a non-fatal
+   warning and skipped.
+4. Merges a shallow override file `InputFields/_overrides/<Module>.json` over the
+   generated result when present, so manual corrections survive regeneration.
+5. Writes one `<Module>_InputFields.json` per workbook as UTF-8 **without** a BOM.
+
+**Output location:** `InputFields/`, e.g. `InputFields/Fertiliser_InputFields.json`.
+The module name is derived from the workbook file name (leading `NN_` ordinals and
+trailing `_WIP_v##` / `_v##` suffixes are stripped).
+
+**Formula cells** use the `_Method` naming convention: `*_Method2` cells carry a formula
+the user may overwrite (`CanOverWriteFormula: true`), while `*_Method1` cells hold a
+protected formula.
+
+**JSON schema** (`schemaVersion: 1`):
+
+```jsonc
+{
+  "schemaVersion": 1,
+  "generatedFrom": "5_Fertiliser_WIP_v07.xlsx",
+  "generatedAt": "2026-06-26T00:00:00Z",
+  "InputCells": [
+    { "CellName": "X_Cell_Fertiliser_AreaUnderCropping", "CellType": "number" },
+    {
+      "CellName": "X_Cell_Fertiliser_CropType",
+      "CellType": "select",
+      "Options": { "Pasture": "Pasture", "Grains": "Grains" }
+    }
+  ],
+  "InputTables": [
+    {
+      "TableName": "Table_Input_OrganicFertiliser",
+      "MatrixType": "RowsToCols",       // or "ColsToRows" for period-keyed tables
+      "NumberOfCols": 7,
+      "ColumnNames": ["Organic fertiliser type (select)", "..."],
+      "Rows": {
+        "Entry1": {
+          "OrganicFertiliserType": { "CellType": "select", "Options": { "...": "..." } },
+          "AmountApplied": { "CellType": "number", "Unit": "kg/hectare" },
+          "ApplicationArea": { "CellType": "formula", "Unit": "ha" }
+        }
+      }
+    },
+    {
+      "TableName": "X_Table_Poultry_Movement",   // X_Table_* named range
+      "MatrixType": "ColsToRows",
+      "NumberOfRows": 3,
+      "NumberOfCols": 5,
+      "ColumnNames": ["", "Layers", "Meat chicken growers", "..."],
+      "Cols": {
+        "Layers": {
+          "AverageDurationOfStay": {
+            "CellType": "number", "Row": 2, "Col": 2,
+            "Label": "Average duration of stay between 01 Jan 24 and 31 Dec 24"
+          }
+        }
+      }
+    }
+  ]
+}
+```
+
+**Overrides:** drop a partial `InputFields/_overrides/<Module>.json` to pin or correct any
+top-level field; it is shallow-merged over the generated output on every run.
+
+**Validation:** unresolvable validation lists are reported as non-fatal warnings and the
+field is still emitted (with empty `Options`), so one problematic dropdown does not block
+the rest of the build. Close the target workbook in Excel before running — an open
+workbook causes a file-lock error.
+
+**Single workbook:**
+
+```powershell
+npm run build:input-fields -- -WorkbookPath .\Excel\5_Fertiliser_WIP_v07.xlsx
+```
+
+**Dry run** (discovers and validates but writes nothing):
+
+```powershell
+npm run build:input-fields:dry
+```
+
+---
+
 ## npm run expand-lambda-functions
 
 Expands VEERG LAMBDA references in a workbook, producing a new `_expanded` copy alongside the source file.
@@ -117,4 +231,5 @@ npm run expand-lambda-functions:auto
 - Close the target workbook in Excel before running either command. An open workbook causes a file-lock error and will be skipped.
 - `npm run build` does **not** run the expand step. These are separate operations.
 - `npm run build` **does** refresh the `*.sourcedata.json` artifacts via `build:source-data`.
+- `npm run build` **does** refresh the `InputFields/*_InputFields.json` artifacts via `build:input-fields`.
 - `build.cmd` is a thin wrapper that calls `build.ps1` directly and accepts the same arguments.

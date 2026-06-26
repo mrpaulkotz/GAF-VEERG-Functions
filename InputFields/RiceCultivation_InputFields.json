@@ -1,0 +1,125 @@
+{
+    "schemaVersion":  1,
+    "generatedFrom":  "7_RiceCultivation_WIP_v02.xlsx",
+    "generatedAt":  "2026-06-26T04:50:37Z",
+    "InputCells":  [
+                       {
+                           "CellName":  "X_Cell_NumberGorwingSeasons",
+                           "CellType":  "number"
+                       },
+                       {
+                           "CellName":  "X_Cell_Site_FarmName",
+                           "CellType":  "text"
+                       },
+                       {
+                           "CellName":  "X_Cell_Site_ReportingEntityName",
+                           "CellType":  "text"
+                       },
+                       {
+                           "CellName":  "X_Cell_Site_StartDate",
+                           "CellType":  "number"
+                       }
+                   ],
+    "InputTables":  [
+                        {
+                            "TableName":  "Table_Input_AmendmentBlends",
+                            "MatrixType":  "RowsToCols",
+                            "NumberOfCols":  7,
+                            "ColumnNames":  [
+                                                "Amendment mix name",
+                                                "Straw added < 30 days precultivation (t/ha)",
+                                                "Straw added 30+ days pre cultivation (t/ha)",
+                                                "Compost (t/ha)",
+                                                "Farm yard manure (t/ha)",
+                                                "Green manure (t/ha)",
+                                                "Inorganic fertiliser (t/ha)"
+                                            ],
+                            "Rows":  {
+                                         "Entry1":  {
+                                                        "AmendmentMixName":  {
+                                                                                 "CellType":  "text"
+                                                                             },
+                                                        "StrawAdded30DaysPreCultivation":  {
+                                                                                               "CellType":  "number",
+                                                                                               "Unit":  "t/ha"
+                                                                                           },
+                                                        "Compost":  {
+                                                                        "CellType":  "number",
+                                                                        "Unit":  "t/ha"
+                                                                    },
+                                                        "FarmYardManure":  {
+                                                                               "CellType":  "number",
+                                                                               "Unit":  "t/ha"
+                                                                           },
+                                                        "GreenManure":  {
+                                                                            "CellType":  "number",
+                                                                            "Unit":  "t/ha"
+                                                                        },
+                                                        "InorganicFertiliser":  {
+                                                                                    "CellType":  "number",
+                                                                                    "Unit":  "t/ha"
+                                                                                }
+                                                    }
+                                     }
+                        },
+                        {
+                            "TableName":  "Table_Input_Regimes",
+                            "MatrixType":  "RowsToCols",
+                            "NumberOfCols":  7,
+                            "ColumnNames":  [
+                                                "Regime name",
+                                                "Area under cultivation (hectares)",
+                                                "Pre-cultivation water regime (select)",
+                                                "Water regime (select)",
+                                                "Water regime sub-type (select)",
+                                                "Amendment blend (select)",
+                                                "Cultivation period (days)"
+                                            ],
+                            "Rows":  {
+                                         "Entry1":  {
+                                                        "RegimeName":  {
+                                                                           "CellType":  "text"
+                                                                       },
+                                                        "AreaUnderCultivation":  {
+                                                                                     "CellType":  "number",
+                                                                                     "Unit":  "hectares"
+                                                                                 },
+                                                        "PreCultivationWaterRegime":  {
+                                                                                          "CellType":  "select",
+                                                                                          "Options":  {
+                                                                                                          "Non flooded pre-season <180 days":  "Non flooded pre-season <180 days",
+                                                                                                          "Non flooded pre-season >180 days":  "Non flooded pre-season >180 days",
+                                                                                                          "Flooded pre-season >30 days":  "Flooded pre-season >30 days",
+                                                                                                          "Non-flooded pre-season >365 days":  "Non-flooded pre-season >365 days"
+                                                                                                      }
+                                                                                      },
+                                                        "WaterRegime":  {
+                                                                            "CellType":  "select",
+                                                                            "Options":  {
+                                                                                            "Upland":  "Upland",
+                                                                                            "Irrigated":  "Irrigated",
+                                                                                            "Rainfed and deep water":  "Rainfed and deep water"
+                                                                                        }
+                                                                        },
+                                                        "WaterRegimeSubType":  {
+                                                                                   "CellType":  "select",
+                                                                                   "Options":  {
+
+                                                                                               }
+                                                                               },
+                                                        "AmendmentBlend":  {
+                                                                               "CellType":  "select",
+                                                                               "Options":  {
+                                                                                               "Mix 1":  "Mix 1",
+                                                                                               "Mix 2":  "Mix 2"
+                                                                                           }
+                                                                           },
+                                                        "CultivationPeriod":  {
+                                                                                  "CellType":  "number",
+                                                                                  "Unit":  "days"
+                                                                              }
+                                                    }
+                                     }
+                        }
+                    ]
+}

@@ -1,0 +1,103 @@
+{
+    "schemaVersion":  1,
+    "generatedFrom":  "9_Refrigerants_WIP_v02.xlsx",
+    "generatedAt":  "2026-06-26T04:50:41Z",
+    "InputCells":  {
+
+                   },
+    "InputTables":  {
+                        "TableName":  "Table_Input_Refrigerant",
+                        "MatrixType":  "RowsToCols",
+                        "NumberOfCols":  5,
+                        "ColumnNames":  [
+                                            "Refrigeration unit name",
+                                            "Appliance type (select)",
+                                            "Refrigerant used (select)",
+                                            "Unit refrigerant gas capacity (kg)",
+                                            "Number of units in use"
+                                        ],
+                        "Rows":  {
+                                     "Entry1":  {
+                                                    "RefrigerationUnitName":  {
+                                                                                  "CellType":  "text"
+                                                                              },
+                                                    "ApplianceType":  {
+                                                                          "CellType":  "select",
+                                                                          "Options":  {
+                                                                                          "Domestic refrigerators":  "Domestic refrigerators",
+                                                                                          "Transport refrigeration":  "Transport refrigeration",
+                                                                                          "Domestic A/C portable":  "Domestic A/C portable",
+                                                                                          "Domestic A/C split":  "Domestic A/C split",
+                                                                                          "Domestic A/C packaged":  "Domestic A/C packaged",
+                                                                                          "Light vehicle A/C":  "Light vehicle A/C",
+                                                                                          "Heavy vehicle A/C":  "Heavy vehicle A/C"
+                                                                                      }
+                                                                      },
+                                                    "RefrigerantUsed":  {
+                                                                            "CellType":  "select",
+                                                                            "Options":  {
+                                                                                            "R-400 50/50":  "R-400 50/50",
+                                                                                            "R-400 60/40":  "R-400 60/40",
+                                                                                            "R-400 80/20":  "R-400 80/20",
+                                                                                            "R-401A":  "R-401A",
+                                                                                            "R-401B":  "R-401B",
+                                                                                            "R-401C":  "R-401C",
+                                                                                            "R-402A":  "R-402A",
+                                                                                            "R-402B":  "R-402B",
+                                                                                            "R-403A":  "R-403A",
+                                                                                            "R-403B":  "R-403B",
+                                                                                            "R-404A":  "R-404A",
+                                                                                            "R-405A":  "R-405A",
+                                                                                            "R-406A":  "R-406A",
+                                                                                            "R-407A":  "R-407A",
+                                                                                            "R-407B":  "R-407B",
+                                                                                            "R-407C":  "R-407C",
+                                                                                            "R-407D":  "R-407D",
+                                                                                            "R-407E":  "R-407E",
+                                                                                            "R-408A":  "R-408A",
+                                                                                            "R-409A":  "R-409A",
+                                                                                            "R-409B":  "R-409B",
+                                                                                            "R-410A":  "R-410A",
+                                                                                            "R-410B":  "R-410B",
+                                                                                            "R-411A":  "R-411A",
+                                                                                            "R-411B":  "R-411B",
+                                                                                            "R-411C":  "R-411C",
+                                                                                            "R-412A":  "R-412A",
+                                                                                            "R-413A":  "R-413A",
+                                                                                            "R-414A":  "R-414A",
+                                                                                            "R-414B":  "R-414B",
+                                                                                            "R-415A":  "R-415A",
+                                                                                            "R-415B":  "R-415B",
+                                                                                            "R-416A":  "R-416A",
+                                                                                            "R-417A":  "R-417A",
+                                                                                            "R-418A":  "R-418A",
+                                                                                            "R-419A":  "R-419A",
+                                                                                            "R-420A":  "R-420A",
+                                                                                            "R-421A":  "R-421A",
+                                                                                            "R-422A":  "R-422A",
+                                                                                            "R-422B":  "R-422B",
+                                                                                            "R-422C":  "R-422C",
+                                                                                            "R-500":  "R-500",
+                                                                                            "R-501":  "R-501",
+                                                                                            "R-502":  "R-502",
+                                                                                            "R-503":  "R-503",
+                                                                                            "R-504":  "R-504",
+                                                                                            "R-505":  "R-505",
+                                                                                            "R-506":  "R-506",
+                                                                                            "R-507A":  "R-507A",
+                                                                                            "R-508A":  "R-508A",
+                                                                                            "R-508B":  "R-508B",
+                                                                                            "R-509A":  "R-509A"
+                                                                                        }
+                                                                        },
+                                                    "UnitRefrigerantGasCapacity":  {
+                                                                                       "CellType":  "number",
+                                                                                       "Unit":  "kg"
+                                                                                   },
+                                                    "NumberOfUnitsInUse":  {
+                                                                               "CellType":  "number"
+                                                                           }
+                                                }
+                                 }
+                    }
+}

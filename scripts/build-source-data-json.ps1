@@ -339,7 +339,7 @@ foreach ($file in $xlfFiles) {
     Write-Host ("  {0} -> {1} ({2} table(s)) [not written]" -f $fileName, $outName, $tableCount)
   }
   else {
-    Set-Content -LiteralPath $outPath -Value $json -Encoding UTF8
+    [System.IO.File]::WriteAllText($outPath, $json, (New-Object System.Text.UTF8Encoding($false)))
     Write-Host ("  {0} -> {1} ({2} table(s))" -f $fileName, $outName, $tableCount)
   }
 }

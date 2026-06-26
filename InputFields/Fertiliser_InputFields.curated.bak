@@ -1,0 +1,434 @@
+{
+    "InputCells":[
+        {
+          "CellName": "X_Cell_Fertiliser_ProductionSystem",
+          "CellType": "select",
+          "Options": {
+            "Pasture": "Pasture",
+            "Crop": "Crop"
+          }
+        },
+        {
+          "CellName": "X_Cell_Fertiliser_CropType",
+          "CellType": "select",
+          "Options": {
+            "Pasture": "Pasture",
+            "Grains": "Grains",
+            "Maize": "Maize",
+            "Cotton": "Cotton"
+          }
+        },
+        {
+          "CellName": "X_Cell_Fertiliser_IrrigationMethod",
+          "CellType": "select",
+          "Options": {
+            "Not irrigated": "Not irrigated",
+            "Drip irrigation": "Drip irrigation",
+            "Sprinkler irrigation": "Sprinkler irrigation",
+            "Surface irrigation": "Surface irrigation",
+            "Other irrigation": "Other irrigation"
+          }
+        },
+        {
+          "CellName": "X_Cell_Fertiliser_AreaUnderCropping",
+          "CellType": "number"
+        }
+    ],
+
+  
+"InputTables": [
+    {
+      "TableName": "Table_Input_InorganicFertiliser_Brands",
+      "MatrixType": "RowsToCols",
+      "ColumnOffset": 0,
+      "RowOffset": null,
+      "Rows": {
+        "Application1": {
+          "ProductName": {
+            "CellType": "select",
+            "Options": {
+              "Aqua Finish": "Aqua Finish",
+              "Aqua Grow": "Aqua Grow",
+              "Aqua Nitro AN": "Aqua Nitro AN",
+              "Aqua NitroCal": "Aqua NitroCal",
+              "Aqua NitroCal (VI)": "Aqua NitroCal (VI)",
+              "Aqua NitroCal Ultimate": "Aqua NitroCal Ultimate",
+              "Aqua Start": "Aqua Start",
+              "Aqua Thio-Complete": "Aqua Thio-Complete",
+              "Aqua Thio-Emerge": "Aqua Thio-Emerge",
+              "Aqua Thio-Flourish": "Aqua Thio-Flourish",
+              "Asco Fol Plus": "Asco Fol Plus",
+              "Asco Plus": "Asco Plus",
+              "Asco Rhizo Plus": "Asco Rhizo Plus",
+              "Benefit PZ": "Benefit PZ",
+              "Boost-It": "Boost-It",
+              "Boroplus": "Boroplus",
+              "Brevisol Range": "Brevisol Range",
+              "Brexil Line": "Brexil Line",
+              "Bronze": "Bronze",
+              "Bud-Wiser Dry": "Bud-Wiser Dry",
+              "Calbit C": "Calbit C",
+              "Calcium 175": "Calcium 175",
+              "CalPhos": "CalPhos",
+              "Compass": "Compass",
+              "CoRoN 12-0-10": "CoRoN 12-0-10",
+              "Maximum Quick-N": "Maximum Quick-N",
+              "AgStar Manganese": "AgStar Manganese",
+              "Crop Booster PLUS": "Crop Booster PLUS",
+              "Ammonium Bicarbonate": "Ammonium Bicarbonate",
+              "Ammonium Sulfate": "Ammonium Sulfate",
+              "Ammonium Sulphate - Granular": "Ammonium Sulphate - Granular",
+              "Di-Ammonium Phosphate (DAP)": "Di-Ammonium Phosphate (DAP)",
+              "Basalt BooSSta": "Basalt BooSSta",
+              "DAPSZC": "DAPSZC",
+              "Easy N": "Easy N",
+              "Calcium Ammonium Nitrate": "Calcium Ammonium Nitrate",
+              "CellCAL Plus": "CellCAL Plus",
+              "CK55": "CK55",
+              "EzyFlow Nano Calbud": "EzyFlow Nano Calbud",
+              "Combined Mineral Te": "Combined Mineral Te",
+              "Crop K": "Crop K",
+              "Srop SIL": "Srop SIL",
+              "Crop Starter": "Crop Starter",
+              "Double Trace": "Double Trace",
+              "Gran-Am": "Gran-Am",
+              "Encal": "Encal",
+              "Granulock SS": "Granulock SS",
+              "Granulock Z": "Granulock Z",
+              "Farm Ag Leichhardt": "Farm Ag Leichhardt",
+              "Flexi-N NBPT": "Flexi-N NBPT",
+              "Foliarel 21% B": "Foliarel 21% B",
+              "FoliMAX Manganese+": "FoliMAX Manganese+",
+              "Glytrel ZnP": "Glytrel ZnP",
+              "Gold Plus": "Gold Plus",
+              "Gold Premium": "Gold Premium",
+              "Granu-K": "Granu-K",
+              "Granu-K Premium": "Granu-K Premium",
+              "Guano Liquid Gold": "Guano Liquid Gold",
+              "YaraVita Glytrel ZnP": "YaraVita Glytrel ZnP",
+              "High NS": "High NS",
+              "Impact SSP": "Impact SSP",
+              "In Crop": "In Crop",
+              "Invigor8 Plus": "Invigor8 Plus",
+              "K20": "K20",
+              "Kelp": "Kelp",
+              "Liquid humic acid": "Liquid humic acid",
+              "Manganese Sulphate Granular": "Manganese Sulphate Granular",
+              "Maximum N-Pact": "Maximum N-Pact",
+              "MicroFert Guano Granules": "MicroFert Guano Granules",
+              "Phos-Force": "Phos-Force",
+              "Nitro Combi TE": "Nitro Combi TE",
+              "Nitro-K Prills": "Nitro-K Prills",
+              "NitrologiCAL PLUS TE": "NitrologiCAL PLUS TE",
+              "Nitro-P": "Nitro-P",
+              "Madura Reef Safe Fertiliser": "Madura Reef Safe Fertiliser",
+              "Organic Plus": "Organic Plus",
+              "PastureMAXX": "PastureMAXX",
+              "PhosCal Plus": "PhosCal Plus",
+              "Platinum Nergetic": "Platinum Nergetic"
+            }
+          },
+          "AmountAppliedPerHectare": {
+            "CellType": "number",
+            "Unit": "kg/ha"
+          },
+           "ApplicationUnit": {
+            "CellType": "formula"
+          },
+           "Density": {
+            "CellType": "formula"
+          },
+          "ApplicationArea": {
+            "CellType": "number",
+            "Unit": "ha",
+            "CanOverWriteFormula": true
+          },
+           "TotalAmountApplied": {
+            "CellType": "formula",
+            "Unit": "kg"
+          },
+          "Ingredient1": {
+            "CellType": "formula"
+          },
+          "Ingredient1Fraction": {
+            "CellType": "formula"
+          },
+          "Ingredient2": {
+            "CellType": "formula"
+          },
+          "Ingredient2Fraction": {
+            "CellType": "formula"
+          },
+          "Ingredient3": {
+            "CellType": "formula"
+          },
+          "Ingredient3Fraction": {
+            "CellType": "formula"
+          },
+          "Ingredient4": {
+            "CellType": "formula"
+          },
+          "Ingredient4Fraction": {
+            "CellType": "formula"
+          },
+          "Ingredient5": {
+            "CellType": "formula"
+          },
+          "Ingredient5Fraction": {
+            "CellType": "formula"
+          },
+          "Ingredient6": {
+            "CellType": "formula"
+          },
+          "Ingredient6Fraction": {
+            "CellType": "formula"
+          },
+          "NApplicationRate": {
+            "CellType": "formula"
+          },
+          "UreaSource": {
+            "CellType": "formula"
+          },
+          "AmmoniaSource": {
+            "CellType": "formula"
+        }
+      }
+    }
+    },
+    {
+      "TableName": "Table_Input_InorganicFertiliser_Custom",
+      "MatrixType": "RowsToCols",
+      "ColumnOffset": 0,
+      "RowOffset": null,
+      "Rows": {
+        "Application1": {
+          "ProductName": {
+            "CellType": "text"
+          },
+          "AmountAppliedPerHectare": {
+            "CellType": "number",
+            "Unit": "kg/ha"
+          },
+          "ApplicationArea": {
+            "CellType": "number",
+            "Unit":"ha",
+            "CanOverWriteFormula": true
+          },
+          "TotalAmountApplied": {
+            "CellType": "formula",
+            "Unit": "kg"
+          },
+          "Ingredient1": {
+            "CellType": "select",
+            "Options": {
+              "Monoammonium phosphate (MAP)": "Monoammonium phosphate (MAP)",
+              "Diammonium phosphate (DAP)": "Diammonium phosphate (DAP)",
+              "Urea": "Urea",
+              "Sulphate of ammonia (SOA)": "Sulphate of ammonia (SOA)",
+              "Urea-ammonium nitrate (UAN)": "Urea-ammonium nitrate (UAN)",
+              "Ammonium nitrate (AN)": "Ammonium nitrate (AN)",
+              "Calcium ammonium nitrate (CAN)": "Calcium ammonium nitrate (CAN)",
+              "Nitrogen - Ammoniacal": "Nitrogen - Ammoniacal",
+              "Nitrogen - Nitrate": "Nitrogen - Nitrate",
+              "Nitrogen - Generic": "Nitrogen - Generic",
+              "Phosphorus - Generic": "Phosphorus - Generic",
+              "Potassium - Generic": "Potassium - Generic",
+              "Sulfur - Generic": "Sulfur - Generic",
+              "Zinc - Generic": "Zinc - Generic",
+              "Muriate of potash (MOP)": "Muriate of potash (MOP)",
+              "Double superphosphate": "Double superphosphate",
+              "Single superphosphate (SSP)": "Single superphosphate (SSP)",
+              "Ammonia": "Ammonia",
+              "Calcium nitrate": "Calcium nitrate"
+            }
+          },
+          "Ingredient1Percent": {
+            "CellType": "percent"
+          },
+          "Ingredient2": {
+            "CellType": "select",
+            "Options": {
+              "Monoammonium phosphate (MAP)": "Monoammonium phosphate (MAP)",
+              "Diammonium phosphate (DAP)": "Diammonium phosphate (DAP)",
+              "Urea": "Urea",
+              "Sulphate of ammonia (SOA)": "Sulphate of ammonia (SOA)",
+              "Urea-ammonium nitrate (UAN)": "Urea-ammonium nitrate (UAN)",
+              "Ammonium nitrate (AN)": "Ammonium nitrate (AN)",
+              "Calcium ammonium nitrate (CAN)": "Calcium ammonium nitrate (CAN)",
+              "Nitrogen - Ammoniacal": "Nitrogen - Ammoniacal",
+              "Nitrogen - Nitrate": "Nitrogen - Nitrate",
+              "Nitrogen - Generic": "Nitrogen - Generic",
+              "Phosphorus - Generic": "Phosphorus - Generic",
+              "Potassium - Generic": "Potassium - Generic",
+              "Sulfur - Generic": "Sulfur - Generic",
+              "Zinc - Generic": "Zinc - Generic",
+              "Muriate of potash (MOP)": "Muriate of potash (MOP)",
+              "Double superphosphate": "Double superphosphate",
+              "Single superphosphate (SSP)": "Single superphosphate (SSP)",
+              "Ammonia": "Ammonia",
+              "Calcium nitrate": "Calcium nitrate"
+            }
+          },
+          "Ingredient2Percent": {
+            "CellType": "percent"
+          },
+          "Ingredient3": {
+            "CellType": "select",
+            "Options": {
+              "Monoammonium phosphate (MAP)": "Monoammonium phosphate (MAP)",
+              "Diammonium phosphate (DAP)": "Diammonium phosphate (DAP)",
+              "Urea": "Urea",
+              "Sulphate of ammonia (SOA)": "Sulphate of ammonia (SOA)",
+              "Urea-ammonium nitrate (UAN)": "Urea-ammonium nitrate (UAN)",
+              "Ammonium nitrate (AN)": "Ammonium nitrate (AN)",
+              "Calcium ammonium nitrate (CAN)": "Calcium ammonium nitrate (CAN)",
+              "Nitrogen - Ammoniacal": "Nitrogen - Ammoniacal",
+              "Nitrogen - Nitrate": "Nitrogen - Nitrate",
+              "Nitrogen - Generic": "Nitrogen - Generic",
+              "Phosphorus - Generic": "Phosphorus - Generic",
+              "Potassium - Generic": "Potassium - Generic",
+              "Sulfur - Generic": "Sulfur - Generic",
+              "Zinc - Generic": "Zinc - Generic",
+              "Muriate of potash (MOP)": "Muriate of potash (MOP)",
+              "Double superphosphate": "Double superphosphate",
+              "Single superphosphate (SSP)": "Single superphosphate (SSP)",
+              "Ammonia": "Ammonia",
+              "Calcium nitrate": "Calcium nitrate"
+            }
+          },
+          "Ingredient3Percent": {
+            "CellType": "percent"
+          },
+          "Ingredient4": {
+            "CellType": "select",
+            "Options": {
+              "Monoammonium phosphate (MAP)": "Monoammonium phosphate (MAP)",
+              "Diammonium phosphate (DAP)": "Diammonium phosphate (DAP)",
+              "Urea": "Urea",
+              "Sulphate of ammonia (SOA)": "Sulphate of ammonia (SOA)",
+              "Urea-ammonium nitrate (UAN)": "Urea-ammonium nitrate (UAN)",
+              "Ammonium nitrate (AN)": "Ammonium nitrate (AN)",
+              "Calcium ammonium nitrate (CAN)": "Calcium ammonium nitrate (CAN)",
+              "Nitrogen - Ammoniacal": "Nitrogen - Ammoniacal",
+              "Nitrogen - Nitrate": "Nitrogen - Nitrate",
+              "Nitrogen - Generic": "Nitrogen - Generic",
+              "Phosphorus - Generic": "Phosphorus - Generic",
+              "Potassium - Generic": "Potassium - Generic",
+              "Sulfur - Generic": "Sulfur - Generic",
+              "Zinc - Generic": "Zinc - Generic",
+              "Muriate of potash (MOP)": "Muriate of potash (MOP)",
+              "Double superphosphate": "Double superphosphate",
+              "Single superphosphate (SSP)": "Single superphosphate (SSP)",
+              "Ammonia": "Ammonia",
+              "Calcium nitrate": "Calcium nitrate"
+            }
+          },
+          "Ingredient4Percent": {
+            "CellType": "percent"
+          },
+          "NApplicationRate": {
+            "CellType": "formula",
+            "Unit": "kg N/ha"
+          },
+          "UreaSource": {
+            "CellType": "select",
+            "Options": {
+              "Global": "Global",
+              "Canada": "Canada",
+              "China": "China",
+              "Yemen": "Yemen"
+            }
+          },
+          "AmmoniaSource": {
+            "CellType": "select",
+            "Options": {
+              "Global": "Global",
+              "Canada": "Canada",
+              "China": "China",
+              "Yemen": "Yemen"
+            }
+          }
+          
+        }
+      }
+    },  
+    {
+      "TableName": "Table_Input_Lime",
+      "MatrixType": "RowsToCols",
+      "ColumnOffset": 0,
+      "RowOffset": null,
+      "Rows": {
+        "Application1": {
+          "ProductName": {
+            "CellType": "text"
+          },
+          "AmountAppliedPerHectare": {
+            "CellType": "number",
+            "Unit": "tonnes per hectare"
+          },
+          "ApplicationArea": {
+            "CellType": "number",
+            "Unit": "hectares"
+          },
+          "TotalAmountApplied": {
+            "CellType": "formula",
+            "Unit": "tonnes"
+          },
+          "PercentLime": {
+            "CellType": "percent"
+          },
+          "PercentDolomite": {
+            "CellType": "percent"
+          },
+          "PercentGypsum": {
+            "CellType": "percent"
+          },
+          "TotalPercent": {
+            "CellType": "formula"
+          }
+        }
+      }
+    },
+    {
+      "TableName": "Table_Input_OrganicFertiliser",
+      "MatrixType": "RowsToCols",
+      "ColumnOffset": 0,
+      "RowOffset": null,
+      "Rows": {
+        "Lime1": {
+          "OrganicFertiliserType": {
+            "CellType": "select",
+            "Options": {
+              "Manure - Cattle": "Manure - Cattle",
+              "Manure - Poultry": "Manure - Poultry",
+              "Manure - Swine": "Manure - Swine",
+              "Manure - Other": "Manure - Other",
+              "Other organic fertiliser": "Other organic fertiliser"
+            }
+          },
+          "PercentNInFertiliser": {
+            "CellType": "percent"
+          },
+          "AmountAppliedPerHectare": {
+            "CellType": "number",
+            "Unit": "kg/ha"
+          },
+          "AmountNApplied": {
+            "CellType": "formula",
+            "Unit": "kg/ha"
+          },
+          "ApplicationArea": {
+            "CellType": "number",
+            "Unit": "hectares"
+          },
+          "TotalNitrogenApplied": {
+            "CellType": "formula",
+            "Unit": "kg"
+          }
+        }
+      }
+    }
+
+  ]
+}
+

@@ -20,6 +20,10 @@ if (-not [string]::IsNullOrWhiteSpace($WorkbookPath)) {
 $sourceDataScript = Join-Path $repoRoot 'scripts\build-source-data-json.ps1'
 & $sourceDataScript -RepoRoot $repoRoot
 
+# Refresh the derived input-fields JSON artifacts from the module workbooks.
+$inputFieldsScript = Join-Path $repoRoot 'scripts\build-input-fields-json.ps1'
+& $inputFieldsScript -RepoRoot $repoRoot
+
 $commandArgsInput = @($Command)
 if ($commandArgsInput.Count -gt 0 -and -not [string]::IsNullOrWhiteSpace($commandArgsInput[0])) {
   $commandName = $commandArgsInput[0]
