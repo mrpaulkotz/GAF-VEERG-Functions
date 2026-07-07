@@ -5,11 +5,21 @@ param(
   [string] $ConfigPath,
   [string] $TestID,
   [string] $Suffix = '_test',
+  [ValidateSet('Test', 'Emissions')]
+  [string] $Context = 'Test',
   [double] $DifferenceTolerance = 0.00001
 )
 
 Set-StrictMode -Version Latest
 $ErrorActionPreference = 'Stop'
+
+# Context distinguishes how the CanOverWriteFormula rule is applied:
+#   Test      - generating a test workbook: overwrite every targeted cell (including
+#               protected formula cells) so all test inputs land in the sheet.
+#   Emissions - mirror the emissions-calculation consumer (e.g. conversational-input):
+#               only overwrite formula cells whose definition opts in via
+#               CanOverWriteFormula, leaving all other formulas intact.
+$overwriteAllFormulas = ($Context -eq 'Test')
 
 if (-not (Test-Path -LiteralPath $RepoRoot)) {
   $fallbackRepoRoot = Split-Path $PSScriptRoot -Parent
@@ -1032,7 +1042,7 @@ try {
       }
 
       $value = $prop.Value
-      $allowFormulaOverwrite = Test-AllowFormulaOverwriteNamedCell -CellName ([string] $prop.Name)
+      $allowFormulaOverwrite = $overwriteAllFormulas -or (Test-AllowFormulaOverwriteNamedCell -CellName ([string] $prop.Name))
       if (Set-CellValueIfWritable -Cell $range -Value $value -AllowFormulaOverwrite $allowFormulaOverwrite) {
         $updated++
       } else {
@@ -1223,7 +1233,7 @@ try {
             $targetCell = $tableRange.Rows.Item($targetRowPosition).Columns.Item($targetColumnPosition)
             $tableValue = $prop.Value
 
-            $allowFormulaOverwrite = Test-AllowFormulaOverwriteTableField -TableName $tableRangeName -FieldName ([string] $prop.Name)
+            $allowFormulaOverwrite = $overwriteAllFormulas -or (Test-AllowFormulaOverwriteTableField -TableName $tableRangeName -FieldName ([string] $prop.Name))
             if (Set-CellValueIfWritable -Cell $targetCell -Value $tableValue -AllowFormulaOverwrite $allowFormulaOverwrite) {
               $updatedInputTableCells++
             } else {
@@ -1314,7 +1324,7 @@ try {
           $tableValue = if ($row.PSObject.Properties.Name -contains 'Value') { $row.Value } else { $rowName }
 
           $columnName = [string] $colEntry.Column.ColumnName
-          $allowFormulaOverwrite = Test-AllowFormulaOverwriteTableFieldAny -TableName $tableRangeName -FieldNames @($rowName, $columnName)
+          $allowFormulaOverwrite = $overwriteAllFormulas -or (Test-AllowFormulaOverwriteTableFieldAny -TableName $tableRangeName -FieldNames @($rowName, $columnName))
           if (Set-CellValueIfWritable -Cell $targetCell -Value $tableValue -AllowFormulaOverwrite $allowFormulaOverwrite) {
             $updatedInputTableCells++
           } else {
@@ -1406,6 +1416,7 @@ try {
 Write-Host ("Source workbook: {0}" -f $sourceFile.FullName)
 Write-Host ("Created workbook: {0}" -f $targetPath)
 Write-Host ("TestID: {0}" -f $TestID)
+Write-Host ("Context: {0}{1}" -f $Context, $(if ($overwriteAllFormulas) { ' (overwriting all cells, including protected formulas)' } else { ' (respecting CanOverWriteFormula protection)' }))
 Write-Host ("Test config: {0}" -f $resolvedConfigPath)
 Write-Host ("JSON file: {0}" -f $resolvedJsonPath)
 Write-Host ("Results file: {0}" -f $resolvedResultsPath)

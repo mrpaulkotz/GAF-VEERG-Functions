@@ -1,0 +1,595 @@
+{
+  "X_Cell_Site_FarmName": "My test farm",
+  "X_Cell_Site_ReportingEntityName": "My test Farms Pty Ltd",
+  "X_Cell_Site_StartDate": "1/1/2025",
+  "X_Cell_Site_State": "Western Australia",
+  "X_Cell_Site_Region": "Western Australia - Outback (South)",
+  "X_Cell_Site_LeachingZone": "NO - Not in leaching zone",
+  "X_Cell_Site_Elevation": 307.7,
+  "X_Cell_Site_AverageTemperature": 18,
+  "X_Cell_Site_TotalRainfall": 601,
+  "X_Cell_Site_PotentialEvapotranspiration": 1326,
+  "X_Cell_Site_FrostDays": 7,
+
+  "X_Cell_Swine_ManureAppliedProductionSystem": "Pasture",
+  "X_Cell_Swine_ManureAppliedIrrigationMethod": "Sprinkler Irrigation",
+  "X_Cell_Swine_ProductionSystem": "Outdoor/free range",
+
+  "X_Cell_Swine_Stage1MMS_AnaerobicLagoon_SolidsSeparated": "Yes",
+  "X_Cell_Swine_Stage1MMS_AnaerobicLagoon_AmountSeparated_Method1": "20%",
+  "X_Cell_Swine_Stage1MMS_AnaerobicLagoon_AmountSeparated_Method2": "20%",
+
+  "X_Cell_Swine_Stage1MMS_Drylot_SolidsSeparated": "Yes",
+  "X_Cell_Swine_Stage1MMS_Drylot_AmountSeparated_Method1": "20%",
+  "X_Cell_Swine_Stage1MMS_Drylot_AmountSeparated_Method2": "20%",
+
+  "X_Cell_Swine_Stage1MMS_DigesterCoveredLagoons_SolidsSeparated": "Yes",
+  "X_Cell_Swine_Stage1MMS_DigesterCoveredLagoons_AmountSeparated_Method1": "20%",
+  "X_Cell_Swine_Stage1MMS_DigesterCoveredLagoons_AmountSeparated_Method2": "20%",
+
+  "X_Cell_Swine_Stage1MMS_DeepLitter_SolidsSeparated": "Yes",
+  "X_Cell_Swine_Stage1MMS_DeepLitter_AmountSeparated_Method1": "20%",
+  "X_Cell_Swine_Stage1MMS_DeepLitter_AmountSeparated_Method2": "20%",
+
+  "X_Cell_Swine_Stage1MMS_PitStorage_SolidsSeparated": "Yes",
+  "X_Cell_Swine_Stage1MMS_PitStorage_AmountSeparated_Method1": "20%",
+  "X_Cell_Swine_Stage1MMS_PitStorage_AmountSeparated_Method2": "20%",
+
+
+  "InputTables": [
+    {
+      "TableName": "X_Table_Swine_HerdMovement",
+      "MatrixType": "ColsToRows",
+      "ColumnOffset": null,
+      "RowOffset": null,
+      "Cols": {
+        "Boars": {
+          "Duration": 365,
+          "Head": 100
+        },
+        "Sows": {
+          "Duration": 365,
+          "Head": 100
+        },
+        "Gilts": {
+          "Duration": 365,
+          "Head": 100
+        },
+        "Others": {
+          "Duration": 365,
+          "Head": 100
+        }
+      }
+    },
+    {
+      "TableName": "X_Table_Swine_ManureProduction_Method1",
+      "MatrixType": "ColsToRows",
+      "ColumnOffset": null,
+      "RowOffset": null,
+      "Cols": {
+        "Boars": {
+          "VolatileSolids": 0.4,
+          "NitrogenProduced": 0.046
+        },
+        "Sows": {
+          "VolatileSolids": 0.46,
+          "NitrogenProduced": 0.049
+        },
+        "Gilts": {
+          "VolatileSolids": 0.55,
+          "NitrogenProduced": 0.046
+        },
+        "Others": {
+          "VolatileSolids": 0.39,
+          "NitrogenProduced": 0.0312
+        }
+      }
+    },
+    {
+      "TableName": "X_Table_Swine_ManureProduction_Method2",
+      "MatrixType": "ColsToRows",
+      "ColumnOffset": null,
+      "RowOffset": null,
+      "Cols": {
+        "Boars": {
+          "VolatileSolids": 0.4,
+          "NitrogenProduced": 0.046
+        },
+        "Sows": {
+          "VolatileSolids": 0.46,
+          "NitrogenProduced": 0.049
+        },
+        "Gilts": {
+          "VolatileSolids": 0.55,
+          "NitrogenProduced": 0.046
+        },
+        "Others": {
+          "VolatileSolids": 0.39,
+          "NitrogenProduced": 0.0312
+        }
+      }
+    },
+    {
+      "TableName": "X_Table_Swine_Stage1MMS_AnaerobicLagoon",
+      "MatrixType": "ColsToRows",
+      "ColumnOffset": null,
+      "RowOffset": null,
+      "Cols": {
+        "Boars": {
+          "AnaerobicLagoon": "15%"
+        },
+        "Sows": {
+          "AnaerobicLagoon": "15%"
+        },
+        "Gilts": {
+          "AnaerobicLagoon": "15%"
+        },
+        "Others": {
+          "AnaerobicLagoon": "15%"
+        }
+      }
+    },
+    {
+      "TableName": "X_Table_Swine_Stage1MMS_Drylot",
+      "MatrixType": "ColsToRows",
+      "ColumnOffset": null,
+      "RowOffset": null,
+      "Cols": {
+        "Boars": {
+          "Drylot": "15%"
+        },
+        "Sows": {
+          "Drylot": "15%"
+        },
+        "Gilts": {
+          "Drylot": "15%"
+        },
+        "Others": {
+          "Drylot": "15%"
+        }
+      }
+    },
+    {
+      "TableName": "X_Table_Swine_Stage1MMS_DigesterCoveredLagoons",
+      "MatrixType": "ColsToRows",
+      "ColumnOffset": null,
+      "RowOffset": null,
+      "Cols": {
+        "Boars": {
+          "DigesterCoveredLagoons": "15%"
+        },
+        "Sows": {
+          "DigesterCoveredLagoons": "15%"
+        },
+        "Gilts": {
+          "DigesterCoveredLagoons": "15%"
+        },
+        "Others": {
+          "DigesterCoveredLagoons": "15%"
+        }
+      }
+    },
+    {
+      "TableName": "X_Table_Swine_Stage1MMS_DeepLitter",
+      "MatrixType": "ColsToRows",
+      "ColumnOffset": null,
+      "RowOffset": null,
+      "Cols": {
+        "Boars": {
+          "DeepLitter": "15%"
+        },
+        "Sows": {
+          "DeepLitter": "15%"
+        },
+        "Gilts": {
+          "DeepLitter": "15%"
+        },
+        "Others": {
+          "DeepLitter": "15%"
+        }
+      }
+    },
+    {
+      "TableName": "X_Table_Swine_Stage1MMS_PitStorage",
+      "MatrixType": "ColsToRows",
+      "ColumnOffset": null,
+      "RowOffset": null,
+      "Cols": {
+        "Boars": {
+          "PitStorage": "15%"
+        },
+        "Sows": {
+          "PitStorage": "15%"
+        },
+        "Gilts": {
+          "PitStorage": "15%"
+        },
+        "Others": {
+          "PitStorage": "15%"
+        }
+      }
+    },
+    {
+      "TableName": "X_Table_Swine_Stage1MMS_SolidStorage",
+      "MatrixType": "ColsToRows",
+      "ColumnOffset": null,
+      "RowOffset": null,
+      "Cols": {
+        "Boars": {
+          "SolidStorage": "25%"
+        },
+        "Sows": {
+          "SolidStorage": "25%"
+        },
+        "Gilts": {
+          "SolidStorage": "25%"
+        },
+        "Others": {
+          "SolidStorage": "25%"
+        }
+      }
+    },
+    {
+      "TableName": "X_Table_Swine_Stage2MMS_From_AnaerobicLagoon",
+      "MatrixType": "ColsToRows",
+      "ColumnOffset": null,
+      "RowOffset": null,
+      "Cols": {
+        "Boars": {
+          "DigesterCoveredLagoons": "20%",
+          "DeepLitter": "20%",
+          "PitStorage": "20%",
+          "DirectApplication": "40%"
+        },
+        "Sows": {
+          "DigesterCoveredLagoons": "25%",
+          "DeepLitter": "25%",
+          "PitStorage": "25%",
+          "DirectApplication": "25%"
+        },
+        "Gilts": {
+          "DigesterCoveredLagoons": "25%",
+          "DeepLitter": "25%",
+          "PitStorage": "25%",
+          "DirectApplication": "25%"
+        },
+        "Others": {
+          "DigesterCoveredLagoons": "25%",
+          "DeepLitter": "25%",
+          "PitStorage": "25%",
+          "DirectApplication": "25%"
+        }
+      }
+    },
+    {
+      "TableName": "X_Table_Swine_Stage2MMS_From_Drylot",
+      "MatrixType": "ColsToRows",
+      "ColumnOffset": null,
+      "RowOffset": null,
+      "Cols": {
+        "Boars": {
+          "AnaerobicLagoon": "20%",
+          "DigesterCoveredLagoons": "20%",
+          "DeepLitter": "20%",
+          "PitStorage": "20%",
+          "DirectApplication": "20%"
+        },
+        "Sows": {
+          "AnaerobicLagoon": "25%",
+          "DigesterCoveredLagoons": "25%",
+          "DeepLitter": "25%",
+          "PitStorage": "25%",
+          "DirectApplication": "0%"
+        },
+        "Gilts": {
+          "AnaerobicLagoon": "25%",
+          "DigesterCoveredLagoons": "25%",
+          "DeepLitter": "25%",
+          "PitStorage": "25%",
+          "DirectApplication": "0%"
+        },
+        "Others": {
+          "AnaerobicLagoon": "25%",
+          "DigesterCoveredLagoons": "25%",
+          "DeepLitter": "25%",
+          "PitStorage": "25%",
+          "DirectApplication": "0%"
+        }
+      }
+    },
+    {
+      "TableName": "X_Table_Swine_Stage2MMS_From_DigesterCoveredLagoons",
+      "MatrixType": "ColsToRows",
+      "ColumnOffset": null,
+      "RowOffset": null,
+      "Cols": {
+        "Boars": {
+          "AnaerobicLagoon": "20%",
+          "DeepLitter": "20%",
+          "PitStorage": "20%",
+          "DirectApplication": "40%"
+        },
+        "Sows": {
+          "AnaerobicLagoon": "25%",
+          "DeepLitter": "25%",
+          "PitStorage": "25%",
+          "DirectApplication": "25%"
+        },
+        "Gilts": {
+          "AnaerobicLagoon": "25%",
+          "DeepLitter": "25%",
+          "PitStorage": "25%",
+          "DirectApplication": "25%"
+        },
+        "Others": {
+          "AnaerobicLagoon": "25%",
+          "DeepLitter": "25%",
+          "PitStorage": "25%",
+          "DirectApplication": "25%"
+        }
+      }
+    },
+    {
+      "TableName": "X_Table_Swine_Stage2MMS_From_DeepLitter",
+      "MatrixType": "ColsToRows",
+      "ColumnOffset": null,
+      "RowOffset": null,
+      "Cols": {
+        "Boars": {
+          "AnaerobicLagoon": "20%",
+          "DigesterCoveredLagoons": "20%",
+          "PitStorage": "20%",
+          "DirectApplication": "40%"
+        },
+        "Sows": {
+          "AnaerobicLagoon": "25%",
+          "DigesterCoveredLagoons": "25%",
+          "PitStorage": "25%",
+          "DirectApplication": "25%"
+        },
+        "Gilts": {
+          "AnaerobicLagoon": "25%",
+          "DigesterCoveredLagoons": "25%",
+          "PitStorage": "25%",
+          "DirectApplication": "25%"
+        },
+        "Others": {
+          "AnaerobicLagoon": "25%",
+          "DigesterCoveredLagoons": "25%",
+          "PitStorage": "25%",
+          "DirectApplication": "25%"
+        }
+      }
+    },
+    {
+      "TableName": "X_Table_Swine_Stage2MMS_From_PitStorage",
+      "MatrixType": "ColsToRows",
+      "ColumnOffset": null,
+      "RowOffset": null,
+      "Cols": {
+        "Boars": {
+          "AnaerobicLagoon": "20%",
+          "DigesterCoveredLagoons": "20%",
+          "DeepLitter": "20%",
+          "DirectApplication": "40%"
+        },
+        "Sows": {
+          "AnaerobicLagoon": "25%",
+          "DigesterCoveredLagoons": "25%",
+          "DeepLitter": "25%",
+          "DirectApplication": "25%"
+        },
+        "Gilts": {
+          "AnaerobicLagoon": "25%",
+          "DigesterCoveredLagoons": "25%",
+          "DeepLitter": "25%",
+          "DirectApplication": "25%"
+        },
+        "Others": {
+          "AnaerobicLagoon": "25%",
+          "DigesterCoveredLagoons": "25%",
+          "DeepLitter": "25%",
+          "DirectApplication": "25%"
+        }
+      }
+    },
+    {
+      "TableName": "X_Table_Swine_Stage2MMS_From_SolidStorage",
+      "MatrixType": "ColsToRows",
+      "ColumnOffset": null,
+      "RowOffset": null,
+      "Cols": {
+        "Boars": {
+          "AnaerobicLagoon": "20%",
+          "DigesterCoveredLagoons": "20%",
+          "DeepLitter": "20%",
+          "PitStorage": "10%",
+          "DirectApplication": "30%"
+        },
+        "Sows": {
+          "AnaerobicLagoon": "20%",
+          "DigesterCoveredLagoons": "20%",
+          "DeepLitter": "20%",
+          "PitStorage": "10%",
+          "DirectApplication": "30%"
+        },
+        "Gilts": {
+          "AnaerobicLagoon": "20%",
+          "DigesterCoveredLagoons": "20%",
+          "DeepLitter": "20%",
+          "PitStorage": "10%",
+          "DirectApplication": "30%"
+        },
+        "Others": {
+          "AnaerobicLagoon": "20%",
+          "DigesterCoveredLagoons": "20%",
+          "DeepLitter": "20%",
+          "PitStorage": "10%",
+          "DirectApplication": "30%"
+        }
+      }
+    },
+    {
+      "TableName": "X_Table_Swine_Stage2MMS_From_AnaerobicLagoon_Destinations",
+      "MatrixType": "ColsToRows",
+      "ColumnOffset": null,
+      "RowOffset": null,
+      "Cols": {
+        "Sold": {
+          "DigesterCoveredLagoons": "25%",
+          "DeepLitter": "25%",
+          "PitStorage": "25%",
+          "DirectApplication": "0%"
+        },
+        "FertOwnFarm": {
+          "DigesterCoveredLagoons": "25%",
+          "DeepLitter": "25%",
+          "PitStorage": "25%",
+          "DirectApplication": "0%"
+        },
+        "DirectApplication": {
+          "DigesterCoveredLagoons": "50%",
+          "DeepLitter": "50%",
+          "PitStorage": "50%",
+          "DirectApplication": "100%"
+        }
+      }
+    },
+    {
+      "TableName": "X_Table_Swine_Stage2MMS_From_Drylot_Destinations",
+      "MatrixType": "ColsToRows",
+      "ColumnOffset": null,
+      "RowOffset": null,
+      "Cols": {
+        "Sold": {
+          "AnaerobicLagoon": "25%",
+          "DigesterCoveredLagoons": "25%",
+          "DeepLitter": "25%",
+          "PitStorage": "25%",
+          "DirectApplication": "0%"
+        },
+        "FertOwnFarm": {
+          "AnaerobicLagoon": "25%",
+          "DigesterCoveredLagoons": "25%",
+          "DeepLitter": "25%",
+          "PitStorage": "25%",
+          "DirectApplication": "0%"
+        },
+        "DirectApplication": {
+          "AnaerobicLagoon": "50%",
+          "DigesterCoveredLagoons": "50%",
+          "DeepLitter": "50%",
+          "PitStorage": "50%",
+          "DirectApplication": "100%"
+        }
+      }
+    },
+    {
+      "TableName": "X_Table_Swine_Stage2MMS_From_DigesterCoveredLagoons_Destinations",
+      "MatrixType": "ColsToRows",
+      "ColumnOffset": null,
+      "RowOffset": null,
+      "Cols": {
+        "Sold": {
+          "AnaerobicLagoon": "25%",
+          "DeepLitter": "25%",
+          "PitStorage": "25%",
+          "DirectApplication": "0%"
+        },
+        "FertOwnFarm": {
+          "AnaerobicLagoon": "25%",
+          "DeepLitter": "25%",
+          "PitStorage": "25%",
+          "DirectApplication": "0%"
+        },
+        "DirectApplication": {
+          "AnaerobicLagoon": "50%",
+          "DeepLitter": "50%",
+          "PitStorage": "50%",
+          "DirectApplication": "100%"
+        }
+      }
+    },
+    {
+      "TableName": "X_Table_Swine_Stage2MMS_From_DeepLitter_Destinations",
+      "MatrixType": "ColsToRows",
+      "ColumnOffset": null,
+      "RowOffset": null,
+      "Cols": {
+        "Sold": {
+          "AnaerobicLagoon": "25%",
+          "DigesterCoveredLagoons": "25%",
+          "PitStorage": "25%",
+          "DirectApplication": "0%"
+        },
+        "FertOwnFarm": {
+          "AnaerobicLagoon": "25%",
+          "DigesterCoveredLagoons": "25%",
+          "PitStorage": "25%",
+          "DirectApplication": "0%"
+        },
+        "DirectApplication": {
+          "AnaerobicLagoon": "50%",
+          "DigesterCoveredLagoons": "50%",
+          "PitStorage": "50%",
+          "DirectApplication": "100%"
+        }
+      }
+    },
+    {
+      "TableName": "X_Table_Swine_Stage2MMS_From_PitStorage_Destinations",
+      "MatrixType": "ColsToRows",
+      "ColumnOffset": null,
+      "RowOffset": null,
+      "Cols": {
+        "Sold": {
+          "AnaerobicLagoon": "25%",
+          "DigesterCoveredLagoons": "25%",
+          "DeepLitter": "25%",
+          "DirectApplication": "0%"
+        },
+        "FertOwnFarm": {
+          "AnaerobicLagoon": "25%",
+          "DigesterCoveredLagoons": "25%",
+          "DeepLitter": "25%",
+          "DirectApplication": "0%"
+        },
+        "DirectApplication": {
+          "AnaerobicLagoon": "50%",
+          "DigesterCoveredLagoons": "50%",
+          "DeepLitter": "50%",
+          "DirectApplication": "100%"
+        }
+      }
+    },
+    {
+      "TableName": "X_Table_Swine_Stage2MMS_From_SolidStorage_Destinations",
+      "MatrixType": "ColsToRows",
+      "ColumnOffset": null,
+      "RowOffset": null,
+      "Cols": {
+        "Sold": {
+          "AnaerobicLagoon": "25%",
+          "DigesterCoveredLagoons": "25%",
+          "DeepLitter": "25%",
+          "PitStorage": "25%",
+          "DirectApplication": "0%"
+        },
+        "FertOwnFarm": {
+          "AnaerobicLagoon": "25%",
+          "DigesterCoveredLagoons": "25%",
+          "DeepLitter": "25%",
+          "PitStorage": "25%",
+          "DirectApplication": "0%"
+        },
+        "DirectApplication": {
+          "AnaerobicLagoon": "50%",
+          "DigesterCoveredLagoons": "50%",
+          "DeepLitter": "50%",
+          "PitStorage": "50%",
+          "DirectApplication": "100%"
+        }
+      }
+    }
+  ]
+}

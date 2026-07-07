@@ -1,30 +1,28 @@
 {
-    "schemaVersion":  1,
-    "generatedFrom":  "12_SupplementaryCO2_WIP_v02.xlsx",
-    "generatedAt":  "2026-06-26T05:48:51Z",
-    "InputCells":  [
-
-                   ],
-    "InputTables":  [
-                        {
-                            "TableName":  "Table_Input_SupplementaryCO2",
-                            "MatrixType":  "RowsToCols",
-                            "NumberOfCols":  2,
-                            "ColumnNames":  {
-                                                "UsageDescription":  "Usage description",
-                                                "AmountUsed":  "Amount used (kg)"
-                                            },
-                            "Rows":  {
-                                         "Row":  {
-                                                     "UsageDescription":  {
-                                                                              "CellType":  "text"
-                                                                          },
-                                                     "AmountUsed":  {
-                                                                        "CellType":  "number",
-                                                                        "Unit":  "kg"
-                                                                    }
-                                                 }
-                                     }
-                        }
-                    ]
+	"schemaVersion": 1,
+	"generatedFrom": "12_SupplementaryCO2_WIP_v02.xlsx",
+	"generatedAt": "2026-07-07T23:25:43Z",
+	"InputCells": [],
+	"InputTables": [
+		{
+			"TableName": "Table_Input_SupplementaryCO2",
+			"MatrixType": "RowsToCols",
+			"NumberOfCols": 2,
+			"ColumnNames": {
+				"UsageDescription": "Usage description",
+				"AmountUsed": "Amount used (kg)"
+			},
+			"Rows": {
+				"Row": {
+					"UsageDescription": {
+						"CellType": "text"
+					},
+					"AmountUsed": {
+						"CellType": "number",
+						"Unit": "kg"
+					}
+				}
+			}
+		}
+	]
 }

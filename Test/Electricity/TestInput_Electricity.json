@@ -1,7 +1,7 @@
 {
 	"X_Cell_Site_FarmName": "My test farm",
 	"X_Cell_Site_ReportingEntityName": "My test Farms Pty Ltd",
-	"X_Cell_Site_StartDate": "1/1/2025",
+	"X_Cell_Site_StartDate": "1/1/2024",
 	"X_Cell_Site_State": "Western Australia",
 	"X_Cell_Site_Region": "Western Australia - Outback (South)",
 
@@ -19,24 +19,31 @@
       "MatrixType": "RowsToCols",
       "ColumnOffset": 0,
       "RowOffset": null,
+      "AllowOverride": true,
       "Rows": {
         "Row1": {
           "Description": "Dec 2020 certs",
           "Source": "Purchased certificate",
           "GenerationDate": "20 December 2020",
-          "NumberOfCertificates": 12
+          "NumberOfCertificates": 12,
+          "MWh": null,
+          "Eligibility": null
         },
         "Row2": {
           "Description": "Jan 2022 certs",
           "Source": "Issued for generated electricity",
           "GenerationDate": "14 January 2022",
-          "NumberOfCertificates": 5
+          "NumberOfCertificates": 5,
+          "MWh": null,
+          "Eligibility": null
         },
         "Row3": {
           "Description": "2024 certs",
           "Source": "Purchased certificate",
           "GenerationDate": "26 May 2024",
-          "NumberOfCertificates": 5
+          "NumberOfCertificates": 5,
+          "MWh": null,
+          "Eligibility": null
         }
       }
     },
@@ -48,18 +55,27 @@
       "Rows": {
         "Row1": {
           "Description": "May 2022 generated",
+          "Source": null,
           "GenerationDate": "16 May 2022",
-          "NumberOfCertificates": 10
+          "NumberOfCertificates": 10,
+          "MWh": null,
+          "Eligibility": null
         },
         "Row2": {
           "Description": "Jul 24 certs generated",
+          "Source": null,
           "GenerationDate": "10 July 2024",
-          "NumberOfCertificates": 4
+          "NumberOfCertificates": 4,
+          "MWh": null,
+          "Eligibility": null
         },
         "Row3": {
           "Description": "Nov-24",
+          "Source": null,
           "GenerationDate": "11 November 2024",
-          "NumberOfCertificates": 75
+          "NumberOfCertificates": 7,
+          "MWh": null,
+          "Eligibility": null
         }
       }
     }

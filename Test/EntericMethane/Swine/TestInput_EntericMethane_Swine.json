@@ -1,0 +1,74 @@
+{
+	"X_Cell_Site_FarmName": "My test farm",
+	"X_Cell_Site_ReportingEntityName": "My test Farms Pty Ltd",
+	"X_Cell_Site_StartDate": "1/1/2025",
+
+
+	"InputTables": [
+    {
+      "TableName": "X_Table_Swine_HerdMovement",
+      "ColumnOffset": null,
+      "RowOffset": null,
+	  "MatrixType": "ColsToRows",
+      "Cols": {
+        "Boars": {
+          "Duration": 365,
+		  "Head": 100
+        },
+        "Sows": {
+          "Duration": 365,
+		  "Head": 100
+        },
+        "Gilts": {
+          "Duration": 365,
+		  "Head": 100
+        },
+        "Others": {
+          "Duration": 365,
+		  "Head": 100
+        }
+      }
+    },
+    {
+      "TableName": "X_Table_Swine_VolatileSolidProduction_Method1",
+      "ColumnOffset": null,
+      "RowOffset": null,
+	  "MatrixType": "ColsToRows",
+      "Cols": {
+        "Boars": {
+          "VolatileSolidsInKgPerHeadPerDay": 2.62
+        },
+        "Sows": {
+          "VolatileSolidsInKgPerHeadPerDay": 2.3
+        },
+        "Gilts": {
+          "VolatileSolidsInKgPerHeadPerDay": 2.5
+        },
+        "Others": {
+          "VolatileSolidsInKgPerHeadPerDay": 1.71
+        }
+      }
+    },
+    {
+      "TableName": "X_Table_Swine_VolatileSolidProduction_Method2",
+      "ColumnOffset": null,
+      "RowOffset": null,
+	  "MatrixType": "ColsToRows",
+      "Cols": {
+        "Boars": {
+          "VolatileSolidsInKgPerHeadPerDay": 2.62
+        },
+        "Sows": {
+          "VolatileSolidsInKgPerHeadPerDay": 2.3
+        },
+        "Gilts": {
+          "VolatileSolidsInKgPerHeadPerDay": 2.5
+        },
+        "Others": {
+          "VolatileSolidsInKgPerHeadPerDay": 1.71
+        }
+      }
+    }
+	]
+
+}

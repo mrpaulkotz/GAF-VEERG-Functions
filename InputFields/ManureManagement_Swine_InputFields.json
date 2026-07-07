@@ -1,11 +1,924 @@
 {
-    "schemaVersion":  1,
-    "generatedFrom":  "4_5_ManureManagement_Swine_WIP_v05.xlsx",
-    "generatedAt":  "2026-06-26T05:49:30Z",
-    "InputCells":  [
-
-                   ],
-    "InputTables":  [
-
-                    ]
+	"schemaVersion": 1,
+	"generatedFrom": "4_5_ManureManagement_Swine_WIP_v06.xlsx",
+	"generatedAt": "2026-07-07T23:27:23Z",
+	"InputCells": [
+		{
+			"CellName": "X_Cell_Site_AverageTemperature",
+			"CellType": "number"
+		},
+		{
+			"CellName": "X_Cell_Site_ClimateZone",
+			"CellType": "text"
+		},
+		{
+			"CellName": "X_Cell_Site_Elevation",
+			"CellType": "number"
+		},
+		{
+			"CellName": "X_Cell_Site_FarmName",
+			"CellType": "text"
+		},
+		{
+			"CellName": "X_Cell_Site_FrostDays",
+			"CellType": "number"
+		},
+		{
+			"CellName": "X_Cell_Site_LeachingZone",
+			"CellType": "select",
+			"Options": {
+				"YES - In leaching zone": "YES - In leaching zone",
+				"NO - Not in leaching zone": "NO - Not in leaching zone"
+			}
+		},
+		{
+			"CellName": "X_Cell_Site_MapPetRatio",
+			"CellType": "number"
+		},
+		{
+			"CellName": "X_Cell_Site_PotentialEvapotranspiration",
+			"CellType": "number"
+		},
+		{
+			"CellName": "X_Cell_Site_RainfallZone",
+			"CellType": "text"
+		},
+		{
+			"CellName": "X_Cell_Site_Region",
+			"CellType": "select",
+			"Options": {
+				"Bunbury": "Bunbury",
+				"Mandurah": "Mandurah",
+				"Perth - Inner": "Perth - Inner",
+				"Perth - North East": "Perth - North East",
+				"Perth - North West": "Perth - North West",
+				"Perth - South East": "Perth - South East",
+				"Perth - South West": "Perth - South West",
+				"Western Australia - Wheat Belt": "Western Australia - Wheat Belt",
+				"Western Australia - Outback (North)": "Western Australia - Outback (North)",
+				"Western Australia - Outback (South)": "Western Australia - Outback (South)"
+			}
+		},
+		{
+			"CellName": "X_Cell_Site_ReportingEntityName",
+			"CellType": "text"
+		},
+		{
+			"CellName": "X_Cell_Site_StartDate",
+			"CellType": "number"
+		},
+		{
+			"CellName": "X_Cell_Site_State",
+			"CellType": "select",
+			"Options": {
+				"New South Wales": "New South Wales",
+				"ACT": "ACT",
+				"Victoria": "Victoria",
+				"Queensland": "Queensland",
+				"South Australia": "South Australia",
+				"Western Australia": "Western Australia",
+				"Tasmania": "Tasmania",
+				"Northern Territory": "Northern Territory"
+			}
+		},
+		{
+			"CellName": "X_Cell_Site_TemperatureZone",
+			"CellType": "text"
+		},
+		{
+			"CellName": "X_Cell_Site_TotalRainfall",
+			"CellType": "number"
+		},
+		{
+			"CellName": "X_Cell_Site_WetOrDryClimateZone",
+			"CellType": "text"
+		},
+		{
+			"CellName": "X_Cell_Swine_ManureAppliedIrrigationMethod",
+			"CellType": "select",
+			"Options": {
+				"Not irrigated": "Not irrigated",
+				"Drip irrigation": "Drip irrigation",
+				"Sprinkler irrigation": "Sprinkler irrigation",
+				"Surface irrigation": "Surface irrigation",
+				"Other irrigation": "Other irrigation"
+			}
+		},
+		{
+			"CellName": "X_Cell_Swine_ManureAppliedProductionSystem",
+			"CellType": "select",
+			"Options": {
+				"Pasture": "Pasture",
+				"Crop": "Crop"
+			}
+		},
+		{
+			"CellName": "X_Cell_Swine_ProductionSystem",
+			"CellType": "select",
+			"Options": {
+				"Conventional housing": "Conventional housing",
+				"Deep litter housing": "Deep litter housing",
+				"Outdoor/free range": "Outdoor/free range"
+			}
+		},
+		{
+			"CellName": "X_Cell_Swine_Stage1MMS_AnaerobicLagoon_AmountSeparated_Method1",
+			"CellType": "percent"
+		},
+		{
+			"CellName": "X_Cell_Swine_Stage1MMS_AnaerobicLagoon_AmountSeparated_Method2",
+			"CellType": "percent",
+			"CanOverWriteFormula": true
+		},
+		{
+			"CellName": "X_Cell_Swine_Stage1MMS_AnaerobicLagoon_SolidsSeparated",
+			"CellType": "select",
+			"Options": {
+				"Yes": "Yes",
+				"No": "No"
+			}
+		},
+		{
+			"CellName": "X_Cell_Swine_Stage1MMS_DeepLitter_AmountSeparated_Method1",
+			"CellType": "percent"
+		},
+		{
+			"CellName": "X_Cell_Swine_Stage1MMS_DeepLitter_AmountSeparated_Method2",
+			"CellType": "percent",
+			"CanOverWriteFormula": true
+		},
+		{
+			"CellName": "X_Cell_Swine_Stage1MMS_DeepLitter_SolidsSeparated",
+			"CellType": "select",
+			"Options": {
+				"Yes": "Yes",
+				"No": "No"
+			}
+		},
+		{
+			"CellName": "X_Cell_Swine_Stage1MMS_DigesterCoveredLagoons_AmountSeparated_Method1",
+			"CellType": "percent"
+		},
+		{
+			"CellName": "X_Cell_Swine_Stage1MMS_DigesterCoveredLagoons_AmountSeparated_Method2",
+			"CellType": "percent",
+			"CanOverWriteFormula": true
+		},
+		{
+			"CellName": "X_Cell_Swine_Stage1MMS_DigesterCoveredLagoons_SolidsSeparated",
+			"CellType": "select",
+			"Options": {
+				"Yes": "Yes",
+				"No": "No"
+			}
+		},
+		{
+			"CellName": "X_Cell_Swine_Stage1MMS_Drylot_AmountSeparated_Method1",
+			"CellType": "percent"
+		},
+		{
+			"CellName": "X_Cell_Swine_Stage1MMS_Drylot_AmountSeparated_Method2",
+			"CellType": "percent",
+			"CanOverWriteFormula": true
+		},
+		{
+			"CellName": "X_Cell_Swine_Stage1MMS_Drylot_SolidsSeparated",
+			"CellType": "select",
+			"Options": {
+				"Yes": "Yes",
+				"No": "No"
+			}
+		},
+		{
+			"CellName": "X_Cell_Swine_Stage1MMS_PitStorage_AmountSeparated_Method1",
+			"CellType": "percent"
+		},
+		{
+			"CellName": "X_Cell_Swine_Stage1MMS_PitStorage_AmountSeparated_Method2",
+			"CellType": "percent",
+			"CanOverWriteFormula": true
+		},
+		{
+			"CellName": "X_Cell_Swine_Stage1MMS_PitStorage_SolidsSeparated",
+			"CellType": "select",
+			"Options": {
+				"Yes": "Yes",
+				"No": "No"
+			}
+		}
+	],
+	"InputTables": [
+		{
+			"TableName": "X_Table_Swine_HerdMovement",
+			"MatrixType": "ColsToRows",
+			"NumberOfRows": 3,
+			"NumberOfCols": 4,
+			"ColumnNames": {
+				"Boars": "Boars",
+				"Sows": "Sows",
+				"Gilts": "Gilts",
+				"Others": "Others"
+			},
+			"Cols": {
+				"Column": {
+					"AverageDurationOfStayBetween01Jan24And31Dec24": {
+						"Row": 2,
+						"Col": 2,
+						"Label": "Average duration of stay between 01 Jan 24 and 31 Dec 24",
+						"CellType": "number"
+					},
+					"AverageNumberOfHeadBetween01Jan24And31Dec24": {
+						"Row": 3,
+						"Col": 2,
+						"Label": "Average number of head between 01 Jan 24 and 31 Dec 24",
+						"CellType": "number"
+					}
+				}
+			}
+		},
+		{
+			"TableName": "X_Table_Swine_ManureProduction_Method1",
+			"MatrixType": "ColsToRows",
+			"NumberOfRows": 3,
+			"NumberOfCols": 4,
+			"ColumnNames": {
+				"Boars": "Boars",
+				"Sows": "Sows",
+				"Gilts": "Gilts",
+				"Others": "Others"
+			},
+			"Cols": {
+				"Column": {
+					"VolatileSolidsProducedPerHeadPerDay": {
+						"Row": 2,
+						"Col": 2,
+						"Label": "Volatile solids produced per head per day",
+						"CellType": "formula"
+					},
+					"NitrogenProducedInSwineWastePerHeadPerDay": {
+						"Row": 3,
+						"Col": 2,
+						"Label": "Nitrogen produced in swine waste per head per day",
+						"CellType": "formula"
+					}
+				}
+			}
+		},
+		{
+			"TableName": "X_Table_Swine_ManureProduction_Method2",
+			"MatrixType": "ColsToRows",
+			"NumberOfRows": 3,
+			"NumberOfCols": 4,
+			"ColumnNames": {
+				"Boars": "Boars",
+				"Sows": "Sows",
+				"Gilts": "Gilts",
+				"Others": "Others"
+			},
+			"Cols": {
+				"Column": {
+					"VolatileSolidsProducedPerHeadPerDay": {
+						"Row": 2,
+						"Col": 2,
+						"Label": "Volatile solids produced per head per day",
+						"CellType": "number",
+						"CanOverWriteFormula": true
+					},
+					"NitrogenProducedInSwineWastePerHeadPerDay": {
+						"Row": 3,
+						"Col": 2,
+						"Label": "Nitrogen produced in swine waste per head per day",
+						"CellType": "number",
+						"CanOverWriteFormula": true
+					}
+				}
+			}
+		},
+		{
+			"TableName": "X_Table_Swine_Stage1MMS_AnaerobicLagoon",
+			"MatrixType": "ColsToRows",
+			"NumberOfRows": 2,
+			"NumberOfCols": 4,
+			"ColumnNames": {
+				"Col2": "",
+				"Col3": "",
+				"Col4": "",
+				"Col5": ""
+			},
+			"Cols": {
+				"Column": {
+					"AnaerobicLagoon": {
+						"Row": 2,
+						"Col": 2,
+						"Label": "Anaerobic lagoon",
+						"CellType": "percent"
+					}
+				}
+			}
+		},
+		{
+			"TableName": "X_Table_Swine_Stage1MMS_DeepLitter",
+			"MatrixType": "ColsToRows",
+			"NumberOfRows": 2,
+			"NumberOfCols": 4,
+			"ColumnNames": {
+				"Col2": "",
+				"Col3": "",
+				"Col4": "",
+				"Col5": ""
+			},
+			"Cols": {
+				"Column": {
+					"DeepLitter": {
+						"Row": 2,
+						"Col": 2,
+						"Label": "Deep litter",
+						"CellType": "percent"
+					}
+				}
+			}
+		},
+		{
+			"TableName": "X_Table_Swine_Stage1MMS_DigesterCoveredLagoons",
+			"MatrixType": "ColsToRows",
+			"NumberOfRows": 2,
+			"NumberOfCols": 4,
+			"ColumnNames": {
+				"Col2": "",
+				"Col3": "",
+				"Col4": "",
+				"Col5": ""
+			},
+			"Cols": {
+				"Column": {
+					"DigesterCoveredLagoons": {
+						"Row": 2,
+						"Col": 2,
+						"Label": "Digester / covered lagoons",
+						"CellType": "percent"
+					}
+				}
+			}
+		},
+		{
+			"TableName": "X_Table_Swine_Stage1MMS_Drylot",
+			"MatrixType": "ColsToRows",
+			"NumberOfRows": 2,
+			"NumberOfCols": 4,
+			"ColumnNames": {
+				"Col2": "",
+				"Col3": "",
+				"Col4": "",
+				"Col5": ""
+			},
+			"Cols": {
+				"Column": {
+					"Drylot": {
+						"Row": 2,
+						"Col": 2,
+						"Label": "Drylot (feed pad)",
+						"CellType": "percent",
+						"Unit": "feed pad"
+					}
+				}
+			}
+		},
+		{
+			"TableName": "X_Table_Swine_Stage1MMS_PitStorage",
+			"MatrixType": "ColsToRows",
+			"NumberOfRows": 2,
+			"NumberOfCols": 4,
+			"ColumnNames": {
+				"Col2": "",
+				"Col3": "",
+				"Col4": "",
+				"Col5": ""
+			},
+			"Cols": {
+				"Column": {
+					"PitStorage": {
+						"Row": 2,
+						"Col": 2,
+						"Label": "Pit storage",
+						"CellType": "percent"
+					}
+				}
+			}
+		},
+		{
+			"TableName": "X_Table_Swine_Stage1MMS_SolidStorage",
+			"MatrixType": "ColsToRows",
+			"NumberOfRows": 2,
+			"NumberOfCols": 4,
+			"ColumnNames": {
+				"Col2": "",
+				"Col3": "",
+				"Col4": "",
+				"Col5": ""
+			},
+			"Cols": {
+				"Column": {
+					"SolidStorage": {
+						"Row": 2,
+						"Col": 2,
+						"Label": "Solid storage (before solid separation)",
+						"CellType": "percent",
+						"Unit": "before solid separation"
+					}
+				}
+			}
+		},
+		{
+			"TableName": "X_Table_Swine_Stage2MMS_From_AnaerobicLagoon",
+			"MatrixType": "ColsToRows",
+			"NumberOfRows": 5,
+			"NumberOfCols": 4,
+			"ColumnNames": {
+				"ManureWasSentToThisMMSPleaseCompleteThisSection": "Manure was sent to this MMS, please complete this section.",
+				"Col3": "",
+				"Col4": "",
+				"Col5": ""
+			},
+			"Cols": {
+				"Column": {
+					"DigesterCoveredLagoons": {
+						"Row": 2,
+						"Col": 2,
+						"Label": "Digester / covered lagoons",
+						"CellType": "percent"
+					},
+					"DeepLitter": {
+						"Row": 3,
+						"Col": 2,
+						"Label": "Deep litter",
+						"CellType": "percent"
+					},
+					"PitStorage": {
+						"Row": 4,
+						"Col": 2,
+						"Label": "Pit storage",
+						"CellType": "percent"
+					},
+					"DirectApplication": {
+						"Row": 5,
+						"Col": 2,
+						"Label": "Direct application",
+						"CellType": "formula"
+					}
+				}
+			}
+		},
+		{
+			"TableName": "X_Table_Swine_Stage2MMS_From_AnaerobicLagoon_Destinations",
+			"MatrixType": "RowsToCols",
+			"NumberOfRows": 5,
+			"NumberOfCols": 4,
+			"ColumnNames": {
+				"Col1": "",
+				"Sold": "Sold",
+				"FertForOwnFarm": "Fert for own farm (eg crop)",
+				"DirectApplicationToSoil": "Direct application to soil"
+			},
+			"Rows": {
+				"Row": {
+					"Col1": {
+						"Row": 2,
+						"Col": 1,
+						"CellType": "number"
+					},
+					"Sold": {
+						"Row": 2,
+						"Col": 2,
+						"Header": "Sold",
+						"CellType": "percent"
+					},
+					"FertForOwnFarm": {
+						"Row": 2,
+						"Col": 3,
+						"Header": "Fert for own farm (eg crop)",
+						"CellType": "percent",
+						"Unit": "eg crop"
+					},
+					"DirectApplicationToSoil": {
+						"Row": 2,
+						"Col": 4,
+						"Header": "Direct application to soil",
+						"CellType": "formula"
+					}
+				}
+			}
+		},
+		{
+			"TableName": "X_Table_Swine_Stage2MMS_From_DeepLitter",
+			"MatrixType": "ColsToRows",
+			"NumberOfRows": 5,
+			"NumberOfCols": 4,
+			"ColumnNames": {
+				"ManureWasSentToThisMMSPleaseCompleteThisSection": "Manure was sent to this MMS, please complete this section.",
+				"Col3": "",
+				"Col4": "",
+				"Col5": ""
+			},
+			"Cols": {
+				"Column": {
+					"AnaerobicLagoon": {
+						"Row": 2,
+						"Col": 2,
+						"Label": "Anaerobic lagoon",
+						"CellType": "percent"
+					},
+					"DigesterCoveredLagoons": {
+						"Row": 3,
+						"Col": 2,
+						"Label": "Digester / covered lagoons",
+						"CellType": "percent"
+					},
+					"PitStorage": {
+						"Row": 4,
+						"Col": 2,
+						"Label": "Pit storage",
+						"CellType": "percent"
+					},
+					"DirectApplication": {
+						"Row": 5,
+						"Col": 2,
+						"Label": "Direct application",
+						"CellType": "formula"
+					}
+				}
+			}
+		},
+		{
+			"TableName": "X_Table_Swine_Stage2MMS_From_DeepLitter_Destinations",
+			"MatrixType": "RowsToCols",
+			"NumberOfRows": 5,
+			"NumberOfCols": 4,
+			"ColumnNames": {
+				"Col1": "",
+				"Sold": "Sold",
+				"FertForOwnFarm": "Fert for own farm (eg crop)",
+				"DirectApplicationToSoil": "Direct application to soil"
+			},
+			"Rows": {
+				"Row": {
+					"Col1": {
+						"Row": 2,
+						"Col": 1,
+						"CellType": "number"
+					},
+					"Sold": {
+						"Row": 2,
+						"Col": 2,
+						"Header": "Sold",
+						"CellType": "percent"
+					},
+					"FertForOwnFarm": {
+						"Row": 2,
+						"Col": 3,
+						"Header": "Fert for own farm (eg crop)",
+						"CellType": "percent",
+						"Unit": "eg crop"
+					},
+					"DirectApplicationToSoil": {
+						"Row": 2,
+						"Col": 4,
+						"Header": "Direct application to soil",
+						"CellType": "formula"
+					}
+				}
+			}
+		},
+		{
+			"TableName": "X_Table_Swine_Stage2MMS_From_DigesterCoveredLagoons",
+			"MatrixType": "ColsToRows",
+			"NumberOfRows": 5,
+			"NumberOfCols": 4,
+			"ColumnNames": {
+				"ManureWasSentToThisMMSPleaseCompleteThisSection": "Manure was sent to this MMS, please complete this section.",
+				"Col3": "",
+				"Col4": "",
+				"Col5": ""
+			},
+			"Cols": {
+				"Column": {
+					"AnaerobicLagoon": {
+						"Row": 2,
+						"Col": 2,
+						"Label": "Anaerobic lagoon",
+						"CellType": "percent"
+					},
+					"DeepLitter": {
+						"Row": 3,
+						"Col": 2,
+						"Label": "Deep litter",
+						"CellType": "percent"
+					},
+					"PitStorage": {
+						"Row": 4,
+						"Col": 2,
+						"Label": "Pit storage",
+						"CellType": "percent"
+					},
+					"DirectApplication": {
+						"Row": 5,
+						"Col": 2,
+						"Label": "Direct application",
+						"CellType": "formula"
+					}
+				}
+			}
+		},
+		{
+			"TableName": "X_Table_Swine_Stage2MMS_From_DigesterCoveredLagoons_Destinations",
+			"MatrixType": "RowsToCols",
+			"NumberOfRows": 5,
+			"NumberOfCols": 4,
+			"ColumnNames": {
+				"Col1": "",
+				"Sold": "Sold",
+				"FertForOwnFarm": "Fert for own farm (eg crop)",
+				"DirectApplicationToSoil": "Direct application to soil"
+			},
+			"Rows": {
+				"Row": {
+					"Col1": {
+						"Row": 2,
+						"Col": 1,
+						"CellType": "number"
+					},
+					"Sold": {
+						"Row": 2,
+						"Col": 2,
+						"Header": "Sold",
+						"CellType": "percent"
+					},
+					"FertForOwnFarm": {
+						"Row": 2,
+						"Col": 3,
+						"Header": "Fert for own farm (eg crop)",
+						"CellType": "percent",
+						"Unit": "eg crop"
+					},
+					"DirectApplicationToSoil": {
+						"Row": 2,
+						"Col": 4,
+						"Header": "Direct application to soil",
+						"CellType": "formula"
+					}
+				}
+			}
+		},
+		{
+			"TableName": "X_Table_Swine_Stage2MMS_From_Drylot",
+			"MatrixType": "ColsToRows",
+			"NumberOfRows": 6,
+			"NumberOfCols": 4,
+			"ColumnNames": {
+				"ManureWasSentToThisMMSPleaseCompleteThisSection": "Manure was sent to this MMS, please complete this section.",
+				"Col3": "",
+				"Col4": "",
+				"Col5": ""
+			},
+			"Cols": {
+				"Column": {
+					"AnaerobicLagoon": {
+						"Row": 2,
+						"Col": 2,
+						"Label": "Anaerobic lagoon",
+						"CellType": "percent"
+					},
+					"DigesterCoveredLagoons": {
+						"Row": 3,
+						"Col": 2,
+						"Label": "Digester / covered lagoons",
+						"CellType": "percent"
+					},
+					"DeepLitter": {
+						"Row": 4,
+						"Col": 2,
+						"Label": "Deep litter",
+						"CellType": "percent"
+					},
+					"PitStorage": {
+						"Row": 5,
+						"Col": 2,
+						"Label": "Pit storage",
+						"CellType": "percent"
+					},
+					"DirectApplication": {
+						"Row": 6,
+						"Col": 2,
+						"Label": "Direct application",
+						"CellType": "formula"
+					}
+				}
+			}
+		},
+		{
+			"TableName": "X_Table_Swine_Stage2MMS_From_Drylot_Destinations",
+			"MatrixType": "RowsToCols",
+			"NumberOfRows": 6,
+			"NumberOfCols": 4,
+			"ColumnNames": {
+				"Col1": "",
+				"Sold": "Sold",
+				"FertForOwnFarm": "Fert for own farm (eg crop)",
+				"DirectApplicationToSoil": "Direct application to soil"
+			},
+			"Rows": {
+				"Row": {
+					"Col1": {
+						"Row": 2,
+						"Col": 1,
+						"CellType": "number"
+					},
+					"Sold": {
+						"Row": 2,
+						"Col": 2,
+						"Header": "Sold",
+						"CellType": "percent"
+					},
+					"FertForOwnFarm": {
+						"Row": 2,
+						"Col": 3,
+						"Header": "Fert for own farm (eg crop)",
+						"CellType": "percent",
+						"Unit": "eg crop"
+					},
+					"DirectApplicationToSoil": {
+						"Row": 2,
+						"Col": 4,
+						"Header": "Direct application to soil",
+						"CellType": "formula"
+					}
+				}
+			}
+		},
+		{
+			"TableName": "X_Table_Swine_Stage2MMS_From_PitStorage",
+			"MatrixType": "ColsToRows",
+			"NumberOfRows": 5,
+			"NumberOfCols": 4,
+			"ColumnNames": {
+				"ManureWasSentToThisMMSPleaseCompleteThisSection": "Manure was sent to this MMS, please complete this section.",
+				"Col3": "",
+				"Col4": "",
+				"Col5": ""
+			},
+			"Cols": {
+				"Column": {
+					"AnaerobicLagoon": {
+						"Row": 2,
+						"Col": 2,
+						"Label": "Anaerobic lagoon",
+						"CellType": "percent"
+					},
+					"DigesterCoveredLagoons": {
+						"Row": 3,
+						"Col": 2,
+						"Label": "Digester / covered lagoons",
+						"CellType": "percent"
+					},
+					"DeepLitter": {
+						"Row": 4,
+						"Col": 2,
+						"Label": "Deep litter",
+						"CellType": "percent"
+					},
+					"DirectApplication": {
+						"Row": 5,
+						"Col": 2,
+						"Label": "Direct application",
+						"CellType": "formula"
+					}
+				}
+			}
+		},
+		{
+			"TableName": "X_Table_Swine_Stage2MMS_From_PitStorage_Destinations",
+			"MatrixType": "RowsToCols",
+			"NumberOfRows": 5,
+			"NumberOfCols": 4,
+			"ColumnNames": {
+				"Col1": "",
+				"Sold": "Sold",
+				"FertForOwnFarm": "Fert for own farm (eg crop)",
+				"DirectApplicationToSoil": "Direct application to soil"
+			},
+			"Rows": {
+				"Row": {
+					"Col1": {
+						"Row": 2,
+						"Col": 1,
+						"CellType": "number"
+					},
+					"Sold": {
+						"Row": 2,
+						"Col": 2,
+						"Header": "Sold",
+						"CellType": "percent"
+					},
+					"FertForOwnFarm": {
+						"Row": 2,
+						"Col": 3,
+						"Header": "Fert for own farm (eg crop)",
+						"CellType": "percent",
+						"Unit": "eg crop"
+					},
+					"DirectApplicationToSoil": {
+						"Row": 2,
+						"Col": 4,
+						"Header": "Direct application to soil",
+						"CellType": "formula"
+					}
+				}
+			}
+		},
+		{
+			"TableName": "X_Table_Swine_Stage2MMS_From_SolidStorage",
+			"MatrixType": "ColsToRows",
+			"NumberOfRows": 6,
+			"NumberOfCols": 4,
+			"ColumnNames": {
+				"ManureWasSentToThisMMSPleaseCompleteThisSection": "Manure was sent to this MMS, please complete this section.",
+				"Col3": "",
+				"Col4": "",
+				"Col5": ""
+			},
+			"Cols": {
+				"Column": {
+					"AnaerobicLagoon": {
+						"Row": 2,
+						"Col": 2,
+						"Label": "Anaerobic lagoon",
+						"CellType": "percent"
+					},
+					"DigesterCoveredLagoons": {
+						"Row": 3,
+						"Col": 2,
+						"Label": "Digester / covered lagoons",
+						"CellType": "percent"
+					},
+					"DeepLitter": {
+						"Row": 4,
+						"Col": 2,
+						"Label": "Deep litter",
+						"CellType": "percent"
+					},
+					"PitStorage": {
+						"Row": 5,
+						"Col": 2,
+						"Label": "Pit storage",
+						"CellType": "percent"
+					},
+					"DirectApplication": {
+						"Row": 6,
+						"Col": 2,
+						"Label": "Direct application",
+						"CellType": "formula"
+					}
+				}
+			}
+		},
+		{
+			"TableName": "X_Table_Swine_Stage2MMS_From_SolidStorage_Destinations",
+			"MatrixType": "RowsToCols",
+			"NumberOfRows": 6,
+			"NumberOfCols": 4,
+			"ColumnNames": {
+				"Col1": "",
+				"Sold": "Sold",
+				"FertForOwnFarm": "Fert for own farm (eg crop)",
+				"DirectApplicationToSoil": "Direct application to soil"
+			},
+			"Rows": {
+				"Row": {
+					"Col1": {
+						"Row": 2,
+						"Col": 1,
+						"CellType": "number"
+					},
+					"Sold": {
+						"Row": 2,
+						"Col": 2,
+						"Header": "Sold",
+						"CellType": "percent"
+					},
+					"FertForOwnFarm": {
+						"Row": 2,
+						"Col": 3,
+						"Header": "Fert for own farm (eg crop)",
+						"CellType": "percent",
+						"Unit": "eg crop"
+					},
+					"DirectApplicationToSoil": {
+						"Row": 2,
+						"Col": 4,
+						"Header": "Direct application to soil",
+						"CellType": "formula"
+					}
+				}
+			}
+		}
+	]
 }

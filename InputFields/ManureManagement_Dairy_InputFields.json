@@ -1,1022 +1,1022 @@
 {
-    "schemaVersion":  1,
-    "generatedFrom":  "4_3_ManureManagement_Dairy_WIP_v12.xlsx",
-    "generatedAt":  "2026-06-26T05:49:28Z",
-    "InputCells":  [
-                       {
-                           "CellName":  "X_Cell_Dairy_Breed",
-                           "CellType":  "select",
-                           "Options":  {
-                                           "Medium Friesian":  "Medium Friesian",
-                                           "Large Friesian":  "Large Friesian",
-                                           "Holstein-Friesian":  "Holstein-Friesian",
-                                           "Friesian crossbred":  "Friesian crossbred",
-                                           "Jersey":  "Jersey",
-                                           "Jersey crossbred":  "Jersey crossbred",
-                                           "Ayrshire":  "Ayrshire",
-                                           "Guernsey":  "Guernsey",
-                                           "Brown Swiss":  "Brown Swiss",
-                                           "Illawarra/Aussie Red":  "Illawarra/Aussie Red"
-                                       }
-                       },
-                       {
-                           "CellName":  "X_Cell_Dairy_ManureAppliedIrrigationMethod",
-                           "CellType":  "select",
-                           "Options":  {
-                                           "Not irrigated":  "Not irrigated",
-                                           "Drip irrigation":  "Drip irrigation",
-                                           "Sprinkler irrigation":  "Sprinkler irrigation",
-                                           "Surface irrigation":  "Surface irrigation",
-                                           "Other irrigation":  "Other irrigation"
-                                       }
-                       },
-                       {
-                           "CellName":  "X_Cell_Dairy_ManureAppliedProductionSystem",
-                           "CellType":  "select",
-                           "Options":  {
-                                           "Pasture":  "Pasture",
-                                           "Crop":  "Crop"
-                                       }
-                       },
-                       {
-                           "CellName":  "X_Cell_Dairy_MilkProductionAmount",
-                           "CellType":  "number"
-                       },
-                       {
-                           "CellName":  "X_Cell_Dairy_MilkProductionUnit",
-                           "CellType":  "select",
-                           "Options":  {
-                                           "Litres of milk":  "Litres of milk",
-                                           "Milk solids":  "Milk solids"
-                                       }
-                       },
-                       {
-                           "CellName":  "X_Cell_Dairy_ProductionSystemTemplate",
-                           "CellType":  "select",
-                           "Options":  {
-                                           "System 1: Grazed Only":  "System 1: Grazed Only",
-                                           "System 2: On feedpad for <10 hr/day for <3 months/year":  "System 2: On feedpad for <10 hr/day for <3 months/year",
-                                           "System 3: Pasture-grazed 3-9 months/year":  "System 3: Pasture-grazed 3-9 months/year",
-                                           "System 4: Zero grazing":  "System 4: Zero grazing"
-                                       }
-                       },
-                       {
-                           "CellName":  "X_Cell_Dairy_Stage1MMS_1_AnaerobicLagoon_AmountSeparated_Method1",
-                           "CellType":  "percent"
-                       },
-                       {
-                           "CellName":  "X_Cell_Dairy_Stage1MMS_1_AnaerobicLagoon_AmountSeparated_Method2",
-                           "CellType":  "percent",
-                           "CanOverWriteFormula":  true
-                       },
-                       {
-                           "CellName":  "X_Cell_Dairy_Stage1MMS_1_AnaerobicLagoon_SolidsSeparated",
-                           "CellType":  "select",
-                           "Options":  {
-                                           "Yes":  "Yes",
-                                           "No":  "No"
-                                       }
-                       },
-                       {
-                           "CellName":  "X_Cell_Dairy_Stage1MMS_1_DrainsToPaddock_AmountSeparated_Method1",
-                           "CellType":  "percent"
-                       },
-                       {
-                           "CellName":  "X_Cell_Dairy_Stage1MMS_1_DrainsToPaddock_AmountSeparated_Method2",
-                           "CellType":  "percent",
-                           "CanOverWriteFormula":  true
-                       },
-                       {
-                           "CellName":  "X_Cell_Dairy_Stage1MMS_1_DrainsToPaddock_SolidsSeparated",
-                           "CellType":  "select",
-                           "Options":  {
-                                           "Yes":  "Yes",
-                                           "No":  "No"
-                                       }
-                       },
-                       {
-                           "CellName":  "X_Cell_Dairy_Stage1MMS_1_SumpAndDispersal_AmountSeparated_Method1",
-                           "CellType":  "percent"
-                       },
-                       {
-                           "CellName":  "X_Cell_Dairy_Stage1MMS_1_SumpAndDispersal_AmountSeparated_Method2",
-                           "CellType":  "percent",
-                           "CanOverWriteFormula":  true
-                       },
-                       {
-                           "CellName":  "X_Cell_Dairy_Stage1MMS_1_SumpAndDispersal_SolidsSeparated",
-                           "CellType":  "select",
-                           "Options":  {
-                                           "Yes":  "Yes",
-                                           "No":  "No"
-                                       }
-                       },
-                       {
-                           "CellName":  "X_Cell_Dairy_Stage1MMS_2_AnaerobicLagoon_AmountSeparated_Method1",
-                           "CellType":  "percent"
-                       },
-                       {
-                           "CellName":  "X_Cell_Dairy_Stage1MMS_2_AnaerobicLagoon_AmountSeparated_Method2",
-                           "CellType":  "percent",
-                           "CanOverWriteFormula":  true
-                       },
-                       {
-                           "CellName":  "X_Cell_Dairy_Stage1MMS_2_AnaerobicLagoon_SolidsSeparated",
-                           "CellType":  "select",
-                           "Options":  {
-                                           "Yes":  "Yes",
-                                           "No":  "No"
-                                       }
-                       },
-                       {
-                           "CellName":  "X_Cell_Dairy_Stage1MMS_2_DrainsToPaddock_AmountSeparated_Method1",
-                           "CellType":  "percent"
-                       },
-                       {
-                           "CellName":  "X_Cell_Dairy_Stage1MMS_2_DrainsToPaddock_AmountSeparated_Method2",
-                           "CellType":  "percent",
-                           "CanOverWriteFormula":  true
-                       },
-                       {
-                           "CellName":  "X_Cell_Dairy_Stage1MMS_2_DrainsToPaddock_SolidsSeparated",
-                           "CellType":  "select",
-                           "Options":  {
-                                           "Yes":  "Yes",
-                                           "No":  "No"
-                                       }
-                       },
-                       {
-                           "CellName":  "X_Cell_Dairy_Stage1MMS_2_SumpAndDispersal_AmountSeparated_Method1",
-                           "CellType":  "percent"
-                       },
-                       {
-                           "CellName":  "X_Cell_Dairy_Stage1MMS_2_SumpAndDispersal_AmountSeparated_Method2",
-                           "CellType":  "percent",
-                           "CanOverWriteFormula":  true
-                       },
-                       {
-                           "CellName":  "X_Cell_Dairy_Stage1MMS_2_SumpAndDispersal_SolidsSeparated",
-                           "CellType":  "select",
-                           "Options":  {
-                                           "Yes":  "Yes",
-                                           "No":  "No"
-                                       }
-                       },
-                       {
-                           "CellName":  "X_Cell_Site_AverageTemperature",
-                           "CellType":  "number"
-                       },
-                       {
-                           "CellName":  "X_Cell_Site_Elevation",
-                           "CellType":  "number"
-                       },
-                       {
-                           "CellName":  "X_Cell_Site_FarmName",
-                           "CellType":  "text"
-                       },
-                       {
-                           "CellName":  "X_Cell_Site_FrostDays",
-                           "CellType":  "number"
-                       },
-                       {
-                           "CellName":  "X_Cell_Site_LeachingZone",
-                           "CellType":  "select",
-                           "Options":  {
-                                           "YES - In leaching zone":  "YES - In leaching zone",
-                                           "NO - Not in leaching zone":  "NO - Not in leaching zone"
-                                       }
-                       },
-                       {
-                           "CellName":  "X_Cell_Site_PotentialEvapotranspiration",
-                           "CellType":  "number"
-                       },
-                       {
-                           "CellName":  "X_Cell_Site_Region",
-                           "CellType":  "select",
-                           "Options":  {
-                                           "Bunbury":  "Bunbury",
-                                           "Mandurah":  "Mandurah",
-                                           "Perth - Inner":  "Perth - Inner",
-                                           "Perth - North East":  "Perth - North East",
-                                           "Perth - North West":  "Perth - North West",
-                                           "Perth - South East":  "Perth - South East",
-                                           "Perth - South West":  "Perth - South West",
-                                           "Western Australia - Wheat Belt":  "Western Australia - Wheat Belt",
-                                           "Western Australia - Outback (North)":  "Western Australia - Outback (North)",
-                                           "Western Australia - Outback (South)":  "Western Australia - Outback (South)"
-                                       }
-                       },
-                       {
-                           "CellName":  "X_Cell_Site_ReportingEntityName",
-                           "CellType":  "text"
-                       },
-                       {
-                           "CellName":  "X_Cell_Site_StartDate",
-                           "CellType":  "number"
-                       },
-                       {
-                           "CellName":  "X_Cell_Site_State",
-                           "CellType":  "select",
-                           "Options":  {
-                                           "New South Wales":  "New South Wales",
-                                           "ACT":  "ACT",
-                                           "Victoria":  "Victoria",
-                                           "Queensland":  "Queensland",
-                                           "South Australia":  "South Australia",
-                                           "Western Australia":  "Western Australia",
-                                           "Tasmania":  "Tasmania",
-                                           "Northern Territory":  "Northern Territory"
-                                       }
-                       },
-                       {
-                           "CellName":  "X_Cell_Site_TotalRainfall",
-                           "CellType":  "number"
-                       }
-                   ],
-    "InputTables":  [
-                        {
-                            "TableName":  "X_Table_Dairy_Diet_Method1",
-                            "MatrixType":  "ColsToRows",
-                            "NumberOfRows":  3,
-                            "NumberOfCols":  5,
-                            "ColumnNames":  {
-                                                "MilkingCows":  "Milking cows",
-                                                "HeifersOver1Year":  "Heifers > 1 year",
-                                                "HeifersUnder1Year":  "Heifers < 1 year",
-                                                "BullsOver1Year":  "Bulls > 1 year",
-                                                "BullsUnder1Year":  "Bulls < 1 year"
-                                            },
-                            "Cols":  {
-                                         "Column":  {
-                                                        "DryMatterDigestibility":  {
-                                                                                       "Row":  2,
-                                                                                       "Col":  2,
-                                                                                       "Label":  "Dry matter digestibility",
-                                                                                       "CellType":  "formula"
-                                                                                   },
-                                                        "CrudeProtein":  {
-                                                                             "Row":  3,
-                                                                             "Col":  2,
-                                                                             "Label":  "Crude protein",
-                                                                             "CellType":  "formula"
-                                                                         }
-                                                    }
-                                     }
-                        },
-                        {
-                            "TableName":  "X_Table_Dairy_Diet_Method2",
-                            "MatrixType":  "ColsToRows",
-                            "NumberOfRows":  3,
-                            "NumberOfCols":  5,
-                            "ColumnNames":  {
-                                                "MilkingCows":  "Milking cows",
-                                                "HeifersOver1Year":  "Heifers > 1 year",
-                                                "HeifersUnder1Year":  "Heifers < 1 year",
-                                                "BullsOver1Year":  "Bulls > 1 year",
-                                                "BullsUnder1Year":  "Bulls < 1 year"
-                                            },
-                            "Cols":  {
-                                         "Column":  {
-                                                        "DryMatterDigestibility":  {
-                                                                                       "Row":  2,
-                                                                                       "Col":  2,
-                                                                                       "Label":  "Dry matter digestibility",
-                                                                                       "CellType":  "number",
-                                                                                       "CanOverWriteFormula":  true
-                                                                                   },
-                                                        "CrudeProtein":  {
-                                                                             "Row":  3,
-                                                                             "Col":  2,
-                                                                             "Label":  "Crude protein",
-                                                                             "CellType":  "number",
-                                                                             "CanOverWriteFormula":  true
-                                                                         }
-                                                    }
-                                     }
-                        },
-                        {
-                            "TableName":  "X_Table_Dairy_DurationOfStay_Method1",
-                            "MatrixType":  "ColsToRows",
-                            "NumberOfRows":  3,
-                            "NumberOfCols":  5,
-                            "ColumnNames":  {
-                                                "MilkingCows":  "Milking cows",
-                                                "HeifersOver1Year":  "Heifers > 1 year",
-                                                "HeifersUnder1Year":  "Heifers < 1 year",
-                                                "BullsOver1Year":  "Bulls > 1 year",
-                                                "BullsUnder1Year":  "Bulls < 1 year"
-                                            },
-                            "Cols":  {
-                                         "Column":  {
-                                                        "AverageDurationOfStayBetween01Jan24And31Dec24WeanedLivestock":  {
-                                                                                                                             "Row":  2,
-                                                                                                                             "Col":  2,
-                                                                                                                             "Label":  "Average duration of stay between 01 Jan 24 and 31 Dec 24 weaned livestock",
-                                                                                                                             "CellType":  "formula"
-                                                                                                                         },
-                                                        "AverageDurationOfStayBetween01Jan24And31Dec24PreWeanedLivestock":  {
-                                                                                                                                "Row":  3,
-                                                                                                                                "Col":  2,
-                                                                                                                                "Label":  "Average duration of stay between 01 Jan 24 and 31 Dec 24 pre-weaned livestock",
-                                                                                                                                "CellType":  "formula"
-                                                                                                                            }
-                                                    }
-                                     }
-                        },
-                        {
-                            "TableName":  "X_Table_Dairy_DurationOfStay_Method2",
-                            "MatrixType":  "ColsToRows",
-                            "NumberOfRows":  3,
-                            "NumberOfCols":  5,
-                            "ColumnNames":  {
-                                                "MilkingCows":  "Milking cows",
-                                                "HeifersOver1Year":  "Heifers > 1 year",
-                                                "HeifersUnder1Year":  "Heifers < 1 year",
-                                                "BullsOver1Year":  "Bulls > 1 year",
-                                                "BullsUnder1Year":  "Bulls < 1 year"
-                                            },
-                            "Cols":  {
-                                         "Column":  {
-                                                        "AverageDurationOfStayBetween01Jan24And31Dec24WeanedLivestock":  {
-                                                                                                                             "Row":  2,
-                                                                                                                             "Col":  2,
-                                                                                                                             "Label":  "Average duration of stay between 01 Jan 24 and 31 Dec 24 weaned livestock",
-                                                                                                                             "CellType":  "number",
-                                                                                                                             "CanOverWriteFormula":  true
-                                                                                                                         },
-                                                        "AverageDurationOfStayBetween01Jan24And31Dec24PreWeanedLivestock":  {
-                                                                                                                                "Row":  3,
-                                                                                                                                "Col":  2,
-                                                                                                                                "Label":  "Average duration of stay between 01 Jan 24 and 31 Dec 24 pre-weaned livestock",
-                                                                                                                                "CellType":  "number",
-                                                                                                                                "CanOverWriteFormula":  true
-                                                                                                                            }
-                                                    }
-                                     }
-                        },
-                        {
-                            "TableName":  "X_Table_Dairy_HerdMovement",
-                            "MatrixType":  "ColsToRows",
-                            "NumberOfRows":  2,
-                            "NumberOfCols":  5,
-                            "ColumnNames":  {
-                                                "MilkingCows":  "Milking cows",
-                                                "HeifersOver1Year":  "Heifers > 1 year",
-                                                "HeifersUnder1Year":  "Heifers < 1 year",
-                                                "BullsOver1Year":  "Bulls > 1 year",
-                                                "BullsUnder1Year":  "Bulls < 1 year"
-                                            },
-                            "Cols":  {
-                                         "Column":  {
-                                                        "AverageNumberOfHeadBetween01Jan24And31Dec24":  {
-                                                                                                            "Row":  2,
-                                                                                                            "Col":  2,
-                                                                                                            "Label":  "Average number of head between 01 Jan 24 and 31 Dec 24",
-                                                                                                            "CellType":  "number"
-                                                                                                        }
-                                                    }
-                                     }
-                        },
-                        {
-                            "TableName":  "X_Table_Dairy_Liveweight_Method1",
-                            "MatrixType":  "ColsToRows",
-                            "NumberOfRows":  3,
-                            "NumberOfCols":  5,
-                            "ColumnNames":  {
-                                                "MilkingCows":  "Milking cows",
-                                                "HeifersOver1Year":  "Heifers > 1 year",
-                                                "HeifersUnder1Year":  "Heifers < 1 year",
-                                                "BullsOver1Year":  "Bulls > 1 year",
-                                                "BullsUnder1Year":  "Bulls < 1 year"
-                                            },
-                            "Cols":  {
-                                         "Column":  {
-                                                        "AverageLiveweight":  {
-                                                                                  "Row":  2,
-                                                                                  "Col":  2,
-                                                                                  "Label":  "Average liveweight",
-                                                                                  "CellType":  "formula"
-                                                                              },
-                                                        "AverageLiveweightGain":  {
-                                                                                      "Row":  3,
-                                                                                      "Col":  2,
-                                                                                      "Label":  "Average liveweight gain",
-                                                                                      "CellType":  "formula"
-                                                                                  }
-                                                    }
-                                     }
-                        },
-                        {
-                            "TableName":  "X_Table_Dairy_Liveweight_Method2",
-                            "MatrixType":  "ColsToRows",
-                            "NumberOfRows":  3,
-                            "NumberOfCols":  5,
-                            "ColumnNames":  {
-                                                "MilkingCows":  "Milking cows",
-                                                "HeifersOver1Year":  "Heifers > 1 year",
-                                                "HeifersUnder1Year":  "Heifers < 1 year",
-                                                "BullsOver1Year":  "Bulls > 1 year",
-                                                "BullsUnder1Year":  "Bulls < 1 year"
-                                            },
-                            "Cols":  {
-                                         "Column":  {
-                                                        "AverageLiveweight":  {
-                                                                                  "Row":  2,
-                                                                                  "Col":  2,
-                                                                                  "Label":  "Average liveweight",
-                                                                                  "CellType":  "number",
-                                                                                  "CanOverWriteFormula":  true
-                                                                              },
-                                                        "AverageLiveweightGain":  {
-                                                                                      "Row":  3,
-                                                                                      "Col":  2,
-                                                                                      "Label":  "Average liveweight gain",
-                                                                                      "CellType":  "number",
-                                                                                      "CanOverWriteFormula":  true
-                                                                                  }
-                                                    }
-                                     }
-                        },
-                        {
-                            "TableName":  "X_Table_Dairy_MilkSolidAttributes",
-                            "MatrixType":  "ColsToRows",
-                            "NumberOfRows":  3,
-                            "NumberOfCols":  2,
-                            "ColumnNames":  {
-                                                "Method1":  "Method 1 (don't edit)",
-                                                "Method2":  "Method 2 (edit if known)"
-                                            },
-                            "Cols":  {
-                                         "Column":  {
-                                                        "FatContentInFatAndProteinCorrectedMilk":  {
-                                                                                                       "Row":  2,
-                                                                                                       "Col":  2,
-                                                                                                       "Label":  "Fat content in fat and protein corrected milk",
-                                                                                                       "CellType":  "formula"
-                                                                                                   },
-                                                        "ProteinContentInFatAndProteinCorrectedMilk":  {
-                                                                                                           "Row":  3,
-                                                                                                           "Col":  2,
-                                                                                                           "Label":  "Protein content in fat and protein corrected milk",
-                                                                                                           "CellType":  "formula"
-                                                                                                       }
-                                                    }
-                                     }
-                        },
-                        {
-                            "TableName":  "X_Table_Dairy_ProductionSystems_Method1",
-                            "MatrixType":  "ColsToRows",
-                            "NumberOfRows":  4,
-                            "NumberOfCols":  5,
-                            "ColumnNames":  {
-                                                "MilkingCows":  "Milking cows",
-                                                "HeifersOver1Year":  "Heifers > 1 year",
-                                                "HeifersUnder1Year":  "Heifers < 1 year",
-                                                "BullsOver1Year":  "Bulls > 1 year",
-                                                "BullsUnder1Year":  "Bulls < 1 year"
-                                            },
-                            "Cols":  {
-                                         "Column":  {
-                                                        "Pasture":  {
-                                                                        "Row":  2,
-                                                                        "Col":  2,
-                                                                        "Label":  "Pasture",
-                                                                        "CellType":  "formula"
-                                                                    },
-                                                        "MilkingShed":  {
-                                                                            "Row":  3,
-                                                                            "Col":  2,
-                                                                            "Label":  "Milking shed",
-                                                                            "CellType":  "formula"
-                                                                        },
-                                                        "FeedPad":  {
-                                                                        "Row":  4,
-                                                                        "Col":  2,
-                                                                        "Label":  "Feed pad",
-                                                                        "CellType":  "formula"
-                                                                    }
-                                                    }
-                                     }
-                        },
-                        {
-                            "TableName":  "X_Table_Dairy_ProductionSystems_Method2",
-                            "MatrixType":  "ColsToRows",
-                            "NumberOfRows":  4,
-                            "NumberOfCols":  5,
-                            "ColumnNames":  {
-                                                "MilkingCows":  "Milking cows",
-                                                "HeifersOver1Year":  "Heifers > 1 year",
-                                                "HeifersUnder1Year":  "Heifers < 1 year",
-                                                "BullsOver1Year":  "Bulls > 1 year",
-                                                "BullsUnder1Year":  "Bulls < 1 year"
-                                            },
-                            "Cols":  {
-                                         "Column":  {
-                                                        "Pasture":  {
-                                                                        "Row":  2,
-                                                                        "Col":  2,
-                                                                        "Label":  "Pasture",
-                                                                        "CellType":  "percent",
-                                                                        "CanOverWriteFormula":  true
-                                                                    },
-                                                        "MilkingShed":  {
-                                                                            "Row":  3,
-                                                                            "Col":  2,
-                                                                            "Label":  "Milking shed",
-                                                                            "CellType":  "percent",
-                                                                            "CanOverWriteFormula":  true
-                                                                        },
-                                                        "FeedPad":  {
-                                                                        "Row":  4,
-                                                                        "Col":  2,
-                                                                        "Label":  "Feed pad",
-                                                                        "CellType":  "percent",
-                                                                        "CanOverWriteFormula":  true
-                                                                    }
-                                                    }
-                                     }
-                        },
-                        {
-                            "TableName":  "X_Table_Dairy_Stage1MMS_1_AnaerobicLagoon",
-                            "MatrixType":  "ColsToRows",
-                            "NumberOfRows":  2,
-                            "NumberOfCols":  5,
-                            "ColumnNames":  {
-                                                "Col2":  "",
-                                                "Col3":  "",
-                                                "Col4":  "",
-                                                "Col5":  "",
-                                                "Col6":  ""
-                                            },
-                            "Cols":  {
-                                         "Column":  {
-                                                        "AnaerobicLagoon":  {
-                                                                                "Row":  2,
-                                                                                "Col":  2,
-                                                                                "Label":  "Anaerobic lagoon",
-                                                                                "CellType":  "percent"
-                                                                            }
-                                                    }
-                                     }
-                        },
-                        {
-                            "TableName":  "X_Table_Dairy_Stage1MMS_1_AnaerobicLagoon_Destinations",
-                            "MatrixType":  "RowsToCols",
-                            "NumberOfRows":  2,
-                            "NumberOfCols":  4,
-                            "ColumnNames":  {
-                                                "Col1":  "",
-                                                "Sold":  "Sold",
-                                                "FertForOwnFarm":  "Fert for own farm (eg crop)",
-                                                "DirectApplicationToSoil":  "Direct application to soil"
-                                            },
-                            "Rows":  {
-                                         "Row":  {
-                                                     "Col1":  {
-                                                                  "Row":  2,
-                                                                  "Col":  1,
-                                                                  "CellType":  "number"
-                                                              },
-                                                     "Sold":  {
-                                                                  "Row":  2,
-                                                                  "Col":  2,
-                                                                  "Header":  "Sold",
-                                                                  "CellType":  "percent"
-                                                              },
-                                                     "FertForOwnFarm":  {
-                                                                            "Row":  2,
-                                                                            "Col":  3,
-                                                                            "Header":  "Fert for own farm (eg crop)",
-                                                                            "CellType":  "percent",
-                                                                            "Unit":  "eg crop"
-                                                                        },
-                                                     "DirectApplicationToSoil":  {
-                                                                                     "Row":  2,
-                                                                                     "Col":  4,
-                                                                                     "Header":  "Direct application to soil",
-                                                                                     "CellType":  "formula"
-                                                                                 }
-                                                 }
-                                     }
-                        },
-                        {
-                            "TableName":  "X_Table_Dairy_Stage1MMS_1_DrainsToPaddock",
-                            "MatrixType":  "ColsToRows",
-                            "NumberOfRows":  2,
-                            "NumberOfCols":  5,
-                            "ColumnNames":  {
-                                                "Col2":  "",
-                                                "Col3":  "",
-                                                "Col4":  "",
-                                                "Col5":  "",
-                                                "Col6":  ""
-                                            },
-                            "Cols":  {
-                                         "Column":  {
-                                                        "DrainsToPaddock":  {
-                                                                                "Row":  2,
-                                                                                "Col":  2,
-                                                                                "Label":  "Drains to paddock",
-                                                                                "CellType":  "percent"
-                                                                            }
-                                                    }
-                                     }
-                        },
-                        {
-                            "TableName":  "X_Table_Dairy_Stage1MMS_1_DrainsToPaddock_Destinations",
-                            "MatrixType":  "RowsToCols",
-                            "NumberOfRows":  2,
-                            "NumberOfCols":  4,
-                            "ColumnNames":  {
-                                                "Col1":  "",
-                                                "Col2":  "",
-                                                "Col3":  "",
-                                                "Col4":  ""
-                                            },
-                            "Rows":  {
-                                         "Row":  {
-                                                     "Col1":  {
-                                                                  "Row":  2,
-                                                                  "Col":  1,
-                                                                  "CellType":  "number"
-                                                              },
-                                                     "Col2":  {
-                                                                  "Row":  2,
-                                                                  "Col":  2,
-                                                                  "CellType":  "percent"
-                                                              },
-                                                     "Col3":  {
-                                                                  "Row":  2,
-                                                                  "Col":  3,
-                                                                  "CellType":  "percent"
-                                                              },
-                                                     "Col4":  {
-                                                                  "Row":  2,
-                                                                  "Col":  4,
-                                                                  "CellType":  "formula"
-                                                              }
-                                                 }
-                                     }
-                        },
-                        {
-                            "TableName":  "X_Table_Dairy_Stage1MMS_1_SolidStorage",
-                            "MatrixType":  "ColsToRows",
-                            "NumberOfRows":  2,
-                            "NumberOfCols":  5,
-                            "ColumnNames":  {
-                                                "Col2":  "",
-                                                "Col3":  "",
-                                                "Col4":  "",
-                                                "Col5":  "",
-                                                "Col6":  ""
-                                            },
-                            "Cols":  {
-                                         "Column":  {
-                                                        "SolidStorage":  {
-                                                                             "Row":  2,
-                                                                             "Col":  2,
-                                                                             "Label":  "Solid storage (before solid separation)",
-                                                                             "CellType":  "percent",
-                                                                             "Unit":  "before solid separation"
-                                                                         }
-                                                    }
-                                     }
-                        },
-                        {
-                            "TableName":  "X_Table_Dairy_Stage1MMS_1_SolidStorage_Destinations",
-                            "MatrixType":  "RowsToCols",
-                            "NumberOfRows":  2,
-                            "NumberOfCols":  4,
-                            "ColumnNames":  {
-                                                "Col1":  "",
-                                                "Col2":  "",
-                                                "Col3":  "",
-                                                "Col4":  ""
-                                            },
-                            "Rows":  {
-                                         "Row":  {
-                                                     "Col1":  {
-                                                                  "Row":  2,
-                                                                  "Col":  1,
-                                                                  "CellType":  "number"
-                                                              },
-                                                     "Col2":  {
-                                                                  "Row":  2,
-                                                                  "Col":  2,
-                                                                  "CellType":  "percent"
-                                                              },
-                                                     "Col3":  {
-                                                                  "Row":  2,
-                                                                  "Col":  3,
-                                                                  "CellType":  "percent"
-                                                              },
-                                                     "Col4":  {
-                                                                  "Row":  2,
-                                                                  "Col":  4,
-                                                                  "CellType":  "formula"
-                                                              }
-                                                 }
-                                     }
-                        },
-                        {
-                            "TableName":  "X_Table_Dairy_Stage1MMS_1_SumpAndDispersal",
-                            "MatrixType":  "ColsToRows",
-                            "NumberOfRows":  2,
-                            "NumberOfCols":  5,
-                            "ColumnNames":  {
-                                                "Col2":  "",
-                                                "Col3":  "",
-                                                "Col4":  "",
-                                                "Col5":  "",
-                                                "Col6":  ""
-                                            },
-                            "Cols":  {
-                                         "Column":  {
-                                                        "SumpAndDispersalSystem":  {
-                                                                                       "Row":  2,
-                                                                                       "Col":  2,
-                                                                                       "Label":  "Sump and dispersal system",
-                                                                                       "CellType":  "percent"
-                                                                                   }
-                                                    }
-                                     }
-                        },
-                        {
-                            "TableName":  "X_Table_Dairy_Stage1MMS_1_SumpAndDispersal_Destinations",
-                            "MatrixType":  "RowsToCols",
-                            "NumberOfRows":  2,
-                            "NumberOfCols":  4,
-                            "ColumnNames":  {
-                                                "Col1":  "",
-                                                "Col2":  "",
-                                                "Col3":  "",
-                                                "Col4":  ""
-                                            },
-                            "Rows":  {
-                                         "Row":  {
-                                                     "Col1":  {
-                                                                  "Row":  2,
-                                                                  "Col":  1,
-                                                                  "CellType":  "number"
-                                                              },
-                                                     "Col2":  {
-                                                                  "Row":  2,
-                                                                  "Col":  2,
-                                                                  "CellType":  "percent"
-                                                              },
-                                                     "Col3":  {
-                                                                  "Row":  2,
-                                                                  "Col":  3,
-                                                                  "CellType":  "percent"
-                                                              },
-                                                     "Col4":  {
-                                                                  "Row":  2,
-                                                                  "Col":  4,
-                                                                  "CellType":  "formula"
-                                                              }
-                                                 }
-                                     }
-                        },
-                        {
-                            "TableName":  "X_Table_Dairy_Stage1MMS_2_AnaerobicLagoon",
-                            "MatrixType":  "ColsToRows",
-                            "NumberOfRows":  2,
-                            "NumberOfCols":  5,
-                            "ColumnNames":  {
-                                                "Col2":  "",
-                                                "Col3":  "",
-                                                "Col4":  "",
-                                                "Col5":  "",
-                                                "Col6":  ""
-                                            },
-                            "Cols":  {
-                                         "Column":  {
-                                                        "AnaerobicLagoon":  {
-                                                                                "Row":  2,
-                                                                                "Col":  2,
-                                                                                "Label":  "Anaerobic lagoon",
-                                                                                "CellType":  "percent"
-                                                                            }
-                                                    }
-                                     }
-                        },
-                        {
-                            "TableName":  "X_Table_Dairy_Stage1MMS_2_AnaerobicLagoon_Destinations",
-                            "MatrixType":  "RowsToCols",
-                            "NumberOfRows":  2,
-                            "NumberOfCols":  4,
-                            "ColumnNames":  {
-                                                "Col1":  "",
-                                                "Sold":  "Sold",
-                                                "FertForOwnFarm":  "Fert for own farm (eg crop)",
-                                                "DirectApplicationToSoil":  "Direct application to soil"
-                                            },
-                            "Rows":  {
-                                         "Row":  {
-                                                     "Col1":  {
-                                                                  "Row":  2,
-                                                                  "Col":  1,
-                                                                  "CellType":  "number"
-                                                              },
-                                                     "Sold":  {
-                                                                  "Row":  2,
-                                                                  "Col":  2,
-                                                                  "Header":  "Sold",
-                                                                  "CellType":  "percent"
-                                                              },
-                                                     "FertForOwnFarm":  {
-                                                                            "Row":  2,
-                                                                            "Col":  3,
-                                                                            "Header":  "Fert for own farm (eg crop)",
-                                                                            "CellType":  "percent",
-                                                                            "Unit":  "eg crop"
-                                                                        },
-                                                     "DirectApplicationToSoil":  {
-                                                                                     "Row":  2,
-                                                                                     "Col":  4,
-                                                                                     "Header":  "Direct application to soil",
-                                                                                     "CellType":  "formula"
-                                                                                 }
-                                                 }
-                                     }
-                        },
-                        {
-                            "TableName":  "X_Table_Dairy_Stage1MMS_2_DrainsToPaddock",
-                            "MatrixType":  "ColsToRows",
-                            "NumberOfRows":  2,
-                            "NumberOfCols":  5,
-                            "ColumnNames":  {
-                                                "Col2":  "",
-                                                "Col3":  "",
-                                                "Col4":  "",
-                                                "Col5":  "",
-                                                "Col6":  ""
-                                            },
-                            "Cols":  {
-                                         "Column":  {
-                                                        "DrainsToPaddock":  {
-                                                                                "Row":  2,
-                                                                                "Col":  2,
-                                                                                "Label":  "Drains to paddock",
-                                                                                "CellType":  "percent"
-                                                                            }
-                                                    }
-                                     }
-                        },
-                        {
-                            "TableName":  "X_Table_Dairy_Stage1MMS_2_DrainsToPaddock_Destinations",
-                            "MatrixType":  "RowsToCols",
-                            "NumberOfRows":  2,
-                            "NumberOfCols":  4,
-                            "ColumnNames":  {
-                                                "Col1":  "",
-                                                "Col2":  "",
-                                                "Col3":  "",
-                                                "Col4":  ""
-                                            },
-                            "Rows":  {
-                                         "Row":  {
-                                                     "Col1":  {
-                                                                  "Row":  2,
-                                                                  "Col":  1,
-                                                                  "CellType":  "number"
-                                                              },
-                                                     "Col2":  {
-                                                                  "Row":  2,
-                                                                  "Col":  2,
-                                                                  "CellType":  "percent"
-                                                              },
-                                                     "Col3":  {
-                                                                  "Row":  2,
-                                                                  "Col":  3,
-                                                                  "CellType":  "percent"
-                                                              },
-                                                     "Col4":  {
-                                                                  "Row":  2,
-                                                                  "Col":  4,
-                                                                  "CellType":  "formula"
-                                                              }
-                                                 }
-                                     }
-                        },
-                        {
-                            "TableName":  "X_Table_Dairy_Stage1MMS_2_SolidStorage",
-                            "MatrixType":  "ColsToRows",
-                            "NumberOfRows":  2,
-                            "NumberOfCols":  5,
-                            "ColumnNames":  {
-                                                "Col2":  "",
-                                                "Col3":  "",
-                                                "Col4":  "",
-                                                "Col5":  "",
-                                                "Col6":  ""
-                                            },
-                            "Cols":  {
-                                         "Column":  {
-                                                        "SolidStorage":  {
-                                                                             "Row":  2,
-                                                                             "Col":  2,
-                                                                             "Label":  "Solid storage (before solid separation)",
-                                                                             "CellType":  "percent",
-                                                                             "Unit":  "before solid separation"
-                                                                         }
-                                                    }
-                                     }
-                        },
-                        {
-                            "TableName":  "X_Table_Dairy_Stage1MMS_2_SolidStorage_Destinations",
-                            "MatrixType":  "RowsToCols",
-                            "NumberOfRows":  2,
-                            "NumberOfCols":  4,
-                            "ColumnNames":  {
-                                                "Col1":  "",
-                                                "Col2":  "",
-                                                "Col3":  "",
-                                                "Col4":  ""
-                                            },
-                            "Rows":  {
-                                         "Row":  {
-                                                     "Col1":  {
-                                                                  "Row":  2,
-                                                                  "Col":  1,
-                                                                  "CellType":  "number"
-                                                              },
-                                                     "Col2":  {
-                                                                  "Row":  2,
-                                                                  "Col":  2,
-                                                                  "CellType":  "percent"
-                                                              },
-                                                     "Col3":  {
-                                                                  "Row":  2,
-                                                                  "Col":  3,
-                                                                  "CellType":  "percent"
-                                                              },
-                                                     "Col4":  {
-                                                                  "Row":  2,
-                                                                  "Col":  4,
-                                                                  "CellType":  "formula"
-                                                              }
-                                                 }
-                                     }
-                        },
-                        {
-                            "TableName":  "X_Table_Dairy_Stage1MMS_2_SumpAndDispersal",
-                            "MatrixType":  "ColsToRows",
-                            "NumberOfRows":  2,
-                            "NumberOfCols":  5,
-                            "ColumnNames":  {
-                                                "Col2":  "",
-                                                "Col3":  "",
-                                                "Col4":  "",
-                                                "Col5":  "",
-                                                "Col6":  ""
-                                            },
-                            "Cols":  {
-                                         "Column":  {
-                                                        "SumpAndDispersalSystem":  {
-                                                                                       "Row":  2,
-                                                                                       "Col":  2,
-                                                                                       "Label":  "Sump and dispersal system",
-                                                                                       "CellType":  "percent"
-                                                                                   }
-                                                    }
-                                     }
-                        },
-                        {
-                            "TableName":  "X_Table_Dairy_Stage1MMS_2_SumpAndDispersal_Destinations",
-                            "MatrixType":  "RowsToCols",
-                            "NumberOfRows":  2,
-                            "NumberOfCols":  4,
-                            "ColumnNames":  {
-                                                "Col1":  "",
-                                                "Col2":  "",
-                                                "Col3":  "",
-                                                "Col4":  ""
-                                            },
-                            "Rows":  {
-                                         "Row":  {
-                                                     "Col1":  {
-                                                                  "Row":  2,
-                                                                  "Col":  1,
-                                                                  "CellType":  "number"
-                                                              },
-                                                     "Col2":  {
-                                                                  "Row":  2,
-                                                                  "Col":  2,
-                                                                  "CellType":  "percent"
-                                                              },
-                                                     "Col3":  {
-                                                                  "Row":  2,
-                                                                  "Col":  3,
-                                                                  "CellType":  "percent"
-                                                              },
-                                                     "Col4":  {
-                                                                  "Row":  2,
-                                                                  "Col":  4,
-                                                                  "CellType":  "formula"
-                                                              }
-                                                 }
-                                     }
-                        }
-                    ]
+	"schemaVersion": 1,
+	"generatedFrom": "4_3_ManureManagement_Dairy_WIP_v12.xlsx",
+	"generatedAt": "2026-07-07T23:27:13Z",
+	"InputCells": [
+		{
+			"CellName": "X_Cell_Dairy_Breed",
+			"CellType": "select",
+			"Options": {
+				"Medium Friesian": "Medium Friesian",
+				"Large Friesian": "Large Friesian",
+				"Holstein-Friesian": "Holstein-Friesian",
+				"Friesian crossbred": "Friesian crossbred",
+				"Jersey": "Jersey",
+				"Jersey crossbred": "Jersey crossbred",
+				"Ayrshire": "Ayrshire",
+				"Guernsey": "Guernsey",
+				"Brown Swiss": "Brown Swiss",
+				"Illawarra/Aussie Red": "Illawarra/Aussie Red"
+			}
+		},
+		{
+			"CellName": "X_Cell_Dairy_ManureAppliedIrrigationMethod",
+			"CellType": "select",
+			"Options": {
+				"Not irrigated": "Not irrigated",
+				"Drip irrigation": "Drip irrigation",
+				"Sprinkler irrigation": "Sprinkler irrigation",
+				"Surface irrigation": "Surface irrigation",
+				"Other irrigation": "Other irrigation"
+			}
+		},
+		{
+			"CellName": "X_Cell_Dairy_ManureAppliedProductionSystem",
+			"CellType": "select",
+			"Options": {
+				"Pasture": "Pasture",
+				"Crop": "Crop"
+			}
+		},
+		{
+			"CellName": "X_Cell_Dairy_MilkProductionAmount",
+			"CellType": "number"
+		},
+		{
+			"CellName": "X_Cell_Dairy_MilkProductionUnit",
+			"CellType": "select",
+			"Options": {
+				"Litres of milk": "Litres of milk",
+				"Milk solids": "Milk solids"
+			}
+		},
+		{
+			"CellName": "X_Cell_Dairy_ProductionSystemTemplate",
+			"CellType": "select",
+			"Options": {
+				"System 1: Grazed Only": "System 1: Grazed Only",
+				"System 2: On feedpad for <10 hr/day for <3 months/year": "System 2: On feedpad for <10 hr/day for <3 months/year",
+				"System 3: Pasture-grazed 3-9 months/year": "System 3: Pasture-grazed 3-9 months/year",
+				"System 4: Zero grazing": "System 4: Zero grazing"
+			}
+		},
+		{
+			"CellName": "X_Cell_Dairy_Stage1MMS_1_AnaerobicLagoon_AmountSeparated_Method1",
+			"CellType": "percent"
+		},
+		{
+			"CellName": "X_Cell_Dairy_Stage1MMS_1_AnaerobicLagoon_AmountSeparated_Method2",
+			"CellType": "percent",
+			"CanOverWriteFormula": true
+		},
+		{
+			"CellName": "X_Cell_Dairy_Stage1MMS_1_AnaerobicLagoon_SolidsSeparated",
+			"CellType": "select",
+			"Options": {
+				"Yes": "Yes",
+				"No": "No"
+			}
+		},
+		{
+			"CellName": "X_Cell_Dairy_Stage1MMS_1_DrainsToPaddock_AmountSeparated_Method1",
+			"CellType": "percent"
+		},
+		{
+			"CellName": "X_Cell_Dairy_Stage1MMS_1_DrainsToPaddock_AmountSeparated_Method2",
+			"CellType": "percent",
+			"CanOverWriteFormula": true
+		},
+		{
+			"CellName": "X_Cell_Dairy_Stage1MMS_1_DrainsToPaddock_SolidsSeparated",
+			"CellType": "select",
+			"Options": {
+				"Yes": "Yes",
+				"No": "No"
+			}
+		},
+		{
+			"CellName": "X_Cell_Dairy_Stage1MMS_1_SumpAndDispersal_AmountSeparated_Method1",
+			"CellType": "percent"
+		},
+		{
+			"CellName": "X_Cell_Dairy_Stage1MMS_1_SumpAndDispersal_AmountSeparated_Method2",
+			"CellType": "percent",
+			"CanOverWriteFormula": true
+		},
+		{
+			"CellName": "X_Cell_Dairy_Stage1MMS_1_SumpAndDispersal_SolidsSeparated",
+			"CellType": "select",
+			"Options": {
+				"Yes": "Yes",
+				"No": "No"
+			}
+		},
+		{
+			"CellName": "X_Cell_Dairy_Stage1MMS_2_AnaerobicLagoon_AmountSeparated_Method1",
+			"CellType": "percent"
+		},
+		{
+			"CellName": "X_Cell_Dairy_Stage1MMS_2_AnaerobicLagoon_AmountSeparated_Method2",
+			"CellType": "percent",
+			"CanOverWriteFormula": true
+		},
+		{
+			"CellName": "X_Cell_Dairy_Stage1MMS_2_AnaerobicLagoon_SolidsSeparated",
+			"CellType": "select",
+			"Options": {
+				"Yes": "Yes",
+				"No": "No"
+			}
+		},
+		{
+			"CellName": "X_Cell_Dairy_Stage1MMS_2_DrainsToPaddock_AmountSeparated_Method1",
+			"CellType": "percent"
+		},
+		{
+			"CellName": "X_Cell_Dairy_Stage1MMS_2_DrainsToPaddock_AmountSeparated_Method2",
+			"CellType": "percent",
+			"CanOverWriteFormula": true
+		},
+		{
+			"CellName": "X_Cell_Dairy_Stage1MMS_2_DrainsToPaddock_SolidsSeparated",
+			"CellType": "select",
+			"Options": {
+				"Yes": "Yes",
+				"No": "No"
+			}
+		},
+		{
+			"CellName": "X_Cell_Dairy_Stage1MMS_2_SumpAndDispersal_AmountSeparated_Method1",
+			"CellType": "percent"
+		},
+		{
+			"CellName": "X_Cell_Dairy_Stage1MMS_2_SumpAndDispersal_AmountSeparated_Method2",
+			"CellType": "percent",
+			"CanOverWriteFormula": true
+		},
+		{
+			"CellName": "X_Cell_Dairy_Stage1MMS_2_SumpAndDispersal_SolidsSeparated",
+			"CellType": "select",
+			"Options": {
+				"Yes": "Yes",
+				"No": "No"
+			}
+		},
+		{
+			"CellName": "X_Cell_Site_AverageTemperature",
+			"CellType": "number"
+		},
+		{
+			"CellName": "X_Cell_Site_Elevation",
+			"CellType": "number"
+		},
+		{
+			"CellName": "X_Cell_Site_FarmName",
+			"CellType": "text"
+		},
+		{
+			"CellName": "X_Cell_Site_FrostDays",
+			"CellType": "number"
+		},
+		{
+			"CellName": "X_Cell_Site_LeachingZone",
+			"CellType": "select",
+			"Options": {
+				"YES - In leaching zone": "YES - In leaching zone",
+				"NO - Not in leaching zone": "NO - Not in leaching zone"
+			}
+		},
+		{
+			"CellName": "X_Cell_Site_PotentialEvapotranspiration",
+			"CellType": "number"
+		},
+		{
+			"CellName": "X_Cell_Site_Region",
+			"CellType": "select",
+			"Options": {
+				"Bunbury": "Bunbury",
+				"Mandurah": "Mandurah",
+				"Perth - Inner": "Perth - Inner",
+				"Perth - North East": "Perth - North East",
+				"Perth - North West": "Perth - North West",
+				"Perth - South East": "Perth - South East",
+				"Perth - South West": "Perth - South West",
+				"Western Australia - Wheat Belt": "Western Australia - Wheat Belt",
+				"Western Australia - Outback (North)": "Western Australia - Outback (North)",
+				"Western Australia - Outback (South)": "Western Australia - Outback (South)"
+			}
+		},
+		{
+			"CellName": "X_Cell_Site_ReportingEntityName",
+			"CellType": "text"
+		},
+		{
+			"CellName": "X_Cell_Site_StartDate",
+			"CellType": "number"
+		},
+		{
+			"CellName": "X_Cell_Site_State",
+			"CellType": "select",
+			"Options": {
+				"New South Wales": "New South Wales",
+				"ACT": "ACT",
+				"Victoria": "Victoria",
+				"Queensland": "Queensland",
+				"South Australia": "South Australia",
+				"Western Australia": "Western Australia",
+				"Tasmania": "Tasmania",
+				"Northern Territory": "Northern Territory"
+			}
+		},
+		{
+			"CellName": "X_Cell_Site_TotalRainfall",
+			"CellType": "number"
+		}
+	],
+	"InputTables": [
+		{
+			"TableName": "X_Table_Dairy_Diet_Method1",
+			"MatrixType": "ColsToRows",
+			"NumberOfRows": 3,
+			"NumberOfCols": 5,
+			"ColumnNames": {
+				"MilkingCows": "Milking cows",
+				"HeifersOver1Year": "Heifers > 1 year",
+				"HeifersUnder1Year": "Heifers < 1 year",
+				"BullsOver1Year": "Bulls > 1 year",
+				"BullsUnder1Year": "Bulls < 1 year"
+			},
+			"Cols": {
+				"Column": {
+					"DryMatterDigestibility": {
+						"Row": 2,
+						"Col": 2,
+						"Label": "Dry matter digestibility",
+						"CellType": "formula"
+					},
+					"CrudeProtein": {
+						"Row": 3,
+						"Col": 2,
+						"Label": "Crude protein",
+						"CellType": "formula"
+					}
+				}
+			}
+		},
+		{
+			"TableName": "X_Table_Dairy_Diet_Method2",
+			"MatrixType": "ColsToRows",
+			"NumberOfRows": 3,
+			"NumberOfCols": 5,
+			"ColumnNames": {
+				"MilkingCows": "Milking cows",
+				"HeifersOver1Year": "Heifers > 1 year",
+				"HeifersUnder1Year": "Heifers < 1 year",
+				"BullsOver1Year": "Bulls > 1 year",
+				"BullsUnder1Year": "Bulls < 1 year"
+			},
+			"Cols": {
+				"Column": {
+					"DryMatterDigestibility": {
+						"Row": 2,
+						"Col": 2,
+						"Label": "Dry matter digestibility",
+						"CellType": "number",
+						"CanOverWriteFormula": true
+					},
+					"CrudeProtein": {
+						"Row": 3,
+						"Col": 2,
+						"Label": "Crude protein",
+						"CellType": "number",
+						"CanOverWriteFormula": true
+					}
+				}
+			}
+		},
+		{
+			"TableName": "X_Table_Dairy_DurationOfStay_Method1",
+			"MatrixType": "ColsToRows",
+			"NumberOfRows": 3,
+			"NumberOfCols": 5,
+			"ColumnNames": {
+				"MilkingCows": "Milking cows",
+				"HeifersOver1Year": "Heifers > 1 year",
+				"HeifersUnder1Year": "Heifers < 1 year",
+				"BullsOver1Year": "Bulls > 1 year",
+				"BullsUnder1Year": "Bulls < 1 year"
+			},
+			"Cols": {
+				"Column": {
+					"AverageDurationOfStayBetween01Jan24And31Dec24WeanedLivestock": {
+						"Row": 2,
+						"Col": 2,
+						"Label": "Average duration of stay between 01 Jan 24 and 31 Dec 24 weaned livestock",
+						"CellType": "formula"
+					},
+					"AverageDurationOfStayBetween01Jan24And31Dec24PreWeanedLivestock": {
+						"Row": 3,
+						"Col": 2,
+						"Label": "Average duration of stay between 01 Jan 24 and 31 Dec 24 pre-weaned livestock",
+						"CellType": "formula"
+					}
+				}
+			}
+		},
+		{
+			"TableName": "X_Table_Dairy_DurationOfStay_Method2",
+			"MatrixType": "ColsToRows",
+			"NumberOfRows": 3,
+			"NumberOfCols": 5,
+			"ColumnNames": {
+				"MilkingCows": "Milking cows",
+				"HeifersOver1Year": "Heifers > 1 year",
+				"HeifersUnder1Year": "Heifers < 1 year",
+				"BullsOver1Year": "Bulls > 1 year",
+				"BullsUnder1Year": "Bulls < 1 year"
+			},
+			"Cols": {
+				"Column": {
+					"AverageDurationOfStayBetween01Jan24And31Dec24WeanedLivestock": {
+						"Row": 2,
+						"Col": 2,
+						"Label": "Average duration of stay between 01 Jan 24 and 31 Dec 24 weaned livestock",
+						"CellType": "number",
+						"CanOverWriteFormula": true
+					},
+					"AverageDurationOfStayBetween01Jan24And31Dec24PreWeanedLivestock": {
+						"Row": 3,
+						"Col": 2,
+						"Label": "Average duration of stay between 01 Jan 24 and 31 Dec 24 pre-weaned livestock",
+						"CellType": "number",
+						"CanOverWriteFormula": true
+					}
+				}
+			}
+		},
+		{
+			"TableName": "X_Table_Dairy_HerdMovement",
+			"MatrixType": "ColsToRows",
+			"NumberOfRows": 2,
+			"NumberOfCols": 5,
+			"ColumnNames": {
+				"MilkingCows": "Milking cows",
+				"HeifersOver1Year": "Heifers > 1 year",
+				"HeifersUnder1Year": "Heifers < 1 year",
+				"BullsOver1Year": "Bulls > 1 year",
+				"BullsUnder1Year": "Bulls < 1 year"
+			},
+			"Cols": {
+				"Column": {
+					"AverageNumberOfHeadBetween01Jan24And31Dec24": {
+						"Row": 2,
+						"Col": 2,
+						"Label": "Average number of head between 01 Jan 24 and 31 Dec 24",
+						"CellType": "number"
+					}
+				}
+			}
+		},
+		{
+			"TableName": "X_Table_Dairy_Liveweight_Method1",
+			"MatrixType": "ColsToRows",
+			"NumberOfRows": 3,
+			"NumberOfCols": 5,
+			"ColumnNames": {
+				"MilkingCows": "Milking cows",
+				"HeifersOver1Year": "Heifers > 1 year",
+				"HeifersUnder1Year": "Heifers < 1 year",
+				"BullsOver1Year": "Bulls > 1 year",
+				"BullsUnder1Year": "Bulls < 1 year"
+			},
+			"Cols": {
+				"Column": {
+					"AverageLiveweight": {
+						"Row": 2,
+						"Col": 2,
+						"Label": "Average liveweight",
+						"CellType": "formula"
+					},
+					"AverageLiveweightGain": {
+						"Row": 3,
+						"Col": 2,
+						"Label": "Average liveweight gain",
+						"CellType": "formula"
+					}
+				}
+			}
+		},
+		{
+			"TableName": "X_Table_Dairy_Liveweight_Method2",
+			"MatrixType": "ColsToRows",
+			"NumberOfRows": 3,
+			"NumberOfCols": 5,
+			"ColumnNames": {
+				"MilkingCows": "Milking cows",
+				"HeifersOver1Year": "Heifers > 1 year",
+				"HeifersUnder1Year": "Heifers < 1 year",
+				"BullsOver1Year": "Bulls > 1 year",
+				"BullsUnder1Year": "Bulls < 1 year"
+			},
+			"Cols": {
+				"Column": {
+					"AverageLiveweight": {
+						"Row": 2,
+						"Col": 2,
+						"Label": "Average liveweight",
+						"CellType": "number",
+						"CanOverWriteFormula": true
+					},
+					"AverageLiveweightGain": {
+						"Row": 3,
+						"Col": 2,
+						"Label": "Average liveweight gain",
+						"CellType": "number",
+						"CanOverWriteFormula": true
+					}
+				}
+			}
+		},
+		{
+			"TableName": "X_Table_Dairy_MilkSolidAttributes",
+			"MatrixType": "ColsToRows",
+			"NumberOfRows": 3,
+			"NumberOfCols": 2,
+			"ColumnNames": {
+				"Method1": "Method 1 (don't edit)",
+				"Method2": "Method 2 (edit if known)"
+			},
+			"Cols": {
+				"Column": {
+					"FatContentInFatAndProteinCorrectedMilk": {
+						"Row": 2,
+						"Col": 2,
+						"Label": "Fat content in fat and protein corrected milk",
+						"CellType": "formula"
+					},
+					"ProteinContentInFatAndProteinCorrectedMilk": {
+						"Row": 3,
+						"Col": 2,
+						"Label": "Protein content in fat and protein corrected milk",
+						"CellType": "formula"
+					}
+				}
+			}
+		},
+		{
+			"TableName": "X_Table_Dairy_ProductionSystems_Method1",
+			"MatrixType": "ColsToRows",
+			"NumberOfRows": 4,
+			"NumberOfCols": 5,
+			"ColumnNames": {
+				"MilkingCows": "Milking cows",
+				"HeifersOver1Year": "Heifers > 1 year",
+				"HeifersUnder1Year": "Heifers < 1 year",
+				"BullsOver1Year": "Bulls > 1 year",
+				"BullsUnder1Year": "Bulls < 1 year"
+			},
+			"Cols": {
+				"Column": {
+					"Pasture": {
+						"Row": 2,
+						"Col": 2,
+						"Label": "Pasture",
+						"CellType": "formula"
+					},
+					"MilkingShed": {
+						"Row": 3,
+						"Col": 2,
+						"Label": "Milking shed",
+						"CellType": "formula"
+					},
+					"FeedPad": {
+						"Row": 4,
+						"Col": 2,
+						"Label": "Feed pad",
+						"CellType": "formula"
+					}
+				}
+			}
+		},
+		{
+			"TableName": "X_Table_Dairy_ProductionSystems_Method2",
+			"MatrixType": "ColsToRows",
+			"NumberOfRows": 4,
+			"NumberOfCols": 5,
+			"ColumnNames": {
+				"MilkingCows": "Milking cows",
+				"HeifersOver1Year": "Heifers > 1 year",
+				"HeifersUnder1Year": "Heifers < 1 year",
+				"BullsOver1Year": "Bulls > 1 year",
+				"BullsUnder1Year": "Bulls < 1 year"
+			},
+			"Cols": {
+				"Column": {
+					"Pasture": {
+						"Row": 2,
+						"Col": 2,
+						"Label": "Pasture",
+						"CellType": "percent",
+						"CanOverWriteFormula": true
+					},
+					"MilkingShed": {
+						"Row": 3,
+						"Col": 2,
+						"Label": "Milking shed",
+						"CellType": "percent",
+						"CanOverWriteFormula": true
+					},
+					"FeedPad": {
+						"Row": 4,
+						"Col": 2,
+						"Label": "Feed pad",
+						"CellType": "percent",
+						"CanOverWriteFormula": true
+					}
+				}
+			}
+		},
+		{
+			"TableName": "X_Table_Dairy_Stage1MMS_1_AnaerobicLagoon",
+			"MatrixType": "ColsToRows",
+			"NumberOfRows": 2,
+			"NumberOfCols": 5,
+			"ColumnNames": {
+				"Col2": "",
+				"Col3": "",
+				"Col4": "",
+				"Col5": "",
+				"Col6": ""
+			},
+			"Cols": {
+				"Column": {
+					"AnaerobicLagoon": {
+						"Row": 2,
+						"Col": 2,
+						"Label": "Anaerobic lagoon",
+						"CellType": "percent"
+					}
+				}
+			}
+		},
+		{
+			"TableName": "X_Table_Dairy_Stage1MMS_1_AnaerobicLagoon_Destinations",
+			"MatrixType": "RowsToCols",
+			"NumberOfRows": 2,
+			"NumberOfCols": 4,
+			"ColumnNames": {
+				"Col1": "",
+				"Sold": "Sold",
+				"FertForOwnFarm": "Fert for own farm (eg crop)",
+				"DirectApplicationToSoil": "Direct application to soil"
+			},
+			"Rows": {
+				"Row": {
+					"Col1": {
+						"Row": 2,
+						"Col": 1,
+						"CellType": "number"
+					},
+					"Sold": {
+						"Row": 2,
+						"Col": 2,
+						"Header": "Sold",
+						"CellType": "percent"
+					},
+					"FertForOwnFarm": {
+						"Row": 2,
+						"Col": 3,
+						"Header": "Fert for own farm (eg crop)",
+						"CellType": "percent",
+						"Unit": "eg crop"
+					},
+					"DirectApplicationToSoil": {
+						"Row": 2,
+						"Col": 4,
+						"Header": "Direct application to soil",
+						"CellType": "formula"
+					}
+				}
+			}
+		},
+		{
+			"TableName": "X_Table_Dairy_Stage1MMS_1_DrainsToPaddock",
+			"MatrixType": "ColsToRows",
+			"NumberOfRows": 2,
+			"NumberOfCols": 5,
+			"ColumnNames": {
+				"Col2": "",
+				"Col3": "",
+				"Col4": "",
+				"Col5": "",
+				"Col6": ""
+			},
+			"Cols": {
+				"Column": {
+					"DrainsToPaddock": {
+						"Row": 2,
+						"Col": 2,
+						"Label": "Drains to paddock",
+						"CellType": "percent"
+					}
+				}
+			}
+		},
+		{
+			"TableName": "X_Table_Dairy_Stage1MMS_1_DrainsToPaddock_Destinations",
+			"MatrixType": "RowsToCols",
+			"NumberOfRows": 2,
+			"NumberOfCols": 4,
+			"ColumnNames": {
+				"Col1": "",
+				"Col2": "",
+				"Col3": "",
+				"Col4": ""
+			},
+			"Rows": {
+				"Row": {
+					"Col1": {
+						"Row": 2,
+						"Col": 1,
+						"CellType": "number"
+					},
+					"Col2": {
+						"Row": 2,
+						"Col": 2,
+						"CellType": "percent"
+					},
+					"Col3": {
+						"Row": 2,
+						"Col": 3,
+						"CellType": "percent"
+					},
+					"Col4": {
+						"Row": 2,
+						"Col": 4,
+						"CellType": "formula"
+					}
+				}
+			}
+		},
+		{
+			"TableName": "X_Table_Dairy_Stage1MMS_1_SolidStorage",
+			"MatrixType": "ColsToRows",
+			"NumberOfRows": 2,
+			"NumberOfCols": 5,
+			"ColumnNames": {
+				"Col2": "",
+				"Col3": "",
+				"Col4": "",
+				"Col5": "",
+				"Col6": ""
+			},
+			"Cols": {
+				"Column": {
+					"SolidStorage": {
+						"Row": 2,
+						"Col": 2,
+						"Label": "Solid storage (before solid separation)",
+						"CellType": "percent",
+						"Unit": "before solid separation"
+					}
+				}
+			}
+		},
+		{
+			"TableName": "X_Table_Dairy_Stage1MMS_1_SolidStorage_Destinations",
+			"MatrixType": "RowsToCols",
+			"NumberOfRows": 2,
+			"NumberOfCols": 4,
+			"ColumnNames": {
+				"Col1": "",
+				"Col2": "",
+				"Col3": "",
+				"Col4": ""
+			},
+			"Rows": {
+				"Row": {
+					"Col1": {
+						"Row": 2,
+						"Col": 1,
+						"CellType": "number"
+					},
+					"Col2": {
+						"Row": 2,
+						"Col": 2,
+						"CellType": "percent"
+					},
+					"Col3": {
+						"Row": 2,
+						"Col": 3,
+						"CellType": "percent"
+					},
+					"Col4": {
+						"Row": 2,
+						"Col": 4,
+						"CellType": "formula"
+					}
+				}
+			}
+		},
+		{
+			"TableName": "X_Table_Dairy_Stage1MMS_1_SumpAndDispersal",
+			"MatrixType": "ColsToRows",
+			"NumberOfRows": 2,
+			"NumberOfCols": 5,
+			"ColumnNames": {
+				"Col2": "",
+				"Col3": "",
+				"Col4": "",
+				"Col5": "",
+				"Col6": ""
+			},
+			"Cols": {
+				"Column": {
+					"SumpAndDispersalSystem": {
+						"Row": 2,
+						"Col": 2,
+						"Label": "Sump and dispersal system",
+						"CellType": "percent"
+					}
+				}
+			}
+		},
+		{
+			"TableName": "X_Table_Dairy_Stage1MMS_1_SumpAndDispersal_Destinations",
+			"MatrixType": "RowsToCols",
+			"NumberOfRows": 2,
+			"NumberOfCols": 4,
+			"ColumnNames": {
+				"Col1": "",
+				"Col2": "",
+				"Col3": "",
+				"Col4": ""
+			},
+			"Rows": {
+				"Row": {
+					"Col1": {
+						"Row": 2,
+						"Col": 1,
+						"CellType": "number"
+					},
+					"Col2": {
+						"Row": 2,
+						"Col": 2,
+						"CellType": "percent"
+					},
+					"Col3": {
+						"Row": 2,
+						"Col": 3,
+						"CellType": "percent"
+					},
+					"Col4": {
+						"Row": 2,
+						"Col": 4,
+						"CellType": "formula"
+					}
+				}
+			}
+		},
+		{
+			"TableName": "X_Table_Dairy_Stage1MMS_2_AnaerobicLagoon",
+			"MatrixType": "ColsToRows",
+			"NumberOfRows": 2,
+			"NumberOfCols": 5,
+			"ColumnNames": {
+				"Col2": "",
+				"Col3": "",
+				"Col4": "",
+				"Col5": "",
+				"Col6": ""
+			},
+			"Cols": {
+				"Column": {
+					"AnaerobicLagoon": {
+						"Row": 2,
+						"Col": 2,
+						"Label": "Anaerobic lagoon",
+						"CellType": "percent"
+					}
+				}
+			}
+		},
+		{
+			"TableName": "X_Table_Dairy_Stage1MMS_2_AnaerobicLagoon_Destinations",
+			"MatrixType": "RowsToCols",
+			"NumberOfRows": 2,
+			"NumberOfCols": 4,
+			"ColumnNames": {
+				"Col1": "",
+				"Sold": "Sold",
+				"FertForOwnFarm": "Fert for own farm (eg crop)",
+				"DirectApplicationToSoil": "Direct application to soil"
+			},
+			"Rows": {
+				"Row": {
+					"Col1": {
+						"Row": 2,
+						"Col": 1,
+						"CellType": "number"
+					},
+					"Sold": {
+						"Row": 2,
+						"Col": 2,
+						"Header": "Sold",
+						"CellType": "percent"
+					},
+					"FertForOwnFarm": {
+						"Row": 2,
+						"Col": 3,
+						"Header": "Fert for own farm (eg crop)",
+						"CellType": "percent",
+						"Unit": "eg crop"
+					},
+					"DirectApplicationToSoil": {
+						"Row": 2,
+						"Col": 4,
+						"Header": "Direct application to soil",
+						"CellType": "formula"
+					}
+				}
+			}
+		},
+		{
+			"TableName": "X_Table_Dairy_Stage1MMS_2_DrainsToPaddock",
+			"MatrixType": "ColsToRows",
+			"NumberOfRows": 2,
+			"NumberOfCols": 5,
+			"ColumnNames": {
+				"Col2": "",
+				"Col3": "",
+				"Col4": "",
+				"Col5": "",
+				"Col6": ""
+			},
+			"Cols": {
+				"Column": {
+					"DrainsToPaddock": {
+						"Row": 2,
+						"Col": 2,
+						"Label": "Drains to paddock",
+						"CellType": "percent"
+					}
+				}
+			}
+		},
+		{
+			"TableName": "X_Table_Dairy_Stage1MMS_2_DrainsToPaddock_Destinations",
+			"MatrixType": "RowsToCols",
+			"NumberOfRows": 2,
+			"NumberOfCols": 4,
+			"ColumnNames": {
+				"Col1": "",
+				"Col2": "",
+				"Col3": "",
+				"Col4": ""
+			},
+			"Rows": {
+				"Row": {
+					"Col1": {
+						"Row": 2,
+						"Col": 1,
+						"CellType": "number"
+					},
+					"Col2": {
+						"Row": 2,
+						"Col": 2,
+						"CellType": "percent"
+					},
+					"Col3": {
+						"Row": 2,
+						"Col": 3,
+						"CellType": "percent"
+					},
+					"Col4": {
+						"Row": 2,
+						"Col": 4,
+						"CellType": "formula"
+					}
+				}
+			}
+		},
+		{
+			"TableName": "X_Table_Dairy_Stage1MMS_2_SolidStorage",
+			"MatrixType": "ColsToRows",
+			"NumberOfRows": 2,
+			"NumberOfCols": 5,
+			"ColumnNames": {
+				"Col2": "",
+				"Col3": "",
+				"Col4": "",
+				"Col5": "",
+				"Col6": ""
+			},
+			"Cols": {
+				"Column": {
+					"SolidStorage": {
+						"Row": 2,
+						"Col": 2,
+						"Label": "Solid storage (before solid separation)",
+						"CellType": "percent",
+						"Unit": "before solid separation"
+					}
+				}
+			}
+		},
+		{
+			"TableName": "X_Table_Dairy_Stage1MMS_2_SolidStorage_Destinations",
+			"MatrixType": "RowsToCols",
+			"NumberOfRows": 2,
+			"NumberOfCols": 4,
+			"ColumnNames": {
+				"Col1": "",
+				"Col2": "",
+				"Col3": "",
+				"Col4": ""
+			},
+			"Rows": {
+				"Row": {
+					"Col1": {
+						"Row": 2,
+						"Col": 1,
+						"CellType": "number"
+					},
+					"Col2": {
+						"Row": 2,
+						"Col": 2,
+						"CellType": "percent"
+					},
+					"Col3": {
+						"Row": 2,
+						"Col": 3,
+						"CellType": "percent"
+					},
+					"Col4": {
+						"Row": 2,
+						"Col": 4,
+						"CellType": "formula"
+					}
+				}
+			}
+		},
+		{
+			"TableName": "X_Table_Dairy_Stage1MMS_2_SumpAndDispersal",
+			"MatrixType": "ColsToRows",
+			"NumberOfRows": 2,
+			"NumberOfCols": 5,
+			"ColumnNames": {
+				"Col2": "",
+				"Col3": "",
+				"Col4": "",
+				"Col5": "",
+				"Col6": ""
+			},
+			"Cols": {
+				"Column": {
+					"SumpAndDispersalSystem": {
+						"Row": 2,
+						"Col": 2,
+						"Label": "Sump and dispersal system",
+						"CellType": "percent"
+					}
+				}
+			}
+		},
+		{
+			"TableName": "X_Table_Dairy_Stage1MMS_2_SumpAndDispersal_Destinations",
+			"MatrixType": "RowsToCols",
+			"NumberOfRows": 2,
+			"NumberOfCols": 4,
+			"ColumnNames": {
+				"Col1": "",
+				"Col2": "",
+				"Col3": "",
+				"Col4": ""
+			},
+			"Rows": {
+				"Row": {
+					"Col1": {
+						"Row": 2,
+						"Col": 1,
+						"CellType": "number"
+					},
+					"Col2": {
+						"Row": 2,
+						"Col": 2,
+						"CellType": "percent"
+					},
+					"Col3": {
+						"Row": 2,
+						"Col": 3,
+						"CellType": "percent"
+					},
+					"Col4": {
+						"Row": 2,
+						"Col": 4,
+						"CellType": "formula"
+					}
+				}
+			}
+		}
+	]
 }

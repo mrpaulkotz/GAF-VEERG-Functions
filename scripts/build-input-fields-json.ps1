@@ -132,6 +132,78 @@ function Add-ValidationWarning {
   $script:ValidationWarningCount++
 }
 
+function Format-JsonIndentation {
+  # PS 5.1 ConvertTo-Json pads values to align with each key's length, producing ragged
+  # indentation. Re-emit the same JSON with exactly one $IndentUnit per nesting level.
+  # Operates purely on structure: characters inside string literals are copied verbatim,
+  # so every value stays byte-for-byte identical.
+  param(
+    [Parameter(Mandatory = $true)] [string] $Json,
+    [string] $IndentUnit = "`t"
+  )
+
+  $sb = New-Object System.Text.StringBuilder
+  $level = 0
+  $inString = $false
+  $escaped = $false
+  $len = $Json.Length
+
+  for ($i = 0; $i -lt $len; $i++) {
+    $c = [string]$Json[$i]
+
+    if ($inString) {
+      [void]$sb.Append($c)
+      if ($escaped) { $escaped = $false }
+      elseif ($c -eq '\') { $escaped = $true }
+      elseif ($c -eq '"') { $inString = $false }
+      continue
+    }
+
+    switch ($c) {
+      '"' {
+        $inString = $true
+        [void]$sb.Append($c)
+      }
+      { $_ -eq '{' -or $_ -eq '[' } {
+        # Collapse an empty container ("{ }" / "[ ]") onto a single line.
+        $j = $i + 1
+        while ($j -lt $len -and [char]::IsWhiteSpace($Json[$j])) { $j++ }
+        $close = if ($c -eq '{') { '}' } else { ']' }
+        if ($j -lt $len -and ([string]$Json[$j]) -eq $close) {
+          [void]$sb.Append($c + $close)
+          $i = $j
+        }
+        else {
+          $level++
+          [void]$sb.Append($c)
+          [void]$sb.Append("`r`n")
+          [void]$sb.Append($IndentUnit * $level)
+        }
+      }
+      { $_ -eq '}' -or $_ -eq ']' } {
+        $level--
+        [void]$sb.Append("`r`n")
+        [void]$sb.Append($IndentUnit * $level)
+        [void]$sb.Append($c)
+      }
+      ',' {
+        [void]$sb.Append(',')
+        [void]$sb.Append("`r`n")
+        [void]$sb.Append($IndentUnit * $level)
+      }
+      ':' {
+        [void]$sb.Append(': ')
+      }
+      default {
+        # Drop the ragged inter-token whitespace; copy everything else (numbers, literals).
+        if (-not [char]::IsWhiteSpace($Json[$i])) { [void]$sb.Append($c) }
+      }
+    }
+  }
+
+  return $sb.ToString()
+}
+
 function ConvertTo-CleanJson {
   # PS 5.1 ConvertTo-Json escapes < > & ' as \uXXXX; restore them for readable output.
   param([Parameter(Mandatory = $true)] $InputObject)
@@ -141,6 +213,7 @@ function ConvertTo-CleanJson {
   $json = $json -replace '\\u003e', '>'
   $json = $json -replace '\\u0026', '&'
   $json = $json -replace '\\u0027', "'"
+  $json = Format-JsonIndentation -Json $json
   return $json
 }
 
@@ -616,7 +689,6 @@ function Get-InputCells {
     try { $hasFormula = [bool]$range.HasFormula } catch { $hasFormula = $false }
 
     $canOverwrite = $shortName -match '(?i)_Method2'
-    $isMethod1 = $shortName -match '(?i)_Method1'
 
     $cellObj = [ordered]@{ CellName = $shortName }
 
@@ -632,9 +704,6 @@ function Get-InputCells {
       $cellObj['Options'] = $listInfo.Options
     }
     elseif ($hasFormula) {
-      if (-not $canOverwrite -and -not $isMethod1) {
-        Add-ValidationWarning "Formula input cell '$shortName' is neither _Method1 nor _Method2."
-      }
       $cellObj['CellType'] = Get-CellTypeByFormat -Cell $range
     }
     else {

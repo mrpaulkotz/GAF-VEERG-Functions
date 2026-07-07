@@ -1,161 +1,169 @@
 {
-    "schemaVersion":  1,
-    "generatedFrom":  "14_Electricity_Scope2_WIP_v01.xlsx",
-    "generatedAt":  "2026-06-26T05:49:09Z",
-    "InputCells":  [
-                       {
-                           "CellName":  "X_Cell_Electricity_Location_AmountPurchasedInkWh",
-                           "CellType":  "number"
-                       },
-                       {
-                           "CellName":  "X_Cell_Electricity_Location_GridElectricityPurchasedFrom",
-                           "CellType":  "select",
-                           "Options":  {
-                                           "New South Wales":  "New South Wales",
-                                           "ACT":  "ACT",
-                                           "Victoria":  "Victoria",
-                                           "Queensland":  "Queensland",
-                                           "South Australia":  "South Australia",
-                                           "Western Australia - South West Interconnected System (SWIS)":  "Western Australia - South West Interconnected System (SWIS)",
-                                           "Western Australia - North Western Interconnected System (NWIS)":  "Western Australia - North Western Interconnected System (NWIS)",
-                                           "Tasmania":  "Tasmania",
-                                           "Northern Territory - Darwin Katherine Interconnected System (DKIS)":  "Northern Territory - Darwin Katherine Interconnected System (DKIS)",
-                                           "National":  "National"
-                                       }
-                       },
-                       {
-                           "CellName":  "X_Cell_Electricity_Market_AmountPurchasedExcludingGreenPower",
-                           "CellType":  "number"
-                       },
-                       {
-                           "CellName":  "X_Cell_Electricity_Market_AmountPurchasedGreenPower",
-                           "CellType":  "number"
-                       },
-                       {
-                           "CellName":  "X_Cell_Electricity_Market_JurisdictionalRenewablePowerPercentage",
-                           "CellType":  "percent"
-                       },
-                       {
-                           "CellName":  "X_Cell_Electricity_Market_RenewablePowerPercentage",
-                           "CellType":  "percent"
-                       },
-                       {
-                           "CellName":  "X_Cell_Site_FarmName",
-                           "CellType":  "text"
-                       },
-                       {
-                           "CellName":  "X_Cell_Site_Region",
-                           "CellType":  "select",
-                           "Options":  {
-                                           "Bunbury":  "Bunbury",
-                                           "Mandurah":  "Mandurah",
-                                           "Perth - Inner":  "Perth - Inner",
-                                           "Perth - North East":  "Perth - North East",
-                                           "Perth - North West":  "Perth - North West",
-                                           "Perth - South East":  "Perth - South East",
-                                           "Perth - South West":  "Perth - South West",
-                                           "Western Australia - Wheat Belt":  "Western Australia - Wheat Belt",
-                                           "Western Australia - Outback (North)":  "Western Australia - Outback (North)",
-                                           "Western Australia - Outback (South)":  "Western Australia - Outback (South)"
-                                       }
-                       },
-                       {
-                           "CellName":  "X_Cell_Site_ReportingEntityName",
-                           "CellType":  "text"
-                       },
-                       {
-                           "CellName":  "X_Cell_Site_StartDate",
-                           "CellType":  "number"
-                       },
-                       {
-                           "CellName":  "X_Cell_Site_State",
-                           "CellType":  "select",
-                           "Options":  {
-                                           "New South Wales":  "New South Wales",
-                                           "ACT":  "ACT",
-                                           "Victoria":  "Victoria",
-                                           "Queensland":  "Queensland",
-                                           "South Australia":  "South Australia",
-                                           "Western Australia":  "Western Australia",
-                                           "Tasmania":  "Tasmania",
-                                           "Northern Territory":  "Northern Territory"
-                                       }
-                       }
-                   ],
-    "InputTables":  [
-                        {
-                            "TableName":  "Table_Input_RECSurrendered",
-                            "MatrixType":  "RowsToCols",
-                            "NumberOfCols":  6,
-                            "ColumnNames":  {
-                                                "Description":  "Description",
-                                                "Source":  "Source (select)",
-                                                "GenerationDate":  "Generation date",
-                                                "NumberOfCertificates":  "Number of certificates",
-                                                "MWh":  "MWh",
-                                                "Elegibility":  "Elegibility"
-                                            },
-                            "Rows":  {
-                                         "Row":  {
-                                                     "Description":  {
-                                                                         "CellType":  "text"
-                                                                     },
-                                                     "Source":  {
-                                                                    "CellType":  "select",
-                                                                    "Options":  {
-                                                                                    "Purchased certificate":  "Purchased certificate",
-                                                                                    "Issued for generated electricity":  "Issued for generated electricity"
-                                                                                }
-                                                                },
-                                                     "GenerationDate":  {
-                                                                            "CellType":  "number"
-                                                                        },
-                                                     "NumberOfCertificates":  {
-                                                                                  "CellType":  "number"
-                                                                              },
-                                                     "MWh":  {
-                                                                 "CellType":  "formula"
-                                                             },
-                                                     "Elegibility":  {
-                                                                         "CellType":  "formula"
-                                                                     }
-                                                 }
-                                     }
-                        },
-                        {
-                            "TableName":  "Table_Input_RECConsumedByEntity",
-                            "MatrixType":  "RowsToCols",
-                            "NumberOfCols":  6,
-                            "ColumnNames":  {
-                                                "Description":  "Description",
-                                                "Source":  "Source",
-                                                "GenerationDate":  "Generation date",
-                                                "NumberOfCertificates":  "Number of certificates",
-                                                "MWh":  "MWh",
-                                                "Elegibility":  "Elegibility"
-                                            },
-                            "Rows":  {
-                                         "Row":  {
-                                                     "Description":  {
-                                                                         "CellType":  "text"
-                                                                     },
-                                                     "Source":  {
-                                                                    "CellType":  "formula"
-                                                                },
-                                                     "GenerationDate":  {
-                                                                            "CellType":  "number"
-                                                                        },
-                                                     "NumberOfCertificates":  {
-                                                                                  "CellType":  "number"
-                                                                              },
-                                                     "MWh":  {
-                                                                 "CellType":  "formula"
-                                                             },
-                                                     "Elegibility":  {
-                                                                         "CellType":  "formula"
-                                                                     }
-                                                 }
-                                     }
-                        }
-                    ]
+	"schemaVersion": 1,
+	"generatedFrom": "14_Electricity_Scope2_WIP_v01.xlsx",
+	"generatedAt": "2026-07-07T23:26:05Z",
+	"InputCells": [
+		{
+			"CellName": "X_Cell_Electricity_Location_AmountPurchasedInkWh",
+			"CellType": "number"
+		},
+		{
+			"CellName": "X_Cell_Electricity_Location_GridElectricityPurchasedFrom",
+			"CellType": "select",
+			"Options": {
+				"New South Wales": "New South Wales",
+				"ACT": "ACT",
+				"Victoria": "Victoria",
+				"Queensland": "Queensland",
+				"South Australia": "South Australia",
+				"Western Australia - South West Interconnected System (SWIS)": "Western Australia - South West Interconnected System (SWIS)",
+				"Western Australia - North Western Interconnected System (NWIS)": "Western Australia - North Western Interconnected System (NWIS)",
+				"Tasmania": "Tasmania",
+				"Northern Territory - Darwin Katherine Interconnected System (DKIS)": "Northern Territory - Darwin Katherine Interconnected System (DKIS)",
+				"National": "National"
+			}
+		},
+		{
+			"CellName": "X_Cell_Electricity_Market_AmountPurchasedExcludingGreenPower",
+			"CellType": "number"
+		},
+		{
+			"CellName": "X_Cell_Electricity_Market_AmountPurchasedGreenPower",
+			"CellType": "number"
+		},
+		{
+			"CellName": "X_Cell_Electricity_Market_JurisdictionalRenewablePowerPercentage",
+			"CellType": "percent"
+		},
+		{
+			"CellName": "X_Cell_Electricity_Market_RenewablePowerPercentage",
+			"CellType": "percent"
+		},
+		{
+			"CellName": "X_Cell_Site_FarmName",
+			"CellType": "text"
+		},
+		{
+			"CellName": "X_Cell_Site_Region",
+			"CellType": "select",
+			"Options": {
+				"Bunbury": "Bunbury",
+				"Mandurah": "Mandurah",
+				"Perth - Inner": "Perth - Inner",
+				"Perth - North East": "Perth - North East",
+				"Perth - North West": "Perth - North West",
+				"Perth - South East": "Perth - South East",
+				"Perth - South West": "Perth - South West",
+				"Western Australia - Wheat Belt": "Western Australia - Wheat Belt",
+				"Western Australia - Outback (North)": "Western Australia - Outback (North)",
+				"Western Australia - Outback (South)": "Western Australia - Outback (South)"
+			}
+		},
+		{
+			"CellName": "X_Cell_Site_ReportingEntityName",
+			"CellType": "text"
+		},
+		{
+			"CellName": "X_Cell_Site_StartDate",
+			"CellType": "number"
+		},
+		{
+			"CellName": "X_Cell_Site_State",
+			"CellType": "select",
+			"Options": {
+				"New South Wales": "New South Wales",
+				"ACT": "ACT",
+				"Victoria": "Victoria",
+				"Queensland": "Queensland",
+				"South Australia": "South Australia",
+				"Western Australia": "Western Australia",
+				"Tasmania": "Tasmania",
+				"Northern Territory": "Northern Territory"
+			}
+		},
+		{
+			"CellName": "X_Cell_TotalElegibleRECsForElectricityProducedOnSite",
+			"CellType": "number"
+		},
+		{
+			"CellName": "X_Cell_TotalElegibleVoluntarilySurrenderedRECs",
+			"CellType": "number"
+		}
+	],
+	"InputTables": [
+		{
+			"TableName": "Table_Input_RECSurrendered",
+			"MatrixType": "RowsToCols",
+			"NumberOfCols": 6,
+			"ColumnNames": {
+				"Description": "Description",
+				"Source": "Source (select)",
+				"GenerationDate": "Generation date",
+				"NumberOfCertificates": "Number of certificates",
+				"MWh": "MWh",
+				"Elegibility": "Elegibility"
+			},
+			"Rows": {
+				"Row": {
+					"Description": {
+						"CellType": "text"
+					},
+					"Source": {
+						"CellType": "select",
+						"Options": {
+							"Purchased certificate": "Purchased certificate",
+							"Issued for generated electricity": "Issued for generated electricity"
+						}
+					},
+					"GenerationDate": {
+						"CellType": "number"
+					},
+					"NumberOfCertificates": {
+						"CellType": "number"
+					},
+					"MWh": {
+						"CellType": "formula"
+					},
+					"Elegibility": {
+						"CellType": "formula"
+					}
+				}
+			}
+		},
+		{
+			"TableName": "Table_Input_RECConsumedByEntity",
+			"MatrixType": "RowsToCols",
+			"NumberOfCols": 6,
+			"ColumnNames": {
+				"Description": "Description",
+				"Source": "Source",
+				"GenerationDate": "Generation date",
+				"NumberOfCertificates": "Number of certificates",
+				"MWh": "MWh",
+				"Elegibility": "Elegibility"
+			},
+			"Rows": {
+				"Row": {
+					"Description": {
+						"CellType": "text"
+					},
+					"Source": {
+						"CellType": "formula"
+					},
+					"GenerationDate": {
+						"CellType": "number"
+					},
+					"NumberOfCertificates": {
+						"CellType": "number"
+					},
+					"MWh": {
+						"CellType": "formula"
+					},
+					"Elegibility": {
+						"CellType": "formula"
+					}
+				}
+			}
+		}
+	]
 }

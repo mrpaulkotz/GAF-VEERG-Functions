@@ -1,11 +1,139 @@
 {
-    "schemaVersion":  1,
-    "generatedFrom":  "3_5_Enteric_Swine_WIP_v01.xlsx",
-    "generatedAt":  "2026-06-26T05:49:19Z",
-    "InputCells":  [
-
-                   ],
-    "InputTables":  [
-
-                    ]
+	"schemaVersion": 1,
+	"generatedFrom": "3_5_Enteric_Swine_WIP_v02.xlsx",
+	"generatedAt": "2026-07-07T23:26:30Z",
+	"InputCells": [
+		{
+			"CellName": "X_Cell_Site_FarmName",
+			"CellType": "text"
+		},
+		{
+			"CellName": "X_Cell_Site_ReportingEntityName",
+			"CellType": "text"
+		},
+		{
+			"CellName": "X_Cell_Site_StartDate",
+			"CellType": "number"
+		}
+	],
+	"InputTables": [
+		{
+			"TableName": "X_Table_Swine_HerdMovement",
+			"MatrixType": "ColsToRows",
+			"NumberOfRows": 3,
+			"NumberOfCols": 4,
+			"ColumnNames": {
+				"Boars": "Boars",
+				"Sows": "Sows",
+				"Gilts": "Gilts",
+				"Others": "Others"
+			},
+			"Cols": {
+				"Column": {
+					"AverageDurationOfStayBetween01Jan24And31Dec24": {
+						"Row": 2,
+						"Col": 2,
+						"Label": "Average duration of stay between 01 Jan 24 and 31 Dec 24",
+						"CellType": "number"
+					},
+					"AverageNumberOfHeadBetween01Jan24And31Dec24": {
+						"Row": 3,
+						"Col": 2,
+						"Label": "Average number of head between 01 Jan 24 and 31 Dec 24",
+						"CellType": "number"
+					}
+				}
+			}
+		},
+		{
+			"TableName": "X_Table_Swine_ManureProduction_Method1",
+			"MatrixType": "ColsToRows",
+			"NumberOfRows": 2,
+			"NumberOfCols": 4,
+			"ColumnNames": {
+				"Boars": "Boars",
+				"Sows": "Sows",
+				"Gilts": "Gilts",
+				"Others": "Others"
+			},
+			"Cols": {
+				"Column": {
+					"VolatileSolidsProducedPerHeadPerDay": {
+						"Row": 2,
+						"Col": 2,
+						"Label": "Volatile solids produced per head per day",
+						"CellType": "formula"
+					}
+				}
+			}
+		},
+		{
+			"TableName": "X_Table_Swine_ManureProduction_Method2",
+			"MatrixType": "ColsToRows",
+			"NumberOfRows": 2,
+			"NumberOfCols": 4,
+			"ColumnNames": {
+				"Boars": "Boars",
+				"Sows": "Sows",
+				"Gilts": "Gilts",
+				"Others": "Others"
+			},
+			"Cols": {
+				"Column": {
+					"VolatileSolidsProducedPerHeadPerDay": {
+						"Row": 2,
+						"Col": 2,
+						"Label": "Volatile solids produced per head per day",
+						"CellType": "number",
+						"CanOverWriteFormula": true
+					}
+				}
+			}
+		},
+		{
+			"TableName": "X_Table_Swine_VolatileSolidProduction_Method1",
+			"MatrixType": "ColsToRows",
+			"NumberOfRows": 2,
+			"NumberOfCols": 4,
+			"ColumnNames": {
+				"Boars": "Boars",
+				"Sows": "Sows",
+				"Gilts": "Gilts",
+				"Others": "Others"
+			},
+			"Cols": {
+				"Column": {
+					"VolatileSolidsProducedPerHeadPerDay": {
+						"Row": 2,
+						"Col": 2,
+						"Label": "Volatile solids produced per head per day",
+						"CellType": "formula"
+					}
+				}
+			}
+		},
+		{
+			"TableName": "X_Table_Swine_VolatileSolidProduction_Method2",
+			"MatrixType": "ColsToRows",
+			"NumberOfRows": 2,
+			"NumberOfCols": 4,
+			"ColumnNames": {
+				"Boars": "Boars",
+				"Sows": "Sows",
+				"Gilts": "Gilts",
+				"Others": "Others"
+			},
+			"Cols": {
+				"Column": {
+					"VolatileSolidsProducedPerHeadPerDay": {
+						"Row": 2,
+						"Col": 2,
+						"Label": "Volatile solids produced per head per day",
+						"CellType": "number",
+						"CanOverWriteFormula": true
+					}
+				}
+			}
+		}
+	]
 }

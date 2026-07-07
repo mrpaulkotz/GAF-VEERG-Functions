@@ -1,101 +1,99 @@
 {
-    "schemaVersion":  1,
-    "generatedFrom":  "10_SolidWaste_WIP_v02.xlsx",
-    "generatedAt":  "2026-06-26T05:48:49Z",
-    "InputCells":  [
-
-                   ],
-    "InputTables":  [
-                        {
-                            "TableName":  "Table_Input_SolidWaste",
-                            "MatrixType":  "RowsToCols",
-                            "NumberOfCols":  6,
-                            "ColumnNames":  {
-                                                "Description":  "Description",
-                                                "TreatmentType":  "Treatment type (select)",
-                                                "WasteType":  "Waste type (select)",
-                                                "TreatmentLocation":  "Treatment location (select)",
-                                                "Amount":  "Amount",
-                                                "AmountUnit":  "Amount unit (select)"
-                                            },
-                            "Rows":  {
-                                         "Row":  {
-                                                     "Description":  {
-                                                                         "CellType":  "text"
-                                                                     },
-                                                     "TreatmentType":  {
-                                                                           "CellType":  "select",
-                                                                           "Options":  {
-                                                                                           "Landfill":  "Landfill",
-                                                                                           "Incineration":  "Incineration",
-                                                                                           "Composting":  "Composting",
-                                                                                           "Anaerobic digestion":  "Anaerobic digestion"
-                                                                                       }
-                                                                       },
-                                                     "WasteType":  {
-                                                                       "CellType":  "select",
-                                                                       "DependentOn":  "E10",
-                                                                       "Options":  {
-                                                                                       "Landfill":  {
-                                                                                                        "Food waste (including animal carcasses, spoiled animal feed or crop)":  "Food waste (including animal carcasses, spoiled animal feed or crop)",
-                                                                                                        "Paper and cardboard":  "Paper and cardboard",
-                                                                                                        "Green waste (including crop residues or prunings)":  "Green waste (including crop residues or prunings)",
-                                                                                                        "Wood":  "Wood",
-                                                                                                        "Textiles":  "Textiles",
-                                                                                                        "Sludge":  "Sludge",
-                                                                                                        "Rubber and leather":  "Rubber and leather",
-                                                                                                        "Inert waste (including concrete, metal, plastic or glass)":  "Inert waste (including concrete, metal, plastic or glass)",
-                                                                                                        "Municipal solid waste":  "Municipal solid waste",
-                                                                                                        "Commercial and industrial waste":  "Commercial and industrial waste",
-                                                                                                        "Construction and demolition waste":  "Construction and demolition waste"
-                                                                                                    },
-                                                                                       "Incineration":  {
-                                                                                                            "Food waste (including animal carcasses, spoiled animal feed or crop)":  "Food waste (including animal carcasses, spoiled animal feed or crop)",
-                                                                                                            "Green waste (including crop residues or prunings)":  "Green waste (including crop residues or prunings)",
-                                                                                                            "Wood":  "Wood",
-                                                                                                            "Sludge":  "Sludge",
-                                                                                                            "Paper and cardboard":  "Paper and cardboard",
-                                                                                                            "Textiles":  "Textiles",
-                                                                                                            "Rubber and leather":  "Rubber and leather",
-                                                                                                            "Inert waste (including concrete, metal, plastic or glass)":  "Inert waste (including concrete, metal, plastic or glass)",
-                                                                                                            "Municipal solid waste":  "Municipal solid waste",
-                                                                                                            "Commercial and industrial waste":  "Commercial and industrial waste"
-                                                                                                        },
-                                                                                       "Composting":  {
-                                                                                                          "Food waste (including animal carcasses, spoiled animal feed or crop)":  "Food waste (including animal carcasses, spoiled animal feed or crop)",
-                                                                                                          "Green waste (including crop residues or prunings)":  "Green waste (including crop residues or prunings)",
-                                                                                                          "Wood":  "Wood",
-                                                                                                          "Sludge":  "Sludge",
-                                                                                                          "Paper and cardboard":  "Paper and cardboard"
-                                                                                                      },
-                                                                                       "Anaerobicdigestion":  {
-                                                                                                                  "Food waste (including animal carcasses, spoiled animal feed or crop)":  "Food waste (including animal carcasses, spoiled animal feed or crop)",
-                                                                                                                  "Green waste (including crop residues or prunings)":  "Green waste (including crop residues or prunings)",
-                                                                                                                  "Wood":  "Wood",
-                                                                                                                  "Sludge":  "Sludge",
-                                                                                                                  "Paper and cardboard":  "Paper and cardboard"
-                                                                                                              }
-                                                                                   }
-                                                                   },
-                                                     "TreatmentLocation":  {
-                                                                               "CellType":  "select",
-                                                                               "Options":  {
-                                                                                               "Treated on-site":  "Treated on-site",
-                                                                                               "Removed and treated off-site":  "Removed and treated off-site"
-                                                                                           }
-                                                                           },
-                                                     "Amount":  {
-                                                                    "CellType":  "number"
-                                                                },
-                                                     "AmountUnit":  {
-                                                                        "CellType":  "select",
-                                                                        "Options":  {
-                                                                                        "tonnes":  "tonnes",
-                                                                                        "cubic metres m3":  "cubic metres m3"
-                                                                                    }
-                                                                    }
-                                                 }
-                                     }
-                        }
-                    ]
+	"schemaVersion": 1,
+	"generatedFrom": "10_SolidWaste_WIP_v02.xlsx",
+	"generatedAt": "2026-07-07T23:25:36Z",
+	"InputCells": [],
+	"InputTables": [
+		{
+			"TableName": "Table_Input_SolidWaste",
+			"MatrixType": "RowsToCols",
+			"NumberOfCols": 6,
+			"ColumnNames": {
+				"Description": "Description",
+				"TreatmentType": "Treatment type (select)",
+				"WasteType": "Waste type (select)",
+				"TreatmentLocation": "Treatment location (select)",
+				"Amount": "Amount",
+				"AmountUnit": "Amount unit (select)"
+			},
+			"Rows": {
+				"Row": {
+					"Description": {
+						"CellType": "text"
+					},
+					"TreatmentType": {
+						"CellType": "select",
+						"Options": {
+							"Landfill": "Landfill",
+							"Incineration": "Incineration",
+							"Composting": "Composting",
+							"Anaerobic digestion": "Anaerobic digestion"
+						}
+					},
+					"WasteType": {
+						"CellType": "select",
+						"DependentOn": "E10",
+						"Options": {
+							"Landfill": {
+								"Food waste (including animal carcasses, spoiled animal feed or crop)": "Food waste (including animal carcasses, spoiled animal feed or crop)",
+								"Paper and cardboard": "Paper and cardboard",
+								"Green waste (including crop residues or prunings)": "Green waste (including crop residues or prunings)",
+								"Wood": "Wood",
+								"Textiles": "Textiles",
+								"Sludge": "Sludge",
+								"Rubber and leather": "Rubber and leather",
+								"Inert waste (including concrete, metal, plastic or glass)": "Inert waste (including concrete, metal, plastic or glass)",
+								"Municipal solid waste": "Municipal solid waste",
+								"Commercial and industrial waste": "Commercial and industrial waste",
+								"Construction and demolition waste": "Construction and demolition waste"
+							},
+							"Incineration": {
+								"Food waste (including animal carcasses, spoiled animal feed or crop)": "Food waste (including animal carcasses, spoiled animal feed or crop)",
+								"Green waste (including crop residues or prunings)": "Green waste (including crop residues or prunings)",
+								"Wood": "Wood",
+								"Sludge": "Sludge",
+								"Paper and cardboard": "Paper and cardboard",
+								"Textiles": "Textiles",
+								"Rubber and leather": "Rubber and leather",
+								"Inert waste (including concrete, metal, plastic or glass)": "Inert waste (including concrete, metal, plastic or glass)",
+								"Municipal solid waste": "Municipal solid waste",
+								"Commercial and industrial waste": "Commercial and industrial waste"
+							},
+							"Composting": {
+								"Food waste (including animal carcasses, spoiled animal feed or crop)": "Food waste (including animal carcasses, spoiled animal feed or crop)",
+								"Green waste (including crop residues or prunings)": "Green waste (including crop residues or prunings)",
+								"Wood": "Wood",
+								"Sludge": "Sludge",
+								"Paper and cardboard": "Paper and cardboard"
+							},
+							"Anaerobicdigestion": {
+								"Food waste (including animal carcasses, spoiled animal feed or crop)": "Food waste (including animal carcasses, spoiled animal feed or crop)",
+								"Green waste (including crop residues or prunings)": "Green waste (including crop residues or prunings)",
+								"Wood": "Wood",
+								"Sludge": "Sludge",
+								"Paper and cardboard": "Paper and cardboard"
+							}
+						}
+					},
+					"TreatmentLocation": {
+						"CellType": "select",
+						"Options": {
+							"Treated on-site": "Treated on-site",
+							"Removed and treated off-site": "Removed and treated off-site"
+						}
+					},
+					"Amount": {
+						"CellType": "number"
+					},
+					"AmountUnit": {
+						"CellType": "select",
+						"Options": {
+							"tonnes": "tonnes",
+							"cubic metres m3": "cubic metres m3"
+						}
+					}
+				}
+			}
+		}
+	]
 }

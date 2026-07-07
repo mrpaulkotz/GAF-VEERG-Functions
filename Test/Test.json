@@ -30,6 +30,12 @@
                 "TestExcelFile": "3_2_Enteric_BeefPasture",
                 "TestInputFile": "EntericMethane/PastureBeef/TestInput_EntericMethane_PastureBeef.json",
                 "TestResultsFile": "EntericMethane/PastureBeef/TestResults_EntericMethane_PastureBeef.json"
+            },
+            "Swine": {
+                "TestID": "3_5_Enteric_Swine",
+                "TestExcelFile": "3_5_Enteric_Swine",
+                "TestInputFile": "EntericMethane/Swine/TestInput_EntericMethane_Swine.json",
+                "TestResultsFile": "EntericMethane/Swine/TestResults_EntericMethane_Swine.json"
             }
         },
         "ManureManagement": {
@@ -44,6 +50,12 @@
                 "TestExcelFile": "4_3_ManureManagement_Dairy",
                 "TestInputFile": "ManureManagement/Dairy/TestInput_ManureManagement_Dairy.json",
                 "TestResultsFile": "ManureManagement/Dairy/TestResults_ManureManagement_Dairy.json"
+            },
+            "Swine": {
+                "TestID": "4_5_ManureManagement_Swine",
+                "TestExcelFile": "4_5_ManureManagement_Swine",
+                "TestInputFile": "ManureManagement/Swine/TestInput_ManureManagement_Swine.json",
+                "TestResultsFile": "ManureManagement/Swine/TestResults_ManureManagement_Swine.json"
             },
             "Poultry": {
                 "TestID": "4_6_ManureManagement_Poultry",
