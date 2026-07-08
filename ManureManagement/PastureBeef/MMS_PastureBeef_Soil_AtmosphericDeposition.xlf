@@ -45,15 +45,15 @@ VEERG_4_2_1_5__1_AtmosphericDepositionEmissionsFromUrineAndDungOnPasture_LatexEq
 
 VEERG_4_2_1_5__1_AtmosphericDepositionEmissionsFromUrineAndDungOnPasture_Arguments
   =LAMBDA(
-    MAKEARRAY(6, 2,
+    MAKEARRAY(6, 4,
       LAMBDA(r,c,
         INDEX({
-          "M_vol", "mass of nitrogen volatilised from urine and faeces deposited on pasture (kg N)";
-          "EF_N2O", "nitrous oxide emission factor for atmospheric deposition (kg N2O-N/kg N)";
-          "C_N2O", "factor to convert elemental mass of N2O to molecular mass";
-          "j", "production system";
-          "i", "irrigation method";
-          "r", "rainfall zone"
+          "M_vol", "mass of nitrogen volatilised from urine and faeces deposited on pasture", "kg N", "Calculated from 4.2.1.5 (2)";
+          "EF_N2O", "nitrous oxide emission factor for atmospheric deposition", "kg N2O-N/kg N", "Constant";
+          "C_N2O", "factor to convert elemental mass of N2O to molecular mass", "", "Constant";
+          "j", "production system", "", "Input";
+          "i", "irrigation method", "", "Input";
+          "r", "rainfall zone", "", "Input"
         }, r, c)
       )
     )
@@ -97,11 +97,11 @@ VEERG_4_2_1_5__2_MassOfNitrogenVolatilisedOnPasture_LatexEquation
 
 VEERG_4_2_1_5__2_MassOfNitrogenVolatilisedOnPasture_Arguments
   =LAMBDA(
-    MAKEARRAY(2, 2,
+    MAKEARRAY(2, 4,
       LAMBDA(r,c,
         INDEX({
-          "AE", "total mass of nitrogen excreted on PRP for beef cattle (kg N)";
-          "FracGASMsoil", "fraction of nitrogen volatilised from urine and faeces deposited on pasture ((kg NH3-N + NOx-N)/kg N)"
+          "AE", "total mass of nitrogen excreted on PRP for beef cattle", "kg N", "Calculated from 4.2.1.3 (2)";
+          "FracGASMsoil", "fraction of nitrogen volatilised from urine and faeces deposited on pasture ((kg NH3-N + NOx-N)/kg N)", "fraction", "Constant"
         }, r, c)
       )
     )

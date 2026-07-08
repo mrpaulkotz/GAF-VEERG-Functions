@@ -115,7 +115,7 @@ VEERG_4_2_1_1__2_MethaneProductionFromManure_Arguments
 
 VEERG_4_2_1_1__2_MethaneProductionFromManure_Arguments_Method2
   =LAMBDA(
-    MAKEARRAY(7, 4,
+    MAKEARRAY(6, 4,
       LAMBDA(r,c,
         INDEX({
           "VS_jkl", "volatile solid production", "kg/day", "Calculated from 4.2.1.1 (3)";

@@ -45,6 +45,12 @@
                 "TestInputFile": "ManureManagement/Feedlot/TestInput_ManureManagement_Feedlot.json",
                 "TestResultsFile": "ManureManagement/Feedlot/TestResults_ManureManagement_Feedlot.json"
             },
+            "PastureBeef": {
+                "TestID": "4_2_ManureManagement_PastureBeef",
+                "TestExcelFile": "4_2_ManureManagement_BeefPasture",
+                "TestInputFile": "ManureManagement/PastureBeef/TestInput_ManureManagement_PastureBeef.json",
+                "TestResultsFile": "ManureManagement/PastureBeef/TestResults_ManureManagement_PastureBeef.json"
+            },
             "Dairy": {
                 "TestID": "4_3_ManureManagement_Dairy",
                 "TestExcelFile": "4_3_ManureManagement_Dairy",
