@@ -206,10 +206,25 @@ Write-Host ''
 $selectedModules = New-Object System.Collections.Generic.List[object]
 foreach ($m in @($config.modules)) {
   if ($m -is [string]) {
-    $selectedModules.Add([pscustomobject]@{ Id = $m; Include = $null })
+    $selectedModules.Add([pscustomobject]@{ Id = $m; Include = $null; RenameSheets = $null })
   } else {
-    $selectedModules.Add([pscustomobject]@{ Id = [string] $m.id; Include = $m.include })
+    $props = $m.PSObject.Properties.Name
+    $inc = if ($props -contains 'include') { $m.include } else { $null }
+    $rs = $null
+    if (($props -contains 'renameSheets') -and $null -ne $m.renameSheets) {
+      $rs = @{}
+      foreach ($p in $m.renameSheets.PSObject.Properties) { $rs[[string] $p.Name] = [string] $p.Value }
+    }
+    $selectedModules.Add([pscustomobject]@{ Id = [string] $m.id; Include = $inc; RenameSheets = $rs })
   }
+}
+
+# Optional per-sheet provider overrides for common sheets (sheetName -> module id).
+# By default a common sheet is taken from the first selected module workbook that
+# contains it; this lets a specific module supply a richer/canonical version.
+$commonSheetProviders = @{}
+if ($config.options -and ($config.options.PSObject.Properties.Name -contains 'commonSheetProviders') -and $null -ne $config.options.commonSheetProviders) {
+  foreach ($p in $config.options.commonSheetProviders.PSObject.Properties) { $commonSheetProviders[[string] $p.Name] = [string] $p.Value }
 }
 
 # --- Build the ordered, de-duplicated sheet plan ------------------------------
@@ -226,11 +241,12 @@ foreach ($lm in @($registry.common.excelLabsModules)) { Add-AfeModule -Name $lm 
 $moduleWorkbookHints = New-Object System.Collections.Generic.List[string]
 
 function Add-SheetToPlan {
-  param([string] $Name, [string] $Category, [string] $SourceHint)
+  param([string] $Name, [string] $Category, [string] $SourceHint, [string] $OriginalName)
   if ([string]::IsNullOrWhiteSpace($Name)) { return }
   if ($seenSheet.Contains($Name)) { return }
   [void] $seenSheet.Add($Name)
-  $plan.Add([pscustomobject]@{ Name = $Name; Category = $Category; SourceHint = $SourceHint; ProviderPath = $null })
+  if ([string]::IsNullOrWhiteSpace($OriginalName)) { $OriginalName = $Name }
+  $plan.Add([pscustomobject]@{ Name = $Name; Category = $Category; SourceHint = $SourceHint; ProviderPath = $null; OriginalName = $OriginalName })
 }
 
 # Track which sheet groups are active (for group sheets/labs), and a hint workbook per group.
@@ -246,7 +262,12 @@ foreach ($sel in $selectedModules) {
   foreach ($cat in @('input', 'calculation', 'constants')) {
     $sheets = @($mod.sheets.$cat)
     if ($null -ne $sel.Include -and $null -ne $sel.Include.$cat) { $sheets = @($sel.Include.$cat) }
-    foreach ($sn in $sheets) { Add-SheetToPlan -Name ([string] $sn) -Category $cat -SourceHint $hint }
+    foreach ($sn in $sheets) {
+      $orig = [string] $sn
+      $newName = $orig
+      if ($null -ne $sel.RenameSheets -and $sel.RenameSheets.ContainsKey($orig)) { $newName = $sel.RenameSheets[$orig] }
+      Add-SheetToPlan -Name $newName -Category $cat -SourceHint $hint -OriginalName $orig
+    }
   }
 
   # Module-specific Excel Labs modules.
@@ -305,10 +326,45 @@ try {
       $entry.ProviderPath = $hintToResolved[$entry.SourceHint]
       continue
     }
-    # Common sheet: find first module workbook (in selection order) that contains it.
-    foreach ($hint in $moduleWorkbookHints) {
-      $rp = $hintToResolved[$hint]
-      if ($sourceSheetSets[$rp].Contains($entry.Name)) { $entry.ProviderPath = $rp; break }
+    # Common sheet: honour an explicit provider override (options.commonSheetProviders),
+    # else use the first module workbook (in selection order) that contains it.
+    $preferredPath = $null
+    if ($commonSheetProviders.ContainsKey($entry.Name)) {
+      $ovModId = $commonSheetProviders[$entry.Name]
+      $ovMod = $registry.modules.$ovModId
+      if ($null -eq $ovMod) { throw "commonSheetProviders: module '$ovModId' (for sheet '$($entry.Name)') is not defined in the registry." }
+      $ovHint = [string] $ovMod.sourceWorkbook
+      if ($hintToResolved.ContainsKey($ovHint) -and $sourceSheetSets[$hintToResolved[$ovHint]].Contains($entry.Name)) {
+        $preferredPath = $hintToResolved[$ovHint]
+      } else {
+        Write-Warning ("commonSheetProviders: module '{0}' does not provide sheet '{1}'; falling back to selection order." -f $ovModId, $entry.Name)
+      }
+    }
+    if ($preferredPath) {
+      $entry.ProviderPath = $preferredPath
+    } else {
+      foreach ($hint in $moduleWorkbookHints) {
+        $rp = $hintToResolved[$hint]
+        if ($sourceSheetSets[$rp].Contains($entry.Name)) { $entry.ProviderPath = $rp; break }
+      }
+    }
+  }
+
+  # --- Renamed-sheet bookkeeping ---------------------------------------------
+  # A module may import a sheet under a distinct name (options renameSheets) so
+  # it does not collide with another module's same-named sheet + duplicate
+  # named ranges. Record the originals per provider so the name-upsert can skip
+  # the renamed copy's defs (master keeps them) and the ref-repoint pass can
+  # rebind that module's own formulas to the renamed sheet.
+  $renameRecords = @()
+  $renamedOriginalsByProvider = @{}
+  foreach ($entry in $plan) {
+    if ($entry.Name -ne $entry.OriginalName) {
+      $renameRecords += [pscustomobject]@{ Original = $entry.OriginalName; NewName = $entry.Name; ProviderPath = $entry.ProviderPath }
+      if (-not $renamedOriginalsByProvider.ContainsKey($entry.ProviderPath)) {
+        $renamedOriginalsByProvider[$entry.ProviderPath] = New-Object 'System.Collections.Generic.HashSet[string]' ([System.StringComparer]::OrdinalIgnoreCase)
+      }
+      [void] $renamedOriginalsByProvider[$entry.ProviderPath].Add($entry.OriginalName)
     }
   }
 
@@ -345,13 +401,18 @@ try {
     if ([string]::IsNullOrWhiteSpace($entry.ProviderPath)) { $unresolved.Add($entry.Name); continue }
 
     $providerName = [System.IO.Path]::GetFileName($entry.ProviderPath)
-    Write-Host ("  [{0,-11}] {1}  <-  {2}" -f $entry.Category, $entry.Name, $providerName)
+    $label = if ($entry.Name -ne $entry.OriginalName) { "{0}  (renamed from '{1}')" -f $entry.Name, $entry.OriginalName } else { [string] $entry.Name }
+    Write-Host ("  [{0,-11}] {1}  <-  {2}" -f $entry.Category, $label, $providerName)
 
     if (-not $DryRun) {
       $srcWb = $openSources[$entry.ProviderPath]
-      $srcWs = $srcWb.Worksheets.Item($entry.Name)
+      $srcWs = $srcWb.Worksheets.Item($entry.OriginalName)
       $after = $target.Worksheets.Item($target.Worksheets.Count)
       [void] $srcWs.Copy([System.Reflection.Missing]::Value, $after)
+      if ($entry.Name -ne $entry.OriginalName) {
+        $copied = $target.Worksheets.Item($target.Worksheets.Count)
+        $copied.Name = $entry.Name
+      }
     }
     [void] $targetSheetNames.Add($entry.Name)
     $imported.Add($entry.Name)
@@ -374,6 +435,18 @@ try {
         if ([string]::IsNullOrWhiteSpace($nm)) { continue }
         if ($localName -like '*!*') { continue }          # sheet-scoped: travels with the sheet
         if ($refers -match '^=?#REF') { continue }
+
+        # Skip names that back a sheet this module renamed on import: the master
+        # copy (kept under the canonical name) owns those ranges, so carrying the
+        # renamed module's identical definitions would collide or bind to the
+        # wrong rows.
+        if ($renamedOriginalsByProvider.ContainsKey($rp)) {
+          $isRenamedTarget = $false
+          foreach ($o in $renamedOriginalsByProvider[$rp]) {
+            if ($refers -match ("'" + [regex]::Escape($o) + "'!")) { $isRenamedTarget = $true; break }
+          }
+          if ($isRenamedTarget) { continue }
+        }
 
         if ($targetNameSet.ContainsKey($nm)) {
           # Fix names that got externalised (point back to a local sheet) during sheet copy.
@@ -426,6 +499,174 @@ try {
     }
   }
 
+  # --- Localise externalised references (strip workbook prefix) --------------
+  # Copying sheets one-at-a-time externalises cross-sheet refs to the form
+  #   '<path>[book.xlsx]Sheet Name'!$A$1
+  # Every sheet those refs target is now present in the enterprise workbook, so
+  # strip the "<path>[book.xlsx]" token to rebind them to the local sheet.
+  # References whose target sheet is NOT present are left external (correct).
+  # This complements the source-side named-range routing (matrix consumers):
+  # it clears the remaining input/constant/mixed cross-sheet references.
+  $refsLocalised = 0
+  $namesLocalised = 0
+  $namesStillExternal = 0
+  $refsRepointed = 0
+  if (-not $DryRun) {
+    # Authoritative set of local sheet names (script-scoped so the regex
+    # MatchEvaluator can see it reliably).
+    $script:__localSheets = New-Object 'System.Collections.Generic.HashSet[string]' ([System.StringComparer]::OrdinalIgnoreCase)
+    foreach ($ws in $target.Worksheets) { [void] $script:__localSheets.Add([string] $ws.Name) }
+
+    # Authoritative set of local Excel Table (ListObject) names. External
+    # structured-table references carry the workbook filename in the sheet slot
+    # ('<path>[book.xlsx]book.xlsx'!Table_X[Col]) so the sheet-based strip below
+    # never matches them; this set lets us rebind them when the table is present.
+    $script:__localTables = New-Object 'System.Collections.Generic.HashSet[string]' ([System.StringComparer]::OrdinalIgnoreCase)
+    foreach ($ws in $target.Worksheets) {
+      try { foreach ($lo in $ws.ListObjects) { [void] $script:__localTables.Add([string] $lo.Name) } } catch { }
+    }
+
+    # Matches a quoted external qualifier: '<path>[<file>]<sheet>'
+    # (Excel always quotes a reference that carries a [workbook] token.)
+    $reExtRef = [regex] "'(?<pre>[^']*)\[(?<file>[^\[\]]+)\](?<sheet>[^']*)'"
+    $eval = [System.Text.RegularExpressions.MatchEvaluator] {
+      param($m)
+      $sheet = $m.Groups['sheet'].Value
+      if ($script:__localSheets.Contains($sheet)) { return "'" + $sheet + "'" }
+      return $m.Value
+    }
+
+    # Matches an external qualifier that names another workbook by path and is
+    # immediately followed by a structured-table reference, e.g.
+    #   '<full path>\book.xlsx'!Table_X[Col]     (no [..] brackets: workbook-level name)
+    #   '<path>[book.xlsx]sheet'!Table_X[Col]
+    # The table is a workbook-scoped ListObject, so when it is now local drop the
+    # whole '...'! qualifier to leave the bare TableName[...] structured reference.
+    # Requiring ".xls" in the quoted span keeps local 'Sheet'!Range refs untouched.
+    $reTableRef = [regex] "'[^']*\.xls[a-z]*[^']*'!(?<name>[A-Za-z_\\][A-Za-z0-9_.\\]*)(?=\[)"
+    $evalTable = [System.Text.RegularExpressions.MatchEvaluator] {
+      param($m)
+      $name = $m.Groups['name'].Value
+      if ($script:__localTables.Contains($name)) { return $name }
+      return $m.Value
+    }
+
+    foreach ($ws in $target.Worksheets) {
+      $ur = $ws.UsedRange
+      # Formula2 (dynamic-array aware) preserves spilling structured refs like
+      # Table[Col]. Writing via the legacy .Formula would force an implicit
+      # intersection '@' (Table[@[Col]]) that then errors #VALUE! off-table.
+      $f = $ur.Formula2
+      $rowBase = [int] $ur.Row
+      $colBase = [int] $ur.Column
+      if ($f -is [System.Array]) {
+        $rows = $f.GetLength(0); $cols = $f.GetLength(1)
+        for ($i = 1; $i -le $rows; $i++) {
+          for ($j = 1; $j -le $cols; $j++) {
+            $v = $f.GetValue($i, $j)
+            if ($v -isnot [string] -or -not $v.Contains('[')) { continue }
+            $new = $reExtRef.Replace($v, $eval)
+            $new = $reTableRef.Replace($new, $evalTable)
+            if ($new -ne $v) {
+              try { $ws.Cells.Item($rowBase + $i - 1, $colBase + $j - 1).Formula2 = $new; $refsLocalised++ } catch { }
+            }
+          }
+        }
+      } elseif ($f -is [string] -and $f.Contains('[')) {
+        $new = $reExtRef.Replace($f, $eval)
+        $new = $reTableRef.Replace($new, $evalTable)
+        if ($new -ne $f) {
+          try { $ws.Cells.Item($rowBase, $colBase).Formula2 = $new; $refsLocalised++ } catch { }
+        }
+      }
+    }
+    if ($refsLocalised -gt 0) { Write-Host ("Localised {0} externalised reference cell(s)." -f $refsLocalised) }
+
+    # --- Localise externalised defined-name RefersTo ------------------------
+    # Copying sheets one-at-a-time also externalises the sheet-scoped names that
+    # travel with them (M1_Table_*, X_Table_*, X_Cell_*, VEERG_*_Result_*) to
+    #   '<path>[book.xlsx]Sheet'!$A$1
+    # The upsert pass above only re-links WORKBOOK-scoped names, so these remain
+    # external and any OFFSET/INDEX cell that reads them errors (#VALUE!/#REF!).
+    # Apply the same strip to every name whose target sheet is now local.
+    # Names whose target sheet is NOT present are left external and counted.
+    foreach ($n in $target.Names) {
+      $rt = $null
+      try { $rt = [string] $n.RefersTo } catch { continue }
+      if ([string]::IsNullOrEmpty($rt) -or -not $rt.Contains('[')) { continue }
+      $newRt = $reExtRef.Replace($rt, $eval)
+      if ($newRt -ne $rt) {
+        try { $n.RefersTo = $newRt } catch { }
+        $rt2 = $newRt
+        try { $rt2 = [string] $n.RefersTo } catch { }
+        if ($rt2.Contains('[')) { $namesStillExternal++ } else { $namesLocalised++ }
+      } else {
+        $namesStillExternal++
+      }
+    }
+    if ($namesLocalised -gt 0) { Write-Host ("Localised {0} externalised defined-name(s)." -f $namesLocalised) }
+    if ($namesStillExternal -gt 0) { Write-Host ("Defined names still external (target sheet absent): {0}" -f $namesStillExternal) }
+
+    # --- Repoint refs on renamed-module sheets to the renamed copy -----------
+    # A module whose input sheet was imported under a distinct name still holds
+    # formulas that reference the ORIGINAL sheet name. After the localise pass
+    # those bind to the master copy (different row layout) and misread. Rebind
+    # every '<Original>'! reference on that module's own sheets to '<NewName>'!.
+    foreach ($rec in $renameRecords) {
+      $needle = "'" + $rec.Original + "'!"
+      $repl = "'" + $rec.NewName + "'!"
+      $moduleSheets = @($plan | Where-Object { $_.ProviderPath -eq $rec.ProviderPath } | ForEach-Object { $_.Name }) | Select-Object -Unique
+      foreach ($sName in $moduleSheets) {
+        if (-not $script:__localSheets.Contains($sName)) { continue }
+        $ws = $target.Worksheets.Item($sName)
+        $ur = $ws.UsedRange
+        $f = $ur.Formula2
+        $rowBase = [int] $ur.Row
+        $colBase = [int] $ur.Column
+        if ($f -is [System.Array]) {
+          $rows = $f.GetLength(0); $cols = $f.GetLength(1)
+          for ($i = 1; $i -le $rows; $i++) {
+            for ($j = 1; $j -le $cols; $j++) {
+              $v = $f.GetValue($i, $j)
+              if ($v -isnot [string] -or -not $v.Contains($needle)) { continue }
+              $new = $v.Replace($needle, $repl)
+              if ($new -ne $v) {
+                try { $ws.Cells.Item($rowBase + $i - 1, $colBase + $j - 1).Formula2 = $new; $refsRepointed++ } catch { }
+              }
+            }
+          }
+        } elseif ($f -is [string] -and $f.Contains($needle)) {
+          $new = $f.Replace($needle, $repl)
+          if ($new -ne $f) {
+            try { $ws.Cells.Item($rowBase, $colBase).Formula2 = $new; $refsRepointed++ } catch { }
+          }
+        }
+      }
+    }
+    if ($refsRepointed -gt 0) { Write-Host ("Repointed {0} reference(s) to renamed sheet copies." -f $refsRepointed) }
+  }
+
+  # --- Break any leftover external links (make workbook self-contained) -------
+  # Every resolvable cross-sheet reference was localised/repointed above, so any
+  # link source still registered is either a phantom entry (link table row with
+  # no cached cell data) or points at a sheet that was not imported. BreakLink
+  # converts any remaining references to their current values and drops the
+  # orphaned link-table parts, so the saved workbook reports zero external
+  # sources instead of prompting the user to update links on open.
+  $linksBroken = 0
+  if (-not $DryRun) {
+    try {
+      $preLinks = $target.LinkSources(1)  # xlExcelLinks
+      if ($null -ne $preLinks) {
+        foreach ($l in @($preLinks)) {
+          try { $target.BreakLink($l, 1); $linksBroken++ }  # xlLinkTypeExcelLinks
+          catch { Write-Warning ("Could not break external link: {0} ({1})" -f $l, $_.Exception.Message) }
+        }
+      }
+    } catch { }
+    if ($linksBroken -gt 0) { Write-Host ("Broke {0} leftover external link source(s)." -f $linksBroken) }
+  }
+
   # --- Detect leftover external links ----------------------------------------
   $externalLinks = @()
   try {
@@ -468,6 +709,11 @@ try {
     Write-Host ("Defined names re-linked: {0}" -f $namesFixed)
     Write-Host ("Defined names skipped  : {0}" -f $namesFailed)
     Write-Host ("Excel Labs modules add : {0}" -f @($mergedModules).Count)
+    Write-Host ("Refs localised (strip) : {0}" -f $refsLocalised)
+    Write-Host ("Names localised (strip): {0}" -f $namesLocalised)
+    Write-Host ("Names still external   : {0}" -f $namesStillExternal)
+    Write-Host ("Refs repointed (rename): {0}" -f $refsRepointed)
+    Write-Host ("External links broken  : {0}" -f $linksBroken)
   }
   if (@($externalLinks).Count -gt 0) {
     Write-Warning ("Workbook still has {0} external link source(s); some cross-sheet references may not have resolved locally:" -f @($externalLinks).Count)

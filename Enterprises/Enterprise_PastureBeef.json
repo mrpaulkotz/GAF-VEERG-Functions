@@ -23,17 +23,21 @@
   ],
 
   "modules": [
-    "Enteric_BeefPasture",
+    {
+      "id": "Enteric_BeefPasture",
+      "comment": "Enteric and Manure both ship an 'Input - Pasture Beef' sheet that backs the same 17 named ranges, but 7 of them sit at different rows (Enteric's date/digestibility block is ~7 rows higher than Manure's). Manure is the master: it keeps the canonical 'Input - Pasture Beef' sheet and owns those named ranges. Enteric's copy is imported under a distinct name via renameSheets so it does not collide; the builder drops the renamed copy's duplicate name definitions (master keeps them) and repoints Enteric's own formulas to this copy. Remove this rename once a single enterprise-level input sheet replaces the per-module input sheets.",
+      "renameSheets": { "Input - Pasture Beef": "Input - Pasture Beef (Enteric)" }
+    },
     "ManureManagement_BeefPasture",
     "Fertiliser",
     "Electricity_Scope2",
     "Fuel",
     {
       "id": "AgriculturalResidue",
-      "comment": "Pasture beef only needs the pasture-related sheets from the Ag Residue workbook, not the crop-residue or burning sheets. A bare string (like the entries above) imports every sheet the registry lists for that module; this object form subsets them.",
+      "comment": "Pasture beef centres on the pasture-residue sheets, but 6.3 Leaching and runoff depends on 6.1 Crop residue N2O and Input - Crop (which in turn needs only Constants - Ag Residue), so those dependency sheets are included too. 6.4 Residue burning is not required. A bare string (like the entries above) imports every sheet the registry lists for that module; this object form subsets them.",
       "include": {
-        "input": ["Input - Pasture"],
-        "calculation": ["6.2.1.1-2 Pasture residue N2O", "6.3.1.1-2 Leaching and runoff"],
+        "input": ["Input - Pasture", "Input - Crop"],
+        "calculation": ["6.1.1.1-2 Crop residue N2O", "6.2.1.1-2 Pasture residue N2O", "6.3.1.1-2 Leaching and runoff"],
         "constants": ["Constants - Ag Residue"]
       }
     }
@@ -42,6 +46,9 @@
   "options": {
     "registry": "_ModuleRegistry.json",
     "includeCommonSheets": true,
+    "commonSheetProviders": {
+      "Input - Site": "ManureManagement_BeefPasture"
+    },
     "importModuleResultsSheets": false,
     "dedupeSheetsByName": true,
     "dedupeExcelLabsModules": true,
