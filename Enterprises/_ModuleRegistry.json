@@ -1,0 +1,466 @@
+{
+  "schemaVersion": 1,
+  "description": "Catalog that maps each VEERG module to its source workbook, the worksheets it contributes, and the Excel Labs (AFE) modules it needs. Enterprise files (Enterprise_*.json) reference these modules by key. This registry is the single place where module -> workbook/sheet/labs wiring lives, so it is not repeated in every enterprise file.",
+
+  "sheetSourceModel": {
+    "description": "Every sheet in an enterprise workbook is either 'import' or 'custom'. 'import' = the sheet is copied as-is from a module's source workbook; because input cells and input tables are exposed as named ranges, imported calculation sheets keep working no matter which sheet they land on (they resolve inputs by name, not by Sheet!Cell). 'custom' = the sheet is unique to the enterprise and is built by the enterprise (declared in the enterprise file's 'customSheets', e.g. the roll-up Results sheet or an enterprise-level input sheet). A module's sheets below default to 'import'. An enterprise file may subset which of a module's listed sheets to import via a per-module 'include' block.",
+    "namedRangeContract": "Imported calculation sheets must reference inputs/tables AND result cells by workbook-scoped named range (X_Cell_* / X_Table_* / Table_Input* for inputs; result cells are likewise named ranges), never by Sheet!Cell, so sheets can be relocated, deduped, or replaced by a custom sheet without breaking references.",
+    "resultsSheets": "Module Results tabs are never imported. The enterprise provides a single custom Results sheet (declared in the enterprise file's 'customSheets') that reads each module's result named ranges directly. This is why module 'sheets' below list only input/calculation/constants."
+  },
+
+  "templateWorkbook": "Enterprise_BeefPasture_WIP_v01.xlsx",
+
+  "common": {
+    "description": "Sheets and Excel Labs modules included once in every enterprise workbook, regardless of which modules are selected. 'strategy' tells a future builder where each sheet comes from: 'template' = copied from templateWorkbook; 'dedupe' = copied once from the first selected module workbook that contains it (identical across modules); 'generate' = assembled by the enterprise builder from each module's contribution.",
+    "sheets": [
+      { "name": "Home", "strategy": "template" },
+      { "name": "Overview", "strategy": "template" },
+      { "name": "Input - Site", "strategy": "dedupe" },
+      { "name": "Constants - Common", "strategy": "dedupe" },
+      { "name": "Acknowledgements", "strategy": "template" }
+    ],
+    "excelLabsModules": [
+      "Common_Equations",
+      "Common_InputFunctions",
+      "Common_SourceData"
+    ]
+  },
+
+  "sheetGroups": {
+    "description": "Shared building blocks pulled in once when at least one member module requests the group, then deduped. Referenced by a module's 'groups' array.",
+    "Livestock": {
+      "sheets": ["Constants - Livestock"],
+      "excelLabsModules": ["CommonLivestock_SourceData"]
+    },
+    "Cropping": {
+      "sheets": [],
+      "excelLabsModules": ["CommonCropping_InputFunctions"]
+    }
+  },
+
+  "modules": {
+    "Enteric_BeefPasture": {
+      "title": "Enteric fermentation - Pasture Beef",
+      "sourceWorkbook": "3_2_Enteric_BeefPasture_WIP_v02.xlsx",
+      "groups": ["Livestock", "Cropping"],
+      "sheets": {
+        "input": ["Input - Pasture Beef"],
+        "calculation": ["3.2.1.1-2 Enteric Methane"],
+        "constants": ["Constants - Pasture Beef"]
+      },
+      "excelLabsModules": [
+        "EntericMethane_PastureBeef_Equations",
+        "InputFunctions_PastureBeef",
+        "SourceData_PastureBeef"
+      ]
+    },
+
+    "Enteric_Feedlot": {
+      "title": "Enteric fermentation - Feedlot",
+      "sourceWorkbook": "3_1_Enteric_Feedlot_WIP_v01.xlsx",
+      "groups": ["Livestock"],
+      "sheets": {
+        "input": ["Input - Feedlot"],
+        "calculation": ["3.1.1.1-2 Enteric Methane"],
+        "constants": ["Constants - Feedlot"]
+      },
+      "excelLabsModules": [
+        "EntericMethane_Feedlot_Equations",
+        "SourceData_Feedlot"
+      ]
+    },
+
+    "Enteric_Dairy": {
+      "title": "Enteric fermentation - Dairy",
+      "sourceWorkbook": "3_3_Enteric_Dairy_WIP_v04.xlsx",
+      "groups": ["Livestock", "Cropping"],
+      "sheets": {
+        "input": ["Input - Dairy"],
+        "calculation": ["3.3.1.1-2 Enteric Methane"],
+        "constants": ["Constants - Dairy"]
+      },
+      "excelLabsModules": [
+        "EntericMethane_Dairy_Equations",
+        "InputFunctions_Dairy",
+        "SourceData_Dairy"
+      ]
+    },
+
+    "Enteric_Swine": {
+      "title": "Enteric fermentation - Swine",
+      "sourceWorkbook": "3_5_Enteric_Swine_WIP_v02.xlsx",
+      "groups": ["Livestock", "Cropping"],
+      "sheets": {
+        "input": ["Input - Swine"],
+        "calculation": ["3.5.1.1-2 Enteric Methane"],
+        "constants": ["Constants - Swine"]
+      },
+      "excelLabsModules": [
+        "EntericMethane_Swine_Equations",
+        "SourceData_Swine"
+      ]
+    },
+
+    "Enteric_OtherLivestock": {
+      "title": "Enteric fermentation - Other Livestock",
+      "sourceWorkbook": "3_6_Enteric_OtherLivestock_WIP_v01.xlsx",
+      "groups": [],
+      "sheets": {
+        "input": ["Input - Other Livestock"],
+        "calculation": ["3.6.1.1-2 Enteric Methane"],
+        "constants": ["Constants - Other Livestock"]
+      },
+      "excelLabsModules": [
+        "EntericMethane_OtherLivestock_Equations",
+        "SourceData_OtherLivestock"
+      ]
+    },
+
+    "ManureManagement_BeefPasture": {
+      "title": "Manure management - Pasture Beef",
+      "sourceWorkbook": "4_2_ManureManagement_BeefPasture_WIP_v07.xlsx",
+      "groups": ["Livestock", "Cropping"],
+      "sheets": {
+        "input": ["Input - Pasture Beef"],
+        "calculation": [
+          "4.2.1.1-2 Methane",
+          "4.2.1.3-4 Soil direct N20",
+          "4.2.1.5-6 Soil Atmos Dep",
+          "4.2.1.7-8 Soil leach runoff"
+        ],
+        "constants": ["Constants - Pature Beef"]
+      },
+      "excelLabsModules": [
+        "MMS_PastureBeef_Methane_Equations",
+        "MMS_PastureBeef_Soil_N2ODirect_Equations",
+        "MMS_PastureBeef_Soil_AtmosphericDeposition_Equations",
+        "MMS_PastureBeef_Soil_LeachingAndRunoff",
+        "InputFunctions_PastureBeef",
+        "SourceData_PastureBeef"
+      ]
+    },
+
+    "ManureManagement_Feedlot": {
+      "title": "Manure management - Feedlot",
+      "sourceWorkbook": "4_1_ManureManagement_Feedlot_WIP_v08.xlsx",
+      "groups": ["Livestock", "Cropping"],
+      "sheets": {
+        "input": ["Input - Feedlot"],
+        "calculation": [
+          "4.1.1.1-2 Methane",
+          "4.1.1.3-4 Direct N20",
+          "4.1.1.5-6 Atmos Deposition",
+          "4.1.1.9 Manure applied to soils"
+        ],
+        "constants": ["Constants - Feedlot"]
+      },
+      "excelLabsModules": [
+        "MMS_Feedlot_Methane_Equations",
+        "MMS_Feedlot_N2ODirect_Equations",
+        "MMS_Feedlot_AtmosphericDeposition_Equations",
+        "MMS_Feedlot_ManureAppliedToSoils_Equations",
+        "SourceData_Feedlot"
+      ]
+    },
+
+    "ManureManagement_Dairy": {
+      "title": "Manure management - Dairy",
+      "sourceWorkbook": "4_3_ManureManagement_Dairy_WIP_v12.xlsx",
+      "groups": ["Livestock", "Cropping"],
+      "sheets": {
+        "input": ["Input - Dairy"],
+        "calculation": [
+          "4.3.1.1-2 Methane",
+          "4.3.1.3-4 Direct N20",
+          "4.3.1.5 Atmos deposition",
+          "4.3.1.6-7 Leaching and runoff",
+          "4.3.1.8 Manure applied to soils",
+          "4.3.1.9 Soil direct N2O",
+          "4.3.1.10-11 Soil Atmos Dep",
+          "4.3.1.12-13 Soil leach runoff"
+        ],
+        "constants": ["Constants - Dairy"]
+      },
+      "excelLabsModules": [
+        "MMS_Dairy_Methane_Equations",
+        "MMS_Dairy_N2ODirect_Equations",
+        "MMS_Dairy_AtmosphericDeposition_Equations",
+        "MMS_Dairy_LeachingAndRunoff_Equations",
+        "MMS_Dairy_ManureAppliedToSoils_Equations",
+        "MMS_Dairy_Soil_N2ODirect_Equations",
+        "MMS_Dairy_Soil_AtmosphericDeposition_Equations",
+        "MMS_Dairy_Soil_LeachingAndRunoff",
+        "InputFunctions_Dairy",
+        "SourceData_Dairy"
+      ]
+    },
+
+    "ManureManagement_Swine": {
+      "title": "Manure management - Swine",
+      "sourceWorkbook": "4_5_ManureManagement_Swine_WIP_v06.xlsx",
+      "groups": ["Livestock", "Cropping"],
+      "sheets": {
+        "input": ["Input - Swine"],
+        "calculation": [
+          "4.5.1.1-2 Methane",
+          "4.5.1.3-4 Direct N2O",
+          "4.5.1.5-6 Atmos Dep",
+          "4.5.1.7-8 Leaching and runoff",
+          "4.5.1.9 Manure applied to soils"
+        ],
+        "constants": ["Constants - Swine"]
+      },
+      "excelLabsModules": [
+        "MMS_Swine_Methane_Equations",
+        "MMS_Swine_N2ODirect_Equations",
+        "MMS_Swine_AtmosphericDeposition_Equations",
+        "MMS_Swine_LeachingAndRunoff_Equations",
+        "MMS_Swine_ManureAppliedToSoils_Equations",
+        "SourceData_Swine"
+      ]
+    },
+
+    "ManureManagement_Poultry": {
+      "title": "Manure management - Poultry",
+      "sourceWorkbook": "4_6_ManureManagement_Poultry_WIP_v03.xlsx",
+      "groups": ["Livestock", "Cropping"],
+      "sheets": {
+        "input": ["Input - Poultry"],
+        "calculation": [
+          "4.6.1.1-2 Methane",
+          "4.6.1.3-4 Direct N20",
+          "4.6.1.5-6 Atmos Dep",
+          "4.6.1.7-8 Leaching and runoff",
+          "4.6.1.9 Manure applied to soils",
+          "4.6.1.10-11 Soil direct N2O",
+          "4.6.1.12-13 Soil atmos dep",
+          "4.6.1.14-15 Soil leach runoff"
+        ],
+        "constants": ["Constants - Poultry"]
+      },
+      "excelLabsModules": [
+        "MMS_Poultry_Methane_Equations",
+        "MMS_Poultry_N2ODirect_Equations",
+        "MMS_Poultry_AtmosphericDeposition_Equations",
+        "MMS_Poultry_LeachingAndRunoff_Equations",
+        "MMS_Poultry_ManureAppliedToSoils_Equations",
+        "MMS_Poultry_Soil_N2ODirect_Equations",
+        "MMS_Poultry_Soil_AtmosphericDeposition_Equations",
+        "MMS_Poultry_Soil_LeachingAndRunoff_Equations",
+        "SourceData_Poultry"
+      ]
+    },
+
+    "ManureManagement_OtherLivestock": {
+      "title": "Manure management - Other Livestock",
+      "sourceWorkbook": "4_7_ManureManagement_OtherLivestock_WIP_v01.xlsx",
+      "groups": ["Livestock", "Cropping"],
+      "sheets": {
+        "input": ["Input - Other Livestock"],
+        "calculation": [
+          "4.7.1.1-2 Manure Methane",
+          "4.7.1.3-4 Soil Direct N2O",
+          "4.7.1.5-6 Soil Atmos Deposition",
+          "4.7.1.7-8 Soil Leaching Runoff"
+        ],
+        "constants": ["Constants - Other Livestock"]
+      },
+      "excelLabsModules": [
+        "MMS_OtherLivestock_Methane_Equations",
+        "MMS_OtherLivestock_Soil_N2ODirect",
+        "MMS_OtherLivestock_Soil_AtmosphericDeposition",
+        "MMS_OtherLivestock_Soil_LeachingAndRunoff",
+        "SourceData_OtherLivestock"
+      ]
+    },
+
+    "Electricity_Scope2": {
+      "title": "Purchased electricity (Scope 2)",
+      "sourceWorkbook": "14_Electricity_Scope2_WIP_v01.xlsx",
+      "groups": [],
+      "sheets": {
+        "input": ["Input - Electricity"],
+        "calculation": ["14.1.1-2 Purchased electricity"],
+        "constants": ["Constants - Electricity"]
+      },
+      "excelLabsModules": [
+        "Electricity_Equations",
+        "Electricity_SourceData"
+      ]
+    },
+
+    "Fuel": {
+      "title": "Fuel combustion",
+      "sourceWorkbook": "8_Fuel_WIP_v04.xlsx",
+      "groups": [],
+      "sheets": {
+        "input": ["Input - Fuel"],
+        "calculation": [
+          "8.1.1.1-2 Transport fuel",
+          "8.2.1.1-2 Stationary fuel"
+        ],
+        "constants": ["Constants - Fuel"]
+      },
+      "excelLabsModules": [
+        "Fuel_Equations",
+        "Fuel_InputFunctions",
+        "Fuel_SourceData"
+      ]
+    },
+
+    "Fertiliser": {
+      "title": "Fertiliser and lime",
+      "sourceWorkbook": "5_Fertiliser_WIP_v07.xlsx",
+      "groups": ["Cropping"],
+      "sheets": {
+        "input": ["Input - Fertiliser"],
+        "calculation": [
+          "5.1.1.1-2 Inorganic fert N2O",
+          "5.1.1.3-4 Inorganic fert CO2",
+          "5.2.1.1-2 Organic Fert N2O",
+          "5.3.1.1-2 Lime CO2",
+          "5.4.1.1-4 Atmos deposition",
+          "5.5.1.1-2 Leaching and runoff"
+        ],
+        "constants": ["Constants - Fertiliser"]
+      },
+      "excelLabsModules": [
+        "Fertiliser_Equations_InorganicN2O",
+        "Fertiliser_Equations_InorganicCO2",
+        "Fertiliser_Equations_OrganicN2O",
+        "Fertiliser_Equations_Lime",
+        "Fertiliser_Equations_AtmosphericDeposition",
+        "Fertiliser_Equations_LeachingAndRunoff",
+        "Fertiliser_InputFunctions",
+        "Fertiliser_SourceData"
+      ]
+    },
+
+    "SolidWaste": {
+      "title": "Solid waste treatment",
+      "sourceWorkbook": "10_SolidWaste_WIP_v02.xlsx",
+      "groups": [],
+      "sheets": {
+        "input": ["Input - Solid waste"],
+        "calculation": ["10.1.1-2 Solid waste treatment"],
+        "constants": ["Constants - Solid Waste"]
+      },
+      "excelLabsModules": [
+        "WasteSolid_Equations",
+        "WasteSolid_InputFunctions",
+        "WasteSolid_SourceData"
+      ]
+    },
+
+    "Wastewater": {
+      "title": "Wastewater treatment",
+      "sourceWorkbook": "11_Wastewater_WIP_v02.xlsx",
+      "groups": [],
+      "sheets": {
+        "input": ["Input - Wastewater"],
+        "calculation": [
+          "11.1.1-2 Wastewater CH4",
+          "11.1.3-4 Wastewater N2O"
+        ],
+        "constants": ["Constants - Wastewater"]
+      },
+      "excelLabsModules": [
+        "Wastewater_Methane_Equations",
+        "Wastewater_N2O_Equations",
+        "Wastewater_SourceData"
+      ]
+    },
+
+    "Refrigerants": {
+      "title": "Refrigerants",
+      "sourceWorkbook": "9_Refrigerants_WIP_v02.xlsx",
+      "groups": [],
+      "sheets": {
+        "input": ["Input - Refrigerants"],
+        "calculation": ["9.1.1.1-2 Refrigerant use"],
+        "constants": ["Constants - Refrigerants"]
+      },
+      "excelLabsModules": [
+        "Refrigerants_Equations",
+        "Refrigerants_InputFunctions",
+        "Refrigerants_SourceData"
+      ]
+    },
+
+    "AgriculturalResidue": {
+      "title": "Agricultural residue management",
+      "sourceWorkbook": "6_AgriculturalResidue_WIP_v02.xlsx",
+      "groups": ["Cropping"],
+      "sheets": {
+        "input": ["Input - Crop", "Input - Pasture"],
+        "calculation": [
+          "6.1.1.1-2 Crop residue N2O",
+          "6.2.1.1-2 Pasture residue N2O",
+          "6.3.1.1-2 Leaching and runoff",
+          "6.4.1.1-2 Residue burning"
+        ],
+        "constants": ["Constants - Ag Residue"]
+      },
+      "excelLabsModules": [
+        "AgResidue_Equations_CropResidue",
+        "AgResidue_Equations_PastureResidue",
+        "AgResidue_Equations_Leaching",
+        "AgResidue_Equations_FieldBurning",
+        "AgResidue_SourceData"
+      ]
+    },
+
+    "RiceCultivation": {
+      "title": "Rice cultivation",
+      "sourceWorkbook": "7_RiceCultivation_WIP_v02.xlsx",
+      "groups": [],
+      "sheets": {
+        "input": ["Input - Rice"],
+        "calculation": ["7.1.1-2 Rice cultivation"],
+        "constants": ["Constants - Rice cultivation"]
+      },
+      "excelLabsModules": [
+        "RiceCultivation_Equations",
+        "RiceCultivation_SourceData"
+      ]
+    },
+
+    "SupplementaryCO2": {
+      "title": "Supplementary CO2",
+      "sourceWorkbook": "12_SupplementaryCO2_WIP_v02.xlsx",
+      "groups": [],
+      "sheets": {
+        "input": ["Input - CO2 Use"],
+        "calculation": ["12.1.1-2 Supplementary CO2"],
+        "constants": []
+      },
+      "excelLabsModules": [
+        "SupplementaryCO2_Equations"
+      ]
+    },
+
+    "Scope3": {
+      "title": "Scope 3 (upstream) emissions",
+      "sourceWorkbook": "13_Scope3_WIP_v11.xlsx",
+      "groups": ["Livestock"],
+      "sheets": {
+        "input": [
+          "Input - Farm Inputs",
+          "Input - Freight",
+          "Input - Waste sent off-site"
+        ],
+        "calculation": [
+          "15 Scope 3",
+          "Calcs - Manure sent off-site"
+        ],
+        "constants": ["Constants - Scope 3"]
+      },
+      "excelLabsModules": [
+        "Scope3_Equations",
+        "Scope3_InputFunctions",
+        "Scope3_SourceData"
+      ],
+      "notes": "Scope 3 re-uses several other modules' input/constants sheets and labs modules (Fuel, Fertiliser, Electricity, SolidWaste, livestock SourceData). When Scope3 is selected the builder should rely on sheet/labs de-duplication rather than copying those a second time."
+    }
+  }
+}

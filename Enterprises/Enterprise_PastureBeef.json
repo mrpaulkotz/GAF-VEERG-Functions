@@ -1,0 +1,55 @@
+{
+  "schemaVersion": 1,
+  "enterprise": {
+    "id": "PastureBeef",
+    "name": "Pasture Beef Enterprise",
+    "description": "A grazing beef enterprise: enteric fermentation and manure emissions from the herd, plus the farm's energy, waste and upstream (Scope 3) emissions.",
+    "outputWorkbook": "Enterprise_PastureBeef_WIP_v01.xlsx"
+  },
+
+  "customSheets": [
+    {
+      "name": "Results",
+      "kind": "results",
+      "source": "custom",
+      "description": "The single enterprise-wide results tab, unique to this enterprise. Module Results tabs are NOT imported; this sheet reads each module's result cells directly by named range."
+    },
+    {
+      "name": "Input - Enterprise",
+      "kind": "input",
+      "source": "custom",
+      "description": "Optional enterprise-level input sheet for values shared across modules. Imported module input sheets are kept as-is alongside this one."
+    }
+  ],
+
+  "modules": [
+    "Enteric_BeefPasture",
+    "ManureManagement_BeefPasture",
+    "Fertiliser",
+    "Electricity_Scope2",
+    "Fuel",
+    "Refrigerants",
+    "SolidWaste",
+    "Wastewater",
+    "Scope3",
+    {
+      "id": "AgriculturalResidue",
+      "comment": "Pasture beef only needs the pasture-related sheets from the Ag Residue workbook, not the crop-residue or burning sheets. A bare string (like the entries above) imports every sheet the registry lists for that module; this object form subsets them.",
+      "include": {
+        "input": ["Input - Pasture"],
+        "calculation": ["6.2.1.1-2 Pasture residue N2O", "6.3.1.1-2 Leaching and runoff"],
+        "constants": ["Constants - Ag Residue"]
+      }
+    }
+  ],
+
+  "options": {
+    "registry": "_ModuleRegistry.json",
+    "includeCommonSheets": true,
+    "importModuleResultsSheets": false,
+    "dedupeSheetsByName": true,
+    "dedupeExcelLabsModules": true,
+    "onDuplicateSheet": "skip",
+    "sheetOrder": ["common", "custom", "input", "calculation", "constants"]
+  }
+}
