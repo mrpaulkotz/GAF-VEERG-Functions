@@ -187,7 +187,7 @@ VEERG_6_1_1_2__1__FractionOfCropResidueRemovedBaled_Arguments
           "B","number of bales generated", "", "Input";
           "M_B","mass of each bale", "kg", "Input";
           "P_c","annual production of crop c", "kg", "Input";
-          "R_AGc","residue to crop ratio for crop c", "", "Input";
+          "R_AGc","residue to crop ratio for crop c", "", "Constant";
           "c","Crop type", "", "Input"
         }, r, c)
       )

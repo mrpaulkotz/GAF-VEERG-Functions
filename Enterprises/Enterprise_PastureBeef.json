@@ -28,10 +28,6 @@
     "Fertiliser",
     "Electricity_Scope2",
     "Fuel",
-    "Refrigerants",
-    "SolidWaste",
-    "Wastewater",
-    "Scope3",
     {
       "id": "AgriculturalResidue",
       "comment": "Pasture beef only needs the pasture-related sheets from the Ag Residue workbook, not the crop-residue or burning sheets. A bare string (like the entries above) imports every sheet the registry lists for that module; this object form subsets them.",
@@ -50,6 +46,6 @@
     "dedupeSheetsByName": true,
     "dedupeExcelLabsModules": true,
     "onDuplicateSheet": "skip",
-    "sheetOrder": ["common", "custom", "input", "calculation", "constants"]
+    "sheetOrder": [ "custom", "input", "calculation", "constants", "common"]
   }
 }

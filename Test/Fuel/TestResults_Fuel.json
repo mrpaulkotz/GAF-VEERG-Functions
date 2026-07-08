@@ -1,0 +1,11 @@
+{
+	"VEERG_8_1_1_1__1_FuelCombustionTransport_Result_CO2": 83.182000,
+	"VEERG_8_1_1_1__1_FuelCombustionTransport_Result_CH4": 0.199060,
+	"VEERG_8_1_1_1__1_FuelCombustionTransport_Result_N2O": 0.584500,
+	"VEERG_8_1_1_1__1_FuelCombustionTransport_Result_Scope3": 20.501600,
+	"VEERG_8_2_1_1__1_FuelCombustionStationary_Result_CO2": 29.070800,
+	"VEERG_8_2_1_1__1_FuelCombustionStationary_Result_CH4": 0.072400,
+	"VEERG_8_2_1_1__1_FuelCombustionStationary_Result_N2O": 0.071400,
+	"VEERG_8_2_1_1__1_FuelCombustionStationary_Result_Scope3": 6.292400
+}
+

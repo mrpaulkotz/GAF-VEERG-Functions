@@ -1,0 +1,57 @@
+{
+	"X_Cell_Site_FarmName": "My test farm",
+	"X_Cell_Site_ReportingEntityName": "My test Farms Pty Ltd",
+	"X_Cell_Site_StartDate": "1/1/2024",
+	"X_Cell_Site_State": "Western Australia",
+	"X_Cell_Site_Region": "Western Australia - Outback (South)",
+
+  "X_Cell_Fuel_IsMetroLocation": "Metro",
+
+"InputTables": [
+    {
+      "TableName": "Table_Input_Fuel",
+      "MatrixType": "RowsToCols",
+      "ColumnOffset": 0,
+      "RowOffset": null,
+      "AllowOverride": true,
+      "Rows": {
+        "Row1": {
+          "FuelUse": "Power standalone machinery or heating",
+          "FuelType": "Town gas in GJ",
+          "AmountPurchased": 100,
+          "AmountUnit": "GJ",
+          "PercentConsumed": "100%"
+        },
+        "Row2": {
+          "FuelUse": "Power standalone machinery or heating",
+          "FuelType": "Petrol",
+          "AmountPurchased": 10000,
+          "AmountUnit": "L",
+          "PercentConsumed": "100%"
+        },
+        "Row3": {
+          "FuelUse": "Cars and light commercial vehicles",
+          "FuelType": "Diesel",
+          "AmountPurchased": 10000,
+          "AmountUnit": "L",
+          "PercentConsumed": "100%"
+        },
+        "Row4": {
+          "FuelUse": "Off-road Agriculture and forestry equipment",
+          "FuelType": "Diesel",
+          "AmountPurchased": 10000,
+          "AmountUnit": "L",
+          "PercentConsumed": "100%"
+        },
+        "Row5": {
+          "FuelUse": "Vessels",
+          "FuelType": "Fuel oil",
+          "AmountPurchased": 10000,
+          "AmountUnit": "L",
+          "PercentConsumed": "100%"
+        }
+      }
+    }
+  ]
+}
+

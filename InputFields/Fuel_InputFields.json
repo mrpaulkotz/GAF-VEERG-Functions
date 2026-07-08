@@ -1,8 +1,59 @@
 {
 	"schemaVersion": 1,
-	"generatedFrom": "8_Fuel_WIP_v04.xlsx",
-	"generatedAt": "2026-07-07T23:28:08Z",
-	"InputCells": [],
+	"generatedFrom": "8_Fuel_WIP_v05.xlsx",
+	"generatedAt": "2026-07-08T04:20:40Z",
+	"InputCells": [
+		{
+			"CellName": "X_Cell_Fuel_IsMetroLocation",
+			"CellType": "select",
+			"Options": {
+				"Metro": "Metro",
+				"Non-metro": "Non-metro"
+			}
+		},
+		{
+			"CellName": "X_Cell_Site_FarmName",
+			"CellType": "text"
+		},
+		{
+			"CellName": "X_Cell_Site_Region",
+			"CellType": "select",
+			"Options": {
+				"Bunbury": "Bunbury",
+				"Mandurah": "Mandurah",
+				"Perth - Inner": "Perth - Inner",
+				"Perth - North East": "Perth - North East",
+				"Perth - North West": "Perth - North West",
+				"Perth - South East": "Perth - South East",
+				"Perth - South West": "Perth - South West",
+				"Western Australia - Wheat Belt": "Western Australia - Wheat Belt",
+				"Western Australia - Outback (North)": "Western Australia - Outback (North)",
+				"Western Australia - Outback (South)": "Western Australia - Outback (South)"
+			}
+		},
+		{
+			"CellName": "X_Cell_Site_ReportingEntityName",
+			"CellType": "text"
+		},
+		{
+			"CellName": "X_Cell_Site_StartDate",
+			"CellType": "number"
+		},
+		{
+			"CellName": "X_Cell_Site_State",
+			"CellType": "select",
+			"Options": {
+				"New South Wales": "New South Wales",
+				"ACT": "ACT",
+				"Victoria": "Victoria",
+				"Queensland": "Queensland",
+				"South Australia": "South Australia",
+				"Western Australia": "Western Australia",
+				"Tasmania": "Tasmania",
+				"Northern Territory": "Northern Territory"
+			}
+		}
+	],
 	"InputTables": [
 		{
 			"TableName": "Table_Input_Fuel",
@@ -26,8 +77,7 @@
 							"Aviation": "Aviation",
 							"Cars and light commercial vehicles": "Cars and light commercial vehicles",
 							"Off-road Agriculture and forestry equipment": "Off-road Agriculture and forestry equipment",
-							"Vessels": "Vessels",
-							"General use": "General use"
+							"Vessels": "Vessels"
 						}
 					},
 					"FuelType": {
