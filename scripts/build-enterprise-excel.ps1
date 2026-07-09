@@ -172,6 +172,144 @@ function Get-WorksheetNames {
 }
 
 # ---------------------------------------------------------------------------
+# Navigation menu generation (column A of every sheet)
+# ---------------------------------------------------------------------------
+# Rebuilds the left-hand navigation menu on every worksheet from the final
+# sheet set, so it always matches the assembled enterprise. Layout mirrors the
+# source workbooks:
+#   A1              logo (in-cell image, style 'Input page heading') - preserved
+#   A3..            untitled group (Home, Results) - no title
+#   (blank) INPUTS  title + one link per input sheet
+#   (blank) CALC..  title + one link per equation sheet
+#   (blank) APPEND. title + one link per appendix sheet
+# Each link is =HYPERLINK("#'Sheet'!A1","Label"). The link to the sheet the menu
+# is drawn on uses that group's 'selected' style; all others use the default.
+function Set-EnterpriseNavMenu {
+  param(
+    $Target,        # target workbook COM object
+    [hashtable] $CategoryMap,  # sheet name -> category (input|calculation|constants|common|custom)
+    [hashtable] $Labels        # sheet name -> friendly menu label (override; else derived)
+  )
+
+  $titleStyle   = 'Menu section title'
+  $defaultStyle = 'Menu link default'
+  $logoStyle    = 'Input page heading'
+  $firstMenuRow = 3      # A1 = logo, A2 = gap
+  $clearToRow   = 160    # column A is a pure nav gutter; safe to blank below the logo
+
+  # Fixed group definitions (order = render order). Title colour mirrors the
+  # source design (INPUTS blue, CALCULATIONS green, APPENDICES grey).
+  $groups = @(
+    [pscustomobject]@{ Id = 'untitled';   Title = $null;          Selected = 'Menu link selected results';   TitleColor = $null },
+    [pscustomobject]@{ Id = 'inputs';     Title = 'INPUTS';       Selected = 'Menu link selected input';     TitleColor = 26316 },
+    [pscustomobject]@{ Id = 'equations';  Title = 'CALCULATIONS'; Selected = 'Menu link selected equations'; TitleColor = 32768 },
+    [pscustomobject]@{ Id = 'appendices'; Title = 'APPENDICES';   Selected = 'Menu link selected';           TitleColor = 4210752 }
+  )
+
+  # Resolve Style objects once (assigning by object is more reliable via COM).
+  $styleCache = @{}
+  $getStyle = {
+    param($name)
+    if (-not $styleCache.ContainsKey($name)) { $styleCache[$name] = $Target.Styles.Item($name) }
+    return $styleCache[$name]
+  }
+
+  # Group assignment for a sheet.
+  $groupOf = {
+    param($name)
+    if ($name -eq 'Home' -or $name -eq 'Results') { return 'untitled' }
+    if ($name -like 'Input*') { return 'inputs' }
+    $cat = if ($CategoryMap.ContainsKey($name)) { [string] $CategoryMap[$name] } else { '' }
+    if ($cat -eq 'calculation') { return 'equations' }
+    return 'appendices'
+  }
+
+  # Friendly label for a sheet (explicit override, else strip 'Input - ' prefix).
+  $labelOf = {
+    param($name)
+    if ($Labels.ContainsKey($name)) { return [string] $Labels[$name] }
+    if ($name -like 'Input - *') { return $name.Substring(8) }
+    return $name
+  }
+
+  # Collect members per group in worksheet tab order.
+  $members = @{ 'untitled' = @(); 'inputs' = @(); 'equations' = @(); 'appendices' = @() }
+  foreach ($ws in $Target.Worksheets) {
+    $n = [string] $ws.Name
+    $g = & $groupOf $n
+    $members[$g] += $n
+  }
+  # Untitled group always leads with Home then Results.
+  $ut = @()
+  foreach ($x in @('Home', 'Results')) { if ($members['untitled'] -contains $x) { $ut += $x } }
+  foreach ($x in $members['untitled']) { if ($ut -notcontains $x) { $ut += $x } }
+  $members['untitled'] = $ut
+
+  # Flatten into an ordered render plan (blank marker between groups).
+  $rows = New-Object System.Collections.Generic.List[object]
+  $firstGroup = $true
+  foreach ($grp in $groups) {
+    $mem = @($members[$grp.Id])
+    if ($mem.Count -eq 0) { continue }
+    if (-not $firstGroup) { $rows.Add([pscustomobject]@{ Kind = 'blank' }) }
+    $firstGroup = $false
+    if ($grp.Title) { $rows.Add([pscustomobject]@{ Kind = 'title'; Text = $grp.Title; Color = $grp.TitleColor }) }
+    foreach ($n in $mem) {
+      $rows.Add([pscustomobject]@{ Kind = 'link'; Text = (& $labelOf $n); Target = $n; Selected = $grp.Selected })
+    }
+  }
+
+  # Locate a donor sheet that carries the logo, to seed sheets missing it.
+  $logoDonor = $null
+  foreach ($ws in $Target.Worksheets) {
+    try { if ([string] $ws.Cells.Item(1, 1).Style.Name -eq $logoStyle) { $logoDonor = $ws; break } } catch { }
+  }
+
+  $updated = 0
+  foreach ($ws in $Target.Worksheets) {
+    $sn = [string] $ws.Name
+
+    # Ensure the A1 logo is present (copy the whole cell incl. in-cell image).
+    if ($null -ne $logoDonor) {
+      $hasLogo = $false
+      try { $hasLogo = ([string] $ws.Cells.Item(1, 1).Style.Name -eq $logoStyle) } catch { }
+      if (-not $hasLogo -and $ws.Name -ne $logoDonor.Name) {
+        try { $logoDonor.Range('A1').Copy($ws.Range('A1')) | Out-Null } catch { Write-Warning ("Menu: could not copy logo to '{0}': {1}" -f $sn, $_.Exception.Message) }
+      }
+    }
+
+    # Blank the old menu (contents + formats) below the logo.
+    try { $ws.Range("A2:A$clearToRow").Clear() | Out-Null } catch { }
+
+    # Write the unified menu.
+    $r = $firstMenuRow
+    foreach ($row in $rows) {
+      switch ($row.Kind) {
+        'blank' { $r++ ; continue }
+        'title' {
+          $cell = $ws.Cells.Item($r, 1)
+          try { $cell.Style = (& $getStyle $titleStyle) } catch { }
+          $cell.Value2 = $row.Text
+          if ($null -ne $row.Color) { try { $cell.Font.Color = $row.Color } catch { } }
+        }
+        'link' {
+          $cell = $ws.Cells.Item($r, 1)
+          $styleName = if ($row.Target -eq $sn) { $row.Selected } else { $defaultStyle }
+          # Write the formula first: entering a HYPERLINK auto-applies Excel's
+          # built-in 'Hyperlink' style, so the menu style must be set afterwards.
+          $cell.Formula = "=HYPERLINK(""#'$($row.Target)'!A1"", ""$($row.Text)"")"
+          try { $cell.Style = (& $getStyle $styleName) } catch { }
+        }
+      }
+      $r++
+    }
+    $updated++
+  }
+
+  return $updated
+}
+
+# ---------------------------------------------------------------------------
 # Main
 # ---------------------------------------------------------------------------
 
@@ -225,6 +363,18 @@ foreach ($m in @($config.modules)) {
 $commonSheetProviders = @{}
 if ($config.options -and ($config.options.PSObject.Properties.Name -contains 'commonSheetProviders') -and $null -ne $config.options.commonSheetProviders) {
   foreach ($p in $config.options.commonSheetProviders.PSObject.Properties) { $commonSheetProviders[[string] $p.Name] = [string] $p.Value }
+}
+
+# Optional navigation-menu generation. options.menu.enabled (default true) turns
+# on rebuilding the column-A menu; options.menu.labels maps sheet name -> label.
+$menuEnabled = $true
+$menuLabels = @{}
+if ($config.options -and ($config.options.PSObject.Properties.Name -contains 'menu') -and $null -ne $config.options.menu) {
+  $menuCfg = $config.options.menu
+  if ($menuCfg.PSObject.Properties.Name -contains 'enabled') { $menuEnabled = [bool] $menuCfg.enabled }
+  if (($menuCfg.PSObject.Properties.Name -contains 'labels') -and $null -ne $menuCfg.labels) {
+    foreach ($p in $menuCfg.labels.PSObject.Properties) { $menuLabels[[string] $p.Name] = [string] $p.Value }
+  }
 }
 
 # --- Build the ordered, de-duplicated sheet plan ------------------------------
@@ -646,6 +796,19 @@ try {
     if ($refsRepointed -gt 0) { Write-Host ("Repointed {0} reference(s) to renamed sheet copies." -f $refsRepointed) }
   }
 
+  # --- Regenerate the column-A navigation menu on every sheet ----------------
+  # Rebuilt from the final sheet set so it always matches the assembled
+  # enterprise (links, labels, groups). Runs after reorder so tab order (used
+  # for within-group ordering) is final.
+  $menuSheetsUpdated = 0
+  if (-not $DryRun -and $menuEnabled) {
+    $menuCategory = @{}
+    foreach ($cs in @($config.customSheets)) { $menuCategory[[string] $cs.name] = 'custom' }
+    foreach ($entry in $plan) { if (-not $menuCategory.ContainsKey($entry.Name)) { $menuCategory[$entry.Name] = $entry.Category } }
+    $menuSheetsUpdated = Set-EnterpriseNavMenu -Target $target -CategoryMap $menuCategory -Labels $menuLabels
+    if ($menuSheetsUpdated -gt 0) { Write-Host ("Regenerated navigation menu on {0} sheet(s)." -f $menuSheetsUpdated) }
+  }
+
   # --- Break any leftover external links (make workbook self-contained) -------
   # Every resolvable cross-sheet reference was localised/repointed above, so any
   # link source still registered is either a phantom entry (link table row with
@@ -714,6 +877,7 @@ try {
     Write-Host ("Names still external   : {0}" -f $namesStillExternal)
     Write-Host ("Refs repointed (rename): {0}" -f $refsRepointed)
     Write-Host ("External links broken  : {0}" -f $linksBroken)
+    Write-Host ("Nav menu regenerated   : {0}" -f $menuSheetsUpdated)
   }
   if (@($externalLinks).Count -gt 0) {
     Write-Warning ("Workbook still has {0} external link source(s); some cross-sheet references may not have resolved locally:" -f @($externalLinks).Count)
