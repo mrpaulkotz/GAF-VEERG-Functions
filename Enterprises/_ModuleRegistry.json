@@ -397,6 +397,8 @@
           "6.1.1.1-2 Crop residue N2O",
           "6.2.1.1-2 Pasture residue N2O",
           "6.3.1.1-2 Leaching and runoff",
+          "6.3.1.1-2 Leach runoff crop",
+          "6.3.1.1-2 Leach runoff pasture",
           "6.4.1.1-2 Residue burning"
         ],
         "constants": ["Constants - Ag Residue"]

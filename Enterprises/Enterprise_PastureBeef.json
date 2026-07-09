@@ -34,10 +34,10 @@
     "Fuel",
     {
       "id": "AgriculturalResidue",
-      "comment": "Pasture beef centres on the pasture-residue sheets, but 6.3 Leaching and runoff depends on 6.1 Crop residue N2O and Input - Crop (which in turn needs only Constants - Ag Residue), so those dependency sheets are included too. 6.4 Residue burning is not required. A bare string (like the entries above) imports every sheet the registry lists for that module; this object form subsets them.",
+      "comment": "Pasture beef only needs the pasture residue chain. The workbook now ships crop- and pasture-specific leaching/runoff sheets, so this imports Input - Pasture plus 6.2 Pasture residue N2O and 6.3 Leach runoff pasture (which depends only on the pasture residue sheet and Input - Pasture, not on any crop sheet or Input - Crop). The crop input, 6.1 Crop residue N2O and 6.4 Residue burning are not required. A bare string (like the entries above) imports every sheet the registry lists for that module; this object form subsets them.",
       "include": {
-        "input": ["Input - Pasture", "Input - Crop"],
-        "calculation": ["6.1.1.1-2 Crop residue N2O", "6.2.1.1-2 Pasture residue N2O", "6.3.1.1-2 Leaching and runoff"],
+        "input": ["Input - Pasture"],
+        "calculation": ["6.2.1.1-2 Pasture residue N2O", "6.3.1.1-2 Leach runoff pasture"],
         "constants": ["Constants - Ag Residue"]
       }
     }
