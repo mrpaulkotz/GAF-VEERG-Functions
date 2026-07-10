@@ -1,0 +1,1703 @@
+{
+	"X_Cell_Site_FarmName": "My test farm",
+	"X_Cell_Site_ReportingEntityName": "My test Farms Pty Ltd",
+	"X_Cell_Site_StartDate": "1/1/2025",
+	"X_Cell_Site_State": "Western Australia",
+	"X_Cell_PastureBeef_ProductionRegion": "South West",
+	"X_Cell_PastureBeef_Breed": "Hereford or Shorthorn breeds",
+	"X_Cell_PastureBeef_FencedWater": "No",
+	"X_Cell_PastureBeef_GrazingProductionSystem": "Pasture",
+	"X_Cell_PastureBeef_GrazingIrrigationMethod": "Sprinkler irrigation",
+	"X_Cell_Site_Region": "Western Australia - Outback (South)",
+	"X_Cell_Site_LeachingZone": "NO - Not in leaching zone",
+	"X_Cell_Site_Elevation": 307.7,
+	"X_Cell_Site_AverageTemperature": 18,
+	"X_Cell_Site_TotalRainfall": 601,
+	"X_Cell_Site_PotentialEvapotranspiration": 1326,
+	"X_Cell_Site_FrostDays": 7,
+	"X_Cell_Fertiliser_ProductionSystem": "Crop",
+	"X_Cell_Fertiliser_CropType": "Grains",
+	"X_Cell_Fertiliser_IrrigationMethod": "Sprinkler Irrigation",
+	"X_Cell_Fertiliser_AreaUnderCropping": 100,
+	"X_Cell_Electricity_Location_AmountPurchasedInkWh": 30000,
+	"X_Cell_Electricity_Location_GridElectricityPurchasedFrom": "Western Australia - North Western Interconnected System (NWIS)",
+	"X_Cell_Electricity_Market_AmountPurchasedExcludingGreenPower": 30000,
+	"X_Cell_Electricity_Market_RenewablePowerPercentage": "10%",
+	"X_Cell_Electricity_Market_JurisdictionalRenewablePowerPercentage": "10%",
+	"X_Cell_Electricity_Market_AmountPurchasedGreenPower": 10000,
+	"X_Cell_Fuel_IsMetroLocation": "Metro",
+	"X_Cell_Crop_CropType": "Wheat",
+	"X_Cell_Crop_CropPurpose": "Cash grain crop",
+	"X_Cell_Crop_IrrigationMethod": "Sprinkler Irrigation",
+	"X_Cell_Crop_AreaUnderCropping": 1000,
+	"X_Cell_Crop_YieldPerHectare": 10,
+	"X_Cell_Crop_PercentResidueBaled": "10%",
+	"X_Cell_Crop_AverageWeightPerBale": 60,
+	"X_Cell_Crop_NumberOfBales": 25000,
+	"X_Cell_Crop_PercentResidueGrazed": "1%",
+	"X_Cell_Crop_PercentResidueBurned": "30%",
+	"X_Cell_Pasture_PastureType": "Grass clover mixture",
+	"X_Cell_Pasture_IrrigationMethod": "Surface irrigation",
+	"X_Cell_Pasture_AreaUnderPasture": 1000,
+	"X_Cell_Pasture_YieldPerHectare": 8.34,
+	"X_Cell_Pasture_AreaRemovedOrRenewed": 500,
+	"InputTables": [
+		{
+			"TableName": "X_Table_PastureBeef_Duration_Method1",
+			"Cols": {
+				"BullsUnder1Year": {
+					"Spring": 91.25,
+					"Summer": 91.25,
+					"Autumn": 91.25,
+					"Winter": 91.25
+				},
+				"BullsOver1Year": {
+					"Spring": 91.25,
+					"Summer": 91.25,
+					"Autumn": 91.25,
+					"Winter": 91.25
+				},
+				"CowsUnder1Year": {
+					"Spring": 91.25,
+					"Summer": 91.25,
+					"Autumn": 91.25,
+					"Winter": 91.25
+				},
+				"Cows1To2Years": {
+					"Spring": 91.25,
+					"Summer": 91.25,
+					"Autumn": 91.25,
+					"Winter": 91.25
+				},
+				"Cows2to3Years": {
+					"Spring": 91.25,
+					"Summer": 91.25,
+					"Autumn": 91.25,
+					"Winter": 91.25
+				},
+				"CowsOver3Years": {
+					"Spring": 91.25,
+					"Summer": 91.25,
+					"Autumn": 91.25,
+					"Winter": 91.25
+				},
+				"SteersUnder1Year": {
+					"Spring": 91.25,
+					"Summer": 91.25,
+					"Autumn": 91.25,
+					"Winter": 91.25
+				},
+				"Steers1To2Years": {
+					"Spring": 91.25,
+					"Summer": 91.25,
+					"Autumn": 91.25,
+					"Winter": 91.25
+				},
+				"Steers2to3Years": {
+					"Spring": 91.25,
+					"Summer": 91.25,
+					"Autumn": 91.25,
+					"Winter": 91.25
+				},
+				"SteersOver3Years": {
+					"Spring": 91.25,
+					"Summer": 91.25,
+					"Autumn": 91.25,
+					"Winter": 91.25
+				}
+			},
+			"ColumnOffset": null,
+			"RowOffset": null,
+			"MatrixType": "ColsToRows"
+		},
+		{
+			"TableName": "X_Table_PastureBeef_Duration_Method2",
+			"Cols": {
+				"BullsUnder1Year": {
+					"January 2025": 31,
+					"February 2025": 29,
+					"March 2025": 31,
+					"April 2025": 30,
+					"May 2025": 31,
+					"June 2025": 30,
+					"July 2025": 31,
+					"August 2025": 31,
+					"September 2025": 30,
+					"October 2025": 31,
+					"November 2025": 30,
+					"December 2025": 31
+				},
+				"BullsOver1Year": {
+					"January 2025": 31,
+					"February 2025": 29,
+					"March 2025": 31,
+					"April 2025": 30,
+					"May 2025": 31,
+					"June 2025": 30,
+					"July 2025": 31,
+					"August 2025": 31,
+					"September 2025": 30,
+					"October 2025": 31,
+					"November 2025": 30,
+					"December 2025": 31
+				},
+				"CowsUnder1Year": {
+					"January 2025": 31,
+					"February 2025": 29,
+					"March 2025": 31,
+					"April 2025": 30,
+					"May 2025": 31,
+					"June 2025": 30,
+					"July 2025": 31,
+					"August 2025": 31,
+					"September 2025": 30,
+					"October 2025": 31,
+					"November 2025": 30,
+					"December 2025": 31
+				},
+				"Cows1To2Years": {
+					"January 2025": 31,
+					"February 2025": 29,
+					"March 2025": 31,
+					"April 2025": 30,
+					"May 2025": 31,
+					"June 2025": 30,
+					"July 2025": 31,
+					"August 2025": 31,
+					"September 2025": 30,
+					"October 2025": 31,
+					"November 2025": 30,
+					"December 2025": 31
+				},
+				"Cows2to3Years": {
+					"January 2025": 31,
+					"February 2025": 29,
+					"March 2025": 31,
+					"April 2025": 30,
+					"May 2025": 31,
+					"June 2025": 30,
+					"July 2025": 31,
+					"August 2025": 31,
+					"September 2025": 30,
+					"October 2025": 31,
+					"November 2025": 30,
+					"December 2025": 31
+				},
+				"CowsOver3Years": {
+					"January 2025": 31,
+					"February 2025": 29,
+					"March 2025": 31,
+					"April 2025": 30,
+					"May 2025": 31,
+					"June 2025": 30,
+					"July 2025": 31,
+					"August 2025": 31,
+					"September 2025": 30,
+					"October 2025": 31,
+					"November 2025": 30,
+					"December 2025": 31
+				},
+				"SteersUnder1Year": {
+					"January 2025": 31,
+					"February 2025": 29,
+					"March 2025": 31,
+					"April 2025": 30,
+					"May 2025": 31,
+					"June 2025": 30,
+					"July 2025": 31,
+					"August 2025": 31,
+					"September 2025": 30,
+					"October 2025": 31,
+					"November 2025": 30,
+					"December 2025": 31
+				},
+				"Steers1To2Years": {
+					"January 2025": 31,
+					"February 2025": 29,
+					"March 2025": 31,
+					"April 2025": 30,
+					"May 2025": 31,
+					"June 2025": 30,
+					"July 2025": 31,
+					"August 2025": 31,
+					"September 2025": 30,
+					"October 2025": 31,
+					"November 2025": 30,
+					"December 2025": 31
+				},
+				"Steers2to3Years": {
+					"January 2025": 31,
+					"February 2025": 29,
+					"March 2025": 31,
+					"April 2025": 30,
+					"May 2025": 31,
+					"June 2025": 30,
+					"July 2025": 31,
+					"August 2025": 31,
+					"September 2025": 30,
+					"October 2025": 31,
+					"November 2025": 30,
+					"December 2025": 31
+				},
+				"SteersOver3Years": {
+					"January 2025": 31,
+					"February 2025": 29,
+					"March 2025": 31,
+					"April 2025": 30,
+					"May 2025": 31,
+					"June 2025": 30,
+					"July 2025": 31,
+					"August 2025": 31,
+					"September 2025": 30,
+					"October 2025": 31,
+					"November 2025": 30,
+					"December 2025": 31
+				}
+			},
+			"ColumnOffset": null,
+			"RowOffset": null,
+			"MatrixType": "ColsToRows"
+		},
+		{
+			"TableName": "X_Table_PastureBeef_Head_Method1",
+			"Cols": {
+				"BullsUnder1Year": {
+					"Spring": 100,
+					"Summer": 100,
+					"Autumn": 100,
+					"Winter": 100
+				},
+				"BullsOver1Year": {
+					"Spring": 100,
+					"Summer": 100,
+					"Autumn": 100,
+					"Winter": 100
+				},
+				"CowsUnder1Year": {
+					"Spring": 100,
+					"Summer": 100,
+					"Autumn": 100,
+					"Winter": 100
+				},
+				"Cows1To2Years": {
+					"Spring": 100,
+					"Summer": 100,
+					"Autumn": 100,
+					"Winter": 100
+				},
+				"Cows2to3Years": {
+					"Spring": 100,
+					"Summer": 100,
+					"Autumn": 100,
+					"Winter": 100
+				},
+				"CowsOver3Years": {
+					"Spring": 100,
+					"Summer": 100,
+					"Autumn": 100,
+					"Winter": 100
+				},
+				"SteersUnder1Year": {
+					"Spring": 100,
+					"Summer": 100,
+					"Autumn": 100,
+					"Winter": 100
+				},
+				"Steers1To2Years": {
+					"Spring": 100,
+					"Summer": 100,
+					"Autumn": 100,
+					"Winter": 100
+				},
+				"Steers2to3Years": {
+					"Spring": 100,
+					"Summer": 100,
+					"Autumn": 100,
+					"Winter": 100
+				},
+				"SteersOver3Years": {
+					"Spring": 100,
+					"Summer": 100,
+					"Autumn": 100,
+					"Winter": 100
+				}
+			},
+			"ColumnOffset": null,
+			"RowOffset": null,
+			"MatrixType": "ColsToRows"
+		},
+		{
+			"TableName": "X_Table_PastureBeef_Head_Method2",
+			"Cols": {
+				"BullsUnder1Year": {
+					"January 2025": 100,
+					"February 2025": 100,
+					"March 2025": 100,
+					"April 2025": 100,
+					"May 2025": 100,
+					"June 2025": 100,
+					"July 2025": 100,
+					"August 2025": 100,
+					"September 2025": 100,
+					"October 2025": 100,
+					"November 2025": 100,
+					"December 2025": 100
+				},
+				"BullsOver1Year": {
+					"January 2025": 100,
+					"February 2025": 100,
+					"March 2025": 100,
+					"April 2025": 100,
+					"May 2025": 100,
+					"June 2025": 100,
+					"July 2025": 100,
+					"August 2025": 100,
+					"September 2025": 100,
+					"October 2025": 100,
+					"November 2025": 100,
+					"December 2025": 100
+				},
+				"CowsUnder1Year": {
+					"January 2025": 100,
+					"February 2025": 100,
+					"March 2025": 100,
+					"April 2025": 100,
+					"May 2025": 100,
+					"June 2025": 100,
+					"July 2025": 100,
+					"August 2025": 100,
+					"September 2025": 100,
+					"October 2025": 100,
+					"November 2025": 100,
+					"December 2025": 100
+				},
+				"Cows1To2Years": {
+					"January 2025": 100,
+					"February 2025": 100,
+					"March 2025": 100,
+					"April 2025": 100,
+					"May 2025": 100,
+					"June 2025": 100,
+					"July 2025": 100,
+					"August 2025": 100,
+					"September 2025": 100,
+					"October 2025": 100,
+					"November 2025": 100,
+					"December 2025": 100
+				},
+				"Cows2to3Years": {
+					"January 2025": 100,
+					"February 2025": 100,
+					"March 2025": 100,
+					"April 2025": 100,
+					"May 2025": 100,
+					"June 2025": 100,
+					"July 2025": 100,
+					"August 2025": 100,
+					"September 2025": 100,
+					"October 2025": 100,
+					"November 2025": 100,
+					"December 2025": 100
+				},
+				"CowsOver3Years": {
+					"January 2025": 100,
+					"February 2025": 100,
+					"March 2025": 100,
+					"April 2025": 100,
+					"May 2025": 100,
+					"June 2025": 100,
+					"July 2025": 100,
+					"August 2025": 100,
+					"September 2025": 100,
+					"October 2025": 100,
+					"November 2025": 100,
+					"December 2025": 100
+				},
+				"SteersUnder1Year": {
+					"January 2025": 100,
+					"February 2025": 100,
+					"March 2025": 100,
+					"April 2025": 100,
+					"May 2025": 100,
+					"June 2025": 100,
+					"July 2025": 100,
+					"August 2025": 100,
+					"September 2025": 100,
+					"October 2025": 100,
+					"November 2025": 100,
+					"December 2025": 100
+				},
+				"Steers1To2Years": {
+					"January 2025": 100,
+					"February 2025": 100,
+					"March 2025": 100,
+					"April 2025": 100,
+					"May 2025": 100,
+					"June 2025": 100,
+					"July 2025": 100,
+					"August 2025": 100,
+					"September 2025": 100,
+					"October 2025": 100,
+					"November 2025": 100,
+					"December 2025": 100
+				},
+				"Steers2to3Years": {
+					"January 2025": 100,
+					"February 2025": 100,
+					"March 2025": 100,
+					"April 2025": 100,
+					"May 2025": 100,
+					"June 2025": 100,
+					"July 2025": 100,
+					"August 2025": 100,
+					"September 2025": 100,
+					"October 2025": 100,
+					"November 2025": 100,
+					"December 2025": 100
+				},
+				"SteersOver3Years": {
+					"January 2025": 100,
+					"February 2025": 100,
+					"March 2025": 100,
+					"April 2025": 100,
+					"May 2025": 100,
+					"June 2025": 100,
+					"July 2025": 100,
+					"August 2025": 100,
+					"September 2025": 100,
+					"October 2025": 100,
+					"November 2025": 100,
+					"December 2025": 100
+				}
+			},
+			"ColumnOffset": null,
+			"RowOffset": null,
+			"MatrixType": "ColsToRows"
+		},
+		{
+			"TableName": "X_Table_PastureBeef_Liveweight_Method1",
+			"Cols": {
+				"BullsUnder1Year": {
+					"Spring": 340,
+					"Summer": 380,
+					"Autumn": 100,
+					"Winter": 190
+				},
+				"BullsOver1Year": {
+					"Spring": 800,
+					"Summer": 780,
+					"Autumn": 680,
+					"Winter": 700
+				},
+				"CowsUnder1Year": {
+					"Spring": 260,
+					"Summer": 300,
+					"Autumn": 80,
+					"Winter": 150
+				},
+				"Cows1To2Years": {
+					"Spring": 420,
+					"Summer": 450,
+					"Autumn": 320,
+					"Winter": 330
+				},
+				"Cows2to3Years": {
+					"Spring": 550,
+					"Summer": 530,
+					"Autumn": 480,
+					"Winter": 490
+				},
+				"CowsOver3Years": {
+					"Spring": 550,
+					"Summer": 530,
+					"Autumn": 480,
+					"Winter": 490
+				},
+				"SteersUnder1Year": {
+					"Spring": 300,
+					"Summer": 340,
+					"Autumn": 100,
+					"Winter": 170
+				},
+				"Steers1To2Years": {
+					"Spring": 480,
+					"Summer": 470,
+					"Autumn": 340,
+					"Winter": 360
+				},
+				"Steers2to3Years": {
+					"Spring": 480,
+					"Summer": 470,
+					"Autumn": 340,
+					"Winter": 360
+				},
+				"SteersOver3Years": {
+					"Spring": 480,
+					"Summer": 470,
+					"Autumn": 340,
+					"Winter": 360
+				}
+			},
+			"ColumnOffset": null,
+			"RowOffset": null,
+			"MatrixType": "ColsToRows"
+		},
+		{
+			"TableName": "X_Table_PastureBeef_Liveweight_Method2",
+			"Cols": {
+				"BullsUnder1Year": {
+					"January 2025": 380,
+					"February 2025": 380,
+					"March 2025": 100,
+					"April 2025": 100,
+					"May 2025": 100,
+					"June 2025": 190,
+					"July 2025": 190,
+					"August 2025": 190,
+					"September 2025": 340,
+					"October 2025": 340,
+					"November 2025": 340,
+					"December 2025": 380
+				},
+				"BullsOver1Year": {
+					"January 2025": 780,
+					"February 2025": 780,
+					"March 2025": 680,
+					"April 2025": 680,
+					"May 2025": 680,
+					"June 2025": 700,
+					"July 2025": 700,
+					"August 2025": 700,
+					"September 2025": 800,
+					"October 2025": 800,
+					"November 2025": 800,
+					"December 2025": 780
+				},
+				"CowsUnder1Year": {
+					"January 2025": 300,
+					"February 2025": 300,
+					"March 2025": 80,
+					"April 2025": 80,
+					"May 2025": 80,
+					"June 2025": 150,
+					"July 2025": 150,
+					"August 2025": 150,
+					"September 2025": 260,
+					"October 2025": 260,
+					"November 2025": 260,
+					"December 2025": 300
+				},
+				"Cows1To2Years": {
+					"January 2025": 450,
+					"February 2025": 450,
+					"March 2025": 320,
+					"April 2025": 320,
+					"May 2025": 320,
+					"June 2025": 330,
+					"July 2025": 330,
+					"August 2025": 330,
+					"September 2025": 420,
+					"October 2025": 420,
+					"November 2025": 420,
+					"December 2025": 450
+				},
+				"Cows2to3Years": {
+					"January 2025": 530,
+					"February 2025": 530,
+					"March 2025": 480,
+					"April 2025": 480,
+					"May 2025": 480,
+					"June 2025": 490,
+					"July 2025": 490,
+					"August 2025": 490,
+					"September 2025": 550,
+					"October 2025": 550,
+					"November 2025": 550,
+					"December 2025": 530
+				},
+				"CowsOver3Years": {
+					"January 2025": 530,
+					"February 2025": 530,
+					"March 2025": 480,
+					"April 2025": 480,
+					"May 2025": 480,
+					"June 2025": 490,
+					"July 2025": 490,
+					"August 2025": 490,
+					"September 2025": 550,
+					"October 2025": 550,
+					"November 2025": 550,
+					"December 2025": 530
+				},
+				"SteersUnder1Year": {
+					"January 2025": 340,
+					"February 2025": 340,
+					"March 2025": 100,
+					"April 2025": 100,
+					"May 2025": 100,
+					"June 2025": 170,
+					"July 2025": 170,
+					"August 2025": 170,
+					"September 2025": 300,
+					"October 2025": 300,
+					"November 2025": 300,
+					"December 2025": 340
+				},
+				"Steers1To2Years": {
+					"January 2025": 470,
+					"February 2025": 470,
+					"March 2025": 340,
+					"April 2025": 340,
+					"May 2025": 340,
+					"June 2025": 360,
+					"July 2025": 360,
+					"August 2025": 360,
+					"September 2025": 480,
+					"October 2025": 480,
+					"November 2025": 480,
+					"December 2025": 470
+				},
+				"Steers2to3Years": {
+					"January 2025": 470,
+					"February 2025": 470,
+					"March 2025": 340,
+					"April 2025": 340,
+					"May 2025": 340,
+					"June 2025": 360,
+					"July 2025": 360,
+					"August 2025": 360,
+					"September 2025": 480,
+					"October 2025": 480,
+					"November 2025": 480,
+					"December 2025": 470
+				},
+				"SteersOver3Years": {
+					"January 2025": 470,
+					"February 2025": 470,
+					"March 2025": 340,
+					"April 2025": 340,
+					"May 2025": 340,
+					"June 2025": 360,
+					"July 2025": 360,
+					"August 2025": 360,
+					"September 2025": 480,
+					"October 2025": 480,
+					"November 2025": 480,
+					"December 2025": 470
+				}
+			},
+			"ColumnOffset": null,
+			"RowOffset": null,
+			"MatrixType": "ColsToRows"
+		},
+		{
+			"TableName": "X_Table_PastureBeef_LiveweightGain_Method1",
+			"Cols": {
+				"BullsUnder1Year": {
+					"Spring": 1.64,
+					"Summer": 0.44,
+					"Autumn": 0.6,
+					"Winter": 0.99
+				},
+				"BullsOver1Year": {
+					"Spring": 1.1,
+					"Summer": -0.22,
+					"Autumn": 0,
+					"Winter": 0.22
+				},
+				"CowsUnder1Year": {
+					"Spring": 1.21,
+					"Summer": 0.44,
+					"Autumn": 0.6,
+					"Winter": 0.77
+				},
+				"Cows1To2Years": {
+					"Spring": 0.99,
+					"Summer": 0.33,
+					"Autumn": 0.22,
+					"Winter": 0.11
+				},
+				"Cows2to3Years": {
+					"Spring": 0.66,
+					"Summer": -0.22,
+					"Autumn": -0.55,
+					"Winter": 0.11
+				},
+				"CowsOver3Years": {
+					"Spring": 0.66,
+					"Summer": -0.22,
+					"Autumn": -0.55,
+					"Winter": 0.11
+				},
+				"SteersUnder1Year": {
+					"Spring": 1.42,
+					"Summer": 0.44,
+					"Autumn": 0.6,
+					"Winter": 0.77
+				},
+				"Steers1To2Years": {
+					"Spring": 1.1,
+					"Summer": -0.11,
+					"Autumn": 0,
+					"Winter": 0.44
+				},
+				"Steers2to3Years": {
+					"Spring": 1.1,
+					"Summer": -0.11,
+					"Autumn": 0,
+					"Winter": 0.44
+				},
+				"SteersOver3Years": {
+					"Spring": 1.1,
+					"Summer": -0.11,
+					"Autumn": 0,
+					"Winter": 0.44
+				}
+			},
+			"ColumnOffset": null,
+			"RowOffset": null,
+			"MatrixType": "ColsToRows"
+		},
+		{
+			"TableName": "X_Table_PastureBeef_LiveweightGain_Method2",
+			"Cols": {
+				"BullsUnder1Year": {
+					"January 2025": 0.44,
+					"February 2025": 0.44,
+					"March 2025": 0.6,
+					"April 2025": 0.6,
+					"May 2025": 0.6,
+					"June 2025": 0.99,
+					"July 2025": 0.99,
+					"August 2025": 0.99,
+					"September 2025": 1.64,
+					"October 2025": 1.64,
+					"November 2025": 1.64,
+					"December 2025": 0.44
+				},
+				"BullsOver1Year": {
+					"January 2025": -0.22,
+					"February 2025": -0.22,
+					"March 2025": 0,
+					"April 2025": 0,
+					"May 2025": 0,
+					"June 2025": 0.22,
+					"July 2025": 0.22,
+					"August 2025": 0.22,
+					"September 2025": 1.1,
+					"October 2025": 1.1,
+					"November 2025": 1.1,
+					"December 2025": -0.22
+				},
+				"CowsUnder1Year": {
+					"January 2025": 0.44,
+					"February 2025": 0.44,
+					"March 2025": 0.6,
+					"April 2025": 0.6,
+					"May 2025": 0.6,
+					"June 2025": 0.77,
+					"July 2025": 0.77,
+					"August 2025": 0.77,
+					"September 2025": 1.21,
+					"October 2025": 1.21,
+					"November 2025": 1.21,
+					"December 2025": 0.44
+				},
+				"Cows1To2Years": {
+					"January 2025": 0.33,
+					"February 2025": 0.33,
+					"March 2025": 0.22,
+					"April 2025": 0.22,
+					"May 2025": 0.22,
+					"June 2025": 0.11,
+					"July 2025": 0.11,
+					"August 2025": 0.11,
+					"September 2025": 0.99,
+					"October 2025": 0.99,
+					"November 2025": 0.99,
+					"December 2025": 0.33
+				},
+				"Cows2to3Years": {
+					"January 2025": -0.22,
+					"February 2025": -0.22,
+					"March 2025": -0.55,
+					"April 2025": -0.55,
+					"May 2025": -0.55,
+					"June 2025": 0.11,
+					"July 2025": 0.11,
+					"August 2025": 0.11,
+					"September 2025": 0.66,
+					"October 2025": 0.66,
+					"November 2025": 0.66,
+					"December 2025": -0.22
+				},
+				"CowsOver3Years": {
+					"January 2025": -0.22,
+					"February 2025": -0.22,
+					"March 2025": -0.55,
+					"April 2025": -0.55,
+					"May 2025": -0.55,
+					"June 2025": 0.11,
+					"July 2025": 0.11,
+					"August 2025": 0.11,
+					"September 2025": 0.66,
+					"October 2025": 0.66,
+					"November 2025": 0.66,
+					"December 2025": -0.22
+				},
+				"SteersUnder1Year": {
+					"January 2025": 0.44,
+					"February 2025": 0.44,
+					"March 2025": 0.6,
+					"April 2025": 0.6,
+					"May 2025": 0.6,
+					"June 2025": 0.77,
+					"July 2025": 0.77,
+					"August 2025": 0.77,
+					"September 2025": 1.42,
+					"October 2025": 1.42,
+					"November 2025": 1.42,
+					"December 2025": 0.44
+				},
+				"Steers1To2Years": {
+					"January 2025": -0.11,
+					"February 2025": -0.11,
+					"March 2025": 0,
+					"April 2025": 0,
+					"May 2025": 0,
+					"June 2025": 0.44,
+					"July 2025": 0.44,
+					"August 2025": 0.44,
+					"September 2025": 1.1,
+					"October 2025": 1.1,
+					"November 2025": 1.1,
+					"December 2025": -0.11
+				},
+				"Steers2to3Years": {
+					"January 2025": -0.11,
+					"February 2025": -0.11,
+					"March 2025": 0,
+					"April 2025": 0,
+					"May 2025": 0,
+					"June 2025": 0.44,
+					"July 2025": 0.44,
+					"August 2025": 0.44,
+					"September 2025": 1.1,
+					"October 2025": 1.1,
+					"November 2025": 1.1,
+					"December 2025": -0.11
+				},
+				"SteersOver3Years": {
+					"January 2025": -0.11,
+					"February 2025": -0.11,
+					"March 2025": 0,
+					"April 2025": 0,
+					"May 2025": 0,
+					"June 2025": 0.44,
+					"July 2025": 0.44,
+					"August 2025": 0.44,
+					"September 2025": 1.1,
+					"October 2025": 1.1,
+					"November 2025": 1.1,
+					"December 2025": -0.11
+				}
+			},
+			"ColumnOffset": null,
+			"RowOffset": null,
+			"MatrixType": "ColsToRows"
+		},
+		{
+			"TableName": "X_Table_PastureBeef_DryMatterDigestibility_Method1",
+			"Cols": {
+				"BullsUnder1Year": {
+					"Spring": 0.8,
+					"Summer": 0.58,
+					"Autumn": 0.5,
+					"Winter": 0.75
+				},
+				"BullsOver1Year": {
+					"Spring": 0.8,
+					"Summer": 0.58,
+					"Autumn": 0.5,
+					"Winter": 0.75
+				},
+				"CowsUnder1Year": {
+					"Spring": 0.8,
+					"Summer": 0.58,
+					"Autumn": 0.5,
+					"Winter": 0.75
+				},
+				"Cows1To2Years": {
+					"Spring": 0.8,
+					"Summer": 0.58,
+					"Autumn": 0.5,
+					"Winter": 0.75
+				},
+				"Cows2to3Years": {
+					"Spring": 0.8,
+					"Summer": 0.58,
+					"Autumn": 0.5,
+					"Winter": 0.75
+				},
+				"CowsOver3Years": {
+					"Spring": 0.8,
+					"Summer": 0.58,
+					"Autumn": 0.5,
+					"Winter": 0.75
+				},
+				"SteersUnder1Year": {
+					"Spring": 0.8,
+					"Summer": 0.58,
+					"Autumn": 0.5,
+					"Winter": 0.75
+				},
+				"Steers1To2Years": {
+					"Spring": 0.8,
+					"Summer": 0.58,
+					"Autumn": 0.5,
+					"Winter": 0.75
+				},
+				"Steers2to3Years": {
+					"Spring": 0.8,
+					"Summer": 0.58,
+					"Autumn": 0.5,
+					"Winter": 0.75
+				},
+				"SteersOver3Years": {
+					"Spring": 0.8,
+					"Summer": 0.58,
+					"Autumn": 0.5,
+					"Winter": 0.75
+				}
+			},
+			"ColumnOffset": null,
+			"RowOffset": null,
+			"MatrixType": "ColsToRows"
+		},
+		{
+			"TableName": "X_Table_PastureBeef_DryMatterDigestibility_Method2",
+			"Cols": {
+				"BullsUnder1Year": {
+					"January 2025": 0.58,
+					"February 2025": 0.58,
+					"March 2025": 0.5,
+					"April 2025": 0.5,
+					"May 2025": 0.5,
+					"June 2025": 0.75,
+					"July 2025": 0.75,
+					"August 2025": 0.75,
+					"September 2025": 0.8,
+					"October 2025": 0.8,
+					"November 2025": 0.8,
+					"December 2025": 0.58
+				},
+				"BullsOver1Year": {
+					"January 2025": 0.58,
+					"February 2025": 0.58,
+					"March 2025": 0.5,
+					"April 2025": 0.5,
+					"May 2025": 0.5,
+					"June 2025": 0.75,
+					"July 2025": 0.75,
+					"August 2025": 0.75,
+					"September 2025": 0.8,
+					"October 2025": 0.8,
+					"November 2025": 0.8,
+					"December 2025": 0.58
+				},
+				"CowsUnder1Year": {
+					"January 2025": 0.58,
+					"February 2025": 0.58,
+					"March 2025": 0.5,
+					"April 2025": 0.5,
+					"May 2025": 0.5,
+					"June 2025": 0.75,
+					"July 2025": 0.75,
+					"August 2025": 0.75,
+					"September 2025": 0.8,
+					"October 2025": 0.8,
+					"November 2025": 0.8,
+					"December 2025": 0.58
+				},
+				"Cows1To2Years": {
+					"January 2025": 0.58,
+					"February 2025": 0.58,
+					"March 2025": 0.5,
+					"April 2025": 0.5,
+					"May 2025": 0.5,
+					"June 2025": 0.75,
+					"July 2025": 0.75,
+					"August 2025": 0.75,
+					"September 2025": 0.8,
+					"October 2025": 0.8,
+					"November 2025": 0.8,
+					"December 2025": 0.58
+				},
+				"Cows2to3Years": {
+					"January 2025": 0.58,
+					"February 2025": 0.58,
+					"March 2025": 0.5,
+					"April 2025": 0.5,
+					"May 2025": 0.5,
+					"June 2025": 0.75,
+					"July 2025": 0.75,
+					"August 2025": 0.75,
+					"September 2025": 0.8,
+					"October 2025": 0.8,
+					"November 2025": 0.8,
+					"December 2025": 0.58
+				},
+				"CowsOver3Years": {
+					"January 2025": 0.58,
+					"February 2025": 0.58,
+					"March 2025": 0.5,
+					"April 2025": 0.5,
+					"May 2025": 0.5,
+					"June 2025": 0.75,
+					"July 2025": 0.75,
+					"August 2025": 0.75,
+					"September 2025": 0.8,
+					"October 2025": 0.8,
+					"November 2025": 0.8,
+					"December 2025": 0.58
+				},
+				"SteersUnder1Year": {
+					"January 2025": 0.58,
+					"February 2025": 0.58,
+					"March 2025": 0.5,
+					"April 2025": 0.5,
+					"May 2025": 0.5,
+					"June 2025": 0.75,
+					"July 2025": 0.75,
+					"August 2025": 0.75,
+					"September 2025": 0.8,
+					"October 2025": 0.8,
+					"November 2025": 0.8,
+					"December 2025": 0.58
+				},
+				"Steers1To2Years": {
+					"January 2025": 0.58,
+					"February 2025": 0.58,
+					"March 2025": 0.5,
+					"April 2025": 0.5,
+					"May 2025": 0.5,
+					"June 2025": 0.75,
+					"July 2025": 0.75,
+					"August 2025": 0.75,
+					"September 2025": 0.8,
+					"October 2025": 0.8,
+					"November 2025": 0.8,
+					"December 2025": 0.58
+				},
+				"Steers2to3Years": {
+					"January 2025": 0.58,
+					"February 2025": 0.58,
+					"March 2025": 0.5,
+					"April 2025": 0.5,
+					"May 2025": 0.5,
+					"June 2025": 0.75,
+					"July 2025": 0.75,
+					"August 2025": 0.75,
+					"September 2025": 0.8,
+					"October 2025": 0.8,
+					"November 2025": 0.8,
+					"December 2025": 0.58
+				},
+				"SteersOver3Years": {
+					"January 2025": 0.58,
+					"February 2025": 0.58,
+					"March 2025": 0.5,
+					"April 2025": 0.5,
+					"May 2025": 0.5,
+					"June 2025": 0.75,
+					"July 2025": 0.75,
+					"August 2025": 0.75,
+					"September 2025": 0.8,
+					"October 2025": 0.8,
+					"November 2025": 0.8,
+					"December 2025": 0.58
+				}
+			},
+			"ColumnOffset": null,
+			"RowOffset": null,
+			"MatrixType": "ColsToRows"
+		},
+		{
+			"TableName": "X_Table_PastureBeef_CrudeProtein_Method1",
+			"Cols": {
+				"BullsUnder1Year": {
+					"Spring": 0.2,
+					"Summer": 0.09,
+					"Autumn": 0.06,
+					"Winter": 0.2
+				},
+				"BullsOver1Year": {
+					"Spring": 0.2,
+					"Summer": 0.09,
+					"Autumn": 0.06,
+					"Winter": 0.2
+				},
+				"CowsUnder1Year": {
+					"Spring": 0.2,
+					"Summer": 0.09,
+					"Autumn": 0.06,
+					"Winter": 0.2
+				},
+				"Cows1To2Years": {
+					"Spring": 0.2,
+					"Summer": 0.09,
+					"Autumn": 0.06,
+					"Winter": 0.2
+				},
+				"Cows2to3Years": {
+					"Spring": 0.2,
+					"Summer": 0.09,
+					"Autumn": 0.06,
+					"Winter": 0.2
+				},
+				"CowsOver3Years": {
+					"Spring": 0.2,
+					"Summer": 0.09,
+					"Autumn": 0.06,
+					"Winter": 0.2
+				},
+				"SteersUnder1Year": {
+					"Spring": 0.2,
+					"Summer": 0.09,
+					"Autumn": 0.06,
+					"Winter": 0.2
+				},
+				"Steers1To2Years": {
+					"Spring": 0.2,
+					"Summer": 0.09,
+					"Autumn": 0.06,
+					"Winter": 0.2
+				},
+				"Steers2to3Years": {
+					"Spring": 0.2,
+					"Summer": 0.09,
+					"Autumn": 0.06,
+					"Winter": 0.2
+				},
+				"SteersOver3Years": {
+					"Spring": 0.2,
+					"Summer": 0.09,
+					"Autumn": 0.06,
+					"Winter": 0.2
+				}
+			},
+			"ColumnOffset": null,
+			"RowOffset": null,
+			"MatrixType": "ColsToRows"
+		},
+		{
+			"TableName": "X_Table_PastureBeef_CrudeProtein_Method2",
+			"Cols": {
+				"BullsUnder1Year": {
+					"January 2025": 0.09,
+					"February 2025": 0.09,
+					"March 2025": 0.06,
+					"April 2025": 0.06,
+					"May 2025": 0.06,
+					"June 2025": 0.2,
+					"July 2025": 0.2,
+					"August 2025": 0.2,
+					"September 2025": 0.2,
+					"October 2025": 0.2,
+					"November 2025": 0.2,
+					"December 2025": 0.09
+				},
+				"BullsOver1Year": {
+					"January 2025": 0.09,
+					"February 2025": 0.09,
+					"March 2025": 0.06,
+					"April 2025": 0.06,
+					"May 2025": 0.06,
+					"June 2025": 0.2,
+					"July 2025": 0.2,
+					"August 2025": 0.2,
+					"September 2025": 0.2,
+					"October 2025": 0.2,
+					"November 2025": 0.2,
+					"December 2025": 0.09
+				},
+				"CowsUnder1Year": {
+					"January 2025": 0.09,
+					"February 2025": 0.09,
+					"March 2025": 0.06,
+					"April 2025": 0.06,
+					"May 2025": 0.06,
+					"June 2025": 0.2,
+					"July 2025": 0.2,
+					"August 2025": 0.2,
+					"September 2025": 0.2,
+					"October 2025": 0.2,
+					"November 2025": 0.2,
+					"December 2025": 0.09
+				},
+				"Cows1To2Years": {
+					"January 2025": 0.09,
+					"February 2025": 0.09,
+					"March 2025": 0.06,
+					"April 2025": 0.06,
+					"May 2025": 0.06,
+					"June 2025": 0.2,
+					"July 2025": 0.2,
+					"August 2025": 0.2,
+					"September 2025": 0.2,
+					"October 2025": 0.2,
+					"November 2025": 0.2,
+					"December 2025": 0.09
+				},
+				"Cows2to3Years": {
+					"January 2025": 0.09,
+					"February 2025": 0.09,
+					"March 2025": 0.06,
+					"April 2025": 0.06,
+					"May 2025": 0.06,
+					"June 2025": 0.2,
+					"July 2025": 0.2,
+					"August 2025": 0.2,
+					"September 2025": 0.2,
+					"October 2025": 0.2,
+					"November 2025": 0.2,
+					"December 2025": 0.09
+				},
+				"CowsOver3Years": {
+					"January 2025": 0.09,
+					"February 2025": 0.09,
+					"March 2025": 0.06,
+					"April 2025": 0.06,
+					"May 2025": 0.06,
+					"June 2025": 0.2,
+					"July 2025": 0.2,
+					"August 2025": 0.2,
+					"September 2025": 0.2,
+					"October 2025": 0.2,
+					"November 2025": 0.2,
+					"December 2025": 0.09
+				},
+				"SteersUnder1Year": {
+					"January 2025": 0.09,
+					"February 2025": 0.09,
+					"March 2025": 0.06,
+					"April 2025": 0.06,
+					"May 2025": 0.06,
+					"June 2025": 0.2,
+					"July 2025": 0.2,
+					"August 2025": 0.2,
+					"September 2025": 0.2,
+					"October 2025": 0.2,
+					"November 2025": 0.2,
+					"December 2025": 0.09
+				},
+				"Steers1To2Years": {
+					"January 2025": 0.09,
+					"February 2025": 0.09,
+					"March 2025": 0.06,
+					"April 2025": 0.06,
+					"May 2025": 0.06,
+					"June 2025": 0.2,
+					"July 2025": 0.2,
+					"August 2025": 0.2,
+					"September 2025": 0.2,
+					"October 2025": 0.2,
+					"November 2025": 0.2,
+					"December 2025": 0.09
+				},
+				"Steers2to3Years": {
+					"January 2025": 0.09,
+					"February 2025": 0.09,
+					"March 2025": 0.06,
+					"April 2025": 0.06,
+					"May 2025": 0.06,
+					"June 2025": 0.2,
+					"July 2025": 0.2,
+					"August 2025": 0.2,
+					"September 2025": 0.2,
+					"October 2025": 0.2,
+					"November 2025": 0.2,
+					"December 2025": 0.09
+				},
+				"SteersOver3Years": {
+					"January 2025": 0.09,
+					"February 2025": 0.09,
+					"March 2025": 0.06,
+					"April 2025": 0.06,
+					"May 2025": 0.06,
+					"June 2025": 0.2,
+					"July 2025": 0.2,
+					"August 2025": 0.2,
+					"September 2025": 0.2,
+					"October 2025": 0.2,
+					"November 2025": 0.2,
+					"December 2025": 0.09
+				}
+			},
+			"ColumnOffset": null,
+			"RowOffset": null,
+			"MatrixType": "ColsToRows"
+		},
+		{
+			"TableName": "Table_Input_InorganicFertiliser_Brands",
+			"MatrixType": "RowsToCols",
+			"ColumnOffset": 0,
+			"RowOffset": null,
+			"Rows": {
+				"Application1": {
+					"ProductName": "Aqua Finish",
+					"AmountAppliedPerHectare": 100,
+					"ApplicationUnit": "L",
+					"Density": 1.26,
+					"ApplicationArea": 100,
+					"TotalAmountApplied": 12600,
+					"Ingredient1": "Potassium - Generic",
+					"Ingredient1Fraction": 0.225,
+					"Ingredient2": "Phosphorus - Generic",
+					"Ingredient2Fraction": 0.04,
+					"Ingredient3": "Nitrogen - Generic",
+					"Ingredient3Fraction": 0.026,
+					"Ingredient4": null,
+					"Ingredient4Fraction": null,
+					"Ingredient5": null,
+					"Ingredient5Fraction": null,
+					"Ingredient6": null,
+					"Ingredient6Fraction": null,
+					"NApplicationRate": 3.276,
+					"UreaSourced": null,
+					"AmmoniaSource": null
+				},
+				"Application2": {
+					"ProductName": "CalPhos",
+					"AmountAppliedPerHectare": 100,
+					"ApplicationUnit": "L",
+					"Density": 1.285,
+					"ApplicationArea": 100,
+					"TotalAmountApplied": 12850,
+					"Ingredient1": "Phosphorus - Generic",
+					"Ingredient1Fraction": 0.135,
+					"Ingredient2": "Calcium - Generic",
+					"Ingredient2Fraction": 0.04,
+					"Ingredient3": null,
+					"Ingredient3Fraction": null,
+					"Ingredient4": null,
+					"Ingredient4Fraction": null,
+					"Ingredient5": null,
+					"Ingredient5Fraction": null,
+					"Ingredient6": null,
+					"Ingredient6Fraction": null,
+					"NApplicationRate": 0,
+					"UreaSourced": null,
+					"AmmoniaSource": null
+				},
+				"Application3": {
+					"ProductName": "CalPhos",
+					"AmountAppliedPerHectare": 100,
+					"ApplicationUnit": "L",
+					"Density": 1.285,
+					"ApplicationArea": 100,
+					"TotalAmountApplied": 12850,
+					"Ingredient1": "Phosphorus - Generic",
+					"Ingredient1Fraction": 0.135,
+					"Ingredient2": "Calcium - Generic",
+					"Ingredient2Fraction": 0.04,
+					"Ingredient3": null,
+					"Ingredient3Fraction": null,
+					"Ingredient4": null,
+					"Ingredient4Fraction": null,
+					"Ingredient5": null,
+					"Ingredient5Fraction": null,
+					"Ingredient6": null,
+					"Ingredient6Fraction": null,
+					"NApplicationRate": 0,
+					"UreaSourced": null,
+					"AmmoniaSource": null
+				},
+				"Application4": {
+					"ProductName": "Aqua Grow",
+					"AmountAppliedPerHectare": 100,
+					"ApplicationUnit": "L",
+					"Density": 1.26,
+					"ApplicationArea": 100,
+					"TotalAmountApplied": 12600,
+					"Ingredient1": "Potassium - Generic",
+					"Ingredient1Fraction": 0.105,
+					"Ingredient2": "Nitrogen - Generic",
+					"Ingredient2Fraction": 0.096,
+					"Ingredient3": "Phosphorus - Generic",
+					"Ingredient3Fraction": 0.05,
+					"Ingredient4": null,
+					"Ingredient4Fraction": null,
+					"Ingredient5": null,
+					"Ingredient5Fraction": null,
+					"Ingredient6": null,
+					"Ingredient6Fraction": null,
+					"NApplicationRate": 12.096,
+					"UreaSourced": null,
+					"AmmoniaSource": null
+				},
+				"Application5": {
+					"ProductName": "Aqua NitroCal",
+					"AmountAppliedPerHectare": 100,
+					"ApplicationUnit": "L",
+					"Density": 1.5,
+					"ApplicationArea": 100,
+					"TotalAmountApplied": 15000,
+					"Ingredient1": "Calcium - Generic",
+					"Ingredient1Fraction": 0.162,
+					"Ingredient2": "Nitrogen - Nitrate",
+					"Ingredient2Fraction": 0.132,
+					"Ingredient3": null,
+					"Ingredient3Fraction": null,
+					"Ingredient4": null,
+					"Ingredient4Fraction": null,
+					"Ingredient5": null,
+					"Ingredient5Fraction": null,
+					"Ingredient6": null,
+					"Ingredient6Fraction": null,
+					"NApplicationRate": 19.8,
+					"UreaSourced": null,
+					"AmmoniaSource": null
+				}
+			}
+		},
+		{
+			"TableName": "Table_Input_InorganicFertiliser_Custom",
+			"MatrixType": "RowsToCols",
+			"ColumnOffset": 0,
+			"RowOffset": null,
+			"Rows": {
+				"Application1": {
+					"ProductName": "My first custom blend",
+					"AmountAppliedPerHectare": 100,
+					"ApplicationArea": 100,
+					"TotalAmountApplied": 10000,
+					"Ingredient1": "Calcium nitrate",
+					"Ingredient1Fraction": 0.50,
+					"Ingredient2": "Zinc - Generic",
+					"Ingredient2Fraction": 0.20,
+					"Ingredient3": "Potassium - Generic",
+					"Ingredient3Fraction": 0.20,
+					"Ingredient4": "Sulfur - Generic",
+					"Ingredient4Fraction": 0.10,
+					"NApplicationRate": 7.75,
+					"UreaSourced": null,
+					"AmmoniaSource": null
+				},
+				"Application2": {
+					"ProductName": "My second custom blend",
+					"AmountAppliedPerHectare": 100,
+					"ApplicationArea": 100,
+					"TotalAmountApplied": 10000,
+					"Ingredient1": "Urea",
+					"Ingredient1Fraction": 1.0,
+					"Ingredient2": null,
+					"Ingredient2Fraction": null,
+					"Ingredient3": null,
+					"Ingredient3Fraction": null,
+					"Ingredient4": null,
+					"Ingredient4Fraction": null,
+					"NApplicationRate": 46,
+					"UreaSourced": null,
+					"AmmoniaSource": null
+				},
+				"Application3": {
+					"ProductName": "My third custom blend",
+					"AmountAppliedPerHectare": 100,
+					"ApplicationArea": 100,
+					"TotalAmountApplied": 10000,
+					"Ingredient1": "Ammonia",
+					"Ingredient1Fraction": 0.50,
+					"Ingredient2": null,
+					"Ingredient2Fraction": null,
+					"Ingredient3": null,
+					"Ingredient3Fraction": null,
+					"Ingredient4": null,
+					"Ingredient4Fraction": null,
+					"NApplicationRate": 41.175,
+					"UreaSourced": null,
+					"AmmoniaSource": null
+				}
+			}
+		},
+		{
+			"TableName": "Table_Input_Lime",
+			"MatrixType": "RowsToCols",
+			"ColumnOffset": 0,
+			"RowOffset": null,
+			"Rows": {
+				"Application1": {
+					"ProductName": "Lime product 1",
+					"AmountAppliedPerHectare": 1,
+					"ApplicationArea": 100,
+					"TotalAmountApplied": 100,
+					"PercentLime": "80%",
+					"PercentDolomite": "10%",
+					"PercentGypsum": "10%"
+				},
+				"Application2": {
+					"ProductName": "Lime product 2",
+					"AmountAppliedPerHectare": 1,
+					"ApplicationArea": 100,
+					"TotalAmountApplied": 100,
+					"PercentLime": "100%",
+					"PercentDolomite": null,
+					"PercentGypsum": null
+				},
+				"Application3": {
+					"ProductName": "Lime product 3",
+					"AmountAppliedPerHectare": 1,
+					"ApplicationArea": 100,
+					"TotalAmountApplied": 100,
+					"PercentLime": "0%",
+					"PercentDolomite": null,
+					"PercentGypsum": "100%"
+				}
+			}
+		},
+		{
+			"TableName": "Table_Input_OrganicFertiliser",
+			"MatrixType": "RowsToCols",
+			"ColumnOffset": 0,
+			"RowOffset": null,
+			"Rows": {
+				"Lime1": {
+					"OrganicFertiliserType": "Manure - Other",
+					"PercentNInFertiliser": "30%",
+					"AmountAppliedPerHectare": 10,
+					"AmountNAppliedPerHectare": 3,
+					"ApplicationArea": 100,
+					"TotalOrganicFertiliserApplied": 1000,
+					"TotalNApplied": 300
+				},
+				"Lime2": {
+					"OrganicFertiliserType": "Manure - Poultry",
+					"PercentNInFertiliser": "25%",
+					"AmountAppliedPerHectare": 10,
+					"AmountNAppliedPerHectare": 2.5,
+					"ApplicationArea": 100,
+					"TotalOrganicFertiliserApplied": 1000,
+					"TotalNApplied": 250
+				},
+				"Lime3": {
+					"OrganicFertiliserType": "Other organic fertiliser",
+					"PercentNInFertiliser": "16%",
+					"AmountAppliedPerHectare": 10,
+					"AmountNAppliedPerHectare": 1.6,
+					"ApplicationArea": 100,
+					"TotalOrganicFertiliserApplied": 1000,
+					"TotalNApplied": 160
+				}
+			}
+		},
+		{
+			"TableName": "Table_Input_RECSurrendered",
+			"MatrixType": "RowsToCols",
+			"ColumnOffset": 0,
+			"RowOffset": null,
+			"AllowOverride": true,
+			"Rows": {
+				"Row1": {
+					"Description": "Dec 2020 certs",
+					"Source": "Purchased certificate",
+					"GenerationDate": "20 December 2020",
+					"NumberOfCertificates": 12,
+					"MWh": null,
+					"Eligibility": null
+				},
+				"Row2": {
+					"Description": "Jan 2022 certs",
+					"Source": "Issued for generated electricity",
+					"GenerationDate": "14 January 2022",
+					"NumberOfCertificates": 5,
+					"MWh": null,
+					"Eligibility": null
+				},
+				"Row3": {
+					"Description": "2024 certs",
+					"Source": "Purchased certificate",
+					"GenerationDate": "26 May 2024",
+					"NumberOfCertificates": 5,
+					"MWh": null,
+					"Eligibility": null
+				}
+			}
+		},
+		{
+			"TableName": "Table_Input_RECConsumedByEntity",
+			"MatrixType": "RowsToCols",
+			"ColumnOffset": 0,
+			"RowOffset": null,
+			"Rows": {
+				"Row1": {
+					"Description": "May 2022 generated",
+					"Source": null,
+					"GenerationDate": "16 May 2022",
+					"NumberOfCertificates": 10,
+					"MWh": null,
+					"Eligibility": null
+				},
+				"Row2": {
+					"Description": "Jul 24 certs generated",
+					"Source": null,
+					"GenerationDate": "10 July 2024",
+					"NumberOfCertificates": 4,
+					"MWh": null,
+					"Eligibility": null
+				},
+				"Row3": {
+					"Description": "Nov-24",
+					"Source": null,
+					"GenerationDate": "11 November 2024",
+					"NumberOfCertificates": 7,
+					"MWh": null,
+					"Eligibility": null
+				}
+			}
+		},
+		{
+			"TableName": "Table_Input_Fuel",
+			"MatrixType": "RowsToCols",
+			"ColumnOffset": 0,
+			"RowOffset": null,
+			"AllowOverride": true,
+			"Rows": {
+				"Row1": {
+					"FuelUse": "Power standalone machinery or heating",
+					"FuelType": "Town gas in GJ",
+					"AmountPurchased": 100,
+					"AmountUnit": "GJ",
+					"PercentConsumed": "100%"
+				},
+				"Row2": {
+					"FuelUse": "Power standalone machinery or heating",
+					"FuelType": "Petrol",
+					"AmountPurchased": 10000,
+					"AmountUnit": "L",
+					"PercentConsumed": "100%"
+				},
+				"Row3": {
+					"FuelUse": "Cars and light commercial vehicles",
+					"FuelType": "Diesel",
+					"AmountPurchased": 10000,
+					"AmountUnit": "L",
+					"PercentConsumed": "100%"
+				},
+				"Row4": {
+					"FuelUse": "Off-road Agriculture and forestry equipment",
+					"FuelType": "Diesel",
+					"AmountPurchased": 10000,
+					"AmountUnit": "L",
+					"PercentConsumed": "100%"
+				},
+				"Row5": {
+					"FuelUse": "Vessels",
+					"FuelType": "Fuel oil",
+					"AmountPurchased": 10000,
+					"AmountUnit": "L",
+					"PercentConsumed": "100%"
+				}
+			}
+		}
+	]
+}

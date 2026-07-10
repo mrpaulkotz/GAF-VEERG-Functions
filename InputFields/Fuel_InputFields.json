@@ -1,7 +1,7 @@
 {
 	"schemaVersion": 1,
 	"generatedFrom": "8_Fuel_WIP_v05.xlsx",
-	"generatedAt": "2026-07-08T04:20:40Z",
+	"generatedAt": "2026-07-10T02:22:57Z",
 	"InputCells": [
 		{
 			"CellName": "X_Cell_Fuel_IsMetroLocation",
@@ -58,14 +58,15 @@
 		{
 			"TableName": "Table_Input_Fuel",
 			"MatrixType": "RowsToCols",
-			"NumberOfCols": 6,
+			"NumberOfCols": 7,
 			"ColumnNames": {
 				"FuelUse": "Fuel use (select)",
 				"FuelType": "Fuel type (select)",
 				"AmountPurchased": "Amount purchased",
 				"AmountUnit": "Amount unit",
 				"PercentConsumed": "Percent consumed",
-				"AmountConsumed": "Amount consumed"
+				"AmountConsumed": "Amount consumed",
+				"AmountConsumedUnit": "Amount consumed unit"
 			},
 			"Rows": {
 				"Row": {
@@ -94,6 +95,9 @@
 						"CellType": "formula"
 					},
 					"AmountConsumed": {
+						"CellType": "formula"
+					},
+					"AmountConsumedUnit": {
 						"CellType": "formula"
 					}
 				}

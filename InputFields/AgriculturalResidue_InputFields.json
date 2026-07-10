@@ -1,7 +1,7 @@
 {
 	"schemaVersion": 1,
-	"generatedFrom": "6_AgriculturalResidue_WIP_v02.xlsx",
-	"generatedAt": "2026-07-08T04:20:36Z",
+	"generatedFrom": "6_AgriculturalResidue_WIP_v03.xlsx",
+	"generatedAt": "2026-07-10T02:22:45Z",
 	"InputCells": [
 		{
 			"CellName": "X_Cell_Crop_AreaUnderCropping",
@@ -72,6 +72,10 @@
 			"CellType": "percent"
 		},
 		{
+			"CellName": "X_Cell_Crop_TotalProductionOfCrop",
+			"CellType": "number"
+		},
+		{
 			"CellName": "X_Cell_Crop_YieldPerHectare",
 			"CellType": "number"
 		},
@@ -114,6 +118,10 @@
 			"CellType": "number"
 		},
 		{
+			"CellName": "X_Cell_Site_ClimateZone",
+			"CellType": "text"
+		},
+		{
 			"CellName": "X_Cell_Site_Elevation",
 			"CellType": "number"
 		},
@@ -134,8 +142,16 @@
 			}
 		},
 		{
+			"CellName": "X_Cell_Site_MapPetRatio",
+			"CellType": "number"
+		},
+		{
 			"CellName": "X_Cell_Site_PotentialEvapotranspiration",
 			"CellType": "number"
+		},
+		{
+			"CellName": "X_Cell_Site_RainfallZone",
+			"CellType": "text"
 		},
 		{
 			"CellName": "X_Cell_Site_Region",
@@ -176,8 +192,16 @@
 			}
 		},
 		{
+			"CellName": "X_Cell_Site_TemperatureZone",
+			"CellType": "text"
+		},
+		{
 			"CellName": "X_Cell_Site_TotalRainfall",
 			"CellType": "number"
+		},
+		{
+			"CellName": "X_Cell_Site_WetOrDryClimateZone",
+			"CellType": "text"
 		}
 	],
 	"InputTables": []

@@ -1,7 +1,7 @@
 {
 	"schemaVersion": 1,
 	"generatedFrom": "4_2_ManureManagement_BeefPasture_WIP_v07.xlsx",
-	"generatedAt": "2026-07-08T04:20:13Z",
+	"generatedAt": "2026-07-10T02:22:00Z",
 	"InputCells": [
 		{
 			"CellName": "X_Cell_PastureBeef_Breed",
@@ -41,30 +41,8 @@
 		{
 			"CellName": "X_Cell_PastureBeef_ProductionRegion",
 			"CellType": "select",
-			"DependentOn": "X_Cell_Site_State",
-			"Options": {
-				"NewSouthWales": "n/a",
-				"ACT": "n/a",
-				"Victoria": "n/a",
-				"Queensland": {
-					"High": "High",
-					"Moderate/High": "Moderate/High",
-					"Moderate/Low": "Moderate/Low",
-					"Low": "Low"
-				},
-				"SouthAustralia": "n/a",
-				"WesternAustralia": {
-					"South West": "South West",
-					"Pilbara": "Pilbara",
-					"Kimberley": "Kimberley"
-				},
-				"Tasmania": "n/a",
-				"NorthernTerritory": {
-					"Alice Springs": "Alice Springs",
-					"Barkly": "Barkly",
-					"Northern": "Northern"
-				}
-			}
+			"DependentOn": "E7",
+			"Options": {}
 		},
 		{
 			"CellName": "X_Cell_Site_AverageTemperature",

@@ -1,7 +1,1294 @@
 {
 	"schemaVersion": 1,
 	"generatedFrom": "13_Scope3_WIP_v11.xlsx",
-	"generatedAt": "2026-07-08T04:19:43Z",
+	"generatedAt": "2026-07-10T02:21:06Z",
 	"InputCells": [],
-	"InputTables": []
+	"InputTables": [
+		{
+			"TableName": "Table_Input_Fuel",
+			"MatrixType": "RowsToCols",
+			"NumberOfCols": 6,
+			"ColumnNames": {
+				"FuelUse": "Fuel use (select)",
+				"FuelType": "Fuel type (select)",
+				"AmountPurchased": "Amount purchased",
+				"AmountUnit": "Amount unit",
+				"PercentConsumed": "Percent consumed",
+				"AmountConsumed": "Amount consumed"
+			},
+			"Rows": {
+				"Row": {
+					"FuelUse": {
+						"CellType": "select",
+						"Options": {
+							"Generators": "Generators",
+							"Power standalone machinery or heating": "Power standalone machinery or heating",
+							"Aviation": "Aviation",
+							"Cars and light commercial vehicles": "Cars and light commercial vehicles",
+							"Off-road Agriculture and forestry equipment": "Off-road Agriculture and forestry equipment",
+							"Vessels": "Vessels",
+							"General use": "General use"
+						}
+					},
+					"FuelType": {
+						"CellType": "select",
+						"Options": {}
+					},
+					"AmountPurchased": {
+						"CellType": "number"
+					},
+					"AmountUnit": {
+						"CellType": "formula"
+					},
+					"PercentConsumed": {
+						"CellType": "formula"
+					},
+					"AmountConsumed": {
+						"CellType": "formula"
+					}
+				}
+			}
+		},
+		{
+			"TableName": "Table_Input_InorganicFertiliser_Brands",
+			"MatrixType": "RowsToCols",
+			"NumberOfCols": 21,
+			"ColumnNames": {
+				"Product": "Product (select)",
+				"AmountAppliedPerHectare": "Amount applied per hectare",
+				"ApplicationUnit": "Application unit",
+				"Density": "Density",
+				"ApplicationArea": "Application area (ha)",
+				"TotalApplied": "Total applied (kg)",
+				"Ingredient1": "Ingredient 1",
+				"Ingredient1Percent": "Ingredient 1 percent",
+				"Ingredient2": "Ingredient 2",
+				"Ingredient2Percent": "Ingredient 2 percent",
+				"Ingredient3": "Ingredient 3",
+				"Ingredient3Percent": "Ingredient 3 percent",
+				"Ingredient4": "Ingredient 4",
+				"Ingredient4Percent": "Ingredient 4 percent",
+				"Ingredient5": "Ingredient 5",
+				"Ingredient5Percent": "Ingredient 5 percent",
+				"Ingredient6": "Ingredient 6",
+				"Ingredient6Percent": "Ingredient 6 percent",
+				"NApplicationRate": "N application rate (kg/ha)",
+				"UreaSource": "Urea source",
+				"AmmoniaSource": "Ammonia source"
+			},
+			"Rows": {
+				"Row": {
+					"Product": {
+						"CellType": "select",
+						"Options": {
+							"Aqua Finish": "Aqua Finish",
+							"Aqua Grow": "Aqua Grow",
+							"Aqua Nitro AN": "Aqua Nitro AN",
+							"Aqua Start": "Aqua Start",
+							"Aqua Thio-Complete": "Aqua Thio-Complete",
+							"Aqua Thio-Emerge": "Aqua Thio-Emerge",
+							"Aqua Thio-Flourish": "Aqua Thio-Flourish",
+							"Boost-It": "Boost-It",
+							"Bronze": "Bronze",
+							"Compass": "Compass",
+							"CoRoN 12-0-10": "CoRoN 12-0-10",
+							"Ingredient 1 source": "Ingredient 1 source"
+						}
+					},
+					"AmountAppliedPerHectare": {
+						"CellType": "number"
+					},
+					"ApplicationUnit": {
+						"CellType": "formula"
+					},
+					"Density": {
+						"CellType": "formula"
+					},
+					"ApplicationArea": {
+						"CellType": "formula",
+						"Unit": "ha"
+					},
+					"TotalApplied": {
+						"CellType": "formula",
+						"Unit": "kg"
+					},
+					"Ingredient1": {
+						"CellType": "formula"
+					},
+					"Ingredient1Percent": {
+						"CellType": "formula"
+					},
+					"Ingredient2": {
+						"CellType": "formula"
+					},
+					"Ingredient2Percent": {
+						"CellType": "formula"
+					},
+					"Ingredient3": {
+						"CellType": "formula"
+					},
+					"Ingredient3Percent": {
+						"CellType": "formula"
+					},
+					"Ingredient4": {
+						"CellType": "formula"
+					},
+					"Ingredient4Percent": {
+						"CellType": "formula"
+					},
+					"Ingredient5": {
+						"CellType": "formula"
+					},
+					"Ingredient5Percent": {
+						"CellType": "formula"
+					},
+					"Ingredient6": {
+						"CellType": "formula"
+					},
+					"Ingredient6Percent": {
+						"CellType": "formula"
+					},
+					"NApplicationRate": {
+						"CellType": "formula",
+						"Unit": "kg/ha"
+					},
+					"UreaSource": {
+						"CellType": "formula"
+					},
+					"AmmoniaSource": {
+						"CellType": "formula"
+					}
+				}
+			}
+		},
+		{
+			"TableName": "Table_Input_InorganicFertiliser_Custom",
+			"MatrixType": "RowsToCols",
+			"NumberOfCols": 15,
+			"ColumnNames": {
+				"CustomBlendName": "Custom blend name",
+				"AmountApplied": "Amount applied (kg / ha)",
+				"ApplicationArea": "Application area (ha)",
+				"TotalApplied": "Total applied (kg)",
+				"Ingredient1": "Ingredient 1 (select)",
+				"Ingredient1Percent": "Ingredient 1 percent",
+				"Ingredient2": "Ingredient 2",
+				"Ingredient2Percent": "Ingredient 2 percent",
+				"Ingredient3": "Ingredient 3",
+				"Ingredient3Percent": "Ingredient 3 percent",
+				"Ingredient4": "Ingredient 4",
+				"Ingredient4Percent": "Ingredient 4 percent",
+				"NApplicationRate": "N application rate (kg/ha)",
+				"UreaSource": "Urea source",
+				"AmmoniaSource": "Ammonia source"
+			},
+			"Rows": {
+				"Row": {
+					"CustomBlendName": {
+						"CellType": "text"
+					},
+					"AmountApplied": {
+						"CellType": "number",
+						"Unit": "kg / ha"
+					},
+					"ApplicationArea": {
+						"CellType": "formula",
+						"Unit": "ha"
+					},
+					"TotalApplied": {
+						"CellType": "formula",
+						"Unit": "kg"
+					},
+					"Ingredient1": {
+						"CellType": "select",
+						"Options": {
+							"Monoammonium phosphate (MAP)": "Monoammonium phosphate (MAP)",
+							"Diammonium phosphate (DAP)": "Diammonium phosphate (DAP)",
+							"Urea": "Urea",
+							"Sulphate of ammonia (SOA)": "Sulphate of ammonia (SOA)",
+							"Urea-ammonium nitrate (UAN)": "Urea-ammonium nitrate (UAN)",
+							"Ammonium nitrate (AN)": "Ammonium nitrate (AN)",
+							"Calcium ammonium nitrate (CAN)": "Calcium ammonium nitrate (CAN)",
+							"Nitrogen - Ammoniacal": "Nitrogen - Ammoniacal",
+							"Nitrogen - Nitrate": "Nitrogen - Nitrate",
+							"Nitrogen - Generic": "Nitrogen - Generic",
+							"Phosphorus - Generic": "Phosphorus - Generic",
+							"Potassium - Generic": "Potassium - Generic",
+							"Sulfur - Generic": "Sulfur - Generic",
+							"Zinc - Generic": "Zinc - Generic",
+							"Muriate of potash (MOP)": "Muriate of potash (MOP)",
+							"Double superphosphate": "Double superphosphate",
+							"Single superphosphate (SSP)": "Single superphosphate (SSP)",
+							"Ammonia": "Ammonia",
+							"Calcium nitrate": "Calcium nitrate"
+						}
+					},
+					"Ingredient1Percent": {
+						"CellType": "percent"
+					},
+					"Ingredient2": {
+						"CellType": "select",
+						"Options": {
+							"Monoammonium phosphate (MAP)": "Monoammonium phosphate (MAP)",
+							"Diammonium phosphate (DAP)": "Diammonium phosphate (DAP)",
+							"Urea": "Urea",
+							"Sulphate of ammonia (SOA)": "Sulphate of ammonia (SOA)",
+							"Urea-ammonium nitrate (UAN)": "Urea-ammonium nitrate (UAN)",
+							"Ammonium nitrate (AN)": "Ammonium nitrate (AN)",
+							"Calcium ammonium nitrate (CAN)": "Calcium ammonium nitrate (CAN)",
+							"Nitrogen - Ammoniacal": "Nitrogen - Ammoniacal",
+							"Nitrogen - Nitrate": "Nitrogen - Nitrate",
+							"Nitrogen - Generic": "Nitrogen - Generic",
+							"Phosphorus - Generic": "Phosphorus - Generic",
+							"Potassium - Generic": "Potassium - Generic",
+							"Sulfur - Generic": "Sulfur - Generic",
+							"Zinc - Generic": "Zinc - Generic",
+							"Muriate of potash (MOP)": "Muriate of potash (MOP)",
+							"Double superphosphate": "Double superphosphate",
+							"Single superphosphate (SSP)": "Single superphosphate (SSP)",
+							"Ammonia": "Ammonia",
+							"Calcium nitrate": "Calcium nitrate"
+						}
+					},
+					"Ingredient2Percent": {
+						"CellType": "percent"
+					},
+					"Ingredient3": {
+						"CellType": "select",
+						"Options": {
+							"Monoammonium phosphate (MAP)": "Monoammonium phosphate (MAP)",
+							"Diammonium phosphate (DAP)": "Diammonium phosphate (DAP)",
+							"Urea": "Urea",
+							"Sulphate of ammonia (SOA)": "Sulphate of ammonia (SOA)",
+							"Urea-ammonium nitrate (UAN)": "Urea-ammonium nitrate (UAN)",
+							"Ammonium nitrate (AN)": "Ammonium nitrate (AN)",
+							"Calcium ammonium nitrate (CAN)": "Calcium ammonium nitrate (CAN)",
+							"Nitrogen - Ammoniacal": "Nitrogen - Ammoniacal",
+							"Nitrogen - Nitrate": "Nitrogen - Nitrate",
+							"Nitrogen - Generic": "Nitrogen - Generic",
+							"Phosphorus - Generic": "Phosphorus - Generic",
+							"Potassium - Generic": "Potassium - Generic",
+							"Sulfur - Generic": "Sulfur - Generic",
+							"Zinc - Generic": "Zinc - Generic",
+							"Muriate of potash (MOP)": "Muriate of potash (MOP)",
+							"Double superphosphate": "Double superphosphate",
+							"Single superphosphate (SSP)": "Single superphosphate (SSP)",
+							"Ammonia": "Ammonia",
+							"Calcium nitrate": "Calcium nitrate"
+						}
+					},
+					"Ingredient3Percent": {
+						"CellType": "percent"
+					},
+					"Ingredient4": {
+						"CellType": "select",
+						"Options": {
+							"Monoammonium phosphate (MAP)": "Monoammonium phosphate (MAP)",
+							"Diammonium phosphate (DAP)": "Diammonium phosphate (DAP)",
+							"Urea": "Urea",
+							"Sulphate of ammonia (SOA)": "Sulphate of ammonia (SOA)",
+							"Urea-ammonium nitrate (UAN)": "Urea-ammonium nitrate (UAN)",
+							"Ammonium nitrate (AN)": "Ammonium nitrate (AN)",
+							"Calcium ammonium nitrate (CAN)": "Calcium ammonium nitrate (CAN)",
+							"Nitrogen - Ammoniacal": "Nitrogen - Ammoniacal",
+							"Nitrogen - Nitrate": "Nitrogen - Nitrate",
+							"Nitrogen - Generic": "Nitrogen - Generic",
+							"Phosphorus - Generic": "Phosphorus - Generic",
+							"Potassium - Generic": "Potassium - Generic",
+							"Sulfur - Generic": "Sulfur - Generic",
+							"Zinc - Generic": "Zinc - Generic",
+							"Muriate of potash (MOP)": "Muriate of potash (MOP)",
+							"Double superphosphate": "Double superphosphate",
+							"Single superphosphate (SSP)": "Single superphosphate (SSP)",
+							"Ammonia": "Ammonia",
+							"Calcium nitrate": "Calcium nitrate"
+						}
+					},
+					"Ingredient4Percent": {
+						"CellType": "percent"
+					},
+					"NApplicationRate": {
+						"CellType": "formula",
+						"Unit": "kg/ha"
+					},
+					"UreaSource": {
+						"CellType": "select",
+						"Options": {
+							"Global": "Global",
+							"Canada": "Canada",
+							"China": "China",
+							"Yemen": "Yemen"
+						}
+					},
+					"AmmoniaSource": {
+						"CellType": "select",
+						"Options": {
+							"Global": "Global",
+							"Canada": "Canada",
+							"China": "China",
+							"Yemen": "Yemen"
+						}
+					}
+				}
+			}
+		},
+		{
+			"TableName": "Table_Input_SoilAmeliorants",
+			"MatrixType": "RowsToCols",
+			"NumberOfCols": 8,
+			"ColumnNames": {
+				"Product": "Product",
+				"AmountApplied": "Amount applied (t/hectare)",
+				"ApplicationArea": "Application area (ha)",
+				"TotalAmountApplied": "Total amount applied (t)",
+				"PercentLimeCaCO3": "Percent Lime CaCO3",
+				"PercentDolomiteCaMg2": "Percent Dolomite CaMg(CO3)2",
+				"PercentGypsum": "Percent Gypsum",
+				"Total": "Total"
+			},
+			"Rows": {
+				"Row": {
+					"Product": {
+						"CellType": "text"
+					},
+					"AmountApplied": {
+						"CellType": "number",
+						"Unit": "t/hectare"
+					},
+					"ApplicationArea": {
+						"CellType": "formula",
+						"Unit": "ha"
+					},
+					"TotalAmountApplied": {
+						"CellType": "formula",
+						"Unit": "t"
+					},
+					"PercentLimeCaCO3": {
+						"CellType": "percent"
+					},
+					"PercentDolomiteCaMg2": {
+						"CellType": "percent",
+						"Unit": "CO3"
+					},
+					"PercentGypsum": {
+						"CellType": "percent"
+					},
+					"Total": {
+						"CellType": "formula"
+					}
+				}
+			}
+		},
+		{
+			"TableName": "Table_Input_ChemicalsCleaning",
+			"MatrixType": "RowsToCols",
+			"NumberOfCols": 3,
+			"ColumnNames": {
+				"ProductName": "Product name",
+				"Type": "Type (select)",
+				"QuantityPurchased": "Quantity purchased (kg)"
+			},
+			"Rows": {
+				"Row": {
+					"ProductName": {
+						"CellType": "text"
+					},
+					"Type": {
+						"CellType": "select",
+						"Options": {
+							"Alkaline cleaner": "Alkaline cleaner",
+							"Bleach": "Bleach",
+							"Phosphoric acid": "Phosphoric acid"
+						}
+					},
+					"QuantityPurchased": {
+						"CellType": "number",
+						"Unit": "kg"
+					}
+				}
+			}
+		},
+		{
+			"TableName": "Table_Input_Packaging",
+			"MatrixType": "RowsToCols",
+			"NumberOfCols": 5,
+			"ColumnNames": {
+				"PackagingName": "Packaging name",
+				"QuantityPurchased": "Quantity purchased",
+				"PrimaryMaterial": "Primary material",
+				"WeightPerUnit": "Weight per unit (kg)",
+				"TotalWeightPurchased": "Total weight purchased (kg)"
+			},
+			"Rows": {
+				"Row": {
+					"PackagingName": {
+						"CellType": "text"
+					},
+					"QuantityPurchased": {
+						"CellType": "number"
+					},
+					"PrimaryMaterial": {
+						"CellType": "select",
+						"Options": {
+							"Corrugated board": "Corrugated board",
+							"Plastic crate polypropylene": "Plastic crate polypropylene",
+							"Plastic film LDPE": "Plastic film LDPE",
+							"Plastic sheet HDPE": "Plastic sheet HDPE"
+						}
+					},
+					"WeightPerUnit": {
+						"CellType": "number",
+						"Unit": "kg"
+					},
+					"TotalWeightPurchased": {
+						"CellType": "formula",
+						"Unit": "kg"
+					}
+				}
+			}
+		},
+		{
+			"TableName": "Table_Input_Pesticides",
+			"MatrixType": "RowsToCols",
+			"NumberOfCols": 15,
+			"ColumnNames": {
+				"ProductName": "Product name",
+				"AmountAppliedPerHa": "Amount applied per ha",
+				"ApplicationUnit": "Application unit (select)",
+				"ApplicationArea": "Application area (ha)",
+				"TotalApplied": "Total applied",
+				"ConstituentUnit": "Constituent unit (select)",
+				"ActiveIngredient1": "Active ingredient 1 (select)",
+				"ActiveIngredient1Amount": "Active ingredient 1 amount",
+				"TotalActiveIngredient1": "Total active ingredient 1 (kg)",
+				"ActiveIngredient2": "Active ingredient 2 (select)",
+				"ActiveIngredient2Amount": "Active ingredient 2 amount",
+				"TotalActiveIngredient2": "Total active ingredient 2 (kg)",
+				"ActiveIngredient3": "Active ingredient 3 (select)",
+				"ActiveIngredient3Amount": "Active ingredient 3 amount",
+				"TotalActiveIngredient3": "Total active ingredient 3 (kg)"
+			},
+			"Rows": {
+				"Row": {
+					"ProductName": {
+						"CellType": "text"
+					},
+					"AmountAppliedPerHa": {
+						"CellType": "number"
+					},
+					"ApplicationUnit": {
+						"CellType": "select",
+						"Options": {
+							"kg / hectare": "kg / hectare",
+							"litre / hectare": "litre / hectare"
+						}
+					},
+					"ApplicationArea": {
+						"CellType": "number",
+						"Unit": "ha"
+					},
+					"TotalApplied": {
+						"CellType": "formula"
+					},
+					"ConstituentUnit": {
+						"CellType": "select",
+						"Options": {
+							"grams/litre or grams/kg": "grams/litre or grams/kg",
+							"fraction of product": "fraction of product"
+						}
+					},
+					"ActiveIngredient1": {
+						"CellType": "select",
+						"Options": {
+							"2,4-D": "2,4-D",
+							"Atrazine": "Atrazine",
+							"Diuron": "Diuron",
+							"Glyphosate": "Glyphosate",
+							"Mancozeb": "Mancozeb",
+							"MCPA": "MCPA",
+							"Metolachlor": "Metolachlor",
+							"Metsulfuron-methyl": "Metsulfuron-methyl",
+							"Pesticides (generic)": "Pesticides (generic)",
+							"Tri-allate": "Tri-allate",
+							"Tribenuron methyl": "Tribenuron methyl",
+							"Trifluralin": "Trifluralin"
+						}
+					},
+					"ActiveIngredient1Amount": {
+						"CellType": "number"
+					},
+					"TotalActiveIngredient1": {
+						"CellType": "formula",
+						"Unit": "kg"
+					},
+					"ActiveIngredient2": {
+						"CellType": "select",
+						"Options": {
+							"2,4-D": "2,4-D",
+							"Atrazine": "Atrazine",
+							"Diuron": "Diuron",
+							"Glyphosate": "Glyphosate",
+							"Mancozeb": "Mancozeb",
+							"MCPA": "MCPA",
+							"Metolachlor": "Metolachlor",
+							"Metsulfuron-methyl": "Metsulfuron-methyl",
+							"Pesticides (generic)": "Pesticides (generic)",
+							"Tri-allate": "Tri-allate",
+							"Tribenuron methyl": "Tribenuron methyl",
+							"Trifluralin": "Trifluralin"
+						}
+					},
+					"ActiveIngredient2Amount": {
+						"CellType": "number"
+					},
+					"TotalActiveIngredient2": {
+						"CellType": "formula",
+						"Unit": "kg"
+					},
+					"ActiveIngredient3": {
+						"CellType": "select",
+						"Options": {
+							"2,4-D": "2,4-D",
+							"Atrazine": "Atrazine",
+							"Diuron": "Diuron",
+							"Glyphosate": "Glyphosate",
+							"Mancozeb": "Mancozeb",
+							"MCPA": "MCPA",
+							"Metolachlor": "Metolachlor",
+							"Metsulfuron-methyl": "Metsulfuron-methyl",
+							"Pesticides (generic)": "Pesticides (generic)",
+							"Tri-allate": "Tri-allate",
+							"Tribenuron methyl": "Tribenuron methyl",
+							"Trifluralin": "Trifluralin"
+						}
+					},
+					"ActiveIngredient3Amount": {
+						"CellType": "number"
+					},
+					"TotalActiveIngredient3": {
+						"CellType": "formula",
+						"Unit": "kg"
+					}
+				}
+			}
+		},
+		{
+			"TableName": "Table_Input_ChemicalsPharmacy",
+			"MatrixType": "RowsToCols",
+			"NumberOfCols": 3,
+			"ColumnNames": {
+				"ProductName": "Product name",
+				"Type": "Type (select)",
+				"NumberOfHeadTreated": "Number of head treated"
+			},
+			"Rows": {
+				"Row": {
+					"ProductName": {
+						"CellType": "text"
+					},
+					"Type": {
+						"CellType": "select",
+						"Options": {
+							"Parasite control for cattle (external), dipping": "Parasite control for cattle (external), dipping",
+							"Parasite control for cattle (internal)": "Parasite control for cattle (internal)",
+							"Parasite control for sheep (external)": "Parasite control for sheep (external)",
+							"Parasite control for sheep (internal)": "Parasite control for sheep (internal)"
+						}
+					},
+					"NumberOfHeadTreated": {
+						"CellType": "number"
+					}
+				}
+			}
+		},
+		{
+			"TableName": "Table_Input_LivestockPurchases_Beefcattle",
+			"MatrixType": "RowsToCols",
+			"NumberOfCols": 8,
+			"ColumnNames": {
+				"TransactionName": "Transaction name",
+				"PurchaseDate": "Purchase date",
+				"Class": "Class (select)",
+				"PurchaseClass": "Purchase class (select)",
+				"SourceRegion": "Source region (Select)",
+				"Quantity": "Quantity (head)",
+				"LiveweightMethod1": "Liveweight (kg/head) Method 1",
+				"LiveweightMethod2": "Liveweight (kg/head) Method 2"
+			},
+			"Rows": {
+				"Row": {
+					"TransactionName": {
+						"CellType": "text"
+					},
+					"PurchaseDate": {
+						"CellType": "number"
+					},
+					"Class": {
+						"CellType": "select",
+						"Options": {
+							"Bulls < 1 year": "Bulls < 1 year",
+							"Bulls > 1 year": "Bulls > 1 year",
+							"Cows < 1 year": "Cows < 1 year",
+							"Cows 1-2 years": "Cows 1-2 years",
+							"Cows 2-3 years": "Cows 2-3 years",
+							"Cows > 3 years": "Cows > 3 years",
+							"Steers < 1 year": "Steers < 1 year",
+							"Steers 1-2 years": "Steers 1-2 years",
+							"Steers 2-3 years": "Steers 2-3 years",
+							"Steers >3 years": "Steers >3 years"
+						}
+					},
+					"PurchaseClass": {
+						"CellType": "select",
+						"Options": {
+							"Cattle, for manufacturing beef": "Cattle, for manufacturing beef",
+							"Cattle, for prime beef": "Cattle, for prime beef",
+							"Cattle, weaners": "Cattle, weaners"
+						}
+					},
+					"SourceRegion": {
+						"CellType": "select",
+						"Options": {
+							"ACT": "ACT",
+							"NSW": "NSW",
+							"SA": "SA",
+							"TAS": "TAS",
+							"VIC": "VIC",
+							"WA - South west": "WA - South west",
+							"WA - Pilbara": "WA - Pilbara",
+							"WA - Kimberley": "WA - Kimberley",
+							"NT - Alice Springs": "NT - Alice Springs",
+							"NT - Barkly": "NT - Barkly",
+							"NT - Northern": "NT - Northern",
+							"QLD - High": "QLD - High",
+							"QLD - Moderate/High": "QLD - Moderate/High",
+							"QLD - Moderate/Low": "QLD - Moderate/Low",
+							"QLD - Low": "QLD - Low",
+							"Australia": "Australia"
+						}
+					},
+					"Quantity": {
+						"CellType": "number",
+						"Unit": "head"
+					},
+					"LiveweightMethod1": {
+						"CellType": "formula",
+						"Unit": "kg/head"
+					},
+					"LiveweightMethod2": {
+						"CellType": "number",
+						"Unit": "kg/head"
+					}
+				}
+			}
+		},
+		{
+			"TableName": "Table_Input_LivestockPurchases_Dairy",
+			"MatrixType": "RowsToCols",
+			"NumberOfCols": 6,
+			"ColumnNames": {
+				"TransactionName": "Transaction name",
+				"Class": "Class (select)",
+				"Breed": "Breed (select)",
+				"Quantity": "Quantity (head)",
+				"LiveweightMethod1": "Liveweight (kg/head) Method 1",
+				"LiveweightMethod2": "Liveweight (kg/head) Method 2"
+			},
+			"Rows": {
+				"Row": {
+					"TransactionName": {
+						"CellType": "text"
+					},
+					"Class": {
+						"CellType": "select",
+						"Options": {}
+					},
+					"Breed": {
+						"CellType": "select",
+						"Options": {
+							"Medium Friesian": "Medium Friesian",
+							"Large Friesian": "Large Friesian",
+							"Holstein-Friesian": "Holstein-Friesian",
+							"Friesian crossbred": "Friesian crossbred",
+							"Jersey": "Jersey",
+							"Jersey crossbred": "Jersey crossbred",
+							"Ayrshire": "Ayrshire",
+							"Guernsey": "Guernsey",
+							"Brown Swiss": "Brown Swiss",
+							"Illawarra/Aussie Red": "Illawarra/Aussie Red"
+						}
+					},
+					"Quantity": {
+						"CellType": "number",
+						"Unit": "head"
+					},
+					"LiveweightMethod1": {
+						"CellType": "formula",
+						"Unit": "kg/head"
+					},
+					"LiveweightMethod2": {
+						"CellType": "number",
+						"Unit": "kg/head"
+					}
+				}
+			}
+		},
+		{
+			"TableName": "Table_Input_LivestockPurchases_Pigs",
+			"MatrixType": "RowsToCols",
+			"NumberOfCols": 5,
+			"ColumnNames": {
+				"TransactionName": "Transaction name",
+				"Class": "Class (select)",
+				"Quantity": "Quantity (head)",
+				"LiveweightMethod1": "Liveweight (kg/head) Method 1",
+				"LiveweightMethod2": "Liveweight (kg/head) Method 2"
+			},
+			"Rows": {
+				"Row": {
+					"TransactionName": {
+						"CellType": "text"
+					},
+					"Class": {
+						"CellType": "select",
+						"Options": {
+							"Sows": "Sows",
+							"Boars": "Boars",
+							"Gilts": "Gilts",
+							"Slaughter pigs": "Slaughter pigs",
+							"Slaughter pigs at turnoff": "Slaughter pigs at turnoff"
+						}
+					},
+					"Quantity": {
+						"CellType": "number",
+						"Unit": "head"
+					},
+					"LiveweightMethod1": {
+						"CellType": "formula",
+						"Unit": "kg/head"
+					},
+					"LiveweightMethod2": {
+						"CellType": "number",
+						"Unit": "kg/head"
+					}
+				}
+			}
+		},
+		{
+			"TableName": "Table_Input_LivestockPurchases_Poultry",
+			"MatrixType": "RowsToCols",
+			"NumberOfCols": 5,
+			"ColumnNames": {
+				"TransactionName": "Transaction name",
+				"Class": "Class (select)",
+				"Quantity": "Quantity (head)",
+				"LiveweightMethod1": "Liveweight (kg/head) Method 1",
+				"LiveweightMethod2": "Liveweight (kg/head) Method 2"
+			},
+			"Rows": {
+				"Row": {
+					"TransactionName": {
+						"CellType": "text"
+					},
+					"Class": {
+						"CellType": "select",
+						"Options": {
+							"Chicken": "Chicken",
+							"Hen >/=1 yr": "Hen >/=1 yr",
+							"Pullets": "Pullets",
+							"Broilers": "Broilers"
+						}
+					},
+					"Quantity": {
+						"CellType": "number",
+						"Unit": "head"
+					},
+					"LiveweightMethod1": {
+						"CellType": "formula",
+						"Unit": "kg/head"
+					},
+					"LiveweightMethod2": {
+						"CellType": "number",
+						"Unit": "kg/head"
+					}
+				}
+			}
+		},
+		{
+			"TableName": "Table_Input_UncategorisedProductsServices",
+			"MatrixType": "RowsToCols",
+			"NumberOfCols": 3,
+			"ColumnNames": {
+				"ProductServiceName": "Product / service name",
+				"Amount": "Amount",
+				"AmountUnit": "Amount unit"
+			},
+			"Rows": {
+				"Row": {
+					"ProductServiceName": {
+						"CellType": "text"
+					},
+					"Amount": {
+						"CellType": "number"
+					},
+					"AmountUnit": {
+						"CellType": "text"
+					}
+				}
+			}
+		},
+		{
+			"TableName": "Table_Input_FeedBlends",
+			"MatrixType": "RowsToCols",
+			"NumberOfCols": 14,
+			"ColumnNames": {
+				"FeedBlendName": "Feed blend name",
+				"AmountFed": "Amount fed (kg)",
+				"Ingredient1": "Ingredient 1 (select)",
+				"Ingredient1SourceRegion": "Ingredient 1 source region",
+				"Ingredient1Percent": "Ingredient 1 percent",
+				"Ingredient2": "Ingredient 2 (select)",
+				"Ingredient2SourceRegion": "Ingredient 2 source region",
+				"Ingredient2Percent": "Ingredient 2 percent",
+				"Ingredient3": "Ingredient 3 (select)",
+				"Ingredient3SourceRegion": "Ingredient 3 source region",
+				"Ingredient3Percent": "Ingredient 3 percent",
+				"Ingredient4": "Ingredient 4 (select)",
+				"Ingredient4SourceRegion": "Ingredient 4 source region",
+				"Ingredient4Percent": "Ingredient 4 percent"
+			},
+			"Rows": {
+				"Row": {
+					"FeedBlendName": {
+						"CellType": "number"
+					},
+					"AmountFed": {
+						"CellType": "number",
+						"Unit": "kg"
+					},
+					"Ingredient1": {
+						"CellType": "select",
+						"Options": {
+							"Sardines (whole)": "Sardines (whole)",
+							"Barley grain": "Barley grain",
+							"Maize grain": "Maize grain",
+							"Sorghum grain": "Sorghum grain",
+							"Wheat grain": "Wheat grain",
+							"Cereal hay": "Cereal hay",
+							"Cereal silage": "Cereal silage",
+							"Lucerne hay": "Lucerne hay",
+							"Maize silage": "Maize silage",
+							"Oaten hay": "Oaten hay",
+							"Pasture hay": "Pasture hay",
+							"Canola meal": "Canola meal",
+							"Meat meal": "Meat meal",
+							"Soybean meal": "Soybean meal",
+							"Wheat bran": "Wheat bran",
+							"Bentonite": "Bentonite",
+							"Canola oil": "Canola oil",
+							"Cotton seed": "Cotton seed",
+							"Molasses": "Molasses"
+						}
+					},
+					"Ingredient1SourceRegion": {
+						"CellType": "select",
+						"DependentOn": "SUBSTITUTE(SUBSTITUTE(SUBSTITUTE(F63",
+						"Options": {}
+					},
+					"Ingredient1Percent": {
+						"CellType": "percent"
+					},
+					"Ingredient2": {
+						"CellType": "select",
+						"Options": {
+							"Sardines (whole)": "Sardines (whole)",
+							"Barley grain": "Barley grain",
+							"Maize grain": "Maize grain",
+							"Sorghum grain": "Sorghum grain",
+							"Wheat grain": "Wheat grain",
+							"Cereal hay": "Cereal hay",
+							"Cereal silage": "Cereal silage",
+							"Lucerne hay": "Lucerne hay",
+							"Maize silage": "Maize silage",
+							"Oaten hay": "Oaten hay",
+							"Pasture hay": "Pasture hay",
+							"Canola meal": "Canola meal",
+							"Meat meal": "Meat meal",
+							"Soybean meal": "Soybean meal",
+							"Wheat bran": "Wheat bran",
+							"Bentonite": "Bentonite",
+							"Canola oil": "Canola oil",
+							"Cotton seed": "Cotton seed",
+							"Molasses": "Molasses"
+						}
+					},
+					"Ingredient2SourceRegion": {
+						"CellType": "select",
+						"DependentOn": "SUBSTITUTE(SUBSTITUTE(SUBSTITUTE(I63",
+						"Options": {}
+					},
+					"Ingredient2Percent": {
+						"CellType": "percent"
+					},
+					"Ingredient3": {
+						"CellType": "select",
+						"Options": {
+							"Sardines (whole)": "Sardines (whole)",
+							"Barley grain": "Barley grain",
+							"Maize grain": "Maize grain",
+							"Sorghum grain": "Sorghum grain",
+							"Wheat grain": "Wheat grain",
+							"Cereal hay": "Cereal hay",
+							"Cereal silage": "Cereal silage",
+							"Lucerne hay": "Lucerne hay",
+							"Maize silage": "Maize silage",
+							"Oaten hay": "Oaten hay",
+							"Pasture hay": "Pasture hay",
+							"Canola meal": "Canola meal",
+							"Meat meal": "Meat meal",
+							"Soybean meal": "Soybean meal",
+							"Wheat bran": "Wheat bran",
+							"Bentonite": "Bentonite",
+							"Canola oil": "Canola oil",
+							"Cotton seed": "Cotton seed",
+							"Molasses": "Molasses"
+						}
+					},
+					"Ingredient3SourceRegion": {
+						"CellType": "select",
+						"DependentOn": "SUBSTITUTE(SUBSTITUTE(SUBSTITUTE(L63",
+						"Options": {}
+					},
+					"Ingredient3Percent": {
+						"CellType": "percent"
+					},
+					"Ingredient4": {
+						"CellType": "select",
+						"Options": {
+							"Sardines (whole)": "Sardines (whole)",
+							"Barley grain": "Barley grain",
+							"Maize grain": "Maize grain",
+							"Sorghum grain": "Sorghum grain",
+							"Wheat grain": "Wheat grain",
+							"Cereal hay": "Cereal hay",
+							"Cereal silage": "Cereal silage",
+							"Lucerne hay": "Lucerne hay",
+							"Maize silage": "Maize silage",
+							"Oaten hay": "Oaten hay",
+							"Pasture hay": "Pasture hay",
+							"Canola meal": "Canola meal",
+							"Meat meal": "Meat meal",
+							"Soybean meal": "Soybean meal",
+							"Wheat bran": "Wheat bran",
+							"Bentonite": "Bentonite",
+							"Canola oil": "Canola oil",
+							"Cotton seed": "Cotton seed",
+							"Molasses": "Molasses"
+						}
+					},
+					"Ingredient4SourceRegion": {
+						"CellType": "select",
+						"DependentOn": "SUBSTITUTE(SUBSTITUTE(SUBSTITUTE(O63",
+						"Options": {}
+					},
+					"Ingredient4Percent": {
+						"CellType": "percent"
+					}
+				}
+			}
+		},
+		{
+			"TableName": "Table_Input_ServicesAndContractors",
+			"MatrixType": "RowsToCols",
+			"NumberOfCols": 4,
+			"ColumnNames": {
+				"ServiceProviderContractor": "Service provider / contractor",
+				"Activity": "Activity",
+				"TotalAmount": "Total amount",
+				"AmountUnit": "Amount unit"
+			},
+			"Rows": {
+				"Row": {
+					"ServiceProviderContractor": {
+						"CellType": "text"
+					},
+					"Activity": {
+						"CellType": "text"
+					},
+					"TotalAmount": {
+						"CellType": "number"
+					},
+					"AmountUnit": {
+						"CellType": "select",
+						"Options": {
+							"Hour": "Hour",
+							"Hectare": "Hectare"
+						}
+					}
+				}
+			}
+		},
+		{
+			"TableName": "Table_Input_GrowMedia",
+			"MatrixType": "RowsToCols",
+			"NumberOfCols": 3,
+			"ColumnNames": {
+				"GrowMediaType": "Grow media type",
+				"TotalAmount": "Total amount",
+				"AmountUnit": "Amount unit"
+			},
+			"Rows": {
+				"Row": {
+					"GrowMediaType": {
+						"CellType": "text"
+					},
+					"TotalAmount": {
+						"CellType": "number"
+					},
+					"AmountUnit": {
+						"CellType": "select",
+						"Options": {
+							"kg": "kg",
+							"m3": "m3"
+						}
+					}
+				}
+			}
+		},
+		{
+			"TableName": "Table_Input_FreightIncoming",
+			"MatrixType": "RowsToCols",
+			"NumberOfCols": 5,
+			"ColumnNames": {
+				"RouteName": "Route name",
+				"FreightType": "Freight type (select)",
+				"RouteDistance": "Route distance (km)",
+				"AverageWeightOfFreightPerTrip": "Average weight of freight per trip (t)",
+				"NumberOfTripsTaken": "Number of trips taken"
+			},
+			"Rows": {
+				"Row": {
+					"RouteName": {
+						"CellType": "text"
+					},
+					"FreightType": {
+						"CellType": "select",
+						"Options": {
+							"Transport in truck": "Transport in truck",
+							"Rail": "Rail",
+							"Long haul flight": "Long haul flight",
+							"medium haul flight": "medium haul flight",
+							"Small container ship": "Small container ship",
+							"Large container ship": "Large container ship"
+						}
+					},
+					"RouteDistance": {
+						"CellType": "number",
+						"Unit": "km"
+					},
+					"AverageWeightOfFreightPerTrip": {
+						"CellType": "number",
+						"Unit": "t"
+					},
+					"NumberOfTripsTaken": {
+						"CellType": "number"
+					}
+				}
+			}
+		},
+		{
+			"TableName": "Table_Input_FreightOutgoing",
+			"MatrixType": "RowsToCols",
+			"NumberOfCols": 5,
+			"ColumnNames": {
+				"RouteName": "Route name",
+				"FreightType": "Freight type (select)",
+				"RouteDistance": "Route distance (km)",
+				"AverageWeightOfFreightPerTrip": "Average weight of freight per trip (t)",
+				"NumberOfTripsTaken": "Number of trips taken"
+			},
+			"Rows": {
+				"Row": {
+					"RouteName": {
+						"CellType": "text"
+					},
+					"FreightType": {
+						"CellType": "select",
+						"Options": {
+							"Transport in truck": "Transport in truck",
+							"Rail": "Rail",
+							"Long haul flight": "Long haul flight",
+							"medium haul flight": "medium haul flight",
+							"Small container ship": "Small container ship",
+							"Large container ship": "Large container ship"
+						}
+					},
+					"RouteDistance": {
+						"CellType": "number",
+						"Unit": "km"
+					},
+					"AverageWeightOfFreightPerTrip": {
+						"CellType": "number",
+						"Unit": "t"
+					},
+					"NumberOfTripsTaken": {
+						"CellType": "number"
+					}
+				}
+			}
+		},
+		{
+			"TableName": "Table_Input_SolidWaste",
+			"MatrixType": "RowsToCols",
+			"NumberOfCols": 6,
+			"ColumnNames": {
+				"Description": "Description",
+				"TreatmentType": "Treatment type (select)",
+				"WasteType": "Waste type (select)",
+				"TreatmentLocation": "Treatment location (select)",
+				"Amount": "Amount",
+				"AmountUnit": "Amount unit (select)"
+			},
+			"Rows": {
+				"Row": {
+					"Description": {
+						"CellType": "text"
+					},
+					"TreatmentType": {
+						"CellType": "select",
+						"Options": {
+							"Landfill": "Landfill",
+							"Incineration": "Incineration",
+							"Composting": "Composting",
+							"Anaerobic digestion": "Anaerobic digestion"
+						}
+					},
+					"WasteType": {
+						"CellType": "select",
+						"DependentOn": "E21",
+						"Options": {
+							"Landfill": {
+								"Food waste (including animal carcasses, spoiled animal feed or crop)": "Food waste (including animal carcasses, spoiled animal feed or crop)",
+								"Paper and cardboard": "Paper and cardboard",
+								"Green waste (including crop residues or prunnings)": "Green waste (including crop residues or prunnings)",
+								"Wood": "Wood",
+								"Textiles": "Textiles",
+								"Sludge": "Sludge",
+								"Rubber and leather": "Rubber and leather",
+								"Inert waste (including concrete, metal, plastic or glass)": "Inert waste (including concrete, metal, plastic or glass)",
+								"Municipal solid waste": "Municipal solid waste",
+								"Commercial and industrial waste": "Commercial and industrial waste",
+								"Construction and demolition waste": "Construction and demolition waste"
+							},
+							"Incineration": {
+								"Food waste, green waste, wood, sludge": "Food waste, green waste, wood, sludge",
+								"Paper and cardboard": "Paper and cardboard",
+								"Textiles": "Textiles",
+								"Rubber and leather": "Rubber and leather",
+								"Inert Waste": "Inert Waste",
+								"Municipal Solid Waste": "Municipal Solid Waste",
+								"Industrial Waste": "Industrial Waste"
+							},
+							"Composting": {
+								"All organic waste": "All organic waste"
+							},
+							"Anaerobicdigestion": {
+								"All organic waste": "All organic waste"
+							}
+						}
+					},
+					"TreatmentLocation": {
+						"CellType": "select",
+						"Options": {
+							"Removed and treated off-site": "Removed and treated off-site"
+						}
+					},
+					"Amount": {
+						"CellType": "number"
+					},
+					"AmountUnit": {
+						"CellType": "select",
+						"Options": {
+							"tonnes": "tonnes",
+							"cubic metres m3": "cubic metres m3"
+						}
+					}
+				}
+			}
+		},
+		{
+			"TableName": "Table_Input_RECSurrendered",
+			"MatrixType": "RowsToCols",
+			"NumberOfCols": 6,
+			"ColumnNames": {
+				"Description": "Description",
+				"Source": "Source (select)",
+				"GenerationDate": "Generation date",
+				"NumberOfCertificates": "Number of certificates",
+				"MWh": "MWh",
+				"Elegibility": "Elegibility"
+			},
+			"Rows": {
+				"Row": {
+					"Description": {
+						"CellType": "text"
+					},
+					"Source": {
+						"CellType": "select",
+						"Options": {
+							"Purchased certificate": "Purchased certificate",
+							"Issued for generated electricity": "Issued for generated electricity"
+						}
+					},
+					"GenerationDate": {
+						"CellType": "number"
+					},
+					"NumberOfCertificates": {
+						"CellType": "number"
+					},
+					"MWh": {
+						"CellType": "formula"
+					},
+					"Elegibility": {
+						"CellType": "formula"
+					}
+				}
+			}
+		},
+		{
+			"TableName": "Table_Input_RECConsumedByEntity",
+			"MatrixType": "RowsToCols",
+			"NumberOfCols": 6,
+			"ColumnNames": {
+				"Description": "Description",
+				"Source": "Source",
+				"GenerationDate": "Generation date",
+				"NumberOfCertificates": "Number of certificates",
+				"MWh": "MWh",
+				"Elegibility": "Elegibility"
+			},
+			"Rows": {
+				"Row": {
+					"Description": {
+						"CellType": "text"
+					},
+					"Source": {
+						"CellType": "formula"
+					},
+					"GenerationDate": {
+						"CellType": "number"
+					},
+					"NumberOfCertificates": {
+						"CellType": "number"
+					},
+					"MWh": {
+						"CellType": "formula"
+					},
+					"Elegibility": {
+						"CellType": "formula"
+					}
+				}
+			}
+		}
+	]
 }

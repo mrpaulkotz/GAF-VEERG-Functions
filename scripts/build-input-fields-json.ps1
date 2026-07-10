@@ -1086,6 +1086,7 @@ function ConvertTo-InputFieldsModel {
 # ---------------------------------------------------------------------------
 
 $excelDir = Join-Path $RepoRoot 'Excel'
+$enterprisesDir = Join-Path $excelDir 'Enterprises'
 $outputDir = Join-Path $RepoRoot 'InputFields'
 $overridesDir = Join-Path $outputDir '_overrides'
 
@@ -1097,11 +1098,19 @@ else {
   if (-not (Test-Path -LiteralPath $excelDir)) {
     throw "Excel directory not found: $excelDir"
   }
-  $workbooks = @(Get-ChildItem -LiteralPath $excelDir -File -Filter '*.xlsx' |
-    Where-Object {
-      $_.Name -notlike '~$*' -and
-      $_.BaseName -notmatch '(?i)_expanded(?:_tmp\d*)?$'
-    } |
+  $isEligibleWorkbook = {
+    param($File)
+    $File.Name -notlike '~$*' -and
+    $File.BaseName -notmatch '(?i)_expanded(?:_tmp\d*)?$' -and
+    $File.BaseName -notmatch '(?i)_template(?:_|$)' -and
+    $File.BaseName -notmatch '(?i)\.bak$'
+  }
+  $candidates = @(Get-ChildItem -LiteralPath $excelDir -File -Filter '*.xlsx')
+  if (Test-Path -LiteralPath $enterprisesDir) {
+    $candidates += @(Get-ChildItem -LiteralPath $enterprisesDir -File -Filter '*.xlsx')
+  }
+  $workbooks = @($candidates |
+    Where-Object { & $isEligibleWorkbook $_ } |
     Sort-Object FullName |
     ForEach-Object { $_.FullName })
 }
@@ -1205,6 +1214,13 @@ try {
         try { [void][System.Runtime.InteropServices.Marshal]::ReleaseComObject($workbook) } catch { }
         $workbook = $null
       }
+      # Recycle the Excel COM server between workbooks. Processing many large books in
+      # a single instance degrades it: a later, very large workbook (e.g. the aggregated
+      # Enterprise book with ~14k defined names) can then open with an incompletely
+      # loaded Names collection and silently produce 0 cells/tables. A fresh instance
+      # per workbook avoids this. The open-retry block above recreates $excel as needed.
+      Remove-ExcelApplication -App $excel
+      $excel = $null
     }
   }
 }

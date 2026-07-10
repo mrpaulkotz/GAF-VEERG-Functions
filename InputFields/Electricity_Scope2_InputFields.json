@@ -1,7 +1,7 @@
 {
 	"schemaVersion": 1,
 	"generatedFrom": "14_Electricity_Scope2_WIP_v01.xlsx",
-	"generatedAt": "2026-07-08T04:19:46Z",
+	"generatedAt": "2026-07-10T02:21:11Z",
 	"InputCells": [
 		{
 			"CellName": "X_Cell_Electricity_Location_AmountPurchasedInkWh",
