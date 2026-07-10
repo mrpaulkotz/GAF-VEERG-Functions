@@ -382,6 +382,56 @@ function Get-CellTypeByFormat {
 # Validation-list resolution
 # ---------------------------------------------------------------------------
 
+function Get-InnerCallArg {
+  # Extracts the argument text inside FuncName( ... ) using a quote-aware balanced-paren
+  # scan, so wrappers such as TRIMRANGE(INDIRECT(...)) yield just the INDIRECT argument.
+  # Returns $null when the function call is not present.
+  param(
+    [Parameter(Mandatory = $true)] [string] $Expr,
+    [Parameter(Mandatory = $true)] [string] $FuncName
+  )
+
+  $m = [regex]::Match($Expr, ('(?i)\b{0}\(' -f [regex]::Escape($FuncName)))
+  if (-not $m.Success) { return $null }
+  $start = $m.Index + $m.Length
+  $depth = 1
+  $inQuote = $false
+  for ($i = $start; $i -lt $Expr.Length; $i++) {
+    $ch = $Expr[$i]
+    if ($ch -eq '"') { $inQuote = -not $inQuote; continue }
+    if ($inQuote) { continue }
+    if ($ch -eq '(') { $depth++ }
+    elseif ($ch -eq ')') {
+      $depth--
+      if ($depth -eq 0) { return $Expr.Substring($start, $i - $start) }
+    }
+  }
+  return $null
+}
+
+function Split-TopLevelAmpersand {
+  # Splits a formula fragment on '&' concatenation operators that sit at the top level
+  # (outside quotes and unnested parentheses). Quoted string literals are preserved intact.
+  param([Parameter(Mandatory = $true)] [string] $Text)
+
+  $parts = New-Object System.Collections.Generic.List[string]
+  $depth = 0
+  $inQuote = $false
+  $sb = New-Object System.Text.StringBuilder
+  for ($i = 0; $i -lt $Text.Length; $i++) {
+    $ch = $Text[$i]
+    if ($ch -eq '"') { $inQuote = -not $inQuote; [void]$sb.Append($ch); continue }
+    if (-not $inQuote) {
+      if ($ch -eq '(') { $depth++ }
+      elseif ($ch -eq ')') { $depth-- }
+      elseif ($ch -eq '&' -and $depth -eq 0) { [void]$parts.Add($sb.ToString()); [void]$sb.Clear(); continue }
+    }
+    [void]$sb.Append($ch)
+  }
+  [void]$parts.Add($sb.ToString())
+  return $parts
+}
+
 function Resolve-ValidationList {
   <#
     Inspects a cell's data validation and returns a hashtable:
@@ -516,6 +566,94 @@ function Resolve-ValidationList {
         Add-ValidationWarning "Select cell '$ContextName' cascading list has no resolvable parent values: $formula1"
       }
       return $result
+    }
+
+    # --- Concatenated cascade driven by a bare reference (no SUBSTITUTE) ---
+    # e.g. =TRIMRANGE(INDIRECT("Table_FuelTypesPerUse[" & D17 & "]")). The reference between
+    # the literal fragments (typically a sibling table-column cell) selects the child column.
+    # Enumerate the driver's allowed values and expand each branch by building
+    # <prefix><parent value><suffix> and resolving it. Options are keyed by the raw parent
+    # value (used verbatim, since there is no SUBSTITUTE normalisation), with "n/a" for
+    # branches that resolve to nothing.
+    $indArg = Get-InnerCallArg -Expr $expr -FuncName 'INDIRECT'
+    if (-not [string]::IsNullOrWhiteSpace($indArg)) {
+      $literalBefore = New-Object System.Collections.Generic.List[string]
+      $literalAfter = New-Object System.Collections.Generic.List[string]
+      $driverRef = $null
+      $driverCount = 0
+      foreach ($seg in @(Split-TopLevelAmpersand -Text $indArg)) {
+        $lit = [regex]::Match($seg.Trim(), '(?s)^"(.*)"$')
+        if ($lit.Success) {
+          $litVal = $lit.Groups[1].Value -replace '""', '"'
+          if ($null -eq $driverRef) { [void]$literalBefore.Add($litVal) } else { [void]$literalAfter.Add($litVal) }
+        }
+        else {
+          $driverRef = $seg.Trim()
+          $driverCount++
+        }
+      }
+
+      if ($driverCount -eq 1 -and -not [string]::IsNullOrWhiteSpace($driverRef)) {
+        $prefix = -join $literalBefore
+        $suffix = -join $literalAfter
+        $driverBare = ($driverRef -replace '\$', '')
+
+        $pinfo = Resolve-ParentInfo -Ref $driverBare -Worksheet $Worksheet -NameIndex $NameIndex
+
+        # Prefer the sibling table-column field key so DependentOn is portable across rows
+        # (e.g. "FuelUse" rather than the raw cell address "D17").
+        $depName = $pinfo.Name
+        try {
+          if ($null -ne $pinfo.Range -and $null -ne $Cell) {
+            $app = $Worksheet.Application
+            $driverCol = [int]$pinfo.Range.Column
+            foreach ($lo in @($Worksheet.ListObjects)) {
+              $inter = $null
+              try { $inter = $app.Intersect($lo.Range, $Cell) } catch { $inter = $null }
+              if ($null -eq $inter) { continue }
+              foreach ($lc in @($lo.ListColumns)) {
+                $lcRange = $null
+                try { $lcRange = $lc.Range } catch { $lcRange = $null }
+                if ($null -ne $lcRange -and [int]$lcRange.Column -eq $driverCol) {
+                  $depName = Get-FieldKeyFromHeader -Header ([string]$lc.Name)
+                  break
+                }
+              }
+              break
+            }
+          }
+        }
+        catch { }
+        $result['DependentOn'] = $depName
+
+        $parentValues = @()
+        if ($null -ne $pinfo.Range) {
+          $parentWorksheet = $Worksheet
+          try { $parentWorksheet = $pinfo.Range.Worksheet } catch { $parentWorksheet = $Worksheet }
+          $parentList = Resolve-ValidationList -Cell $pinfo.Range -Worksheet $parentWorksheet -Workbook $Workbook -NameIndex $NameIndex -ContextName $depName
+          if ($null -ne $parentList -and $parentList.Contains('Options')) {
+            $parentValues = @($parentList.Options.Keys)
+          }
+        }
+
+        foreach ($pv in $parentValues) {
+          $built = "$prefix$pv$suffix"
+          $childValues = @(Resolve-StructuredOrEvaluated -Worksheet $Worksheet -Workbook $Workbook -Expression $built)
+          $realValues = @($childValues | Where-Object { $_ -notmatch '(?i)^\s*n/?a\s*$' })
+          if ($realValues.Count -eq 0) {
+            $result.Options[$pv] = 'n/a'
+          }
+          else {
+            $nested = [ordered]@{}
+            foreach ($cv in $realValues) { $nested[$cv] = $cv }
+            $result.Options[$pv] = $nested
+          }
+        }
+
+        if ($parentValues.Count -gt 0) { return $result }
+        Add-ValidationWarning "Select cell '$ContextName' cascading list has no resolvable parent values: $formula1"
+        return $result
+      }
     }
 
     Add-ValidationWarning "Select cell '$ContextName' has runtime-dependent cascading list (not resolved): $formula1"
