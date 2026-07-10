@@ -369,11 +369,15 @@ if ($config.options -and ($config.options.PSObject.Properties.Name -contains 'co
 # on rebuilding the column-A menu; options.menu.labels maps sheet name -> label.
 $menuEnabled = $true
 $menuLabels = @{}
+$menuLabelOrder = New-Object System.Collections.Generic.List[string]
 if ($config.options -and ($config.options.PSObject.Properties.Name -contains 'menu') -and $null -ne $config.options.menu) {
   $menuCfg = $config.options.menu
   if ($menuCfg.PSObject.Properties.Name -contains 'enabled') { $menuEnabled = [bool] $menuCfg.enabled }
   if (($menuCfg.PSObject.Properties.Name -contains 'labels') -and $null -ne $menuCfg.labels) {
-    foreach ($p in $menuCfg.labels.PSObject.Properties) { $menuLabels[[string] $p.Name] = [string] $p.Value }
+    foreach ($p in $menuCfg.labels.PSObject.Properties) {
+      $menuLabels[[string] $p.Name] = [string] $p.Value
+      $menuLabelOrder.Add([string] $p.Name)
+    }
   }
 }
 
@@ -618,8 +622,12 @@ try {
     }
   }
 
-  # --- Reorder sheets by options.sheetOrder ----------------------------------
-  if (-not $DryRun -and $config.options -and $config.options.sheetOrder) {
+  # --- Reorder sheets --------------------------------------------------------
+  # Tab order follows options.menu.labels (authoritative when present) so the
+  # physical tab order matches the navigation menu. Sheets not listed in the
+  # menu labels fall back to options.sheetOrder (by category) and are placed
+  # after all labelled sheets.
+  if (-not $DryRun -and $config.options -and ($config.options.sheetOrder -or $menuLabelOrder.Count -gt 0)) {
     $order = @($config.options.sheetOrder)
     $catRank = @{}
     for ($i = 0; $i -lt $order.Count; $i++) { $catRank[[string] $order[$i]] = $i }
@@ -629,15 +637,30 @@ try {
     foreach ($cs in @($config.customSheets)) { $sheetCategory[[string] $cs.name] = 'custom' }
     foreach ($entry in $plan) { if (-not $sheetCategory.ContainsKey($entry.Name)) { $sheetCategory[$entry.Name] = $entry.Category } }
 
-    $rankOf = {
-      param($name)
-      $c = if ($sheetCategory.ContainsKey($name)) { $sheetCategory[$name] } else { 'zzz' }
-      if ($catRank.ContainsKey($c)) { return $catRank[$c] } else { return 999 }
+    # Explicit tab order from menu labels (file order).
+    $labelRank = @{}
+    for ($i = 0; $i -lt $menuLabelOrder.Count; $i++) {
+      if (-not $labelRank.ContainsKey($menuLabelOrder[$i])) { $labelRank[[string] $menuLabelOrder[$i]] = $i }
     }
 
+    $rankOf = {
+      param($name)
+      if ($labelRank.ContainsKey($name)) { return $labelRank[$name] }
+      # Not listed in menu labels: cluster after labelled sheets, by category.
+      $base = if ($labelRank.Count -gt 0) { 100000 } else { 0 }
+      $c = if ($sheetCategory.ContainsKey($name)) { $sheetCategory[$name] } else { 'zzz' }
+      $cr = if ($catRank.ContainsKey($c)) { $catRank[$c] } else { 999 }
+      return $base + $cr
+    }
+
+    # Include a stable secondary key (original index) so ties keep their order.
     $ordered = @()
-    foreach ($ws in $target.Worksheets) { $ordered += [pscustomobject]@{ Name = [string] $ws.Name; Rank = (& $rankOf ([string] $ws.Name)) } }
-    $desired = $ordered | Sort-Object Rank
+    $idx = 0
+    foreach ($ws in $target.Worksheets) {
+      $ordered += [pscustomobject]@{ Name = [string] $ws.Name; Rank = (& $rankOf ([string] $ws.Name)); Index = $idx }
+      $idx++
+    }
+    $desired = $ordered | Sort-Object Rank, Index
     for ($i = 0; $i -lt $desired.Count; $i++) {
       $wsName = $desired[$i].Name
       $ws = $target.Worksheets.Item($wsName)
