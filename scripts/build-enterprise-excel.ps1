@@ -151,6 +151,150 @@ function Merge-AfeModules {
   return @($added)
 }
 
+function Get-WorkbookScopedNameSet {
+  # Returns a case-insensitive set of the workbook-scoped defined names (no
+  # localSheetId) declared in a workbook's xl/workbook.xml. Used to capture the
+  # enterprise template's authoritative names before module sheets are imported.
+  # Names whose definition is broken (#REF!) or empty are EXCLUDED: a template
+  # placeholder that points nowhere is not canonical, so it must not be treated
+  # as authoritative (otherwise the prune would delete the valid sheet-scoped
+  # copies that modules bring in, e.g. X_Cell_PastureBeef_* on the input sheets).
+  param([string] $Path)
+
+  $set = New-Object 'System.Collections.Generic.HashSet[string]' ([System.StringComparer]::OrdinalIgnoreCase)
+  $mainNs = 'http://schemas.openxmlformats.org/spreadsheetml/2006/main'
+  $zip = [System.IO.Compression.ZipFile]::Open($Path, [System.IO.Compression.ZipArchiveMode]::Read)
+  try {
+    $entry = $zip.GetEntry('xl/workbook.xml')
+    if ($null -eq $entry) { return $set }
+    $reader = [System.IO.StreamReader]::new($entry.Open(), [System.Text.Encoding]::UTF8)
+    try { $xmlText = $reader.ReadToEnd() } finally { $reader.Dispose() }
+    $doc = New-Object System.Xml.XmlDocument
+    $doc.LoadXml($xmlText)
+    $ns = New-Object System.Xml.XmlNamespaceManager($doc.NameTable)
+    $ns.AddNamespace('x', $mainNs)
+    foreach ($n in @($doc.SelectNodes('//x:definedName', $ns))) {
+      if (-not [string]::IsNullOrEmpty($n.GetAttribute('localSheetId'))) { continue }
+      $nm = $n.GetAttribute('name')
+      if ([string]::IsNullOrEmpty($nm)) { continue }
+      $rt = $n.InnerText
+      if ([string]::IsNullOrWhiteSpace($rt) -or $rt -match '#REF!') { continue }  # broken placeholder: not authoritative
+      [void] $set.Add($nm)
+    }
+  } finally { $zip.Dispose() }
+  return $set
+}
+
+function Remove-RedundantSheetScopedNames {
+  # Copying sheets one-at-a-time makes Excel duplicate every workbook-scoped name
+  # a sheet references as a SHEET-SCOPED copy: Excel Labs (AFE) LAMBDA functions
+  # ('Module.Func'), X_Cell_*/X_Table_* input ranges, etc. The enterprise book
+  # accumulates thousands of these ('Sheet'!Name) duplicates, which collide with
+  # the single workbook-scoped original and surface as name conflicts in the
+  # Excel Labs / Advanced Formula Environment.
+  #
+  # Deleting them one-by-one via COM is pathologically slow (each Name.Delete()
+  # re-resolves the whole dependency graph, and thousands of deletes peg every
+  # core recalculating for tens of minutes). Instead prune them directly from
+  # xl/workbook.xml in the saved .xlsx zip: for each <definedName localSheetId>
+  # whose name also exists workbook-scoped (no localSheetId), drop the sheet-
+  # scoped node so unqualified formulas fall through to the single workbook-
+  # scoped name. A sheet-scoped name is removed when EITHER:
+  #   (a) its definition is IDENTICAL to the workbook-scoped one (a pure copy), OR
+  #   (b) the name is AUTHORITATIVE (defined workbook-scoped in the enterprise
+  #       template) - the template's definition wins even if the sheet-scoped
+  #       copy points somewhere else, because importing a source sheet drags in a
+  #       stale shadow (e.g. X_Cell_Site_StartDate -> 'Input - Site'!E12 shadowing
+  #       the template's 'Input - Enterprise'!E12). Sheet-scoped names with no
+  #       workbook counterpart (Print_Area, per-sheet tables like M1_Table_*, TOC
+  #       bookmarks) and non-template names whose definition genuinely differs
+  #       (e.g. a valid sheet-scoped copy shadowing a #REF! workbook name) are
+  #       left untouched.
+  #
+  # After pruning, cells that referenced a removed shadow still hold the CACHED
+  # error value Excel computed while the shadow was in force; Excel loads cached
+  # values without recalculating, so those cells show #VALUE!/#REF! until the
+  # formula is re-entered. To fix this we force a full recalc on next open by
+  # setting <calcPr fullCalcOnLoad="1">.
+  param(
+    [string] $TargetPath,
+    [System.Collections.Generic.HashSet[string]] $AuthoritativeNames = $null
+  )
+
+  $result = [pscustomobject]@{ Removed = 0; Kept = 0 }
+  $mainNs = 'http://schemas.openxmlformats.org/spreadsheetml/2006/main'
+
+  $zip = [System.IO.Compression.ZipFile]::Open($TargetPath, [System.IO.Compression.ZipArchiveMode]::Update)
+  try {
+    $entry = $zip.GetEntry('xl/workbook.xml')
+    if ($null -eq $entry) { return $result }
+
+    $reader = [System.IO.StreamReader]::new($entry.Open(), [System.Text.Encoding]::UTF8)
+    try { $xmlText = $reader.ReadToEnd() } finally { $reader.Dispose() }
+
+    $doc = New-Object System.Xml.XmlDocument
+    $doc.PreserveWhitespace = $true
+    $doc.LoadXml($xmlText)
+
+    $ns = New-Object System.Xml.XmlNamespaceManager($doc.NameTable)
+    $ns.AddNamespace('x', $mainNs)
+
+    $definedNamesNode = $doc.SelectSingleNode('//x:definedNames', $ns)
+    if ($null -eq $definedNamesNode) { return $result }
+
+    $nameNodes = @($definedNamesNode.SelectNodes('x:definedName', $ns))
+
+    # Index workbook-scoped names (no localSheetId) -> definition text.
+    $wbScoped = @{}
+    foreach ($n in $nameNodes) {
+      if (-not [string]::IsNullOrEmpty($n.GetAttribute('localSheetId'))) { continue }
+      $nm = $n.GetAttribute('name')
+      if ([string]::IsNullOrEmpty($nm)) { continue }
+      if (-not $wbScoped.ContainsKey($nm)) { $wbScoped[$nm] = $n.InnerText }
+    }
+
+    $removed = 0; $kept = 0
+    foreach ($n in $nameNodes) {
+      if ([string]::IsNullOrEmpty($n.GetAttribute('localSheetId'))) { continue }  # wb-scoped: keep
+      $nm = $n.GetAttribute('name')
+      if ([string]::IsNullOrEmpty($nm)) { continue }
+      if (-not $wbScoped.ContainsKey($nm)) { $kept++; continue }        # no wb counterpart -> keep
+      $isAuthoritative = ($null -ne $AuthoritativeNames -and $AuthoritativeNames.Contains($nm))
+      if (-not $isAuthoritative -and $n.InnerText -ne $wbScoped[$nm]) { $kept++; continue }  # non-template & differs -> keep
+      [void] $definedNamesNode.RemoveChild($n)
+      $removed++
+    }
+
+    # Force a full recalculation on next open so cells that referenced a removed
+    # shadow drop their stale cached error values. Set <calcPr fullCalcOnLoad="1">
+    # (creating the element after definedNames if absent); Excel then recomputes
+    # every formula on open, replacing the cached #VALUE!/#REF! results.
+    $workbookNode = $doc.SelectSingleNode('//x:workbook', $ns)
+    $calcPr = $doc.SelectSingleNode('//x:calcPr', $ns)
+    $calcChanged = $false
+    if ($null -eq $calcPr -and $null -ne $workbookNode) {
+      $calcPr = $doc.CreateElement('calcPr', $mainNs)
+      [void] $workbookNode.InsertAfter($calcPr, $definedNamesNode)
+    }
+    if ($null -ne $calcPr -and $calcPr.GetAttribute('fullCalcOnLoad') -ne '1') {
+      $calcPr.SetAttribute('fullCalcOnLoad', '1')
+      $calcChanged = $true
+    }
+
+    if ($removed -gt 0 -or $calcChanged) {
+      $old = $zip.GetEntry('xl/workbook.xml')
+      if ($null -ne $old) { $old.Delete() }
+      $newEntry = $zip.CreateEntry('xl/workbook.xml')
+      $writer = [System.IO.StreamWriter]::new($newEntry.Open(), [System.Text.UTF8Encoding]::new($false))
+      try { $doc.Save($writer) } finally { $writer.Dispose() }
+    }
+
+    $result.Removed = $removed; $result.Kept = $kept
+  } finally { $zip.Dispose() }
+
+  return $result
+}
+
 # ---------------------------------------------------------------------------
 # Excel COM helpers
 # ---------------------------------------------------------------------------
@@ -329,13 +473,42 @@ $outWorkbookName = [string] $config.enterprise.outputWorkbook
 if ([string]::IsNullOrWhiteSpace($OutputPath)) {
   $OutputPath = Join-Path (Join-Path $excelDir 'Enterprises') $outWorkbookName
 }
-if (-not (Test-Path -LiteralPath $OutputPath)) {
-  throw "Enterprise output workbook not found (create the base file first): $OutputPath"
+
+# Template workbook: holds the enterprise's hand-designed base sheets (Home,
+# Results, Input - Site, Input - Enterprise, Constants - Common, ...). When one
+# is configured, every build starts from a FRESH copy of it so those sheets
+# always reflect the template, then module sheets are imported on top (a full,
+# deterministic rebuild). The per-enterprise value wins; the registry provides a
+# shared fallback. If none is configured the legacy in-place behaviour applies
+# (the output workbook must already exist).
+$enterprisesDir = Join-Path $excelDir 'Enterprises'
+$templateName = [string] $config.enterprise.templateWorkbook
+if ([string]::IsNullOrWhiteSpace($templateName)) { $templateName = [string] $registry.templateWorkbook }
+$templatePath = $null
+$templateNameSet = $null
+if (-not [string]::IsNullOrWhiteSpace($templateName)) {
+  $templatePath = if ([System.IO.Path]::IsPathRooted($templateName)) { $templateName } else { Join-Path $enterprisesDir $templateName }
+  if (-not (Test-Path -LiteralPath $templatePath)) { throw "Enterprise template workbook not found: $templatePath" }
+  $templatePath = (Resolve-Path -LiteralPath $templatePath).Path
+  # Capture the template's workbook-scoped names BEFORE import. These are
+  # authoritative: any sheet-scoped shadow of them dragged in by a copied source
+  # sheet is pruned after save so references resolve to the template's cell.
+  $templateNameSet = Get-WorkbookScopedNameSet -Path $templatePath
+  if (-not $DryRun) {
+    $destDir = Split-Path -Parent $OutputPath
+    if ($destDir -and -not (Test-Path -LiteralPath $destDir)) { New-Item -ItemType Directory -Path $destDir -Force | Out-Null }
+    Copy-Item -LiteralPath $templatePath -Destination $OutputPath -Force
+  }
 }
-$OutputPath = (Resolve-Path -LiteralPath $OutputPath).Path
+
+if (-not $DryRun -and -not (Test-Path -LiteralPath $OutputPath)) {
+  throw "Enterprise output workbook not found (create the base file first, or configure enterprise.templateWorkbook): $OutputPath"
+}
+if (Test-Path -LiteralPath $OutputPath) { $OutputPath = (Resolve-Path -LiteralPath $OutputPath).Path }
 
 Write-Host ("Enterprise : {0}" -f $config.enterprise.name)
 Write-Host ("Config     : {0}" -f $configPathResolved)
+if ($templatePath) { Write-Host ("Template   : {0}" -f $templatePath) }
 Write-Host ("Output     : {0}" -f $OutputPath)
 Write-Host ("Mode       : {0}" -f $(if ($DryRun) { 'DRY RUN' } else { 'BUILD' }))
 Write-Host ''
@@ -523,7 +696,11 @@ try {
   }
 
   # --- Open target and determine what already exists --------------------------
-  $target = $excel.Workbooks.Open($OutputPath, 0, $false)
+  # A real build opens the freshly-seeded output read-write. A dry run has not
+  # copied the template, so it previews against the template (read-only) when one
+  # is configured, otherwise the existing output.
+  $basisPath = if ($DryRun -and $templatePath) { $templatePath } else { $OutputPath }
+  $target = $excel.Workbooks.Open($basisPath, 0, [bool] $DryRun)
   $targetSheetNames = New-Object 'System.Collections.Generic.HashSet[string]' ([System.StringComparer]::OrdinalIgnoreCase)
   foreach ($n in (Get-WorksheetNames -Workbook $target)) { [void] $targetSheetNames.Add($n) }
 
@@ -819,6 +996,12 @@ try {
     if ($refsRepointed -gt 0) { Write-Host ("Repointed {0} reference(s) to renamed sheet copies." -f $refsRepointed) }
   }
 
+  # Redundant sheet-scoped defined names are pruned AFTER save, directly from
+  # xl/workbook.xml (see Remove-RedundantSheetScopedNames), because deleting them
+  # via COM re-resolves the dependency graph on every delete and pegs all cores
+  # recalculating for tens of minutes. $namesDeduped is populated post-save.
+  $namesDeduped = 0
+
   # --- Regenerate the column-A navigation menu on every sheet ----------------
   # Rebuilt from the final sheet set so it always matches the assembled
   # enterprise (links, labels, groups). Runs after reorder so tab order (used
@@ -871,6 +1054,15 @@ try {
   [System.Runtime.InteropServices.Marshal]::ReleaseComObject($excel) | Out-Null
   $excel = $null
 
+  # --- Prune redundant sheet-scoped defined names (post-save, via XML) --------
+  if (-not $DryRun) {
+    $dedup = Remove-RedundantSheetScopedNames -TargetPath $OutputPath -AuthoritativeNames $templateNameSet
+    $namesDeduped = [int] $dedup.Removed
+    if ($namesDeduped -gt 0) {
+      Write-Host ("Removed {0} redundant sheet-scoped defined name(s) (kept {1})." -f $namesDeduped, $dedup.Kept)
+    }
+  }
+
   # --- Merge Excel Labs modules into the saved workbook -----------------------
   $mergedModules = @()
   if (-not $DryRun) {
@@ -894,6 +1086,7 @@ try {
     Write-Host ("Defined names added    : {0}" -f $namesAdded)
     Write-Host ("Defined names re-linked: {0}" -f $namesFixed)
     Write-Host ("Defined names skipped  : {0}" -f $namesFailed)
+    Write-Host ("Sheet-scoped dupes rm  : {0}" -f $namesDeduped)
     Write-Host ("Excel Labs modules add : {0}" -f @($mergedModules).Count)
     Write-Host ("Refs localised (strip) : {0}" -f $refsLocalised)
     Write-Host ("Names localised (strip): {0}" -f $namesLocalised)

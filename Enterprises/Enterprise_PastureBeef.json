@@ -4,6 +4,7 @@
     "id": "PastureBeef",
     "name": "Pasture Beef Enterprise",
     "description": "A grazing beef enterprise: enteric fermentation and manure emissions from the herd, plus the farm's energy, waste and upstream (Scope 3) emissions.",
+    "templateWorkbook": "Enterprise_PastureBeef_Template_WIP_v01.xlsx",
     "outputWorkbook": "Enterprise_PastureBeef_WIP_v01.xlsx"
   },
 
@@ -14,6 +15,13 @@
       "source": "custom",
       "description": "The single enterprise-wide results tab, unique to this enterprise. Module Results tabs are NOT imported; this sheet reads each module's result cells directly by named range."
     },
+    {
+      "name": "Input - Site",
+      "kind": "input",
+      "source": "custom",
+      "description": "Site-specific inputs for this enterprise. Has fewer fields than the typical module excel site sheet."
+    }
+    ,
     {
       "name": "Input - Enterprise",
       "kind": "input",
@@ -91,8 +99,7 @@
         "Constants - Fertiliser": "Constants - Fertiliser",
         "Constants - Fuel": "Constants - Fuel",
         "Constants - Common": "Constants - Common",
-        "Acknowledgements": "Acknowledgements",
-        "Overview": "Overview"
+        "Acknowledgements": "Acknowledgements"
       }
     }
   }
