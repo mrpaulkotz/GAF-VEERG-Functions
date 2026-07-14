@@ -1,7 +1,7 @@
 {
 	"schemaVersion": 1,
 	"generatedFrom": "13_Scope3_WIP_v11.xlsx",
-	"generatedAt": "2026-07-10T02:21:06Z",
+	"generatedAt": "2026-07-14T07:30:04Z",
 	"InputCells": [],
 	"InputTables": [
 		{
@@ -32,7 +32,63 @@
 					},
 					"FuelType": {
 						"CellType": "select",
-						"Options": {}
+						"DependentOn": "FuelUse",
+						"Options": {
+							"Generators": {
+								"Petrol": "Petrol",
+								"Diesel": "Diesel",
+								"Liquefied petroleum gas (LPG)": "Liquefied petroleum gas (LPG)",
+								"Biodiesel": "Biodiesel",
+								"Ethanol": "Ethanol",
+								"Other biofuels": "Other biofuels",
+								"Renewable diesel": "Renewable diesel"
+							},
+							"Power standalone machinery or heating": {
+								"Petrol": "Petrol",
+								"Diesel": "Diesel",
+								"Liquefied petroleum gas (LPG)": "Liquefied petroleum gas (LPG)",
+								"Biodiesel": "Biodiesel",
+								"Ethanol": "Ethanol",
+								"Other biofuels": "Other biofuels",
+								"Renewable diesel": "Renewable diesel",
+								"Natural gas (via pipeline) in GJ": "Natural gas (via pipeline) in GJ",
+								"Town gas in GJ": "Town gas in GJ"
+							},
+							"Aviation": {
+								"Avgas": "Avgas",
+								"Jet A1, Jet B": "Jet A1, Jet B",
+								"Renewable aviation kerosene": "Renewable aviation kerosene"
+							},
+							"Cars and light commercial vehicles": {
+								"Petrol": "Petrol",
+								"Diesel": "Diesel",
+								"Liquefied petroleum gas (LPG)": "Liquefied petroleum gas (LPG)",
+								"Fuel oil": "Fuel oil",
+								"Ethanol": "Ethanol",
+								"Biodiesel": "Biodiesel",
+								"Renewable diesel": "Renewable diesel",
+								"Other biofuels": "Other biofuels"
+							},
+							"Off-road Agriculture and forestry equipment": {
+								"Diesel": "Diesel"
+							},
+							"Vessels": {
+								"Petrol": "Petrol",
+								"Diesel": "Diesel",
+								"Fuel oil": "Fuel oil"
+							},
+							"General use": {
+								"Petrol": "Petrol",
+								"Diesel": "Diesel",
+								"Liquefied petroleum gas (LPG)": "Liquefied petroleum gas (LPG)",
+								"Biodiesel": "Biodiesel",
+								"Ethanol": "Ethanol",
+								"Other biofuels": "Other biofuels",
+								"Renewable diesel": "Renewable diesel",
+								"Natural gas (via pipeline) in GJ": "Natural gas (via pipeline) in GJ",
+								"Town gas in GJ": "Town gas in GJ"
+							}
+						}
 					},
 					"AmountPurchased": {
 						"CellType": "number"

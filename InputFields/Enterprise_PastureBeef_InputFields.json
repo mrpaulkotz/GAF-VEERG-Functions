@@ -1,7 +1,7 @@
 {
 	"schemaVersion": 1,
 	"generatedFrom": "Enterprise_PastureBeef_WIP_v01.xlsx",
-	"generatedAt": "2026-07-10T03:44:09Z",
+	"generatedAt": "2026-07-14T07:32:01Z",
 	"InputCells": [
 		{
 			"CellName": "X_Cell_Electricity_Location_AmountPurchasedInkWh",
@@ -38,6 +38,52 @@
 		{
 			"CellName": "X_Cell_Electricity_Market_RenewablePowerPercentage",
 			"CellType": "percent"
+		},
+		{
+			"CellName": "X_Cell_Enterprise_LiveweightGrown_Method1",
+			"CellType": "number"
+		},
+		{
+			"CellName": "X_Cell_Enterprise_LiveweightGrown_Method2",
+			"CellType": "number",
+			"CanOverWriteFormula": true
+		},
+		{
+			"CellName": "X_Cell_Enterprise_LiveweightSold",
+			"CellType": "number"
+		},
+		{
+			"CellName": "X_Cell_Enterprise_ManureProduced_Method1",
+			"CellType": "number"
+		},
+		{
+			"CellName": "X_Cell_Enterprise_ManureProduced_Method2",
+			"CellType": "number",
+			"CanOverWriteFormula": true
+		},
+		{
+			"CellName": "X_Cell_Enterprise_PercentIncome_LiveweightSold",
+			"CellType": "percent"
+		},
+		{
+			"CellName": "X_Cell_Enterprise_PercentIncome_Manure",
+			"CellType": "percent"
+		},
+		{
+			"CellName": "X_Cell_Enterprise_PercentManureAplliedAsFertiliserOwnFarm",
+			"CellType": "percent"
+		},
+		{
+			"CellName": "X_Cell_Enterprise_PercentManureSold",
+			"CellType": "percent"
+		},
+		{
+			"CellName": "X_Cell_Enterprise_ProductionTimeframeEnd",
+			"CellType": "number"
+		},
+		{
+			"CellName": "X_Cell_Enterprise_ProductionTimeframeStart",
+			"CellType": "number"
 		},
 		{
 			"CellName": "X_Cell_Fertiliser_AreaUnderCropping",
@@ -255,6 +301,288 @@
 		}
 	],
 	"InputTables": [
+		{
+			"TableName": "Table_Input_LivestockSales348",
+			"MatrixType": "RowsToCols",
+			"NumberOfCols": 6,
+			"ColumnNames": {
+				"TransactionName": "Transaction name",
+				"Class": "Class (select)",
+				"SaleDate": "Sale date",
+				"HeadSold": "Head sold",
+				"AverageWeightPerHead": "Average weight per head (kg)",
+				"TotalLiveweightSold": "Total liveweight sold"
+			},
+			"Rows": {
+				"Row": {
+					"TransactionName": {
+						"CellType": "select",
+						"Options": {
+							"Bulls < 1 year": "Bulls < 1 year",
+							"Bulls > 1 year": "Bulls > 1 year",
+							"Cows < 1 year": "Cows < 1 year",
+							"Cows 1-2 years": "Cows 1-2 years",
+							"Cows 2-3 years": "Cows 2-3 years",
+							"Cows > 3 years": "Cows > 3 years",
+							"Steers < 1 year": "Steers < 1 year",
+							"Steers 1-2 years": "Steers 1-2 years",
+							"Steers 2-3 years": "Steers 2-3 years",
+							"Steers >3 years": "Steers >3 years"
+						}
+					},
+					"Class": {
+						"CellType": "select",
+						"Options": {
+							"Bulls < 1 year": "Bulls < 1 year",
+							"Bulls > 1 year": "Bulls > 1 year",
+							"Cows < 1 year": "Cows < 1 year",
+							"Cows 1-2 years": "Cows 1-2 years",
+							"Cows 2-3 years": "Cows 2-3 years",
+							"Cows > 3 years": "Cows > 3 years",
+							"Steers < 1 year": "Steers < 1 year",
+							"Steers 1-2 years": "Steers 1-2 years",
+							"Steers 2-3 years": "Steers 2-3 years",
+							"Steers >3 years": "Steers >3 years"
+						}
+					},
+					"SaleDate": {
+						"CellType": "number"
+					},
+					"HeadSold": {
+						"CellType": "number"
+					},
+					"AverageWeightPerHead": {
+						"CellType": "number",
+						"Unit": "kg"
+					},
+					"TotalLiveweightSold": {
+						"CellType": "formula"
+					}
+				}
+			}
+		},
+		{
+			"TableName": "Table_Input_LivestockPurchases_Beefcattle49",
+			"MatrixType": "RowsToCols",
+			"NumberOfCols": 8,
+			"ColumnNames": {
+				"TransactionName": "Transaction name",
+				"PurchaseDate": "Purchase date",
+				"Class": "Class (select)",
+				"PurchaseClass": "Purchase class (select)",
+				"SourceRegion": "Source region (Select)",
+				"Quantity": "Quantity (head)",
+				"LiveweightMethod1": "Liveweight (kg/head) Method 1",
+				"LiveweightMethod2": "Liveweight (kg/head) Method 2"
+			},
+			"Rows": {
+				"Row": {
+					"TransactionName": {
+						"CellType": "text"
+					},
+					"PurchaseDate": {
+						"CellType": "number"
+					},
+					"Class": {
+						"CellType": "select",
+						"Options": {
+							"Bulls < 1 year": "Bulls < 1 year",
+							"Bulls > 1 year": "Bulls > 1 year",
+							"Cows < 1 year": "Cows < 1 year",
+							"Cows 1-2 years": "Cows 1-2 years",
+							"Cows 2-3 years": "Cows 2-3 years",
+							"Cows > 3 years": "Cows > 3 years",
+							"Steers < 1 year": "Steers < 1 year",
+							"Steers 1-2 years": "Steers 1-2 years",
+							"Steers 2-3 years": "Steers 2-3 years",
+							"Steers >3 years": "Steers >3 years"
+						}
+					},
+					"PurchaseClass": {
+						"CellType": "select",
+						"Options": {
+							"Cattle, for manufacturing beef": "Cattle, for manufacturing beef",
+							"Cattle, for prime beef": "Cattle, for prime beef",
+							"Cattle, weaners": "Cattle, weaners"
+						}
+					},
+					"SourceRegion": {
+						"CellType": "select",
+						"Options": {
+							"ACT": "ACT",
+							"NSW": "NSW",
+							"SA": "SA",
+							"TAS": "TAS",
+							"VIC": "VIC",
+							"WA - South west": "WA - South west",
+							"WA - Pilbara": "WA - Pilbara",
+							"WA - Kimberley": "WA - Kimberley",
+							"NT - Alice Springs": "NT - Alice Springs",
+							"NT - Barkly": "NT - Barkly",
+							"NT - Northern": "NT - Northern",
+							"QLD - High": "QLD - High",
+							"QLD - Moderate/High": "QLD - Moderate/High",
+							"QLD - Moderate/Low": "QLD - Moderate/Low",
+							"QLD - Low": "QLD - Low",
+							"Australia": "Australia"
+						}
+					},
+					"Quantity": {
+						"CellType": "number",
+						"Unit": "head"
+					},
+					"LiveweightMethod1": {
+						"CellType": "formula",
+						"Unit": "kg/head"
+					},
+					"LiveweightMethod2": {
+						"CellType": "number",
+						"Unit": "kg/head"
+					}
+				}
+			}
+		},
+		{
+			"TableName": "Table_Input_LivestockSales3",
+			"MatrixType": "RowsToCols",
+			"NumberOfCols": 6,
+			"ColumnNames": {
+				"TransactionName": "Transaction name",
+				"Class": "Class (select)",
+				"SaleDate": "Sale date",
+				"HeadSold": "Head sold",
+				"AverageWeightPerHead": "Average weight per head (kg)",
+				"TotalLiveweightSold": "Total liveweight sold"
+			},
+			"Rows": {
+				"Row": {
+					"TransactionName": {
+						"CellType": "select",
+						"Options": {
+							"Bulls < 1 year": "Bulls < 1 year",
+							"Bulls > 1 year": "Bulls > 1 year",
+							"Cows < 1 year": "Cows < 1 year",
+							"Cows 1-2 years": "Cows 1-2 years",
+							"Cows 2-3 years": "Cows 2-3 years",
+							"Cows > 3 years": "Cows > 3 years",
+							"Steers < 1 year": "Steers < 1 year",
+							"Steers 1-2 years": "Steers 1-2 years",
+							"Steers 2-3 years": "Steers 2-3 years",
+							"Steers >3 years": "Steers >3 years"
+						}
+					},
+					"Class": {
+						"CellType": "select",
+						"Options": {
+							"Bulls < 1 year": "Bulls < 1 year",
+							"Bulls > 1 year": "Bulls > 1 year",
+							"Cows < 1 year": "Cows < 1 year",
+							"Cows 1-2 years": "Cows 1-2 years",
+							"Cows 2-3 years": "Cows 2-3 years",
+							"Cows > 3 years": "Cows > 3 years",
+							"Steers < 1 year": "Steers < 1 year",
+							"Steers 1-2 years": "Steers 1-2 years",
+							"Steers 2-3 years": "Steers 2-3 years",
+							"Steers >3 years": "Steers >3 years"
+						}
+					},
+					"SaleDate": {
+						"CellType": "number"
+					},
+					"HeadSold": {
+						"CellType": "number"
+					},
+					"AverageWeightPerHead": {
+						"CellType": "number",
+						"Unit": "kg"
+					},
+					"TotalLiveweightSold": {
+						"CellType": "formula"
+					}
+				}
+			}
+		},
+		{
+			"TableName": "Table_Input_LivestockPurchases_Beefcattle",
+			"MatrixType": "RowsToCols",
+			"NumberOfCols": 8,
+			"ColumnNames": {
+				"TransactionName": "Transaction name",
+				"PurchaseDate": "Purchase date",
+				"Class": "Class (select)",
+				"PurchaseClass": "Purchase class (select)",
+				"SourceRegion": "Source region (Select)",
+				"Quantity": "Quantity (head)",
+				"LiveweightMethod1": "Liveweight (kg/head) Method 1",
+				"LiveweightMethod2": "Liveweight (kg/head) Method 2"
+			},
+			"Rows": {
+				"Row": {
+					"TransactionName": {
+						"CellType": "text"
+					},
+					"PurchaseDate": {
+						"CellType": "number"
+					},
+					"Class": {
+						"CellType": "select",
+						"Options": {
+							"Bulls < 1 year": "Bulls < 1 year",
+							"Bulls > 1 year": "Bulls > 1 year",
+							"Cows < 1 year": "Cows < 1 year",
+							"Cows 1-2 years": "Cows 1-2 years",
+							"Cows 2-3 years": "Cows 2-3 years",
+							"Cows > 3 years": "Cows > 3 years",
+							"Steers < 1 year": "Steers < 1 year",
+							"Steers 1-2 years": "Steers 1-2 years",
+							"Steers 2-3 years": "Steers 2-3 years",
+							"Steers >3 years": "Steers >3 years"
+						}
+					},
+					"PurchaseClass": {
+						"CellType": "select",
+						"Options": {
+							"Cattle, for manufacturing beef": "Cattle, for manufacturing beef",
+							"Cattle, for prime beef": "Cattle, for prime beef",
+							"Cattle, weaners": "Cattle, weaners"
+						}
+					},
+					"SourceRegion": {
+						"CellType": "select",
+						"Options": {
+							"ACT": "ACT",
+							"NSW": "NSW",
+							"SA": "SA",
+							"TAS": "TAS",
+							"VIC": "VIC",
+							"WA - South west": "WA - South west",
+							"WA - Pilbara": "WA - Pilbara",
+							"WA - Kimberley": "WA - Kimberley",
+							"NT - Alice Springs": "NT - Alice Springs",
+							"NT - Barkly": "NT - Barkly",
+							"NT - Northern": "NT - Northern",
+							"QLD - High": "QLD - High",
+							"QLD - Moderate/High": "QLD - Moderate/High",
+							"QLD - Moderate/Low": "QLD - Moderate/Low",
+							"QLD - Low": "QLD - Low",
+							"Australia": "Australia"
+						}
+					},
+					"Quantity": {
+						"CellType": "number",
+						"Unit": "head"
+					},
+					"LiveweightMethod1": {
+						"CellType": "formula",
+						"Unit": "kg/head"
+					},
+					"LiveweightMethod2": {
+						"CellType": "number",
+						"Unit": "kg/head"
+					}
+				}
+			}
+		},
 		{
 			"TableName": "Table_Input_InorganicFertiliser_Brands",
 			"MatrixType": "RowsToCols",
@@ -1721,6 +2049,91 @@
 						"Label": "December 2024",
 						"CellType": "number",
 						"CanOverWriteFormula": true
+					}
+				}
+			}
+		},
+		{
+			"TableName": "X_Table_Results_CarbonRemovalsFromPlantings",
+			"MatrixType": "ColsToRows",
+			"NumberOfRows": 6,
+			"NumberOfCols": 1,
+			"ColumnNames": {
+				"CO2RemovedAttributedToThisEnterprise": "CO2 removed attributed to this enterprise"
+			},
+			"Cols": {
+				"Column": {
+					"01Jan2023To31Dec2023": {
+						"Row": 2,
+						"Col": 2,
+						"Label": "01 Jan 2023 to 31 Dec 2023",
+						"CellType": "number"
+					},
+					"01Jan2024To31Dec2024": {
+						"Row": 3,
+						"Col": 2,
+						"Label": "01 Jan 2024 to 31 Dec 2024 (This reporting cycle)",
+						"CellType": "number",
+						"Unit": "This reporting cycle"
+					},
+					"01Jan2025To31Dec2025": {
+						"Row": 4,
+						"Col": 2,
+						"Label": "01 Jan 2025 to 31 Dec 2025",
+						"CellType": "text"
+					},
+					"Row5": {
+						"Row": 5,
+						"Col": 2,
+						"CellType": "number"
+					},
+					"Row6": {
+						"Row": 6,
+						"Col": 2,
+						"CellType": "number"
+					}
+				}
+			}
+		},
+		{
+			"TableName": "X_Table_Results_EmissionsForWholeProductionCycle",
+			"MatrixType": "ColsToRows",
+			"NumberOfRows": 6,
+			"NumberOfCols": 2,
+			"ColumnNames": {
+				"CO2EEmissionsMethod1": "CO2-e emissions method 1",
+				"CO2EEmissionsMethod2": "CO2-e emissions method 2"
+			},
+			"Cols": {
+				"Column": {
+					"01Jan2023To31Dec2023": {
+						"Row": 2,
+						"Col": 2,
+						"Label": "01 Jan 2023 to 31 Dec 2023",
+						"CellType": "formula"
+					},
+					"01Jan2024To31Dec2024": {
+						"Row": 3,
+						"Col": 2,
+						"Label": "01 Jan 2024 to 31 Dec 2024 (This reporting cycle)",
+						"CellType": "formula",
+						"Unit": "This reporting cycle"
+					},
+					"01Jan2025To31Dec2025": {
+						"Row": 4,
+						"Col": 2,
+						"Label": "01 Jan 2025 to 31 Dec 2025",
+						"CellType": "formula"
+					},
+					"Row5": {
+						"Row": 5,
+						"Col": 2,
+						"CellType": "formula"
+					},
+					"Row6": {
+						"Row": 6,
+						"Col": 2,
+						"CellType": "formula"
 					}
 				}
 			}

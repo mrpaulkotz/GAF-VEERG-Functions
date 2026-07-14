@@ -1,7 +1,7 @@
 {
 	"schemaVersion": 1,
-	"generatedFrom": "4_2_ManureManagement_BeefPasture_WIP_v07.xlsx",
-	"generatedAt": "2026-07-10T02:22:00Z",
+	"generatedFrom": "4_2_ManureManagement_BeefPasture_WIP_v08.xlsx",
+	"generatedAt": "2026-07-14T07:30:48Z",
 	"InputCells": [
 		{
 			"CellName": "X_Cell_PastureBeef_Breed",
@@ -136,6 +136,147 @@
 		}
 	],
 	"InputTables": [
+		{
+			"TableName": "Table_Input_LivestockSales3",
+			"MatrixType": "RowsToCols",
+			"NumberOfCols": 6,
+			"ColumnNames": {
+				"TransactionName": "Transaction name",
+				"Class": "Class (select)",
+				"SaleDate": "Sale date",
+				"HeadSold": "Head sold",
+				"AverageWeightPerHead": "Average weight per head (kg)",
+				"TotalLiveweightSold": "Total liveweight sold"
+			},
+			"Rows": {
+				"Row": {
+					"TransactionName": {
+						"CellType": "select",
+						"Options": {
+							"Bulls < 1 year": "Bulls < 1 year",
+							"Bulls > 1 year": "Bulls > 1 year",
+							"Cows < 1 year": "Cows < 1 year",
+							"Cows 1-2 years": "Cows 1-2 years",
+							"Cows 2-3 years": "Cows 2-3 years",
+							"Cows > 3 years": "Cows > 3 years",
+							"Steers < 1 year": "Steers < 1 year",
+							"Steers 1-2 years": "Steers 1-2 years",
+							"Steers 2-3 years": "Steers 2-3 years",
+							"Steers >3 years": "Steers >3 years"
+						}
+					},
+					"Class": {
+						"CellType": "select",
+						"Options": {
+							"Bulls < 1 year": "Bulls < 1 year",
+							"Bulls > 1 year": "Bulls > 1 year",
+							"Cows < 1 year": "Cows < 1 year",
+							"Cows 1-2 years": "Cows 1-2 years",
+							"Cows 2-3 years": "Cows 2-3 years",
+							"Cows > 3 years": "Cows > 3 years",
+							"Steers < 1 year": "Steers < 1 year",
+							"Steers 1-2 years": "Steers 1-2 years",
+							"Steers 2-3 years": "Steers 2-3 years",
+							"Steers >3 years": "Steers >3 years"
+						}
+					},
+					"SaleDate": {
+						"CellType": "number"
+					},
+					"HeadSold": {
+						"CellType": "number"
+					},
+					"AverageWeightPerHead": {
+						"CellType": "number",
+						"Unit": "kg"
+					},
+					"TotalLiveweightSold": {
+						"CellType": "formula"
+					}
+				}
+			}
+		},
+		{
+			"TableName": "Table_Input_LivestockPurchases_Beefcattle",
+			"MatrixType": "RowsToCols",
+			"NumberOfCols": 8,
+			"ColumnNames": {
+				"TransactionName": "Transaction name",
+				"PurchaseDate": "Purchase date",
+				"Class": "Class (select)",
+				"PurchaseClass": "Purchase class (select)",
+				"SourceRegion": "Source region (Select)",
+				"Quantity": "Quantity (head)",
+				"LiveweightMethod1": "Liveweight (kg/head) Method 1",
+				"LiveweightMethod2": "Liveweight (kg/head) Method 2"
+			},
+			"Rows": {
+				"Row": {
+					"TransactionName": {
+						"CellType": "text"
+					},
+					"PurchaseDate": {
+						"CellType": "number"
+					},
+					"Class": {
+						"CellType": "select",
+						"Options": {
+							"Bulls < 1 year": "Bulls < 1 year",
+							"Bulls > 1 year": "Bulls > 1 year",
+							"Cows < 1 year": "Cows < 1 year",
+							"Cows 1-2 years": "Cows 1-2 years",
+							"Cows 2-3 years": "Cows 2-3 years",
+							"Cows > 3 years": "Cows > 3 years",
+							"Steers < 1 year": "Steers < 1 year",
+							"Steers 1-2 years": "Steers 1-2 years",
+							"Steers 2-3 years": "Steers 2-3 years",
+							"Steers >3 years": "Steers >3 years"
+						}
+					},
+					"PurchaseClass": {
+						"CellType": "select",
+						"Options": {
+							"Cattle, for manufacturing beef": "Cattle, for manufacturing beef",
+							"Cattle, for prime beef": "Cattle, for prime beef",
+							"Cattle, weaners": "Cattle, weaners"
+						}
+					},
+					"SourceRegion": {
+						"CellType": "select",
+						"Options": {
+							"ACT": "ACT",
+							"NSW": "NSW",
+							"SA": "SA",
+							"TAS": "TAS",
+							"VIC": "VIC",
+							"WA - South west": "WA - South west",
+							"WA - Pilbara": "WA - Pilbara",
+							"WA - Kimberley": "WA - Kimberley",
+							"NT - Alice Springs": "NT - Alice Springs",
+							"NT - Barkly": "NT - Barkly",
+							"NT - Northern": "NT - Northern",
+							"QLD - High": "QLD - High",
+							"QLD - Moderate/High": "QLD - Moderate/High",
+							"QLD - Moderate/Low": "QLD - Moderate/Low",
+							"QLD - Low": "QLD - Low",
+							"Australia": "Australia"
+						}
+					},
+					"Quantity": {
+						"CellType": "number",
+						"Unit": "head"
+					},
+					"LiveweightMethod1": {
+						"CellType": "formula",
+						"Unit": "kg/head"
+					},
+					"LiveweightMethod2": {
+						"CellType": "number",
+						"Unit": "kg/head"
+					}
+				}
+			}
+		},
 		{
 			"TableName": "X_Table_PastureBeef_CrudeProtein_Method1",
 			"MatrixType": "ColsToRows",
