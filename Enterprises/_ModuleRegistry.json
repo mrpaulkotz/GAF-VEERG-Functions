@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "description": "Catalog that maps each VEERG module to its source workbook, the worksheets it contributes, and the Excel Labs (AFE) modules it needs. Enterprise files (Enterprise_*.json) reference these modules by key. This registry is the single place where module -> workbook/sheet/labs wiring lives, so it is not repeated in every enterprise file.",
+  "description": "Catalog that maps each VEERG module to its source workbook, the worksheets it contributes, and the Excel Labs (AFE) modules it needs. Enterprise files (Enterprise_*.json) reference these modules by key. This registry is the single place where module -> workbook/sheet/labs wiring lives, so it is not repeated in every enterprise file. 'sourceWorkbook' is a version-agnostic prefix (e.g. '4_2_ManureManagement_BeefPasture', without the '_WIP_v<NN>.xlsx' suffix); the builder resolves it to the highest-numbered matching workbook (e.g. '4_2_ManureManagement_BeefPasture_WIP_v08.xlsx') in the Excel folder, so registry entries do not need updating when a workbook is re-versioned. A full filename is still accepted for backward compatibility.",
 
   "sheetSourceModel": {
     "description": "Every sheet in an enterprise workbook is either 'import' or 'custom'. 'import' = the sheet is copied as-is from a module's source workbook; because input cells and input tables are exposed as named ranges, imported calculation sheets keep working no matter which sheet they land on (they resolve inputs by name, not by Sheet!Cell). 'custom' = the sheet is unique to the enterprise and is built by the enterprise (declared in the enterprise file's 'customSheets', e.g. the roll-up Results sheet or an enterprise-level input sheet). A module's sheets below default to 'import'. An enterprise file may subset which of a module's listed sheets to import via a per-module 'include' block.",
@@ -29,7 +29,7 @@
   "sheetGroups": {
     "description": "Shared building blocks pulled in once when at least one member module requests the group, then deduped. Referenced by a module's 'groups' array.",
     "Livestock": {
-      "sheets": ["Constants - Livestock"],
+      "sheets": ["Constants - Common Livestock"],
       "excelLabsModules": ["CommonLivestock_SourceData"]
     },
     "Cropping": {
@@ -41,7 +41,7 @@
   "modules": {
     "Enteric_BeefPasture": {
       "title": "Enteric fermentation - Pasture Beef",
-      "sourceWorkbook": "3_2_Enteric_BeefPasture_WIP_v02.xlsx",
+      "sourceWorkbook": "3_2_Enteric_BeefPasture",
       "groups": ["Livestock", "Cropping"],
       "sheets": {
         "input": ["Input - Pasture Beef"],
@@ -57,7 +57,7 @@
 
     "Enteric_Feedlot": {
       "title": "Enteric fermentation - Feedlot",
-      "sourceWorkbook": "3_1_Enteric_Feedlot_WIP_v01.xlsx",
+      "sourceWorkbook": "3_1_Enteric_Feedlot",
       "groups": ["Livestock"],
       "sheets": {
         "input": ["Input - Feedlot"],
@@ -72,7 +72,7 @@
 
     "Enteric_Dairy": {
       "title": "Enteric fermentation - Dairy",
-      "sourceWorkbook": "3_3_Enteric_Dairy_WIP_v04.xlsx",
+      "sourceWorkbook": "3_3_Enteric_Dairy",
       "groups": ["Livestock", "Cropping"],
       "sheets": {
         "input": ["Input - Dairy"],
@@ -88,7 +88,7 @@
 
     "Enteric_Swine": {
       "title": "Enteric fermentation - Swine",
-      "sourceWorkbook": "3_5_Enteric_Swine_WIP_v02.xlsx",
+      "sourceWorkbook": "3_5_Enteric_Swine",
       "groups": ["Livestock", "Cropping"],
       "sheets": {
         "input": ["Input - Swine"],
@@ -103,7 +103,7 @@
 
     "Enteric_OtherLivestock": {
       "title": "Enteric fermentation - Other Livestock",
-      "sourceWorkbook": "3_6_Enteric_OtherLivestock_WIP_v01.xlsx",
+      "sourceWorkbook": "3_6_Enteric_OtherLivestock",
       "groups": [],
       "sheets": {
         "input": ["Input - Other Livestock"],
@@ -118,7 +118,7 @@
 
     "ManureManagement_BeefPasture": {
       "title": "Manure management - Pasture Beef",
-      "sourceWorkbook": "4_2_ManureManagement_BeefPasture_WIP_v07.xlsx",
+      "sourceWorkbook": "4_2_ManureManagement_BeefPasture",
       "groups": ["Livestock", "Cropping"],
       "sheets": {
         "input": ["Input - Pasture Beef"],
@@ -142,7 +142,7 @@
 
     "ManureManagement_Feedlot": {
       "title": "Manure management - Feedlot",
-      "sourceWorkbook": "4_1_ManureManagement_Feedlot_WIP_v08.xlsx",
+      "sourceWorkbook": "4_1_ManureManagement_Feedlot",
       "groups": ["Livestock", "Cropping"],
       "sheets": {
         "input": ["Input - Feedlot"],
@@ -165,7 +165,7 @@
 
     "ManureManagement_Dairy": {
       "title": "Manure management - Dairy",
-      "sourceWorkbook": "4_3_ManureManagement_Dairy_WIP_v12.xlsx",
+      "sourceWorkbook": "4_3_ManureManagement_Dairy",
       "groups": ["Livestock", "Cropping"],
       "sheets": {
         "input": ["Input - Dairy"],
@@ -197,7 +197,7 @@
 
     "ManureManagement_Swine": {
       "title": "Manure management - Swine",
-      "sourceWorkbook": "4_5_ManureManagement_Swine_WIP_v06.xlsx",
+      "sourceWorkbook": "4_5_ManureManagement_Swine",
       "groups": ["Livestock", "Cropping"],
       "sheets": {
         "input": ["Input - Swine"],
@@ -222,7 +222,7 @@
 
     "ManureManagement_Poultry": {
       "title": "Manure management - Poultry",
-      "sourceWorkbook": "4_6_ManureManagement_Poultry_WIP_v03.xlsx",
+      "sourceWorkbook": "4_6_ManureManagement_Poultry",
       "groups": ["Livestock", "Cropping"],
       "sheets": {
         "input": ["Input - Poultry"],
@@ -253,7 +253,7 @@
 
     "ManureManagement_OtherLivestock": {
       "title": "Manure management - Other Livestock",
-      "sourceWorkbook": "4_7_ManureManagement_OtherLivestock_WIP_v01.xlsx",
+      "sourceWorkbook": "4_7_ManureManagement_OtherLivestock",
       "groups": ["Livestock", "Cropping"],
       "sheets": {
         "input": ["Input - Other Livestock"],
@@ -276,7 +276,7 @@
 
     "Electricity_Scope2": {
       "title": "Purchased electricity (Scope 2)",
-      "sourceWorkbook": "14_Electricity_Scope2_WIP_v01.xlsx",
+      "sourceWorkbook": "14_Electricity_Scope2",
       "groups": [],
       "sheets": {
         "input": ["Input - Electricity"],
@@ -291,7 +291,7 @@
 
     "Fuel": {
       "title": "Fuel combustion",
-      "sourceWorkbook": "8_Fuel_WIP_v04.xlsx",
+      "sourceWorkbook": "8_Fuel",
       "groups": [],
       "sheets": {
         "input": ["Input - Fuel"],
@@ -310,7 +310,7 @@
 
     "Fertiliser": {
       "title": "Fertiliser and lime",
-      "sourceWorkbook": "5_Fertiliser_WIP_v07.xlsx",
+      "sourceWorkbook": "5_Fertiliser",
       "groups": ["Cropping"],
       "sheets": {
         "input": ["Input - Fertiliser"],
@@ -338,7 +338,7 @@
 
     "SolidWaste": {
       "title": "Solid waste treatment",
-      "sourceWorkbook": "10_SolidWaste_WIP_v02.xlsx",
+      "sourceWorkbook": "10_SolidWaste",
       "groups": [],
       "sheets": {
         "input": ["Input - Solid waste"],
@@ -354,7 +354,7 @@
 
     "Wastewater": {
       "title": "Wastewater treatment",
-      "sourceWorkbook": "11_Wastewater_WIP_v02.xlsx",
+      "sourceWorkbook": "11_Wastewater",
       "groups": [],
       "sheets": {
         "input": ["Input - Wastewater"],
@@ -373,7 +373,7 @@
 
     "Refrigerants": {
       "title": "Refrigerants",
-      "sourceWorkbook": "9_Refrigerants_WIP_v02.xlsx",
+      "sourceWorkbook": "9_Refrigerants",
       "groups": [],
       "sheets": {
         "input": ["Input - Refrigerants"],
@@ -389,7 +389,7 @@
 
     "AgriculturalResidue": {
       "title": "Agricultural residue management",
-      "sourceWorkbook": "6_AgriculturalResidue_WIP_v02.xlsx",
+      "sourceWorkbook": "6_AgriculturalResidue",
       "groups": ["Cropping"],
       "sheets": {
         "input": ["Input - Crop", "Input - Pasture"],
@@ -414,7 +414,7 @@
 
     "RiceCultivation": {
       "title": "Rice cultivation",
-      "sourceWorkbook": "7_RiceCultivation_WIP_v02.xlsx",
+      "sourceWorkbook": "7_RiceCultivation",
       "groups": [],
       "sheets": {
         "input": ["Input - Rice"],
@@ -429,7 +429,7 @@
 
     "SupplementaryCO2": {
       "title": "Supplementary CO2",
-      "sourceWorkbook": "12_SupplementaryCO2_WIP_v02.xlsx",
+      "sourceWorkbook": "12_SupplementaryCO2",
       "groups": [],
       "sheets": {
         "input": ["Input - CO2 Use"],
@@ -443,7 +443,7 @@
 
     "Scope3": {
       "title": "Scope 3 (upstream) emissions",
-      "sourceWorkbook": "13_Scope3_WIP_v11.xlsx",
+      "sourceWorkbook": "13_Scope3",
       "groups": ["Livestock"],
       "sheets": {
         "input": [

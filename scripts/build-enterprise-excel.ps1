@@ -38,18 +38,29 @@ function Resolve-EnterpriseConfigPath {
 function Resolve-SourceWorkbook {
   param([string] $ExcelDir, [string] $HintName)
 
+  # Exact match first (hint includes a real filename + extension) - backward compatible.
   $exact = Join-Path $ExcelDir $HintName
   if (Test-Path -LiteralPath $exact) { return (Resolve-Path -LiteralPath $exact).Path }
 
+  # Otherwise treat the hint as a version-agnostic stem/prefix. Drop any extension
+  # and a trailing _v<NN>, then match workbooks whose base name is that stem
+  # optionally followed by more segments (e.g. "_WIP") and ending in a _v<NN>
+  # version suffix. This lets the registry name just the stable module prefix
+  # (e.g. "4_2_ManureManagement_BeefPasture") and always resolve to the latest
+  # matching versioned workbook on disk. Legacy fully-versioned hints
+  # ("4_2_..._WIP_v08.xlsx") still resolve via the stem-equality fallback.
   $base = [System.IO.Path]::GetFileNameWithoutExtension($HintName)
   $stem = [regex]::Replace($base, '_v\d+$', '')
+  $stemRegex = '(?i)^' + [regex]::Escape($stem) + '(_.*)?_v\d+$'
 
   $best = Get-ChildItem -Path $ExcelDir -File |
     Where-Object {
       ($_.Extension -eq '.xlsx' -or $_.Extension -eq '.xlsm') -and
       $_.Name -notlike '~$*' -and
       $_.BaseName -notmatch '(?i)_expanded' -and
-      ([regex]::Replace($_.BaseName, '_v\d+$', '') -eq $stem)
+      $_.BaseName -notmatch '(?i)\.bak$' -and
+      ($_.BaseName -match $stemRegex -or
+       [regex]::Replace($_.BaseName, '_v\d+$', '') -eq $stem)
     } |
     Sort-Object @{ Expression = { if ($_.BaseName -match '_v(\d+)$') { [int] $matches[1] } else { -1 } } }, Name -Descending |
     Select-Object -First 1
