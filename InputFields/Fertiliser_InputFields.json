@@ -1,110 +1,12 @@
 {
 	"schemaVersion": 1,
 	"generatedFrom": "5_Fertiliser_WIP_v07.xlsx",
-	"generatedAt": "2026-07-14T13:38:30Z",
+	"generatedAt": "2026-07-14T23:35:04Z",
 	"InputCells": [
-		{
-			"CellName": "X_Cell_Fertiliser_AreaUnderCropping",
-			"Label": "Area under cropping",
-			"CellType": "number"
-		},
-		{
-			"CellName": "X_Cell_Fertiliser_CropType",
-			"Label": "Crop type",
-			"CellType": "select",
-			"Options": {
-				"Pasture": "Pasture",
-				"Grains": "Grains",
-				"Maize": "Maize",
-				"Cotton": "Cotton"
-			}
-		},
-		{
-			"CellName": "X_Cell_Fertiliser_IrrigationMethod",
-			"Label": "Irrigation method",
-			"CellType": "select",
-			"Options": {
-				"Not irrigated": "Not irrigated",
-				"Drip irrigation": "Drip irrigation",
-				"Sprinkler irrigation": "Sprinkler irrigation",
-				"Surface irrigation": "Surface irrigation",
-				"Other irrigation": "Other irrigation"
-			}
-		},
-		{
-			"CellName": "X_Cell_Fertiliser_ProductionSystem",
-			"Label": "Production system",
-			"CellType": "select",
-			"Options": {
-				"Pasture": "Pasture",
-				"Crop": "Crop"
-			}
-		},
-		{
-			"CellName": "X_Cell_Site_AverageTemperature",
-			"Label": "Average temperature for reporting period",
-			"CellType": "number"
-		},
-		{
-			"CellName": "X_Cell_Site_ClimateZone",
-			"Label": "Climate zone",
-			"CellType": "text"
-		},
-		{
-			"CellName": "X_Cell_Site_Elevation",
-			"Label": "Elevation",
-			"CellType": "number"
-		},
 		{
 			"CellName": "X_Cell_Site_FarmName",
 			"Label": "Farm name",
 			"CellType": "text"
-		},
-		{
-			"CellName": "X_Cell_Site_FrostDays",
-			"Label": "Number of frost days for reporting period",
-			"CellType": "number"
-		},
-		{
-			"CellName": "X_Cell_Site_LeachingZone",
-			"Label": "Leaching zone",
-			"CellType": "select",
-			"Options": {
-				"YES - In leaching zone": "YES - In leaching zone",
-				"NO - Not in leaching zone": "NO - Not in leaching zone"
-			}
-		},
-		{
-			"CellName": "X_Cell_Site_MapPetRatio",
-			"Label": "MAP:PET ratio",
-			"CellType": "number"
-		},
-		{
-			"CellName": "X_Cell_Site_PotentialEvapotranspiration",
-			"Label": "Potential evapotranspiration for reporting period",
-			"CellType": "number"
-		},
-		{
-			"CellName": "X_Cell_Site_RainfallZone",
-			"Label": "Rainfall zone",
-			"CellType": "text"
-		},
-		{
-			"CellName": "X_Cell_Site_Region",
-			"Label": "Region (ABS Statistical area level 4) if state is WA",
-			"CellType": "select",
-			"Options": {
-				"Bunbury": "Bunbury",
-				"Mandurah": "Mandurah",
-				"Perth - Inner": "Perth - Inner",
-				"Perth - North East": "Perth - North East",
-				"Perth - North West": "Perth - North West",
-				"Perth - South East": "Perth - South East",
-				"Perth - South West": "Perth - South West",
-				"Western Australia - Wheat Belt": "Western Australia - Wheat Belt",
-				"Western Australia - Outback (North)": "Western Australia - Outback (North)",
-				"Western Australia - Outback (South)": "Western Australia - Outback (South)"
-			}
 		},
 		{
 			"CellName": "X_Cell_Site_ReportingEntityName",
@@ -132,9 +34,40 @@
 			}
 		},
 		{
-			"CellName": "X_Cell_Site_TemperatureZone",
-			"Label": "Temperature zone",
-			"CellType": "text"
+			"CellName": "X_Cell_Site_Region",
+			"Label": "Region (ABS Statistical area level 4) if state is WA",
+			"CellType": "select",
+			"Options": {
+				"Bunbury": "Bunbury",
+				"Mandurah": "Mandurah",
+				"Perth - Inner": "Perth - Inner",
+				"Perth - North East": "Perth - North East",
+				"Perth - North West": "Perth - North West",
+				"Perth - South East": "Perth - South East",
+				"Perth - South West": "Perth - South West",
+				"Western Australia - Wheat Belt": "Western Australia - Wheat Belt",
+				"Western Australia - Outback (North)": "Western Australia - Outback (North)",
+				"Western Australia - Outback (South)": "Western Australia - Outback (South)"
+			}
+		},
+		{
+			"CellName": "X_Cell_Site_LeachingZone",
+			"Label": "Leaching zone",
+			"CellType": "select",
+			"Options": {
+				"YES - In leaching zone": "YES - In leaching zone",
+				"NO - Not in leaching zone": "NO - Not in leaching zone"
+			}
+		},
+		{
+			"CellName": "X_Cell_Site_Elevation",
+			"Label": "Elevation",
+			"CellType": "number"
+		},
+		{
+			"CellName": "X_Cell_Site_AverageTemperature",
+			"Label": "Average temperature for reporting period",
+			"CellType": "number"
 		},
 		{
 			"CellName": "X_Cell_Site_TotalRainfall",
@@ -142,9 +75,76 @@
 			"CellType": "number"
 		},
 		{
+			"CellName": "X_Cell_Site_PotentialEvapotranspiration",
+			"Label": "Potential evapotranspiration for reporting period",
+			"CellType": "number"
+		},
+		{
+			"CellName": "X_Cell_Site_FrostDays",
+			"Label": "Number of frost days for reporting period",
+			"CellType": "number"
+		},
+		{
+			"CellName": "X_Cell_Site_MapPetRatio",
+			"Label": "MAP:PET ratio",
+			"CellType": "number"
+		},
+		{
+			"CellName": "X_Cell_Site_RainfallZone",
+			"Label": "Rainfall zone",
+			"CellType": "text"
+		},
+		{
+			"CellName": "X_Cell_Site_ClimateZone",
+			"Label": "Climate zone",
+			"CellType": "text"
+		},
+		{
 			"CellName": "X_Cell_Site_WetOrDryClimateZone",
 			"Label": "Wet or dry climate zone",
 			"CellType": "text"
+		},
+		{
+			"CellName": "X_Cell_Site_TemperatureZone",
+			"Label": "Temperature zone",
+			"CellType": "text"
+		},
+		{
+			"CellName": "X_Cell_Fertiliser_ProductionSystem",
+			"Label": "Production system",
+			"CellType": "select",
+			"Options": {
+				"Pasture": "Pasture",
+				"Crop": "Crop"
+			}
+		},
+		{
+			"CellName": "X_Cell_Fertiliser_CropType",
+			"Label": "Crop type",
+			"CellType": "select",
+			"Options": {
+				"Pasture": "Pasture",
+				"Grains": "Grains",
+				"Maize": "Maize",
+				"Cotton": "Cotton"
+			}
+		},
+		{
+			"CellName": "X_Cell_Fertiliser_IrrigationMethod",
+			"Label": "Irrigation method",
+			"CellType": "select",
+			"Options": {
+				"Not irrigated": "Not irrigated",
+				"Drip irrigation": "Drip irrigation",
+				"Sprinkler irrigation": "Sprinkler irrigation",
+				"Surface irrigation": "Surface irrigation",
+				"Other irrigation": "Other irrigation"
+			}
+		},
+		{
+			"CellName": "X_Cell_Fertiliser_AreaUnderCropping",
+			"Label": "Area under cropping",
+			"CellType": "number"
 		}
 	],
 	"InputTables": [

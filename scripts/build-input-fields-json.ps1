@@ -879,6 +879,7 @@ function Get-InputCells {
 
   $cells = New-Object System.Collections.Generic.List[object]
   $seenNames = New-Object 'System.Collections.Generic.HashSet[string]'
+  $ordinal = 0
 
   foreach ($entry in @($Workbook.Names)) {
     if ($null -eq $entry) { continue }
@@ -898,6 +899,14 @@ function Get-InputCells {
 
     $worksheet = $null
     try { $worksheet = $range.Worksheet } catch { $worksheet = $null }
+
+    # Position within the workbook, so cells are emitted in the order they appear in
+    # Excel (sheet tab order, then top-to-bottom, then left-to-right) rather than the
+    # alphabetical order of the defined-names collection.
+    $sheetIndex = [int]::MaxValue; $cellRow = [int]::MaxValue; $cellCol = [int]::MaxValue
+    try { if ($null -ne $worksheet) { $sheetIndex = [int]$worksheet.Index } } catch { }
+    try { $cellRow = [int]$range.Row } catch { }
+    try { $cellCol = [int]$range.Column } catch { }
 
     $hasFormula = $false
     try { $hasFormula = [bool]$range.HasFormula } catch { $hasFormula = $false }
@@ -938,10 +947,17 @@ function Get-InputCells {
 
     if ($canOverwrite) { $cellObj['CanOverWriteFormula'] = $true }
 
-    [void]$cells.Add($cellObj)
+    [void]$cells.Add([pscustomobject]@{
+        SheetIndex = $sheetIndex
+        Row        = $cellRow
+        Col        = $cellCol
+        Ordinal    = $ordinal
+        Cell       = $cellObj
+      })
+    $ordinal++
   }
 
-  return $cells
+  return @($cells | Sort-Object SheetIndex, Row, Col, Ordinal | ForEach-Object { $_.Cell })
 }
 
 # ---------------------------------------------------------------------------
@@ -1093,7 +1109,11 @@ function Get-InputTables {
         $tableObj['Rows'] = [ordered]@{ 'Row' = $fieldDefs }
       }
 
-      [void]$tables.Add($tableObj)
+      $tSheet = [int]::MaxValue; $tRow = [int]::MaxValue; $tCol = [int]::MaxValue
+      try { if ($null -ne $worksheet) { $tSheet = [int]$worksheet.Index } } catch { }
+      try { $tRow = [int]$lo.Range.Row } catch { }
+      try { $tCol = [int]$lo.Range.Column } catch { }
+      [void]$tables.Add([pscustomobject]@{ SheetIndex = $tSheet; Row = $tRow; Col = $tCol; Table = $tableObj })
     }
   }
 
@@ -1102,7 +1122,13 @@ function Get-InputTables {
     [void]$tables.Add($nrt)
   }
 
-  return $tables
+  # Emit tables in the order they appear in Excel (sheet tab order, then top-to-bottom,
+  # then left-to-right) rather than worksheet-then-alphabetical discovery order.
+  $sorted = New-Object System.Collections.Generic.List[object]
+  $ordinal = 0
+  foreach ($w in $tables) { $w | Add-Member -NotePropertyName Ordinal -NotePropertyValue $ordinal -Force; $ordinal++ }
+  foreach ($w in @($tables | Sort-Object SheetIndex, Row, Col, Ordinal)) { [void]$sorted.Add($w.Table) }
+  return $sorted
 }
 
 function Get-NamedRangeTables {
@@ -1253,7 +1279,11 @@ function Get-NamedRangeTables {
       Add-ValidationWarning "Input table '$shortName' produced no field definitions."
     }
 
-    [void]$tables.Add($tableObj)
+    $tSheet = [int]::MaxValue; $tRow = [int]::MaxValue; $tCol = [int]::MaxValue
+    try { if ($null -ne $worksheet) { $tSheet = [int]$worksheet.Index } } catch { }
+    try { $tRow = [int]$range.Row } catch { }
+    try { $tCol = [int]$range.Column } catch { }
+    [void]$tables.Add([pscustomobject]@{ SheetIndex = $tSheet; Row = $tRow; Col = $tCol; Table = $tableObj })
   }
 
   return $tables

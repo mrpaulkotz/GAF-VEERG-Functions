@@ -1,58 +1,12 @@
 {
 	"schemaVersion": 1,
 	"generatedFrom": "4_1_ManureManagement_Feedlot_WIP_v08.xlsx",
-	"generatedAt": "2026-07-14T13:37:41Z",
+	"generatedAt": "2026-07-14T23:34:19Z",
 	"InputCells": [
-		{
-			"CellName": "X_Cell_Site_AverageTemperature",
-			"Label": "Average temperature for reporting period",
-			"CellType": "number"
-		},
-		{
-			"CellName": "X_Cell_Site_Elevation",
-			"Label": "Elevation",
-			"CellType": "number"
-		},
 		{
 			"CellName": "X_Cell_Site_FarmName",
 			"Label": "Farm name",
 			"CellType": "text"
-		},
-		{
-			"CellName": "X_Cell_Site_FrostDays",
-			"Label": "Number of frost days for reporting period",
-			"CellType": "number"
-		},
-		{
-			"CellName": "X_Cell_Site_LeachingZone",
-			"Label": "Leaching zone",
-			"CellType": "select",
-			"Options": {
-				"YES - In leaching zone": "YES - In leaching zone",
-				"NO - Not in leaching zone": "NO - Not in leaching zone"
-			}
-		},
-		{
-			"CellName": "X_Cell_Site_PotentialEvapotranspiration",
-			"Label": "Potential evapotranspiration for reporting period",
-			"CellType": "number"
-		},
-		{
-			"CellName": "X_Cell_Site_Region",
-			"Label": "Region (ABS Statistical area level 4) if state is WA",
-			"CellType": "select",
-			"Options": {
-				"Bunbury": "Bunbury",
-				"Mandurah": "Mandurah",
-				"Perth - Inner": "Perth - Inner",
-				"Perth - North East": "Perth - North East",
-				"Perth - North West": "Perth - North West",
-				"Perth - South East": "Perth - South East",
-				"Perth - South West": "Perth - South West",
-				"Western Australia - Wheat Belt": "Western Australia - Wheat Belt",
-				"Western Australia - Outback (North)": "Western Australia - Outback (North)",
-				"Western Australia - Outback (South)": "Western Australia - Outback (South)"
-			}
 		},
 		{
 			"CellName": "X_Cell_Site_ReportingEntityName",
@@ -80,8 +34,54 @@
 			}
 		},
 		{
+			"CellName": "X_Cell_Site_Region",
+			"Label": "Region (ABS Statistical area level 4) if state is WA",
+			"CellType": "select",
+			"Options": {
+				"Bunbury": "Bunbury",
+				"Mandurah": "Mandurah",
+				"Perth - Inner": "Perth - Inner",
+				"Perth - North East": "Perth - North East",
+				"Perth - North West": "Perth - North West",
+				"Perth - South East": "Perth - South East",
+				"Perth - South West": "Perth - South West",
+				"Western Australia - Wheat Belt": "Western Australia - Wheat Belt",
+				"Western Australia - Outback (North)": "Western Australia - Outback (North)",
+				"Western Australia - Outback (South)": "Western Australia - Outback (South)"
+			}
+		},
+		{
+			"CellName": "X_Cell_Site_LeachingZone",
+			"Label": "Leaching zone",
+			"CellType": "select",
+			"Options": {
+				"YES - In leaching zone": "YES - In leaching zone",
+				"NO - Not in leaching zone": "NO - Not in leaching zone"
+			}
+		},
+		{
+			"CellName": "X_Cell_Site_Elevation",
+			"Label": "Elevation",
+			"CellType": "number"
+		},
+		{
+			"CellName": "X_Cell_Site_AverageTemperature",
+			"Label": "Average temperature for reporting period",
+			"CellType": "number"
+		},
+		{
 			"CellName": "X_Cell_Site_TotalRainfall",
 			"Label": "Total rainfall for reporting period",
+			"CellType": "number"
+		},
+		{
+			"CellName": "X_Cell_Site_PotentialEvapotranspiration",
+			"Label": "Potential evapotranspiration for reporting period",
+			"CellType": "number"
+		},
+		{
+			"CellName": "X_Cell_Site_FrostDays",
+			"Label": "Number of frost days for reporting period",
 			"CellType": "number"
 		}
 	],

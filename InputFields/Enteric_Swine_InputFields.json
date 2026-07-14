@@ -1,7 +1,7 @@
 {
 	"schemaVersion": 1,
 	"generatedFrom": "3_5_Enteric_Swine_WIP_v02.xlsx",
-	"generatedAt": "2026-07-14T13:37:32Z",
+	"generatedAt": "2026-07-14T23:34:11Z",
 	"InputCells": [
 		{
 			"CellName": "X_Cell_Site_FarmName",
@@ -71,6 +71,28 @@
 			}
 		},
 		{
+			"TableName": "X_Table_Swine_VolatileSolidProduction_Method1",
+			"MatrixType": "ColsToRows",
+			"NumberOfRows": 2,
+			"NumberOfCols": 4,
+			"ColumnNames": {
+				"Boars": "Boars",
+				"Sows": "Sows",
+				"Gilts": "Gilts",
+				"Others": "Others"
+			},
+			"Cols": {
+				"Column": {
+					"VolatileSolidsProducedPerHeadPerDay": {
+						"Row": 2,
+						"Col": 2,
+						"Label": "Volatile solids produced per head per day",
+						"CellType": "formula"
+					}
+				}
+			}
+		},
+		{
 			"TableName": "X_Table_Swine_ManureProduction_Method2",
 			"MatrixType": "ColsToRows",
 			"NumberOfRows": 2,
@@ -89,28 +111,6 @@
 						"Label": "Volatile solids produced per head per day",
 						"CellType": "number",
 						"CanOverWriteFormula": true
-					}
-				}
-			}
-		},
-		{
-			"TableName": "X_Table_Swine_VolatileSolidProduction_Method1",
-			"MatrixType": "ColsToRows",
-			"NumberOfRows": 2,
-			"NumberOfCols": 4,
-			"ColumnNames": {
-				"Boars": "Boars",
-				"Sows": "Sows",
-				"Gilts": "Gilts",
-				"Others": "Others"
-			},
-			"Cols": {
-				"Column": {
-					"VolatileSolidsProducedPerHeadPerDay": {
-						"Row": 2,
-						"Col": 2,
-						"Label": "Volatile solids produced per head per day",
-						"CellType": "formula"
 					}
 				}
 			}

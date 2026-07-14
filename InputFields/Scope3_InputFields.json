@@ -1,7 +1,7 @@
 {
 	"schemaVersion": 1,
 	"generatedFrom": "13_Scope3_WIP_v11.xlsx",
-	"generatedAt": "2026-07-14T13:37:06Z",
+	"generatedAt": "2026-07-14T23:33:46Z",
 	"InputCells": [],
 	"InputTables": [
 		{
@@ -436,74 +436,6 @@
 			}
 		},
 		{
-			"TableName": "Table_Input_ChemicalsCleaning",
-			"MatrixType": "RowsToCols",
-			"NumberOfCols": 3,
-			"ColumnNames": {
-				"ProductName": "Product name",
-				"Type": "Type (select)",
-				"QuantityPurchased": "Quantity purchased (kg)"
-			},
-			"Rows": {
-				"Row": {
-					"ProductName": {
-						"CellType": "text"
-					},
-					"Type": {
-						"CellType": "select",
-						"Options": {
-							"Alkaline cleaner": "Alkaline cleaner",
-							"Bleach": "Bleach",
-							"Phosphoric acid": "Phosphoric acid"
-						}
-					},
-					"QuantityPurchased": {
-						"CellType": "number",
-						"Unit": "kg"
-					}
-				}
-			}
-		},
-		{
-			"TableName": "Table_Input_Packaging",
-			"MatrixType": "RowsToCols",
-			"NumberOfCols": 5,
-			"ColumnNames": {
-				"PackagingName": "Packaging name",
-				"QuantityPurchased": "Quantity purchased",
-				"PrimaryMaterial": "Primary material",
-				"WeightPerUnit": "Weight per unit (kg)",
-				"TotalWeightPurchased": "Total weight purchased (kg)"
-			},
-			"Rows": {
-				"Row": {
-					"PackagingName": {
-						"CellType": "text"
-					},
-					"QuantityPurchased": {
-						"CellType": "number"
-					},
-					"PrimaryMaterial": {
-						"CellType": "select",
-						"Options": {
-							"Corrugated board": "Corrugated board",
-							"Plastic crate polypropylene": "Plastic crate polypropylene",
-							"Plastic film LDPE": "Plastic film LDPE",
-							"Plastic sheet HDPE": "Plastic sheet HDPE"
-						}
-					},
-					"WeightPerUnit": {
-						"CellType": "number",
-						"Unit": "kg"
-					},
-					"TotalWeightPurchased": {
-						"CellType": "formula",
-						"Unit": "kg"
-					}
-				}
-			}
-		},
-		{
 			"TableName": "Table_Input_Pesticides",
 			"MatrixType": "RowsToCols",
 			"NumberOfCols": 15,
@@ -629,6 +561,35 @@
 			}
 		},
 		{
+			"TableName": "Table_Input_ChemicalsCleaning",
+			"MatrixType": "RowsToCols",
+			"NumberOfCols": 3,
+			"ColumnNames": {
+				"ProductName": "Product name",
+				"Type": "Type (select)",
+				"QuantityPurchased": "Quantity purchased (kg)"
+			},
+			"Rows": {
+				"Row": {
+					"ProductName": {
+						"CellType": "text"
+					},
+					"Type": {
+						"CellType": "select",
+						"Options": {
+							"Alkaline cleaner": "Alkaline cleaner",
+							"Bleach": "Bleach",
+							"Phosphoric acid": "Phosphoric acid"
+						}
+					},
+					"QuantityPurchased": {
+						"CellType": "number",
+						"Unit": "kg"
+					}
+				}
+			}
+		},
+		{
 			"TableName": "Table_Input_ChemicalsPharmacy",
 			"MatrixType": "RowsToCols",
 			"NumberOfCols": 3,
@@ -653,6 +614,166 @@
 					},
 					"NumberOfHeadTreated": {
 						"CellType": "number"
+					}
+				}
+			}
+		},
+		{
+			"TableName": "Table_Input_FeedBlends",
+			"MatrixType": "RowsToCols",
+			"NumberOfCols": 14,
+			"ColumnNames": {
+				"FeedBlendName": "Feed blend name",
+				"AmountFed": "Amount fed (kg)",
+				"Ingredient1": "Ingredient 1 (select)",
+				"Ingredient1SourceRegion": "Ingredient 1 source region",
+				"Ingredient1Percent": "Ingredient 1 percent",
+				"Ingredient2": "Ingredient 2 (select)",
+				"Ingredient2SourceRegion": "Ingredient 2 source region",
+				"Ingredient2Percent": "Ingredient 2 percent",
+				"Ingredient3": "Ingredient 3 (select)",
+				"Ingredient3SourceRegion": "Ingredient 3 source region",
+				"Ingredient3Percent": "Ingredient 3 percent",
+				"Ingredient4": "Ingredient 4 (select)",
+				"Ingredient4SourceRegion": "Ingredient 4 source region",
+				"Ingredient4Percent": "Ingredient 4 percent"
+			},
+			"Rows": {
+				"Row": {
+					"FeedBlendName": {
+						"CellType": "number"
+					},
+					"AmountFed": {
+						"CellType": "number",
+						"Unit": "kg"
+					},
+					"Ingredient1": {
+						"CellType": "select",
+						"Options": {
+							"Sardines (whole)": "Sardines (whole)",
+							"Barley grain": "Barley grain",
+							"Maize grain": "Maize grain",
+							"Sorghum grain": "Sorghum grain",
+							"Wheat grain": "Wheat grain",
+							"Cereal hay": "Cereal hay",
+							"Cereal silage": "Cereal silage",
+							"Lucerne hay": "Lucerne hay",
+							"Maize silage": "Maize silage",
+							"Oaten hay": "Oaten hay",
+							"Pasture hay": "Pasture hay",
+							"Canola meal": "Canola meal",
+							"Meat meal": "Meat meal",
+							"Soybean meal": "Soybean meal",
+							"Wheat bran": "Wheat bran",
+							"Bentonite": "Bentonite",
+							"Canola oil": "Canola oil",
+							"Cotton seed": "Cotton seed",
+							"Molasses": "Molasses"
+						}
+					},
+					"Ingredient1SourceRegion": {
+						"CellType": "select",
+						"DependentOn": "SUBSTITUTE(SUBSTITUTE(SUBSTITUTE(F63",
+						"Options": {}
+					},
+					"Ingredient1Percent": {
+						"CellType": "percent"
+					},
+					"Ingredient2": {
+						"CellType": "select",
+						"Options": {
+							"Sardines (whole)": "Sardines (whole)",
+							"Barley grain": "Barley grain",
+							"Maize grain": "Maize grain",
+							"Sorghum grain": "Sorghum grain",
+							"Wheat grain": "Wheat grain",
+							"Cereal hay": "Cereal hay",
+							"Cereal silage": "Cereal silage",
+							"Lucerne hay": "Lucerne hay",
+							"Maize silage": "Maize silage",
+							"Oaten hay": "Oaten hay",
+							"Pasture hay": "Pasture hay",
+							"Canola meal": "Canola meal",
+							"Meat meal": "Meat meal",
+							"Soybean meal": "Soybean meal",
+							"Wheat bran": "Wheat bran",
+							"Bentonite": "Bentonite",
+							"Canola oil": "Canola oil",
+							"Cotton seed": "Cotton seed",
+							"Molasses": "Molasses"
+						}
+					},
+					"Ingredient2SourceRegion": {
+						"CellType": "select",
+						"DependentOn": "SUBSTITUTE(SUBSTITUTE(SUBSTITUTE(I63",
+						"Options": {}
+					},
+					"Ingredient2Percent": {
+						"CellType": "percent"
+					},
+					"Ingredient3": {
+						"CellType": "select",
+						"Options": {
+							"Sardines (whole)": "Sardines (whole)",
+							"Barley grain": "Barley grain",
+							"Maize grain": "Maize grain",
+							"Sorghum grain": "Sorghum grain",
+							"Wheat grain": "Wheat grain",
+							"Cereal hay": "Cereal hay",
+							"Cereal silage": "Cereal silage",
+							"Lucerne hay": "Lucerne hay",
+							"Maize silage": "Maize silage",
+							"Oaten hay": "Oaten hay",
+							"Pasture hay": "Pasture hay",
+							"Canola meal": "Canola meal",
+							"Meat meal": "Meat meal",
+							"Soybean meal": "Soybean meal",
+							"Wheat bran": "Wheat bran",
+							"Bentonite": "Bentonite",
+							"Canola oil": "Canola oil",
+							"Cotton seed": "Cotton seed",
+							"Molasses": "Molasses"
+						}
+					},
+					"Ingredient3SourceRegion": {
+						"CellType": "select",
+						"DependentOn": "SUBSTITUTE(SUBSTITUTE(SUBSTITUTE(L63",
+						"Options": {}
+					},
+					"Ingredient3Percent": {
+						"CellType": "percent"
+					},
+					"Ingredient4": {
+						"CellType": "select",
+						"Options": {
+							"Sardines (whole)": "Sardines (whole)",
+							"Barley grain": "Barley grain",
+							"Maize grain": "Maize grain",
+							"Sorghum grain": "Sorghum grain",
+							"Wheat grain": "Wheat grain",
+							"Cereal hay": "Cereal hay",
+							"Cereal silage": "Cereal silage",
+							"Lucerne hay": "Lucerne hay",
+							"Maize silage": "Maize silage",
+							"Oaten hay": "Oaten hay",
+							"Pasture hay": "Pasture hay",
+							"Canola meal": "Canola meal",
+							"Meat meal": "Meat meal",
+							"Soybean meal": "Soybean meal",
+							"Wheat bran": "Wheat bran",
+							"Bentonite": "Bentonite",
+							"Canola oil": "Canola oil",
+							"Cotton seed": "Cotton seed",
+							"Molasses": "Molasses"
+						}
+					},
+					"Ingredient4SourceRegion": {
+						"CellType": "select",
+						"DependentOn": "SUBSTITUTE(SUBSTITUTE(SUBSTITUTE(O63",
+						"Options": {}
+					},
+					"Ingredient4Percent": {
+						"CellType": "percent"
 					}
 				}
 			}
@@ -871,189 +992,6 @@
 			}
 		},
 		{
-			"TableName": "Table_Input_UncategorisedProductsServices",
-			"MatrixType": "RowsToCols",
-			"NumberOfCols": 3,
-			"ColumnNames": {
-				"ProductServiceName": "Product / service name",
-				"Amount": "Amount",
-				"AmountUnit": "Amount unit"
-			},
-			"Rows": {
-				"Row": {
-					"ProductServiceName": {
-						"CellType": "text"
-					},
-					"Amount": {
-						"CellType": "number"
-					},
-					"AmountUnit": {
-						"CellType": "text"
-					}
-				}
-			}
-		},
-		{
-			"TableName": "Table_Input_FeedBlends",
-			"MatrixType": "RowsToCols",
-			"NumberOfCols": 14,
-			"ColumnNames": {
-				"FeedBlendName": "Feed blend name",
-				"AmountFed": "Amount fed (kg)",
-				"Ingredient1": "Ingredient 1 (select)",
-				"Ingredient1SourceRegion": "Ingredient 1 source region",
-				"Ingredient1Percent": "Ingredient 1 percent",
-				"Ingredient2": "Ingredient 2 (select)",
-				"Ingredient2SourceRegion": "Ingredient 2 source region",
-				"Ingredient2Percent": "Ingredient 2 percent",
-				"Ingredient3": "Ingredient 3 (select)",
-				"Ingredient3SourceRegion": "Ingredient 3 source region",
-				"Ingredient3Percent": "Ingredient 3 percent",
-				"Ingredient4": "Ingredient 4 (select)",
-				"Ingredient4SourceRegion": "Ingredient 4 source region",
-				"Ingredient4Percent": "Ingredient 4 percent"
-			},
-			"Rows": {
-				"Row": {
-					"FeedBlendName": {
-						"CellType": "number"
-					},
-					"AmountFed": {
-						"CellType": "number",
-						"Unit": "kg"
-					},
-					"Ingredient1": {
-						"CellType": "select",
-						"Options": {
-							"Sardines (whole)": "Sardines (whole)",
-							"Barley grain": "Barley grain",
-							"Maize grain": "Maize grain",
-							"Sorghum grain": "Sorghum grain",
-							"Wheat grain": "Wheat grain",
-							"Cereal hay": "Cereal hay",
-							"Cereal silage": "Cereal silage",
-							"Lucerne hay": "Lucerne hay",
-							"Maize silage": "Maize silage",
-							"Oaten hay": "Oaten hay",
-							"Pasture hay": "Pasture hay",
-							"Canola meal": "Canola meal",
-							"Meat meal": "Meat meal",
-							"Soybean meal": "Soybean meal",
-							"Wheat bran": "Wheat bran",
-							"Bentonite": "Bentonite",
-							"Canola oil": "Canola oil",
-							"Cotton seed": "Cotton seed",
-							"Molasses": "Molasses"
-						}
-					},
-					"Ingredient1SourceRegion": {
-						"CellType": "select",
-						"DependentOn": "SUBSTITUTE(SUBSTITUTE(SUBSTITUTE(F63",
-						"Options": {}
-					},
-					"Ingredient1Percent": {
-						"CellType": "percent"
-					},
-					"Ingredient2": {
-						"CellType": "select",
-						"Options": {
-							"Sardines (whole)": "Sardines (whole)",
-							"Barley grain": "Barley grain",
-							"Maize grain": "Maize grain",
-							"Sorghum grain": "Sorghum grain",
-							"Wheat grain": "Wheat grain",
-							"Cereal hay": "Cereal hay",
-							"Cereal silage": "Cereal silage",
-							"Lucerne hay": "Lucerne hay",
-							"Maize silage": "Maize silage",
-							"Oaten hay": "Oaten hay",
-							"Pasture hay": "Pasture hay",
-							"Canola meal": "Canola meal",
-							"Meat meal": "Meat meal",
-							"Soybean meal": "Soybean meal",
-							"Wheat bran": "Wheat bran",
-							"Bentonite": "Bentonite",
-							"Canola oil": "Canola oil",
-							"Cotton seed": "Cotton seed",
-							"Molasses": "Molasses"
-						}
-					},
-					"Ingredient2SourceRegion": {
-						"CellType": "select",
-						"DependentOn": "SUBSTITUTE(SUBSTITUTE(SUBSTITUTE(I63",
-						"Options": {}
-					},
-					"Ingredient2Percent": {
-						"CellType": "percent"
-					},
-					"Ingredient3": {
-						"CellType": "select",
-						"Options": {
-							"Sardines (whole)": "Sardines (whole)",
-							"Barley grain": "Barley grain",
-							"Maize grain": "Maize grain",
-							"Sorghum grain": "Sorghum grain",
-							"Wheat grain": "Wheat grain",
-							"Cereal hay": "Cereal hay",
-							"Cereal silage": "Cereal silage",
-							"Lucerne hay": "Lucerne hay",
-							"Maize silage": "Maize silage",
-							"Oaten hay": "Oaten hay",
-							"Pasture hay": "Pasture hay",
-							"Canola meal": "Canola meal",
-							"Meat meal": "Meat meal",
-							"Soybean meal": "Soybean meal",
-							"Wheat bran": "Wheat bran",
-							"Bentonite": "Bentonite",
-							"Canola oil": "Canola oil",
-							"Cotton seed": "Cotton seed",
-							"Molasses": "Molasses"
-						}
-					},
-					"Ingredient3SourceRegion": {
-						"CellType": "select",
-						"DependentOn": "SUBSTITUTE(SUBSTITUTE(SUBSTITUTE(L63",
-						"Options": {}
-					},
-					"Ingredient3Percent": {
-						"CellType": "percent"
-					},
-					"Ingredient4": {
-						"CellType": "select",
-						"Options": {
-							"Sardines (whole)": "Sardines (whole)",
-							"Barley grain": "Barley grain",
-							"Maize grain": "Maize grain",
-							"Sorghum grain": "Sorghum grain",
-							"Wheat grain": "Wheat grain",
-							"Cereal hay": "Cereal hay",
-							"Cereal silage": "Cereal silage",
-							"Lucerne hay": "Lucerne hay",
-							"Maize silage": "Maize silage",
-							"Oaten hay": "Oaten hay",
-							"Pasture hay": "Pasture hay",
-							"Canola meal": "Canola meal",
-							"Meat meal": "Meat meal",
-							"Soybean meal": "Soybean meal",
-							"Wheat bran": "Wheat bran",
-							"Bentonite": "Bentonite",
-							"Canola oil": "Canola oil",
-							"Cotton seed": "Cotton seed",
-							"Molasses": "Molasses"
-						}
-					},
-					"Ingredient4SourceRegion": {
-						"CellType": "select",
-						"DependentOn": "SUBSTITUTE(SUBSTITUTE(SUBSTITUTE(O63",
-						"Options": {}
-					},
-					"Ingredient4Percent": {
-						"CellType": "percent"
-					}
-				}
-			}
-		},
-		{
 			"TableName": "Table_Input_ServicesAndContractors",
 			"MatrixType": "RowsToCols",
 			"NumberOfCols": 4,
@@ -1085,6 +1023,45 @@
 			}
 		},
 		{
+			"TableName": "Table_Input_Packaging",
+			"MatrixType": "RowsToCols",
+			"NumberOfCols": 5,
+			"ColumnNames": {
+				"PackagingName": "Packaging name",
+				"QuantityPurchased": "Quantity purchased",
+				"PrimaryMaterial": "Primary material",
+				"WeightPerUnit": "Weight per unit (kg)",
+				"TotalWeightPurchased": "Total weight purchased (kg)"
+			},
+			"Rows": {
+				"Row": {
+					"PackagingName": {
+						"CellType": "text"
+					},
+					"QuantityPurchased": {
+						"CellType": "number"
+					},
+					"PrimaryMaterial": {
+						"CellType": "select",
+						"Options": {
+							"Corrugated board": "Corrugated board",
+							"Plastic crate polypropylene": "Plastic crate polypropylene",
+							"Plastic film LDPE": "Plastic film LDPE",
+							"Plastic sheet HDPE": "Plastic sheet HDPE"
+						}
+					},
+					"WeightPerUnit": {
+						"CellType": "number",
+						"Unit": "kg"
+					},
+					"TotalWeightPurchased": {
+						"CellType": "formula",
+						"Unit": "kg"
+					}
+				}
+			}
+		},
+		{
 			"TableName": "Table_Input_GrowMedia",
 			"MatrixType": "RowsToCols",
 			"NumberOfCols": 3,
@@ -1107,6 +1084,29 @@
 							"kg": "kg",
 							"m3": "m3"
 						}
+					}
+				}
+			}
+		},
+		{
+			"TableName": "Table_Input_UncategorisedProductsServices",
+			"MatrixType": "RowsToCols",
+			"NumberOfCols": 3,
+			"ColumnNames": {
+				"ProductServiceName": "Product / service name",
+				"Amount": "Amount",
+				"AmountUnit": "Amount unit"
+			},
+			"Rows": {
+				"Row": {
+					"ProductServiceName": {
+						"CellType": "text"
+					},
+					"Amount": {
+						"CellType": "number"
+					},
+					"AmountUnit": {
+						"CellType": "text"
 					}
 				}
 			}

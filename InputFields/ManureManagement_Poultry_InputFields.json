@@ -1,80 +1,12 @@
 {
 	"schemaVersion": 1,
 	"generatedFrom": "4_6_ManureManagement_Poultry_WIP_v03.xlsx",
-	"generatedAt": "2026-07-14T13:38:19Z",
+	"generatedAt": "2026-07-14T23:34:53Z",
 	"InputCells": [
-		{
-			"CellName": "X_Cell_Dairy_ManureAppliedIrrigationMethod",
-			"Label": "",
-			"CellType": "select",
-			"Options": {}
-		},
-		{
-			"CellName": "X_Cell_Dairy_ManureAppliedProductionSystem",
-			"Label": "Where manure was deposited on farm soils, what is the closest match?",
-			"CellType": "select",
-			"Options": {}
-		},
-		{
-			"CellName": "X_Cell_Poultry_ProductionSystem",
-			"Label": "Production system",
-			"CellType": "select",
-			"Options": {
-				"Free range": "Free range",
-				"Barn": "Barn",
-				"Cage": "Cage"
-			}
-		},
-		{
-			"CellName": "X_Cell_Site_AverageTemperature",
-			"Label": "Average temperature for reporting period",
-			"CellType": "number"
-		},
-		{
-			"CellName": "X_Cell_Site_Elevation",
-			"Label": "Elevation",
-			"CellType": "number"
-		},
 		{
 			"CellName": "X_Cell_Site_FarmName",
 			"Label": "Farm name",
 			"CellType": "text"
-		},
-		{
-			"CellName": "X_Cell_Site_FrostDays",
-			"Label": "Number of frost days for reporting period",
-			"CellType": "number"
-		},
-		{
-			"CellName": "X_Cell_Site_LeachingZone",
-			"Label": "Leaching zone",
-			"CellType": "select",
-			"Options": {
-				"YES - In leaching zone": "YES - In leaching zone",
-				"NO - Not in leaching zone": "NO - Not in leaching zone"
-			}
-		},
-		{
-			"CellName": "X_Cell_Site_PotentialEvapotranspiration",
-			"Label": "Potential evapotranspiration for reporting period",
-			"CellType": "number"
-		},
-		{
-			"CellName": "X_Cell_Site_Region",
-			"Label": "Region (ABS Statistical area level 4) if state is WA",
-			"CellType": "select",
-			"Options": {
-				"Bunbury": "Bunbury",
-				"Mandurah": "Mandurah",
-				"Perth - Inner": "Perth - Inner",
-				"Perth - North East": "Perth - North East",
-				"Perth - North West": "Perth - North West",
-				"Perth - South East": "Perth - South East",
-				"Perth - South West": "Perth - South West",
-				"Western Australia - Wheat Belt": "Western Australia - Wheat Belt",
-				"Western Australia - Outback (North)": "Western Australia - Outback (North)",
-				"Western Australia - Outback (South)": "Western Australia - Outback (South)"
-			}
 		},
 		{
 			"CellName": "X_Cell_Site_ReportingEntityName",
@@ -102,12 +34,108 @@
 			}
 		},
 		{
+			"CellName": "X_Cell_Site_Region",
+			"Label": "Region (ABS Statistical area level 4) if state is WA",
+			"CellType": "select",
+			"Options": {
+				"Bunbury": "Bunbury",
+				"Mandurah": "Mandurah",
+				"Perth - Inner": "Perth - Inner",
+				"Perth - North East": "Perth - North East",
+				"Perth - North West": "Perth - North West",
+				"Perth - South East": "Perth - South East",
+				"Perth - South West": "Perth - South West",
+				"Western Australia - Wheat Belt": "Western Australia - Wheat Belt",
+				"Western Australia - Outback (North)": "Western Australia - Outback (North)",
+				"Western Australia - Outback (South)": "Western Australia - Outback (South)"
+			}
+		},
+		{
+			"CellName": "X_Cell_Site_LeachingZone",
+			"Label": "Leaching zone",
+			"CellType": "select",
+			"Options": {
+				"YES - In leaching zone": "YES - In leaching zone",
+				"NO - Not in leaching zone": "NO - Not in leaching zone"
+			}
+		},
+		{
+			"CellName": "X_Cell_Site_Elevation",
+			"Label": "Elevation",
+			"CellType": "number"
+		},
+		{
+			"CellName": "X_Cell_Site_AverageTemperature",
+			"Label": "Average temperature for reporting period",
+			"CellType": "number"
+		},
+		{
 			"CellName": "X_Cell_Site_TotalRainfall",
 			"Label": "Total rainfall for reporting period",
 			"CellType": "number"
+		},
+		{
+			"CellName": "X_Cell_Site_PotentialEvapotranspiration",
+			"Label": "Potential evapotranspiration for reporting period",
+			"CellType": "number"
+		},
+		{
+			"CellName": "X_Cell_Site_FrostDays",
+			"Label": "Number of frost days for reporting period",
+			"CellType": "number"
+		},
+		{
+			"CellName": "X_Cell_Poultry_ProductionSystem",
+			"Label": "Production system",
+			"CellType": "select",
+			"Options": {
+				"Free range": "Free range",
+				"Barn": "Barn",
+				"Cage": "Cage"
+			}
+		},
+		{
+			"CellName": "X_Cell_Dairy_ManureAppliedProductionSystem",
+			"Label": "Where manure was deposited on farm soils, what is the closest match?",
+			"CellType": "select",
+			"Options": {}
+		},
+		{
+			"CellName": "X_Cell_Dairy_ManureAppliedIrrigationMethod",
+			"Label": "",
+			"CellType": "select",
+			"Options": {}
 		}
 	],
 	"InputTables": [
+		{
+			"TableName": "X_Table_Poultry_Movement",
+			"MatrixType": "ColsToRows",
+			"NumberOfRows": 3,
+			"NumberOfCols": 4,
+			"ColumnNames": {
+				"Layers": "Layers",
+				"MeatChickenGrowers": "Meat chicken growers",
+				"MeatChickenBreeders": "Meat chicken breeders",
+				"Other": "Other"
+			},
+			"Cols": {
+				"Column": {
+					"AverageDurationOfStayBetween01Jan24And31Dec24": {
+						"Row": 2,
+						"Col": 2,
+						"Label": "Average duration of stay between 01 Jan 24 and 31 Dec 24",
+						"CellType": "number"
+					},
+					"AverageNumberOfBirdsBetween01Jan24And31Dec24": {
+						"Row": 3,
+						"Col": 2,
+						"Label": "Average number of birds between 01 Jan 24 and 31 Dec 24",
+						"CellType": "number"
+					}
+				}
+			}
+		},
 		{
 			"TableName": "X_Table_Poultry_Diet_Method1",
 			"MatrixType": "ColsToRows",
@@ -184,34 +212,6 @@
 			}
 		},
 		{
-			"TableName": "X_Table_Poultry_Movement",
-			"MatrixType": "ColsToRows",
-			"NumberOfRows": 3,
-			"NumberOfCols": 4,
-			"ColumnNames": {
-				"Layers": "Layers",
-				"MeatChickenGrowers": "Meat chicken growers",
-				"MeatChickenBreeders": "Meat chicken breeders",
-				"Other": "Other"
-			},
-			"Cols": {
-				"Column": {
-					"AverageDurationOfStayBetween01Jan24And31Dec24": {
-						"Row": 2,
-						"Col": 2,
-						"Label": "Average duration of stay between 01 Jan 24 and 31 Dec 24",
-						"CellType": "number"
-					},
-					"AverageNumberOfBirdsBetween01Jan24And31Dec24": {
-						"Row": 3,
-						"Col": 2,
-						"Label": "Average number of birds between 01 Jan 24 and 31 Dec 24",
-						"CellType": "number"
-					}
-				}
-			}
-		},
-		{
 			"TableName": "X_Table_Poultry_Stage1MMS",
 			"MatrixType": "ColsToRows",
 			"NumberOfRows": 5,
@@ -247,6 +247,93 @@
 						"Col": 2,
 						"Label": "Pasture range and paddock",
 						"CellType": "percent"
+					}
+				}
+			}
+		},
+		{
+			"TableName": "X_Table_Poultry_Stage2MMS_PoultryManureWithBedding",
+			"MatrixType": "ColsToRows",
+			"NumberOfRows": 6,
+			"NumberOfCols": 4,
+			"ColumnNames": {
+				"ManureWasSentToThisMMSPleaseCompleteThisSection": "Manure was sent to this MMS, please complete this section.",
+				"Col3": "",
+				"Col4": "",
+				"Col5": ""
+			},
+			"Cols": {
+				"Column": {
+					"SolidStorage": {
+						"Row": 2,
+						"Col": 2,
+						"Label": "Solid storage",
+						"CellType": "percent"
+					},
+					"Composting": {
+						"Row": 3,
+						"Col": 2,
+						"Label": "Composting (passive windrow)",
+						"CellType": "percent",
+						"Unit": "passive windrow"
+					},
+					"DigesterCoveredLagoons": {
+						"Row": 4,
+						"Col": 2,
+						"Label": "Digester / covered lagoons",
+						"CellType": "percent"
+					},
+					"DirectProcessing": {
+						"Row": 5,
+						"Col": 2,
+						"Label": "Direct processing",
+						"CellType": "percent"
+					},
+					"DirectApplication": {
+						"Row": 6,
+						"Col": 2,
+						"Label": "Direct application",
+						"CellType": "formula"
+					}
+				}
+			}
+		},
+		{
+			"TableName": "X_Table_Poultry_Stage2MMS_PoultryManureWithBedding_Destinations",
+			"MatrixType": "RowsToCols",
+			"NumberOfRows": 6,
+			"NumberOfCols": 4,
+			"ColumnNames": {
+				"Col1": "",
+				"Sold": "Sold",
+				"FertForOwnFarm": "Fert for own farm (eg crop)",
+				"DirectApplicationToSoil": "Direct application to soil"
+			},
+			"Rows": {
+				"Row": {
+					"Col1": {
+						"Row": 2,
+						"Col": 1,
+						"CellType": "number"
+					},
+					"Sold": {
+						"Row": 2,
+						"Col": 2,
+						"Header": "Sold",
+						"CellType": "percent"
+					},
+					"FertForOwnFarm": {
+						"Row": 2,
+						"Col": 3,
+						"Header": "Fert for own farm (eg crop)",
+						"CellType": "percent",
+						"Unit": "eg crop"
+					},
+					"DirectApplicationToSoil": {
+						"Row": 2,
+						"Col": 4,
+						"Header": "Direct application to soil",
+						"CellType": "formula"
 					}
 				}
 			}
@@ -387,93 +474,6 @@
 		},
 		{
 			"TableName": "X_Table_Poultry_Stage2MMS_ManureStoredInHouse_Destinations",
-			"MatrixType": "RowsToCols",
-			"NumberOfRows": 6,
-			"NumberOfCols": 4,
-			"ColumnNames": {
-				"Col1": "",
-				"Sold": "Sold",
-				"FertForOwnFarm": "Fert for own farm (eg crop)",
-				"DirectApplicationToSoil": "Direct application to soil"
-			},
-			"Rows": {
-				"Row": {
-					"Col1": {
-						"Row": 2,
-						"Col": 1,
-						"CellType": "number"
-					},
-					"Sold": {
-						"Row": 2,
-						"Col": 2,
-						"Header": "Sold",
-						"CellType": "percent"
-					},
-					"FertForOwnFarm": {
-						"Row": 2,
-						"Col": 3,
-						"Header": "Fert for own farm (eg crop)",
-						"CellType": "percent",
-						"Unit": "eg crop"
-					},
-					"DirectApplicationToSoil": {
-						"Row": 2,
-						"Col": 4,
-						"Header": "Direct application to soil",
-						"CellType": "formula"
-					}
-				}
-			}
-		},
-		{
-			"TableName": "X_Table_Poultry_Stage2MMS_PoultryManureWithBedding",
-			"MatrixType": "ColsToRows",
-			"NumberOfRows": 6,
-			"NumberOfCols": 4,
-			"ColumnNames": {
-				"ManureWasSentToThisMMSPleaseCompleteThisSection": "Manure was sent to this MMS, please complete this section.",
-				"Col3": "",
-				"Col4": "",
-				"Col5": ""
-			},
-			"Cols": {
-				"Column": {
-					"SolidStorage": {
-						"Row": 2,
-						"Col": 2,
-						"Label": "Solid storage",
-						"CellType": "percent"
-					},
-					"Composting": {
-						"Row": 3,
-						"Col": 2,
-						"Label": "Composting (passive windrow)",
-						"CellType": "percent",
-						"Unit": "passive windrow"
-					},
-					"DigesterCoveredLagoons": {
-						"Row": 4,
-						"Col": 2,
-						"Label": "Digester / covered lagoons",
-						"CellType": "percent"
-					},
-					"DirectProcessing": {
-						"Row": 5,
-						"Col": 2,
-						"Label": "Direct processing",
-						"CellType": "percent"
-					},
-					"DirectApplication": {
-						"Row": 6,
-						"Col": 2,
-						"Label": "Direct application",
-						"CellType": "formula"
-					}
-				}
-			}
-		},
-		{
-			"TableName": "X_Table_Poultry_Stage2MMS_PoultryManureWithBedding_Destinations",
 			"MatrixType": "RowsToCols",
 			"NumberOfRows": 6,
 			"NumberOfCols": 4,

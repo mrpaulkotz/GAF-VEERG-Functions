@@ -1,73 +1,12 @@
 {
 	"schemaVersion": 1,
 	"generatedFrom": "4_5_ManureManagement_Swine_WIP_v06.xlsx",
-	"generatedAt": "2026-07-14T13:38:11Z",
+	"generatedAt": "2026-07-14T23:34:47Z",
 	"InputCells": [
-		{
-			"CellName": "X_Cell_Site_AverageTemperature",
-			"Label": "Average temperature for reporting period",
-			"CellType": "number"
-		},
-		{
-			"CellName": "X_Cell_Site_ClimateZone",
-			"Label": "Climate zone",
-			"CellType": "text"
-		},
-		{
-			"CellName": "X_Cell_Site_Elevation",
-			"Label": "Elevation",
-			"CellType": "number"
-		},
 		{
 			"CellName": "X_Cell_Site_FarmName",
 			"Label": "Farm name",
 			"CellType": "text"
-		},
-		{
-			"CellName": "X_Cell_Site_FrostDays",
-			"Label": "Number of frost days for reporting period",
-			"CellType": "number"
-		},
-		{
-			"CellName": "X_Cell_Site_LeachingZone",
-			"Label": "Leaching zone",
-			"CellType": "select",
-			"Options": {
-				"YES - In leaching zone": "YES - In leaching zone",
-				"NO - Not in leaching zone": "NO - Not in leaching zone"
-			}
-		},
-		{
-			"CellName": "X_Cell_Site_MapPetRatio",
-			"Label": "MAP:PET ratio",
-			"CellType": "number"
-		},
-		{
-			"CellName": "X_Cell_Site_PotentialEvapotranspiration",
-			"Label": "Potential evapotranspiration for reporting period",
-			"CellType": "number"
-		},
-		{
-			"CellName": "X_Cell_Site_RainfallZone",
-			"Label": "Rainfall zone",
-			"CellType": "text"
-		},
-		{
-			"CellName": "X_Cell_Site_Region",
-			"Label": "Region (ABS Statistical area level 4) if state is WA",
-			"CellType": "select",
-			"Options": {
-				"Bunbury": "Bunbury",
-				"Mandurah": "Mandurah",
-				"Perth - Inner": "Perth - Inner",
-				"Perth - North East": "Perth - North East",
-				"Perth - North West": "Perth - North West",
-				"Perth - South East": "Perth - South East",
-				"Perth - South West": "Perth - South West",
-				"Western Australia - Wheat Belt": "Western Australia - Wheat Belt",
-				"Western Australia - Outback (North)": "Western Australia - Outback (North)",
-				"Western Australia - Outback (South)": "Western Australia - Outback (South)"
-			}
 		},
 		{
 			"CellName": "X_Cell_Site_ReportingEntityName",
@@ -95,9 +34,40 @@
 			}
 		},
 		{
-			"CellName": "X_Cell_Site_TemperatureZone",
-			"Label": "Temperature zone",
-			"CellType": "text"
+			"CellName": "X_Cell_Site_Region",
+			"Label": "Region (ABS Statistical area level 4) if state is WA",
+			"CellType": "select",
+			"Options": {
+				"Bunbury": "Bunbury",
+				"Mandurah": "Mandurah",
+				"Perth - Inner": "Perth - Inner",
+				"Perth - North East": "Perth - North East",
+				"Perth - North West": "Perth - North West",
+				"Perth - South East": "Perth - South East",
+				"Perth - South West": "Perth - South West",
+				"Western Australia - Wheat Belt": "Western Australia - Wheat Belt",
+				"Western Australia - Outback (North)": "Western Australia - Outback (North)",
+				"Western Australia - Outback (South)": "Western Australia - Outback (South)"
+			}
+		},
+		{
+			"CellName": "X_Cell_Site_LeachingZone",
+			"Label": "Leaching zone",
+			"CellType": "select",
+			"Options": {
+				"YES - In leaching zone": "YES - In leaching zone",
+				"NO - Not in leaching zone": "NO - Not in leaching zone"
+			}
+		},
+		{
+			"CellName": "X_Cell_Site_Elevation",
+			"Label": "Elevation",
+			"CellType": "number"
+		},
+		{
+			"CellName": "X_Cell_Site_AverageTemperature",
+			"Label": "Average temperature for reporting period",
+			"CellType": "number"
 		},
 		{
 			"CellName": "X_Cell_Site_TotalRainfall",
@@ -105,30 +75,39 @@
 			"CellType": "number"
 		},
 		{
+			"CellName": "X_Cell_Site_PotentialEvapotranspiration",
+			"Label": "Potential evapotranspiration for reporting period",
+			"CellType": "number"
+		},
+		{
+			"CellName": "X_Cell_Site_FrostDays",
+			"Label": "Number of frost days for reporting period",
+			"CellType": "number"
+		},
+		{
+			"CellName": "X_Cell_Site_MapPetRatio",
+			"Label": "MAP:PET ratio",
+			"CellType": "number"
+		},
+		{
+			"CellName": "X_Cell_Site_RainfallZone",
+			"Label": "Rainfall zone",
+			"CellType": "text"
+		},
+		{
+			"CellName": "X_Cell_Site_ClimateZone",
+			"Label": "Climate zone",
+			"CellType": "text"
+		},
+		{
 			"CellName": "X_Cell_Site_WetOrDryClimateZone",
 			"Label": "Wet or dry climate zone",
 			"CellType": "text"
 		},
 		{
-			"CellName": "X_Cell_Swine_ManureAppliedIrrigationMethod",
-			"Label": "Irrigation method",
-			"CellType": "select",
-			"Options": {
-				"Not irrigated": "Not irrigated",
-				"Drip irrigation": "Drip irrigation",
-				"Sprinkler irrigation": "Sprinkler irrigation",
-				"Surface irrigation": "Surface irrigation",
-				"Other irrigation": "Other irrigation"
-			}
-		},
-		{
-			"CellName": "X_Cell_Swine_ManureAppliedProductionSystem",
-			"Label": "Where manure was deposited on farm soils, what is the closest match?",
-			"CellType": "select",
-			"Options": {
-				"Pasture": "Pasture",
-				"Crop": "Crop"
-			}
+			"CellName": "X_Cell_Site_TemperatureZone",
+			"Label": "Temperature zone",
+			"CellType": "text"
 		},
 		{
 			"CellName": "X_Cell_Swine_ProductionSystem",
@@ -138,6 +117,15 @@
 				"Conventional housing": "Conventional housing",
 				"Deep litter housing": "Deep litter housing",
 				"Outdoor/free range": "Outdoor/free range"
+			}
+		},
+		{
+			"CellName": "X_Cell_Swine_Stage1MMS_AnaerobicLagoon_SolidsSeparated",
+			"Label": "Were solids separated from Anaerobic lagoon?",
+			"CellType": "select",
+			"Options": {
+				"Yes": "Yes",
+				"No": "No"
 			}
 		},
 		{
@@ -152,48 +140,8 @@
 			"CanOverWriteFormula": true
 		},
 		{
-			"CellName": "X_Cell_Swine_Stage1MMS_AnaerobicLagoon_SolidsSeparated",
-			"Label": "Were solids separated from Anaerobic lagoon?",
-			"CellType": "select",
-			"Options": {
-				"Yes": "Yes",
-				"No": "No"
-			}
-		},
-		{
-			"CellName": "X_Cell_Swine_Stage1MMS_DeepLitter_AmountSeparated_Method1",
-			"Label": "Percent solids separated from Deep litter (Method 1)",
-			"CellType": "percent"
-		},
-		{
-			"CellName": "X_Cell_Swine_Stage1MMS_DeepLitter_AmountSeparated_Method2",
-			"Label": "Percent solids separated from Deep litter (Method 2)",
-			"CellType": "percent",
-			"CanOverWriteFormula": true
-		},
-		{
-			"CellName": "X_Cell_Swine_Stage1MMS_DeepLitter_SolidsSeparated",
-			"Label": "Were solids separated from Deep litter?",
-			"CellType": "select",
-			"Options": {
-				"Yes": "Yes",
-				"No": "No"
-			}
-		},
-		{
-			"CellName": "X_Cell_Swine_Stage1MMS_DigesterCoveredLagoons_AmountSeparated_Method1",
-			"Label": "Percent solids separated from Digester / covered lagoons (Method 1)",
-			"CellType": "percent"
-		},
-		{
-			"CellName": "X_Cell_Swine_Stage1MMS_DigesterCoveredLagoons_AmountSeparated_Method2",
-			"Label": "Percent solids separated from Digester / covered lagoons (Method 2)",
-			"CellType": "percent",
-			"CanOverWriteFormula": true
-		},
-		{
-			"CellName": "X_Cell_Swine_Stage1MMS_DigesterCoveredLagoons_SolidsSeparated",
-			"Label": "Were solids separated from Digester / covered lagoons?",
+			"CellName": "X_Cell_Swine_Stage1MMS_Drylot_SolidsSeparated",
+			"Label": "Were solids separated from Drylot (feed pad)?",
 			"CellType": "select",
 			"Options": {
 				"Yes": "Yes",
@@ -212,8 +160,48 @@
 			"CanOverWriteFormula": true
 		},
 		{
-			"CellName": "X_Cell_Swine_Stage1MMS_Drylot_SolidsSeparated",
-			"Label": "Were solids separated from Drylot (feed pad)?",
+			"CellName": "X_Cell_Swine_Stage1MMS_DigesterCoveredLagoons_SolidsSeparated",
+			"Label": "Were solids separated from Digester / covered lagoons?",
+			"CellType": "select",
+			"Options": {
+				"Yes": "Yes",
+				"No": "No"
+			}
+		},
+		{
+			"CellName": "X_Cell_Swine_Stage1MMS_DigesterCoveredLagoons_AmountSeparated_Method1",
+			"Label": "Percent solids separated from Digester / covered lagoons (Method 1)",
+			"CellType": "percent"
+		},
+		{
+			"CellName": "X_Cell_Swine_Stage1MMS_DigesterCoveredLagoons_AmountSeparated_Method2",
+			"Label": "Percent solids separated from Digester / covered lagoons (Method 2)",
+			"CellType": "percent",
+			"CanOverWriteFormula": true
+		},
+		{
+			"CellName": "X_Cell_Swine_Stage1MMS_DeepLitter_SolidsSeparated",
+			"Label": "Were solids separated from Deep litter?",
+			"CellType": "select",
+			"Options": {
+				"Yes": "Yes",
+				"No": "No"
+			}
+		},
+		{
+			"CellName": "X_Cell_Swine_Stage1MMS_DeepLitter_AmountSeparated_Method1",
+			"Label": "Percent solids separated from Deep litter (Method 1)",
+			"CellType": "percent"
+		},
+		{
+			"CellName": "X_Cell_Swine_Stage1MMS_DeepLitter_AmountSeparated_Method2",
+			"Label": "Percent solids separated from Deep litter (Method 2)",
+			"CellType": "percent",
+			"CanOverWriteFormula": true
+		},
+		{
+			"CellName": "X_Cell_Swine_Stage1MMS_PitStorage_SolidsSeparated",
+			"Label": "Were solids separated from Pit storage?",
 			"CellType": "select",
 			"Options": {
 				"Yes": "Yes",
@@ -232,12 +220,24 @@
 			"CanOverWriteFormula": true
 		},
 		{
-			"CellName": "X_Cell_Swine_Stage1MMS_PitStorage_SolidsSeparated",
-			"Label": "Were solids separated from Pit storage?",
+			"CellName": "X_Cell_Swine_ManureAppliedProductionSystem",
+			"Label": "Where manure was deposited on farm soils, what is the closest match?",
 			"CellType": "select",
 			"Options": {
-				"Yes": "Yes",
-				"No": "No"
+				"Pasture": "Pasture",
+				"Crop": "Crop"
+			}
+		},
+		{
+			"CellName": "X_Cell_Swine_ManureAppliedIrrigationMethod",
+			"Label": "Irrigation method",
+			"CellType": "select",
+			"Options": {
+				"Not irrigated": "Not irrigated",
+				"Drip irrigation": "Drip irrigation",
+				"Sprinkler irrigation": "Sprinkler irrigation",
+				"Surface irrigation": "Surface irrigation",
+				"Other irrigation": "Other irrigation"
 			}
 		}
 	],
@@ -351,7 +351,7 @@
 			}
 		},
 		{
-			"TableName": "X_Table_Swine_Stage1MMS_DeepLitter",
+			"TableName": "X_Table_Swine_Stage1MMS_Drylot",
 			"MatrixType": "ColsToRows",
 			"NumberOfRows": 2,
 			"NumberOfCols": 4,
@@ -363,11 +363,12 @@
 			},
 			"Cols": {
 				"Column": {
-					"DeepLitter": {
+					"Drylot": {
 						"Row": 2,
 						"Col": 2,
-						"Label": "Deep litter",
-						"CellType": "percent"
+						"Label": "Drylot (feed pad)",
+						"CellType": "percent",
+						"Unit": "feed pad"
 					}
 				}
 			}
@@ -395,7 +396,7 @@
 			}
 		},
 		{
-			"TableName": "X_Table_Swine_Stage1MMS_Drylot",
+			"TableName": "X_Table_Swine_Stage1MMS_DeepLitter",
 			"MatrixType": "ColsToRows",
 			"NumberOfRows": 2,
 			"NumberOfCols": 4,
@@ -407,12 +408,11 @@
 			},
 			"Cols": {
 				"Column": {
-					"Drylot": {
+					"DeepLitter": {
 						"Row": 2,
 						"Col": 2,
-						"Label": "Drylot (feed pad)",
-						"CellType": "percent",
-						"Unit": "feed pad"
+						"Label": "Deep litter",
+						"CellType": "percent"
 					}
 				}
 			}
@@ -543,9 +543,9 @@
 			}
 		},
 		{
-			"TableName": "X_Table_Swine_Stage2MMS_From_DeepLitter",
+			"TableName": "X_Table_Swine_Stage2MMS_From_Drylot",
 			"MatrixType": "ColsToRows",
-			"NumberOfRows": 5,
+			"NumberOfRows": 6,
 			"NumberOfCols": 4,
 			"ColumnNames": {
 				"ManureWasSentToThisMMSPleaseCompleteThisSection": "Manure was sent to this MMS, please complete this section.",
@@ -567,14 +567,20 @@
 						"Label": "Digester / covered lagoons",
 						"CellType": "percent"
 					},
-					"PitStorage": {
+					"DeepLitter": {
 						"Row": 4,
+						"Col": 2,
+						"Label": "Deep litter",
+						"CellType": "percent"
+					},
+					"PitStorage": {
+						"Row": 5,
 						"Col": 2,
 						"Label": "Pit storage",
 						"CellType": "percent"
 					},
 					"DirectApplication": {
-						"Row": 5,
+						"Row": 6,
 						"Col": 2,
 						"Label": "Direct application",
 						"CellType": "formula"
@@ -583,9 +589,9 @@
 			}
 		},
 		{
-			"TableName": "X_Table_Swine_Stage2MMS_From_DeepLitter_Destinations",
+			"TableName": "X_Table_Swine_Stage2MMS_From_Drylot_Destinations",
 			"MatrixType": "RowsToCols",
-			"NumberOfRows": 5,
+			"NumberOfRows": 6,
 			"NumberOfCols": 4,
 			"ColumnNames": {
 				"Col1": "",
@@ -703,9 +709,9 @@
 			}
 		},
 		{
-			"TableName": "X_Table_Swine_Stage2MMS_From_Drylot",
+			"TableName": "X_Table_Swine_Stage2MMS_From_DeepLitter",
 			"MatrixType": "ColsToRows",
-			"NumberOfRows": 6,
+			"NumberOfRows": 5,
 			"NumberOfCols": 4,
 			"ColumnNames": {
 				"ManureWasSentToThisMMSPleaseCompleteThisSection": "Manure was sent to this MMS, please complete this section.",
@@ -727,20 +733,14 @@
 						"Label": "Digester / covered lagoons",
 						"CellType": "percent"
 					},
-					"DeepLitter": {
-						"Row": 4,
-						"Col": 2,
-						"Label": "Deep litter",
-						"CellType": "percent"
-					},
 					"PitStorage": {
-						"Row": 5,
+						"Row": 4,
 						"Col": 2,
 						"Label": "Pit storage",
 						"CellType": "percent"
 					},
 					"DirectApplication": {
-						"Row": 6,
+						"Row": 5,
 						"Col": 2,
 						"Label": "Direct application",
 						"CellType": "formula"
@@ -749,9 +749,9 @@
 			}
 		},
 		{
-			"TableName": "X_Table_Swine_Stage2MMS_From_Drylot_Destinations",
+			"TableName": "X_Table_Swine_Stage2MMS_From_DeepLitter_Destinations",
 			"MatrixType": "RowsToCols",
-			"NumberOfRows": 6,
+			"NumberOfRows": 5,
 			"NumberOfCols": 4,
 			"ColumnNames": {
 				"Col1": "",

@@ -1,199 +1,12 @@
 {
 	"schemaVersion": 1,
 	"generatedFrom": "6_AgriculturalResidue_WIP_v03.xlsx",
-	"generatedAt": "2026-07-14T13:38:37Z",
+	"generatedAt": "2026-07-14T23:35:10Z",
 	"InputCells": [
-		{
-			"CellName": "X_Cell_Crop_AreaUnderCropping",
-			"Label": "Area under cropping",
-			"CellType": "number"
-		},
-		{
-			"CellName": "X_Cell_Crop_AverageWeightPerBale",
-			"Label": "Average weight per bale",
-			"CellType": "number"
-		},
-		{
-			"CellName": "X_Cell_Crop_CropPurpose",
-			"Label": "Crop purpose",
-			"CellType": "select",
-			"Options": {
-				"Cash grain crop": "Cash grain crop",
-				"Cash crop for hay/silage": "Cash crop for hay/silage",
-				"Cover crop": "Cover crop"
-			}
-		},
-		{
-			"CellName": "X_Cell_Crop_CropType",
-			"Label": "Crop type",
-			"CellType": "select",
-			"Options": {
-				"Wheat": "Wheat",
-				"Barley": "Barley",
-				"Maize": "Maize",
-				"Oats": "Oats",
-				"Rice": "Rice",
-				"Sorghum": "Sorghum",
-				"Triticale": "Triticale",
-				"Other cereals": "Other cereals",
-				"Pulses": "Pulses",
-				"Tubers and roots": "Tubers and roots",
-				"Peanuts": "Peanuts",
-				"Sugar cane": "Sugar cane",
-				"Cotton": "Cotton",
-				"Hops": "Hops",
-				"Oilseeds": "Oilseeds",
-				"Forage crops": "Forage crops",
-				"Other annual crops": "Other annual crops",
-				"Other perennial crops": "Other perennial crops"
-			}
-		},
-		{
-			"CellName": "X_Cell_Crop_IrrigationMethod",
-			"Label": "Irrigation method",
-			"CellType": "select",
-			"Options": {
-				"Not irrigated": "Not irrigated",
-				"Drip irrigation": "Drip irrigation",
-				"Sprinkler irrigation": "Sprinkler irrigation",
-				"Surface irrigation": "Surface irrigation",
-				"Other irrigation": "Other irrigation"
-			}
-		},
-		{
-			"CellName": "X_Cell_Crop_NumberOfBales",
-			"Label": "Number of bales",
-			"CellType": "number"
-		},
-		{
-			"CellName": "X_Cell_Crop_PercentResidueBaled",
-			"Label": "Percentage of residue that was baled",
-			"CellType": "percent"
-		},
-		{
-			"CellName": "X_Cell_Crop_PercentResidueBurned",
-			"Label": "Percentage of residue that was burned",
-			"CellType": "percent"
-		},
-		{
-			"CellName": "X_Cell_Crop_PercentResidueGrazed",
-			"Label": "Percentage of residue that was grazed",
-			"CellType": "percent"
-		},
-		{
-			"CellName": "X_Cell_Crop_TotalProductionOfCrop",
-			"Label": "Total production of crop³",
-			"CellType": "number"
-		},
-		{
-			"CellName": "X_Cell_Crop_YieldPerHectare",
-			"Label": "Cash grain crop yield per hectare¹",
-			"CellType": "number"
-		},
-		{
-			"CellName": "X_Cell_Pasture_AreaRemovedOrRenewed",
-			"Label": "Area of pasture renewed or removed",
-			"CellType": "number"
-		},
-		{
-			"CellName": "X_Cell_Pasture_AreaUnderPasture",
-			"Label": "Area under pasture",
-			"CellType": "number"
-		},
-		{
-			"CellName": "X_Cell_Pasture_IrrigationMethod",
-			"Label": "Irrigation method",
-			"CellType": "select",
-			"Options": {
-				"Not irrigated": "Not irrigated",
-				"Drip irrigation": "Drip irrigation",
-				"Sprinkler irrigation": "Sprinkler irrigation",
-				"Surface irrigation": "Surface irrigation",
-				"Other irrigation": "Other irrigation"
-			}
-		},
-		{
-			"CellName": "X_Cell_Pasture_PastureType",
-			"Label": "Pasture type",
-			"CellType": "select",
-			"Options": {
-				"Annual grass": "Annual grass",
-				"Grass clover mixture": "Grass clover mixture",
-				"Lucerne": "Lucerne",
-				"Other legume": "Other legume",
-				"Perennial pasture": "Perennial pasture"
-			}
-		},
-		{
-			"CellName": "X_Cell_Pasture_YieldPerHectare",
-			"Label": "Pasture yield",
-			"CellType": "number"
-		},
-		{
-			"CellName": "X_Cell_Site_AverageTemperature",
-			"Label": "Average temperature for reporting period",
-			"CellType": "number"
-		},
-		{
-			"CellName": "X_Cell_Site_ClimateZone",
-			"Label": "Climate zone",
-			"CellType": "text"
-		},
-		{
-			"CellName": "X_Cell_Site_Elevation",
-			"Label": "Elevation",
-			"CellType": "number"
-		},
 		{
 			"CellName": "X_Cell_Site_FarmName",
 			"Label": "Farm name",
 			"CellType": "text"
-		},
-		{
-			"CellName": "X_Cell_Site_FrostDays",
-			"Label": "Number of frost days for reporting period",
-			"CellType": "number"
-		},
-		{
-			"CellName": "X_Cell_Site_LeachingZone",
-			"Label": "Leaching zone",
-			"CellType": "select",
-			"Options": {
-				"YES - In leaching zone": "YES - In leaching zone",
-				"NO - Not in leaching zone": "NO - Not in leaching zone"
-			}
-		},
-		{
-			"CellName": "X_Cell_Site_MapPetRatio",
-			"Label": "MAP:PET ratio",
-			"CellType": "number"
-		},
-		{
-			"CellName": "X_Cell_Site_PotentialEvapotranspiration",
-			"Label": "Potential evapotranspiration for reporting period",
-			"CellType": "number"
-		},
-		{
-			"CellName": "X_Cell_Site_RainfallZone",
-			"Label": "Rainfall zone",
-			"CellType": "text"
-		},
-		{
-			"CellName": "X_Cell_Site_Region",
-			"Label": "Region (ABS Statistical area level 4) if state is WA",
-			"CellType": "select",
-			"Options": {
-				"Bunbury": "Bunbury",
-				"Mandurah": "Mandurah",
-				"Perth - Inner": "Perth - Inner",
-				"Perth - North East": "Perth - North East",
-				"Perth - North West": "Perth - North West",
-				"Perth - South East": "Perth - South East",
-				"Perth - South West": "Perth - South West",
-				"Western Australia - Wheat Belt": "Western Australia - Wheat Belt",
-				"Western Australia - Outback (North)": "Western Australia - Outback (North)",
-				"Western Australia - Outback (South)": "Western Australia - Outback (South)"
-			}
 		},
 		{
 			"CellName": "X_Cell_Site_ReportingEntityName",
@@ -221,9 +34,40 @@
 			}
 		},
 		{
-			"CellName": "X_Cell_Site_TemperatureZone",
-			"Label": "Temperature zone",
-			"CellType": "text"
+			"CellName": "X_Cell_Site_Region",
+			"Label": "Region (ABS Statistical area level 4) if state is WA",
+			"CellType": "select",
+			"Options": {
+				"Bunbury": "Bunbury",
+				"Mandurah": "Mandurah",
+				"Perth - Inner": "Perth - Inner",
+				"Perth - North East": "Perth - North East",
+				"Perth - North West": "Perth - North West",
+				"Perth - South East": "Perth - South East",
+				"Perth - South West": "Perth - South West",
+				"Western Australia - Wheat Belt": "Western Australia - Wheat Belt",
+				"Western Australia - Outback (North)": "Western Australia - Outback (North)",
+				"Western Australia - Outback (South)": "Western Australia - Outback (South)"
+			}
+		},
+		{
+			"CellName": "X_Cell_Site_LeachingZone",
+			"Label": "Leaching zone",
+			"CellType": "select",
+			"Options": {
+				"YES - In leaching zone": "YES - In leaching zone",
+				"NO - Not in leaching zone": "NO - Not in leaching zone"
+			}
+		},
+		{
+			"CellName": "X_Cell_Site_Elevation",
+			"Label": "Elevation",
+			"CellType": "number"
+		},
+		{
+			"CellName": "X_Cell_Site_AverageTemperature",
+			"Label": "Average temperature for reporting period",
+			"CellType": "number"
 		},
 		{
 			"CellName": "X_Cell_Site_TotalRainfall",
@@ -231,9 +75,165 @@
 			"CellType": "number"
 		},
 		{
+			"CellName": "X_Cell_Site_PotentialEvapotranspiration",
+			"Label": "Potential evapotranspiration for reporting period",
+			"CellType": "number"
+		},
+		{
+			"CellName": "X_Cell_Site_FrostDays",
+			"Label": "Number of frost days for reporting period",
+			"CellType": "number"
+		},
+		{
+			"CellName": "X_Cell_Site_MapPetRatio",
+			"Label": "MAP:PET ratio",
+			"CellType": "number"
+		},
+		{
+			"CellName": "X_Cell_Site_RainfallZone",
+			"Label": "Rainfall zone",
+			"CellType": "text"
+		},
+		{
+			"CellName": "X_Cell_Site_ClimateZone",
+			"Label": "Climate zone",
+			"CellType": "text"
+		},
+		{
 			"CellName": "X_Cell_Site_WetOrDryClimateZone",
 			"Label": "Wet or dry climate zone",
 			"CellType": "text"
+		},
+		{
+			"CellName": "X_Cell_Site_TemperatureZone",
+			"Label": "Temperature zone",
+			"CellType": "text"
+		},
+		{
+			"CellName": "X_Cell_Crop_CropType",
+			"Label": "Crop type",
+			"CellType": "select",
+			"Options": {
+				"Wheat": "Wheat",
+				"Barley": "Barley",
+				"Maize": "Maize",
+				"Oats": "Oats",
+				"Rice": "Rice",
+				"Sorghum": "Sorghum",
+				"Triticale": "Triticale",
+				"Other cereals": "Other cereals",
+				"Pulses": "Pulses",
+				"Tubers and roots": "Tubers and roots",
+				"Peanuts": "Peanuts",
+				"Sugar cane": "Sugar cane",
+				"Cotton": "Cotton",
+				"Hops": "Hops",
+				"Oilseeds": "Oilseeds",
+				"Forage crops": "Forage crops",
+				"Other annual crops": "Other annual crops",
+				"Other perennial crops": "Other perennial crops"
+			}
+		},
+		{
+			"CellName": "X_Cell_Crop_CropPurpose",
+			"Label": "Crop purpose",
+			"CellType": "select",
+			"Options": {
+				"Cash grain crop": "Cash grain crop",
+				"Cash crop for hay/silage": "Cash crop for hay/silage",
+				"Cover crop": "Cover crop"
+			}
+		},
+		{
+			"CellName": "X_Cell_Crop_IrrigationMethod",
+			"Label": "Irrigation method",
+			"CellType": "select",
+			"Options": {
+				"Not irrigated": "Not irrigated",
+				"Drip irrigation": "Drip irrigation",
+				"Sprinkler irrigation": "Sprinkler irrigation",
+				"Surface irrigation": "Surface irrigation",
+				"Other irrigation": "Other irrigation"
+			}
+		},
+		{
+			"CellName": "X_Cell_Crop_AreaUnderCropping",
+			"Label": "Area under cropping",
+			"CellType": "number"
+		},
+		{
+			"CellName": "X_Cell_Crop_YieldPerHectare",
+			"Label": "Cash grain crop yield per hectare¹",
+			"CellType": "number"
+		},
+		{
+			"CellName": "X_Cell_Crop_TotalProductionOfCrop",
+			"Label": "Total production of crop³",
+			"CellType": "number"
+		},
+		{
+			"CellName": "X_Cell_Crop_PercentResidueBaled",
+			"Label": "Percentage of residue that was baled",
+			"CellType": "percent"
+		},
+		{
+			"CellName": "X_Cell_Crop_AverageWeightPerBale",
+			"Label": "Average weight per bale",
+			"CellType": "number"
+		},
+		{
+			"CellName": "X_Cell_Crop_NumberOfBales",
+			"Label": "Number of bales",
+			"CellType": "number"
+		},
+		{
+			"CellName": "X_Cell_Crop_PercentResidueGrazed",
+			"Label": "Percentage of residue that was grazed",
+			"CellType": "percent"
+		},
+		{
+			"CellName": "X_Cell_Crop_PercentResidueBurned",
+			"Label": "Percentage of residue that was burned",
+			"CellType": "percent"
+		},
+		{
+			"CellName": "X_Cell_Pasture_PastureType",
+			"Label": "Pasture type",
+			"CellType": "select",
+			"Options": {
+				"Annual grass": "Annual grass",
+				"Grass clover mixture": "Grass clover mixture",
+				"Lucerne": "Lucerne",
+				"Other legume": "Other legume",
+				"Perennial pasture": "Perennial pasture"
+			}
+		},
+		{
+			"CellName": "X_Cell_Pasture_IrrigationMethod",
+			"Label": "Irrigation method",
+			"CellType": "select",
+			"Options": {
+				"Not irrigated": "Not irrigated",
+				"Drip irrigation": "Drip irrigation",
+				"Sprinkler irrigation": "Sprinkler irrigation",
+				"Surface irrigation": "Surface irrigation",
+				"Other irrigation": "Other irrigation"
+			}
+		},
+		{
+			"CellName": "X_Cell_Pasture_AreaUnderPasture",
+			"Label": "Area under pasture",
+			"CellType": "number"
+		},
+		{
+			"CellName": "X_Cell_Pasture_YieldPerHectare",
+			"Label": "Pasture yield",
+			"CellType": "number"
+		},
+		{
+			"CellName": "X_Cell_Pasture_AreaRemovedOrRenewed",
+			"Label": "Area of pasture renewed or removed",
+			"CellType": "number"
 		}
 	],
 	"InputTables": []

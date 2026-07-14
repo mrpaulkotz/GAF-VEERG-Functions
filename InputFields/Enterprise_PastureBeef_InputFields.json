@@ -1,8 +1,314 @@
 {
 	"schemaVersion": 1,
 	"generatedFrom": "Enterprise_PastureBeef_WIP_v01.xlsx",
-	"generatedAt": "2026-07-14T13:39:17Z",
+	"generatedAt": "2026-07-14T23:35:51Z",
 	"InputCells": [
+		{
+			"CellName": "X_Cell_Site_FarmName",
+			"Label": "Farm name",
+			"CellType": "text"
+		},
+		{
+			"CellName": "X_Cell_Site_ReportingEntityName",
+			"Label": "Reporting entity name",
+			"CellType": "text"
+		},
+		{
+			"CellName": "X_Cell_Site_StartDate",
+			"Label": "Emissions calculation period start date",
+			"CellType": "date"
+		},
+		{
+			"CellName": "X_Cell_Enterprise_ProductionTimeframeStart",
+			"Label": "Production timeframe start",
+			"CellType": "number",
+			"Hidden": true
+		},
+		{
+			"CellName": "X_Cell_Enterprise_ProductionTimeframeEnd",
+			"Label": "Production timeframe end",
+			"CellType": "number",
+			"Hidden": true
+		},
+		{
+			"CellName": "X_Cell_Enterprise_LiveweightSold",
+			"Label": "Liveweight sold",
+			"CellType": "number"
+		},
+		{
+			"CellName": "X_Cell_Enterprise_LiveweightGrown_Method1",
+			"Label": "Liveweight grown - method 1",
+			"CellType": "number"
+		},
+		{
+			"CellName": "X_Cell_Enterprise_LiveweightGrown_Method2",
+			"Label": "Liveweight grown - method 2",
+			"CellType": "number",
+			"CanOverWriteFormula": true
+		},
+		{
+			"CellName": "X_Cell_Enterprise_ManureProduced_Method1",
+			"Label": "Manure produced - method 1",
+			"CellType": "number"
+		},
+		{
+			"CellName": "X_Cell_Enterprise_ManureProduced_Method2",
+			"Label": "Manure produced - method 2",
+			"CellType": "number",
+			"CanOverWriteFormula": true
+		},
+		{
+			"CellName": "X_Cell_Enterprise_PercentManureSold",
+			"Label": "Percent manure sold",
+			"CellType": "percent"
+		},
+		{
+			"CellName": "X_Cell_Enterprise_PercentManureAplliedAsFertiliserOwnFarm",
+			"Label": "Percent manure applied as fertiliser on own farm",
+			"CellType": "percent"
+		},
+		{
+			"CellName": "X_Cell_Enterprise_PercentIncome_LiveweightSold",
+			"Label": "Percentage of income from liveweight sold",
+			"CellType": "percent"
+		},
+		{
+			"CellName": "X_Cell_Enterprise_PercentIncome_Manure",
+			"Label": "Percentage of income from manure sold",
+			"CellType": "percent"
+		},
+		{
+			"CellName": "X_Cell_Site_State",
+			"Label": "State",
+			"CellType": "select",
+			"Options": {
+				"New South Wales": "New South Wales",
+				"ACT": "ACT",
+				"Victoria": "Victoria",
+				"Queensland": "Queensland",
+				"South Australia": "South Australia",
+				"Western Australia": "Western Australia",
+				"Tasmania": "Tasmania",
+				"Northern Territory": "Northern Territory"
+			}
+		},
+		{
+			"CellName": "X_Cell_Site_Region",
+			"Label": "Region (ABS Statistical area level 4) if state is WA",
+			"CellType": "select",
+			"Options": {
+				"Bunbury": "Bunbury",
+				"Mandurah": "Mandurah",
+				"Perth - Inner": "Perth - Inner",
+				"Perth - North East": "Perth - North East",
+				"Perth - North West": "Perth - North West",
+				"Perth - South East": "Perth - South East",
+				"Perth - South West": "Perth - South West",
+				"Western Australia - Wheat Belt": "Western Australia - Wheat Belt",
+				"Western Australia - Outback (North)": "Western Australia - Outback (North)",
+				"Western Australia - Outback (South)": "Western Australia - Outback (South)"
+			}
+		},
+		{
+			"CellName": "X_Cell_Site_LeachingZone",
+			"Label": "Leaching zone",
+			"CellType": "select",
+			"Options": {
+				"YES - In leaching zone": "YES - In leaching zone",
+				"NO - Not in leaching zone": "NO - Not in leaching zone"
+			}
+		},
+		{
+			"CellName": "X_Cell_Site_Elevation",
+			"Label": "Elevation",
+			"CellType": "number"
+		},
+		{
+			"CellName": "X_Cell_Site_AverageTemperature",
+			"Label": "Average temperature for reporting period",
+			"CellType": "number"
+		},
+		{
+			"CellName": "X_Cell_Site_TotalRainfall",
+			"Label": "Total rainfall for reporting period",
+			"CellType": "number"
+		},
+		{
+			"CellName": "X_Cell_Site_PotentialEvapotranspiration",
+			"Label": "Potential evapotranspiration for reporting period",
+			"CellType": "number"
+		},
+		{
+			"CellName": "X_Cell_Site_FrostDays",
+			"Label": "Number of frost days for reporting period",
+			"CellType": "number"
+		},
+		{
+			"CellName": "X_Cell_Site_MapPetRatio",
+			"Label": "MAP:PET ratio",
+			"CellType": "number"
+		},
+		{
+			"CellName": "X_Cell_Site_RainfallZone",
+			"Label": "Rainfall zone",
+			"CellType": "text"
+		},
+		{
+			"CellName": "X_Cell_Site_ClimateZone",
+			"Label": "Climate zone",
+			"CellType": "text"
+		},
+		{
+			"CellName": "X_Cell_Site_WetOrDryClimateZone",
+			"Label": "Wet or dry climate zone",
+			"CellType": "text"
+		},
+		{
+			"CellName": "X_Cell_Site_TemperatureZone",
+			"Label": "Temperature zone",
+			"CellType": "text"
+		},
+		{
+			"CellName": "X_Cell_PastureBeef_ProductionRegion",
+			"Label": "Livestock production region",
+			"CellType": "select",
+			"DependentOn": "E7",
+			"Options": {}
+		},
+		{
+			"CellName": "X_Cell_PastureBeef_Breed",
+			"Label": "Cattle breed",
+			"CellType": "select",
+			"Options": {
+				"Hereford or Shorthorn breeds": "Hereford or Shorthorn breeds",
+				"Northern Brahman cross breed": "Northern Brahman cross breed"
+			}
+		},
+		{
+			"CellName": "X_Cell_PastureBeef_FencedWater",
+			"Label": "Are all dams and natural water sources fenced off so cattle cannot access them?",
+			"CellType": "select",
+			"Options": {
+				"Yes": "Yes",
+				"No": "No"
+			}
+		},
+		{
+			"CellName": "X_Cell_PastureBeef_GrazingProductionSystem",
+			"Label": "Where did the livestock spend most of their time grazing?",
+			"CellType": "select",
+			"Options": {
+				"Pasture": "Pasture",
+				"Crop": "Crop"
+			}
+		},
+		{
+			"CellName": "X_Cell_PastureBeef_GrazingIrrigationMethod",
+			"Label": "",
+			"CellType": "select",
+			"Options": {
+				"Not irrigated": "Not irrigated",
+				"Drip irrigation": "Drip irrigation",
+				"Sprinkler irrigation": "Sprinkler irrigation",
+				"Surface irrigation": "Surface irrigation",
+				"Other irrigation": "Other irrigation"
+			}
+		},
+		{
+			"CellName": "X_Cell_Pasture_PastureType",
+			"Label": "Pasture type",
+			"CellType": "select",
+			"Options": {
+				"Annual grass": "Annual grass",
+				"Grass clover mixture": "Grass clover mixture",
+				"Lucerne": "Lucerne",
+				"Other legume": "Other legume",
+				"Perennial pasture": "Perennial pasture"
+			}
+		},
+		{
+			"CellName": "X_Cell_Pasture_IrrigationMethod",
+			"Label": "Irrigation method",
+			"CellType": "select",
+			"Options": {
+				"Not irrigated": "Not irrigated",
+				"Drip irrigation": "Drip irrigation",
+				"Sprinkler irrigation": "Sprinkler irrigation",
+				"Surface irrigation": "Surface irrigation",
+				"Other irrigation": "Other irrigation"
+			}
+		},
+		{
+			"CellName": "X_Cell_Pasture_AreaUnderPasture",
+			"Label": "Area under pasture",
+			"CellType": "number"
+		},
+		{
+			"CellName": "X_Cell_Pasture_YieldPerHectare",
+			"Label": "Pasture yield",
+			"CellType": "number"
+		},
+		{
+			"CellName": "X_Cell_Pasture_AreaRemovedOrRenewed",
+			"Label": "Area of pasture renewed or removed",
+			"CellType": "number"
+		},
+		{
+			"CellName": "X_Cell_Fertiliser_ProductionSystem",
+			"Label": "Production system",
+			"CellType": "select",
+			"Options": {
+				"Pasture": "Pasture",
+				"Crop": "Crop"
+			},
+			"Hidden": true,
+			"UseDefault": true,
+			"Default": "Pasture"
+		},
+		{
+			"CellName": "X_Cell_Fertiliser_CropType",
+			"Label": "Crop type",
+			"CellType": "select",
+			"Options": {
+				"Pasture": "Pasture",
+				"Grains": "Grains",
+				"Maize": "Maize",
+				"Cotton": "Cotton"
+			},
+			"Hidden": true,
+			"UseDefault": true,
+			"Default": "Pasture"
+		},
+		{
+			"CellName": "X_Cell_Fertiliser_IrrigationMethod",
+			"Label": "Irrigation method",
+			"CellType": "select",
+			"Options": {
+				"Not irrigated": "Not irrigated",
+				"Drip irrigation": "Drip irrigation",
+				"Sprinkler irrigation": "Sprinkler irrigation",
+				"Surface irrigation": "Surface irrigation",
+				"Other irrigation": "Other irrigation"
+			},
+			"Hidden": true,
+			"DuplicateOf": "X_Cell_Pasture_IrrigationMethod"
+		},
+		{
+			"CellName": "X_Cell_Fertiliser_AreaUnderCropping",
+			"Label": "Area under cropping",
+			"CellType": "number",
+			"Hidden": true,
+			"DuplicateOf": "X_Cell_Pasture_AreaUnderPasture"
+		},
+		{
+			"CellName": "X_Cell_Fuel_IsMetroLocation",
+			"Label": "Is the property in a Metropolitan location?",
+			"CellType": "select",
+			"Options": {
+				"Metro": "Metro",
+				"Non-metro": "Non-metro"
+			}
+		},
 		{
 			"CellName": "X_Cell_Electricity_Location_AmountPurchasedInkWh",
 			"Label": "Amount purchased in kWh",
@@ -31,9 +337,9 @@
 			"CellType": "number"
 		},
 		{
-			"CellName": "X_Cell_Electricity_Market_AmountPurchasedGreenPower",
-			"Label": "Electricity purchased from an accredited GreenPower provider",
-			"CellType": "number"
+			"CellName": "X_Cell_Electricity_Market_RenewablePowerPercentage",
+			"Label": "Renewable Power Percentage",
+			"CellType": "percent"
 		},
 		{
 			"CellName": "X_Cell_Electricity_Market_JurisdictionalRenewablePowerPercentage",
@@ -41,1460 +347,103 @@
 			"CellType": "percent"
 		},
 		{
-			"CellName": "X_Cell_Electricity_Market_RenewablePowerPercentage",
-			"Label": "Renewable Power Percentage",
-			"CellType": "percent"
-		},
-		{
-			"CellName": "X_Cell_Enterprise_LiveweightGrown_Method1",
-			"Label": "Liveweight grown - method 1",
-			"CellType": "number"
-		},
-		{
-			"CellName": "X_Cell_Enterprise_LiveweightGrown_Method2",
-			"Label": "Liveweight grown - method 2",
-			"CellType": "number",
-			"CanOverWriteFormula": true
-		},
-		{
-			"CellName": "X_Cell_Enterprise_LiveweightSold",
-			"Label": "Liveweight sold",
-			"CellType": "number"
-		},
-		{
-			"CellName": "X_Cell_Enterprise_ManureProduced_Method1",
-			"Label": "Manure produced - method 1",
-			"CellType": "number"
-		},
-		{
-			"CellName": "X_Cell_Enterprise_ManureProduced_Method2",
-			"Label": "Manure produced - method 2",
-			"CellType": "number",
-			"CanOverWriteFormula": true
-		},
-		{
-			"CellName": "X_Cell_Enterprise_PercentIncome_LiveweightSold",
-			"Label": "Percentage of income from liveweight sold",
-			"CellType": "percent"
-		},
-		{
-			"CellName": "X_Cell_Enterprise_PercentIncome_Manure",
-			"Label": "Percentage of income from manure sold",
-			"CellType": "percent"
-		},
-		{
-			"CellName": "X_Cell_Enterprise_PercentManureAplliedAsFertiliserOwnFarm",
-			"Label": "Percent manure applied as fertiliser on own farm",
-			"CellType": "percent"
-		},
-		{
-			"CellName": "X_Cell_Enterprise_PercentManureSold",
-			"Label": "Percent manure sold",
-			"CellType": "percent"
-		},
-		{
-			"CellName": "X_Cell_Enterprise_ProductionTimeframeEnd",
-			"Label": "Production timeframe end",
-			"CellType": "number"
-		},
-		{
-			"CellName": "X_Cell_Enterprise_ProductionTimeframeStart",
-			"Label": "Production timeframe start",
-			"CellType": "number"
-		},
-		{
-			"CellName": "X_Cell_Fertiliser_AreaUnderCropping",
-			"Label": "Area under cropping",
-			"CellType": "number"
-		},
-		{
-			"CellName": "X_Cell_Fertiliser_CropType",
-			"Label": "Crop type",
-			"CellType": "select",
-			"Options": {
-				"Pasture": "Pasture",
-				"Grains": "Grains",
-				"Maize": "Maize",
-				"Cotton": "Cotton"
-			}
-		},
-		{
-			"CellName": "X_Cell_Fertiliser_IrrigationMethod",
-			"Label": "Irrigation method",
-			"CellType": "select",
-			"Options": {
-				"Not irrigated": "Not irrigated",
-				"Drip irrigation": "Drip irrigation",
-				"Sprinkler irrigation": "Sprinkler irrigation",
-				"Surface irrigation": "Surface irrigation",
-				"Other irrigation": "Other irrigation"
-			}
-		},
-		{
-			"CellName": "X_Cell_Fertiliser_ProductionSystem",
-			"Label": "Production system",
-			"CellType": "select",
-			"Options": {
-				"Pasture": "Pasture",
-				"Crop": "Crop"
-			}
-		},
-		{
-			"CellName": "X_Cell_Fuel_IsMetroLocation",
-			"Label": "Is the property in a Metropolitan location?",
-			"CellType": "select",
-			"Options": {
-				"Metro": "Metro",
-				"Non-metro": "Non-metro"
-			}
-		},
-		{
-			"CellName": "X_Cell_Pasture_AreaRemovedOrRenewed",
-			"Label": "Area of pasture renewed or removed",
-			"CellType": "number"
-		},
-		{
-			"CellName": "X_Cell_Pasture_AreaUnderPasture",
-			"Label": "Area under pasture",
-			"CellType": "number"
-		},
-		{
-			"CellName": "X_Cell_Pasture_IrrigationMethod",
-			"Label": "Irrigation method",
-			"CellType": "select",
-			"Options": {
-				"Not irrigated": "Not irrigated",
-				"Drip irrigation": "Drip irrigation",
-				"Sprinkler irrigation": "Sprinkler irrigation",
-				"Surface irrigation": "Surface irrigation",
-				"Other irrigation": "Other irrigation"
-			}
-		},
-		{
-			"CellName": "X_Cell_Pasture_PastureType",
-			"Label": "Pasture type",
-			"CellType": "select",
-			"Options": {
-				"Annual grass": "Annual grass",
-				"Grass clover mixture": "Grass clover mixture",
-				"Lucerne": "Lucerne",
-				"Other legume": "Other legume",
-				"Perennial pasture": "Perennial pasture"
-			}
-		},
-		{
-			"CellName": "X_Cell_Pasture_YieldPerHectare",
-			"Label": "Pasture yield",
-			"CellType": "number"
-		},
-		{
-			"CellName": "X_Cell_PastureBeef_Breed",
-			"Label": "Cattle breed",
-			"CellType": "select",
-			"Options": {
-				"Hereford or Shorthorn breeds": "Hereford or Shorthorn breeds",
-				"Northern Brahman cross breed": "Northern Brahman cross breed"
-			},
-			"Group": "Herd",
-			"UseDefault": true,
-			"Default": "Hereford or Shorthorn breeds"
-		},
-		{
-			"CellName": "X_Cell_PastureBeef_FencedWater",
-			"Label": "Are all dams and natural water sources fenced off so cattle cannot access them?",
-			"CellType": "select",
-			"Options": {
-				"Yes": "Yes",
-				"No": "No"
-			}
-		},
-		{
-			"CellName": "X_Cell_PastureBeef_GrazingIrrigationMethod",
-			"Label": "",
-			"CellType": "select",
-			"Options": {
-				"Not irrigated": "Not irrigated",
-				"Drip irrigation": "Drip irrigation",
-				"Sprinkler irrigation": "Sprinkler irrigation",
-				"Surface irrigation": "Surface irrigation",
-				"Other irrigation": "Other irrigation"
-			}
-		},
-		{
-			"CellName": "X_Cell_PastureBeef_GrazingProductionSystem",
-			"Label": "Where did the livestock spend most of their time grazing?",
-			"CellType": "select",
-			"Options": {
-				"Pasture": "Pasture",
-				"Crop": "Crop"
-			}
-		},
-		{
-			"CellName": "X_Cell_PastureBeef_ProductionRegion",
-			"Label": "Livestock production region",
-			"CellType": "select",
-			"DependentOn": "E7",
-			"Options": {}
-		},
-		{
-			"CellName": "X_Cell_Site_AverageTemperature",
-			"Label": "Average temperature for reporting period",
-			"CellType": "number"
-		},
-		{
-			"CellName": "X_Cell_Site_ClimateZone",
-			"Label": "Climate zone",
-			"CellType": "text"
-		},
-		{
-			"CellName": "X_Cell_Site_Elevation",
-			"Label": "Elevation",
-			"CellType": "number"
-		},
-		{
-			"CellName": "X_Cell_Site_FarmName",
-			"Label": "Farm name",
-			"CellType": "text"
-		},
-		{
-			"CellName": "X_Cell_Site_FrostDays",
-			"Label": "Number of frost days for reporting period",
-			"CellType": "number"
-		},
-		{
-			"CellName": "X_Cell_Site_LeachingZone",
-			"Label": "Leaching zone",
-			"CellType": "select",
-			"Options": {
-				"YES - In leaching zone": "YES - In leaching zone",
-				"NO - Not in leaching zone": "NO - Not in leaching zone"
-			}
-		},
-		{
-			"CellName": "X_Cell_Site_MapPetRatio",
-			"Label": "MAP:PET ratio",
-			"CellType": "number"
-		},
-		{
-			"CellName": "X_Cell_Site_PotentialEvapotranspiration",
-			"Label": "Potential evapotranspiration for reporting period",
-			"CellType": "number"
-		},
-		{
-			"CellName": "X_Cell_Site_RainfallZone",
-			"Label": "Rainfall zone",
-			"CellType": "text"
-		},
-		{
-			"CellName": "X_Cell_Site_Region",
-			"Label": "Region (ABS Statistical area level 4) if state is WA",
-			"CellType": "select",
-			"Options": {
-				"Bunbury": "Bunbury",
-				"Mandurah": "Mandurah",
-				"Perth - Inner": "Perth - Inner",
-				"Perth - North East": "Perth - North East",
-				"Perth - North West": "Perth - North West",
-				"Perth - South East": "Perth - South East",
-				"Perth - South West": "Perth - South West",
-				"Western Australia - Wheat Belt": "Western Australia - Wheat Belt",
-				"Western Australia - Outback (North)": "Western Australia - Outback (North)",
-				"Western Australia - Outback (South)": "Western Australia - Outback (South)"
-			}
-		},
-		{
-			"CellName": "X_Cell_Site_ReportingEntityName",
-			"Label": "Reporting entity name",
-			"CellType": "text"
-		},
-		{
-			"CellName": "X_Cell_Site_StartDate",
-			"Label": "Reporting period start date",
-			"CellType": "date",
-			"Group": "Reporting period"
-		},
-		{
-			"CellName": "X_Cell_Site_State",
-			"Label": "State",
-			"CellType": "select",
-			"Options": {
-				"New South Wales": "New South Wales",
-				"ACT": "ACT",
-				"Victoria": "Victoria",
-				"Queensland": "Queensland",
-				"South Australia": "South Australia",
-				"Western Australia": "Western Australia",
-				"Tasmania": "Tasmania",
-				"Northern Territory": "Northern Territory"
-			}
-		},
-		{
-			"CellName": "X_Cell_Site_TemperatureZone",
-			"Label": "Temperature zone",
-			"CellType": "text"
-		},
-		{
-			"CellName": "X_Cell_Site_TotalRainfall",
-			"Label": "Total rainfall for reporting period",
-			"CellType": "number"
-		},
-		{
-			"CellName": "X_Cell_Site_WetOrDryClimateZone",
-			"Label": "Wet or dry climate zone",
-			"CellType": "text"
-		},
-		{
-			"CellName": "X_Cell_TotalElegibleRECsForElectricityProducedOnSite",
-			"Label": "Total elegible RECs for electricity produced on-site and consumed by entity",
+			"CellName": "X_Cell_Electricity_Market_AmountPurchasedGreenPower",
+			"Label": "Electricity purchased from an accredited GreenPower provider",
 			"CellType": "number"
 		},
 		{
 			"CellName": "X_Cell_TotalElegibleVoluntarilySurrenderedRECs",
 			"Label": "Total elegible voluntarily surrendered RECs",
 			"CellType": "number"
+		},
+		{
+			"CellName": "X_Cell_TotalElegibleRECsForElectricityProducedOnSite",
+			"Label": "Total elegible RECs for electricity produced on-site and consumed by entity",
+			"CellType": "number"
 		}
 	],
 	"InputTables": [
 		{
-			"TableName": "Table_Input_LivestockSales348",
-			"MatrixType": "RowsToCols",
-			"NumberOfCols": 6,
-			"ColumnNames": {
-				"TransactionName": "Transaction name",
-				"Class": "Class (select)",
-				"SaleDate": "Sale date",
-				"HeadSold": "Head sold",
-				"AverageWeightPerHead": "Average weight per head (kg)",
-				"TotalLiveweightSold": "Total liveweight sold"
-			},
-			"Rows": {
-				"Row": {
-					"TransactionName": {
-						"CellType": "select",
-						"Options": {
-							"Bulls < 1 year": "Bulls < 1 year",
-							"Bulls > 1 year": "Bulls > 1 year",
-							"Cows < 1 year": "Cows < 1 year",
-							"Cows 1-2 years": "Cows 1-2 years",
-							"Cows 2-3 years": "Cows 2-3 years",
-							"Cows > 3 years": "Cows > 3 years",
-							"Steers < 1 year": "Steers < 1 year",
-							"Steers 1-2 years": "Steers 1-2 years",
-							"Steers 2-3 years": "Steers 2-3 years",
-							"Steers >3 years": "Steers >3 years"
-						}
-					},
-					"Class": {
-						"CellType": "select",
-						"Options": {
-							"Bulls < 1 year": "Bulls < 1 year",
-							"Bulls > 1 year": "Bulls > 1 year",
-							"Cows < 1 year": "Cows < 1 year",
-							"Cows 1-2 years": "Cows 1-2 years",
-							"Cows 2-3 years": "Cows 2-3 years",
-							"Cows > 3 years": "Cows > 3 years",
-							"Steers < 1 year": "Steers < 1 year",
-							"Steers 1-2 years": "Steers 1-2 years",
-							"Steers 2-3 years": "Steers 2-3 years",
-							"Steers >3 years": "Steers >3 years"
-						}
-					},
-					"SaleDate": {
-						"CellType": "date"
-					},
-					"HeadSold": {
-						"CellType": "number"
-					},
-					"AverageWeightPerHead": {
-						"CellType": "number",
-						"Unit": "kg"
-					},
-					"TotalLiveweightSold": {
-						"CellType": "formula"
-					}
-				}
-			}
-		},
-		{
-			"TableName": "Table_Input_LivestockPurchases_Beefcattle49",
-			"MatrixType": "RowsToCols",
-			"NumberOfCols": 8,
-			"ColumnNames": {
-				"TransactionName": "Transaction name",
-				"PurchaseDate": "Purchase date",
-				"Class": "Class (select)",
-				"PurchaseClass": "Purchase class (select)",
-				"SourceRegion": "Source region (Select)",
-				"Quantity": "Quantity (head)",
-				"LiveweightMethod1": "Liveweight (kg/head) Method 1",
-				"LiveweightMethod2": "Liveweight (kg/head) Method 2"
-			},
-			"Rows": {
-				"Row": {
-					"TransactionName": {
-						"CellType": "text"
-					},
-					"PurchaseDate": {
-						"CellType": "date"
-					},
-					"Class": {
-						"CellType": "select",
-						"Options": {
-							"Bulls < 1 year": "Bulls < 1 year",
-							"Bulls > 1 year": "Bulls > 1 year",
-							"Cows < 1 year": "Cows < 1 year",
-							"Cows 1-2 years": "Cows 1-2 years",
-							"Cows 2-3 years": "Cows 2-3 years",
-							"Cows > 3 years": "Cows > 3 years",
-							"Steers < 1 year": "Steers < 1 year",
-							"Steers 1-2 years": "Steers 1-2 years",
-							"Steers 2-3 years": "Steers 2-3 years",
-							"Steers >3 years": "Steers >3 years"
-						}
-					},
-					"PurchaseClass": {
-						"CellType": "select",
-						"Options": {
-							"Cattle, for manufacturing beef": "Cattle, for manufacturing beef",
-							"Cattle, for prime beef": "Cattle, for prime beef",
-							"Cattle, weaners": "Cattle, weaners"
-						}
-					},
-					"SourceRegion": {
-						"CellType": "select",
-						"Options": {
-							"ACT": "ACT",
-							"NSW": "NSW",
-							"SA": "SA",
-							"TAS": "TAS",
-							"VIC": "VIC",
-							"WA - South west": "WA - South west",
-							"WA - Pilbara": "WA - Pilbara",
-							"WA - Kimberley": "WA - Kimberley",
-							"NT - Alice Springs": "NT - Alice Springs",
-							"NT - Barkly": "NT - Barkly",
-							"NT - Northern": "NT - Northern",
-							"QLD - High": "QLD - High",
-							"QLD - Moderate/High": "QLD - Moderate/High",
-							"QLD - Moderate/Low": "QLD - Moderate/Low",
-							"QLD - Low": "QLD - Low",
-							"Australia": "Australia"
-						}
-					},
-					"Quantity": {
-						"CellType": "number",
-						"Unit": "head"
-					},
-					"LiveweightMethod1": {
-						"CellType": "formula",
-						"Unit": "kg/head"
-					},
-					"LiveweightMethod2": {
-						"CellType": "number",
-						"Unit": "kg/head"
-					}
-				}
-			}
-		},
-		{
-			"TableName": "Table_Input_LivestockSales3",
-			"MatrixType": "RowsToCols",
-			"NumberOfCols": 6,
-			"ColumnNames": {
-				"TransactionName": "Transaction name",
-				"Class": "Class (select)",
-				"SaleDate": "Sale date",
-				"HeadSold": "Head sold",
-				"AverageWeightPerHead": "Average weight per head (kg)",
-				"TotalLiveweightSold": "Total liveweight sold"
-			},
-			"Rows": {
-				"Row": {
-					"TransactionName": {
-						"CellType": "select",
-						"Options": {
-							"Bulls < 1 year": "Bulls < 1 year",
-							"Bulls > 1 year": "Bulls > 1 year",
-							"Cows < 1 year": "Cows < 1 year",
-							"Cows 1-2 years": "Cows 1-2 years",
-							"Cows 2-3 years": "Cows 2-3 years",
-							"Cows > 3 years": "Cows > 3 years",
-							"Steers < 1 year": "Steers < 1 year",
-							"Steers 1-2 years": "Steers 1-2 years",
-							"Steers 2-3 years": "Steers 2-3 years",
-							"Steers >3 years": "Steers >3 years"
-						}
-					},
-					"Class": {
-						"CellType": "select",
-						"Options": {
-							"Bulls < 1 year": "Bulls < 1 year",
-							"Bulls > 1 year": "Bulls > 1 year",
-							"Cows < 1 year": "Cows < 1 year",
-							"Cows 1-2 years": "Cows 1-2 years",
-							"Cows 2-3 years": "Cows 2-3 years",
-							"Cows > 3 years": "Cows > 3 years",
-							"Steers < 1 year": "Steers < 1 year",
-							"Steers 1-2 years": "Steers 1-2 years",
-							"Steers 2-3 years": "Steers 2-3 years",
-							"Steers >3 years": "Steers >3 years"
-						}
-					},
-					"SaleDate": {
-						"CellType": "date"
-					},
-					"HeadSold": {
-						"CellType": "number"
-					},
-					"AverageWeightPerHead": {
-						"CellType": "number",
-						"Unit": "kg"
-					},
-					"TotalLiveweightSold": {
-						"CellType": "formula"
-					}
-				}
-			}
-		},
-		{
-			"TableName": "Table_Input_LivestockPurchases_Beefcattle",
-			"MatrixType": "RowsToCols",
-			"NumberOfCols": 8,
-			"ColumnNames": {
-				"TransactionName": "Transaction name",
-				"PurchaseDate": "Purchase date",
-				"Class": "Class (select)",
-				"PurchaseClass": "Purchase class (select)",
-				"SourceRegion": "Source region (Select)",
-				"Quantity": "Quantity (head)",
-				"LiveweightMethod1": "Liveweight (kg/head) Method 1",
-				"LiveweightMethod2": "Liveweight (kg/head) Method 2"
-			},
-			"Rows": {
-				"Row": {
-					"TransactionName": {
-						"CellType": "text"
-					},
-					"PurchaseDate": {
-						"CellType": "date"
-					},
-					"Class": {
-						"CellType": "select",
-						"Options": {
-							"Bulls < 1 year": "Bulls < 1 year",
-							"Bulls > 1 year": "Bulls > 1 year",
-							"Cows < 1 year": "Cows < 1 year",
-							"Cows 1-2 years": "Cows 1-2 years",
-							"Cows 2-3 years": "Cows 2-3 years",
-							"Cows > 3 years": "Cows > 3 years",
-							"Steers < 1 year": "Steers < 1 year",
-							"Steers 1-2 years": "Steers 1-2 years",
-							"Steers 2-3 years": "Steers 2-3 years",
-							"Steers >3 years": "Steers >3 years"
-						}
-					},
-					"PurchaseClass": {
-						"CellType": "select",
-						"Options": {
-							"Cattle, for manufacturing beef": "Cattle, for manufacturing beef",
-							"Cattle, for prime beef": "Cattle, for prime beef",
-							"Cattle, weaners": "Cattle, weaners"
-						}
-					},
-					"SourceRegion": {
-						"CellType": "select",
-						"Options": {
-							"ACT": "ACT",
-							"NSW": "NSW",
-							"SA": "SA",
-							"TAS": "TAS",
-							"VIC": "VIC",
-							"WA - South west": "WA - South west",
-							"WA - Pilbara": "WA - Pilbara",
-							"WA - Kimberley": "WA - Kimberley",
-							"NT - Alice Springs": "NT - Alice Springs",
-							"NT - Barkly": "NT - Barkly",
-							"NT - Northern": "NT - Northern",
-							"QLD - High": "QLD - High",
-							"QLD - Moderate/High": "QLD - Moderate/High",
-							"QLD - Moderate/Low": "QLD - Moderate/Low",
-							"QLD - Low": "QLD - Low",
-							"Australia": "Australia"
-						}
-					},
-					"Quantity": {
-						"CellType": "number",
-						"Unit": "head"
-					},
-					"LiveweightMethod1": {
-						"CellType": "formula",
-						"Unit": "kg/head"
-					},
-					"LiveweightMethod2": {
-						"CellType": "number",
-						"Unit": "kg/head"
-					}
-				}
-			}
-		},
-		{
-			"TableName": "Table_Input_InorganicFertiliser_Brands",
-			"MatrixType": "RowsToCols",
-			"NumberOfCols": 21,
-			"ColumnNames": {
-				"Product": "Product (select)",
-				"AmountAppliedPerHectare": "Amount applied per hectare",
-				"ApplicationUnit": "Application unit",
-				"Density": "Density",
-				"ApplicationArea": "Application area (ha)",
-				"TotalApplied": "Total applied (kg)",
-				"Ingredient1": "Ingredient 1",
-				"Ingredient1Percent": "Ingredient 1 percent",
-				"Ingredient2": "Ingredient 2",
-				"Ingredient2Percent": "Ingredient 2 percent",
-				"Ingredient3": "Ingredient 3",
-				"Ingredient3Percent": "Ingredient 3 percent",
-				"Ingredient4": "Ingredient 4",
-				"Ingredient4Percent": "Ingredient 4 percent",
-				"Ingredient5": "Ingredient 5",
-				"Ingredient5Percent": "Ingredient 5 percent",
-				"Ingredient6": "Ingredient 6",
-				"Ingredient6Percent": "Ingredient 6 percent",
-				"NApplicationRate": "N application rate (kg/ha)",
-				"UreaSource": "Urea source",
-				"AmmoniaSource": "Ammonia source"
-			},
-			"Rows": {
-				"Row": {
-					"Product": {
-						"CellType": "select",
-						"Options": {
-							"Aqua Finish": "Aqua Finish",
-							"Aqua Grow": "Aqua Grow",
-							"Aqua Nitro AN": "Aqua Nitro AN",
-							"Aqua NitroCal": "Aqua NitroCal",
-							"Aqua NitroCal (VI)": "Aqua NitroCal (VI)",
-							"Aqua NitroCal Ultimate": "Aqua NitroCal Ultimate",
-							"Aqua Start": "Aqua Start",
-							"Aqua Thio-Complete": "Aqua Thio-Complete",
-							"Aqua Thio-Emerge": "Aqua Thio-Emerge",
-							"Aqua Thio-Flourish": "Aqua Thio-Flourish",
-							"Asco Fol Plus": "Asco Fol Plus",
-							"Asco Plus": "Asco Plus",
-							"Asco Rhizo Plus": "Asco Rhizo Plus",
-							"Benefit PZ": "Benefit PZ",
-							"Boost-It": "Boost-It",
-							"Boroplus": "Boroplus",
-							"Brevisol Range": "Brevisol Range",
-							"Brexil Line": "Brexil Line",
-							"Bronze": "Bronze",
-							"Bud-Wiser Dry": "Bud-Wiser Dry",
-							"Calbit C": "Calbit C",
-							"Calcium 175": "Calcium 175",
-							"CalPhos": "CalPhos"
-						}
-					},
-					"AmountAppliedPerHectare": {
-						"CellType": "number"
-					},
-					"ApplicationUnit": {
-						"CellType": "formula"
-					},
-					"Density": {
-						"CellType": "formula"
-					},
-					"ApplicationArea": {
-						"CellType": "formula",
-						"Unit": "ha"
-					},
-					"TotalApplied": {
-						"CellType": "formula",
-						"Unit": "kg"
-					},
-					"Ingredient1": {
-						"CellType": "formula"
-					},
-					"Ingredient1Percent": {
-						"CellType": "formula"
-					},
-					"Ingredient2": {
-						"CellType": "formula"
-					},
-					"Ingredient2Percent": {
-						"CellType": "formula"
-					},
-					"Ingredient3": {
-						"CellType": "formula"
-					},
-					"Ingredient3Percent": {
-						"CellType": "formula"
-					},
-					"Ingredient4": {
-						"CellType": "formula"
-					},
-					"Ingredient4Percent": {
-						"CellType": "formula"
-					},
-					"Ingredient5": {
-						"CellType": "formula"
-					},
-					"Ingredient5Percent": {
-						"CellType": "formula"
-					},
-					"Ingredient6": {
-						"CellType": "formula"
-					},
-					"Ingredient6Percent": {
-						"CellType": "formula"
-					},
-					"NApplicationRate": {
-						"CellType": "formula",
-						"Unit": "kg/ha"
-					},
-					"UreaSource": {
-						"CellType": "formula"
-					},
-					"AmmoniaSource": {
-						"CellType": "formula"
-					}
-				}
-			}
-		},
-		{
-			"TableName": "Table_Input_InorganicFertiliser_Custom",
-			"MatrixType": "RowsToCols",
-			"NumberOfCols": 15,
-			"ColumnNames": {
-				"CustomBlendName": "Custom blend name",
-				"AmountApplied": "Amount applied (kg / ha)",
-				"ApplicationArea": "Application area (ha)",
-				"TotalApplied": "Total applied (kg)",
-				"Ingredient1": "Ingredient 1 (select)",
-				"Ingredient1Percent": "Ingredient 1 percent",
-				"Ingredient2": "Ingredient 2",
-				"Ingredient2Percent": "Ingredient 2 percent",
-				"Ingredient3": "Ingredient 3",
-				"Ingredient3Percent": "Ingredient 3 percent",
-				"Ingredient4": "Ingredient 4",
-				"Ingredient4Percent": "Ingredient 4 percent",
-				"NApplicationRate": "N application rate (kg/ha)",
-				"UreaSource": "Urea source (Select)",
-				"AmmoniaSource": "Ammonia source (select)"
-			},
-			"Rows": {
-				"Row": {
-					"CustomBlendName": {
-						"CellType": "text"
-					},
-					"AmountApplied": {
-						"CellType": "number",
-						"Unit": "kg / ha"
-					},
-					"ApplicationArea": {
-						"CellType": "formula",
-						"Unit": "ha"
-					},
-					"TotalApplied": {
-						"CellType": "formula",
-						"Unit": "kg"
-					},
-					"Ingredient1": {
-						"CellType": "select",
-						"Options": {
-							"Monoammonium phosphate (MAP)": "Monoammonium phosphate (MAP)",
-							"Diammonium phosphate (DAP)": "Diammonium phosphate (DAP)",
-							"Urea": "Urea",
-							"Sulphate of ammonia (SOA)": "Sulphate of ammonia (SOA)",
-							"Urea-ammonium nitrate (UAN)": "Urea-ammonium nitrate (UAN)",
-							"Ammonium nitrate (AN)": "Ammonium nitrate (AN)",
-							"Calcium ammonium nitrate (CAN)": "Calcium ammonium nitrate (CAN)",
-							"Nitrogen - Ammoniacal": "Nitrogen - Ammoniacal",
-							"Nitrogen - Nitrate": "Nitrogen - Nitrate",
-							"Nitrogen - Generic": "Nitrogen - Generic",
-							"Phosphorus - Generic": "Phosphorus - Generic",
-							"Potassium - Generic": "Potassium - Generic",
-							"Sulfur - Generic": "Sulfur - Generic",
-							"Zinc - Generic": "Zinc - Generic",
-							"Muriate of potash (MOP)": "Muriate of potash (MOP)",
-							"Double superphosphate": "Double superphosphate",
-							"Single superphosphate (SSP)": "Single superphosphate (SSP)",
-							"Ammonia": "Ammonia",
-							"Calcium nitrate": "Calcium nitrate"
-						}
-					},
-					"Ingredient1Percent": {
-						"CellType": "percent"
-					},
-					"Ingredient2": {
-						"CellType": "select",
-						"Options": {
-							"Monoammonium phosphate (MAP)": "Monoammonium phosphate (MAP)",
-							"Diammonium phosphate (DAP)": "Diammonium phosphate (DAP)",
-							"Urea": "Urea",
-							"Sulphate of ammonia (SOA)": "Sulphate of ammonia (SOA)",
-							"Urea-ammonium nitrate (UAN)": "Urea-ammonium nitrate (UAN)",
-							"Ammonium nitrate (AN)": "Ammonium nitrate (AN)",
-							"Calcium ammonium nitrate (CAN)": "Calcium ammonium nitrate (CAN)",
-							"Nitrogen - Ammoniacal": "Nitrogen - Ammoniacal",
-							"Nitrogen - Nitrate": "Nitrogen - Nitrate",
-							"Nitrogen - Generic": "Nitrogen - Generic",
-							"Phosphorus - Generic": "Phosphorus - Generic",
-							"Potassium - Generic": "Potassium - Generic",
-							"Sulfur - Generic": "Sulfur - Generic",
-							"Zinc - Generic": "Zinc - Generic",
-							"Muriate of potash (MOP)": "Muriate of potash (MOP)",
-							"Double superphosphate": "Double superphosphate",
-							"Single superphosphate (SSP)": "Single superphosphate (SSP)",
-							"Ammonia": "Ammonia",
-							"Calcium nitrate": "Calcium nitrate"
-						}
-					},
-					"Ingredient2Percent": {
-						"CellType": "percent"
-					},
-					"Ingredient3": {
-						"CellType": "select",
-						"Options": {
-							"Monoammonium phosphate (MAP)": "Monoammonium phosphate (MAP)",
-							"Diammonium phosphate (DAP)": "Diammonium phosphate (DAP)",
-							"Urea": "Urea",
-							"Sulphate of ammonia (SOA)": "Sulphate of ammonia (SOA)",
-							"Urea-ammonium nitrate (UAN)": "Urea-ammonium nitrate (UAN)",
-							"Ammonium nitrate (AN)": "Ammonium nitrate (AN)",
-							"Calcium ammonium nitrate (CAN)": "Calcium ammonium nitrate (CAN)",
-							"Nitrogen - Ammoniacal": "Nitrogen - Ammoniacal",
-							"Nitrogen - Nitrate": "Nitrogen - Nitrate",
-							"Nitrogen - Generic": "Nitrogen - Generic",
-							"Phosphorus - Generic": "Phosphorus - Generic",
-							"Potassium - Generic": "Potassium - Generic",
-							"Sulfur - Generic": "Sulfur - Generic",
-							"Zinc - Generic": "Zinc - Generic",
-							"Muriate of potash (MOP)": "Muriate of potash (MOP)",
-							"Double superphosphate": "Double superphosphate",
-							"Single superphosphate (SSP)": "Single superphosphate (SSP)",
-							"Ammonia": "Ammonia",
-							"Calcium nitrate": "Calcium nitrate"
-						}
-					},
-					"Ingredient3Percent": {
-						"CellType": "percent"
-					},
-					"Ingredient4": {
-						"CellType": "select",
-						"Options": {
-							"Monoammonium phosphate (MAP)": "Monoammonium phosphate (MAP)",
-							"Diammonium phosphate (DAP)": "Diammonium phosphate (DAP)",
-							"Urea": "Urea",
-							"Sulphate of ammonia (SOA)": "Sulphate of ammonia (SOA)",
-							"Urea-ammonium nitrate (UAN)": "Urea-ammonium nitrate (UAN)",
-							"Ammonium nitrate (AN)": "Ammonium nitrate (AN)",
-							"Calcium ammonium nitrate (CAN)": "Calcium ammonium nitrate (CAN)",
-							"Nitrogen - Ammoniacal": "Nitrogen - Ammoniacal",
-							"Nitrogen - Nitrate": "Nitrogen - Nitrate",
-							"Nitrogen - Generic": "Nitrogen - Generic",
-							"Phosphorus - Generic": "Phosphorus - Generic",
-							"Potassium - Generic": "Potassium - Generic",
-							"Sulfur - Generic": "Sulfur - Generic",
-							"Zinc - Generic": "Zinc - Generic",
-							"Muriate of potash (MOP)": "Muriate of potash (MOP)",
-							"Double superphosphate": "Double superphosphate",
-							"Single superphosphate (SSP)": "Single superphosphate (SSP)",
-							"Ammonia": "Ammonia",
-							"Calcium nitrate": "Calcium nitrate"
-						}
-					},
-					"Ingredient4Percent": {
-						"CellType": "percent"
-					},
-					"NApplicationRate": {
-						"CellType": "formula",
-						"Unit": "kg/ha"
-					},
-					"UreaSource": {
-						"CellType": "select",
-						"Options": {
-							"Global": "Global",
-							"Canada": "Canada",
-							"China": "China",
-							"Yemen": "Yemen"
-						}
-					},
-					"AmmoniaSource": {
-						"CellType": "select",
-						"Options": {
-							"Global": "Global",
-							"Canada": "Canada",
-							"China": "China",
-							"Yemen": "Yemen"
-						}
-					}
-				}
-			}
-		},
-		{
-			"TableName": "Table_Input_Lime",
-			"MatrixType": "RowsToCols",
-			"NumberOfCols": 8,
-			"ColumnNames": {
-				"Product": "Product",
-				"AmountApplied": "Amount applied (t/hectare)",
-				"ApplicationArea": "Application area (ha)",
-				"TotalAmountApplied": "Total amount applied (t)",
-				"PercentLimeCaCO3": "Percent Lime CaCO3",
-				"PercentDolomiteCaMg2": "Percent Dolomite CaMg(CO3)2",
-				"PercentGypsum": "Percent Gypsum",
-				"Total": "Total"
-			},
-			"Rows": {
-				"Row": {
-					"Product": {
-						"CellType": "text"
-					},
-					"AmountApplied": {
-						"CellType": "number",
-						"Unit": "t/hectare"
-					},
-					"ApplicationArea": {
-						"CellType": "formula",
-						"Unit": "ha"
-					},
-					"TotalAmountApplied": {
-						"CellType": "formula",
-						"Unit": "t"
-					},
-					"PercentLimeCaCO3": {
-						"CellType": "percent"
-					},
-					"PercentDolomiteCaMg2": {
-						"CellType": "percent",
-						"Unit": "CO3"
-					},
-					"PercentGypsum": {
-						"CellType": "percent"
-					},
-					"Total": {
-						"CellType": "formula"
-					}
-				}
-			}
-		},
-		{
-			"TableName": "Table_Input_OrganicFertiliser",
-			"MatrixType": "RowsToCols",
-			"NumberOfCols": 7,
-			"ColumnNames": {
-				"OrganicFertiliserType": "Organic fertiliser type (select)",
-				"PercentageOfNInFertiliser": "Percentage of N in fertiliser",
-				"AmountApplied": "Amount applied (kg/hectare)",
-				"AmountNApplied": "Amount N applied (kg/hectare)",
-				"ApplicationArea": "Application area (ha)",
-				"TotalOrganicFertliserApplied": "Total organic fertliser applied",
-				"TotalNitrogenApplied": "Total nitrogen applied (kg)"
-			},
-			"Rows": {
-				"Row": {
-					"OrganicFertiliserType": {
-						"CellType": "select",
-						"Options": {
-							"Manure - Cattle": "Manure - Cattle",
-							"Manure - Poultry": "Manure - Poultry",
-							"Manure - Swine": "Manure - Swine",
-							"Manure - Other": "Manure - Other",
-							"Other organic fertiliser": "Other organic fertiliser"
-						}
-					},
-					"PercentageOfNInFertiliser": {
-						"CellType": "percent"
-					},
-					"AmountApplied": {
-						"CellType": "number",
-						"Unit": "kg/hectare"
-					},
-					"AmountNApplied": {
-						"CellType": "formula",
-						"Unit": "kg/hectare"
-					},
-					"ApplicationArea": {
-						"CellType": "formula",
-						"Unit": "ha"
-					},
-					"TotalOrganicFertliserApplied": {
-						"CellType": "formula"
-					},
-					"TotalNitrogenApplied": {
-						"CellType": "formula",
-						"Unit": "kg"
-					}
-				}
-			}
-		},
-		{
-			"TableName": "Table_Input_Fuel",
-			"MatrixType": "RowsToCols",
-			"NumberOfCols": 7,
-			"ColumnNames": {
-				"FuelUse": "Fuel use (select)",
-				"FuelType": "Fuel type (select)",
-				"AmountPurchased": "Amount purchased",
-				"AmountUnit": "Amount unit",
-				"PercentConsumed": "Percent consumed",
-				"AmountConsumed": "Amount consumed",
-				"AmountConsumedUnit": "Amount consumed unit"
-			},
-			"Rows": {
-				"Row": {
-					"FuelUse": {
-						"CellType": "select",
-						"Options": {
-							"Generators": "Generators",
-							"Power standalone machinery or heating": "Power standalone machinery or heating",
-							"Aviation": "Aviation",
-							"Cars and light commercial vehicles": "Cars and light commercial vehicles",
-							"Off-road Agriculture and forestry equipment": "Off-road Agriculture and forestry equipment",
-							"Vessels": "Vessels"
-						}
-					},
-					"FuelType": {
-						"CellType": "select",
-						"DependentOn": "FuelUse",
-						"Options": {
-							"Generators": {
-								"Petrol": "Petrol",
-								"Diesel": "Diesel",
-								"Liquefied petroleum gas (LPG)": "Liquefied petroleum gas (LPG)",
-								"Biodiesel": "Biodiesel",
-								"Ethanol": "Ethanol",
-								"Other biofuels": "Other biofuels",
-								"Renewable diesel": "Renewable diesel"
-							},
-							"Power standalone machinery or heating": {
-								"Petrol": "Petrol",
-								"Diesel": "Diesel",
-								"Liquefied petroleum gas (LPG)": "Liquefied petroleum gas (LPG)",
-								"Biodiesel": "Biodiesel",
-								"Ethanol": "Ethanol",
-								"Other biofuels": "Other biofuels",
-								"Renewable diesel": "Renewable diesel",
-								"Natural gas (via pipeline) in GJ": "Natural gas (via pipeline) in GJ",
-								"Town gas in GJ": "Town gas in GJ"
-							},
-							"Aviation": {
-								"Avgas": "Avgas",
-								"Jet A1, Jet B": "Jet A1, Jet B",
-								"Renewable aviation kerosene": "Renewable aviation kerosene"
-							},
-							"Cars and light commercial vehicles": {
-								"Petrol": "Petrol",
-								"Diesel": "Diesel",
-								"Liquefied petroleum gas (LPG)": "Liquefied petroleum gas (LPG)",
-								"Fuel oil": "Fuel oil",
-								"Ethanol": "Ethanol",
-								"Biodiesel": "Biodiesel",
-								"Renewable diesel": "Renewable diesel",
-								"Other biofuels": "Other biofuels"
-							},
-							"Off-road Agriculture and forestry equipment": {
-								"Diesel": "Diesel"
-							},
-							"Vessels": {
-								"Petrol": "Petrol",
-								"Diesel": "Diesel",
-								"Fuel oil": "Fuel oil"
-							}
-						}
-					},
-					"AmountPurchased": {
-						"CellType": "number"
-					},
-					"AmountUnit": {
-						"CellType": "formula"
-					},
-					"PercentConsumed": {
-						"CellType": "formula"
-					},
-					"AmountConsumed": {
-						"CellType": "formula"
-					},
-					"AmountConsumedUnit": {
-						"CellType": "formula"
-					}
-				}
-			}
-		},
-		{
-			"TableName": "Table_Input_RECSurrendered",
-			"MatrixType": "RowsToCols",
-			"NumberOfCols": 6,
-			"ColumnNames": {
-				"Description": "Description",
-				"Source": "Source (select)",
-				"GenerationDate": "Generation date",
-				"NumberOfCertificates": "Number of certificates",
-				"MWh": "MWh",
-				"Elegibility": "Elegibility"
-			},
-			"Rows": {
-				"Row": {
-					"Description": {
-						"CellType": "text"
-					},
-					"Source": {
-						"CellType": "select",
-						"Options": {
-							"Purchased certificate": "Purchased certificate",
-							"Issued for generated electricity": "Issued for generated electricity"
-						}
-					},
-					"GenerationDate": {
-						"CellType": "date"
-					},
-					"NumberOfCertificates": {
-						"CellType": "number"
-					},
-					"MWh": {
-						"CellType": "formula"
-					},
-					"Elegibility": {
-						"CellType": "formula"
-					}
-				}
-			}
-		},
-		{
-			"TableName": "Table_Input_RECConsumedByEntity",
-			"MatrixType": "RowsToCols",
-			"NumberOfCols": 6,
-			"ColumnNames": {
-				"Description": "Description",
-				"Source": "Source",
-				"GenerationDate": "Generation date",
-				"NumberOfCertificates": "Number of certificates",
-				"MWh": "MWh",
-				"Elegibility": "Elegibility"
-			},
-			"Rows": {
-				"Row": {
-					"Description": {
-						"CellType": "text"
-					},
-					"Source": {
-						"CellType": "formula"
-					},
-					"GenerationDate": {
-						"CellType": "date"
-					},
-					"NumberOfCertificates": {
-						"CellType": "number"
-					},
-					"MWh": {
-						"CellType": "formula"
-					},
-					"Elegibility": {
-						"CellType": "formula"
-					}
-				}
-			}
-		},
-		{
-			"TableName": "X_Table_PastureBeef_CrudeProtein_Method1",
+			"TableName": "X_Table_Results_EmissionsForWholeProductionCycle",
 			"MatrixType": "ColsToRows",
-			"NumberOfRows": 5,
-			"NumberOfCols": 10,
+			"NumberOfRows": 6,
+			"NumberOfCols": 2,
 			"ColumnNames": {
-				"BullsUnder1Year": "Bulls < 1 year",
-				"BullsOver1Year": "Bulls > 1 year",
-				"CowsUnder1Year": "Cows < 1 year",
-				"Cows1To2Years": "Cows 1-2 years",
-				"Cows2To3Years": "Cows 2-3 years",
-				"CowsOver3Years": "Cows > 3 years",
-				"SteersUnder1Year": "Steers < 1 year",
-				"Steers1To2Years": "Steers 1-2 years",
-				"Steers2To3Years": "Steers 2-3 years",
-				"SteersOver3Years": "Steers >3 years"
+				"CO2EEmissionsMethod1": "CO2-e emissions method 1",
+				"CO2EEmissionsMethod2": "CO2-e emissions method 2"
 			},
 			"Cols": {
 				"Column": {
-					"Spring": {
+					"01Jan2023To31Dec2023": {
 						"Row": 2,
 						"Col": 2,
-						"Label": "Spring",
+						"Label": "01 Jan 2023 to 31 Dec 2023",
 						"CellType": "formula"
 					},
-					"Summer": {
+					"01Jan2024To31Dec2024": {
 						"Row": 3,
 						"Col": 2,
-						"Label": "Summer",
-						"CellType": "formula"
+						"Label": "01 Jan 2024 to 31 Dec 2024 (This reporting cycle)",
+						"CellType": "formula",
+						"Unit": "This reporting cycle"
 					},
-					"Autumn": {
+					"01Jan2025To31Dec2025": {
 						"Row": 4,
 						"Col": 2,
-						"Label": "Autumn",
+						"Label": "01 Jan 2025 to 31 Dec 2025",
 						"CellType": "formula"
 					},
-					"Winter": {
+					"Row5": {
 						"Row": 5,
 						"Col": 2,
-						"Label": "Winter",
 						"CellType": "formula"
-					}
-				}
-			}
-		},
-		{
-			"TableName": "X_Table_PastureBeef_CrudeProtein_Method2",
-			"MatrixType": "ColsToRows",
-			"NumberOfRows": 13,
-			"NumberOfCols": 10,
-			"ColumnNames": {
-				"BullsUnder1Year": "Bulls < 1 year",
-				"BullsOver1Year": "Bulls > 1 year",
-				"CowsUnder1Year": "Cows < 1 year",
-				"Cows1To2Years": "Cows 1-2 years",
-				"Cows2To3Years": "Cows 2-3 years",
-				"CowsOver3Years": "Cows > 3 years",
-				"SteersUnder1Year": "Steers < 1 year",
-				"Steers1To2Years": "Steers 1-2 years",
-				"Steers2To3Years": "Steers 2-3 years",
-				"SteersOver3Years": "Steers >3 years"
-			},
-			"Cols": {
-				"Column": {
-					"January2024": {
-						"Row": 2,
-						"Col": 2,
-						"Label": "January 2024",
-						"CellType": "number",
-						"CanOverWriteFormula": true
 					},
-					"February2024": {
-						"Row": 3,
-						"Col": 2,
-						"Label": "February 2024",
-						"CellType": "number",
-						"CanOverWriteFormula": true
-					},
-					"March2024": {
-						"Row": 4,
-						"Col": 2,
-						"Label": "March 2024",
-						"CellType": "number",
-						"CanOverWriteFormula": true
-					},
-					"April2024": {
-						"Row": 5,
-						"Col": 2,
-						"Label": "April 2024",
-						"CellType": "number",
-						"CanOverWriteFormula": true
-					},
-					"May2024": {
+					"Row6": {
 						"Row": 6,
 						"Col": 2,
-						"Label": "May 2024",
-						"CellType": "number",
-						"CanOverWriteFormula": true
-					},
-					"June2024": {
-						"Row": 7,
-						"Col": 2,
-						"Label": "June 2024",
-						"CellType": "number",
-						"CanOverWriteFormula": true
-					},
-					"July2024": {
-						"Row": 8,
-						"Col": 2,
-						"Label": "July 2024",
-						"CellType": "number",
-						"CanOverWriteFormula": true
-					},
-					"August2024": {
-						"Row": 9,
-						"Col": 2,
-						"Label": "August 2024",
-						"CellType": "number",
-						"CanOverWriteFormula": true
-					},
-					"September2024": {
-						"Row": 10,
-						"Col": 2,
-						"Label": "September 2024",
-						"CellType": "number",
-						"CanOverWriteFormula": true
-					},
-					"October2024": {
-						"Row": 11,
-						"Col": 2,
-						"Label": "October 2024",
-						"CellType": "number",
-						"CanOverWriteFormula": true
-					},
-					"November2024": {
-						"Row": 12,
-						"Col": 2,
-						"Label": "November 2024",
-						"CellType": "number",
-						"CanOverWriteFormula": true
-					},
-					"December2024": {
-						"Row": 13,
-						"Col": 2,
-						"Label": "December 2024",
-						"CellType": "number",
-						"CanOverWriteFormula": true
-					}
-				}
-			}
-		},
-		{
-			"TableName": "X_Table_PastureBeef_DryMatterDigestibility_Method1",
-			"MatrixType": "ColsToRows",
-			"NumberOfRows": 5,
-			"NumberOfCols": 10,
-			"ColumnNames": {
-				"BullsUnder1Year": "Bulls < 1 year",
-				"BullsOver1Year": "Bulls > 1 year",
-				"CowsUnder1Year": "Cows < 1 year",
-				"Cows1To2Years": "Cows 1-2 years",
-				"Cows2To3Years": "Cows 2-3 years",
-				"CowsOver3Years": "Cows > 3 years",
-				"SteersUnder1Year": "Steers < 1 year",
-				"Steers1To2Years": "Steers 1-2 years",
-				"Steers2To3Years": "Steers 2-3 years",
-				"SteersOver3Years": "Steers >3 years"
-			},
-			"Cols": {
-				"Column": {
-					"Spring": {
-						"Row": 2,
-						"Col": 2,
-						"Label": "Spring",
-						"CellType": "formula"
-					},
-					"Summer": {
-						"Row": 3,
-						"Col": 2,
-						"Label": "Summer",
-						"CellType": "formula"
-					},
-					"Autumn": {
-						"Row": 4,
-						"Col": 2,
-						"Label": "Autumn",
-						"CellType": "formula"
-					},
-					"Winter": {
-						"Row": 5,
-						"Col": 2,
-						"Label": "Winter",
 						"CellType": "formula"
 					}
 				}
 			}
 		},
 		{
-			"TableName": "X_Table_PastureBeef_DryMatterDigestibility_Method2",
+			"TableName": "X_Table_Results_CarbonRemovalsFromPlantings",
 			"MatrixType": "ColsToRows",
-			"NumberOfRows": 13,
-			"NumberOfCols": 10,
+			"NumberOfRows": 6,
+			"NumberOfCols": 1,
 			"ColumnNames": {
-				"BullsUnder1Year": "Bulls < 1 year",
-				"BullsOver1Year": "Bulls > 1 year",
-				"CowsUnder1Year": "Cows < 1 year",
-				"Cows1To2Years": "Cows 1-2 years",
-				"Cows2To3Years": "Cows 2-3 years",
-				"CowsOver3Years": "Cows > 3 years",
-				"SteersUnder1Year": "Steers < 1 year",
-				"Steers1To2Years": "Steers 1-2 years",
-				"Steers2To3Years": "Steers 2-3 years",
-				"SteersOver3Years": "Steers >3 years"
+				"CO2RemovedAttributedToThisEnterprise": "CO2 removed attributed to this enterprise"
 			},
 			"Cols": {
 				"Column": {
-					"January2024": {
+					"01Jan2023To31Dec2023": {
 						"Row": 2,
 						"Col": 2,
-						"Label": "January 2024",
-						"CellType": "number",
-						"CanOverWriteFormula": true
+						"Label": "01 Jan 2023 to 31 Dec 2023",
+						"CellType": "number"
 					},
-					"February2024": {
+					"01Jan2024To31Dec2024": {
 						"Row": 3,
 						"Col": 2,
-						"Label": "February 2024",
+						"Label": "01 Jan 2024 to 31 Dec 2024 (This reporting cycle)",
 						"CellType": "number",
-						"CanOverWriteFormula": true
+						"Unit": "This reporting cycle"
 					},
-					"March2024": {
+					"01Jan2025To31Dec2025": {
 						"Row": 4,
 						"Col": 2,
-						"Label": "March 2024",
-						"CellType": "number",
-						"CanOverWriteFormula": true
+						"Label": "01 Jan 2025 to 31 Dec 2025",
+						"CellType": "text"
 					},
-					"April2024": {
+					"Row5": {
 						"Row": 5,
 						"Col": 2,
-						"Label": "April 2024",
-						"CellType": "number",
-						"CanOverWriteFormula": true
+						"CellType": "number"
 					},
-					"May2024": {
+					"Row6": {
 						"Row": 6,
 						"Col": 2,
-						"Label": "May 2024",
-						"CellType": "number",
-						"CanOverWriteFormula": true
-					},
-					"June2024": {
-						"Row": 7,
-						"Col": 2,
-						"Label": "June 2024",
-						"CellType": "number",
-						"CanOverWriteFormula": true
-					},
-					"July2024": {
-						"Row": 8,
-						"Col": 2,
-						"Label": "July 2024",
-						"CellType": "number",
-						"CanOverWriteFormula": true
-					},
-					"August2024": {
-						"Row": 9,
-						"Col": 2,
-						"Label": "August 2024",
-						"CellType": "number",
-						"CanOverWriteFormula": true
-					},
-					"September2024": {
-						"Row": 10,
-						"Col": 2,
-						"Label": "September 2024",
-						"CellType": "number",
-						"CanOverWriteFormula": true
-					},
-					"October2024": {
-						"Row": 11,
-						"Col": 2,
-						"Label": "October 2024",
-						"CellType": "number",
-						"CanOverWriteFormula": true
-					},
-					"November2024": {
-						"Row": 12,
-						"Col": 2,
-						"Label": "November 2024",
-						"CellType": "number",
-						"CanOverWriteFormula": true
-					},
-					"December2024": {
-						"Row": 13,
-						"Col": 2,
-						"Label": "December 2024",
-						"CellType": "number",
-						"CanOverWriteFormula": true
+						"CellType": "number"
 					}
 				}
 			}
@@ -2108,85 +1057,1144 @@
 			}
 		},
 		{
-			"TableName": "X_Table_Results_CarbonRemovalsFromPlantings",
+			"TableName": "X_Table_PastureBeef_DryMatterDigestibility_Method1",
 			"MatrixType": "ColsToRows",
-			"NumberOfRows": 6,
-			"NumberOfCols": 1,
+			"NumberOfRows": 5,
+			"NumberOfCols": 10,
 			"ColumnNames": {
-				"CO2RemovedAttributedToThisEnterprise": "CO2 removed attributed to this enterprise"
+				"BullsUnder1Year": "Bulls < 1 year",
+				"BullsOver1Year": "Bulls > 1 year",
+				"CowsUnder1Year": "Cows < 1 year",
+				"Cows1To2Years": "Cows 1-2 years",
+				"Cows2To3Years": "Cows 2-3 years",
+				"CowsOver3Years": "Cows > 3 years",
+				"SteersUnder1Year": "Steers < 1 year",
+				"Steers1To2Years": "Steers 1-2 years",
+				"Steers2To3Years": "Steers 2-3 years",
+				"SteersOver3Years": "Steers >3 years"
 			},
 			"Cols": {
 				"Column": {
-					"01Jan2023To31Dec2023": {
+					"Spring": {
 						"Row": 2,
 						"Col": 2,
-						"Label": "01 Jan 2023 to 31 Dec 2023",
-						"CellType": "number"
+						"Label": "Spring",
+						"CellType": "formula"
 					},
-					"01Jan2024To31Dec2024": {
+					"Summer": {
 						"Row": 3,
 						"Col": 2,
-						"Label": "01 Jan 2024 to 31 Dec 2024 (This reporting cycle)",
-						"CellType": "number",
-						"Unit": "This reporting cycle"
+						"Label": "Summer",
+						"CellType": "formula"
 					},
-					"01Jan2025To31Dec2025": {
+					"Autumn": {
 						"Row": 4,
 						"Col": 2,
-						"Label": "01 Jan 2025 to 31 Dec 2025",
-						"CellType": "text"
+						"Label": "Autumn",
+						"CellType": "formula"
 					},
-					"Row5": {
+					"Winter": {
 						"Row": 5,
 						"Col": 2,
-						"CellType": "number"
-					},
-					"Row6": {
-						"Row": 6,
-						"Col": 2,
-						"CellType": "number"
+						"Label": "Winter",
+						"CellType": "formula"
 					}
 				}
 			}
 		},
 		{
-			"TableName": "X_Table_Results_EmissionsForWholeProductionCycle",
+			"TableName": "X_Table_PastureBeef_DryMatterDigestibility_Method2",
 			"MatrixType": "ColsToRows",
-			"NumberOfRows": 6,
-			"NumberOfCols": 2,
+			"NumberOfRows": 13,
+			"NumberOfCols": 10,
 			"ColumnNames": {
-				"CO2EEmissionsMethod1": "CO2-e emissions method 1",
-				"CO2EEmissionsMethod2": "CO2-e emissions method 2"
+				"BullsUnder1Year": "Bulls < 1 year",
+				"BullsOver1Year": "Bulls > 1 year",
+				"CowsUnder1Year": "Cows < 1 year",
+				"Cows1To2Years": "Cows 1-2 years",
+				"Cows2To3Years": "Cows 2-3 years",
+				"CowsOver3Years": "Cows > 3 years",
+				"SteersUnder1Year": "Steers < 1 year",
+				"Steers1To2Years": "Steers 1-2 years",
+				"Steers2To3Years": "Steers 2-3 years",
+				"SteersOver3Years": "Steers >3 years"
 			},
 			"Cols": {
 				"Column": {
-					"01Jan2023To31Dec2023": {
+					"January2024": {
 						"Row": 2,
 						"Col": 2,
-						"Label": "01 Jan 2023 to 31 Dec 2023",
-						"CellType": "formula"
+						"Label": "January 2024",
+						"CellType": "number",
+						"CanOverWriteFormula": true
 					},
-					"01Jan2024To31Dec2024": {
+					"February2024": {
 						"Row": 3,
 						"Col": 2,
-						"Label": "01 Jan 2024 to 31 Dec 2024 (This reporting cycle)",
-						"CellType": "formula",
-						"Unit": "This reporting cycle"
+						"Label": "February 2024",
+						"CellType": "number",
+						"CanOverWriteFormula": true
 					},
-					"01Jan2025To31Dec2025": {
+					"March2024": {
 						"Row": 4,
 						"Col": 2,
-						"Label": "01 Jan 2025 to 31 Dec 2025",
-						"CellType": "formula"
+						"Label": "March 2024",
+						"CellType": "number",
+						"CanOverWriteFormula": true
 					},
-					"Row5": {
+					"April2024": {
 						"Row": 5,
 						"Col": 2,
-						"CellType": "formula"
+						"Label": "April 2024",
+						"CellType": "number",
+						"CanOverWriteFormula": true
 					},
-					"Row6": {
+					"May2024": {
 						"Row": 6,
 						"Col": 2,
+						"Label": "May 2024",
+						"CellType": "number",
+						"CanOverWriteFormula": true
+					},
+					"June2024": {
+						"Row": 7,
+						"Col": 2,
+						"Label": "June 2024",
+						"CellType": "number",
+						"CanOverWriteFormula": true
+					},
+					"July2024": {
+						"Row": 8,
+						"Col": 2,
+						"Label": "July 2024",
+						"CellType": "number",
+						"CanOverWriteFormula": true
+					},
+					"August2024": {
+						"Row": 9,
+						"Col": 2,
+						"Label": "August 2024",
+						"CellType": "number",
+						"CanOverWriteFormula": true
+					},
+					"September2024": {
+						"Row": 10,
+						"Col": 2,
+						"Label": "September 2024",
+						"CellType": "number",
+						"CanOverWriteFormula": true
+					},
+					"October2024": {
+						"Row": 11,
+						"Col": 2,
+						"Label": "October 2024",
+						"CellType": "number",
+						"CanOverWriteFormula": true
+					},
+					"November2024": {
+						"Row": 12,
+						"Col": 2,
+						"Label": "November 2024",
+						"CellType": "number",
+						"CanOverWriteFormula": true
+					},
+					"December2024": {
+						"Row": 13,
+						"Col": 2,
+						"Label": "December 2024",
+						"CellType": "number",
+						"CanOverWriteFormula": true
+					}
+				}
+			}
+		},
+		{
+			"TableName": "X_Table_PastureBeef_CrudeProtein_Method1",
+			"MatrixType": "ColsToRows",
+			"NumberOfRows": 5,
+			"NumberOfCols": 10,
+			"ColumnNames": {
+				"BullsUnder1Year": "Bulls < 1 year",
+				"BullsOver1Year": "Bulls > 1 year",
+				"CowsUnder1Year": "Cows < 1 year",
+				"Cows1To2Years": "Cows 1-2 years",
+				"Cows2To3Years": "Cows 2-3 years",
+				"CowsOver3Years": "Cows > 3 years",
+				"SteersUnder1Year": "Steers < 1 year",
+				"Steers1To2Years": "Steers 1-2 years",
+				"Steers2To3Years": "Steers 2-3 years",
+				"SteersOver3Years": "Steers >3 years"
+			},
+			"Cols": {
+				"Column": {
+					"Spring": {
+						"Row": 2,
+						"Col": 2,
+						"Label": "Spring",
+						"CellType": "formula"
+					},
+					"Summer": {
+						"Row": 3,
+						"Col": 2,
+						"Label": "Summer",
+						"CellType": "formula"
+					},
+					"Autumn": {
+						"Row": 4,
+						"Col": 2,
+						"Label": "Autumn",
+						"CellType": "formula"
+					},
+					"Winter": {
+						"Row": 5,
+						"Col": 2,
+						"Label": "Winter",
+						"CellType": "formula"
+					}
+				}
+			}
+		},
+		{
+			"TableName": "X_Table_PastureBeef_CrudeProtein_Method2",
+			"MatrixType": "ColsToRows",
+			"NumberOfRows": 13,
+			"NumberOfCols": 10,
+			"ColumnNames": {
+				"BullsUnder1Year": "Bulls < 1 year",
+				"BullsOver1Year": "Bulls > 1 year",
+				"CowsUnder1Year": "Cows < 1 year",
+				"Cows1To2Years": "Cows 1-2 years",
+				"Cows2To3Years": "Cows 2-3 years",
+				"CowsOver3Years": "Cows > 3 years",
+				"SteersUnder1Year": "Steers < 1 year",
+				"Steers1To2Years": "Steers 1-2 years",
+				"Steers2To3Years": "Steers 2-3 years",
+				"SteersOver3Years": "Steers >3 years"
+			},
+			"Cols": {
+				"Column": {
+					"January2024": {
+						"Row": 2,
+						"Col": 2,
+						"Label": "January 2024",
+						"CellType": "number",
+						"CanOverWriteFormula": true
+					},
+					"February2024": {
+						"Row": 3,
+						"Col": 2,
+						"Label": "February 2024",
+						"CellType": "number",
+						"CanOverWriteFormula": true
+					},
+					"March2024": {
+						"Row": 4,
+						"Col": 2,
+						"Label": "March 2024",
+						"CellType": "number",
+						"CanOverWriteFormula": true
+					},
+					"April2024": {
+						"Row": 5,
+						"Col": 2,
+						"Label": "April 2024",
+						"CellType": "number",
+						"CanOverWriteFormula": true
+					},
+					"May2024": {
+						"Row": 6,
+						"Col": 2,
+						"Label": "May 2024",
+						"CellType": "number",
+						"CanOverWriteFormula": true
+					},
+					"June2024": {
+						"Row": 7,
+						"Col": 2,
+						"Label": "June 2024",
+						"CellType": "number",
+						"CanOverWriteFormula": true
+					},
+					"July2024": {
+						"Row": 8,
+						"Col": 2,
+						"Label": "July 2024",
+						"CellType": "number",
+						"CanOverWriteFormula": true
+					},
+					"August2024": {
+						"Row": 9,
+						"Col": 2,
+						"Label": "August 2024",
+						"CellType": "number",
+						"CanOverWriteFormula": true
+					},
+					"September2024": {
+						"Row": 10,
+						"Col": 2,
+						"Label": "September 2024",
+						"CellType": "number",
+						"CanOverWriteFormula": true
+					},
+					"October2024": {
+						"Row": 11,
+						"Col": 2,
+						"Label": "October 2024",
+						"CellType": "number",
+						"CanOverWriteFormula": true
+					},
+					"November2024": {
+						"Row": 12,
+						"Col": 2,
+						"Label": "November 2024",
+						"CellType": "number",
+						"CanOverWriteFormula": true
+					},
+					"December2024": {
+						"Row": 13,
+						"Col": 2,
+						"Label": "December 2024",
+						"CellType": "number",
+						"CanOverWriteFormula": true
+					}
+				}
+			}
+		},
+		{
+			"TableName": "Table_Input_LivestockPurchases_Beefcattle49",
+			"MatrixType": "RowsToCols",
+			"NumberOfCols": 8,
+			"ColumnNames": {
+				"TransactionName": "Transaction name",
+				"PurchaseDate": "Purchase date",
+				"Class": "Class (select)",
+				"PurchaseClass": "Purchase class (select)",
+				"SourceRegion": "Source region (Select)",
+				"Quantity": "Quantity (head)",
+				"LiveweightMethod1": "Liveweight (kg/head) Method 1",
+				"LiveweightMethod2": "Liveweight (kg/head) Method 2"
+			},
+			"Rows": {
+				"Row": {
+					"TransactionName": {
+						"CellType": "text"
+					},
+					"PurchaseDate": {
+						"CellType": "date"
+					},
+					"Class": {
+						"CellType": "select",
+						"Options": {
+							"Bulls < 1 year": "Bulls < 1 year",
+							"Bulls > 1 year": "Bulls > 1 year",
+							"Cows < 1 year": "Cows < 1 year",
+							"Cows 1-2 years": "Cows 1-2 years",
+							"Cows 2-3 years": "Cows 2-3 years",
+							"Cows > 3 years": "Cows > 3 years",
+							"Steers < 1 year": "Steers < 1 year",
+							"Steers 1-2 years": "Steers 1-2 years",
+							"Steers 2-3 years": "Steers 2-3 years",
+							"Steers >3 years": "Steers >3 years"
+						}
+					},
+					"PurchaseClass": {
+						"CellType": "select",
+						"Options": {
+							"Cattle, for manufacturing beef": "Cattle, for manufacturing beef",
+							"Cattle, for prime beef": "Cattle, for prime beef",
+							"Cattle, weaners": "Cattle, weaners"
+						}
+					},
+					"SourceRegion": {
+						"CellType": "select",
+						"Options": {
+							"ACT": "ACT",
+							"NSW": "NSW",
+							"SA": "SA",
+							"TAS": "TAS",
+							"VIC": "VIC",
+							"WA - South west": "WA - South west",
+							"WA - Pilbara": "WA - Pilbara",
+							"WA - Kimberley": "WA - Kimberley",
+							"NT - Alice Springs": "NT - Alice Springs",
+							"NT - Barkly": "NT - Barkly",
+							"NT - Northern": "NT - Northern",
+							"QLD - High": "QLD - High",
+							"QLD - Moderate/High": "QLD - Moderate/High",
+							"QLD - Moderate/Low": "QLD - Moderate/Low",
+							"QLD - Low": "QLD - Low",
+							"Australia": "Australia"
+						}
+					},
+					"Quantity": {
+						"CellType": "number",
+						"Unit": "head"
+					},
+					"LiveweightMethod1": {
+						"CellType": "formula",
+						"Unit": "kg/head"
+					},
+					"LiveweightMethod2": {
+						"CellType": "number",
+						"Unit": "kg/head"
+					}
+				}
+			}
+		},
+		{
+			"TableName": "Table_Input_LivestockSales348",
+			"MatrixType": "RowsToCols",
+			"NumberOfCols": 6,
+			"ColumnNames": {
+				"TransactionName": "Transaction name",
+				"Class": "Class (select)",
+				"SaleDate": "Sale date",
+				"HeadSold": "Head sold",
+				"AverageWeightPerHead": "Average weight per head (kg)",
+				"TotalLiveweightSold": "Total liveweight sold"
+			},
+			"Rows": {
+				"Row": {
+					"TransactionName": {
+						"CellType": "select",
+						"Options": {
+							"Bulls < 1 year": "Bulls < 1 year",
+							"Bulls > 1 year": "Bulls > 1 year",
+							"Cows < 1 year": "Cows < 1 year",
+							"Cows 1-2 years": "Cows 1-2 years",
+							"Cows 2-3 years": "Cows 2-3 years",
+							"Cows > 3 years": "Cows > 3 years",
+							"Steers < 1 year": "Steers < 1 year",
+							"Steers 1-2 years": "Steers 1-2 years",
+							"Steers 2-3 years": "Steers 2-3 years",
+							"Steers >3 years": "Steers >3 years"
+						}
+					},
+					"Class": {
+						"CellType": "select",
+						"Options": {
+							"Bulls < 1 year": "Bulls < 1 year",
+							"Bulls > 1 year": "Bulls > 1 year",
+							"Cows < 1 year": "Cows < 1 year",
+							"Cows 1-2 years": "Cows 1-2 years",
+							"Cows 2-3 years": "Cows 2-3 years",
+							"Cows > 3 years": "Cows > 3 years",
+							"Steers < 1 year": "Steers < 1 year",
+							"Steers 1-2 years": "Steers 1-2 years",
+							"Steers 2-3 years": "Steers 2-3 years",
+							"Steers >3 years": "Steers >3 years"
+						}
+					},
+					"SaleDate": {
+						"CellType": "date"
+					},
+					"HeadSold": {
+						"CellType": "number"
+					},
+					"AverageWeightPerHead": {
+						"CellType": "number",
+						"Unit": "kg"
+					},
+					"TotalLiveweightSold": {
+						"CellType": "formula"
+					}
+				}
+			}
+		},
+		{
+			"TableName": "Table_Input_LivestockPurchases_Beefcattle",
+			"MatrixType": "RowsToCols",
+			"NumberOfCols": 8,
+			"ColumnNames": {
+				"TransactionName": "Transaction name",
+				"PurchaseDate": "Purchase date",
+				"Class": "Class (select)",
+				"PurchaseClass": "Purchase class (select)",
+				"SourceRegion": "Source region (Select)",
+				"Quantity": "Quantity (head)",
+				"LiveweightMethod1": "Liveweight (kg/head) Method 1",
+				"LiveweightMethod2": "Liveweight (kg/head) Method 2"
+			},
+			"Rows": {
+				"Row": {
+					"TransactionName": {
+						"CellType": "text"
+					},
+					"PurchaseDate": {
+						"CellType": "date"
+					},
+					"Class": {
+						"CellType": "select",
+						"Options": {
+							"Bulls < 1 year": "Bulls < 1 year",
+							"Bulls > 1 year": "Bulls > 1 year",
+							"Cows < 1 year": "Cows < 1 year",
+							"Cows 1-2 years": "Cows 1-2 years",
+							"Cows 2-3 years": "Cows 2-3 years",
+							"Cows > 3 years": "Cows > 3 years",
+							"Steers < 1 year": "Steers < 1 year",
+							"Steers 1-2 years": "Steers 1-2 years",
+							"Steers 2-3 years": "Steers 2-3 years",
+							"Steers >3 years": "Steers >3 years"
+						}
+					},
+					"PurchaseClass": {
+						"CellType": "select",
+						"Options": {
+							"Cattle, for manufacturing beef": "Cattle, for manufacturing beef",
+							"Cattle, for prime beef": "Cattle, for prime beef",
+							"Cattle, weaners": "Cattle, weaners"
+						}
+					},
+					"SourceRegion": {
+						"CellType": "select",
+						"Options": {
+							"ACT": "ACT",
+							"NSW": "NSW",
+							"SA": "SA",
+							"TAS": "TAS",
+							"VIC": "VIC",
+							"WA - South west": "WA - South west",
+							"WA - Pilbara": "WA - Pilbara",
+							"WA - Kimberley": "WA - Kimberley",
+							"NT - Alice Springs": "NT - Alice Springs",
+							"NT - Barkly": "NT - Barkly",
+							"NT - Northern": "NT - Northern",
+							"QLD - High": "QLD - High",
+							"QLD - Moderate/High": "QLD - Moderate/High",
+							"QLD - Moderate/Low": "QLD - Moderate/Low",
+							"QLD - Low": "QLD - Low",
+							"Australia": "Australia"
+						}
+					},
+					"Quantity": {
+						"CellType": "number",
+						"Unit": "head"
+					},
+					"LiveweightMethod1": {
+						"CellType": "formula",
+						"Unit": "kg/head"
+					},
+					"LiveweightMethod2": {
+						"CellType": "number",
+						"Unit": "kg/head"
+					}
+				}
+			}
+		},
+		{
+			"TableName": "Table_Input_LivestockSales3",
+			"MatrixType": "RowsToCols",
+			"NumberOfCols": 6,
+			"ColumnNames": {
+				"TransactionName": "Transaction name",
+				"Class": "Class (select)",
+				"SaleDate": "Sale date",
+				"HeadSold": "Head sold",
+				"AverageWeightPerHead": "Average weight per head (kg)",
+				"TotalLiveweightSold": "Total liveweight sold"
+			},
+			"Rows": {
+				"Row": {
+					"TransactionName": {
+						"CellType": "select",
+						"Options": {
+							"Bulls < 1 year": "Bulls < 1 year",
+							"Bulls > 1 year": "Bulls > 1 year",
+							"Cows < 1 year": "Cows < 1 year",
+							"Cows 1-2 years": "Cows 1-2 years",
+							"Cows 2-3 years": "Cows 2-3 years",
+							"Cows > 3 years": "Cows > 3 years",
+							"Steers < 1 year": "Steers < 1 year",
+							"Steers 1-2 years": "Steers 1-2 years",
+							"Steers 2-3 years": "Steers 2-3 years",
+							"Steers >3 years": "Steers >3 years"
+						}
+					},
+					"Class": {
+						"CellType": "select",
+						"Options": {
+							"Bulls < 1 year": "Bulls < 1 year",
+							"Bulls > 1 year": "Bulls > 1 year",
+							"Cows < 1 year": "Cows < 1 year",
+							"Cows 1-2 years": "Cows 1-2 years",
+							"Cows 2-3 years": "Cows 2-3 years",
+							"Cows > 3 years": "Cows > 3 years",
+							"Steers < 1 year": "Steers < 1 year",
+							"Steers 1-2 years": "Steers 1-2 years",
+							"Steers 2-3 years": "Steers 2-3 years",
+							"Steers >3 years": "Steers >3 years"
+						}
+					},
+					"SaleDate": {
+						"CellType": "date"
+					},
+					"HeadSold": {
+						"CellType": "number"
+					},
+					"AverageWeightPerHead": {
+						"CellType": "number",
+						"Unit": "kg"
+					},
+					"TotalLiveweightSold": {
+						"CellType": "formula"
+					}
+				}
+			}
+		},
+		{
+			"TableName": "Table_Input_InorganicFertiliser_Brands",
+			"MatrixType": "RowsToCols",
+			"NumberOfCols": 21,
+			"ColumnNames": {
+				"Product": "Product (select)",
+				"AmountAppliedPerHectare": "Amount applied per hectare",
+				"ApplicationUnit": "Application unit",
+				"Density": "Density",
+				"ApplicationArea": "Application area (ha)",
+				"TotalApplied": "Total applied (kg)",
+				"Ingredient1": "Ingredient 1",
+				"Ingredient1Percent": "Ingredient 1 percent",
+				"Ingredient2": "Ingredient 2",
+				"Ingredient2Percent": "Ingredient 2 percent",
+				"Ingredient3": "Ingredient 3",
+				"Ingredient3Percent": "Ingredient 3 percent",
+				"Ingredient4": "Ingredient 4",
+				"Ingredient4Percent": "Ingredient 4 percent",
+				"Ingredient5": "Ingredient 5",
+				"Ingredient5Percent": "Ingredient 5 percent",
+				"Ingredient6": "Ingredient 6",
+				"Ingredient6Percent": "Ingredient 6 percent",
+				"NApplicationRate": "N application rate (kg/ha)",
+				"UreaSource": "Urea source",
+				"AmmoniaSource": "Ammonia source"
+			},
+			"Rows": {
+				"Row": {
+					"Product": {
+						"CellType": "select",
+						"Options": {
+							"Aqua Finish": "Aqua Finish",
+							"Aqua Grow": "Aqua Grow",
+							"Aqua Nitro AN": "Aqua Nitro AN",
+							"Aqua NitroCal": "Aqua NitroCal",
+							"Aqua NitroCal (VI)": "Aqua NitroCal (VI)",
+							"Aqua NitroCal Ultimate": "Aqua NitroCal Ultimate",
+							"Aqua Start": "Aqua Start",
+							"Aqua Thio-Complete": "Aqua Thio-Complete",
+							"Aqua Thio-Emerge": "Aqua Thio-Emerge",
+							"Aqua Thio-Flourish": "Aqua Thio-Flourish",
+							"Asco Fol Plus": "Asco Fol Plus",
+							"Asco Plus": "Asco Plus",
+							"Asco Rhizo Plus": "Asco Rhizo Plus",
+							"Benefit PZ": "Benefit PZ",
+							"Boost-It": "Boost-It",
+							"Boroplus": "Boroplus",
+							"Brevisol Range": "Brevisol Range",
+							"Brexil Line": "Brexil Line",
+							"Bronze": "Bronze",
+							"Bud-Wiser Dry": "Bud-Wiser Dry",
+							"Calbit C": "Calbit C",
+							"Calcium 175": "Calcium 175",
+							"CalPhos": "CalPhos"
+						}
+					},
+					"AmountAppliedPerHectare": {
+						"CellType": "number"
+					},
+					"ApplicationUnit": {
+						"CellType": "formula"
+					},
+					"Density": {
+						"CellType": "formula"
+					},
+					"ApplicationArea": {
+						"CellType": "formula",
+						"Unit": "ha"
+					},
+					"TotalApplied": {
+						"CellType": "formula",
+						"Unit": "kg"
+					},
+					"Ingredient1": {
+						"CellType": "formula"
+					},
+					"Ingredient1Percent": {
+						"CellType": "formula"
+					},
+					"Ingredient2": {
+						"CellType": "formula"
+					},
+					"Ingredient2Percent": {
+						"CellType": "formula"
+					},
+					"Ingredient3": {
+						"CellType": "formula"
+					},
+					"Ingredient3Percent": {
+						"CellType": "formula"
+					},
+					"Ingredient4": {
+						"CellType": "formula"
+					},
+					"Ingredient4Percent": {
+						"CellType": "formula"
+					},
+					"Ingredient5": {
+						"CellType": "formula"
+					},
+					"Ingredient5Percent": {
+						"CellType": "formula"
+					},
+					"Ingredient6": {
+						"CellType": "formula"
+					},
+					"Ingredient6Percent": {
+						"CellType": "formula"
+					},
+					"NApplicationRate": {
+						"CellType": "formula",
+						"Unit": "kg/ha"
+					},
+					"UreaSource": {
+						"CellType": "formula"
+					},
+					"AmmoniaSource": {
+						"CellType": "formula"
+					}
+				}
+			}
+		},
+		{
+			"TableName": "Table_Input_InorganicFertiliser_Custom",
+			"MatrixType": "RowsToCols",
+			"NumberOfCols": 15,
+			"ColumnNames": {
+				"CustomBlendName": "Custom blend name",
+				"AmountApplied": "Amount applied (kg / ha)",
+				"ApplicationArea": "Application area (ha)",
+				"TotalApplied": "Total applied (kg)",
+				"Ingredient1": "Ingredient 1 (select)",
+				"Ingredient1Percent": "Ingredient 1 percent",
+				"Ingredient2": "Ingredient 2",
+				"Ingredient2Percent": "Ingredient 2 percent",
+				"Ingredient3": "Ingredient 3",
+				"Ingredient3Percent": "Ingredient 3 percent",
+				"Ingredient4": "Ingredient 4",
+				"Ingredient4Percent": "Ingredient 4 percent",
+				"NApplicationRate": "N application rate (kg/ha)",
+				"UreaSource": "Urea source (Select)",
+				"AmmoniaSource": "Ammonia source (select)"
+			},
+			"Rows": {
+				"Row": {
+					"CustomBlendName": {
+						"CellType": "text"
+					},
+					"AmountApplied": {
+						"CellType": "number",
+						"Unit": "kg / ha"
+					},
+					"ApplicationArea": {
+						"CellType": "formula",
+						"Unit": "ha"
+					},
+					"TotalApplied": {
+						"CellType": "formula",
+						"Unit": "kg"
+					},
+					"Ingredient1": {
+						"CellType": "select",
+						"Options": {
+							"Monoammonium phosphate (MAP)": "Monoammonium phosphate (MAP)",
+							"Diammonium phosphate (DAP)": "Diammonium phosphate (DAP)",
+							"Urea": "Urea",
+							"Sulphate of ammonia (SOA)": "Sulphate of ammonia (SOA)",
+							"Urea-ammonium nitrate (UAN)": "Urea-ammonium nitrate (UAN)",
+							"Ammonium nitrate (AN)": "Ammonium nitrate (AN)",
+							"Calcium ammonium nitrate (CAN)": "Calcium ammonium nitrate (CAN)",
+							"Nitrogen - Ammoniacal": "Nitrogen - Ammoniacal",
+							"Nitrogen - Nitrate": "Nitrogen - Nitrate",
+							"Nitrogen - Generic": "Nitrogen - Generic",
+							"Phosphorus - Generic": "Phosphorus - Generic",
+							"Potassium - Generic": "Potassium - Generic",
+							"Sulfur - Generic": "Sulfur - Generic",
+							"Zinc - Generic": "Zinc - Generic",
+							"Muriate of potash (MOP)": "Muriate of potash (MOP)",
+							"Double superphosphate": "Double superphosphate",
+							"Single superphosphate (SSP)": "Single superphosphate (SSP)",
+							"Ammonia": "Ammonia",
+							"Calcium nitrate": "Calcium nitrate"
+						}
+					},
+					"Ingredient1Percent": {
+						"CellType": "percent"
+					},
+					"Ingredient2": {
+						"CellType": "select",
+						"Options": {
+							"Monoammonium phosphate (MAP)": "Monoammonium phosphate (MAP)",
+							"Diammonium phosphate (DAP)": "Diammonium phosphate (DAP)",
+							"Urea": "Urea",
+							"Sulphate of ammonia (SOA)": "Sulphate of ammonia (SOA)",
+							"Urea-ammonium nitrate (UAN)": "Urea-ammonium nitrate (UAN)",
+							"Ammonium nitrate (AN)": "Ammonium nitrate (AN)",
+							"Calcium ammonium nitrate (CAN)": "Calcium ammonium nitrate (CAN)",
+							"Nitrogen - Ammoniacal": "Nitrogen - Ammoniacal",
+							"Nitrogen - Nitrate": "Nitrogen - Nitrate",
+							"Nitrogen - Generic": "Nitrogen - Generic",
+							"Phosphorus - Generic": "Phosphorus - Generic",
+							"Potassium - Generic": "Potassium - Generic",
+							"Sulfur - Generic": "Sulfur - Generic",
+							"Zinc - Generic": "Zinc - Generic",
+							"Muriate of potash (MOP)": "Muriate of potash (MOP)",
+							"Double superphosphate": "Double superphosphate",
+							"Single superphosphate (SSP)": "Single superphosphate (SSP)",
+							"Ammonia": "Ammonia",
+							"Calcium nitrate": "Calcium nitrate"
+						}
+					},
+					"Ingredient2Percent": {
+						"CellType": "percent"
+					},
+					"Ingredient3": {
+						"CellType": "select",
+						"Options": {
+							"Monoammonium phosphate (MAP)": "Monoammonium phosphate (MAP)",
+							"Diammonium phosphate (DAP)": "Diammonium phosphate (DAP)",
+							"Urea": "Urea",
+							"Sulphate of ammonia (SOA)": "Sulphate of ammonia (SOA)",
+							"Urea-ammonium nitrate (UAN)": "Urea-ammonium nitrate (UAN)",
+							"Ammonium nitrate (AN)": "Ammonium nitrate (AN)",
+							"Calcium ammonium nitrate (CAN)": "Calcium ammonium nitrate (CAN)",
+							"Nitrogen - Ammoniacal": "Nitrogen - Ammoniacal",
+							"Nitrogen - Nitrate": "Nitrogen - Nitrate",
+							"Nitrogen - Generic": "Nitrogen - Generic",
+							"Phosphorus - Generic": "Phosphorus - Generic",
+							"Potassium - Generic": "Potassium - Generic",
+							"Sulfur - Generic": "Sulfur - Generic",
+							"Zinc - Generic": "Zinc - Generic",
+							"Muriate of potash (MOP)": "Muriate of potash (MOP)",
+							"Double superphosphate": "Double superphosphate",
+							"Single superphosphate (SSP)": "Single superphosphate (SSP)",
+							"Ammonia": "Ammonia",
+							"Calcium nitrate": "Calcium nitrate"
+						}
+					},
+					"Ingredient3Percent": {
+						"CellType": "percent"
+					},
+					"Ingredient4": {
+						"CellType": "select",
+						"Options": {
+							"Monoammonium phosphate (MAP)": "Monoammonium phosphate (MAP)",
+							"Diammonium phosphate (DAP)": "Diammonium phosphate (DAP)",
+							"Urea": "Urea",
+							"Sulphate of ammonia (SOA)": "Sulphate of ammonia (SOA)",
+							"Urea-ammonium nitrate (UAN)": "Urea-ammonium nitrate (UAN)",
+							"Ammonium nitrate (AN)": "Ammonium nitrate (AN)",
+							"Calcium ammonium nitrate (CAN)": "Calcium ammonium nitrate (CAN)",
+							"Nitrogen - Ammoniacal": "Nitrogen - Ammoniacal",
+							"Nitrogen - Nitrate": "Nitrogen - Nitrate",
+							"Nitrogen - Generic": "Nitrogen - Generic",
+							"Phosphorus - Generic": "Phosphorus - Generic",
+							"Potassium - Generic": "Potassium - Generic",
+							"Sulfur - Generic": "Sulfur - Generic",
+							"Zinc - Generic": "Zinc - Generic",
+							"Muriate of potash (MOP)": "Muriate of potash (MOP)",
+							"Double superphosphate": "Double superphosphate",
+							"Single superphosphate (SSP)": "Single superphosphate (SSP)",
+							"Ammonia": "Ammonia",
+							"Calcium nitrate": "Calcium nitrate"
+						}
+					},
+					"Ingredient4Percent": {
+						"CellType": "percent"
+					},
+					"NApplicationRate": {
+						"CellType": "formula",
+						"Unit": "kg/ha"
+					},
+					"UreaSource": {
+						"CellType": "select",
+						"Options": {
+							"Global": "Global",
+							"Canada": "Canada",
+							"China": "China",
+							"Yemen": "Yemen"
+						}
+					},
+					"AmmoniaSource": {
+						"CellType": "select",
+						"Options": {
+							"Global": "Global",
+							"Canada": "Canada",
+							"China": "China",
+							"Yemen": "Yemen"
+						}
+					}
+				}
+			}
+		},
+		{
+			"TableName": "Table_Input_Lime",
+			"MatrixType": "RowsToCols",
+			"NumberOfCols": 8,
+			"ColumnNames": {
+				"Product": "Product",
+				"AmountApplied": "Amount applied (t/hectare)",
+				"ApplicationArea": "Application area (ha)",
+				"TotalAmountApplied": "Total amount applied (t)",
+				"PercentLimeCaCO3": "Percent Lime CaCO3",
+				"PercentDolomiteCaMg2": "Percent Dolomite CaMg(CO3)2",
+				"PercentGypsum": "Percent Gypsum",
+				"Total": "Total"
+			},
+			"Rows": {
+				"Row": {
+					"Product": {
+						"CellType": "text"
+					},
+					"AmountApplied": {
+						"CellType": "number",
+						"Unit": "t/hectare"
+					},
+					"ApplicationArea": {
+						"CellType": "formula",
+						"Unit": "ha"
+					},
+					"TotalAmountApplied": {
+						"CellType": "formula",
+						"Unit": "t"
+					},
+					"PercentLimeCaCO3": {
+						"CellType": "percent"
+					},
+					"PercentDolomiteCaMg2": {
+						"CellType": "percent",
+						"Unit": "CO3"
+					},
+					"PercentGypsum": {
+						"CellType": "percent"
+					},
+					"Total": {
+						"CellType": "formula"
+					}
+				}
+			}
+		},
+		{
+			"TableName": "Table_Input_OrganicFertiliser",
+			"MatrixType": "RowsToCols",
+			"NumberOfCols": 7,
+			"ColumnNames": {
+				"OrganicFertiliserType": "Organic fertiliser type (select)",
+				"PercentageOfNInFertiliser": "Percentage of N in fertiliser",
+				"AmountApplied": "Amount applied (kg/hectare)",
+				"AmountNApplied": "Amount N applied (kg/hectare)",
+				"ApplicationArea": "Application area (ha)",
+				"TotalOrganicFertliserApplied": "Total organic fertliser applied",
+				"TotalNitrogenApplied": "Total nitrogen applied (kg)"
+			},
+			"Rows": {
+				"Row": {
+					"OrganicFertiliserType": {
+						"CellType": "select",
+						"Options": {
+							"Manure - Cattle": "Manure - Cattle",
+							"Manure - Poultry": "Manure - Poultry",
+							"Manure - Swine": "Manure - Swine",
+							"Manure - Other": "Manure - Other",
+							"Other organic fertiliser": "Other organic fertiliser"
+						}
+					},
+					"PercentageOfNInFertiliser": {
+						"CellType": "percent"
+					},
+					"AmountApplied": {
+						"CellType": "number",
+						"Unit": "kg/hectare"
+					},
+					"AmountNApplied": {
+						"CellType": "formula",
+						"Unit": "kg/hectare"
+					},
+					"ApplicationArea": {
+						"CellType": "formula",
+						"Unit": "ha"
+					},
+					"TotalOrganicFertliserApplied": {
+						"CellType": "formula"
+					},
+					"TotalNitrogenApplied": {
+						"CellType": "formula",
+						"Unit": "kg"
+					}
+				}
+			}
+		},
+		{
+			"TableName": "Table_Input_Fuel",
+			"MatrixType": "RowsToCols",
+			"NumberOfCols": 7,
+			"ColumnNames": {
+				"FuelUse": "Fuel use (select)",
+				"FuelType": "Fuel type (select)",
+				"AmountPurchased": "Amount purchased",
+				"AmountUnit": "Amount unit",
+				"PercentConsumed": "Percent consumed",
+				"AmountConsumed": "Amount consumed",
+				"AmountConsumedUnit": "Amount consumed unit"
+			},
+			"Rows": {
+				"Row": {
+					"FuelUse": {
+						"CellType": "select",
+						"Options": {
+							"Generators": "Generators",
+							"Power standalone machinery or heating": "Power standalone machinery or heating",
+							"Aviation": "Aviation",
+							"Cars and light commercial vehicles": "Cars and light commercial vehicles",
+							"Off-road Agriculture and forestry equipment": "Off-road Agriculture and forestry equipment",
+							"Vessels": "Vessels"
+						}
+					},
+					"FuelType": {
+						"CellType": "select",
+						"DependentOn": "FuelUse",
+						"Options": {
+							"Generators": {
+								"Petrol": "Petrol",
+								"Diesel": "Diesel",
+								"Liquefied petroleum gas (LPG)": "Liquefied petroleum gas (LPG)",
+								"Biodiesel": "Biodiesel",
+								"Ethanol": "Ethanol",
+								"Other biofuels": "Other biofuels",
+								"Renewable diesel": "Renewable diesel"
+							},
+							"Power standalone machinery or heating": {
+								"Petrol": "Petrol",
+								"Diesel": "Diesel",
+								"Liquefied petroleum gas (LPG)": "Liquefied petroleum gas (LPG)",
+								"Biodiesel": "Biodiesel",
+								"Ethanol": "Ethanol",
+								"Other biofuels": "Other biofuels",
+								"Renewable diesel": "Renewable diesel",
+								"Natural gas (via pipeline) in GJ": "Natural gas (via pipeline) in GJ",
+								"Town gas in GJ": "Town gas in GJ"
+							},
+							"Aviation": {
+								"Avgas": "Avgas",
+								"Jet A1, Jet B": "Jet A1, Jet B",
+								"Renewable aviation kerosene": "Renewable aviation kerosene"
+							},
+							"Cars and light commercial vehicles": {
+								"Petrol": "Petrol",
+								"Diesel": "Diesel",
+								"Liquefied petroleum gas (LPG)": "Liquefied petroleum gas (LPG)",
+								"Fuel oil": "Fuel oil",
+								"Ethanol": "Ethanol",
+								"Biodiesel": "Biodiesel",
+								"Renewable diesel": "Renewable diesel",
+								"Other biofuels": "Other biofuels"
+							},
+							"Off-road Agriculture and forestry equipment": {
+								"Diesel": "Diesel"
+							},
+							"Vessels": {
+								"Petrol": "Petrol",
+								"Diesel": "Diesel",
+								"Fuel oil": "Fuel oil"
+							}
+						}
+					},
+					"AmountPurchased": {
+						"CellType": "number"
+					},
+					"AmountUnit": {
+						"CellType": "formula"
+					},
+					"PercentConsumed": {
+						"CellType": "formula"
+					},
+					"AmountConsumed": {
+						"CellType": "formula"
+					},
+					"AmountConsumedUnit": {
+						"CellType": "formula"
+					}
+				}
+			}
+		},
+		{
+			"TableName": "Table_Input_RECSurrendered",
+			"MatrixType": "RowsToCols",
+			"NumberOfCols": 6,
+			"ColumnNames": {
+				"Description": "Description",
+				"Source": "Source (select)",
+				"GenerationDate": "Generation date",
+				"NumberOfCertificates": "Number of certificates",
+				"MWh": "MWh",
+				"Elegibility": "Elegibility"
+			},
+			"Rows": {
+				"Row": {
+					"Description": {
+						"CellType": "text"
+					},
+					"Source": {
+						"CellType": "select",
+						"Options": {
+							"Purchased certificate": "Purchased certificate",
+							"Issued for generated electricity": "Issued for generated electricity"
+						}
+					},
+					"GenerationDate": {
+						"CellType": "date"
+					},
+					"NumberOfCertificates": {
+						"CellType": "number"
+					},
+					"MWh": {
+						"CellType": "formula"
+					},
+					"Elegibility": {
+						"CellType": "formula"
+					}
+				}
+			}
+		},
+		{
+			"TableName": "Table_Input_RECConsumedByEntity",
+			"MatrixType": "RowsToCols",
+			"NumberOfCols": 6,
+			"ColumnNames": {
+				"Description": "Description",
+				"Source": "Source",
+				"GenerationDate": "Generation date",
+				"NumberOfCertificates": "Number of certificates",
+				"MWh": "MWh",
+				"Elegibility": "Elegibility"
+			},
+			"Rows": {
+				"Row": {
+					"Description": {
+						"CellType": "text"
+					},
+					"Source": {
+						"CellType": "formula"
+					},
+					"GenerationDate": {
+						"CellType": "date"
+					},
+					"NumberOfCertificates": {
+						"CellType": "number"
+					},
+					"MWh": {
+						"CellType": "formula"
+					},
+					"Elegibility": {
 						"CellType": "formula"
 					}
 				}

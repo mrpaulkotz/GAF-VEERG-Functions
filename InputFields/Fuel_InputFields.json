@@ -1,38 +1,12 @@
 {
 	"schemaVersion": 1,
 	"generatedFrom": "8_Fuel_WIP_v05.xlsx",
-	"generatedAt": "2026-07-14T13:38:48Z",
+	"generatedAt": "2026-07-14T23:35:20Z",
 	"InputCells": [
-		{
-			"CellName": "X_Cell_Fuel_IsMetroLocation",
-			"Label": "Is the property in a Metropolitan location?",
-			"CellType": "select",
-			"Options": {
-				"Metro": "Metro",
-				"Non-metro": "Non-metro"
-			}
-		},
 		{
 			"CellName": "X_Cell_Site_FarmName",
 			"Label": "Farm name",
 			"CellType": "text"
-		},
-		{
-			"CellName": "X_Cell_Site_Region",
-			"Label": "Region (ABS Statistical area level 4) if state is WA",
-			"CellType": "select",
-			"Options": {
-				"Bunbury": "Bunbury",
-				"Mandurah": "Mandurah",
-				"Perth - Inner": "Perth - Inner",
-				"Perth - North East": "Perth - North East",
-				"Perth - North West": "Perth - North West",
-				"Perth - South East": "Perth - South East",
-				"Perth - South West": "Perth - South West",
-				"Western Australia - Wheat Belt": "Western Australia - Wheat Belt",
-				"Western Australia - Outback (North)": "Western Australia - Outback (North)",
-				"Western Australia - Outback (South)": "Western Australia - Outback (South)"
-			}
 		},
 		{
 			"CellName": "X_Cell_Site_ReportingEntityName",
@@ -57,6 +31,32 @@
 				"Western Australia": "Western Australia",
 				"Tasmania": "Tasmania",
 				"Northern Territory": "Northern Territory"
+			}
+		},
+		{
+			"CellName": "X_Cell_Site_Region",
+			"Label": "Region (ABS Statistical area level 4) if state is WA",
+			"CellType": "select",
+			"Options": {
+				"Bunbury": "Bunbury",
+				"Mandurah": "Mandurah",
+				"Perth - Inner": "Perth - Inner",
+				"Perth - North East": "Perth - North East",
+				"Perth - North West": "Perth - North West",
+				"Perth - South East": "Perth - South East",
+				"Perth - South West": "Perth - South West",
+				"Western Australia - Wheat Belt": "Western Australia - Wheat Belt",
+				"Western Australia - Outback (North)": "Western Australia - Outback (North)",
+				"Western Australia - Outback (South)": "Western Australia - Outback (South)"
+			}
+		},
+		{
+			"CellName": "X_Cell_Fuel_IsMetroLocation",
+			"Label": "Is the property in a Metropolitan location?",
+			"CellType": "select",
+			"Options": {
+				"Metro": "Metro",
+				"Non-metro": "Non-metro"
 			}
 		}
 	],

@@ -1,54 +1,8 @@
 {
 	"schemaVersion": 1,
 	"generatedFrom": "3_2_Enteric_BeefPasture_WIP_v04.xlsx",
-	"generatedAt": "2026-07-14T13:37:22Z",
+	"generatedAt": "2026-07-14T23:34:01Z",
 	"InputCells": [
-		{
-			"CellName": "X_Cell_PastureBeef_Breed",
-			"Label": "Cattle breed",
-			"CellType": "select",
-			"Options": {
-				"Hereford or Shorthorn breeds": "Hereford or Shorthorn breeds",
-				"Northern Brahman cross breed": "Northern Brahman cross breed"
-			}
-		},
-		{
-			"CellName": "X_Cell_PastureBeef_FencedWater",
-			"Label": "Are all dams and natural water sources fenced off so cattle cannot access them?",
-			"CellType": "select",
-			"Options": {
-				"Yes": "Yes",
-				"No": "No"
-			}
-		},
-		{
-			"CellName": "X_Cell_PastureBeef_GrazingIrrigationMethod",
-			"Label": "",
-			"CellType": "select",
-			"Options": {
-				"Not irrigated": "Not irrigated",
-				"Drip irrigation": "Drip irrigation",
-				"Sprinkler irrigation": "Sprinkler irrigation",
-				"Surface irrigation": "Surface irrigation",
-				"Other irrigation": "Other irrigation"
-			}
-		},
-		{
-			"CellName": "X_Cell_PastureBeef_GrazingProductionSystem",
-			"Label": "Where did the livestock spend most of their time grazing?",
-			"CellType": "select",
-			"Options": {
-				"Pasture": "Pasture",
-				"Crop": "Crop"
-			}
-		},
-		{
-			"CellName": "X_Cell_PastureBeef_ProductionRegion",
-			"Label": "Livestock production region",
-			"CellType": "select",
-			"DependentOn": "E7",
-			"Options": {}
-		},
 		{
 			"CellName": "X_Cell_Site_FarmName",
 			"Label": "Farm name",
@@ -78,454 +32,55 @@
 				"Tasmania": "Tasmania",
 				"Northern Territory": "Northern Territory"
 			}
+		},
+		{
+			"CellName": "X_Cell_PastureBeef_ProductionRegion",
+			"Label": "Livestock production region",
+			"CellType": "select",
+			"DependentOn": "E7",
+			"Options": {}
+		},
+		{
+			"CellName": "X_Cell_PastureBeef_Breed",
+			"Label": "Cattle breed",
+			"CellType": "select",
+			"Options": {
+				"Hereford or Shorthorn breeds": "Hereford or Shorthorn breeds",
+				"Northern Brahman cross breed": "Northern Brahman cross breed"
+			}
+		},
+		{
+			"CellName": "X_Cell_PastureBeef_FencedWater",
+			"Label": "Are all dams and natural water sources fenced off so cattle cannot access them?",
+			"CellType": "select",
+			"Options": {
+				"Yes": "Yes",
+				"No": "No"
+			}
+		},
+		{
+			"CellName": "X_Cell_PastureBeef_GrazingProductionSystem",
+			"Label": "Where did the livestock spend most of their time grazing?",
+			"CellType": "select",
+			"Options": {
+				"Pasture": "Pasture",
+				"Crop": "Crop"
+			}
+		},
+		{
+			"CellName": "X_Cell_PastureBeef_GrazingIrrigationMethod",
+			"Label": "",
+			"CellType": "select",
+			"Options": {
+				"Not irrigated": "Not irrigated",
+				"Drip irrigation": "Drip irrigation",
+				"Sprinkler irrigation": "Sprinkler irrigation",
+				"Surface irrigation": "Surface irrigation",
+				"Other irrigation": "Other irrigation"
+			}
 		}
 	],
 	"InputTables": [
-		{
-			"TableName": "Table_Input_LivestockSales3",
-			"MatrixType": "RowsToCols",
-			"NumberOfCols": 6,
-			"ColumnNames": {
-				"TransactionName": "Transaction name",
-				"Class": "Class (select)",
-				"SaleDate": "Sale date",
-				"HeadSold": "Head sold",
-				"AverageWeightPerHead": "Average weight per head (kg)",
-				"TotalLiveweightSold": "Total liveweight sold"
-			},
-			"Rows": {
-				"Row": {
-					"TransactionName": {
-						"CellType": "select",
-						"Options": {
-							"Bulls < 1 year": "Bulls < 1 year",
-							"Bulls > 1 year": "Bulls > 1 year",
-							"Cows < 1 year": "Cows < 1 year",
-							"Cows 1-2 years": "Cows 1-2 years",
-							"Cows 2-3 years": "Cows 2-3 years",
-							"Cows > 3 years": "Cows > 3 years",
-							"Steers < 1 year": "Steers < 1 year",
-							"Steers 1-2 years": "Steers 1-2 years",
-							"Steers 2-3 years": "Steers 2-3 years",
-							"Steers >3 years": "Steers >3 years"
-						}
-					},
-					"Class": {
-						"CellType": "select",
-						"Options": {
-							"Bulls < 1 year": "Bulls < 1 year",
-							"Bulls > 1 year": "Bulls > 1 year",
-							"Cows < 1 year": "Cows < 1 year",
-							"Cows 1-2 years": "Cows 1-2 years",
-							"Cows 2-3 years": "Cows 2-3 years",
-							"Cows > 3 years": "Cows > 3 years",
-							"Steers < 1 year": "Steers < 1 year",
-							"Steers 1-2 years": "Steers 1-2 years",
-							"Steers 2-3 years": "Steers 2-3 years",
-							"Steers >3 years": "Steers >3 years"
-						}
-					},
-					"SaleDate": {
-						"CellType": "date"
-					},
-					"HeadSold": {
-						"CellType": "number"
-					},
-					"AverageWeightPerHead": {
-						"CellType": "number",
-						"Unit": "kg"
-					},
-					"TotalLiveweightSold": {
-						"CellType": "formula"
-					}
-				}
-			}
-		},
-		{
-			"TableName": "Table_Input_LivestockPurchases_Beefcattle",
-			"MatrixType": "RowsToCols",
-			"NumberOfCols": 8,
-			"ColumnNames": {
-				"TransactionName": "Transaction name",
-				"PurchaseDate": "Purchase date",
-				"Class": "Class (select)",
-				"PurchaseClass": "Purchase class (select)",
-				"SourceRegion": "Source region (Select)",
-				"Quantity": "Quantity (head)",
-				"LiveweightMethod1": "Liveweight (kg/head) Method 1",
-				"LiveweightMethod2": "Liveweight (kg/head) Method 2"
-			},
-			"Rows": {
-				"Row": {
-					"TransactionName": {
-						"CellType": "text"
-					},
-					"PurchaseDate": {
-						"CellType": "date"
-					},
-					"Class": {
-						"CellType": "select",
-						"Options": {
-							"Bulls < 1 year": "Bulls < 1 year",
-							"Bulls > 1 year": "Bulls > 1 year",
-							"Cows < 1 year": "Cows < 1 year",
-							"Cows 1-2 years": "Cows 1-2 years",
-							"Cows 2-3 years": "Cows 2-3 years",
-							"Cows > 3 years": "Cows > 3 years",
-							"Steers < 1 year": "Steers < 1 year",
-							"Steers 1-2 years": "Steers 1-2 years",
-							"Steers 2-3 years": "Steers 2-3 years",
-							"Steers >3 years": "Steers >3 years"
-						}
-					},
-					"PurchaseClass": {
-						"CellType": "select",
-						"Options": {
-							"Cattle, for manufacturing beef": "Cattle, for manufacturing beef",
-							"Cattle, for prime beef": "Cattle, for prime beef",
-							"Cattle, weaners": "Cattle, weaners"
-						}
-					},
-					"SourceRegion": {
-						"CellType": "select",
-						"Options": {
-							"ACT": "ACT",
-							"NSW": "NSW",
-							"SA": "SA",
-							"TAS": "TAS",
-							"VIC": "VIC",
-							"WA - South west": "WA - South west",
-							"WA - Pilbara": "WA - Pilbara",
-							"WA - Kimberley": "WA - Kimberley",
-							"NT - Alice Springs": "NT - Alice Springs",
-							"NT - Barkly": "NT - Barkly",
-							"NT - Northern": "NT - Northern",
-							"QLD - High": "QLD - High",
-							"QLD - Moderate/High": "QLD - Moderate/High",
-							"QLD - Moderate/Low": "QLD - Moderate/Low",
-							"QLD - Low": "QLD - Low",
-							"Australia": "Australia"
-						}
-					},
-					"Quantity": {
-						"CellType": "number",
-						"Unit": "head"
-					},
-					"LiveweightMethod1": {
-						"CellType": "formula",
-						"Unit": "kg/head"
-					},
-					"LiveweightMethod2": {
-						"CellType": "number",
-						"Unit": "kg/head"
-					}
-				}
-			}
-		},
-		{
-			"TableName": "X_Table_PastureBeef_CrudeProtein_Method1",
-			"MatrixType": "ColsToRows",
-			"NumberOfRows": 5,
-			"NumberOfCols": 10,
-			"ColumnNames": {
-				"BullsUnder1Year": "Bulls < 1 year",
-				"BullsOver1Year": "Bulls > 1 year",
-				"CowsUnder1Year": "Cows < 1 year",
-				"Cows1To2Years": "Cows 1-2 years",
-				"Cows2To3Years": "Cows 2-3 years",
-				"CowsOver3Years": "Cows > 3 years",
-				"SteersUnder1Year": "Steers < 1 year",
-				"Steers1To2Years": "Steers 1-2 years",
-				"Steers2To3Years": "Steers 2-3 years",
-				"SteersOver3Years": "Steers >3 years"
-			},
-			"Cols": {
-				"Column": {
-					"Spring": {
-						"Row": 2,
-						"Col": 2,
-						"Label": "Spring",
-						"CellType": "formula"
-					},
-					"Summer": {
-						"Row": 3,
-						"Col": 2,
-						"Label": "Summer",
-						"CellType": "formula"
-					},
-					"Autumn": {
-						"Row": 4,
-						"Col": 2,
-						"Label": "Autumn",
-						"CellType": "formula"
-					},
-					"Winter": {
-						"Row": 5,
-						"Col": 2,
-						"Label": "Winter",
-						"CellType": "formula"
-					}
-				}
-			}
-		},
-		{
-			"TableName": "X_Table_PastureBeef_CrudeProtein_Method2",
-			"MatrixType": "ColsToRows",
-			"NumberOfRows": 13,
-			"NumberOfCols": 10,
-			"ColumnNames": {
-				"BullsUnder1Year": "Bulls < 1 year",
-				"BullsOver1Year": "Bulls > 1 year",
-				"CowsUnder1Year": "Cows < 1 year",
-				"Cows1To2Years": "Cows 1-2 years",
-				"Cows2To3Years": "Cows 2-3 years",
-				"CowsOver3Years": "Cows > 3 years",
-				"SteersUnder1Year": "Steers < 1 year",
-				"Steers1To2Years": "Steers 1-2 years",
-				"Steers2To3Years": "Steers 2-3 years",
-				"SteersOver3Years": "Steers >3 years"
-			},
-			"Cols": {
-				"Column": {
-					"January2024": {
-						"Row": 2,
-						"Col": 2,
-						"Label": "January 2024",
-						"CellType": "number",
-						"CanOverWriteFormula": true
-					},
-					"February2024": {
-						"Row": 3,
-						"Col": 2,
-						"Label": "February 2024",
-						"CellType": "number",
-						"CanOverWriteFormula": true
-					},
-					"March2024": {
-						"Row": 4,
-						"Col": 2,
-						"Label": "March 2024",
-						"CellType": "number",
-						"CanOverWriteFormula": true
-					},
-					"April2024": {
-						"Row": 5,
-						"Col": 2,
-						"Label": "April 2024",
-						"CellType": "number",
-						"CanOverWriteFormula": true
-					},
-					"May2024": {
-						"Row": 6,
-						"Col": 2,
-						"Label": "May 2024",
-						"CellType": "number",
-						"CanOverWriteFormula": true
-					},
-					"June2024": {
-						"Row": 7,
-						"Col": 2,
-						"Label": "June 2024",
-						"CellType": "number",
-						"CanOverWriteFormula": true
-					},
-					"July2024": {
-						"Row": 8,
-						"Col": 2,
-						"Label": "July 2024",
-						"CellType": "number",
-						"CanOverWriteFormula": true
-					},
-					"August2024": {
-						"Row": 9,
-						"Col": 2,
-						"Label": "August 2024",
-						"CellType": "number",
-						"CanOverWriteFormula": true
-					},
-					"September2024": {
-						"Row": 10,
-						"Col": 2,
-						"Label": "September 2024",
-						"CellType": "number",
-						"CanOverWriteFormula": true
-					},
-					"October2024": {
-						"Row": 11,
-						"Col": 2,
-						"Label": "October 2024",
-						"CellType": "number",
-						"CanOverWriteFormula": true
-					},
-					"November2024": {
-						"Row": 12,
-						"Col": 2,
-						"Label": "November 2024",
-						"CellType": "number",
-						"CanOverWriteFormula": true
-					},
-					"December2024": {
-						"Row": 13,
-						"Col": 2,
-						"Label": "December 2024",
-						"CellType": "number",
-						"CanOverWriteFormula": true
-					}
-				}
-			}
-		},
-		{
-			"TableName": "X_Table_PastureBeef_DryMatterDigestibility_Method1",
-			"MatrixType": "ColsToRows",
-			"NumberOfRows": 5,
-			"NumberOfCols": 10,
-			"ColumnNames": {
-				"BullsUnder1Year": "Bulls < 1 year",
-				"BullsOver1Year": "Bulls > 1 year",
-				"CowsUnder1Year": "Cows < 1 year",
-				"Cows1To2Years": "Cows 1-2 years",
-				"Cows2To3Years": "Cows 2-3 years",
-				"CowsOver3Years": "Cows > 3 years",
-				"SteersUnder1Year": "Steers < 1 year",
-				"Steers1To2Years": "Steers 1-2 years",
-				"Steers2To3Years": "Steers 2-3 years",
-				"SteersOver3Years": "Steers >3 years"
-			},
-			"Cols": {
-				"Column": {
-					"Spring": {
-						"Row": 2,
-						"Col": 2,
-						"Label": "Spring",
-						"CellType": "formula"
-					},
-					"Summer": {
-						"Row": 3,
-						"Col": 2,
-						"Label": "Summer",
-						"CellType": "formula"
-					},
-					"Autumn": {
-						"Row": 4,
-						"Col": 2,
-						"Label": "Autumn",
-						"CellType": "formula"
-					},
-					"Winter": {
-						"Row": 5,
-						"Col": 2,
-						"Label": "Winter",
-						"CellType": "formula"
-					}
-				}
-			}
-		},
-		{
-			"TableName": "X_Table_PastureBeef_DryMatterDigestibility_Method2",
-			"MatrixType": "ColsToRows",
-			"NumberOfRows": 13,
-			"NumberOfCols": 10,
-			"ColumnNames": {
-				"BullsUnder1Year": "Bulls < 1 year",
-				"BullsOver1Year": "Bulls > 1 year",
-				"CowsUnder1Year": "Cows < 1 year",
-				"Cows1To2Years": "Cows 1-2 years",
-				"Cows2To3Years": "Cows 2-3 years",
-				"CowsOver3Years": "Cows > 3 years",
-				"SteersUnder1Year": "Steers < 1 year",
-				"Steers1To2Years": "Steers 1-2 years",
-				"Steers2To3Years": "Steers 2-3 years",
-				"SteersOver3Years": "Steers >3 years"
-			},
-			"Cols": {
-				"Column": {
-					"January2024": {
-						"Row": 2,
-						"Col": 2,
-						"Label": "January 2024",
-						"CellType": "number",
-						"CanOverWriteFormula": true
-					},
-					"February2024": {
-						"Row": 3,
-						"Col": 2,
-						"Label": "February 2024",
-						"CellType": "number",
-						"CanOverWriteFormula": true
-					},
-					"March2024": {
-						"Row": 4,
-						"Col": 2,
-						"Label": "March 2024",
-						"CellType": "number",
-						"CanOverWriteFormula": true
-					},
-					"April2024": {
-						"Row": 5,
-						"Col": 2,
-						"Label": "April 2024",
-						"CellType": "number",
-						"CanOverWriteFormula": true
-					},
-					"May2024": {
-						"Row": 6,
-						"Col": 2,
-						"Label": "May 2024",
-						"CellType": "number",
-						"CanOverWriteFormula": true
-					},
-					"June2024": {
-						"Row": 7,
-						"Col": 2,
-						"Label": "June 2024",
-						"CellType": "number",
-						"CanOverWriteFormula": true
-					},
-					"July2024": {
-						"Row": 8,
-						"Col": 2,
-						"Label": "July 2024",
-						"CellType": "number",
-						"CanOverWriteFormula": true
-					},
-					"August2024": {
-						"Row": 9,
-						"Col": 2,
-						"Label": "August 2024",
-						"CellType": "number",
-						"CanOverWriteFormula": true
-					},
-					"September2024": {
-						"Row": 10,
-						"Col": 2,
-						"Label": "September 2024",
-						"CellType": "number",
-						"CanOverWriteFormula": true
-					},
-					"October2024": {
-						"Row": 11,
-						"Col": 2,
-						"Label": "October 2024",
-						"CellType": "number",
-						"CanOverWriteFormula": true
-					},
-					"November2024": {
-						"Row": 12,
-						"Col": 2,
-						"Label": "November 2024",
-						"CellType": "number",
-						"CanOverWriteFormula": true
-					},
-					"December2024": {
-						"Row": 13,
-						"Col": 2,
-						"Label": "December 2024",
-						"CellType": "number",
-						"CanOverWriteFormula": true
-					}
-				}
-			}
-		},
 		{
 			"TableName": "X_Table_PastureBeef_Duration_Method1",
 			"MatrixType": "ColsToRows",
@@ -1130,6 +685,451 @@
 						"Label": "December 2024",
 						"CellType": "number",
 						"CanOverWriteFormula": true
+					}
+				}
+			}
+		},
+		{
+			"TableName": "X_Table_PastureBeef_DryMatterDigestibility_Method1",
+			"MatrixType": "ColsToRows",
+			"NumberOfRows": 5,
+			"NumberOfCols": 10,
+			"ColumnNames": {
+				"BullsUnder1Year": "Bulls < 1 year",
+				"BullsOver1Year": "Bulls > 1 year",
+				"CowsUnder1Year": "Cows < 1 year",
+				"Cows1To2Years": "Cows 1-2 years",
+				"Cows2To3Years": "Cows 2-3 years",
+				"CowsOver3Years": "Cows > 3 years",
+				"SteersUnder1Year": "Steers < 1 year",
+				"Steers1To2Years": "Steers 1-2 years",
+				"Steers2To3Years": "Steers 2-3 years",
+				"SteersOver3Years": "Steers >3 years"
+			},
+			"Cols": {
+				"Column": {
+					"Spring": {
+						"Row": 2,
+						"Col": 2,
+						"Label": "Spring",
+						"CellType": "formula"
+					},
+					"Summer": {
+						"Row": 3,
+						"Col": 2,
+						"Label": "Summer",
+						"CellType": "formula"
+					},
+					"Autumn": {
+						"Row": 4,
+						"Col": 2,
+						"Label": "Autumn",
+						"CellType": "formula"
+					},
+					"Winter": {
+						"Row": 5,
+						"Col": 2,
+						"Label": "Winter",
+						"CellType": "formula"
+					}
+				}
+			}
+		},
+		{
+			"TableName": "X_Table_PastureBeef_DryMatterDigestibility_Method2",
+			"MatrixType": "ColsToRows",
+			"NumberOfRows": 13,
+			"NumberOfCols": 10,
+			"ColumnNames": {
+				"BullsUnder1Year": "Bulls < 1 year",
+				"BullsOver1Year": "Bulls > 1 year",
+				"CowsUnder1Year": "Cows < 1 year",
+				"Cows1To2Years": "Cows 1-2 years",
+				"Cows2To3Years": "Cows 2-3 years",
+				"CowsOver3Years": "Cows > 3 years",
+				"SteersUnder1Year": "Steers < 1 year",
+				"Steers1To2Years": "Steers 1-2 years",
+				"Steers2To3Years": "Steers 2-3 years",
+				"SteersOver3Years": "Steers >3 years"
+			},
+			"Cols": {
+				"Column": {
+					"January2024": {
+						"Row": 2,
+						"Col": 2,
+						"Label": "January 2024",
+						"CellType": "number",
+						"CanOverWriteFormula": true
+					},
+					"February2024": {
+						"Row": 3,
+						"Col": 2,
+						"Label": "February 2024",
+						"CellType": "number",
+						"CanOverWriteFormula": true
+					},
+					"March2024": {
+						"Row": 4,
+						"Col": 2,
+						"Label": "March 2024",
+						"CellType": "number",
+						"CanOverWriteFormula": true
+					},
+					"April2024": {
+						"Row": 5,
+						"Col": 2,
+						"Label": "April 2024",
+						"CellType": "number",
+						"CanOverWriteFormula": true
+					},
+					"May2024": {
+						"Row": 6,
+						"Col": 2,
+						"Label": "May 2024",
+						"CellType": "number",
+						"CanOverWriteFormula": true
+					},
+					"June2024": {
+						"Row": 7,
+						"Col": 2,
+						"Label": "June 2024",
+						"CellType": "number",
+						"CanOverWriteFormula": true
+					},
+					"July2024": {
+						"Row": 8,
+						"Col": 2,
+						"Label": "July 2024",
+						"CellType": "number",
+						"CanOverWriteFormula": true
+					},
+					"August2024": {
+						"Row": 9,
+						"Col": 2,
+						"Label": "August 2024",
+						"CellType": "number",
+						"CanOverWriteFormula": true
+					},
+					"September2024": {
+						"Row": 10,
+						"Col": 2,
+						"Label": "September 2024",
+						"CellType": "number",
+						"CanOverWriteFormula": true
+					},
+					"October2024": {
+						"Row": 11,
+						"Col": 2,
+						"Label": "October 2024",
+						"CellType": "number",
+						"CanOverWriteFormula": true
+					},
+					"November2024": {
+						"Row": 12,
+						"Col": 2,
+						"Label": "November 2024",
+						"CellType": "number",
+						"CanOverWriteFormula": true
+					},
+					"December2024": {
+						"Row": 13,
+						"Col": 2,
+						"Label": "December 2024",
+						"CellType": "number",
+						"CanOverWriteFormula": true
+					}
+				}
+			}
+		},
+		{
+			"TableName": "X_Table_PastureBeef_CrudeProtein_Method1",
+			"MatrixType": "ColsToRows",
+			"NumberOfRows": 5,
+			"NumberOfCols": 10,
+			"ColumnNames": {
+				"BullsUnder1Year": "Bulls < 1 year",
+				"BullsOver1Year": "Bulls > 1 year",
+				"CowsUnder1Year": "Cows < 1 year",
+				"Cows1To2Years": "Cows 1-2 years",
+				"Cows2To3Years": "Cows 2-3 years",
+				"CowsOver3Years": "Cows > 3 years",
+				"SteersUnder1Year": "Steers < 1 year",
+				"Steers1To2Years": "Steers 1-2 years",
+				"Steers2To3Years": "Steers 2-3 years",
+				"SteersOver3Years": "Steers >3 years"
+			},
+			"Cols": {
+				"Column": {
+					"Spring": {
+						"Row": 2,
+						"Col": 2,
+						"Label": "Spring",
+						"CellType": "formula"
+					},
+					"Summer": {
+						"Row": 3,
+						"Col": 2,
+						"Label": "Summer",
+						"CellType": "formula"
+					},
+					"Autumn": {
+						"Row": 4,
+						"Col": 2,
+						"Label": "Autumn",
+						"CellType": "formula"
+					},
+					"Winter": {
+						"Row": 5,
+						"Col": 2,
+						"Label": "Winter",
+						"CellType": "formula"
+					}
+				}
+			}
+		},
+		{
+			"TableName": "X_Table_PastureBeef_CrudeProtein_Method2",
+			"MatrixType": "ColsToRows",
+			"NumberOfRows": 13,
+			"NumberOfCols": 10,
+			"ColumnNames": {
+				"BullsUnder1Year": "Bulls < 1 year",
+				"BullsOver1Year": "Bulls > 1 year",
+				"CowsUnder1Year": "Cows < 1 year",
+				"Cows1To2Years": "Cows 1-2 years",
+				"Cows2To3Years": "Cows 2-3 years",
+				"CowsOver3Years": "Cows > 3 years",
+				"SteersUnder1Year": "Steers < 1 year",
+				"Steers1To2Years": "Steers 1-2 years",
+				"Steers2To3Years": "Steers 2-3 years",
+				"SteersOver3Years": "Steers >3 years"
+			},
+			"Cols": {
+				"Column": {
+					"January2024": {
+						"Row": 2,
+						"Col": 2,
+						"Label": "January 2024",
+						"CellType": "number",
+						"CanOverWriteFormula": true
+					},
+					"February2024": {
+						"Row": 3,
+						"Col": 2,
+						"Label": "February 2024",
+						"CellType": "number",
+						"CanOverWriteFormula": true
+					},
+					"March2024": {
+						"Row": 4,
+						"Col": 2,
+						"Label": "March 2024",
+						"CellType": "number",
+						"CanOverWriteFormula": true
+					},
+					"April2024": {
+						"Row": 5,
+						"Col": 2,
+						"Label": "April 2024",
+						"CellType": "number",
+						"CanOverWriteFormula": true
+					},
+					"May2024": {
+						"Row": 6,
+						"Col": 2,
+						"Label": "May 2024",
+						"CellType": "number",
+						"CanOverWriteFormula": true
+					},
+					"June2024": {
+						"Row": 7,
+						"Col": 2,
+						"Label": "June 2024",
+						"CellType": "number",
+						"CanOverWriteFormula": true
+					},
+					"July2024": {
+						"Row": 8,
+						"Col": 2,
+						"Label": "July 2024",
+						"CellType": "number",
+						"CanOverWriteFormula": true
+					},
+					"August2024": {
+						"Row": 9,
+						"Col": 2,
+						"Label": "August 2024",
+						"CellType": "number",
+						"CanOverWriteFormula": true
+					},
+					"September2024": {
+						"Row": 10,
+						"Col": 2,
+						"Label": "September 2024",
+						"CellType": "number",
+						"CanOverWriteFormula": true
+					},
+					"October2024": {
+						"Row": 11,
+						"Col": 2,
+						"Label": "October 2024",
+						"CellType": "number",
+						"CanOverWriteFormula": true
+					},
+					"November2024": {
+						"Row": 12,
+						"Col": 2,
+						"Label": "November 2024",
+						"CellType": "number",
+						"CanOverWriteFormula": true
+					},
+					"December2024": {
+						"Row": 13,
+						"Col": 2,
+						"Label": "December 2024",
+						"CellType": "number",
+						"CanOverWriteFormula": true
+					}
+				}
+			}
+		},
+		{
+			"TableName": "Table_Input_LivestockPurchases_Beefcattle",
+			"MatrixType": "RowsToCols",
+			"NumberOfCols": 8,
+			"ColumnNames": {
+				"TransactionName": "Transaction name",
+				"PurchaseDate": "Purchase date",
+				"Class": "Class (select)",
+				"PurchaseClass": "Purchase class (select)",
+				"SourceRegion": "Source region (Select)",
+				"Quantity": "Quantity (head)",
+				"LiveweightMethod1": "Liveweight (kg/head) Method 1",
+				"LiveweightMethod2": "Liveweight (kg/head) Method 2"
+			},
+			"Rows": {
+				"Row": {
+					"TransactionName": {
+						"CellType": "text"
+					},
+					"PurchaseDate": {
+						"CellType": "date"
+					},
+					"Class": {
+						"CellType": "select",
+						"Options": {
+							"Bulls < 1 year": "Bulls < 1 year",
+							"Bulls > 1 year": "Bulls > 1 year",
+							"Cows < 1 year": "Cows < 1 year",
+							"Cows 1-2 years": "Cows 1-2 years",
+							"Cows 2-3 years": "Cows 2-3 years",
+							"Cows > 3 years": "Cows > 3 years",
+							"Steers < 1 year": "Steers < 1 year",
+							"Steers 1-2 years": "Steers 1-2 years",
+							"Steers 2-3 years": "Steers 2-3 years",
+							"Steers >3 years": "Steers >3 years"
+						}
+					},
+					"PurchaseClass": {
+						"CellType": "select",
+						"Options": {
+							"Cattle, for manufacturing beef": "Cattle, for manufacturing beef",
+							"Cattle, for prime beef": "Cattle, for prime beef",
+							"Cattle, weaners": "Cattle, weaners"
+						}
+					},
+					"SourceRegion": {
+						"CellType": "select",
+						"Options": {
+							"ACT": "ACT",
+							"NSW": "NSW",
+							"SA": "SA",
+							"TAS": "TAS",
+							"VIC": "VIC",
+							"WA - South west": "WA - South west",
+							"WA - Pilbara": "WA - Pilbara",
+							"WA - Kimberley": "WA - Kimberley",
+							"NT - Alice Springs": "NT - Alice Springs",
+							"NT - Barkly": "NT - Barkly",
+							"NT - Northern": "NT - Northern",
+							"QLD - High": "QLD - High",
+							"QLD - Moderate/High": "QLD - Moderate/High",
+							"QLD - Moderate/Low": "QLD - Moderate/Low",
+							"QLD - Low": "QLD - Low",
+							"Australia": "Australia"
+						}
+					},
+					"Quantity": {
+						"CellType": "number",
+						"Unit": "head"
+					},
+					"LiveweightMethod1": {
+						"CellType": "formula",
+						"Unit": "kg/head"
+					},
+					"LiveweightMethod2": {
+						"CellType": "number",
+						"Unit": "kg/head"
+					}
+				}
+			}
+		},
+		{
+			"TableName": "Table_Input_LivestockSales3",
+			"MatrixType": "RowsToCols",
+			"NumberOfCols": 6,
+			"ColumnNames": {
+				"TransactionName": "Transaction name",
+				"Class": "Class (select)",
+				"SaleDate": "Sale date",
+				"HeadSold": "Head sold",
+				"AverageWeightPerHead": "Average weight per head (kg)",
+				"TotalLiveweightSold": "Total liveweight sold"
+			},
+			"Rows": {
+				"Row": {
+					"TransactionName": {
+						"CellType": "select",
+						"Options": {
+							"Bulls < 1 year": "Bulls < 1 year",
+							"Bulls > 1 year": "Bulls > 1 year",
+							"Cows < 1 year": "Cows < 1 year",
+							"Cows 1-2 years": "Cows 1-2 years",
+							"Cows 2-3 years": "Cows 2-3 years",
+							"Cows > 3 years": "Cows > 3 years",
+							"Steers < 1 year": "Steers < 1 year",
+							"Steers 1-2 years": "Steers 1-2 years",
+							"Steers 2-3 years": "Steers 2-3 years",
+							"Steers >3 years": "Steers >3 years"
+						}
+					},
+					"Class": {
+						"CellType": "select",
+						"Options": {
+							"Bulls < 1 year": "Bulls < 1 year",
+							"Bulls > 1 year": "Bulls > 1 year",
+							"Cows < 1 year": "Cows < 1 year",
+							"Cows 1-2 years": "Cows 1-2 years",
+							"Cows 2-3 years": "Cows 2-3 years",
+							"Cows > 3 years": "Cows > 3 years",
+							"Steers < 1 year": "Steers < 1 year",
+							"Steers 1-2 years": "Steers 1-2 years",
+							"Steers 2-3 years": "Steers 2-3 years",
+							"Steers >3 years": "Steers >3 years"
+						}
+					},
+					"SaleDate": {
+						"CellType": "date"
+					},
+					"HeadSold": {
+						"CellType": "number"
+					},
+					"AverageWeightPerHead": {
+						"CellType": "number",
+						"Unit": "kg"
+					},
+					"TotalLiveweightSold": {
+						"CellType": "formula"
 					}
 				}
 			}

@@ -1,8 +1,55 @@
 {
 	"schemaVersion": 1,
 	"generatedFrom": "14_Electricity_Scope2_WIP_v01.xlsx",
-	"generatedAt": "2026-07-14T13:37:11Z",
+	"generatedAt": "2026-07-14T23:33:51Z",
 	"InputCells": [
+		{
+			"CellName": "X_Cell_Site_FarmName",
+			"Label": "Farm name",
+			"CellType": "text"
+		},
+		{
+			"CellName": "X_Cell_Site_ReportingEntityName",
+			"Label": "Reporting entity name",
+			"CellType": "text"
+		},
+		{
+			"CellName": "X_Cell_Site_StartDate",
+			"Label": "Emissions calculation period start date",
+			"CellType": "date"
+		},
+		{
+			"CellName": "X_Cell_Site_State",
+			"Label": "State",
+			"CellType": "select",
+			"Options": {
+				"New South Wales": "New South Wales",
+				"ACT": "ACT",
+				"Victoria": "Victoria",
+				"Queensland": "Queensland",
+				"South Australia": "South Australia",
+				"Western Australia": "Western Australia",
+				"Tasmania": "Tasmania",
+				"Northern Territory": "Northern Territory"
+			}
+		},
+		{
+			"CellName": "X_Cell_Site_Region",
+			"Label": "Region (ABS Statistical area level 4) if state is WA",
+			"CellType": "select",
+			"Options": {
+				"Bunbury": "Bunbury",
+				"Mandurah": "Mandurah",
+				"Perth - Inner": "Perth - Inner",
+				"Perth - North East": "Perth - North East",
+				"Perth - North West": "Perth - North West",
+				"Perth - South East": "Perth - South East",
+				"Perth - South West": "Perth - South West",
+				"Western Australia - Wheat Belt": "Western Australia - Wheat Belt",
+				"Western Australia - Outback (North)": "Western Australia - Outback (North)",
+				"Western Australia - Outback (South)": "Western Australia - Outback (South)"
+			}
+		},
 		{
 			"CellName": "X_Cell_Electricity_Location_AmountPurchasedInkWh",
 			"Label": "Amount purchased in kWh",
@@ -31,9 +78,9 @@
 			"CellType": "number"
 		},
 		{
-			"CellName": "X_Cell_Electricity_Market_AmountPurchasedGreenPower",
-			"Label": "Electricity purchased from an accredited GreenPower provider",
-			"CellType": "number"
+			"CellName": "X_Cell_Electricity_Market_RenewablePowerPercentage",
+			"Label": "Renewable Power Percentage",
+			"CellType": "percent"
 		},
 		{
 			"CellName": "X_Cell_Electricity_Market_JurisdictionalRenewablePowerPercentage",
@@ -41,65 +88,18 @@
 			"CellType": "percent"
 		},
 		{
-			"CellName": "X_Cell_Electricity_Market_RenewablePowerPercentage",
-			"Label": "Renewable Power Percentage",
-			"CellType": "percent"
-		},
-		{
-			"CellName": "X_Cell_Site_FarmName",
-			"Label": "Farm name",
-			"CellType": "text"
-		},
-		{
-			"CellName": "X_Cell_Site_Region",
-			"Label": "Region (ABS Statistical area level 4) if state is WA",
-			"CellType": "select",
-			"Options": {
-				"Bunbury": "Bunbury",
-				"Mandurah": "Mandurah",
-				"Perth - Inner": "Perth - Inner",
-				"Perth - North East": "Perth - North East",
-				"Perth - North West": "Perth - North West",
-				"Perth - South East": "Perth - South East",
-				"Perth - South West": "Perth - South West",
-				"Western Australia - Wheat Belt": "Western Australia - Wheat Belt",
-				"Western Australia - Outback (North)": "Western Australia - Outback (North)",
-				"Western Australia - Outback (South)": "Western Australia - Outback (South)"
-			}
-		},
-		{
-			"CellName": "X_Cell_Site_ReportingEntityName",
-			"Label": "Reporting entity name",
-			"CellType": "text"
-		},
-		{
-			"CellName": "X_Cell_Site_StartDate",
-			"Label": "Emissions calculation period start date",
-			"CellType": "date"
-		},
-		{
-			"CellName": "X_Cell_Site_State",
-			"Label": "State",
-			"CellType": "select",
-			"Options": {
-				"New South Wales": "New South Wales",
-				"ACT": "ACT",
-				"Victoria": "Victoria",
-				"Queensland": "Queensland",
-				"South Australia": "South Australia",
-				"Western Australia": "Western Australia",
-				"Tasmania": "Tasmania",
-				"Northern Territory": "Northern Territory"
-			}
-		},
-		{
-			"CellName": "X_Cell_TotalElegibleRECsForElectricityProducedOnSite",
-			"Label": "Total elegible RECs for electricity produced on-site and consumed by entity",
+			"CellName": "X_Cell_Electricity_Market_AmountPurchasedGreenPower",
+			"Label": "Electricity purchased from an accredited GreenPower provider",
 			"CellType": "number"
 		},
 		{
 			"CellName": "X_Cell_TotalElegibleVoluntarilySurrenderedRECs",
 			"Label": "Total elegible voluntarily surrendered RECs",
+			"CellType": "number"
+		},
+		{
+			"CellName": "X_Cell_TotalElegibleRECsForElectricityProducedOnSite",
+			"Label": "Total elegible RECs for electricity produced on-site and consumed by entity",
 			"CellType": "number"
 		}
 	],
