@@ -1,19 +1,22 @@
 {
 	"schemaVersion": 1,
 	"generatedFrom": "3_5_Enteric_Swine_WIP_v02.xlsx",
-	"generatedAt": "2026-07-14T07:30:29Z",
+	"generatedAt": "2026-07-14T13:37:32Z",
 	"InputCells": [
 		{
 			"CellName": "X_Cell_Site_FarmName",
+			"Label": "Farm name",
 			"CellType": "text"
 		},
 		{
 			"CellName": "X_Cell_Site_ReportingEntityName",
+			"Label": "Reporting entity name",
 			"CellType": "text"
 		},
 		{
 			"CellName": "X_Cell_Site_StartDate",
-			"CellType": "number"
+			"Label": "Emissions calculation period start date",
+			"CellType": "date"
 		}
 	],
 	"InputTables": [

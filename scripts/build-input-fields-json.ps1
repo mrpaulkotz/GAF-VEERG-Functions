@@ -14,8 +14,9 @@
                     per-field CellType / Unit / overwrite metadata and the table's
                     MatrixType (RowsToCols vs ColsToRows).
 
-  A shallow override file (InputFields/_overrides/<Module>.json) is merged over the
-  generated result so manual corrections survive regeneration. The result is written to
+  A per-field override file (InputFields/_overrides/<Module>.json) is merged over the
+  generated result so manual settings (Label, Group, Default, Hidden, etc.) survive
+  regeneration. The result is written to
   InputFields/<Module>_InputFields.json as UTF-8 WITHOUT a BOM.
 
   Formula input cells use the _Method naming convention:
@@ -228,14 +229,89 @@ function Write-JsonNoBom {
 }
 
 function Merge-Override {
-  # Shallow merge: top-level keys from $Override replace those in $Base.
+  # Deep, per-field merge of a hand-maintained override file over the generated
+  # model. The override file is keyed by field identity so it survives regeneration
+  # and only touches the fields it names:
+  #
+  #   {
+  #     "_comment": "ignored - any top-level key starting with '_' is documentation",
+  #     "InputCells":  { "<CellName>":  { <props to add/replace on that cell> } },
+  #     "InputTables": { "<TableName>": { <props>, "Columns": { "<Col>": { <props> } } } }
+  #   }
+  #
+  # Each override object's properties are shallow-applied onto the matching field
+  # (added if absent, replaced if present), so consumers can set Label, Group,
+  # Default, Hidden, Order, etc. without redefining the generated structure. Any
+  # other top-level key (not '_'-prefixed) falls back to a whole-value replace.
   param(
     [Parameter(Mandatory = $true)] $Base,
     [Parameter(Mandatory = $true)] $Override
   )
-  foreach ($prop in $Override.PSObject.Properties) {
-    $Base[$prop.Name] = $prop.Value
+
+  $applyProps = {
+    param($Target, $Source)   # $Target = ordered dict field; $Source = PSCustomObject of overrides
+    foreach ($p in $Source.PSObject.Properties) {
+      $Target[$p.Name] = $p.Value
+    }
   }
+
+  foreach ($prop in $Override.PSObject.Properties) {
+    $name = $prop.Name
+
+    if ($name.StartsWith('_')) { continue }   # documentation-only keys
+
+    if ($name -eq 'InputCells' -and $prop.Value -is [System.Management.Automation.PSCustomObject]) {
+      foreach ($cellOv in $prop.Value.PSObject.Properties) {
+        $target = @($Base['InputCells']) | Where-Object { $_['CellName'] -eq $cellOv.Name } | Select-Object -First 1
+        if ($null -eq $target) {
+          Add-ValidationWarning "Override references unknown InputCell '$($cellOv.Name)'"
+          continue
+        }
+        & $applyProps $target $cellOv.Value
+      }
+      continue
+    }
+
+    if ($name -eq 'InputTables' -and $prop.Value -is [System.Management.Automation.PSCustomObject]) {
+      foreach ($tblOv in $prop.Value.PSObject.Properties) {
+        $tbl = @($Base['InputTables']) | Where-Object { $_['TableName'] -eq $tblOv.Name } | Select-Object -First 1
+        if ($null -eq $tbl) {
+          Add-ValidationWarning "Override references unknown InputTable '$($tblOv.Name)'"
+          continue
+        }
+        foreach ($tp in $tblOv.Value.PSObject.Properties) {
+          if ($tp.Name -eq 'Columns' -and $tp.Value -is [System.Management.Automation.PSCustomObject]) {
+            # Column field defs live under Rows.Row.<key> (RowsToCols) or Cols.Column.<key> (ColsToRows).
+            $containers = @()
+            foreach ($grp in @(@{ C = 'Rows'; G = 'Row' }, @{ C = 'Cols'; G = 'Column' })) {
+              if ($tbl.Contains($grp.C) -and $tbl[$grp.C] -is [System.Collections.IDictionary] -and $tbl[$grp.C].Contains($grp.G)) {
+                $containers += , $tbl[$grp.C][$grp.G]
+              }
+            }
+            foreach ($colOv in $tp.Value.PSObject.Properties) {
+              $colTarget = $null
+              foreach ($cont in $containers) {
+                if ($cont -is [System.Collections.IDictionary] -and $cont.Contains($colOv.Name)) { $colTarget = $cont[$colOv.Name]; break }
+              }
+              if ($null -eq $colTarget) {
+                Add-ValidationWarning "Override references unknown column '$($colOv.Name)' in table '$($tblOv.Name)'"
+                continue
+              }
+              & $applyProps $colTarget $colOv.Value
+            }
+          }
+          else {
+            $tbl[$tp.Name] = $tp.Value
+          }
+        }
+      }
+      continue
+    }
+
+    # Fallback: whole-value replace of a top-level key (backward compatible).
+    $Base[$name] = $prop.Value
+  }
+
   return $Base
 }
 
@@ -830,6 +906,18 @@ function Get-InputCells {
 
     $cellObj = [ordered]@{ CellName = $shortName }
 
+    # Label comes from the worksheet cell immediately to the left of the named cell.
+    $label = ''
+    try {
+      $col = [int]$range.Column
+      if ($col -gt 1 -and $null -ne $worksheet) {
+        $leftValue = $worksheet.Cells.Item([int]$range.Row, $col - 1).Value2
+        if ($null -ne $leftValue) { $label = ([string]$leftValue).Trim() }
+      }
+    }
+    catch { $label = '' }
+    $cellObj['Label'] = $label
+
     # Resolve a validation list first (applies whether or not there is a formula).
     $listInfo = $null
     if ($null -ne $worksheet) {
@@ -1194,6 +1282,44 @@ function Build-NameIndex {
   return $index
 }
 
+function Set-DateFieldTypes {
+  # Any input field whose key contains 'date' (case-insensitive) is a date input.
+  # Excel stores dates as numbers, so the format-based detection reports them as
+  # 'number' (or 'text'); coerce those scalar types to 'date'. Dropdowns ('select')
+  # and computed ('formula') fields are left untouched.
+  param([Parameter(Mandatory = $true)] $Model)
+
+  $coerce = {
+    param($Key, $Def)
+    if ($Key -notmatch '(?i)date') { return }
+    if ($null -eq $Def -or -not ($Def -is [System.Collections.IDictionary])) { return }
+    if (-not $Def.Contains('CellType')) { return }
+    if ($Def['CellType'] -eq 'number' -or $Def['CellType'] -eq 'text') { $Def['CellType'] = 'date' }
+  }
+
+  foreach ($cell in @($Model.InputCells)) {
+    if ($cell -is [System.Collections.IDictionary] -and $cell.Contains('CellName')) {
+      & $coerce $cell['CellName'] $cell
+    }
+  }
+
+  foreach ($table in @($Model.InputTables)) {
+    if (-not ($table -is [System.Collections.IDictionary])) { continue }
+    foreach ($container in @('Rows', 'Cols')) {
+      if (-not $table.Contains($container)) { continue }
+      $inner = $table[$container]
+      if (-not ($inner -is [System.Collections.IDictionary])) { continue }
+      foreach ($groupKey in @($inner.Keys)) {          # 'Row' or 'Column'
+        $fields = $inner[$groupKey]
+        if (-not ($fields -is [System.Collections.IDictionary])) { continue }
+        foreach ($fieldKey in @($fields.Keys)) {
+          & $coerce $fieldKey $fields[$fieldKey]
+        }
+      }
+    }
+  }
+}
+
 function ConvertTo-InputFieldsModel {
   param(
     [Parameter(Mandatory = $true)] $Workbook,
@@ -1216,6 +1342,7 @@ function ConvertTo-InputFieldsModel {
     InputCells    = $inputCells
     InputTables   = $inputTables
   }
+  Set-DateFieldTypes -Model $model
   return $model
 }
 
@@ -1317,7 +1444,7 @@ try {
     try {
       $model = ConvertTo-InputFieldsModel -Workbook $workbook -SourceFileName $wbName
 
-      # Shallow-merge override file if present.
+      # Per-field-merge override file if present.
       $overridePath = Join-Path $overridesDir "$module.json"
       if (Test-Path -LiteralPath $overridePath) {
         try {

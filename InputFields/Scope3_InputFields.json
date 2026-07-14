@@ -1,7 +1,7 @@
 {
 	"schemaVersion": 1,
 	"generatedFrom": "13_Scope3_WIP_v11.xlsx",
-	"generatedAt": "2026-07-14T07:30:04Z",
+	"generatedAt": "2026-07-14T13:37:06Z",
 	"InputCells": [],
 	"InputTables": [
 		{
@@ -677,7 +677,7 @@
 						"CellType": "text"
 					},
 					"PurchaseDate": {
-						"CellType": "number"
+						"CellType": "date"
 					},
 					"Class": {
 						"CellType": "select",
@@ -1297,7 +1297,7 @@
 						}
 					},
 					"GenerationDate": {
-						"CellType": "number"
+						"CellType": "date"
 					},
 					"NumberOfCertificates": {
 						"CellType": "number"
@@ -1332,7 +1332,7 @@
 						"CellType": "formula"
 					},
 					"GenerationDate": {
-						"CellType": "number"
+						"CellType": "date"
 					},
 					"NumberOfCertificates": {
 						"CellType": "number"

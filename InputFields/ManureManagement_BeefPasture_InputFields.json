@@ -1,10 +1,11 @@
 {
 	"schemaVersion": 1,
 	"generatedFrom": "4_2_ManureManagement_BeefPasture_WIP_v08.xlsx",
-	"generatedAt": "2026-07-14T07:30:48Z",
+	"generatedAt": "2026-07-14T13:37:55Z",
 	"InputCells": [
 		{
 			"CellName": "X_Cell_PastureBeef_Breed",
+			"Label": "Cattle breed",
 			"CellType": "select",
 			"Options": {
 				"Hereford or Shorthorn breeds": "Hereford or Shorthorn breeds",
@@ -13,6 +14,7 @@
 		},
 		{
 			"CellName": "X_Cell_PastureBeef_FencedWater",
+			"Label": "Are all dams and natural water sources fenced off so cattle cannot access them?",
 			"CellType": "select",
 			"Options": {
 				"Yes": "Yes",
@@ -21,6 +23,7 @@
 		},
 		{
 			"CellName": "X_Cell_PastureBeef_GrazingIrrigationMethod",
+			"Label": "",
 			"CellType": "select",
 			"Options": {
 				"Not irrigated": "Not irrigated",
@@ -32,6 +35,7 @@
 		},
 		{
 			"CellName": "X_Cell_PastureBeef_GrazingProductionSystem",
+			"Label": "Where did the livestock spend most of their time grazing?",
 			"CellType": "select",
 			"Options": {
 				"Pasture": "Pasture",
@@ -40,32 +44,39 @@
 		},
 		{
 			"CellName": "X_Cell_PastureBeef_ProductionRegion",
+			"Label": "Livestock production region",
 			"CellType": "select",
 			"DependentOn": "E7",
 			"Options": {}
 		},
 		{
 			"CellName": "X_Cell_Site_AverageTemperature",
+			"Label": "Average temperature for reporting period",
 			"CellType": "number"
 		},
 		{
 			"CellName": "X_Cell_Site_ClimateZone",
+			"Label": "Climate zone",
 			"CellType": "text"
 		},
 		{
 			"CellName": "X_Cell_Site_Elevation",
+			"Label": "Elevation",
 			"CellType": "number"
 		},
 		{
 			"CellName": "X_Cell_Site_FarmName",
+			"Label": "Farm name",
 			"CellType": "text"
 		},
 		{
 			"CellName": "X_Cell_Site_FrostDays",
+			"Label": "Number of frost days for reporting period",
 			"CellType": "number"
 		},
 		{
 			"CellName": "X_Cell_Site_LeachingZone",
+			"Label": "Leaching zone",
 			"CellType": "select",
 			"Options": {
 				"YES - In leaching zone": "YES - In leaching zone",
@@ -74,18 +85,22 @@
 		},
 		{
 			"CellName": "X_Cell_Site_MapPetRatio",
+			"Label": "MAP:PET ratio",
 			"CellType": "number"
 		},
 		{
 			"CellName": "X_Cell_Site_PotentialEvapotranspiration",
+			"Label": "Potential evapotranspiration for reporting period",
 			"CellType": "number"
 		},
 		{
 			"CellName": "X_Cell_Site_RainfallZone",
+			"Label": "Rainfall zone",
 			"CellType": "text"
 		},
 		{
 			"CellName": "X_Cell_Site_Region",
+			"Label": "Region (ABS Statistical area level 4) if state is WA",
 			"CellType": "select",
 			"Options": {
 				"Bunbury": "Bunbury",
@@ -102,14 +117,17 @@
 		},
 		{
 			"CellName": "X_Cell_Site_ReportingEntityName",
+			"Label": "Reporting entity name",
 			"CellType": "text"
 		},
 		{
 			"CellName": "X_Cell_Site_StartDate",
-			"CellType": "number"
+			"Label": "Emissions calculation period start date",
+			"CellType": "date"
 		},
 		{
 			"CellName": "X_Cell_Site_State",
+			"Label": "State",
 			"CellType": "select",
 			"Options": {
 				"New South Wales": "New South Wales",
@@ -124,14 +142,17 @@
 		},
 		{
 			"CellName": "X_Cell_Site_TemperatureZone",
+			"Label": "Temperature zone",
 			"CellType": "text"
 		},
 		{
 			"CellName": "X_Cell_Site_TotalRainfall",
+			"Label": "Total rainfall for reporting period",
 			"CellType": "number"
 		},
 		{
 			"CellName": "X_Cell_Site_WetOrDryClimateZone",
+			"Label": "Wet or dry climate zone",
 			"CellType": "text"
 		}
 	],
@@ -181,7 +202,7 @@
 						}
 					},
 					"SaleDate": {
-						"CellType": "number"
+						"CellType": "date"
 					},
 					"HeadSold": {
 						"CellType": "number"
@@ -216,7 +237,7 @@
 						"CellType": "text"
 					},
 					"PurchaseDate": {
-						"CellType": "number"
+						"CellType": "date"
 					},
 					"Class": {
 						"CellType": "select",

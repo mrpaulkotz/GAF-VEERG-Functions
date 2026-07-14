@@ -1,42 +1,51 @@
 {
 	"schemaVersion": 1,
 	"generatedFrom": "11_Wastewater_WIP_v02.xlsx",
-	"generatedAt": "2026-07-14T07:29:49Z",
+	"generatedAt": "2026-07-14T13:36:50Z",
 	"InputCells": [
 		{
 			"CellName": "X_Cell_Wastewater_FractionCODRemovedAndTransferred",
+			"Label": "",
 			"CellType": "number"
 		},
 		{
 			"CellName": "X_Cell_Wastewater_FractionCODRemovedAsSludge",
+			"Label": "",
 			"CellType": "number"
 		},
 		{
 			"CellName": "X_Cell_Wastewater_InletCOD",
+			"Label": "",
 			"CellType": "number"
 		},
 		{
 			"CellName": "X_Cell_Wastewater_OutletCOD",
+			"Label": "",
 			"CellType": "number"
 		},
 		{
 			"CellName": "X_Cell_Wastewater_QuantityInM3",
+			"Label": "",
 			"CellType": "number"
 		},
 		{
 			"CellName": "X_Cell_Wastewater_SludgeMethaneCapturedForCombustion",
+			"Label": "",
 			"CellType": "number"
 		},
 		{
 			"CellName": "X_Cell_Wastewater_SludgeMethaneFlared",
+			"Label": "",
 			"CellType": "number"
 		},
 		{
 			"CellName": "X_Cell_Wastewater_SludgeMethaneTransferred",
+			"Label": "",
 			"CellType": "number"
 		},
 		{
 			"CellName": "X_Cell_Wastewater_TreatmentFacilityType",
+			"Label": "",
 			"CellType": "select",
 			"Options": {
 				"Managed aerobic treatment": "Managed aerobic treatment",

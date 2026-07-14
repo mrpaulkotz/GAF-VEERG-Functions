@@ -130,8 +130,8 @@ npm run build:input-fields
    that resolve to a single row (header only, no data rows) are reported as a non-fatal
    warning and skipped. The `Cols`/`Rows` container uses a single generic key
    (`Column` for ColsToRows, `Row` for RowsToCols) rather than a value pulled from a cell.
-4. Merges a shallow override file `InputFields/_overrides/<Module>.json` over the
-   generated result when present, so manual corrections survive regeneration.
+4. Merges a per-field override file `InputFields/_overrides/<Module>.json` over the
+   generated result when present, so manual settings survive regeneration.
 5. Writes one `<Module>_InputFields.json` per workbook as UTF-8 **without** a BOM.
 
 **Output location:** `InputFields/`, e.g. `InputFields/Fertiliser_InputFields.json`.
@@ -205,8 +205,30 @@ protected formula.
 }
 ```
 
-**Overrides:** drop a partial `InputFields/_overrides/<Module>.json` to pin or correct any
-top-level field; it is shallow-merged over the generated output on every run.
+**Overrides:** drop a hand-maintained `InputFields/_overrides/<Module>.json` to correct or
+annotate individual fields; it is merged over the generated output on every run and is
+never regenerated. The file is keyed by field identity, so only the fields you name are
+touched (everything else comes straight from Excel):
+
+```jsonc
+{
+  "_comment": "Top-level keys starting with '_' are ignored (use them for notes/schema).",
+  "InputCells": {
+    "<CellName>": { "Label": "...", "Group": "...", "Order": 0, "Hidden": false, "Default": "..." }
+  },
+  "InputTables": {
+    "<TableName>": {
+      "Label": "...",
+      "Columns": { "<ColumnKey>": { "Label": "...", "Default": "..." } }
+    }
+  }
+}
+```
+
+Each override object's properties are applied onto the matching field (added if absent,
+replaced if present), so you can inject app-specific metadata (label text, grouping,
+visibility, default values, ...) or override a generated property such as `CellType`.
+References to unknown cells/tables/columns are reported as non-fatal warnings.
 
 **Validation:** unresolvable validation lists are reported as non-fatal warnings and the
 field is still emitted (with empty `Options`), so one problematic dropdown does not block

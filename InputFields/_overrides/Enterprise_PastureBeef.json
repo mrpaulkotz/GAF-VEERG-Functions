@@ -1,0 +1,23 @@
+{
+  "_comment": "Per-field OVERRIDES for the Pasture Beef enterprise input fields. This file is SEPARATE from the enterprise definition (Enterprises/Enterprise_PastureBeef.json). It is hand-maintained and is NEVER overwritten by 'npm run build:input-fields'; instead it is merged over the generated InputFields/Enterprise_PastureBeef_InputFields.json on every build. Only the fields named here are touched - every other field, option and table comes straight from Excel. Any top-level key starting with '_' (like this one) is ignored.",
+  "_usage": "Under 'InputCells' key each entry by its CellName; under 'InputTables' key each entry by its TableName and (optionally) its columns by column key. The properties you set are copied onto the matching field as-is, so you can add whatever the consuming app understands (Label, Group, Order, Hidden, Default, UseDefault, HelpText, ...). Setting an existing generated property (e.g. CellType) replaces it.",
+  "_schema": {
+    "InputCells": { "<CellName>": { "Label": "text", "Group": "text", "Order": 0, "Hidden": false, "UseDefault": false, "Default": "value" } },
+    "InputTables": { "<TableName>": { "Label": "text", "Group": "text", "Columns": { "<ColumnKey>": { "Label": "text", "Default": "value" } } } }
+  },
+
+  "InputCells": {
+    "X_Cell_Site_StartDate": {
+      "Label": "Reporting period start date",
+      "Group": "Reporting period"
+    },
+    "X_Cell_PastureBeef_Breed": {
+      "Label": "Cattle breed",
+      "Group": "Herd",
+      "UseDefault": true,
+      "Default": "Hereford or Shorthorn breeds"
+    }
+  },
+
+  "InputTables": {}
+}

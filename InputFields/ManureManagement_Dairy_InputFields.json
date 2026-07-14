@@ -1,10 +1,11 @@
 {
 	"schemaVersion": 1,
 	"generatedFrom": "4_3_ManureManagement_Dairy_WIP_v12.xlsx",
-	"generatedAt": "2026-07-14T07:30:56Z",
+	"generatedAt": "2026-07-14T13:38:03Z",
 	"InputCells": [
 		{
 			"CellName": "X_Cell_Dairy_Breed",
+			"Label": "Breed",
 			"CellType": "select",
 			"Options": {
 				"Medium Friesian": "Medium Friesian",
@@ -21,6 +22,7 @@
 		},
 		{
 			"CellName": "X_Cell_Dairy_ManureAppliedIrrigationMethod",
+			"Label": "",
 			"CellType": "select",
 			"Options": {
 				"Not irrigated": "Not irrigated",
@@ -32,6 +34,7 @@
 		},
 		{
 			"CellName": "X_Cell_Dairy_ManureAppliedProductionSystem",
+			"Label": "Where deposited on farm soils as waste, what is the closest match?",
 			"CellType": "select",
 			"Options": {
 				"Pasture": "Pasture",
@@ -40,10 +43,12 @@
 		},
 		{
 			"CellName": "X_Cell_Dairy_MilkProductionAmount",
+			"Label": "Average daily milk production",
 			"CellType": "number"
 		},
 		{
 			"CellName": "X_Cell_Dairy_MilkProductionUnit",
+			"Label": "Milk production unit",
 			"CellType": "select",
 			"Options": {
 				"Litres of milk": "Litres of milk",
@@ -52,6 +57,7 @@
 		},
 		{
 			"CellName": "X_Cell_Dairy_ProductionSystemTemplate",
+			"Label": "Production system template",
 			"CellType": "select",
 			"Options": {
 				"System 1: Grazed Only": "System 1: Grazed Only",
@@ -62,15 +68,18 @@
 		},
 		{
 			"CellName": "X_Cell_Dairy_Stage1MMS_1_AnaerobicLagoon_AmountSeparated_Method1",
+			"Label": "Percent solids separated from Anaerobic lagoon (Method 1)",
 			"CellType": "percent"
 		},
 		{
 			"CellName": "X_Cell_Dairy_Stage1MMS_1_AnaerobicLagoon_AmountSeparated_Method2",
+			"Label": "Percent solids separated from Anaerobic lagoon (Method 2)",
 			"CellType": "percent",
 			"CanOverWriteFormula": true
 		},
 		{
 			"CellName": "X_Cell_Dairy_Stage1MMS_1_AnaerobicLagoon_SolidsSeparated",
+			"Label": "Were solids separated from Anaerobic lagoon?",
 			"CellType": "select",
 			"Options": {
 				"Yes": "Yes",
@@ -79,15 +88,18 @@
 		},
 		{
 			"CellName": "X_Cell_Dairy_Stage1MMS_1_DrainsToPaddock_AmountSeparated_Method1",
+			"Label": "Percent solids separated from Drains to paddock (Method 1)",
 			"CellType": "percent"
 		},
 		{
 			"CellName": "X_Cell_Dairy_Stage1MMS_1_DrainsToPaddock_AmountSeparated_Method2",
+			"Label": "Percent solids separated from Drains to paddock (Method 2)",
 			"CellType": "percent",
 			"CanOverWriteFormula": true
 		},
 		{
 			"CellName": "X_Cell_Dairy_Stage1MMS_1_DrainsToPaddock_SolidsSeparated",
+			"Label": "Were solids separated from Drains to paddock?",
 			"CellType": "select",
 			"Options": {
 				"Yes": "Yes",
@@ -96,15 +108,18 @@
 		},
 		{
 			"CellName": "X_Cell_Dairy_Stage1MMS_1_SumpAndDispersal_AmountSeparated_Method1",
+			"Label": "Percent solids separated from Sump and dispersal system (Method 1)",
 			"CellType": "percent"
 		},
 		{
 			"CellName": "X_Cell_Dairy_Stage1MMS_1_SumpAndDispersal_AmountSeparated_Method2",
+			"Label": "Percent solids separated from Sump and dispersal system (Method 2)",
 			"CellType": "percent",
 			"CanOverWriteFormula": true
 		},
 		{
 			"CellName": "X_Cell_Dairy_Stage1MMS_1_SumpAndDispersal_SolidsSeparated",
+			"Label": "Were solids separated from Sump and dispersal system?",
 			"CellType": "select",
 			"Options": {
 				"Yes": "Yes",
@@ -113,15 +128,18 @@
 		},
 		{
 			"CellName": "X_Cell_Dairy_Stage1MMS_2_AnaerobicLagoon_AmountSeparated_Method1",
+			"Label": "Percent solids separated from Anaerobic lagoon (Method 1)",
 			"CellType": "percent"
 		},
 		{
 			"CellName": "X_Cell_Dairy_Stage1MMS_2_AnaerobicLagoon_AmountSeparated_Method2",
+			"Label": "Percent solids separated from Anaerobic lagoon (Method 2)",
 			"CellType": "percent",
 			"CanOverWriteFormula": true
 		},
 		{
 			"CellName": "X_Cell_Dairy_Stage1MMS_2_AnaerobicLagoon_SolidsSeparated",
+			"Label": "Were solids separated from Anaerobic lagoon?",
 			"CellType": "select",
 			"Options": {
 				"Yes": "Yes",
@@ -130,15 +148,18 @@
 		},
 		{
 			"CellName": "X_Cell_Dairy_Stage1MMS_2_DrainsToPaddock_AmountSeparated_Method1",
+			"Label": "Percent solids separated from Drains to paddock (Method 1)",
 			"CellType": "percent"
 		},
 		{
 			"CellName": "X_Cell_Dairy_Stage1MMS_2_DrainsToPaddock_AmountSeparated_Method2",
+			"Label": "Percent solids separated from Drains to paddock (Method 2)",
 			"CellType": "percent",
 			"CanOverWriteFormula": true
 		},
 		{
 			"CellName": "X_Cell_Dairy_Stage1MMS_2_DrainsToPaddock_SolidsSeparated",
+			"Label": "Were solids separated from Drains to paddock?",
 			"CellType": "select",
 			"Options": {
 				"Yes": "Yes",
@@ -147,15 +168,18 @@
 		},
 		{
 			"CellName": "X_Cell_Dairy_Stage1MMS_2_SumpAndDispersal_AmountSeparated_Method1",
+			"Label": "Percent solids separated from Sump and dispersal system (Method 1)",
 			"CellType": "percent"
 		},
 		{
 			"CellName": "X_Cell_Dairy_Stage1MMS_2_SumpAndDispersal_AmountSeparated_Method2",
+			"Label": "Percent solids separated from Sump and dispersal system (Method 2)",
 			"CellType": "percent",
 			"CanOverWriteFormula": true
 		},
 		{
 			"CellName": "X_Cell_Dairy_Stage1MMS_2_SumpAndDispersal_SolidsSeparated",
+			"Label": "Were solids separated from Sump and dispersal system?",
 			"CellType": "select",
 			"Options": {
 				"Yes": "Yes",
@@ -164,22 +188,27 @@
 		},
 		{
 			"CellName": "X_Cell_Site_AverageTemperature",
+			"Label": "Average temperature for reporting period",
 			"CellType": "number"
 		},
 		{
 			"CellName": "X_Cell_Site_Elevation",
+			"Label": "Elevation",
 			"CellType": "number"
 		},
 		{
 			"CellName": "X_Cell_Site_FarmName",
+			"Label": "Farm name",
 			"CellType": "text"
 		},
 		{
 			"CellName": "X_Cell_Site_FrostDays",
+			"Label": "Number of frost days for reporting period",
 			"CellType": "number"
 		},
 		{
 			"CellName": "X_Cell_Site_LeachingZone",
+			"Label": "Leaching zone",
 			"CellType": "select",
 			"Options": {
 				"YES - In leaching zone": "YES - In leaching zone",
@@ -188,10 +217,12 @@
 		},
 		{
 			"CellName": "X_Cell_Site_PotentialEvapotranspiration",
+			"Label": "Potential evapotranspiration for reporting period",
 			"CellType": "number"
 		},
 		{
 			"CellName": "X_Cell_Site_Region",
+			"Label": "Region (ABS Statistical area level 4) if state is WA",
 			"CellType": "select",
 			"Options": {
 				"Bunbury": "Bunbury",
@@ -208,14 +239,17 @@
 		},
 		{
 			"CellName": "X_Cell_Site_ReportingEntityName",
+			"Label": "Reporting entity name",
 			"CellType": "text"
 		},
 		{
 			"CellName": "X_Cell_Site_StartDate",
-			"CellType": "number"
+			"Label": "Emissions calculation period start date",
+			"CellType": "date"
 		},
 		{
 			"CellName": "X_Cell_Site_State",
+			"Label": "State",
 			"CellType": "select",
 			"Options": {
 				"New South Wales": "New South Wales",
@@ -230,6 +264,7 @@
 		},
 		{
 			"CellName": "X_Cell_Site_TotalRainfall",
+			"Label": "Total rainfall for reporting period",
 			"CellType": "number"
 		}
 	],

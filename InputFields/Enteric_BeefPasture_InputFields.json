@@ -1,10 +1,11 @@
 {
 	"schemaVersion": 1,
 	"generatedFrom": "3_2_Enteric_BeefPasture_WIP_v04.xlsx",
-	"generatedAt": "2026-07-14T07:30:19Z",
+	"generatedAt": "2026-07-14T13:37:22Z",
 	"InputCells": [
 		{
 			"CellName": "X_Cell_PastureBeef_Breed",
+			"Label": "Cattle breed",
 			"CellType": "select",
 			"Options": {
 				"Hereford or Shorthorn breeds": "Hereford or Shorthorn breeds",
@@ -13,6 +14,7 @@
 		},
 		{
 			"CellName": "X_Cell_PastureBeef_FencedWater",
+			"Label": "Are all dams and natural water sources fenced off so cattle cannot access them?",
 			"CellType": "select",
 			"Options": {
 				"Yes": "Yes",
@@ -21,6 +23,7 @@
 		},
 		{
 			"CellName": "X_Cell_PastureBeef_GrazingIrrigationMethod",
+			"Label": "",
 			"CellType": "select",
 			"Options": {
 				"Not irrigated": "Not irrigated",
@@ -32,6 +35,7 @@
 		},
 		{
 			"CellName": "X_Cell_PastureBeef_GrazingProductionSystem",
+			"Label": "Where did the livestock spend most of their time grazing?",
 			"CellType": "select",
 			"Options": {
 				"Pasture": "Pasture",
@@ -40,24 +44,29 @@
 		},
 		{
 			"CellName": "X_Cell_PastureBeef_ProductionRegion",
+			"Label": "Livestock production region",
 			"CellType": "select",
 			"DependentOn": "E7",
 			"Options": {}
 		},
 		{
 			"CellName": "X_Cell_Site_FarmName",
+			"Label": "Farm name",
 			"CellType": "text"
 		},
 		{
 			"CellName": "X_Cell_Site_ReportingEntityName",
+			"Label": "Reporting entity name",
 			"CellType": "text"
 		},
 		{
 			"CellName": "X_Cell_Site_StartDate",
-			"CellType": "number"
+			"Label": "Emissions calculation period start date",
+			"CellType": "date"
 		},
 		{
 			"CellName": "X_Cell_Site_State",
+			"Label": "State",
 			"CellType": "select",
 			"Options": {
 				"New South Wales": "New South Wales",
@@ -117,7 +126,7 @@
 						}
 					},
 					"SaleDate": {
-						"CellType": "number"
+						"CellType": "date"
 					},
 					"HeadSold": {
 						"CellType": "number"
@@ -152,7 +161,7 @@
 						"CellType": "text"
 					},
 					"PurchaseDate": {
-						"CellType": "number"
+						"CellType": "date"
 					},
 					"Class": {
 						"CellType": "select",

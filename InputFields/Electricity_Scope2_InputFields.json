@@ -1,14 +1,16 @@
 {
 	"schemaVersion": 1,
 	"generatedFrom": "14_Electricity_Scope2_WIP_v01.xlsx",
-	"generatedAt": "2026-07-14T07:30:09Z",
+	"generatedAt": "2026-07-14T13:37:11Z",
 	"InputCells": [
 		{
 			"CellName": "X_Cell_Electricity_Location_AmountPurchasedInkWh",
+			"Label": "Amount purchased in kWh",
 			"CellType": "number"
 		},
 		{
 			"CellName": "X_Cell_Electricity_Location_GridElectricityPurchasedFrom",
+			"Label": "Grid where electricity purchased from",
 			"CellType": "select",
 			"Options": {
 				"New South Wales": "New South Wales",
@@ -25,26 +27,32 @@
 		},
 		{
 			"CellName": "X_Cell_Electricity_Market_AmountPurchasedExcludingGreenPower",
+			"Label": "Electricity purchased in kWh (excluding GreenPower providers)",
 			"CellType": "number"
 		},
 		{
 			"CellName": "X_Cell_Electricity_Market_AmountPurchasedGreenPower",
+			"Label": "Electricity purchased from an accredited GreenPower provider",
 			"CellType": "number"
 		},
 		{
 			"CellName": "X_Cell_Electricity_Market_JurisdictionalRenewablePowerPercentage",
+			"Label": "Jurisdictional renewable power percentage (ACT only)",
 			"CellType": "percent"
 		},
 		{
 			"CellName": "X_Cell_Electricity_Market_RenewablePowerPercentage",
+			"Label": "Renewable Power Percentage",
 			"CellType": "percent"
 		},
 		{
 			"CellName": "X_Cell_Site_FarmName",
+			"Label": "Farm name",
 			"CellType": "text"
 		},
 		{
 			"CellName": "X_Cell_Site_Region",
+			"Label": "Region (ABS Statistical area level 4) if state is WA",
 			"CellType": "select",
 			"Options": {
 				"Bunbury": "Bunbury",
@@ -61,14 +69,17 @@
 		},
 		{
 			"CellName": "X_Cell_Site_ReportingEntityName",
+			"Label": "Reporting entity name",
 			"CellType": "text"
 		},
 		{
 			"CellName": "X_Cell_Site_StartDate",
-			"CellType": "number"
+			"Label": "Emissions calculation period start date",
+			"CellType": "date"
 		},
 		{
 			"CellName": "X_Cell_Site_State",
+			"Label": "State",
 			"CellType": "select",
 			"Options": {
 				"New South Wales": "New South Wales",
@@ -83,10 +94,12 @@
 		},
 		{
 			"CellName": "X_Cell_TotalElegibleRECsForElectricityProducedOnSite",
+			"Label": "Total elegible RECs for electricity produced on-site and consumed by entity",
 			"CellType": "number"
 		},
 		{
 			"CellName": "X_Cell_TotalElegibleVoluntarilySurrenderedRECs",
+			"Label": "Total elegible voluntarily surrendered RECs",
 			"CellType": "number"
 		}
 	],
@@ -116,7 +129,7 @@
 						}
 					},
 					"GenerationDate": {
-						"CellType": "number"
+						"CellType": "date"
 					},
 					"NumberOfCertificates": {
 						"CellType": "number"
@@ -151,7 +164,7 @@
 						"CellType": "formula"
 					},
 					"GenerationDate": {
-						"CellType": "number"
+						"CellType": "date"
 					},
 					"NumberOfCertificates": {
 						"CellType": "number"

@@ -1,18 +1,21 @@
 {
 	"schemaVersion": 1,
 	"generatedFrom": "6_AgriculturalResidue_WIP_v03.xlsx",
-	"generatedAt": "2026-07-14T07:31:24Z",
+	"generatedAt": "2026-07-14T13:38:37Z",
 	"InputCells": [
 		{
 			"CellName": "X_Cell_Crop_AreaUnderCropping",
+			"Label": "Area under cropping",
 			"CellType": "number"
 		},
 		{
 			"CellName": "X_Cell_Crop_AverageWeightPerBale",
+			"Label": "Average weight per bale",
 			"CellType": "number"
 		},
 		{
 			"CellName": "X_Cell_Crop_CropPurpose",
+			"Label": "Crop purpose",
 			"CellType": "select",
 			"Options": {
 				"Cash grain crop": "Cash grain crop",
@@ -22,6 +25,7 @@
 		},
 		{
 			"CellName": "X_Cell_Crop_CropType",
+			"Label": "Crop type",
 			"CellType": "select",
 			"Options": {
 				"Wheat": "Wheat",
@@ -46,6 +50,7 @@
 		},
 		{
 			"CellName": "X_Cell_Crop_IrrigationMethod",
+			"Label": "Irrigation method",
 			"CellType": "select",
 			"Options": {
 				"Not irrigated": "Not irrigated",
@@ -57,38 +62,47 @@
 		},
 		{
 			"CellName": "X_Cell_Crop_NumberOfBales",
+			"Label": "Number of bales",
 			"CellType": "number"
 		},
 		{
 			"CellName": "X_Cell_Crop_PercentResidueBaled",
+			"Label": "Percentage of residue that was baled",
 			"CellType": "percent"
 		},
 		{
 			"CellName": "X_Cell_Crop_PercentResidueBurned",
+			"Label": "Percentage of residue that was burned",
 			"CellType": "percent"
 		},
 		{
 			"CellName": "X_Cell_Crop_PercentResidueGrazed",
+			"Label": "Percentage of residue that was grazed",
 			"CellType": "percent"
 		},
 		{
 			"CellName": "X_Cell_Crop_TotalProductionOfCrop",
+			"Label": "Total production of crop³",
 			"CellType": "number"
 		},
 		{
 			"CellName": "X_Cell_Crop_YieldPerHectare",
+			"Label": "Cash grain crop yield per hectare¹",
 			"CellType": "number"
 		},
 		{
 			"CellName": "X_Cell_Pasture_AreaRemovedOrRenewed",
+			"Label": "Area of pasture renewed or removed",
 			"CellType": "number"
 		},
 		{
 			"CellName": "X_Cell_Pasture_AreaUnderPasture",
+			"Label": "Area under pasture",
 			"CellType": "number"
 		},
 		{
 			"CellName": "X_Cell_Pasture_IrrigationMethod",
+			"Label": "Irrigation method",
 			"CellType": "select",
 			"Options": {
 				"Not irrigated": "Not irrigated",
@@ -100,6 +114,7 @@
 		},
 		{
 			"CellName": "X_Cell_Pasture_PastureType",
+			"Label": "Pasture type",
 			"CellType": "select",
 			"Options": {
 				"Annual grass": "Annual grass",
@@ -111,30 +126,37 @@
 		},
 		{
 			"CellName": "X_Cell_Pasture_YieldPerHectare",
+			"Label": "Pasture yield",
 			"CellType": "number"
 		},
 		{
 			"CellName": "X_Cell_Site_AverageTemperature",
+			"Label": "Average temperature for reporting period",
 			"CellType": "number"
 		},
 		{
 			"CellName": "X_Cell_Site_ClimateZone",
+			"Label": "Climate zone",
 			"CellType": "text"
 		},
 		{
 			"CellName": "X_Cell_Site_Elevation",
+			"Label": "Elevation",
 			"CellType": "number"
 		},
 		{
 			"CellName": "X_Cell_Site_FarmName",
+			"Label": "Farm name",
 			"CellType": "text"
 		},
 		{
 			"CellName": "X_Cell_Site_FrostDays",
+			"Label": "Number of frost days for reporting period",
 			"CellType": "number"
 		},
 		{
 			"CellName": "X_Cell_Site_LeachingZone",
+			"Label": "Leaching zone",
 			"CellType": "select",
 			"Options": {
 				"YES - In leaching zone": "YES - In leaching zone",
@@ -143,18 +165,22 @@
 		},
 		{
 			"CellName": "X_Cell_Site_MapPetRatio",
+			"Label": "MAP:PET ratio",
 			"CellType": "number"
 		},
 		{
 			"CellName": "X_Cell_Site_PotentialEvapotranspiration",
+			"Label": "Potential evapotranspiration for reporting period",
 			"CellType": "number"
 		},
 		{
 			"CellName": "X_Cell_Site_RainfallZone",
+			"Label": "Rainfall zone",
 			"CellType": "text"
 		},
 		{
 			"CellName": "X_Cell_Site_Region",
+			"Label": "Region (ABS Statistical area level 4) if state is WA",
 			"CellType": "select",
 			"Options": {
 				"Bunbury": "Bunbury",
@@ -171,14 +197,17 @@
 		},
 		{
 			"CellName": "X_Cell_Site_ReportingEntityName",
+			"Label": "Reporting entity name",
 			"CellType": "text"
 		},
 		{
 			"CellName": "X_Cell_Site_StartDate",
-			"CellType": "number"
+			"Label": "Emissions calculation period start date",
+			"CellType": "date"
 		},
 		{
 			"CellName": "X_Cell_Site_State",
+			"Label": "State",
 			"CellType": "select",
 			"Options": {
 				"New South Wales": "New South Wales",
@@ -193,14 +222,17 @@
 		},
 		{
 			"CellName": "X_Cell_Site_TemperatureZone",
+			"Label": "Temperature zone",
 			"CellType": "text"
 		},
 		{
 			"CellName": "X_Cell_Site_TotalRainfall",
+			"Label": "Total rainfall for reporting period",
 			"CellType": "number"
 		},
 		{
 			"CellName": "X_Cell_Site_WetOrDryClimateZone",
+			"Label": "Wet or dry climate zone",
 			"CellType": "text"
 		}
 	],
