@@ -1,7 +1,7 @@
 {
 	"schemaVersion": 1,
 	"generatedFrom": "4_2_ManureManagement_BeefPasture_WIP_v08.xlsx",
-	"generatedAt": "2026-07-15T06:32:45Z",
+	"generatedAt": "2026-07-15T11:19:45Z",
 	"InputCells": [
 		{
 			"CellName": "X_Cell_Site_FarmName",
@@ -1187,19 +1187,7 @@
 			"Rows": {
 				"Row": {
 					"TransactionName": {
-						"CellType": "select",
-						"Options": {
-							"Bulls < 1 year": "Bulls < 1 year",
-							"Bulls > 1 year": "Bulls > 1 year",
-							"Cows < 1 year": "Cows < 1 year",
-							"Cows 1-2 years": "Cows 1-2 years",
-							"Cows 2-3 years": "Cows 2-3 years",
-							"Cows > 3 years": "Cows > 3 years",
-							"Steers < 1 year": "Steers < 1 year",
-							"Steers 1-2 years": "Steers 1-2 years",
-							"Steers 2-3 years": "Steers 2-3 years",
-							"Steers >3 years": "Steers >3 years"
-						}
+						"CellType": "number"
 					},
 					"Class": {
 						"CellType": "select",

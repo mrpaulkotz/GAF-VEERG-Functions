@@ -1,8 +1,84 @@
 {
 	"schemaVersion": 1,
-	"generatedFrom": "5_Fertiliser_WIP_v07.xlsx",
-	"generatedAt": "2026-07-15T11:20:18Z",
+	"generatedFrom": "Enterprise_EnvironmentalPlantings_WIP_v01.xlsx",
+	"generatedAt": "2026-07-15T11:20:53Z",
 	"InputCells": [
+		{
+			"CellName": "X_Cell_Planting_Latitude",
+			"Label": "Latitude",
+			"CellType": "number"
+		},
+		{
+			"CellName": "X_Cell_Planting_Longitude",
+			"Label": "Longitude",
+			"CellType": "number"
+		},
+		{
+			"CellName": "X_Cell_Planting_PlantingDate",
+			"Label": "Date planted",
+			"CellType": "date"
+		},
+		{
+			"CellName": "X_Cell_Planting_PlantingName",
+			"Label": "Planting name",
+			"CellType": "text"
+		},
+		{
+			"CellName": "X_Cell_Site_StartDate",
+			"Label": "Emissions calculation period start date",
+			"CellType": "date"
+		},
+		{
+			"CellName": "X_Cell_Site_EndDate",
+			"Label": "Emissions calculation period end date",
+			"CellType": "formula"
+		},
+		{
+			"CellName": "X_Cell_Fertiliser_ProductionSystem",
+			"Label": "Production system",
+			"CellType": "select",
+			"Options": {
+				"Pasture": "Pasture",
+				"Crop": "Crop"
+			}
+		},
+		{
+			"CellName": "X_Cell_Fertiliser_CropType",
+			"Label": "Crop type",
+			"CellType": "select",
+			"Options": {
+				"Pasture": "Pasture",
+				"Grains": "Grains",
+				"Maize": "Maize",
+				"Cotton": "Cotton"
+			}
+		},
+		{
+			"CellName": "X_Cell_Fertiliser_IrrigationMethod",
+			"Label": "Irrigation method",
+			"CellType": "select",
+			"Options": {
+				"Not irrigated": "Not irrigated",
+				"Drip irrigation": "Drip irrigation",
+				"Sprinkler irrigation": "Sprinkler irrigation",
+				"Surface irrigation": "Surface irrigation",
+				"Other irrigation": "Other irrigation"
+			}
+		},
+		{
+			"CellName": "X_Cell_Fertiliser_AreaUnderCropping",
+			"Label": "Area under cropping",
+			"CellType": "number"
+		},
+		{
+			"CellName": "X_Cell_Fuel_IsMetroLocation",
+			"Label": "Is the property in a Metropolitan location?",
+			"CellType": "select",
+			"Options": {
+				"Metro": "Metro",
+				"Non-metro": "Non-metro"
+			}
+		},
 		{
 			"CellName": "X_Cell_Site_FarmName",
 			"Label": "Farm name",
@@ -12,11 +88,6 @@
 			"CellName": "X_Cell_Site_ReportingEntityName",
 			"Label": "Reporting entity name",
 			"CellType": "text"
-		},
-		{
-			"CellName": "X_Cell_Site_StartDate",
-			"Label": "Emissions calculation period start date",
-			"CellType": "date"
 		},
 		{
 			"CellName": "X_Cell_Site_State",
@@ -108,43 +179,6 @@
 			"CellName": "X_Cell_Site_TemperatureZone",
 			"Label": "Temperature zone",
 			"CellType": "formula"
-		},
-		{
-			"CellName": "X_Cell_Fertiliser_ProductionSystem",
-			"Label": "Production system",
-			"CellType": "select",
-			"Options": {
-				"Pasture": "Pasture",
-				"Crop": "Crop"
-			}
-		},
-		{
-			"CellName": "X_Cell_Fertiliser_CropType",
-			"Label": "Crop type",
-			"CellType": "select",
-			"Options": {
-				"Pasture": "Pasture",
-				"Grains": "Grains",
-				"Maize": "Maize",
-				"Cotton": "Cotton"
-			}
-		},
-		{
-			"CellName": "X_Cell_Fertiliser_IrrigationMethod",
-			"Label": "Irrigation method",
-			"CellType": "select",
-			"Options": {
-				"Not irrigated": "Not irrigated",
-				"Drip irrigation": "Drip irrigation",
-				"Sprinkler irrigation": "Sprinkler irrigation",
-				"Surface irrigation": "Surface irrigation",
-				"Other irrigation": "Other irrigation"
-			}
-		},
-		{
-			"CellName": "X_Cell_Fertiliser_AreaUnderCropping",
-			"Label": "Area under cropping",
-			"CellType": "number"
 		}
 	],
 	"InputTables": [
@@ -535,6 +569,99 @@
 					"TotalNitrogenApplied": {
 						"CellType": "formula",
 						"Unit": "kg"
+					}
+				}
+			}
+		},
+		{
+			"TableName": "Table_Input_Fuel",
+			"MatrixType": "RowsToCols",
+			"NumberOfCols": 7,
+			"ColumnNames": {
+				"FuelUse": "Fuel use (select)",
+				"FuelType": "Fuel type (select)",
+				"AmountPurchased": "Amount purchased",
+				"AmountUnit": "Amount unit",
+				"PercentConsumed": "Percent consumed",
+				"AmountConsumed": "Amount consumed",
+				"AmountConsumedUnit": "Amount consumed unit"
+			},
+			"Rows": {
+				"Row": {
+					"FuelUse": {
+						"CellType": "select",
+						"Options": {
+							"Generators": "Generators",
+							"Power standalone machinery or heating": "Power standalone machinery or heating",
+							"Aviation": "Aviation",
+							"Cars and light commercial vehicles": "Cars and light commercial vehicles",
+							"Off-road Agriculture and forestry equipment": "Off-road Agriculture and forestry equipment",
+							"Vessels": "Vessels"
+						}
+					},
+					"FuelType": {
+						"CellType": "select",
+						"DependentOn": "FuelUse",
+						"Options": {
+							"Generators": {
+								"Petrol": "Petrol",
+								"Diesel": "Diesel",
+								"Liquefied petroleum gas (LPG)": "Liquefied petroleum gas (LPG)",
+								"Biodiesel": "Biodiesel",
+								"Ethanol": "Ethanol",
+								"Other biofuels": "Other biofuels",
+								"Renewable diesel": "Renewable diesel"
+							},
+							"Power standalone machinery or heating": {
+								"Petrol": "Petrol",
+								"Diesel": "Diesel",
+								"Liquefied petroleum gas (LPG)": "Liquefied petroleum gas (LPG)",
+								"Biodiesel": "Biodiesel",
+								"Ethanol": "Ethanol",
+								"Other biofuels": "Other biofuels",
+								"Renewable diesel": "Renewable diesel",
+								"Natural gas (via pipeline) in GJ": "Natural gas (via pipeline) in GJ",
+								"Town gas in GJ": "Town gas in GJ"
+							},
+							"Aviation": {
+								"Avgas": "Avgas",
+								"Jet A1, Jet B": "Jet A1, Jet B",
+								"Renewable aviation kerosene": "Renewable aviation kerosene"
+							},
+							"Cars and light commercial vehicles": {
+								"Petrol": "Petrol",
+								"Diesel": "Diesel",
+								"Liquefied petroleum gas (LPG)": "Liquefied petroleum gas (LPG)",
+								"Fuel oil": "Fuel oil",
+								"Ethanol": "Ethanol",
+								"Biodiesel": "Biodiesel",
+								"Renewable diesel": "Renewable diesel",
+								"Other biofuels": "Other biofuels"
+							},
+							"Off-road Agriculture and forestry equipment": {
+								"Diesel": "Diesel"
+							},
+							"Vessels": {
+								"Petrol": "Petrol",
+								"Diesel": "Diesel",
+								"Fuel oil": "Fuel oil"
+							}
+						}
+					},
+					"AmountPurchased": {
+						"CellType": "number"
+					},
+					"AmountUnit": {
+						"CellType": "formula"
+					},
+					"PercentConsumed": {
+						"CellType": "formula"
+					},
+					"AmountConsumed": {
+						"CellType": "formula"
+					},
+					"AmountConsumedUnit": {
+						"CellType": "formula"
 					}
 				}
 			}

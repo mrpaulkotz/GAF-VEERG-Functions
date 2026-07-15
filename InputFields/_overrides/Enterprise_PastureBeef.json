@@ -144,7 +144,14 @@
     },
     "X_Cell_PastureBeef_ProductionRegion":{
         "DependentOn": "X_Cell_Site_State"
+    },
+	"X_Cell_Pasture_YieldPerHectare": {
+        "CanOverWriteFormula": true,
+        "DefaultDataDocumentType": "JSON",
+        "DefaultDataFile": "node_modules/gaf-veerg-functions/generated-sourcedata/AgResidue_SourceData.sourcedata.json",
+        "DefaultDataLocation": null
     }
+    
   },
 
   "InputTables": {},

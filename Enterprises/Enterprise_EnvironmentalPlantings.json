@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "enterprise": {
+    "id": "EnvironmentalPlantings",
+    "name": "Environmental Plantings Enterprise",
+    "description": "An environmental plantings enterprise: carbon sequestration impacts from the plantings, plus the farm's energy, waste and upstream (Scope 3) emissions.",
+    "templateWorkbook": "Enterprise_EnvironmentalPlantings_Template_WIP_v01.xlsx",
+    "outputWorkbook": "Enterprise_EnvironmentalPlantings_WIP_v01.xlsx"
+  },
+
+  "customSheets": [
+    {
+      "name": "Input - Planting",
+      "kind": "input",
+      "source": "custom",
+      "description": "Site-specific inputs for this enterprise. Has fewer fields than the typical module excel site sheet."
+    }
+  ],
+
+  "modules": [
+    "Fertiliser",
+    "Fuel"
+  ],
+
+  "options": {
+    "registry": "_ModuleRegistry.json",
+    "includeCommonSheets": true,
+    "commonSheetProviders": {},
+    "importModuleResultsSheets": false,
+    "dedupeSheetsByName": true,
+    "dedupeExcelLabsModules": true,
+    "onDuplicateSheet": "skip",
+    "sheetOrder": [ "custom", "input", "calculation", "constants", "common"],
+    "menu": {
+      "comment": "The column-A navigation menu is regenerated on every sheet from the final sheet set. Groups are assigned automatically: Home/Results = untitled; any sheet named 'Input*' = INPUTS; calculation sheets = CALCULATIONS; everything else = APPENDICES. 'labels' overrides the link text for a sheet (default derivation strips the 'Input - ' prefix, otherwise uses the sheet name). Set enabled=false to leave existing menus untouched.",
+      "enabled": true,
+      "labels": {
+        "Home": "Home",
+        "Input - Planting": "Planting",
+        "Input - Fertiliser": "Fertiliser",
+        "Input - Fuel": "Fuel",
+        "5.1.1.1-2 Inorganic fert N2O": "5.1.1.1-2 Inorganic fert N2O",
+        "5.1.1.3-4 Inorganic fert CO2": "5.1.1.3-4 Inorganic fert CO2",
+        "5.2.1.1-2 Organic Fert N2O": "5.2.1.1-2 Organic fert N2O",
+        "5.3.1.1-2 Lime CO2": "5.3.1.1-2 Lime CO2",
+        "5.4.1.1-4 Atmos deposition": "5.4.1.1-4 Atmos. deposition",
+        "5.5.1.1-2 Leaching and runoff": "5.5.1.1-2 Leaching & runoff",
+        "8.1.1.1-2 Transport fuel": "8.1.1.1-2 Transport fuel",
+        "8.2.1.1-2 Stationary fuel": "8.2.1.1-2 Stationary fuel",
+        "Constants - Fertiliser": "Constants - Fertiliser",
+        "Constants - Fuel": "Constants - Fuel",
+        "Constants - Common": "Constants - Common",
+        "Acknowledgements": "Acknowledgements"
+      }
+    }
+  }
+}

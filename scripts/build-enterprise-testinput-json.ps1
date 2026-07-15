@@ -32,7 +32,8 @@
   named range in the enterprise workbook are simply ignored downstream).
 
 .PARAMETER ConfigPath
-  Enterprise config JSON. Defaults to Enterprises/Enterprise_PastureBeef.json.
+  Enterprise config JSON. When omitted, every Enterprises/Enterprise_*.json config
+  is auto-discovered and built in turn.
 
 .PARAMETER RegistryPath
   Module registry JSON. Defaults to options.registry (resolved next to the config),
@@ -64,9 +65,29 @@ if (-not (Test-Path -LiteralPath $RepoRoot)) {
 }
 $RepoRoot = (Resolve-Path -LiteralPath $RepoRoot).Path
 
+# ---------------------------------------------------------------------------
+# Auto-discovery: with no -ConfigPath, build every enterprise config
+# (Enterprises\Enterprise_*.json) in turn by re-invoking this script once
+# per config.
+# ---------------------------------------------------------------------------
 if ([string]::IsNullOrWhiteSpace($ConfigPath)) {
-  $ConfigPath = Join-Path $RepoRoot 'Enterprises\Enterprise_PastureBeef.json'
+  $enterprisesDir = Join-Path $RepoRoot 'Enterprises'
+  if (-not (Test-Path -LiteralPath $enterprisesDir)) {
+    throw "Enterprises directory not found: $enterprisesDir"
+  }
+  $discovered = @(Get-ChildItem -LiteralPath $enterprisesDir -File -Filter 'Enterprise_*.json' | Sort-Object Name)
+  if ($discovered.Count -eq 0) {
+    throw "No Enterprise_*.json configs found in $enterprisesDir"
+  }
+  Write-Host ("Auto-discovered {0} enterprise config(s) in {1}." -f $discovered.Count, $enterprisesDir)
+  foreach ($cfg in $discovered) {
+    Write-Host ''
+    Write-Host ("=== {0} ===" -f $cfg.Name)
+    & $PSCommandPath -RepoRoot $RepoRoot -ConfigPath $cfg.FullName -DryRun:$DryRun
+  }
+  return
 }
+
 if (-not (Test-Path -LiteralPath $ConfigPath)) {
   throw "Enterprise config not found: $ConfigPath"
 }
@@ -261,9 +282,13 @@ if (-not ($config.PSObject.Properties.Name -contains 'modules') -or $null -eq $c
 $siteProvider = $null
 if ($config.PSObject.Properties.Name -contains 'options' -and $null -ne $config.options -and
     $config.options.PSObject.Properties.Name -contains 'commonSheetProviders' -and
-    $null -ne $config.options.commonSheetProviders -and
-    $config.options.commonSheetProviders.PSObject.Properties.Name -contains 'Input - Site') {
-  $siteProvider = [string] $config.options.commonSheetProviders.'Input - Site'
+    $null -ne $config.options.commonSheetProviders) {
+  # Enumerate via the pipeline so an empty commonSheetProviders ({}) does not trip
+  # StrictMode's member-enumeration on an empty property collection.
+  $cspNames = @($config.options.commonSheetProviders.PSObject.Properties | ForEach-Object { $_.Name })
+  if ($cspNames -contains 'Input - Site') {
+    $siteProvider = [string] $config.options.commonSheetProviders.'Input - Site'
+  }
 }
 
 $merged = [ordered]@{}

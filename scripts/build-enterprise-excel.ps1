@@ -13,6 +13,29 @@ Add-Type -AssemblyName System.IO.Compression | Out-Null
 Add-Type -AssemblyName System.IO.Compression.FileSystem | Out-Null
 
 # ---------------------------------------------------------------------------
+# Auto-discovery: with neither -ConfigPath nor -EnterpriseId, build every
+# enterprise config (Enterprises\Enterprise_*.json) in turn by re-invoking
+# this script once per config.
+# ---------------------------------------------------------------------------
+if ([string]::IsNullOrWhiteSpace($ConfigPath) -and [string]::IsNullOrWhiteSpace($EnterpriseId)) {
+  $enterprisesDir = Join-Path $RepoRoot 'Enterprises'
+  if (-not (Test-Path -LiteralPath $enterprisesDir)) {
+    throw "Enterprises directory not found: $enterprisesDir"
+  }
+  $discovered = @(Get-ChildItem -LiteralPath $enterprisesDir -File -Filter 'Enterprise_*.json' | Sort-Object Name)
+  if ($discovered.Count -eq 0) {
+    throw "No Enterprise_*.json configs found in $enterprisesDir"
+  }
+  Write-Host ("Auto-discovered {0} enterprise config(s) in {1}." -f $discovered.Count, $enterprisesDir)
+  foreach ($cfg in $discovered) {
+    Write-Host ''
+    Write-Host ("=== Building {0} ===" -f $cfg.Name)
+    & $PSCommandPath -RepoRoot $RepoRoot -ConfigPath $cfg.FullName -DryRun:$DryRun
+  }
+  return
+}
+
+# ---------------------------------------------------------------------------
 # Configuration loading
 # ---------------------------------------------------------------------------
 
