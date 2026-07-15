@@ -1,0 +1,133 @@
+{
+    "generatedFrom":  "RiceCultivation_SourceData.xlf",
+    "generatedAt":  "2026-07-15T07:39:05Z",
+    "schemaVersion":  1,
+    "tables":  [
+                   {
+                       "name":  "SourceData_RiceCultivation_WaterScalingFactorGrowingSeason",
+                       "title":  "Scaling factor based on the water regime employed during the growing season cultivation period",
+                       "variable":  "SFw",
+                       "description":  "",
+                       "unit":  "fraction",
+                       "source":  "VEERG 2026: Table A.2.3.1",
+                       "variation":  "",
+                       "header":  [
+                                      "Water regime type",
+                                      "Water regime sub - type",
+                                      "SFw"
+                                  ],
+                       "rows":  [
+                                    [
+                                        "Upland",
+                                        "Paddy rotation",
+                                        0
+                                    ],
+                                    [
+                                        "Upland",
+                                        "Fallow without flooding in previous year",
+                                        0
+                                    ],
+                                    [
+                                        "Irrigated",
+                                        "Continuously flooded",
+                                        1
+                                    ],
+                                    [
+                                        "Irrigated",
+                                        "Single drainage period",
+                                        0.71
+                                    ],
+                                    [
+                                        "Irrigated",
+                                        "Multiple drainage periods",
+                                        0.55
+                                    ],
+                                    [
+                                        "Rainfed and deep water",
+                                        "Regular rainfed",
+                                        0.54
+                                    ],
+                                    [
+                                        "Rainfed and deep water",
+                                        "Drought prone",
+                                        0.16
+                                    ],
+                                    [
+                                        "Rainfed and deep water",
+                                        "Deep water",
+                                        0.06
+                                    ]
+                                ]
+                   },
+                   {
+                       "name":  "SourceData_RiceCultivation_WaterScalingFactorPreSeason",
+                       "title":  "Scaling factor based on the water regime employed in the pre - season before the growing period",
+                       "variable":  "SFp",
+                       "description":  "",
+                       "unit":  "fraction",
+                       "source":  "VEERG 2026: Table A.2.3.2",
+                       "variation":  "",
+                       "header":  [
+                                      "Water regime prior to cultivation period p",
+                                      "SFp"
+                                  ],
+                       "rows":  [
+                                    [
+                                        "Non flooded pre-season <180 days",
+                                        1
+                                    ],
+                                    [
+                                        "Non flooded pre-season >180 days",
+                                        0.89
+                                    ],
+                                    [
+                                        "Flooded pre-season >30 days",
+                                        2.41
+                                    ],
+                                    [
+                                        "Non-flooded pre-season >365 days",
+                                        0.59
+                                    ]
+                                ]
+                   },
+                   {
+                       "name":  "SourceData_RiceCultivation_OrganicAmendmentConversionFactor",
+                       "title":  "Conversion factor for organic amendment i",
+                       "variable":  "CFOAi",
+                       "description":  "",
+                       "unit":  "fraction",
+                       "source":  "VEERG 2026: Table A.2.3.3",
+                       "variation":  "",
+                       "header":  [
+                                      "Organic amendment i",
+                                      "CFOAi"
+                                  ],
+                       "rows":  [
+                                    [
+                                        "Straw incorporated shortly (<30 days) before cultivation",
+                                        1
+                                    ],
+                                    [
+                                        "Straw incorporated long (>30 days) before cultivation",
+                                        0.19
+                                    ],
+                                    [
+                                        "Compost",
+                                        0.17
+                                    ],
+                                    [
+                                        "Farm yard manure",
+                                        0.21
+                                    ],
+                                    [
+                                        "Green manure",
+                                        0.45
+                                    ],
+                                    [
+                                        "Inorganic fertiliser",
+                                        1
+                                    ]
+                                ]
+                   }
+               ]
+}

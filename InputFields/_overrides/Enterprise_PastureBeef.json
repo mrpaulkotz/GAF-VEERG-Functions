@@ -65,10 +65,16 @@
       }
     },
     "X_Table_PastureBeef_CrudeProtein_Method1": {
-       "NotUsedWhen": { "Field": "X_Cell_PastureBeef_Method1OrMethod2", "Equals": "Method 2" }
+       "NotUsedWhen": { "Field": "X_Cell_PastureBeef_Method1OrMethod2", "Equals": "Method 2" },
+       "DefaultDataDocumentType": "JSON",
+      "DefaultDataFile": "node_modules/gaf-veerg-functions/generated-sourcedata/SourceData_PastureBeef.sourcedata.json",
+      "DefaultDataLocation": null
     },
     "X_Table_PastureBeef_DryMatterDigestibility_Method1": {
-      "NotUsedWhen": { "Field": "X_Cell_PastureBeef_Method1OrMethod2", "Equals": "Method 2" }
+      "NotUsedWhen": { "Field": "X_Cell_PastureBeef_Method1OrMethod2", "Equals": "Method 2" },
+      "DefaultDataDocumentType": "JSON",
+      "DefaultDataFile": "node_modules/gaf-veerg-functions/generated-sourcedata/SourceData_PastureBeef.sourcedata.json",
+      "DefaultDataLocation": null
     },
     "X_Table_PastureBeef_Duration_Method1": {
       "NotUsedWhen": { "Field": "X_Cell_PastureBeef_Method1OrMethod2", "Equals": "Method 2" }
@@ -77,16 +83,28 @@
       "NotUsedWhen": { "Field": "X_Cell_PastureBeef_Method1OrMethod2", "Equals": "Method 2" }
     },
     "X_Table_PastureBeef_Liveweight_Method1": {
-      "NotUsedWhen": { "Field": "X_Cell_PastureBeef_Method1OrMethod2", "Equals": "Method 2" }
+      "NotUsedWhen": { "Field": "X_Cell_PastureBeef_Method1OrMethod2", "Equals": "Method 2" },
+      "DefaultDataDocumentType": "JSON",
+      "DefaultDataFile": "node_modules/gaf-veerg-functions/generated-sourcedata/SourceData_PastureBeef.sourcedata.json",
+      "DefaultDataLocation": null
     },
     "X_Table_PastureBeef_LiveweightGain_Method1": {
-      "NotUsedWhen": { "Field": "X_Cell_PastureBeef_Method1OrMethod2", "Equals": "Method 2" }
+      "NotUsedWhen": { "Field": "X_Cell_PastureBeef_Method1OrMethod2", "Equals": "Method 2" },
+      "DefaultDataDocumentType": "JSON",
+      "DefaultDataFile": "node_modules/gaf-veerg-functions/generated-sourcedata/SourceData_PastureBeef.sourcedata.json",
+      "DefaultDataLocation": null
     },
     "X_Table_PastureBeef_CrudeProtein_Method2": {
-      "NotUsedWhen": { "Field": "X_Cell_PastureBeef_Method1OrMethod2", "Equals": "Method 1" }
+      "NotUsedWhen": { "Field": "X_Cell_PastureBeef_Method1OrMethod2", "Equals": "Method 1" },
+      "DefaultDataDocumentType": "JSON",
+      "DefaultDataFile": "node_modules/gaf-veerg-functions/generated-sourcedata/SourceData_PastureBeef.sourcedata.json",
+      "DefaultDataLocation": null
     },
     "X_Table_PastureBeef_DryMatterDigestibility_Method2": {
-      "NotUsedWhen": { "Field": "X_Cell_PastureBeef_Method1OrMethod2", "Equals": "Method 1" }
+      "NotUsedWhen": { "Field": "X_Cell_PastureBeef_Method1OrMethod2", "Equals": "Method 1" },
+      "DefaultDataDocumentType": "JSON",
+      "DefaultDataFile": "node_modules/gaf-veerg-functions/generated-sourcedata/SourceData_PastureBeef.sourcedata.json",
+      "DefaultDataLocation": null
     },
     "X_Table_PastureBeef_Duration_Method2": {
       "NotUsedWhen": { "Field": "X_Cell_PastureBeef_Method1OrMethod2", "Equals": "Method 1" }
@@ -95,10 +113,16 @@
       "NotUsedWhen": { "Field": "X_Cell_PastureBeef_Method1OrMethod2", "Equals": "Method 1" }
     },
     "X_Table_PastureBeef_Liveweight_Method2": {
-      "NotUsedWhen": { "Field": "X_Cell_PastureBeef_Method1OrMethod2", "Equals": "Method 1" }
+      "NotUsedWhen": { "Field": "X_Cell_PastureBeef_Method1OrMethod2", "Equals": "Method 1" },
+      "DefaultDataDocumentType": "JSON",
+      "DefaultDataFile": "node_modules/gaf-veerg-functions/generated-sourcedata/SourceData_PastureBeef.sourcedata.json",
+      "DefaultDataLocation": null
     },
     "X_Table_PastureBeef_LiveweightGain_Method2": {
-      "NotUsedWhen": { "Field": "X_Cell_PastureBeef_Method1OrMethod2", "Equals": "Method 1" }
+      "NotUsedWhen": { "Field": "X_Cell_PastureBeef_Method1OrMethod2", "Equals": "Method 1" },
+      "DefaultDataDocumentType": "JSON",
+      "DefaultDataFile": "node_modules/gaf-veerg-functions/generated-sourcedata/SourceData_PastureBeef.sourcedata.json",
+      "DefaultDataLocation": null
     },
     "Table_Input_InorganicFertiliser_Brands":{
         "CanMarkAsNotUsed": true

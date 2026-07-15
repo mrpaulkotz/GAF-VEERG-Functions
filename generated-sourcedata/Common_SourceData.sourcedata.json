@@ -1,0 +1,1272 @@
+{
+    "generatedFrom":  "Common_SourceData.xlf",
+    "generatedAt":  "2026-07-15T07:39:04Z",
+    "schemaVersion":  1,
+    "tables":  [
+                   {
+                       "name":  "Common_SourceData_ConvertGasElementalToMolecular",
+                       "title":  "Factor to convert elemental mass of gas to molecular mass",
+                       "variable":  "Cg",
+                       "description":  "",
+                       "unit":  "factor",
+                       "source":  "XXXXXXX",
+                       "variation":  "",
+                       "header":  [
+                                      "Gas",
+                                      "Conversion factor",
+                                      "Conversion factor 1",
+                                      "Conversion factor 2"
+                                  ],
+                       "rows":  [
+                                    [
+                                        "CO2",
+                                        "44/12",
+                                        44,
+                                        12
+                                    ],
+                                    [
+                                        "CH4",
+                                        "16/12",
+                                        16,
+                                        12
+                                    ],
+                                    [
+                                        "N2O",
+                                        "44/28",
+                                        44,
+                                        28
+                                    ],
+                                    [
+                                        "Nox",
+                                        "46/14",
+                                        46,
+                                        14
+                                    ],
+                                    [
+                                        "CO",
+                                        "28/12",
+                                        28,
+                                        12
+                                    ],
+                                    [
+                                        "CO2 Lime",
+                                        "44/12",
+                                        44,
+                                        12
+                                    ],
+                                    [
+                                        "NMVOC",
+                                        "14/12",
+                                        14,
+                                        12
+                                    ]
+                                ]
+                   },
+                   {
+                       "name":  "Common_SourceData_GWP",
+                       "title":  "Global warming potential for greenhouse gases",
+                       "variable":  "GWPN2O",
+                       "description":  "",
+                       "unit":  "factor",
+                       "source":  "XXXXXXX",
+                       "variation":  "",
+                       "header":  [
+                                      "Gas",
+                                      "CO2-e factor"
+                                  ],
+                       "rows":  [
+                                    [
+                                        "CO2",
+                                        1
+                                    ],
+                                    [
+                                        "CH4",
+                                        28
+                                    ],
+                                    [
+                                        "N2O",
+                                        265
+                                    ],
+                                    [
+                                        "CF4",
+                                        6630
+                                    ],
+                                    [
+                                        "C2F6",
+                                        12200
+                                    ],
+                                    [
+                                        "SF6",
+                                        22800
+                                    ],
+                                    [
+                                        "NF3",
+                                        17200
+                                    ]
+                                ]
+                   },
+                   {
+                       "name":  "Common_SourceData_AustralianStatesTerritories",
+                       "title":  "Australian states and territories",
+                       "variable":  "",
+                       "description":  "",
+                       "unit":  "",
+                       "source":  "",
+                       "variation":  "",
+                       "header":  [
+                                      "State/Territory",
+                                      "Common Name",
+                                      "Abbreviation"
+                                  ],
+                       "rows":  [
+                                    [
+                                        "New South Wales",
+                                        "New South Wales",
+                                        "NSW"
+                                    ],
+                                    [
+                                        "Australian Capital Territory",
+                                        "ACT",
+                                        "ACT"
+                                    ],
+                                    [
+                                        "Victoria",
+                                        "Victoria",
+                                        "VIC"
+                                    ],
+                                    [
+                                        "Queensland",
+                                        "Queensland",
+                                        "QLD"
+                                    ],
+                                    [
+                                        "South Australia",
+                                        "South Australia",
+                                        "SA"
+                                    ],
+                                    [
+                                        "Western Australia",
+                                        "Western Australia",
+                                        "WA"
+                                    ],
+                                    [
+                                        "Tasmania",
+                                        "Tasmania",
+                                        "TAS"
+                                    ],
+                                    [
+                                        "Northern Territory",
+                                        "Northern Territory",
+                                        "NT"
+                                    ]
+                                ]
+                   },
+                   {
+                       "name":  "Common_SourceData_WASA4Areas",
+                       "title":  "ABS Statistcal Areas Level 4 - Western Australia",
+                       "variable":  "",
+                       "description":  "",
+                       "unit":  "",
+                       "source":  "Australian Bureau of Statistics (ABS) - Statistical Areas Level 2 - 2021 - Shapefile",
+                       "variation":  "",
+                       "header":  [
+                                      "SA 4 Name"
+                                  ],
+                       "rows":  [
+                                    [
+                                        "Bunbury"
+                                    ],
+                                    [
+                                        "Mandurah"
+                                    ],
+                                    [
+                                        "Perth - Inner"
+                                    ],
+                                    [
+                                        "Perth - North East"
+                                    ],
+                                    [
+                                        "Perth - North West"
+                                    ],
+                                    [
+                                        "Perth - South East"
+                                    ],
+                                    [
+                                        "Perth - South West"
+                                    ],
+                                    [
+                                        "Western Australia - Wheat Belt"
+                                    ],
+                                    [
+                                        "Western Australia - Outback (North)"
+                                    ],
+                                    [
+                                        "Western Australia - Outback (South)"
+                                    ]
+                                ]
+                   },
+                   {
+                       "name":  "Common_SourceData_WetAndDryZones",
+                       "title":  "VEERG Australian wet and dry zones",
+                       "variable":  "",
+                       "description":  "",
+                       "unit":  "",
+                       "source":  "VEERG 2026: Table 1.2: Translating climate zones to wet and dry zones",
+                       "variation":  "",
+                       "header":  [
+                                      "Climate Zone",
+                                      "Wet or Dry Zone"
+                                  ],
+                       "rows":  [
+                                    [
+                                        "Tropical montane",
+                                        "Wet climate zone"
+                                    ],
+                                    [
+                                        "Tropical wet",
+                                        "Wet climate zone"
+                                    ],
+                                    [
+                                        "Tropical moist",
+                                        "Wet climate zone"
+                                    ],
+                                    [
+                                        "Tropical dry",
+                                        "Dry climate zone"
+                                    ],
+                                    [
+                                        "Warm temperate moist",
+                                        "Wet climate zone"
+                                    ],
+                                    [
+                                        "Warm temperate dry",
+                                        "Dry climate zone"
+                                    ],
+                                    [
+                                        "Cool temperate moist",
+                                        "Wet climate zone"
+                                    ],
+                                    [
+                                        "Cool temperate dry",
+                                        "Dry climate zone"
+                                    ],
+                                    [
+                                        "Warm temperate moist - low frost",
+                                        "Wet climate zone"
+                                    ],
+                                    [
+                                        "Warm temperate dry - low frost",
+                                        "Dry climate zone"
+                                    ],
+                                    [
+                                        "Warm temperate moist - high temp",
+                                        "Wet climate zone"
+                                    ],
+                                    [
+                                        "Warm temperate dry - high temp",
+                                        "Dry climate zone"
+                                    ],
+                                    [
+                                        "Cool temperate moist - low frost",
+                                        "Wet climate zone"
+                                    ],
+                                    [
+                                        "Cool temperate dry - low frost",
+                                        "Dry climate zone"
+                                    ]
+                                ]
+                   },
+                   {
+                       "name":  "Common_SourceData_ClimateZones",
+                       "title":  "VEERG Australian climate zones",
+                       "variable":  "",
+                       "description":  "",
+                       "unit":  "",
+                       "source":  "VEERG 2026: Table 1.3: Climate and Rainfall zone classifications and definitions",
+                       "variation":  "",
+                       "header":  [
+                                      "Climate Zone",
+                                      "MAT",
+                                      "MAP",
+                                      "Frost days per year",
+                                      "Elevation",
+                                      "MAP:PET",
+                                      "Min temp",
+                                      "Max temp",
+                                      "Min rainfall",
+                                      "Max rainfall",
+                                      "Min frost days",
+                                      "Max frost days",
+                                      "Min elevation",
+                                      "Max elevation",
+                                      "Min MAP:PET",
+                                      "Min MAP:PET"
+                                  ],
+                       "rows":  [
+                                    [
+                                        "Tropical montane",
+                                        "> 18 C",
+                                        "Any",
+                                        "â‰¤ 7",
+                                        "> 1000 m",
+                                        "Any",
+                                        18.001,
+                                        999999,
+                                        -999999,
+                                        999999,
+                                        -999999,
+                                        7,
+                                        1000,
+                                        999999,
+                                        -999999,
+                                        999999
+                                    ],
+                                    [
+                                        "Tropical wet",
+                                        "> 18 C",
+                                        "> 2000 mm",
+                                        "â‰¤ 7",
+                                        "â‰¤ 1000 m",
+                                        "Any",
+                                        18.001,
+                                        999999,
+                                        2000.001,
+                                        999999,
+                                        -999999,
+                                        7,
+                                        -999999,
+                                        999.999,
+                                        -999999,
+                                        999999
+                                    ],
+                                    [
+                                        "Tropical moist",
+                                        "> 18 C",
+                                        "> 1000 mm - â‰¤ 2000 mm",
+                                        "â‰¤ 7",
+                                        "â‰¤ 1000 m",
+                                        "Any",
+                                        18.001,
+                                        999999,
+                                        1000.001,
+                                        2000,
+                                        -999999,
+                                        7,
+                                        -999999,
+                                        999.999,
+                                        -999999,
+                                        999999
+                                    ],
+                                    [
+                                        "Tropical dry",
+                                        "> 18 C",
+                                        "â‰¤ 1000 mm",
+                                        "â‰¤ 7",
+                                        "â‰¤ 1000 m",
+                                        "Any",
+                                        18.001,
+                                        999999,
+                                        -999999,
+                                        1000,
+                                        -999999,
+                                        7,
+                                        -999999,
+                                        999.999,
+                                        -999999,
+                                        999999
+                                    ],
+                                    [
+                                        "Warm temperate moist",
+                                        "> 10 C",
+                                        "Any",
+                                        "Any",
+                                        "Any",
+                                        "> 1",
+                                        10.001,
+                                        999999,
+                                        -999999,
+                                        999999,
+                                        -999999,
+                                        999999,
+                                        -999999,
+                                        999999,
+                                        1.001,
+                                        999999
+                                    ],
+                                    [
+                                        "Warm temperate dry",
+                                        "> 10 C",
+                                        "Any",
+                                        "Any",
+                                        "Any",
+                                        "â‰¤ 1",
+                                        10.001,
+                                        999999,
+                                        -999999,
+                                        999999,
+                                        -999999,
+                                        999999,
+                                        -999999,
+                                        999999,
+                                        -999999,
+                                        1
+                                    ],
+                                    [
+                                        "Cool temperate moist",
+                                        "> 0 C - â‰¤ 10 C",
+                                        "Any",
+                                        "Any",
+                                        "Any",
+                                        "> 1",
+                                        -999999,
+                                        10,
+                                        -999999,
+                                        999999,
+                                        -999999,
+                                        999999,
+                                        -999999,
+                                        999999,
+                                        1.001,
+                                        999999
+                                    ],
+                                    [
+                                        "Cool temperate dry",
+                                        "> 0 C - â‰¤ 10 C",
+                                        "Any",
+                                        "Any",
+                                        "Any",
+                                        "â‰¤ 1",
+                                        -999999,
+                                        10,
+                                        -999999,
+                                        999999,
+                                        -999999,
+                                        999999,
+                                        -999999,
+                                        999999,
+                                        -999999,
+                                        1
+                                    ]
+                                ]
+                   },
+                   {
+                       "name":  "Common_SourceData_TemperatureZones",
+                       "title":  "VEERG Australian temperature zones",
+                       "variable":  "",
+                       "description":  "",
+                       "unit":  "",
+                       "source":  "VEERG 2026: Table 1.3: Climate and Rainfall zone classifications and definitions",
+                       "variation":  "VARIATION OF SOURCE DATA: Added extra MAT min and MAT max columns to calculate zone from real temperature data.",
+                       "header":  [
+                                      "Temperature Zone",
+                                      "Median Annual Temperature (MAT)",
+                                      "Min MAT",
+                                      "Max MAT"
+                                  ],
+                       "rows":  [
+                                    [
+                                        "Warm",
+                                        "â‰¥ 26 C",
+                                        26,
+                                        999999
+                                    ],
+                                    [
+                                        "Temperate",
+                                        "15 - 25 C",
+                                        15,
+                                        25.999
+                                    ],
+                                    [
+                                        "Cool",
+                                        "â‰¤ 14 C",
+                                        -999999,
+                                        14.999
+                                    ]
+                                ]
+                   },
+                   {
+                       "name":  "Common_SourceData_RainfallZones",
+                       "title":  "VEERG Australian rainfall zones",
+                       "variable":  "",
+                       "description":  "",
+                       "unit":  "",
+                       "source":  "VEERG 2026: Table 1.3: Climate and Rainfall zone classifications and definitions",
+                       "variation":  "VARIATION OF SOURCE DATA: Added extra Rainfall min and Rainfall max columns to calculate zone from real rainfall data.",
+                       "header":  [
+                                      "Rainfall Zone",
+                                      "Annual rainfall",
+                                      "Rainfall min",
+                                      "Rainfall max"
+                                  ],
+                       "rows":  [
+                                    [
+                                        "High rainfall",
+                                        "Annual rainfall > 600mm",
+                                        600.001,
+                                        999999
+                                    ],
+                                    [
+                                        "Low rainfall",
+                                        "Annual rainfall â‰¤ 600mm",
+                                        -999999,
+                                        600
+                                    ]
+                                ]
+                   },
+                   {
+                       "name":  "Common_SourceData_LeachingZones",
+                       "title":  "VEERG Australian leaching zones",
+                       "variable":  "",
+                       "description":  "",
+                       "unit":  "",
+                       "source":  "VEERG 2026: Table 1.3: Climate and Rainfall zone classifications and definitions",
+                       "variation":  "",
+                       "header":  [
+                                      "Leaching Zone",
+                                      "Leaching criteria"
+                                  ],
+                       "rows":  [
+                                    [
+                                        "Leaching occurs",
+                                        "Î£(ð‘Ÿð‘Žð‘–ð‘›)>Î£(ð¸ð‘‡0)+ð‘ ð‘œð‘–ð‘™ ð‘¤ð‘Žð‘¡ð‘’ð‘Ÿ â„Žð‘œð‘™ð‘‘ð‘–ð‘›ð‘” ð‘ð‘Žð‘ð‘Žð‘ð‘–ð‘¡ð‘¦"
+                                    ],
+                                    [
+                                        "Leaching does not occur",
+                                        "Î£(ð‘Ÿð‘Žð‘–ð‘›)â‰¤Î£(ð¸ð‘‡0)+ð‘ ð‘œð‘–ð‘™ ð‘¤ð‘Žð‘¡ð‘’ð‘Ÿ â„Žð‘œð‘™ð‘‘ð‘–ð‘›ð‘” ð‘ð‘Žð‘ð‘Žð‘ð‘–ð‘¡ð‘¦"
+                                    ]
+                                ]
+                   },
+                   {
+                       "name":  "Common_SourceData_FracWET",
+                       "title":  "Fraction of N that is available for leaching and runoff",
+                       "variable":  "",
+                       "description":  "",
+                       "unit":  "(Dimensionless",
+                       "source":  "VEERG 2026:5.5.2.3 Constant Parameters",
+                       "variation":  "",
+                       "header":  [
+                                      "Is in leaching zone",
+                                      "FracWET"
+                                  ],
+                       "rows":  [
+                                    [
+                                        "Yes - in leaching zone",
+                                        1
+                                    ],
+                                    [
+                                        "No - not in leaching zone",
+                                        0
+                                    ]
+                                ]
+                   },
+                   {
+                       "name":  "Common_SourceData_DataScores_Scope3",
+                       "title":  "Australian data scores for scope 3",
+                       "variable":  "",
+                       "description":  "",
+                       "unit":  "",
+                       "source":  "VEERG 2026: XXXXXXXX",
+                       "variation":  "",
+                       "header":  [
+                                      "Data source",
+                                      "Data score"
+                                  ],
+                       "rows":  [
+                                    [
+                                        "International scope 3 database",
+                                        1
+                                    ],
+                                    [
+                                        "Australian scope 3 database",
+                                        2
+                                    ],
+                                    [
+                                        "State or regional scope 3 database",
+                                        3
+                                    ],
+                                    [
+                                        "Emissions intensity calculated from approved method",
+                                        4
+                                    ],
+                                    [
+                                        "Verified credential matching ISO14067",
+                                        5
+                                    ]
+                                ]
+                   },
+                   {
+                       "name":  "Common_SourceData_FracLEACH",
+                       "title":  "Fraction of N that is available for leaching and runoff",
+                       "variable":  "",
+                       "description":  "",
+                       "unit":  "(Dimensionless",
+                       "source":  "VEERG 2026:5.5.2.3 Constant Parameters",
+                       "variation":  "",
+                       "header":  [
+                                      "FracLEACH",
+                                      "0.24"
+                                  ],
+                       "rows":  [
+
+                                ]
+                   },
+                   {
+                       "name":  "Common_SourceData_EFleach",
+                       "title":  "Emission factor for nitrogen leaching and runoff",
+                       "variable":  "",
+                       "description":  "",
+                       "unit":  "(kg N2O-N / kg N",
+                       "source":  "VEERG 2026:5.5.2.3 Constant Parameters",
+                       "variation":  "",
+                       "header":  [
+                                      "EFleach",
+                                      "0.011"
+                                  ],
+                       "rows":  [
+
+                                ]
+                   },
+                   {
+                       "name":  "Common_SourceData_EFN2O",
+                       "title":  "Nitrous oxide emission factors for inorganic fertiliser application",
+                       "variable":  "",
+                       "description":  "",
+                       "unit":  "(kg N2O-N / kg N",
+                       "source":  "VEERG 2026: Table A.2.2.1",
+                       "variation":  "",
+                       "header":  [
+                                      "Production system j",
+                                      "EFN2O",
+                                      "Production system only",
+                                      "Irrigation method",
+                                      "Rainfall zone"
+                                  ],
+                       "rows":  [
+                                    [
+                                        "Irrigated pasture",
+                                        0.0059,
+                                        "Pasture",
+                                        "Any",
+                                        "Any"
+                                    ],
+                                    [
+                                        "Irrigated crop",
+                                        0.007,
+                                        "Crop",
+                                        "Any",
+                                        "Any"
+                                    ],
+                                    [
+                                        "Non-irrigated pasture",
+                                        0.0018,
+                                        "Pasture",
+                                        "Not irrigated",
+                                        "Low rainfall"
+                                    ],
+                                    [
+                                        "Non-irrigated pasture",
+                                        0.0018,
+                                        "Pasture",
+                                        "Not irrigated",
+                                        "High rainfall"
+                                    ],
+                                    [
+                                        "Non-irrigated crop (low rainfall)",
+                                        0.0029,
+                                        "Crop",
+                                        "Not irrigated",
+                                        "Low rainfall"
+                                    ],
+                                    [
+                                        "Non-irrigated crop (high rainfall)",
+                                        0.008,
+                                        "Crop",
+                                        "Not irrigated",
+                                        "High rainfall"
+                                    ],
+                                    [
+                                        "Sugar",
+                                        0.0199,
+                                        "Sugar",
+                                        "Any",
+                                        "Any"
+                                    ],
+                                    [
+                                        "Cotton",
+                                        0.0053,
+                                        "Cotton",
+                                        "Any",
+                                        "Any"
+                                    ],
+                                    [
+                                        "Horticultural crops",
+                                        0.0064,
+                                        "Horticultural crops",
+                                        "Any",
+                                        "Any"
+                                    ],
+                                    [
+                                        "Rice (continuous flooding)",
+                                        0.003,
+                                        "Rice",
+                                        "Continuous flooding",
+                                        "Any"
+                                    ],
+                                    [
+                                        "Rice (single and multiple drainage, or alternate wetting and drying)",
+                                        0.005,
+                                        "Rice",
+                                        "Single and multiple drainage, or alternate wetting and drying",
+                                        "Any"
+                                    ],
+                                    [
+                                        "Aquaculture",
+                                        0.0026,
+                                        "Aquaculture",
+                                        "Any",
+                                        "Any"
+                                    ],
+                                    [
+                                        "Forestry",
+                                        0.0018,
+                                        "Forestry",
+                                        "Any",
+                                        "Any"
+                                    ]
+                                ]
+                   },
+                   {
+                       "name":  "Common_SourceData_FracWETIrrigation",
+                       "title":  "FracWET for irrigation types",
+                       "variable":  "",
+                       "description":  "",
+                       "unit":  "dimensionless",
+                       "source":  "VEERG 2026: Chapter 1, section 1.8.2 Leaching, climate and rainfall zones",
+                       "variation":  "VARIATION FROM SOURCE DATA: Table created based on VEERG text 'Areas are subject to leaching (i.e., in the leaching zone) when... the land is irrigated (except drip irrigation).'",
+                       "header":  [
+                                      "Irrigation type ir",
+                                      "FracWET"
+                                  ],
+                       "rows":  [
+                                    [
+                                        "Not irrigated",
+                                        0
+                                    ],
+                                    [
+                                        "Drip irrigation",
+                                        0
+                                    ],
+                                    [
+                                        "Sprinkler irrigation",
+                                        1
+                                    ],
+                                    [
+                                        "Surface irrigation",
+                                        1
+                                    ],
+                                    [
+                                        "Other irrigation",
+                                        1
+                                    ]
+                                ]
+                   },
+                   {
+                       "name":  "Common_SourceData_EFPastureRangeAndPaddock",
+                       "title":  "Emission factor for urine and dung deposited on pasture, range or paddock",
+                       "variable":  "",
+                       "description":  "",
+                       "unit":  "kg N2O - N / kg N",
+                       "source":  "VEERG 2026: Table A.2.2.2",
+                       "variation":  "VARIATION FROM SOURCE DATA: Changed 'Dry climate zones' to singular 'Dry climate zone' to aid lookup.",
+                       "header":  [
+                                      "Climate zone",
+                                      "EFPRP"
+                                  ],
+                       "rows":  [
+                                    [
+                                        "Wet climate zone",
+                                        0.006
+                                    ],
+                                    [
+                                        "Dry climate zone",
+                                        0.002
+                                    ]
+                                ]
+                   },
+                   {
+                       "name":  "Common_SourceData_MonthsToSeasons",
+                       "title":  "Months to Seasons Mapping",
+                       "variable":  "",
+                       "description":  "",
+                       "unit":  "",
+                       "source":  "",
+                       "variation":  "",
+                       "header":  [
+                                      "Month",
+                                      "Season"
+                                  ],
+                       "rows":  [
+                                    [
+                                        "January",
+                                        "Summer"
+                                    ],
+                                    [
+                                        "February",
+                                        "Summer"
+                                    ],
+                                    [
+                                        "March",
+                                        "Autumn"
+                                    ],
+                                    [
+                                        "April",
+                                        "Autumn"
+                                    ],
+                                    [
+                                        "May",
+                                        "Autumn"
+                                    ],
+                                    [
+                                        "June",
+                                        "Winter"
+                                    ],
+                                    [
+                                        "July",
+                                        "Winter"
+                                    ],
+                                    [
+                                        "August",
+                                        "Winter"
+                                    ],
+                                    [
+                                        "September",
+                                        "Spring"
+                                    ],
+                                    [
+                                        "October",
+                                        "Spring"
+                                    ],
+                                    [
+                                        "November",
+                                        "Spring"
+                                    ],
+                                    [
+                                        "December",
+                                        "Summer"
+                                    ]
+                                ]
+                   },
+                   {
+                       "name":  "Common_SourceData_MCFTemperatureZone",
+                       "title":  "Manure Management â€“ Methane conversion factor per temperature zone (fraction) (MCFim)",
+                       "variable":  "",
+                       "description":  "",
+                       "unit":  "fraction",
+                       "source":  "VEERG 2026: Table A.1.8.1",
+                       "variation":  "VARIATION FROM SOURCE: Added row of NIR MMA definitions to aid lookup. Duplicated 'Poultry with and without litter' column with separate NIR definitions to aid lookup. Added 'MAT raw' column to allow lookup of numbers.",
+                       "header":  [
+                                      "Temperature zone",
+                                      "MAT (ÂºC)",
+                                      "Uncovered anerobic lagoon",
+                                      "Covered lagoon",
+                                      "Liquid Slurry (without natural crust)",
+                                      "Daily spread (b)",
+                                      "Composting (passive windrow)",
+                                      "Solid Storage",
+                                      "Pit Storage <1 month",
+                                      "Deep Litter",
+                                      "Poultry Manure (with/without litter)",
+                                      "",
+                                      "Direct processing into pelletized fertiliser",
+                                      "Direct application to soil",
+                                      "Pasture, Range and Paddock (c)(d)",
+                                      "MAT raw"
+                                  ],
+                       "rows":  [
+                                    [
+                                        "Cool",
+                                        "â‰¤10",
+                                        0.66,
+                                        0.1,
+                                        0.1,
+                                        0.001,
+                                        0.005,
+                                        0.02,
+                                        0.03,
+                                        0.04,
+                                        0.015,
+                                        0.015,
+                                        0,
+                                        0,
+                                        0.0047,
+                                        10
+                                    ],
+                                    [
+                                        "Cool",
+                                        11,
+                                        0.68,
+                                        0.1,
+                                        0.11,
+                                        0.001,
+                                        0.005,
+                                        0.02,
+                                        0.03,
+                                        0.04,
+                                        0.015,
+                                        0.015,
+                                        0,
+                                        0,
+                                        0.0047,
+                                        11
+                                    ],
+                                    [
+                                        "Cool",
+                                        12,
+                                        0.7,
+                                        0.1,
+                                        0.13,
+                                        0.001,
+                                        0.005,
+                                        0.02,
+                                        0.03,
+                                        0.04,
+                                        0.015,
+                                        0.015,
+                                        0,
+                                        0,
+                                        0.0047,
+                                        12
+                                    ],
+                                    [
+                                        "Cool",
+                                        13,
+                                        0.71,
+                                        0.1,
+                                        0.14,
+                                        0.001,
+                                        0.005,
+                                        0.02,
+                                        0.03,
+                                        0.04,
+                                        0.015,
+                                        0.015,
+                                        0,
+                                        0,
+                                        0.0047,
+                                        13
+                                    ],
+                                    [
+                                        "Cool",
+                                        14,
+                                        0.73,
+                                        0.1,
+                                        0.15,
+                                        0.001,
+                                        0.005,
+                                        0.02,
+                                        0.03,
+                                        0.04,
+                                        0.015,
+                                        0.015,
+                                        0,
+                                        0,
+                                        0.0047,
+                                        14
+                                    ],
+                                    [
+                                        "Temperate",
+                                        15,
+                                        0.74,
+                                        0.1,
+                                        0.17,
+                                        0.005,
+                                        0.01,
+                                        0.02,
+                                        0.03,
+                                        0.04,
+                                        0.015,
+                                        0.015,
+                                        0,
+                                        0,
+                                        0.0047,
+                                        15
+                                    ],
+                                    [
+                                        "Temperate",
+                                        16,
+                                        0.75,
+                                        0.1,
+                                        0.18,
+                                        0.005,
+                                        0.01,
+                                        0.02,
+                                        0.03,
+                                        0.04,
+                                        0.015,
+                                        0.015,
+                                        0,
+                                        0,
+                                        0.0047,
+                                        16
+                                    ],
+                                    [
+                                        "Temperate",
+                                        17,
+                                        0.76,
+                                        0.1,
+                                        0.2,
+                                        0.005,
+                                        0.01,
+                                        0.02,
+                                        0.03,
+                                        0.04,
+                                        0.015,
+                                        0.015,
+                                        0,
+                                        0,
+                                        0.0047,
+                                        17
+                                    ],
+                                    [
+                                        "Temperate",
+                                        18,
+                                        0.77,
+                                        0.1,
+                                        0.22,
+                                        0.005,
+                                        0.01,
+                                        0.02,
+                                        0.03,
+                                        0.04,
+                                        0.015,
+                                        0.015,
+                                        0,
+                                        0,
+                                        0.0047,
+                                        18
+                                    ],
+                                    [
+                                        "Temperate",
+                                        19,
+                                        0.77,
+                                        0.1,
+                                        0.24,
+                                        0.005,
+                                        0.01,
+                                        0.02,
+                                        0.03,
+                                        0.04,
+                                        0.015,
+                                        0.015,
+                                        0,
+                                        0,
+                                        0.0047,
+                                        19
+                                    ],
+                                    [
+                                        "Temperate",
+                                        20,
+                                        0.78,
+                                        0.1,
+                                        0.26,
+                                        0.005,
+                                        0.01,
+                                        0.02,
+                                        0.03,
+                                        0.04,
+                                        0.015,
+                                        0.015,
+                                        0,
+                                        0,
+                                        0.0047,
+                                        20
+                                    ],
+                                    [
+                                        "Temperate",
+                                        21,
+                                        0.78,
+                                        0.1,
+                                        0.29,
+                                        0.005,
+                                        0.01,
+                                        0.02,
+                                        0.03,
+                                        0.04,
+                                        0.015,
+                                        0.015,
+                                        0,
+                                        0,
+                                        0.0047,
+                                        21
+                                    ],
+                                    [
+                                        "Temperate",
+                                        22,
+                                        0.78,
+                                        0.1,
+                                        0.31,
+                                        0.005,
+                                        0.01,
+                                        0.02,
+                                        0.03,
+                                        0.04,
+                                        0.015,
+                                        0.015,
+                                        0,
+                                        0,
+                                        0.0047,
+                                        22
+                                    ],
+                                    [
+                                        "Temperate",
+                                        23,
+                                        0.79,
+                                        0.1,
+                                        0.34,
+                                        0.005,
+                                        0.01,
+                                        0.02,
+                                        0.03,
+                                        0.04,
+                                        0.015,
+                                        0.015,
+                                        0,
+                                        0,
+                                        0.0047,
+                                        23
+                                    ],
+                                    [
+                                        "Temperate",
+                                        24,
+                                        0.79,
+                                        0.1,
+                                        0.37,
+                                        0.005,
+                                        0.01,
+                                        0.02,
+                                        0.03,
+                                        0.04,
+                                        0.015,
+                                        0.015,
+                                        0,
+                                        0,
+                                        0.0047,
+                                        24
+                                    ],
+                                    [
+                                        "Temperate",
+                                        25,
+                                        0.79,
+                                        0.1,
+                                        0.41,
+                                        0.005,
+                                        0.01,
+                                        0.02,
+                                        0.03,
+                                        0.04,
+                                        0.015,
+                                        0.015,
+                                        0,
+                                        0,
+                                        0.0047,
+                                        25
+                                    ],
+                                    [
+                                        "Warm",
+                                        26,
+                                        0.79,
+                                        0.1,
+                                        0.44,
+                                        0.01,
+                                        0.015,
+                                        0.02,
+                                        0.03,
+                                        0.04,
+                                        0.015,
+                                        0.015,
+                                        0,
+                                        0,
+                                        0.0047,
+                                        26
+                                    ],
+                                    [
+                                        "Warm",
+                                        27,
+                                        0.8,
+                                        0.1,
+                                        0.48,
+                                        0.01,
+                                        0.015,
+                                        0.02,
+                                        0.03,
+                                        0.04,
+                                        0.015,
+                                        0.015,
+                                        0,
+                                        0,
+                                        0.0047,
+                                        27
+                                    ],
+                                    [
+                                        "Warm",
+                                        "â‰¥28",
+                                        0.8,
+                                        0.1,
+                                        0.5,
+                                        0.01,
+                                        0.015,
+                                        0.02,
+                                        0.03,
+                                        0.04,
+                                        0.015,
+                                        0.015,
+                                        0,
+                                        0,
+                                        0.0047,
+                                        28
+                                    ],
+                                    [
+                                        "",
+                                        "",
+                                        "Anaerobic lagoon",
+                                        "Digester / covered lagoons",
+                                        "Liquid systems",
+                                        "Daily spread",
+                                        "Composting (passive windrow)",
+                                        "Solid storage",
+                                        "Pit storage",
+                                        "Deep litter",
+                                        "Poultry manure with bedding",
+                                        "Poultry manure without bedding",
+                                        "Direct processing",
+                                        "Direct application",
+                                        "Pasture range and paddock",
+                                        "MAT raw"
+                                    ]
+                                ]
+                   },
+                   {
+                       "name":  "Common_SourceData_EFOrganicFertiliserAndCropResidues",
+                       "title":  "Emission factor for organic fertiliser and crop residues returned to the soil",
+                       "variable":  "EFNi & EFN2Oi",
+                       "description":  "",
+                       "unit":  "kg N2O - N / kg N",
+                       "source":  "VEERG 2026: Table A.2.1.4",
+                       "variation":  "",
+                       "header":  [
+                                      "Climate zone",
+                                      "EFNi & EFN2O"
+                                  ],
+                       "rows":  [
+                                    [
+                                        "Wet climate zone",
+                                        0.006
+                                    ],
+                                    [
+                                        "Dry climate zone",
+                                        0.005
+                                    ]
+                                ]
+                   }
+               ]
+}

@@ -1,0 +1,114 @@
+{
+    "generatedFrom":  "CommonCropping_SourceData.xlf",
+    "generatedAt":  "2026-07-15T07:39:04Z",
+    "schemaVersion":  1,
+    "tables":  [
+                   {
+                       "name":  "CommonCropping_SourceData_N2OEFsInorganicFertiliser",
+                       "title":  "Nitrous oxide EFs for inorganic fertiliser",
+                       "variable":  "",
+                       "description":  "",
+                       "unit":  "Gg N2O-N/ Gg N",
+                       "source":  "National Inventory Report 2023 Volume 1: Table 5.21",
+                       "variation":  "",
+                       "header":  [
+                                      "Production system",
+                                      "Emission factor"
+                                  ],
+                       "rows":  [
+                                    [
+                                        "Irrigated pasture",
+                                        0.0059
+                                    ],
+                                    [
+                                        "Irrigated crop",
+                                        0.007
+                                    ],
+                                    [
+                                        "Non-irrigated pasture",
+                                        0.0018
+                                    ],
+                                    [
+                                        "Non-irrigated crop",
+                                        0.0041
+                                    ],
+                                    [
+                                        "Sugar cane",
+                                        0.0199
+                                    ],
+                                    [
+                                        "Cotton",
+                                        0.0053
+                                    ],
+                                    [
+                                        "Horticulture",
+                                        0.0064
+                                    ]
+                                ]
+                   },
+                   {
+                       "name":  "CommonCropping_SourceData_N2OEFOrganicFertiliser",
+                       "title":  "Emission factor for organic fertiliser and crop residues returned to the soil",
+                       "variable":  "",
+                       "description":  "",
+                       "unit":  "kg N2O - N / kg N",
+                       "source":  "VEERG 2026: Table A.2.1.4",
+                       "variation":  "",
+                       "header":  [
+                                      "Climate zone i",
+                                      "EF i N2O"
+                                  ],
+                       "rows":  [
+                                    [
+                                        "Wet climate zone",
+                                        0.006
+                                    ],
+                                    [
+                                        "Dry climate zone",
+                                        0.005
+                                    ]
+                                ]
+                   },
+                   {
+                       "name":  "CommonCropping_SourceData_FracGASFfInorganicFertiliser",
+                       "title":  "The direct nitrous oxide EF from the organic fertiliser when applied to soils",
+                       "variable":  "",
+                       "description":  "",
+                       "unit":  "(kg NH3-N + NOx-N)/kg N",
+                       "source":  "VEERG 2026:Table 12.2.2.9",
+                       "variation":  "VARIATION FROM SOURCE DATA: Added extra 'Basis' column with simplified naming to assis with lookups in equations",
+                       "header":  [
+                                      "Fertiliser type f",
+                                      "FracGASFf",
+                                      "Basis"
+                                  ],
+                       "rows":  [
+                                    [
+                                        "Urea-based fertilisers",
+                                        0.15,
+                                        "Urea"
+                                    ],
+                                    [
+                                        "Ammonium-based fertilisers",
+                                        0.08,
+                                        "Ammonium"
+                                    ],
+                                    [
+                                        "Nitrate-based fertilisers",
+                                        0.01,
+                                        "Nitrate"
+                                    ],
+                                    [
+                                        "Ammonium-nitrate based fertilisers",
+                                        0.05,
+                                        "Ammonium-nitrate"
+                                    ],
+                                    [
+                                        "Other fertilisers",
+                                        0.11,
+                                        "Other"
+                                    ]
+                                ]
+                   }
+               ]
+}

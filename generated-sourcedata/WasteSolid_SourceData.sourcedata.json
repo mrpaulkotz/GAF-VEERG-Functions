@@ -1,0 +1,287 @@
+{
+    "generatedFrom":  "WasteSolid_SourceData.xlf",
+    "generatedAt":  "2026-07-15T07:39:05Z",
+    "schemaVersion":  1,
+    "tables":  [
+                   {
+                       "name":  "Waste_EmissionFactorsForWasteTreatment",
+                       "title":  "Emission factors for wastes disposed of at different treatment facilities",
+                       "variable":  "EFwt",
+                       "description":  "",
+                       "unit":  "t CO2e / t",
+                       "source":  "VEERG 2026: Table A.4.1.1",
+                       "variation":  "",
+                       "header":  [
+                                      "Treatment type t",
+                                      "Waste type w",
+                                      "EFwt",
+                                      "EF source"
+                                  ],
+                       "rows":  [
+                                    [
+                                        "Landfill",
+                                        "Food waste (including animal carcasses, spoiled animal feed or crop)",
+                                        2.1,
+                                        "NGAF 2025 table 15"
+                                    ],
+                                    [
+                                        "Landfill",
+                                        "Paper and cardboard",
+                                        3.3,
+                                        "NGAF 2025 table 15"
+                                    ],
+                                    [
+                                        "Landfill",
+                                        "Green waste (including crop residues or prunings)",
+                                        1.6,
+                                        "NGAF 2025 table 15"
+                                    ],
+                                    [
+                                        "Landfill",
+                                        "Wood",
+                                        0.7,
+                                        "NGAF 2025 table 15"
+                                    ],
+                                    [
+                                        "Landfill",
+                                        "Textiles",
+                                        2,
+                                        "NGAF 2025 table 15"
+                                    ],
+                                    [
+                                        "Landfill",
+                                        "Sludge",
+                                        0.4,
+                                        "NGAF 2025 table 15"
+                                    ],
+                                    [
+                                        "Landfill",
+                                        "Rubber and leather",
+                                        3.3,
+                                        "NGAF 2025 table 15"
+                                    ],
+                                    [
+                                        "Landfill",
+                                        "Inert waste (including concrete, metal, plastic or glass)",
+                                        0,
+                                        "NGAF 2025 table 15"
+                                    ],
+                                    [
+                                        "Landfill",
+                                        "Municipal solid waste",
+                                        1.6,
+                                        "NGAF 2025 table 15"
+                                    ],
+                                    [
+                                        "Landfill",
+                                        "Commercial and industrial waste",
+                                        1.3,
+                                        "NGAF 2025 table 15"
+                                    ],
+                                    [
+                                        "Landfill",
+                                        "Construction and demolition waste",
+                                        0.2,
+                                        "NGAF 2025 table 15"
+                                    ],
+                                    [
+                                        "Incineration",
+                                        "Food waste, green waste, wood, sludge",
+                                        0,
+                                        ""
+                                    ],
+                                    [
+                                        "Incineration",
+                                        "Food waste (including animal carcasses, spoiled animal feed or crop)",
+                                        "",
+                                        ""
+                                    ],
+                                    [
+                                        "Incineration",
+                                        "Green waste (including crop residues or prunings)",
+                                        "",
+                                        ""
+                                    ],
+                                    [
+                                        "Incineration",
+                                        "Wood",
+                                        "",
+                                        ""
+                                    ],
+                                    [
+                                        "Incineration",
+                                        "Sludge",
+                                        "",
+                                        ""
+                                    ],
+                                    [
+                                        "Incineration",
+                                        "Paper and cardboard",
+                                        0.0169,
+                                        ""
+                                    ],
+                                    [
+                                        "Incineration",
+                                        "Textiles",
+                                        0.3667,
+                                        ""
+                                    ],
+                                    [
+                                        "Incineration",
+                                        "Rubber and leather",
+                                        0.4919,
+                                        ""
+                                    ],
+                                    [
+                                        "Incineration",
+                                        "Inert waste (including concrete, metal, plastic or glass)",
+                                        0.11,
+                                        ""
+                                    ],
+                                    [
+                                        "Incineration",
+                                        "Municipal solid waste",
+                                        0.0537,
+                                        "NGAF 2025 Table 18"
+                                    ],
+                                    [
+                                        "Incineration",
+                                        "Commercial and industrial waste",
+                                        1.649,
+                                        "NGAF 2025 Table 18"
+                                    ],
+                                    [
+                                        "Composting",
+                                        "All organic waste",
+                                        0.046,
+                                        "NGAF 2025 Table 19"
+                                    ],
+                                    [
+                                        "Composting",
+                                        "Food waste (including animal carcasses, spoiled animal feed or crop)",
+                                        "",
+                                        ""
+                                    ],
+                                    [
+                                        "Composting",
+                                        "Green waste (including crop residues or prunings)",
+                                        "",
+                                        ""
+                                    ],
+                                    [
+                                        "Composting",
+                                        "Wood",
+                                        "",
+                                        ""
+                                    ],
+                                    [
+                                        "Composting",
+                                        "Sludge",
+                                        "",
+                                        ""
+                                    ],
+                                    [
+                                        "Composting",
+                                        "Paper and cardboard",
+                                        "",
+                                        ""
+                                    ],
+                                    [
+                                        "Anaerobic digestion",
+                                        "All organic waste",
+                                        0.028,
+                                        "NGAF 2025 Table 19"
+                                    ],
+                                    [
+                                        "Anaerobic digestion",
+                                        "Food waste (including animal carcasses, spoiled animal feed or crop)",
+                                        "",
+                                        ""
+                                    ],
+                                    [
+                                        "Anaerobic digestion",
+                                        "Green waste (including crop residues or prunings)",
+                                        "",
+                                        ""
+                                    ],
+                                    [
+                                        "Anaerobic digestion",
+                                        "Wood",
+                                        "",
+                                        ""
+                                    ],
+                                    [
+                                        "Anaerobic digestion",
+                                        "Sludge",
+                                        "",
+                                        ""
+                                    ],
+                                    [
+                                        "Anaerobic digestion",
+                                        "Paper and cardboard",
+                                        "",
+                                        ""
+                                    ]
+                                ]
+                   },
+                   {
+                       "name":  "Waste_WasteVolumeToMassConversion",
+                       "title":  "Volume to mass conversion factor for various waste types",
+                       "variable":  "VTMw",
+                       "description":  "",
+                       "unit":  "t/m3",
+                       "source":  "VEERG 2026: Table A.4.1.2",
+                       "variation":  "VARIATION OF SOURCE: Changed column header CFw to VTMw to match title variable.",
+                       "header":  [
+                                      "Waste type w",
+                                      "VTMw"
+                                  ],
+                       "rows":  [
+                                    [
+                                        "Food waste (including animal carcasses, spoiled animal feed or crop)",
+                                        0.5
+                                    ],
+                                    [
+                                        "Paper and cardboard",
+                                        0.09
+                                    ],
+                                    [
+                                        "Green waste (including crop residues or prunings)",
+                                        0.24
+                                    ],
+                                    [
+                                        "Wood",
+                                        0.15
+                                    ],
+                                    [
+                                        "Textiles",
+                                        0.14
+                                    ],
+                                    [
+                                        "Sludge",
+                                        0.72
+                                    ],
+                                    [
+                                        "Rubber and leather",
+                                        0.14
+                                    ],
+                                    [
+                                        "Inert waste (including concrete, metal, plastic or glass)",
+                                        0.42
+                                    ],
+                                    [
+                                        "Municipal solid waste",
+                                        0.36
+                                    ],
+                                    [
+                                        "Commercial and industrial waste",
+                                        0.33
+                                    ],
+                                    [
+                                        "Construction and demolition waste",
+                                        0.39
+                                    ]
+                                ]
+                   }
+               ]
+}

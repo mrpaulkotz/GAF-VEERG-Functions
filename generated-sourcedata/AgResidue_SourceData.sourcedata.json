@@ -1,0 +1,508 @@
+{
+    "generatedFrom":  "AgResidue_SourceData.xlf",
+    "generatedAt":  "2026-07-15T07:39:04Z",
+    "schemaVersion":  1,
+    "tables":  [
+                   {
+                       "name":  "CropPurposeAndYield",
+                       "title":  "Crop purpose and yield",
+                       "variable":  "",
+                       "description":  "",
+                       "unit":  "",
+                       "source":  "",
+                       "variation":  "",
+                       "header":  [
+                                      "Purpose",
+                                      "Per hectare unit",
+                                      "harvest term",
+                                      "harvest endpoint",
+                                      "Harvest uit",
+                                      "Yield note",
+                                      "Residue crop ratio note",
+                                      "Total production note"
+                                  ],
+                       "rows":  [
+                                    [
+                                        "Cash grain crop",
+                                        "grain",
+                                        "yield",
+                                        "harvest",
+                                        "grain",
+                                        "Yield is the grain harvested from the plant",
+                                        "Residue to crop ratio is provided from default values",
+                                        "Total production is the total grain harvested"
+                                    ],
+                                    [
+                                        "Cash crop for hay/silage",
+                                        "above ground biomass",
+                                        "yield",
+                                        "harvest",
+                                        "plant biomass",
+                                        "Yield is the whole plant harvested for hay/silage",
+                                        "Residue to crop ratio is 0 assuming the whole plant is harvested for hay/silage",
+                                        "Total production is the total whole plant biomass harvested as hay/silage"
+                                    ],
+                                    [
+                                        "Cover crop",
+                                        "above ground biomass",
+                                        "mass",
+                                        "end of crop cycle",
+                                        "above ground biomass",
+                                        "Yield is the whole plant kept as cover crop",
+                                        "Residue to crop ratio is 1 assuming the whole plant is kept as cover crop",
+                                        "Total production is the total whole plant biomass kept as cover crop"
+                                    ]
+                                ]
+                   },
+                   {
+                       "name":  "CropAttributes",
+                       "title":  "Table A.2.1.1: Crop attributes",
+                       "variable":  "",
+                       "description":  "Crop attributes",
+                       "unit":  "",
+                       "source":  "VEERG 2026: Table A.2.1.1: Crop attributes",
+                       "variation":  "VARIATION FROM SOURCE: 'N/A' values passed as zero for calculations.",
+                       "header":  [
+                                      "Crop type",
+                                      "Residue: Crop ratio",
+                                      "Below-ground: above-ground residue ratio",
+                                      "Dry matter content",
+                                      "Carbon fraction in dry matter",
+                                      "N content above-ground",
+                                      "N content below-ground",
+                                      "Fraction of residue remaining at time of burning",
+                                      "Burning efficiencyt"
+                                  ],
+                       "rows":  [
+                                    [
+                                        "c",
+                                        "RAGc",
+                                        "RBGc",
+                                        "DMc",
+                                        "CCc",
+                                        "NCAGc",
+                                        "NCBGc",
+                                        "Sc",
+                                        "Zc"
+                                    ],
+                                    [
+                                        "Wheat",
+                                        1.5,
+                                        0.29,
+                                        0.88,
+                                        0.4,
+                                        0.006,
+                                        0.01,
+                                        0.5,
+                                        0.9
+                                    ],
+                                    [
+                                        "Barley",
+                                        1.24,
+                                        0.32,
+                                        0.88,
+                                        0.4,
+                                        0.007,
+                                        0.01,
+                                        0.5,
+                                        0.85
+                                    ],
+                                    [
+                                        "Maize",
+                                        0.81,
+                                        0.39,
+                                        0.85,
+                                        0.42,
+                                        0.005,
+                                        0.007,
+                                        1,
+                                        0.8
+                                    ],
+                                    [
+                                        "Oats",
+                                        1.42,
+                                        0.43,
+                                        0.88,
+                                        0.4,
+                                        0.006,
+                                        0.01,
+                                        0.5,
+                                        0.85
+                                    ],
+                                    [
+                                        "Rice",
+                                        1.31,
+                                        0.16,
+                                        0.8,
+                                        0.42,
+                                        0.007,
+                                        0.01,
+                                        1,
+                                        0.8
+                                    ],
+                                    [
+                                        "Sorghum",
+                                        1.5,
+                                        0.22,
+                                        0.8,
+                                        0.4,
+                                        0.008,
+                                        0.007,
+                                        0.5,
+                                        0.85
+                                    ],
+                                    [
+                                        "Triticale",
+                                        1.5,
+                                        0.42,
+                                        0.88,
+                                        0.4,
+                                        0.006,
+                                        0.01,
+                                        0.5,
+                                        0.85
+                                    ],
+                                    [
+                                        "Other cereals",
+                                        1.46,
+                                        0.36,
+                                        0.88,
+                                        0.4,
+                                        0.006,
+                                        0.01,
+                                        0.5,
+                                        0.85
+                                    ],
+                                    [
+                                        "Pulses",
+                                        1.37,
+                                        0.51,
+                                        0.87,
+                                        0.4,
+                                        0.009,
+                                        0.01,
+                                        0.5,
+                                        0.85
+                                    ],
+                                    [
+                                        "Tubers and roots",
+                                        0.34,
+                                        0.43,
+                                        0.25,
+                                        0.4,
+                                        0.02,
+                                        0.01,
+                                        "n/a",
+                                        0.85
+                                    ],
+                                    [
+                                        "Peanuts",
+                                        1.07,
+                                        0.2,
+                                        0.8,
+                                        0.42,
+                                        0.016,
+                                        0.014,
+                                        0.5,
+                                        0.85
+                                    ],
+                                    [
+                                        "Sugar cane",
+                                        0.25,
+                                        0.45,
+                                        0.2,
+                                        0.4,
+                                        0.005,
+                                        0.007,
+                                        1,
+                                        0.8
+                                    ],
+                                    [
+                                        "Cotton",
+                                        1.9,
+                                        0.3,
+                                        0.9,
+                                        0.4,
+                                        0.01,
+                                        0.01,
+                                        "n/a",
+                                        0.85
+                                    ],
+                                    [
+                                        "Hops",
+                                        1.5,
+                                        0.29,
+                                        0.88,
+                                        0.4,
+                                        0.006,
+                                        "n/a",
+                                        "n/a",
+                                        0.85
+                                    ],
+                                    [
+                                        "Oilseeds",
+                                        2.08,
+                                        0.33,
+                                        0.96,
+                                        0.4,
+                                        0.009,
+                                        0.01,
+                                        0.5,
+                                        0.85
+                                    ],
+                                    [
+                                        "Forage crops",
+                                        1.34,
+                                        0.37,
+                                        0.88,
+                                        0.4,
+                                        0.006,
+                                        0.01,
+                                        "n/a",
+                                        0.85
+                                    ],
+                                    [
+                                        "Other annual crops",
+                                        1,
+                                        0.22,
+                                        0.85,
+                                        0.4,
+                                        0.008,
+                                        0.009,
+                                        "n/a",
+                                        "n/a"
+                                    ],
+                                    [
+                                        "Other perennial crops",
+                                        1.5,
+                                        0.29,
+                                        0.88,
+                                        0.4,
+                                        0.006,
+                                        "n/a",
+                                        "n/a",
+                                        "n/a"
+                                    ]
+                                ]
+                   },
+                   {
+                       "name":  "CropFractionRemoved",
+                       "title":  "Table A.2.1.2: Crop attributes - Fraction removed (FFODc)",
+                       "variable":  "",
+                       "description":  "Crop attributes - Fraction removed (FFODc)",
+                       "unit":  "",
+                       "source":  "VEERG 2026: Table A.2.1.2: Crop attributes - Fraction removed (FFODc)",
+                       "variation":  "VARIATION OF SOURCE DATA: Split 'All other crop types' into individual crop types for each state. Listed all states for Sugar Cane, with 'N/A' for states where it is not grown.",
+                       "header":  [
+                                      "Crop type c",
+                                      "State",
+                                      "Fraction removed FFODc"
+                                  ],
+                       "rows":  [
+                                    [
+                                        "Rice",
+                                        "All states",
+                                        0.06
+                                    ],
+                                    [
+                                        "Tubers and roots",
+                                        "All states",
+                                        1
+                                    ],
+                                    [
+                                        "Cotton",
+                                        "All states",
+                                        0
+                                    ],
+                                    [
+                                        "Hops",
+                                        "All states",
+                                        0
+                                    ],
+                                    [
+                                        "Forage crops",
+                                        "All states",
+                                        0.8
+                                    ],
+                                    [
+                                        "Sugar Cane",
+                                        "NSW",
+                                        0
+                                    ],
+                                    [
+                                        "Sugar Cane",
+                                        "QLD",
+                                        0.03
+                                    ],
+                                    [
+                                        "Sugar Cane",
+                                        "WA",
+                                        0
+                                    ],
+                                    [
+                                        "All other crop types",
+                                        "NSW",
+                                        0.05
+                                    ],
+                                    [
+                                        "All other crop types",
+                                        "VIC",
+                                        0.07
+                                    ],
+                                    [
+                                        "All other crop types",
+                                        "QLD",
+                                        0.04
+                                    ],
+                                    [
+                                        "All other crop types",
+                                        "SA",
+                                        0.09
+                                    ],
+                                    [
+                                        "All other crop types",
+                                        "WA",
+                                        0.11
+                                    ],
+                                    [
+                                        "All other crop types",
+                                        "TAS",
+                                        0.16
+                                    ],
+                                    [
+                                        "All other crop types",
+                                        "NT",
+                                        0.01
+                                    ],
+                                    [
+                                        "All other crop types",
+                                        "ACT",
+                                        0
+                                    ]
+                                ]
+                   },
+                   {
+                       "name":  "PastureAttributes",
+                       "title":  "Table A.2.1.3 Pasture attributes",
+                       "variable":  "",
+                       "description":  "Pasture attributes",
+                       "unit":  "",
+                       "source":  "VEERG 2026: Table A.2.1.3: Pasture attributes",
+                       "variation":  "",
+                       "header":  [
+                                      "Pasture type",
+                                      "Average Yield (t DM ha) Yp",
+                                      "Below-ground: above-ground residue ratio RBGp",
+                                      "N content Above-ground NCAGp",
+                                      "N content Below-ground NCBGp",
+                                      "Fraction of pasture yield that is removed FFODp"
+                                  ],
+                       "rows":  [
+                                    [
+                                        "Annual grass",
+                                        4.41,
+                                        0.4,
+                                        0.015,
+                                        0.012,
+                                        0.8
+                                    ],
+                                    [
+                                        "Grass clover mixture",
+                                        8.34,
+                                        0.8,
+                                        0.025,
+                                        0.016,
+                                        0.8
+                                    ],
+                                    [
+                                        "Lucerne",
+                                        8.62,
+                                        0.4,
+                                        0.027,
+                                        0.019,
+                                        0.8
+                                    ],
+                                    [
+                                        "Other legume",
+                                        5.62,
+                                        0.4,
+                                        0.027,
+                                        0.022,
+                                        0.8
+                                    ],
+                                    [
+                                        "Perennial pasture",
+                                        8.35,
+                                        0.8,
+                                        0.015,
+                                        0.012,
+                                        0.8
+                                    ]
+                                ]
+                   },
+                   {
+                       "name":  "BurningOfAgriculturalResiduesEFs",
+                       "title":  "Table 5.31 Burning of agricultural residues - EFs",
+                       "variable":  "",
+                       "description":  "Burning of agricultural residues - EFs",
+                       "unit":  "",
+                       "source":  "National Inventory Report 2023 volume 2: Table 5.31: Burning of agricultural residues - EFs",
+                       "variation":  "",
+                       "header":  [
+                                      "Gas species",
+                                      "Emission factor EFg (Gg element in species/ Gg element in fuel burnt)",
+                                      "Elemental to molecular mass conversion factor (Cg)"
+                                  ],
+                       "rows":  [
+                                    [
+                                        "CH4",
+                                        0.0035,
+                                        "16/12"
+                                    ],
+                                    [
+                                        "N2O",
+                                        0.0076,
+                                        "44/28"
+                                    ],
+                                    [
+                                        "NOx",
+                                        0.21,
+                                        "46/14"
+                                    ],
+                                    [
+                                        "CO",
+                                        0.078,
+                                        "28/12"
+                                    ],
+                                    [
+                                        "NMVOC",
+                                        0.0091,
+                                        "14/12"
+                                    ]
+                                ]
+                   },
+                   {
+                       "name":  "N2OEFOrganicFertiliser",
+                       "title":  "Emission factor for organic fertiliser and crop residues returned to the soil",
+                       "variable":  "",
+                       "description":  "",
+                       "unit":  "kg N2O - N / kg N",
+                       "source":  "VEERG 2026: Table A.2.1.4",
+                       "variation":  "",
+                       "header":  [
+                                      "Climate zone i",
+                                      "EF i N2O"
+                                  ],
+                       "rows":  [
+                                    [
+                                        "Wet climate zone",
+                                        0.006
+                                    ],
+                                    [
+                                        "Dry climate zone",
+                                        0.005
+                                    ]
+                                ]
+                   }
+               ]
+}

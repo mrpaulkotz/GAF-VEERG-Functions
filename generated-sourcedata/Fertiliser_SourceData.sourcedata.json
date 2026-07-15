@@ -1,0 +1,372 @@
+{
+    "generatedFrom":  "Fertiliser_SourceData.xlf",
+    "generatedAt":  "2026-07-15T07:39:04Z",
+    "schemaVersion":  1,
+    "tables":  [
+                   {
+                       "name":  "Fertiliser_ChemicalCompoundElements",
+                       "title":  "Common inorganic fertilisers",
+                       "variable":  "",
+                       "description":  "",
+                       "unit":  "",
+                       "source":  "Table A.2.2.3: Fraction of nitrogen in common inorganic fertilisers (kgN/kg) (FNorganic,f) AND Table A.2.2.4: Fraction of urea in common inorganic fertilisers (kg urea/kg) (FUf)",
+                       "variation":  "",
+                       "header":  [
+                                      "Fertiliser Type f",
+                                      "FNinorganic,f",
+                                      "FUf",
+                                      "Basis",
+                                      "LifeCycles Scope 3 definition",
+                                      "Source"
+                                  ],
+                       "rows":  [
+                                    [
+                                        "Monoammonium phosphate (MAP)",
+                                        0.1,
+                                        0,
+                                        "Ammonium-based fertilisers",
+                                        "Monoammonium phosphate (MAP)",
+                                        "VEERG"
+                                    ],
+                                    [
+                                        "Diammonium phosphate (DAP)",
+                                        0.18,
+                                        0,
+                                        "Ammonium-based fertilisers",
+                                        "Diammonium phosphate (DAP)",
+                                        "VEERG"
+                                    ],
+                                    [
+                                        "Urea",
+                                        0.46,
+                                        1,
+                                        "Urea-based fertilisers",
+                                        "Urea",
+                                        "VEERG"
+                                    ],
+                                    [
+                                        "Sulphate of ammonia (SOA)",
+                                        0.21,
+                                        0,
+                                        "Ammonium-based fertilisers",
+                                        "Sulphate of ammonia (SOA)",
+                                        "VEERG"
+                                    ],
+                                    [
+                                        "Urea-ammonium nitrate (UAN)",
+                                        0.32,
+                                        0.35,
+                                        "Urea-based fertilisers",
+                                        "Urea-ammonium nitrate (UAN)",
+                                        "VEERG"
+                                    ],
+                                    [
+                                        "Ammonium nitrate (AN)",
+                                        0.337,
+                                        0,
+                                        "Ammonium-nitrate based fertilisers",
+                                        "Ammonium nitrate (AN)",
+                                        "VEERG"
+                                    ],
+                                    [
+                                        "Calcium ammonium nitrate (CAN)",
+                                        0.27,
+                                        0,
+                                        "Ammonium-nitrate based fertilisers",
+                                        "Calcium ammonium nitrate (CAN)",
+                                        "VEERG"
+                                    ],
+                                    [
+                                        "Nitrogen - Ammoniacal",
+                                        1,
+                                        0,
+                                        "Ammonium-based fertilisers",
+                                        "Nitrogen - Ammoniacal",
+                                        "LifeCycles"
+                                    ],
+                                    [
+                                        "Nitrogen - Nitrate",
+                                        1,
+                                        0,
+                                        "Nitrate-based fertilisers",
+                                        "Nitrogen from Nitrate",
+                                        "LifeCycles"
+                                    ],
+                                    [
+                                        "Nitrogen - Generic",
+                                        1,
+                                        0,
+                                        "Urea-based fertilisers",
+                                        "Nitrogen from fertiliser",
+                                        "LifeCycles"
+                                    ],
+                                    [
+                                        "Phosphorus - Generic",
+                                        0,
+                                        0,
+                                        "Other fertilisers",
+                                        "Phosphorus from fertiliser",
+                                        "LifeCycles"
+                                    ],
+                                    [
+                                        "Potassium - Generic",
+                                        0,
+                                        0,
+                                        "Other fertilisers",
+                                        "Potassium from fertiliser",
+                                        "LifeCycles"
+                                    ],
+                                    [
+                                        "Sulfur - Generic",
+                                        0,
+                                        0,
+                                        "Other fertilisers",
+                                        "Sulfur from fertiliser",
+                                        "LifeCycles"
+                                    ],
+                                    [
+                                        "Zinc - Generic",
+                                        0,
+                                        0,
+                                        "Other fertilisers",
+                                        "Zinc from fertiliser",
+                                        "LifeCycles"
+                                    ],
+                                    [
+                                        "Muriate of potash (MOP)",
+                                        0,
+                                        0,
+                                        "Other fertilisers",
+                                        "Muriate of potash (MOP)",
+                                        "LifeCycles"
+                                    ],
+                                    [
+                                        "Double superphosphate",
+                                        0,
+                                        0,
+                                        "Other fertilisers",
+                                        "Double superphosphate",
+                                        "LifeCycles"
+                                    ],
+                                    [
+                                        "Single superphosphate (SSP)",
+                                        0,
+                                        0,
+                                        "Other fertilisers",
+                                        "Single superphosphate (SSP)",
+                                        "LifeCycles"
+                                    ],
+                                    [
+                                        "Ammonia",
+                                        0.8235,
+                                        0,
+                                        "Ammonium-based fertilisers",
+                                        "Ammonia",
+                                        "LifeCycles"
+                                    ],
+                                    [
+                                        "Calcium nitrate",
+                                        0.155,
+                                        0,
+                                        "Nitrate-based fertilisers",
+                                        "Calcium nitrate",
+                                        "VEERG"
+                                    ]
+                                ]
+                   },
+                   {
+                       "name":  "Fertiliser_FracGASF",
+                       "title":  "Fraction of inorganic fertiliser that volatilises as NH3 and NOx",
+                       "variable":  "",
+                       "description":  "",
+                       "unit":  "",
+                       "source":  "Table A.2.2.6: Fraction of inorganic fertiliser f that volatilises as NH3 and NOx ((kg NH3â€“N + NOxâ€“N)/kg N) (FracGASFf)",
+                       "variation":  "",
+                       "header":  [
+                                      "Fertiliser type f",
+                                      "FracGASFf"
+                                  ],
+                       "rows":  [
+                                    [
+                                        "Urea-based fertilisers",
+                                        0.15
+                                    ],
+                                    [
+                                        "Ammonium-based fertilisers",
+                                        0.08
+                                    ],
+                                    [
+                                        "Nitrate-based fertilisers",
+                                        0.01
+                                    ],
+                                    [
+                                        "Ammonium-nitrate based fertilisers",
+                                        0.05
+                                    ],
+                                    [
+                                        "Other fertilisers",
+                                        0.11
+                                    ]
+                                ]
+                   },
+                   {
+                       "name":  "Fertiliser_LimeDolomiteGypsumConstants",
+                       "title":  "Constants for lime, dolomite and gypsum",
+                       "variable":  "",
+                       "description":  "Constants for lime, dolomite and gypsum",
+                       "unit":  "",
+                       "source":  "VEERG 2026: 5.3.2.3 Constant Parameters",
+                       "variation":  "VARIATION FROM SOURCE DATA: Gypsum has been added with placeholder values of 0 for P and EF.",
+                       "header":  [
+                                      "Element",
+                                      "P",
+                                      "EF"
+                                  ],
+                       "rows":  [
+                                    [
+                                        "Lime (Calcium carbonate)",
+                                        0.9,
+                                        0.12
+                                    ],
+                                    [
+                                        "Dolomite (Magnesium carbonate)",
+                                        0.95,
+                                        0.13
+                                    ],
+                                    [
+                                        "Gypsum",
+                                        0,
+                                        0
+                                    ]
+                                ]
+                   },
+                   {
+                       "name":  "Fertiliser_FractionNCommonFertilisers",
+                       "title":  "Fraction of nitrogen in common inorganic fertilisers (kgN/kg) (FNorganic,f)",
+                       "variable":  "",
+                       "description":  "",
+                       "unit":  "",
+                       "source":  "VEERG 2026: Table A.2.2.3",
+                       "variation":  "",
+                       "header":  [
+                                      "Fertiliser Type f",
+                                      "FNinorganicf"
+                                  ],
+                       "rows":  [
+                                    [
+                                        "Monoammonium phosphate (MAP)",
+                                        0.1
+                                    ],
+                                    [
+                                        "Diammonium phosphate (DAP)",
+                                        0.18
+                                    ],
+                                    [
+                                        "Urea",
+                                        0.46
+                                    ],
+                                    [
+                                        "Sulphate of ammonia (SOA)",
+                                        0.21
+                                    ],
+                                    [
+                                        "Urea-ammonium nitrate (UAN)",
+                                        0.32
+                                    ],
+                                    [
+                                        "Ammonium nitrate (AN)",
+                                        0.337
+                                    ],
+                                    [
+                                        "Calcium ammonium nitrate (CAN)",
+                                        0.27
+                                    ],
+                                    [
+                                        "Ammonium Sulfate",
+                                        0.21
+                                    ],
+                                    [
+                                        "Calcium Nitrate",
+                                        0.155
+                                    ]
+                                ]
+                   },
+                   {
+                       "name":  "Fertiliser_FractionUreaCommonFertilisers",
+                       "title":  "Fraction of urea in common inorganic fertilisers (kg urea/kg) (FUf)",
+                       "variable":  "",
+                       "description":  "",
+                       "unit":  "",
+                       "source":  "VEERG 2026: Table A.2.2.4",
+                       "variation":  "",
+                       "header":  [
+                                      "Fertiliser Type f",
+                                      "FUf"
+                                  ],
+                       "rows":  [
+                                    [
+                                        "Monoammonium phosphate (MAP)",
+                                        0
+                                    ],
+                                    [
+                                        "Diammonium phosphate (DAP)",
+                                        0
+                                    ],
+                                    [
+                                        "Urea",
+                                        1
+                                    ],
+                                    [
+                                        "Sulphate of ammonia (SOA)",
+                                        0
+                                    ],
+                                    [
+                                        "Urea-ammonium nitrate (UAN)",
+                                        0.35
+                                    ],
+                                    [
+                                        "Ammonium nitrate (AN)",
+                                        0
+                                    ],
+                                    [
+                                        "Calcium ammonium nitrate (CAN)",
+                                        0
+                                    ],
+                                    [
+                                        "Ammonium Sulfate",
+                                        0
+                                    ],
+                                    [
+                                        "Calcium Nitrate",
+                                        0
+                                    ]
+                                ]
+                   },
+                   {
+                       "name":  "Fertiliser_UreaAmmoniaSourceRegions",
+                       "title":  "Source regions for urea and ammonia",
+                       "variable":  "",
+                       "description":  "",
+                       "unit":  "",
+                       "source":  "Lifecycles. (2026). Greenhouse Gas Emission Intensities for Material Inputs to Australian Agriculture, Fisheries and Forestry. Version 48. doi 10.5281/zenodo.19656580",
+                       "variation":  "",
+                       "header":  [
+                                      "Source"
+                                  ],
+                       "rows":  [
+                                    [
+                                        "Global"
+                                    ],
+                                    [
+                                        "Canada"
+                                    ],
+                                    [
+                                        "China"
+                                    ],
+                                    [
+                                        "Yemen"
+                                    ]
+                                ]
+                   }
+               ]
+}

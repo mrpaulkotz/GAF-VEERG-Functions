@@ -3,19 +3,23 @@
   Converts VEERG SourceData .xlf files into canonical machine-readable JSON artifacts.
 
 .DESCRIPTION
-  The .xlf files under source-data/ are the source of truth. They encode tables as
-  named Excel LAMBDA definitions. This script parses those LAMBDA grammars and emits
-  one derived JSON file per .xlf so downstream consumers do not have to parse the
-  LAMBDA grammar at runtime.
+  The .xlf files are the source of truth. They encode tables as named Excel LAMBDA
+  definitions. This script parses those LAMBDA grammars and emits one derived JSON
+  file per .xlf so downstream consumers do not have to parse the LAMBDA grammar at
+  runtime. Both source-data/SourceData_*.xlf files and module-level
+  <Module>_SourceData.xlf files are processed.
 
   Each table is owned by a "<Prefix>_Data" LAMBDA of the form:
     <Prefix>_Data =LAMBDA(MAKEARRAY(<rows>, <cols>, LAMBDA(r,c, INDEX({ <matrix> }, r, c))))
   where <matrix> uses ';' to separate rows and ',' to separate cells. The first matrix
   row is the header. Strings are double-quoted with "" as an escaped quote. Scalar
   "<Prefix>_Data =LAMBDA(0.08)" definitions (no MAKEARRAY) are not tables and are skipped.
+  <Prefix> may be "SourceData_*" or a module-specific prefix (e.g. "Fuel_*").
 
   Metadata for a table lives in sibling LAMBDAs sharing the same <Prefix>:
-    <Prefix>_Title, <Prefix>_Variable, <Prefix>_Unit, <Prefix>_Source, <Prefix>_Variation
+    <Prefix>_Title, <Prefix>_Variable, <Prefix>_Description, <Prefix>_Unit,
+    <Prefix>_Source, <Prefix>_Variation
+  Metadata values may be wrapped in one or two parentheses: =LAMBDA("x") or =LAMBDA(("x")).
 
   Sentinel cell values ("NO", "n/a", "na", "-") are quoted in the source and are
   preserved verbatim as strings. Numeric cells are emitted as JSON numbers; everything
@@ -25,8 +29,8 @@
   Repository root. Defaults to the parent of the scripts/ folder.
 
 .PARAMETER XlfPath
-  Optional path to a single SourceData_*.xlf file. When omitted, every
-  source-data/SourceData_*.xlf file is processed.
+  Optional path to a single .xlf file. When omitted, every source-data/SourceData_*.xlf
+  file plus the known module-level <Module>_SourceData.xlf files are processed.
 
 .PARAMETER DryRun
   Parse and validate but do not write any JSON files. Prints what would be written.
@@ -178,7 +182,9 @@ function Get-TableMetadata {
   )
 
   $meta = @{}
-  $pattern = '(?ms)^[ \t]*(?<prefix>SourceData_[A-Za-z0-9_]+?)_(?<kind>Title|Variable|Unit|Source|Variation)[ \t\r\n]*=\s*LAMBDA\(\s*"(?<val>(?:[^"]|"")*)"\s*\)'
+  # Prefix is generic (SourceData_* under source-data/, or <Module>_* alongside a module).
+  # The metadata value may be wrapped in one or two parentheses: =LAMBDA("x") or =LAMBDA(("x")).
+  $pattern = '(?ms)^[ \t]*(?<prefix>[A-Za-z][A-Za-z0-9_]*?)_(?<kind>Title|Variable|Description|Unit|Source|Variation)[ \t\r\n]*=\s*LAMBDA\(\s*\(?\s*"(?<val>(?:[^"]|"")*)"\s*\)?\s*\)'
   foreach ($m in [regex]::Matches($Content, $pattern)) {
     $prefix = $m.Groups['prefix'].Value
     $kind = $m.Groups['kind'].Value
@@ -204,7 +210,7 @@ function ConvertTo-SourceDataModel {
   $metadata = Get-TableMetadata -Content $Content
 
   $tables = New-Object System.Collections.Generic.List[object]
-  $dataPattern = '(?sm)^[ \t]*(?<prefix>SourceData_[A-Za-z0-9_]+?)_Data[ \t\r\n]*=\s*LAMBDA\(\s*MAKEARRAY\(\s*(?<rows>\d+)\s*,\s*(?<cols>\d+)\s*,\s*LAMBDA\(\s*r\s*,\s*c\s*,\s*INDEX\(\s*\{(?<matrix>[^{}]*)\}'
+  $dataPattern = '(?sm)^[ \t]*(?<prefix>[A-Za-z][A-Za-z0-9_]*?)_Data[ \t\r\n]*=\s*LAMBDA\(\s*MAKEARRAY\(\s*(?<rows>\d+)\s*,\s*(?<cols>\d+)\s*,\s*LAMBDA\(\s*r\s*,\s*c\s*,\s*INDEX\(\s*\{(?<matrix>[^{}]*)\}'
 
   foreach ($m in [regex]::Matches($Content, $dataPattern)) {
     $prefix = $m.Groups['prefix'].Value
@@ -252,14 +258,15 @@ function ConvertTo-SourceDataModel {
     }
 
     $tables.Add([ordered]@{
-        name      = $prefix
-        title     = (& $getMeta 'Title')
-        variable  = (& $getMeta 'Variable')
-        unit      = (& $getMeta 'Unit')
-        source    = (& $getMeta 'Source')
-        variation = (& $getMeta 'Variation')
-        header    = $header
-        rows      = $dataRows
+        name        = $prefix
+        title       = (& $getMeta 'Title')
+        variable    = (& $getMeta 'Variable')
+        description = (& $getMeta 'Description')
+        unit        = (& $getMeta 'Unit')
+        source      = (& $getMeta 'Source')
+        variation   = (& $getMeta 'Variation')
+        header      = $header
+        rows        = $dataRows
       })
   }
 
@@ -307,6 +314,32 @@ else {
   $xlfFiles = @(Get-ChildItem -LiteralPath $sourceDataDir -File -Filter 'SourceData_*.xlf' |
     Sort-Object FullName |
     ForEach-Object { $_.FullName })
+
+  # Additional module source-data files named "<Module>_SourceData.xlf" that live
+  # alongside their module rather than under source-data/.
+  $additionalRelPaths = @(
+    'AgriculturalResidueManagement\AgResidue_SourceData.xlf'
+    'Common\Common_SourceData.xlf'
+    'Common\CommonCropping_SourceData.xlf'
+    'Common\CommonLivestock_SourceData.xlf'
+    'Electricity\Electricity_SourceData.xlf'
+    'Fertiliser\Fertiliser_SourceData.xlf'
+    'Fuel\Fuel_SourceData.xlf'
+    'Refrigerants\Refrigerants_SourceData.xlf'
+    'RiceCultivation\RiceCultivation_SourceData.xlf'
+    'Scope3\Scope3_SourceData.xlf'
+    'WasteSolid\WasteSolid_SourceData.xlf'
+    'Wastewater\Wastewater_SourceData.xlf'
+  )
+  foreach ($rel in $additionalRelPaths) {
+    $full = Join-Path $RepoRoot $rel
+    if (Test-Path -LiteralPath $full) {
+      $xlfFiles += (Resolve-Path -LiteralPath $full).Path
+    }
+    else {
+      Write-Warning "SourceData file not found (skipped): $rel"
+    }
+  }
 }
 
 if ($xlfFiles.Count -eq 0) {

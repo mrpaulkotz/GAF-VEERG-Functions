@@ -1,0 +1,77 @@
+{
+    "generatedFrom":  "Wastewater_SourceData.xlf",
+    "generatedAt":  "2026-07-15T07:39:05Z",
+    "schemaVersion":  1,
+    "tables":  [
+                   {
+                       "name":  "Waste_MethaneCorrectionFactorWastewater",
+                       "title":  "Methane correction factor for treatment facility type t used to treat wastewater",
+                       "variable":  "CFww,t",
+                       "description":  "",
+                       "unit":  "fraction",
+                       "source":  "VEERG 2026: Table A.4.1.3",
+                       "variation":  "",
+                       "header":  [
+                                      "Facility type t",
+                                      "CFww,t"
+                                  ],
+                       "rows":  [
+                                    [
+                                        "Managed aerobic treatment",
+                                        0
+                                    ],
+                                    [
+                                        "Unmanaged aerobic treatment",
+                                        0.3
+                                    ],
+                                    [
+                                        "Anaerobic digestor/reactor",
+                                        0.8
+                                    ],
+                                    [
+                                        "Shallow anaerobic lagoon (â‰¤ 2 m)",
+                                        0.2
+                                    ],
+                                    [
+                                        "Deep anaerobic lagoon (> 2m)",
+                                        0.8
+                                    ]
+                                ]
+                   },
+                   {
+                       "name":  "Waste_MethaneCorrectionFactorSludge",
+                       "title":  "Methane correction factor for treatment facility type t used to treat sludge",
+                       "variable":  "CFsludge,t",
+                       "description":  "",
+                       "unit":  "fraction",
+                       "source":  "VEERG 2026: Table A.4.1.4",
+                       "variation":  "",
+                       "header":  [
+                                      "Facility type t",
+                                      "CFsludge,t"
+                                  ],
+                       "rows":  [
+                                    [
+                                        "Managed aerobic treatment",
+                                        0
+                                    ],
+                                    [
+                                        "Unmanaged aerobic treatment",
+                                        0.3
+                                    ],
+                                    [
+                                        "Anaerobic digestor/reactor",
+                                        0.8
+                                    ],
+                                    [
+                                        "Shallow anaerobic lagoon (â‰¤ 2 m)",
+                                        0.2
+                                    ],
+                                    [
+                                        "Deep anaerobic lagoon (> 2m)",
+                                        0.8
+                                    ]
+                                ]
+                   }
+               ]
+}

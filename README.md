@@ -154,3 +154,90 @@ VEERG_5_1_1_1__2_MassOfNitrogenInInorganicFertiliser_Arguments
     )
   );
 
+==========================================================================
+
+# Source-data JSON generation
+
+Source-data lookup tables (crude protein, digestibility, liveweight, etc.) are
+authored as named Excel LAMBDA definitions in the `.xlf` files under
+`source-data/` (e.g. `source-data/SourceData_PastureBeef.xlf`). Those `.xlf`
+files are the **source of truth**.
+
+At runtime the app does not parse the LAMBDA grammar. Instead, a build step
+converts each `.xlf` into a canonical, machine-readable JSON artifact
+(`<basename>.sourcedata.json`) written to `generated-sourcedata/`. The
+`generated-sourcedata/` files are **derived artifacts** — never edit them by
+hand; regenerate them from the `.xlf` source instead.
+
+## How the .xlf tables are encoded
+
+Each table is owned by a `<Prefix>_Data` LAMBDA:
+
+```
+<Prefix>_Data =LAMBDA(MAKEARRAY(<rows>, <cols>, LAMBDA(r,c, INDEX({ <matrix> }, r, c))))
+```
+
+- `<matrix>` uses `;` to separate rows and `,` to separate cells.
+- The first matrix row is the header.
+- Strings are double-quoted, with `""` as an escaped quote.
+- Sentinel cell values (`"NO"`, `"n/a"`, `"na"`, `"-"`) are quoted in the source
+  and preserved verbatim as strings.
+- Numeric cells are emitted as JSON numbers; everything else stays a string.
+- Scalar `<Prefix>_Data =LAMBDA(0.08)` definitions (no `MAKEARRAY`) are not
+  tables and are skipped.
+
+Per-table metadata lives in sibling LAMBDAs sharing the same `<Prefix>`:
+`<Prefix>_Title`, `<Prefix>_Variable`, `<Prefix>_Unit`, `<Prefix>_Source`,
+`<Prefix>_Variation`.
+
+## Regenerating the JSON
+
+Run one of the npm scripts from the repo root:
+
+```powershell
+# Convert every source-data/SourceData_*.xlf into generated-sourcedata/*.sourcedata.json
+npm run build:source-data
+
+# Validate/parse only — prints what would be written, writes nothing
+npm run build:source-data:dry
+```
+
+Both wrap `scripts/build-source-data-json.ps1`. You can also call the script
+directly for finer control:
+
+```powershell
+# All .xlf files
+powershell -NoProfile -ExecutionPolicy Bypass -File .\scripts\build-source-data-json.ps1
+
+# A single .xlf file
+powershell -NoProfile -ExecutionPolicy Bypass -File .\scripts\build-source-data-json.ps1 -XlfPath .\source-data\SourceData_PastureBeef.xlf
+
+# Dry run (no writes)
+powershell -NoProfile -ExecutionPolicy Bypass -File .\scripts\build-source-data-json.ps1 -DryRun
+```
+
+Script parameters:
+
+- `-RepoRoot` — repository root. Defaults to the parent of `scripts/`.
+- `-XlfPath` — optional path to a single `SourceData_*.xlf`. When omitted, every
+  `source-data/SourceData_*.xlf` is processed.
+- `-DryRun` — parse and validate but write nothing.
+
+The generated JSON uses `schemaVersion = 1`. The full `build.ps1` also runs this
+step automatically (after syncing the `.xlf` sources to Excel Labs and before
+building the input-fields JSON), so a plain `npm run build` refreshes the
+source-data JSON too.
+
+## How the JSON is consumed
+
+The conversational-input app reads the generated JSON via
+`getGeneratedSourceDataRoot()` (resolves to `<package>/generated-sourcedata`,
+overridable with the `SOURCE_DATA_JSON_DIR` env var). InputFields / `_overrides`
+files pin a dataset by setting `DefaultDataDocumentType: "JSON"` and a
+`DefaultDataFile` path. That path is resolved from the app's project root, so it
+must include the package prefix, for example:
+
+```
+node_modules/gaf-veerg-functions/generated-sourcedata/SourceData_PastureBeef.sourcedata.json
+```
+
