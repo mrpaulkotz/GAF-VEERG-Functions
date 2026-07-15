@@ -1,7 +1,7 @@
 {
 	"schemaVersion": 1,
 	"generatedFrom": "Enterprise_PastureBeef_WIP_v01.xlsx",
-	"generatedAt": "2026-07-14T23:35:51Z",
+	"generatedAt": "2026-07-15T06:34:46Z",
 	"InputCells": [
 		{
 			"CellName": "X_Cell_Site_FarmName",
@@ -29,53 +29,6 @@
 			"Label": "Production timeframe end",
 			"CellType": "number",
 			"Hidden": true
-		},
-		{
-			"CellName": "X_Cell_Enterprise_LiveweightSold",
-			"Label": "Liveweight sold",
-			"CellType": "number"
-		},
-		{
-			"CellName": "X_Cell_Enterprise_LiveweightGrown_Method1",
-			"Label": "Liveweight grown - method 1",
-			"CellType": "number"
-		},
-		{
-			"CellName": "X_Cell_Enterprise_LiveweightGrown_Method2",
-			"Label": "Liveweight grown - method 2",
-			"CellType": "number",
-			"CanOverWriteFormula": true
-		},
-		{
-			"CellName": "X_Cell_Enterprise_ManureProduced_Method1",
-			"Label": "Manure produced - method 1",
-			"CellType": "number"
-		},
-		{
-			"CellName": "X_Cell_Enterprise_ManureProduced_Method2",
-			"Label": "Manure produced - method 2",
-			"CellType": "number",
-			"CanOverWriteFormula": true
-		},
-		{
-			"CellName": "X_Cell_Enterprise_PercentManureSold",
-			"Label": "Percent manure sold",
-			"CellType": "percent"
-		},
-		{
-			"CellName": "X_Cell_Enterprise_PercentManureAplliedAsFertiliserOwnFarm",
-			"Label": "Percent manure applied as fertiliser on own farm",
-			"CellType": "percent"
-		},
-		{
-			"CellName": "X_Cell_Enterprise_PercentIncome_LiveweightSold",
-			"Label": "Percentage of income from liveweight sold",
-			"CellType": "percent"
-		},
-		{
-			"CellName": "X_Cell_Enterprise_PercentIncome_Manure",
-			"Label": "Percentage of income from manure sold",
-			"CellType": "percent"
 		},
 		{
 			"CellName": "X_Cell_Site_State",
@@ -146,34 +99,56 @@
 		{
 			"CellName": "X_Cell_Site_MapPetRatio",
 			"Label": "MAP:PET ratio",
-			"CellType": "number"
+			"CellType": "formula"
 		},
 		{
 			"CellName": "X_Cell_Site_RainfallZone",
 			"Label": "Rainfall zone",
-			"CellType": "text"
+			"CellType": "formula"
 		},
 		{
 			"CellName": "X_Cell_Site_ClimateZone",
 			"Label": "Climate zone",
-			"CellType": "text"
+			"CellType": "formula"
 		},
 		{
 			"CellName": "X_Cell_Site_WetOrDryClimateZone",
 			"Label": "Wet or dry climate zone",
-			"CellType": "text"
+			"CellType": "formula"
 		},
 		{
 			"CellName": "X_Cell_Site_TemperatureZone",
 			"Label": "Temperature zone",
-			"CellType": "text"
+			"CellType": "formula"
 		},
 		{
 			"CellName": "X_Cell_PastureBeef_ProductionRegion",
 			"Label": "Livestock production region",
 			"CellType": "select",
-			"DependentOn": "E7",
-			"Options": {}
+			"DependentOn": "X_Cell_Site_State",
+			"Options": {
+				"NewSouthWales": "n/a",
+				"ACT": "n/a",
+				"Victoria": "n/a",
+				"Queensland": {
+					"High": "High",
+					"Moderate/High": "Moderate/High",
+					"Moderate/Low": "Moderate/Low",
+					"Low": "Low"
+				},
+				"SouthAustralia": "n/a",
+				"WesternAustralia": {
+					"South West": "South West",
+					"Pilbara": "Pilbara",
+					"Kimberley": "Kimberley"
+				},
+				"Tasmania": "n/a",
+				"NorthernTerritory": {
+					"Alice Springs": "Alice Springs",
+					"Barkly": "Barkly",
+					"Northern": "Northern"
+				}
+			}
 		},
 		{
 			"CellName": "X_Cell_PastureBeef_Breed",
@@ -246,7 +221,7 @@
 		{
 			"CellName": "X_Cell_Pasture_YieldPerHectare",
 			"Label": "Pasture yield",
-			"CellType": "number"
+			"CellType": "formula"
 		},
 		{
 			"CellName": "X_Cell_Pasture_AreaRemovedOrRenewed",
@@ -310,9 +285,22 @@
 			}
 		},
 		{
+			"CellName": "X_Cell_Electricity_CalculationMethod",
+			"Label": "How do you want to calculate electricity emissions?",
+			"CellType": "select",
+			"Options": {
+				"Location-based (simpler)": "Location-based (simpler)",
+				"Market-based (more complex)": "Market-based (more complex)"
+			}
+		},
+		{
 			"CellName": "X_Cell_Electricity_Location_AmountPurchasedInkWh",
 			"Label": "Amount purchased in kWh",
-			"CellType": "number"
+			"CellType": "number",
+			"NotUsedWhen": {
+				"Field": "X_Cell_Electricity_CalculationMethod",
+				"Equals": "Market-based (More complex)"
+			}
 		},
 		{
 			"CellName": "X_Cell_Electricity_Location_GridElectricityPurchasedFrom",
@@ -329,125 +317,60 @@
 				"Tasmania": "Tasmania",
 				"Northern Territory - Darwin Katherine Interconnected System (DKIS)": "Northern Territory - Darwin Katherine Interconnected System (DKIS)",
 				"National": "National"
+			},
+			"NotUsedWhen": {
+				"Field": "X_Cell_Electricity_CalculationMethod",
+				"Equals": "Market-based (More complex)"
 			}
 		},
 		{
 			"CellName": "X_Cell_Electricity_Market_AmountPurchasedExcludingGreenPower",
 			"Label": "Electricity purchased in kWh (excluding GreenPower providers)",
-			"CellType": "number"
+			"CellType": "number",
+			"NotUsedWhen": {
+				"Field": "X_Cell_Electricity_CalculationMethod",
+				"Equals": "Location-based (Simpler)"
+			}
 		},
 		{
 			"CellName": "X_Cell_Electricity_Market_RenewablePowerPercentage",
 			"Label": "Renewable Power Percentage",
-			"CellType": "percent"
+			"CellType": "percent",
+			"NotUsedWhen": {
+				"Field": "X_Cell_Electricity_CalculationMethod",
+				"Equals": "Location-based (Simpler)"
+			}
 		},
 		{
 			"CellName": "X_Cell_Electricity_Market_JurisdictionalRenewablePowerPercentage",
 			"Label": "Jurisdictional renewable power percentage (ACT only)",
-			"CellType": "percent"
+			"CellType": "percent",
+			"NotUsedWhen": {
+				"Field": "X_Cell_Electricity_CalculationMethod",
+				"Equals": "Location-based (Simpler)"
+			}
 		},
 		{
 			"CellName": "X_Cell_Electricity_Market_AmountPurchasedGreenPower",
 			"Label": "Electricity purchased from an accredited GreenPower provider",
-			"CellType": "number"
+			"CellType": "number",
+			"NotUsedWhen": {
+				"Field": "X_Cell_Electricity_CalculationMethod",
+				"Equals": "Location-based (Simpler)"
+			}
 		},
 		{
 			"CellName": "X_Cell_TotalElegibleVoluntarilySurrenderedRECs",
 			"Label": "Total elegible voluntarily surrendered RECs",
-			"CellType": "number"
+			"CellType": "formula"
 		},
 		{
 			"CellName": "X_Cell_TotalElegibleRECsForElectricityProducedOnSite",
 			"Label": "Total elegible RECs for electricity produced on-site and consumed by entity",
-			"CellType": "number"
+			"CellType": "formula"
 		}
 	],
 	"InputTables": [
-		{
-			"TableName": "X_Table_Results_EmissionsForWholeProductionCycle",
-			"MatrixType": "ColsToRows",
-			"NumberOfRows": 6,
-			"NumberOfCols": 2,
-			"ColumnNames": {
-				"CO2EEmissionsMethod1": "CO2-e emissions method 1",
-				"CO2EEmissionsMethod2": "CO2-e emissions method 2"
-			},
-			"Cols": {
-				"Column": {
-					"01Jan2023To31Dec2023": {
-						"Row": 2,
-						"Col": 2,
-						"Label": "01 Jan 2023 to 31 Dec 2023",
-						"CellType": "formula"
-					},
-					"01Jan2024To31Dec2024": {
-						"Row": 3,
-						"Col": 2,
-						"Label": "01 Jan 2024 to 31 Dec 2024 (This reporting cycle)",
-						"CellType": "formula",
-						"Unit": "This reporting cycle"
-					},
-					"01Jan2025To31Dec2025": {
-						"Row": 4,
-						"Col": 2,
-						"Label": "01 Jan 2025 to 31 Dec 2025",
-						"CellType": "formula"
-					},
-					"Row5": {
-						"Row": 5,
-						"Col": 2,
-						"CellType": "formula"
-					},
-					"Row6": {
-						"Row": 6,
-						"Col": 2,
-						"CellType": "formula"
-					}
-				}
-			}
-		},
-		{
-			"TableName": "X_Table_Results_CarbonRemovalsFromPlantings",
-			"MatrixType": "ColsToRows",
-			"NumberOfRows": 6,
-			"NumberOfCols": 1,
-			"ColumnNames": {
-				"CO2RemovedAttributedToThisEnterprise": "CO2 removed attributed to this enterprise"
-			},
-			"Cols": {
-				"Column": {
-					"01Jan2023To31Dec2023": {
-						"Row": 2,
-						"Col": 2,
-						"Label": "01 Jan 2023 to 31 Dec 2023",
-						"CellType": "number"
-					},
-					"01Jan2024To31Dec2024": {
-						"Row": 3,
-						"Col": 2,
-						"Label": "01 Jan 2024 to 31 Dec 2024 (This reporting cycle)",
-						"CellType": "number",
-						"Unit": "This reporting cycle"
-					},
-					"01Jan2025To31Dec2025": {
-						"Row": 4,
-						"Col": 2,
-						"Label": "01 Jan 2025 to 31 Dec 2025",
-						"CellType": "text"
-					},
-					"Row5": {
-						"Row": 5,
-						"Col": 2,
-						"CellType": "number"
-					},
-					"Row6": {
-						"Row": 6,
-						"Col": 2,
-						"CellType": "number"
-					}
-				}
-			}
-		},
 		{
 			"TableName": "X_Table_PastureBeef_Duration_Method1",
 			"MatrixType": "ColsToRows",
@@ -2200,5 +2123,49 @@
 				}
 			}
 		}
+	],
+	"FieldGroups": [
+		[
+			{
+				"Name": "Electricity",
+				"Items": [
+					"X_Cell_Electricity_CalculationMethod",
+					[
+						{
+							"Name": "Location-based electricity",
+							"Items": [
+								"X_Cell_Electricity_Location_AmountPurchasedInkWh",
+								"X_Cell_Electricity_Location_GridElectricityPurchasedFrom"
+							]
+						}
+					],
+					[
+						{
+							"Name": "Market-based electricity",
+							"Items": [
+								"X_Cell_Electricity_Market_AmountPurchasedExcludingGreenPower",
+								"X_Cell_Electricity_Market_RenewablePowerPercentage",
+								"X_Cell_Electricity_Market_JurisdictionalRenewablePowerPercentage",
+								"X_Cell_Electricity_Market_AmountPurchasedGreenPower",
+								"Table_Input_RECSurrendered",
+								"Table_Input_RECConsumedByEntity"
+							]
+						}
+					]
+				]
+			},
+			{
+				"Name": "Herd",
+				"Items": [
+					"X_Cell_PastureBeef_ProductionRegion",
+					"X_Cell_PastureBeef_Breed",
+					"X_Cell_PastureBeef_GrazingProductionSystem",
+					"X_Cell_PastureBeef_FencedWater",
+					"Table_Input_LivestockPurchases_Beefcattle",
+					"Table_Input_LivestockSales",
+					"X_Cell_PastureBeef_Method1OrMethod2"
+				]
+			}
+		]
 	]
 }

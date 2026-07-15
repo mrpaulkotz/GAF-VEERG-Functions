@@ -1,7 +1,7 @@
 {
 	"schemaVersion": 1,
 	"generatedFrom": "6_AgriculturalResidue_WIP_v03.xlsx",
-	"generatedAt": "2026-07-14T23:35:10Z",
+	"generatedAt": "2026-07-15T06:33:35Z",
 	"InputCells": [
 		{
 			"CellName": "X_Cell_Site_FarmName",
@@ -87,27 +87,27 @@
 		{
 			"CellName": "X_Cell_Site_MapPetRatio",
 			"Label": "MAP:PET ratio",
-			"CellType": "number"
+			"CellType": "formula"
 		},
 		{
 			"CellName": "X_Cell_Site_RainfallZone",
 			"Label": "Rainfall zone",
-			"CellType": "text"
+			"CellType": "formula"
 		},
 		{
 			"CellName": "X_Cell_Site_ClimateZone",
 			"Label": "Climate zone",
-			"CellType": "text"
+			"CellType": "formula"
 		},
 		{
 			"CellName": "X_Cell_Site_WetOrDryClimateZone",
 			"Label": "Wet or dry climate zone",
-			"CellType": "text"
+			"CellType": "formula"
 		},
 		{
 			"CellName": "X_Cell_Site_TemperatureZone",
 			"Label": "Temperature zone",
-			"CellType": "text"
+			"CellType": "formula"
 		},
 		{
 			"CellName": "X_Cell_Crop_CropType",
@@ -169,7 +169,7 @@
 		{
 			"CellName": "X_Cell_Crop_TotalProductionOfCrop",
 			"Label": "Total production of crop³",
-			"CellType": "number"
+			"CellType": "formula"
 		},
 		{
 			"CellName": "X_Cell_Crop_PercentResidueBaled",
@@ -184,7 +184,7 @@
 		{
 			"CellName": "X_Cell_Crop_NumberOfBales",
 			"Label": "Number of bales",
-			"CellType": "number"
+			"CellType": "formula"
 		},
 		{
 			"CellName": "X_Cell_Crop_PercentResidueGrazed",
@@ -228,7 +228,7 @@
 		{
 			"CellName": "X_Cell_Pasture_YieldPerHectare",
 			"Label": "Pasture yield",
-			"CellType": "number"
+			"CellType": "formula"
 		},
 		{
 			"CellName": "X_Cell_Pasture_AreaRemovedOrRenewed",

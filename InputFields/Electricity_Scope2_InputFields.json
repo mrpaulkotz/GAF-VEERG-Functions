@@ -1,7 +1,7 @@
 {
 	"schemaVersion": 1,
-	"generatedFrom": "14_Electricity_Scope2_WIP_v01.xlsx",
-	"generatedAt": "2026-07-14T23:33:51Z",
+	"generatedFrom": "14_Electricity_Scope2_WIP_v02.xlsx",
+	"generatedAt": "2026-07-15T06:31:54Z",
 	"InputCells": [
 		{
 			"CellName": "X_Cell_Site_FarmName",
@@ -51,6 +51,15 @@
 			}
 		},
 		{
+			"CellName": "X_Cell_Electricity_CalculationMethod",
+			"Label": "How do you want to calculate electricity emissions?",
+			"CellType": "select",
+			"Options": {
+				"Location-based (simpler)": "Location-based (simpler)",
+				"Market-based (more complex)": "Market-based (more complex)"
+			}
+		},
+		{
 			"CellName": "X_Cell_Electricity_Location_AmountPurchasedInkWh",
 			"Label": "Amount purchased in kWh",
 			"CellType": "number"
@@ -95,12 +104,12 @@
 		{
 			"CellName": "X_Cell_TotalElegibleVoluntarilySurrenderedRECs",
 			"Label": "Total elegible voluntarily surrendered RECs",
-			"CellType": "number"
+			"CellType": "formula"
 		},
 		{
 			"CellName": "X_Cell_TotalElegibleRECsForElectricityProducedOnSite",
 			"Label": "Total elegible RECs for electricity produced on-site and consumed by entity",
-			"CellType": "number"
+			"CellType": "formula"
 		}
 	],
 	"InputTables": [

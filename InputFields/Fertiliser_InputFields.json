@@ -1,7 +1,7 @@
 {
 	"schemaVersion": 1,
 	"generatedFrom": "5_Fertiliser_WIP_v07.xlsx",
-	"generatedAt": "2026-07-14T23:35:04Z",
+	"generatedAt": "2026-07-15T06:33:26Z",
 	"InputCells": [
 		{
 			"CellName": "X_Cell_Site_FarmName",
@@ -87,27 +87,27 @@
 		{
 			"CellName": "X_Cell_Site_MapPetRatio",
 			"Label": "MAP:PET ratio",
-			"CellType": "number"
+			"CellType": "formula"
 		},
 		{
 			"CellName": "X_Cell_Site_RainfallZone",
 			"Label": "Rainfall zone",
-			"CellType": "text"
+			"CellType": "formula"
 		},
 		{
 			"CellName": "X_Cell_Site_ClimateZone",
 			"Label": "Climate zone",
-			"CellType": "text"
+			"CellType": "formula"
 		},
 		{
 			"CellName": "X_Cell_Site_WetOrDryClimateZone",
 			"Label": "Wet or dry climate zone",
-			"CellType": "text"
+			"CellType": "formula"
 		},
 		{
 			"CellName": "X_Cell_Site_TemperatureZone",
 			"Label": "Temperature zone",
-			"CellType": "text"
+			"CellType": "formula"
 		},
 		{
 			"CellName": "X_Cell_Fertiliser_ProductionSystem",

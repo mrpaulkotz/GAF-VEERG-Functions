@@ -228,6 +228,71 @@ function Write-JsonNoBom {
   [System.IO.File]::WriteAllText($Path, $Json, $encoding)
 }
 
+function Test-FieldExists {
+  # True when $Name matches an InputCell CellName or an InputTable TableName in $Base.
+  param(
+    [Parameter(Mandatory = $true)] $Base,
+    [Parameter(Mandatory = $true)] [string] $Name
+  )
+  foreach ($c in @($Base['InputCells'])) {
+    if ($c -is [System.Collections.IDictionary] -and [string]$c['CellName'] -eq $Name) { return $true }
+  }
+  foreach ($t in @($Base['InputTables'])) {
+    if ($t -is [System.Collections.IDictionary] -and [string]$t['TableName'] -eq $Name) { return $true }
+  }
+  return $false
+}
+
+function ConvertTo-FieldGroupModel {
+  # Recursively normalizes an override 'FieldGroups' array into the output model.
+  # A group is { "Name": <string>, "Items": [ ... ] } where each Item is either a
+  # field-name string (an InputCell CellName or InputTable TableName) or a nested
+  # subgroup object with the same { Name, Items } shape. Field-name strings are
+  # validated against $Base and a warning is emitted for anything unknown.
+  param(
+    [Parameter(Mandatory = $true)] [AllowNull()] $Groups,
+    [Parameter(Mandatory = $true)] $Base
+  )
+
+  $result = New-Object System.Collections.Generic.List[object]
+  foreach ($g in @($Groups)) {
+    if ($null -eq $g) { continue }
+    if (-not ($g -is [System.Management.Automation.PSCustomObject])) {
+      Add-ValidationWarning "FieldGroups entry is not an object and was skipped."
+      continue
+    }
+
+    $groupName = ''
+    if ($g.PSObject.Properties['Name']) { $groupName = [string]$g.PSObject.Properties['Name'].Value }
+    $groupObj = [ordered]@{ Name = $groupName }
+
+    $items = New-Object System.Collections.Generic.List[object]
+    $rawItems = @()
+    if ($g.PSObject.Properties['Items']) { $rawItems = @($g.PSObject.Properties['Items'].Value) }
+    foreach ($it in $rawItems) {
+      if ($it -is [System.Management.Automation.PSCustomObject]) {
+        # Nested subgroup.
+        $sub = @(ConvertTo-FieldGroupModel -Groups @($it) -Base $Base)
+        if ($sub.Count -gt 0) { [void]$items.Add($sub[0]) }
+      }
+      elseif ($it -is [string]) {
+        if (-not (Test-FieldExists -Base $Base -Name $it)) {
+          Add-ValidationWarning "FieldGroup '$groupName' references unknown field '$it'"
+        }
+        [void]$items.Add($it)
+      }
+      else {
+        Add-ValidationWarning "FieldGroup '$groupName' has an unsupported item that was skipped."
+      }
+    }
+
+    $groupObj['Items'] = $items.ToArray()
+    [void]$result.Add($groupObj)
+  }
+
+  return , $result.ToArray()
+}
+
 function Merge-Override {
   # Deep, per-field merge of a hand-maintained override file over the generated
   # model. The override file is keyed by field identity so it survives regeneration
@@ -236,13 +301,16 @@ function Merge-Override {
   #   {
   #     "_comment": "ignored - any top-level key starting with '_' is documentation",
   #     "InputCells":  { "<CellName>":  { <props to add/replace on that cell> } },
-  #     "InputTables": { "<TableName>": { <props>, "Columns": { "<Col>": { <props> } } } }
+  #     "InputTables": { "<TableName>": { <props>, "Columns": { "<Col>": { <props> } } } },
+  #     "FieldGroups": [ { "Name": "<title>", "Items": [ "<CellOrTableName>", { "Name": ..., "Items": [ ... ] } ] } ]
   #   }
   #
   # Each override object's properties are shallow-applied onto the matching field
   # (added if absent, replaced if present), so consumers can set Label, Group,
-  # Default, Hidden, Order, etc. without redefining the generated structure. Any
-  # other top-level key (not '_'-prefixed) falls back to a whole-value replace.
+  # Default, Hidden, Order, etc. without redefining the generated structure.
+  # FieldGroups is emitted as an ordered, optionally nested grouping of cell/table
+  # names for the consuming app to render. Any other top-level key (not '_'-prefixed)
+  # falls back to a whole-value replace.
   param(
     [Parameter(Mandatory = $true)] $Base,
     [Parameter(Mandatory = $true)] $Override
@@ -259,6 +327,11 @@ function Merge-Override {
     $name = $prop.Name
 
     if ($name.StartsWith('_')) { continue }   # documentation-only keys
+
+    if ($name -eq 'FieldGroups') {
+      $Base['FieldGroups'] = @(ConvertTo-FieldGroupModel -Groups $prop.Value -Base $Base)
+      continue
+    }
 
     if ($name -eq 'InputCells' -and $prop.Value -is [System.Management.Automation.PSCustomObject]) {
       foreach ($cellOv in $prop.Value.PSObject.Properties) {
@@ -853,12 +926,24 @@ function Resolve-ParentInfo {
     try { $isList = ([int]$range.Validation.Type) -eq $xlValidateList } catch { $isList = $false }
     if ($isList) { break }
 
-    # Otherwise follow a single-cell passthrough formula (=Sheet!$X$Y or =Name).
+    # Otherwise follow a single-cell passthrough formula: a cell address
+    # (=Sheet!$X$Y or =$X$Y) or a bare defined name (=X_Cell_Site_State).
     $formula = ''
     try { if ([bool]$range.HasFormula) { $formula = [string]$range.Formula } } catch { $formula = '' }
-    $fm = [regex]::Match($formula, '^=\s*(?:(?:''[^'']+''|[A-Za-z0-9_. ]+)!)?\$?[A-Za-z]{1,3}\$?[0-9]+\s*$')
-    if (-not $fm.Success) { break }
-    $next = Invoke-WorksheetEvaluate -Worksheet $range.Worksheet -Expression ($formula.Substring(1).Trim())
+    if ([string]::IsNullOrWhiteSpace($formula) -or -not $formula.StartsWith('=')) { break }
+    $body = $formula.Substring(1).Trim()
+
+    $isAddr = [regex]::IsMatch($body, "^(?:(?:'[^']+'|[A-Za-z0-9_. ]+)!)?\`$?[A-Za-z]{1,3}\`$?[0-9]+$")
+    $isName = ($body -match '^[A-Za-z_][\w.]*$') -and $NameIndex.ContainsKey($body)
+    if (-not ($isAddr -or $isName)) { break }
+
+    $next = $null
+    if ($isName) {
+      try { $next = $NameIndex[$body].Range } catch { $next = $null }
+    }
+    if ($null -eq $next) {
+      $next = Invoke-WorksheetEvaluate -Worksheet $range.Worksheet -Expression $body
+    }
     if ($null -eq $next) { break }
     $range = $next
   }
@@ -938,8 +1023,8 @@ function Get-InputCells {
       if ($listInfo.Contains('DependentOn')) { $cellObj['DependentOn'] = $listInfo['DependentOn'] }
       $cellObj['Options'] = $listInfo.Options
     }
-    elseif ($hasFormula) {
-      $cellObj['CellType'] = Get-CellTypeByFormat -Cell $range
+    elseif ($hasFormula -and -not $canOverwrite) {
+      $cellObj['CellType'] = 'formula'
     }
     else {
       $cellObj['CellType'] = Get-CellTypeByFormat -Cell $range

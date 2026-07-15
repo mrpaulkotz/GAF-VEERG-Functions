@@ -1,9 +1,10 @@
 {
   "_comment": "Per-field OVERRIDES for the Pasture Beef enterprise input fields. This file is SEPARATE from the enterprise definition (Enterprises/Enterprise_PastureBeef.json). It is hand-maintained and is NEVER overwritten by 'npm run build:input-fields'; instead it is merged over the generated InputFields/Enterprise_PastureBeef_InputFields.json on every build. Only the fields named here are touched - every other field, option and table comes straight from Excel. Any top-level key starting with '_' (like this one) is ignored.",
-  "_usage": "Under 'InputCells' key each entry by its CellName; under 'InputTables' key each entry by its TableName and (optionally) its columns by column key. The properties you set are copied onto the matching field as-is, so you can add whatever the consuming app understands (Label, Group, Order, Hidden, Default, UseDefault, HelpText, ...). Setting an existing generated property (e.g. CellType) replaces it.",
+  "_usage": "Under 'InputCells' key each entry by its CellName; under 'InputTables' key each entry by its TableName and (optionally) its columns by column key. The properties you set are copied onto the matching field as-is, so you can add whatever the consuming app understands (Label, Group, Order, Hidden, Default, UseDefault, HelpText, ...). Setting an existing generated property (e.g. CellType) replaces it. Use 'FieldGroups' to lay out cells/tables into named groups in any order you like; each group's Items is an array of cell/table names and/or nested subgroups.",
   "_schema": {
-    "InputCells": { "<CellName>": { "Label": "text", "Group": "text", "Order": 0, "Hidden": false, "UseDefault": false, "Default": "value", "DuplicateOf": "value" } },
-    "InputTables": { "<TableName>": { "Label": "text", "Group": "text", "Columns": { "<ColumnKey>": { "Label": "text", "Default": "value" } } } }
+    "InputCells": { "<CellName>": { "Label": "text", "Group": "text", "Order": 0, "Hidden": false, "UseDefault": false, "Default": "value", "DuplicateOf": "value", "CanMarkAsNotUsed": false, "NotUsedWhen": "condition" } },
+    "InputTables": { "<TableName>": { "Label": "text", "Group": "text", "Columns": { "<ColumnKey>": { "Label": "text", "Default": "value", "CanMarkAsNotUsed": false, "NotUsedWhen": "condition" } } } },
+    "FieldGroups": [ { "Name": "text", "Items": [ "<CellOrTableName>", { "Name": "text", "Items": [ "<CellOrTableName>" ] } ] } ]
   },
 
   "InputCells": {
@@ -30,8 +31,136 @@
       "Hidden": true,
       "UseDefault": true,
       "Default": "Pasture"
+    },
+    "X_Cell_Electricity_Location_AmountPurchasedInkWh": {
+      "NotUsedWhen": { "Field": "X_Cell_Electricity_CalculationMethod", "Equals": "Market-based (More complex)" }
+    },
+    "X_Cell_Electricity_Location_GridElectricityPurchasedFrom": {
+      "NotUsedWhen": { "Field": "X_Cell_Electricity_CalculationMethod", "Equals": "Market-based (More complex)" }
+    },
+    "X_Cell_Electricity_Market_AmountPurchasedExcludingGreenPower": {
+      "NotUsedWhen": { "Field": "X_Cell_Electricity_CalculationMethod", "Equals": "Location-based (Simpler)" }
+    },
+    "X_Cell_Electricity_Market_RenewablePowerPercentage": {
+      "NotUsedWhen": { "Field": "X_Cell_Electricity_CalculationMethod", "Equals": "Location-based (Simpler)" }
+    },
+    "X_Cell_Electricity_Market_JurisdictionalRenewablePowerPercentage": {
+      "NotUsedWhen": { "Field": "X_Cell_Electricity_CalculationMethod", "Equals": "Location-based (Simpler)" }
+    },
+    "X_Cell_Electricity_Market_AmountPurchasedGreenPower": {
+      "NotUsedWhen": { "Field": "X_Cell_Electricity_CalculationMethod", "Equals": "Location-based (Simpler)" }
+    },
+    "Table_Input_RECSurrendered": {
+      "NotUsedWhen": { "Field": "X_Cell_Electricity_CalculationMethod", "Equals": "Location-based (Simpler)" }
+    },
+    "Table_Input_RECConsumedByEntity": {
+      "NotUsedWhen": { "Field": "X_Cell_Electricity_CalculationMethod", "Equals": "Location-based (Simpler)" }
+    },
+    "X_Cell_PastureBeef_Method1OrMethod2": {
+      "Label": "Pasture beef input method",
+      "CellType": "select",
+      "Options": {
+        "Method 1": "Method 1",
+        "Method 2": "Method 2"
+      }
+    },
+    "X_Table_PastureBeef_CrudeProtein_Method1": {
+       "NotUsedWhen": { "Field": "X_Cell_PastureBeef_Method1OrMethod2", "Equals": "Method 2" }
+    },
+    "X_Table_PastureBeef_DryMatterDigestibility_Method1": {
+      "NotUsedWhen": { "Field": "X_Cell_PastureBeef_Method1OrMethod2", "Equals": "Method 2" }
+    },
+    "X_Table_PastureBeef_Duration_Method1": {
+      "NotUsedWhen": { "Field": "X_Cell_PastureBeef_Method1OrMethod2", "Equals": "Method 2" }
+    },
+    "X_Table_PastureBeef_Head_Method1": {
+      "NotUsedWhen": { "Field": "X_Cell_PastureBeef_Method1OrMethod2", "Equals": "Method 2" }
+    },
+    "X_Table_PastureBeef_Liveweight_Method1": {
+      "NotUsedWhen": { "Field": "X_Cell_PastureBeef_Method1OrMethod2", "Equals": "Method 2" }
+    },
+    "X_Table_PastureBeef_LiveweightGain_Method1": {
+      "NotUsedWhen": { "Field": "X_Cell_PastureBeef_Method1OrMethod2", "Equals": "Method 2" }
+    },
+    "X_Table_PastureBeef_CrudeProtein_Method2": {
+      "NotUsedWhen": { "Field": "X_Cell_PastureBeef_Method1OrMethod2", "Equals": "Method 1" }
+    },
+    "X_Table_PastureBeef_DryMatterDigestibility_Method2": {
+      "NotUsedWhen": { "Field": "X_Cell_PastureBeef_Method1OrMethod2", "Equals": "Method 1" }
+    },
+    "X_Table_PastureBeef_Duration_Method2": {
+      "NotUsedWhen": { "Field": "X_Cell_PastureBeef_Method1OrMethod2", "Equals": "Method 1" }
+    },
+    "X_Table_PastureBeef_Head_Method2": {
+      "NotUsedWhen": { "Field": "X_Cell_PastureBeef_Method1OrMethod2", "Equals": "Method 1" }
+    },
+    "X_Table_PastureBeef_Liveweight_Method2": {
+      "NotUsedWhen": { "Field": "X_Cell_PastureBeef_Method1OrMethod2", "Equals": "Method 1" }
+    },
+    "X_Table_PastureBeef_LiveweightGain_Method2": {
+      "NotUsedWhen": { "Field": "X_Cell_PastureBeef_Method1OrMethod2", "Equals": "Method 1" }
+    },
+    "Table_Input_InorganicFertiliser_Brands":{
+        "CanMarkAsNotUsed": true
+    },
+    "Table_Input_InorganicFertiliser_Custom":{
+        "CanMarkAsNotUsed": true
+    },
+    "Table_Input_Lime":{
+        "CanMarkAsNotUsed": true
+    },
+    "Table_Input_OrganicFertiliser":{
+        "CanMarkAsNotUsed": true
+    },
+    "Table_Input_Fuel":{
+        "CanMarkAsNotUsed": true
+    },
+    "Table_Input_LivestockPurchases_Beefcattle":{
+        "CanMarkAsNotUsed": true
+    },
+    "X_Cell_PastureBeef_ProductionRegion":{
+        "DependentOn": "X_Cell_Site_State"
     }
   },
 
-  "InputTables": {}
+  "InputTables": {},
+
+  "FieldGroups": [
+    {
+      "Name": "Electricity",
+      "Items": [
+        "X_Cell_Electricity_CalculationMethod",
+        {
+          "Name": "Location-based electricity",
+          "Items": [
+            "X_Cell_Electricity_Location_AmountPurchasedInkWh",
+            "X_Cell_Electricity_Location_GridElectricityPurchasedFrom"
+          ]
+        },
+        {
+          "Name": "Market-based electricity",
+          "Items": [
+            "X_Cell_Electricity_Market_AmountPurchasedExcludingGreenPower",
+            "X_Cell_Electricity_Market_RenewablePowerPercentage",
+            "X_Cell_Electricity_Market_JurisdictionalRenewablePowerPercentage",
+            "X_Cell_Electricity_Market_AmountPurchasedGreenPower",
+            "Table_Input_RECSurrendered",
+            "Table_Input_RECConsumedByEntity"
+          ]
+        }
+      ]
+    },
+    {
+      "Name": "Herd",
+      "Items": [
+        "X_Cell_PastureBeef_ProductionRegion",
+        "X_Cell_PastureBeef_Breed",
+        "X_Cell_PastureBeef_GrazingProductionSystem",
+        "X_Cell_PastureBeef_FencedWater",
+        "Table_Input_LivestockPurchases_Beefcattle",
+        "Table_Input_LivestockSales",
+        "X_Cell_PastureBeef_Method1OrMethod2"
+      ]
+    }
+  ]
 }

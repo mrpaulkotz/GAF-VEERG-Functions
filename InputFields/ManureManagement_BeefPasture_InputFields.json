@@ -1,7 +1,7 @@
 {
 	"schemaVersion": 1,
 	"generatedFrom": "4_2_ManureManagement_BeefPasture_WIP_v08.xlsx",
-	"generatedAt": "2026-07-14T23:34:31Z",
+	"generatedAt": "2026-07-15T06:32:45Z",
 	"InputCells": [
 		{
 			"CellName": "X_Cell_Site_FarmName",
@@ -87,34 +87,56 @@
 		{
 			"CellName": "X_Cell_Site_MapPetRatio",
 			"Label": "MAP:PET ratio",
-			"CellType": "number"
+			"CellType": "formula"
 		},
 		{
 			"CellName": "X_Cell_Site_RainfallZone",
 			"Label": "Rainfall zone",
-			"CellType": "text"
+			"CellType": "formula"
 		},
 		{
 			"CellName": "X_Cell_Site_ClimateZone",
 			"Label": "Climate zone",
-			"CellType": "text"
+			"CellType": "formula"
 		},
 		{
 			"CellName": "X_Cell_Site_WetOrDryClimateZone",
 			"Label": "Wet or dry climate zone",
-			"CellType": "text"
+			"CellType": "formula"
 		},
 		{
 			"CellName": "X_Cell_Site_TemperatureZone",
 			"Label": "Temperature zone",
-			"CellType": "text"
+			"CellType": "formula"
 		},
 		{
 			"CellName": "X_Cell_PastureBeef_ProductionRegion",
 			"Label": "Livestock production region",
 			"CellType": "select",
-			"DependentOn": "E7",
-			"Options": {}
+			"DependentOn": "X_Cell_Site_State",
+			"Options": {
+				"NewSouthWales": "n/a",
+				"ACT": "n/a",
+				"Victoria": "n/a",
+				"Queensland": {
+					"High": "High",
+					"Moderate/High": "Moderate/High",
+					"Moderate/Low": "Moderate/Low",
+					"Low": "Low"
+				},
+				"SouthAustralia": "n/a",
+				"WesternAustralia": {
+					"South West": "South West",
+					"Pilbara": "Pilbara",
+					"Kimberley": "Kimberley"
+				},
+				"Tasmania": "n/a",
+				"NorthernTerritory": {
+					"Alice Springs": "Alice Springs",
+					"Barkly": "Barkly",
+					"Northern": "Northern"
+				}
+			}
 		},
 		{
 			"CellName": "X_Cell_PastureBeef_Breed",
