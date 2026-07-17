@@ -1,7 +1,7 @@
 {
 	"schemaVersion": 1,
 	"generatedFrom": "3_2_Enteric_BeefPasture_WIP_v04.xlsx",
-	"generatedAt": "2026-07-16T04:33:54Z",
+	"generatedAt": "2026-07-17T07:53:23Z",
 	"InputCells": [
 		{
 			"CellName": "X_Cell_Site_FarmName",
@@ -168,87 +168,87 @@
 			},
 			"Cols": {
 				"Column": {
-					"January2024": {
+					"January": {
 						"Row": 2,
 						"Col": 2,
-						"Label": "January 2024",
+						"Label": "January",
 						"CellType": "number",
 						"CanOverWriteFormula": true
 					},
-					"February2024": {
+					"February": {
 						"Row": 3,
 						"Col": 2,
-						"Label": "February 2024",
+						"Label": "February",
 						"CellType": "number",
 						"CanOverWriteFormula": true
 					},
-					"March2024": {
+					"March": {
 						"Row": 4,
 						"Col": 2,
-						"Label": "March 2024",
+						"Label": "March",
 						"CellType": "number",
 						"CanOverWriteFormula": true
 					},
-					"April2024": {
+					"April": {
 						"Row": 5,
 						"Col": 2,
-						"Label": "April 2024",
+						"Label": "April",
 						"CellType": "number",
 						"CanOverWriteFormula": true
 					},
-					"May2024": {
+					"May": {
 						"Row": 6,
 						"Col": 2,
-						"Label": "May 2024",
+						"Label": "May",
 						"CellType": "number",
 						"CanOverWriteFormula": true
 					},
-					"June2024": {
+					"June": {
 						"Row": 7,
 						"Col": 2,
-						"Label": "June 2024",
+						"Label": "June",
 						"CellType": "number",
 						"CanOverWriteFormula": true
 					},
-					"July2024": {
+					"July": {
 						"Row": 8,
 						"Col": 2,
-						"Label": "July 2024",
+						"Label": "July",
 						"CellType": "number",
 						"CanOverWriteFormula": true
 					},
-					"August2024": {
+					"August": {
 						"Row": 9,
 						"Col": 2,
-						"Label": "August 2024",
+						"Label": "August",
 						"CellType": "number",
 						"CanOverWriteFormula": true
 					},
-					"September2024": {
+					"September": {
 						"Row": 10,
 						"Col": 2,
-						"Label": "September 2024",
+						"Label": "September",
 						"CellType": "number",
 						"CanOverWriteFormula": true
 					},
-					"October2024": {
+					"October": {
 						"Row": 11,
 						"Col": 2,
-						"Label": "October 2024",
+						"Label": "October",
 						"CellType": "number",
 						"CanOverWriteFormula": true
 					},
-					"November2024": {
+					"November": {
 						"Row": 12,
 						"Col": 2,
-						"Label": "November 2024",
+						"Label": "November",
 						"CellType": "number",
 						"CanOverWriteFormula": true
 					},
-					"December2024": {
+					"December": {
 						"Row": 13,
 						"Col": 2,
-						"Label": "December 2024",
+						"Label": "December",
 						"CellType": "number",
 						"CanOverWriteFormula": true
 					}
@@ -320,87 +320,87 @@
 			},
 			"Cols": {
 				"Column": {
-					"January2024": {
+					"January": {
 						"Row": 2,
 						"Col": 2,
-						"Label": "January 2024",
+						"Label": "January",
 						"CellType": "number",
 						"CanOverWriteFormula": true
 					},
-					"February2024": {
+					"February": {
 						"Row": 3,
 						"Col": 2,
-						"Label": "February 2024",
+						"Label": "February",
 						"CellType": "number",
 						"CanOverWriteFormula": true
 					},
-					"March2024": {
+					"March": {
 						"Row": 4,
 						"Col": 2,
-						"Label": "March 2024",
+						"Label": "March",
 						"CellType": "number",
 						"CanOverWriteFormula": true
 					},
-					"April2024": {
+					"April": {
 						"Row": 5,
 						"Col": 2,
-						"Label": "April 2024",
+						"Label": "April",
 						"CellType": "number",
 						"CanOverWriteFormula": true
 					},
-					"May2024": {
+					"May": {
 						"Row": 6,
 						"Col": 2,
-						"Label": "May 2024",
+						"Label": "May",
 						"CellType": "number",
 						"CanOverWriteFormula": true
 					},
-					"June2024": {
+					"June": {
 						"Row": 7,
 						"Col": 2,
-						"Label": "June 2024",
+						"Label": "June",
 						"CellType": "number",
 						"CanOverWriteFormula": true
 					},
-					"July2024": {
+					"July": {
 						"Row": 8,
 						"Col": 2,
-						"Label": "July 2024",
+						"Label": "July",
 						"CellType": "number",
 						"CanOverWriteFormula": true
 					},
-					"August2024": {
+					"August": {
 						"Row": 9,
 						"Col": 2,
-						"Label": "August 2024",
+						"Label": "August",
 						"CellType": "number",
 						"CanOverWriteFormula": true
 					},
-					"September2024": {
+					"September": {
 						"Row": 10,
 						"Col": 2,
-						"Label": "September 2024",
+						"Label": "September",
 						"CellType": "number",
 						"CanOverWriteFormula": true
 					},
-					"October2024": {
+					"October": {
 						"Row": 11,
 						"Col": 2,
-						"Label": "October 2024",
+						"Label": "October",
 						"CellType": "number",
 						"CanOverWriteFormula": true
 					},
-					"November2024": {
+					"November": {
 						"Row": 12,
 						"Col": 2,
-						"Label": "November 2024",
+						"Label": "November",
 						"CellType": "number",
 						"CanOverWriteFormula": true
 					},
-					"December2024": {
+					"December": {
 						"Row": 13,
 						"Col": 2,
-						"Label": "December 2024",
+						"Label": "December",
 						"CellType": "number",
 						"CanOverWriteFormula": true
 					}
@@ -472,87 +472,87 @@
 			},
 			"Cols": {
 				"Column": {
-					"January2024": {
+					"January": {
 						"Row": 2,
 						"Col": 2,
-						"Label": "January 2024",
+						"Label": "January",
 						"CellType": "number",
 						"CanOverWriteFormula": true
 					},
-					"February2024": {
+					"February": {
 						"Row": 3,
 						"Col": 2,
-						"Label": "February 2024",
+						"Label": "February",
 						"CellType": "number",
 						"CanOverWriteFormula": true
 					},
-					"March2024": {
+					"March": {
 						"Row": 4,
 						"Col": 2,
-						"Label": "March 2024",
+						"Label": "March",
 						"CellType": "number",
 						"CanOverWriteFormula": true
 					},
-					"April2024": {
+					"April": {
 						"Row": 5,
 						"Col": 2,
-						"Label": "April 2024",
+						"Label": "April",
 						"CellType": "number",
 						"CanOverWriteFormula": true
 					},
-					"May2024": {
+					"May": {
 						"Row": 6,
 						"Col": 2,
-						"Label": "May 2024",
+						"Label": "May",
 						"CellType": "number",
 						"CanOverWriteFormula": true
 					},
-					"June2024": {
+					"June": {
 						"Row": 7,
 						"Col": 2,
-						"Label": "June 2024",
+						"Label": "June",
 						"CellType": "number",
 						"CanOverWriteFormula": true
 					},
-					"July2024": {
+					"July": {
 						"Row": 8,
 						"Col": 2,
-						"Label": "July 2024",
+						"Label": "July",
 						"CellType": "number",
 						"CanOverWriteFormula": true
 					},
-					"August2024": {
+					"August": {
 						"Row": 9,
 						"Col": 2,
-						"Label": "August 2024",
+						"Label": "August",
 						"CellType": "number",
 						"CanOverWriteFormula": true
 					},
-					"September2024": {
+					"September": {
 						"Row": 10,
 						"Col": 2,
-						"Label": "September 2024",
+						"Label": "September",
 						"CellType": "number",
 						"CanOverWriteFormula": true
 					},
-					"October2024": {
+					"October": {
 						"Row": 11,
 						"Col": 2,
-						"Label": "October 2024",
+						"Label": "October",
 						"CellType": "number",
 						"CanOverWriteFormula": true
 					},
-					"November2024": {
+					"November": {
 						"Row": 12,
 						"Col": 2,
-						"Label": "November 2024",
+						"Label": "November",
 						"CellType": "number",
 						"CanOverWriteFormula": true
 					},
-					"December2024": {
+					"December": {
 						"Row": 13,
 						"Col": 2,
-						"Label": "December 2024",
+						"Label": "December",
 						"CellType": "number",
 						"CanOverWriteFormula": true
 					}
@@ -624,87 +624,87 @@
 			},
 			"Cols": {
 				"Column": {
-					"January2024": {
+					"January": {
 						"Row": 2,
 						"Col": 2,
-						"Label": "January 2024",
+						"Label": "January",
 						"CellType": "number",
 						"CanOverWriteFormula": true
 					},
-					"February2024": {
+					"February": {
 						"Row": 3,
 						"Col": 2,
-						"Label": "February 2024",
+						"Label": "February",
 						"CellType": "number",
 						"CanOverWriteFormula": true
 					},
-					"March2024": {
+					"March": {
 						"Row": 4,
 						"Col": 2,
-						"Label": "March 2024",
+						"Label": "March",
 						"CellType": "number",
 						"CanOverWriteFormula": true
 					},
-					"April2024": {
+					"April": {
 						"Row": 5,
 						"Col": 2,
-						"Label": "April 2024",
+						"Label": "April",
 						"CellType": "number",
 						"CanOverWriteFormula": true
 					},
-					"May2024": {
+					"May": {
 						"Row": 6,
 						"Col": 2,
-						"Label": "May 2024",
+						"Label": "May",
 						"CellType": "number",
 						"CanOverWriteFormula": true
 					},
-					"June2024": {
+					"June": {
 						"Row": 7,
 						"Col": 2,
-						"Label": "June 2024",
+						"Label": "June",
 						"CellType": "number",
 						"CanOverWriteFormula": true
 					},
-					"July2024": {
+					"July": {
 						"Row": 8,
 						"Col": 2,
-						"Label": "July 2024",
+						"Label": "July",
 						"CellType": "number",
 						"CanOverWriteFormula": true
 					},
-					"August2024": {
+					"August": {
 						"Row": 9,
 						"Col": 2,
-						"Label": "August 2024",
+						"Label": "August",
 						"CellType": "number",
 						"CanOverWriteFormula": true
 					},
-					"September2024": {
+					"September": {
 						"Row": 10,
 						"Col": 2,
-						"Label": "September 2024",
+						"Label": "September",
 						"CellType": "number",
 						"CanOverWriteFormula": true
 					},
-					"October2024": {
+					"October": {
 						"Row": 11,
 						"Col": 2,
-						"Label": "October 2024",
+						"Label": "October",
 						"CellType": "number",
 						"CanOverWriteFormula": true
 					},
-					"November2024": {
+					"November": {
 						"Row": 12,
 						"Col": 2,
-						"Label": "November 2024",
+						"Label": "November",
 						"CellType": "number",
 						"CanOverWriteFormula": true
 					},
-					"December2024": {
+					"December": {
 						"Row": 13,
 						"Col": 2,
-						"Label": "December 2024",
+						"Label": "December",
 						"CellType": "number",
 						"CanOverWriteFormula": true
 					}
@@ -776,87 +776,87 @@
 			},
 			"Cols": {
 				"Column": {
-					"January2024": {
+					"January": {
 						"Row": 2,
 						"Col": 2,
-						"Label": "January 2024",
+						"Label": "January",
 						"CellType": "number",
 						"CanOverWriteFormula": true
 					},
-					"February2024": {
+					"February": {
 						"Row": 3,
 						"Col": 2,
-						"Label": "February 2024",
+						"Label": "February",
 						"CellType": "number",
 						"CanOverWriteFormula": true
 					},
-					"March2024": {
+					"March": {
 						"Row": 4,
 						"Col": 2,
-						"Label": "March 2024",
+						"Label": "March",
 						"CellType": "number",
 						"CanOverWriteFormula": true
 					},
-					"April2024": {
+					"April": {
 						"Row": 5,
 						"Col": 2,
-						"Label": "April 2024",
+						"Label": "April",
 						"CellType": "number",
 						"CanOverWriteFormula": true
 					},
-					"May2024": {
+					"May": {
 						"Row": 6,
 						"Col": 2,
-						"Label": "May 2024",
+						"Label": "May",
 						"CellType": "number",
 						"CanOverWriteFormula": true
 					},
-					"June2024": {
+					"June": {
 						"Row": 7,
 						"Col": 2,
-						"Label": "June 2024",
+						"Label": "June",
 						"CellType": "number",
 						"CanOverWriteFormula": true
 					},
-					"July2024": {
+					"July": {
 						"Row": 8,
 						"Col": 2,
-						"Label": "July 2024",
+						"Label": "July",
 						"CellType": "number",
 						"CanOverWriteFormula": true
 					},
-					"August2024": {
+					"August": {
 						"Row": 9,
 						"Col": 2,
-						"Label": "August 2024",
+						"Label": "August",
 						"CellType": "number",
 						"CanOverWriteFormula": true
 					},
-					"September2024": {
+					"September": {
 						"Row": 10,
 						"Col": 2,
-						"Label": "September 2024",
+						"Label": "September",
 						"CellType": "number",
 						"CanOverWriteFormula": true
 					},
-					"October2024": {
+					"October": {
 						"Row": 11,
 						"Col": 2,
-						"Label": "October 2024",
+						"Label": "October",
 						"CellType": "number",
 						"CanOverWriteFormula": true
 					},
-					"November2024": {
+					"November": {
 						"Row": 12,
 						"Col": 2,
-						"Label": "November 2024",
+						"Label": "November",
 						"CellType": "number",
 						"CanOverWriteFormula": true
 					},
-					"December2024": {
+					"December": {
 						"Row": 13,
 						"Col": 2,
-						"Label": "December 2024",
+						"Label": "December",
 						"CellType": "number",
 						"CanOverWriteFormula": true
 					}
@@ -928,87 +928,87 @@
 			},
 			"Cols": {
 				"Column": {
-					"January2024": {
+					"January": {
 						"Row": 2,
 						"Col": 2,
-						"Label": "January 2024",
+						"Label": "January",
 						"CellType": "number",
 						"CanOverWriteFormula": true
 					},
-					"February2024": {
+					"February": {
 						"Row": 3,
 						"Col": 2,
-						"Label": "February 2024",
+						"Label": "February",
 						"CellType": "number",
 						"CanOverWriteFormula": true
 					},
-					"March2024": {
+					"March": {
 						"Row": 4,
 						"Col": 2,
-						"Label": "March 2024",
+						"Label": "March",
 						"CellType": "number",
 						"CanOverWriteFormula": true
 					},
-					"April2024": {
+					"April": {
 						"Row": 5,
 						"Col": 2,
-						"Label": "April 2024",
+						"Label": "April",
 						"CellType": "number",
 						"CanOverWriteFormula": true
 					},
-					"May2024": {
+					"May": {
 						"Row": 6,
 						"Col": 2,
-						"Label": "May 2024",
+						"Label": "May",
 						"CellType": "number",
 						"CanOverWriteFormula": true
 					},
-					"June2024": {
+					"June": {
 						"Row": 7,
 						"Col": 2,
-						"Label": "June 2024",
+						"Label": "June",
 						"CellType": "number",
 						"CanOverWriteFormula": true
 					},
-					"July2024": {
+					"July": {
 						"Row": 8,
 						"Col": 2,
-						"Label": "July 2024",
+						"Label": "July",
 						"CellType": "number",
 						"CanOverWriteFormula": true
 					},
-					"August2024": {
+					"August": {
 						"Row": 9,
 						"Col": 2,
-						"Label": "August 2024",
+						"Label": "August",
 						"CellType": "number",
 						"CanOverWriteFormula": true
 					},
-					"September2024": {
+					"September": {
 						"Row": 10,
 						"Col": 2,
-						"Label": "September 2024",
+						"Label": "September",
 						"CellType": "number",
 						"CanOverWriteFormula": true
 					},
-					"October2024": {
+					"October": {
 						"Row": 11,
 						"Col": 2,
-						"Label": "October 2024",
+						"Label": "October",
 						"CellType": "number",
 						"CanOverWriteFormula": true
 					},
-					"November2024": {
+					"November": {
 						"Row": 12,
 						"Col": 2,
-						"Label": "November 2024",
+						"Label": "November",
 						"CellType": "number",
 						"CanOverWriteFormula": true
 					},
-					"December2024": {
+					"December": {
 						"Row": 13,
 						"Col": 2,
-						"Label": "December 2024",
+						"Label": "December",
 						"CellType": "number",
 						"CanOverWriteFormula": true
 					}
@@ -1097,7 +1097,7 @@
 			}
 		},
 		{
-			"TableName": "Table_Input_LivestockSales3",
+			"TableName": "Table_Input_LivestockSales",
 			"MatrixType": "RowsToCols",
 			"NumberOfCols": 6,
 			"ColumnNames": {

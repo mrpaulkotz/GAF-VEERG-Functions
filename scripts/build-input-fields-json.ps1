@@ -90,6 +90,9 @@ function Get-FieldKeyFromHeader {
   $noParen = [regex]::Replace($noParen, '<', ' Under ')
   $noParen = [regex]::Replace($noParen, '>', ' Over ')
   $noParen = [regex]::Replace($noParen, '(?<=\d)\s*-\s*(?=\d)', ' To ')
+  # Drop 4-digit calendar years (1900-2099) so period-based row/column keys stay stable
+  # across activity periods (e.g. "Emissions 2023" and "Emissions 2024" both key as "Emissions").
+  $noParen = [regex]::Replace($noParen, '\b(?:19|20)\d{2}\b', ' ')
   $parts = @([regex]::Split($noParen.Trim(), '[^A-Za-z0-9]+') | Where-Object { $_ -ne '' })
   if ($parts.Count -eq 0) {
     return ($Header -replace '[^A-Za-z0-9]+', '')
@@ -99,6 +102,15 @@ function Get-FieldKeyFromHeader {
       else { $_.Substring(0, 1).ToUpperInvariant() + $_.Substring(1) }
     }) -join ''
   return $key
+}
+
+function Remove-YearFromLabel {
+  param([Parameter(Mandatory = $true)] [AllowEmptyString()] [string] $Label)
+
+  # Strip 4-digit calendar years (1900-2099) from a display label and tidy leftover whitespace,
+  # keeping displayed row/column names year-agnostic to match their machine keys.
+  $t = [regex]::Replace($Label, '\b(?:19|20)\d{2}\b', ' ')
+  return ([regex]::Replace($t, '\s{2,}', ' ')).Trim()
 }
 
 function Get-UnitFromHeader {
@@ -1177,7 +1189,7 @@ function Get-InputTables {
         if (Test-IsPeriodLabel -Label $header) { continue }
         $fieldKey = Get-FieldKeyFromHeader -Header $header
         if ([string]::IsNullOrWhiteSpace($fieldKey)) { continue }
-        if (-not $columnNames.Contains($fieldKey)) { $columnNames[$fieldKey] = $header }
+        if (-not $columnNames.Contains($fieldKey)) { $columnNames[$fieldKey] = (Remove-YearFromLabel $header) }
         $fieldDefs[$fieldKey] = Get-TableFieldDef -Column $col -Worksheet $worksheet -Workbook $Workbook -NameIndex $NameIndex -Header $header -ContextName ("{0}.{1}" -f $tableName, $header)
       }
 
@@ -1303,7 +1315,8 @@ function Get-NamedRangeTables {
       [void]$usedKeys.Add($candidate)
 
       $posDef = [ordered]@{ Row = $RowIdx; Col = $ColIdx }
-      if (-not [string]::IsNullOrWhiteSpace($LabelText)) { $posDef[$LabelProp] = $LabelText }
+      $cleanLabel = Remove-YearFromLabel $LabelText
+      if (-not [string]::IsNullOrWhiteSpace($cleanLabel)) { $posDef[$LabelProp] = $cleanLabel }
       foreach ($k in $Def.Keys) { $posDef[$k] = $Def[$k] }
       $Defs[$candidate] = $posDef
     }
@@ -1336,7 +1349,7 @@ function Get-NamedRangeTables {
         if ([string]::IsNullOrWhiteSpace($ckey)) { $ckey = "Col$jx" }
         $candidate = $ckey; $n = 2
         while ($columnNames.Contains($candidate)) { $candidate = "$ckey$n"; $n++ }
-        $columnNames[$candidate] = $hdr
+        $columnNames[$candidate] = (Remove-YearFromLabel $hdr)
       }
       $tableObj['NumberOfCols'] = $columnNames.Count
       $tableObj['ColumnNames'] = $columnNames

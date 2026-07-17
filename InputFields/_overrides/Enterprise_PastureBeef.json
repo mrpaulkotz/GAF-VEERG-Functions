@@ -1,12 +1,14 @@
 ﻿{
   "_comment": "Per-field OVERRIDES for the Pasture Beef enterprise input fields. This file is SEPARATE from the enterprise definition (Enterprises/Enterprise_PastureBeef.json). It is hand-maintained and is NEVER overwritten by 'npm run build:input-fields'; instead it is merged over the generated InputFields/Enterprise_PastureBeef_InputFields.json on every build. Only the fields named here are touched - every other field, option and table comes straight from Excel. Any top-level key starting with '_' (like this one) is ignored.",
   "_usage": "Under 'InputCells' key each entry by its CellName; under 'InputTables' key each entry by its TableName and (optionally) its columns by column key. The properties you set are copied onto the matching field as-is, so you can add whatever the consuming app understands (Label, Group, Order, Hidden, Default, UseDefault, HelpText, ...). Setting an existing generated property (e.g. CellType) replaces it. Use 'FieldGroups' to lay out cells/tables into named groups in any order you like; each group's Items is an array of cell/table names and/or nested subgroups.",
+  "_usage_influences": "Use 'Influences' to declare, in ONE place, sets of cells/tables that influence each other (a change to any member affects the others). Each entry's 'Members' is a flat list of cell and/or table names that all mutually influence every other member of the same set - the relationship is undirected, so you never repeat it per field. The consuming app derives each field's influenced/influenced-by list from these sets; do not add per-field Influences/InfluencedBy attributes.",
   "_schema": {
-    "InputCells": { "<CellName>": { "Label": "text", "Group": "text", "Order": 0, "Hidden": false, "UseDefault": false, "Default": "value", "DuplicateOf": "value", "CanMarkAsNotUsed": false, "NotUsedWhen": "condition" } },
-    "InputTables": { "<TableName>": { "Label": "text", "Group": "text", "Columns": { "<ColumnKey>": { "Label": "text", "Default": "value", "CanMarkAsNotUsed": false, "NotUsedWhen": "condition" } } } },
+    "InputCells": { "<CellName>": { "Label": "text", "Group": "text", "ChatHelp": false, "Order": 0, "Hidden": false, "UseDefault": false, "Default": "value", "DuplicateOf": "value", "CanMarkAsNotUsed": false, "NotUsedWhen": "condition" } },
+    "InputTables": { "<TableName>": { "Label": "text", "Group": "text", "ChatHelp":false, "Columns": { "<ColumnKey>": { "Label": "text", "Default": "value", "CanMarkAsNotUsed": false, "NotUsedWhen": "condition" } } } },
     "FieldGroups": [ { "Name": "text", "Items": [ "<CellOrTableName>", { "Name": "text", "Items": [ "<CellOrTableName>" ] } ] } ],
     "FirstClassResults": { "<ResultName>": { "Label": "text" } },
-    "ActivityPeriodResultTables": { "<TableName>": { "CycleLabelColumn": "<ColumnKey>", "ResultColumns": { "<ResultName>": "<ColumnKey>" } } }
+    "ActivityPeriodResultTables": { "<TableName>": { "CycleLabelColumn": "<ColumnKey>", "ResultColumns": { "<ResultName>": "<ColumnKey>" } } },
+    "Influences": [ { "Members": [ "<CellOrTableName>", "<CellOrTableName>" ] } ]
   },
 
   "InputCells": {
@@ -73,87 +75,121 @@
 
   "InputTables": {
     "Table_Input_RECSurrendered": {
+      "Label": "Renewable Energy Certificates (RECs) surrendered",
+      "ChatHelp": true,
       "NotUsedWhen": { "Field": "X_Cell_Electricity_CalculationMethod", "Equals": "Location-based (Simpler)" }
     },
     "Table_Input_RECConsumedByEntity": {
+      "Label": "Renewable Energy Certificates (RECs) consumed by entity",
+      "ChatHelp": true,
       "NotUsedWhen": { "Field": "X_Cell_Electricity_CalculationMethod", "Equals": "Location-based (Simpler)" }
     },
     "X_Table_PastureBeef_CrudeProtein_Method1": {
+      "Label" : "Crude protein (Method 1)",
+      "ChatHelp": true,
        "NotUsedWhen": { "Field": "X_Cell_PastureBeef_Method1OrMethod2", "Equals": "Method 2" },
        "DefaultDataDocumentType": "JSON",
       "DefaultDataFile": "node_modules/gaf-veerg-functions/generated-sourcedata/SourceData_PastureBeef.sourcedata.json",
       "DefaultDataLocation": null
     },
     "X_Table_PastureBeef_DryMatterDigestibility_Method1": {
+      "Label" : "Dry matter digestibility (Method 1)",
+      "ChatHelp": true,
       "NotUsedWhen": { "Field": "X_Cell_PastureBeef_Method1OrMethod2", "Equals": "Method 2" },
       "DefaultDataDocumentType": "JSON",
       "DefaultDataFile": "node_modules/gaf-veerg-functions/generated-sourcedata/SourceData_PastureBeef.sourcedata.json",
       "DefaultDataLocation": null
     },
     "X_Table_PastureBeef_Duration_Method1": {
+      "Label" : "Duration in herd (days) (Method 1)",
+      "ChatHelp": true,
       "NotUsedWhen": { "Field": "X_Cell_PastureBeef_Method1OrMethod2", "Equals": "Method 2" }
     },
     "X_Table_PastureBeef_Head_Method1": {
+      "Label" : "Head of cattle (Method 1)",
+      "ChatHelp": true,
       "NotUsedWhen": { "Field": "X_Cell_PastureBeef_Method1OrMethod2", "Equals": "Method 2" }
     },
     "X_Table_PastureBeef_Liveweight_Method1": {
+      "Label" : "Liveweight (Method 1)",
+      "ChatHelp": true,
       "NotUsedWhen": { "Field": "X_Cell_PastureBeef_Method1OrMethod2", "Equals": "Method 2" },
       "DefaultDataDocumentType": "JSON",
       "DefaultDataFile": "node_modules/gaf-veerg-functions/generated-sourcedata/SourceData_PastureBeef.sourcedata.json",
       "DefaultDataLocation": null
     },
     "X_Table_PastureBeef_LiveweightGain_Method1": {
+      "Label" : "Liveweight gain (Method 1)",
+      "ChatHelp": true,
       "NotUsedWhen": { "Field": "X_Cell_PastureBeef_Method1OrMethod2", "Equals": "Method 2" },
       "DefaultDataDocumentType": "JSON",
       "DefaultDataFile": "node_modules/gaf-veerg-functions/generated-sourcedata/SourceData_PastureBeef.sourcedata.json",
       "DefaultDataLocation": null
     },
     "X_Table_PastureBeef_CrudeProtein_Method2": {
+      "Label" : "Crude protein (Method 2)",
+      "ChatHelp": true,
       "NotUsedWhen": { "Field": "X_Cell_PastureBeef_Method1OrMethod2", "Equals": "Method 1" },
       "DefaultDataDocumentType": "JSON",
       "DefaultDataFile": "node_modules/gaf-veerg-functions/generated-sourcedata/SourceData_PastureBeef.sourcedata.json",
       "DefaultDataLocation": null
     },
     "X_Table_PastureBeef_DryMatterDigestibility_Method2": {
+      "Label" : "Dry matter digestibility (Method 2)",
+      "ChatHelp": true,
       "NotUsedWhen": { "Field": "X_Cell_PastureBeef_Method1OrMethod2", "Equals": "Method 1" },
       "DefaultDataDocumentType": "JSON",
       "DefaultDataFile": "node_modules/gaf-veerg-functions/generated-sourcedata/SourceData_PastureBeef.sourcedata.json",
       "DefaultDataLocation": null
     },
     "X_Table_PastureBeef_Duration_Method2": {
+      "Label" : "Duration in herd (days) (Method 2)",
+      "ChatHelp": true,
       "NotUsedWhen": { "Field": "X_Cell_PastureBeef_Method1OrMethod2", "Equals": "Method 1" }
     },
     "X_Table_PastureBeef_Head_Method2": {
+      "Label" : "Head of cattle (Method 2)",
+      "ChatHelp": true,
       "NotUsedWhen": { "Field": "X_Cell_PastureBeef_Method1OrMethod2", "Equals": "Method 1" }
     },
     "X_Table_PastureBeef_Liveweight_Method2": {
+      "Label" : "Liveweight (Method 2)",
+      "ChatHelp": true,
       "NotUsedWhen": { "Field": "X_Cell_PastureBeef_Method1OrMethod2", "Equals": "Method 1" },
       "DefaultDataDocumentType": "JSON",
       "DefaultDataFile": "node_modules/gaf-veerg-functions/generated-sourcedata/SourceData_PastureBeef.sourcedata.json",
       "DefaultDataLocation": null
     },
     "X_Table_PastureBeef_LiveweightGain_Method2": {
+      "Label" : "Liveweight gain (Method 2)",
+      "ChatHelp": true,
       "NotUsedWhen": { "Field": "X_Cell_PastureBeef_Method1OrMethod2", "Equals": "Method 1" },
       "DefaultDataDocumentType": "JSON",
       "DefaultDataFile": "node_modules/gaf-veerg-functions/generated-sourcedata/SourceData_PastureBeef.sourcedata.json",
       "DefaultDataLocation": null
     },
     "Table_Input_InorganicFertiliser_Brands":{
-        "CanMarkAsNotUsed": true
+        "CanMarkAsNotUsed": true,
+        "Label": "Inorganic fertiliser (branded product) applications"
     },
     "Table_Input_InorganicFertiliser_Custom":{
-        "CanMarkAsNotUsed": true
+        "CanMarkAsNotUsed": true,
+        "Label": "Inorganic fertiliser (Custom blends) applications"
     },
     "Table_Input_Lime":{
-        "CanMarkAsNotUsed": true
+        "CanMarkAsNotUsed": true,
+        "Label": "Lime applications"
     },
     "Table_Input_OrganicFertiliser":{
-        "CanMarkAsNotUsed": true
+        "CanMarkAsNotUsed": true,
+        "Label": "Organic fertiliser applications"
     },
     "Table_Input_Fuel":{
-        "CanMarkAsNotUsed": true
+        "CanMarkAsNotUsed": true,
+        "Label": "Fuel purchases"
     },
     "Table_Input_LivestockPurchases_Beefcattle":{
+        "Label": "Beef cattle purchases",
         "CanMarkAsNotUsed": true
     },
     "X_Table_Result_ActivityPeriodEmissions_RowsToCols":{
@@ -242,5 +278,52 @@
         "Allocated_CarbonRemovalsFromPlantings": "CO2RemovedAttributedToThisEnterprise"
       }
     }
-  }
+  },
+
+  "Influences": [
+    {
+      "Members": [
+        "Table_Input_LivestockPurchases_Beefcattle",
+        "Table_Input_LivestockSales",
+        "X_Table_PastureBeef_Liveweight_Method2",
+        "X_Table_PastureBeef_Head_Method2",
+        "X_Table_PastureBeef_Duration_Method2",
+        "X_Table_PastureBeef_Head_Method1"
+      ]
+    }
+  ],
+
+  "Constraints": [
+    {
+      "Rule": "SalesNotExceedHead",
+      "SalesTable": "Table_Input_LivestockSales",
+      "ClassColumn": "Class",
+      "DateColumn": "SaleDate",
+      "AmountColumn": "HeadSold",
+      "MethodSwitch": { "Fields": ["X_Cell_PastureBeef_Method1OrMethod2", "DataEntryMethod"], "Method1": "Method 1", "Method2": "Method 2" },
+      "HeadMethod1": { "Table": "X_Table_PastureBeef_Head_Method1", "Period": "season" },
+      "HeadMethod2": { "Table": "X_Table_PastureBeef_Head_Method2", "Period": "month" },
+      "Message": "Head sold ({amount}) for {class} in {period} can't exceed the head available ({available})."
+    },
+    {
+      "Rule": "LiveweightWithinTolerance",
+      "SalesTable": "Table_Input_LivestockSales",
+      "ClassColumn": "Class",
+      "DateColumn": "SaleDate",
+      "ValueColumn": "AverageWeightPerHead",
+      "Tolerance": 0.2,
+      "MethodSwitch": { "Fields": ["X_Cell_PastureBeef_Method1OrMethod2", "DataEntryMethod"], "Method1": "Method 1", "Method2": "Method 2" },
+      "ReferenceMethod1": { "Table": "X_Table_PastureBeef_Liveweight_Method1", "Period": "season" },
+      "ReferenceMethod2": { "Table": "X_Table_PastureBeef_Liveweight_Method2", "Period": "month" },
+      "Message": "Average weight per head ({value} kg) for {class} in {period} must be within {tolerancePct}% of the expected liveweight ({reference} kg)."
+    },
+    {
+      "Rule": "DateWithinActivityPeriod",
+      "Tables": [
+        { "Table": "Table_Input_LivestockSales", "DateColumn": "SaleDate", "Label": "Sale" },
+        { "Table": "Table_Input_LivestockPurchases_Beefcattle", "DateColumn": "PurchaseDate", "Label": "Purchase" }
+      ],
+      "Message": "{label} date {date} is outside the activity period ({min} to {max})."
+    }
+  ]
 }

@@ -1,19 +1,68 @@
 {
   "_comment": "Per-field OVERRIDES for the Pasture Beef enterprise input fields. This file is SEPARATE from the enterprise definition (Enterprises/Enterprise_PastureBeef.json). It is hand-maintained and is NEVER overwritten by 'npm run build:input-fields'; instead it is merged over the generated InputFields/Enterprise_PastureBeef_InputFields.json on every build. Only the fields named here are touched - every other field, option and table comes straight from Excel. Any top-level key starting with '_' (like this one) is ignored.",
   "_usage": "Under 'InputCells' key each entry by its CellName; under 'InputTables' key each entry by its TableName and (optionally) its columns by column key. The properties you set are copied onto the matching field as-is, so you can add whatever the consuming app understands (Label, Group, Order, Hidden, Default, UseDefault, HelpText, ...). Setting an existing generated property (e.g. CellType) replaces it. Use 'FieldGroups' to lay out cells/tables into named groups in any order you like; each group's Items is an array of cell/table names and/or nested subgroups.",
+  "_usage_influences": "Use 'Influences' to declare, in ONE place, sets of cells/tables that influence each other (a change to any member affects the others). Each entry's 'Members' is a flat list of cell and/or table names that all mutually influence every other member of the same set - the relationship is undirected, so you never repeat it per field. The consuming app derives each field's influenced/influenced-by list from these sets; do not add per-field Influences/InfluencedBy attributes.",
   "_schema": {
-    "InputCells": { "<CellName>": { "Label": "text", "Group": "text", "Order": 0, "Hidden": false, "UseDefault": false, "Default": "value", "DuplicateOf": "value", "CanMarkAsNotUsed": false, "NotUsedWhen": "condition" } },
-    "InputTables": { "<TableName>": { "Label": "text", "Group": "text", "Columns": { "<ColumnKey>": { "Label": "text", "Default": "value", "CanMarkAsNotUsed": false, "NotUsedWhen": "condition" } } } },
+    "InputCells": { "<CellName>": { "Label": "text", "Group": "text", "ChatHelp": false, "Order": 0, "Hidden": false, "UseDefault": false, "Default": "value", "DuplicateOf": "value", "CanMarkAsNotUsed": false, "NotUsedWhen": "condition" } },
+    "InputTables": { "<TableName>": { "Label": "text", "Group": "text", "ChatHelp":false, "Columns": { "<ColumnKey>": { "Label": "text", "Default": "value", "CanMarkAsNotUsed": false, "NotUsedWhen": "condition" } } } },
     "FieldGroups": [ { "Name": "text", "Items": [ "<CellOrTableName>", { "Name": "text", "Items": [ "<CellOrTableName>" ] } ] } ],
-    "FirstClassResults": { "<ResultName>": { "Label": "text" } }
+    "FirstClassResults": { "<ResultName>": { "Label": "text" } },
+    "ActivityPeriodResultTables": { "<TableName>": { "CycleLabelColumn": "<ColumnKey>", "ResultColumns": { "<ResultName>": "<ColumnKey>" } } },
+    "Influences": [ { "Members": [ "<CellOrTableName>", "<CellOrTableName>" ] } ]
   },
 
-  "InputCells": {},
 
-  "InputTables": {},
+  "InputCells": {
+    "X_Cell_Fertiliser_AreaUnderCropping":{
+      "DuplicateOf": "X_Cell_Planting_PlantingAreaInHectares",
+      "Hidden": true
+    },
+    "X_Cell_Fertiliser_ProductionSystem":{
+      "UseDefault": true,
+      "Default": "Pasture",
+      "Hidden": true
+    },
+    "X_Cell_Fertiliser_CropType":{
+      "UseDefault": true,
+      "Default": "Pasture",
+      "Hidden": true
+    }
+  },
+
+  "InputTables": {
+    "Table_Input_InorganicFertiliser_Brands":{
+        "CanMarkAsNotUsed": true,
+        "Label": "Inorganic fertiliser (branded product) applications"
+    },
+    "Table_Input_InorganicFertiliser_Custom":{
+        "CanMarkAsNotUsed": true,
+        "Label": "Inorganic fertiliser (Custom blends) applications"
+    },
+    "Table_Input_Lime":{
+        "CanMarkAsNotUsed": true,
+        "Label": "Lime applications"
+    },
+    "Table_Input_OrganicFertiliser":{
+        "CanMarkAsNotUsed": true,
+        "Label": "Organic fertiliser applications"
+    },
+    "Table_Input_Fuel":{
+        "CanMarkAsNotUsed": true,
+        "Label": "Fuel purchases"
+    }
+  },
 
   "FieldGroups": [
-    {}
+    {
+      "Name": "Planting information",
+      "Items": [
+        "X_Cell_Planting_Latitude",
+        "X_Cell_Planting_Longitude",
+        "X_Cell_Planting_PlantingAreaInHectares",
+        "X_Cell_Planting_PlantingDate",
+        "X_Cell_Planting_PlantingName"
+      ]
+    }
   ],
   "FirstClassResults": {
     "X_Result_Planting_CarbonCapturedPerHectare": {

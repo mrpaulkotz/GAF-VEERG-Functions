@@ -1,16 +1,6 @@
 {
 	"X_Result_Planting_CarbonCapturedPerHectare": 123,
 	"X_Result_Planting_CarbonCapturedTotalArea": 12300,
-	"VEERG_3_2_1_1__1_TotalAnnualMethaneFromEntericFermentation_Result_Method1": 55.67806177,
-	"VEERG_3_2_1_1__1_TotalAnnualMethaneFromEntericFermentation_Result_Method2": 56.1639527,
-	"VEERG_4_2_1_1__1_TotalAnnualMethaneProductionFromManureManagement_Result_Method1": 0.886285313,
-	"VEERG_4_2_1_1__1_TotalAnnualMethaneProductionFromManureManagement_Result_Method2": 0.890296353,
-	"VEERG_4_2_1_3__1_DirectNitrousOxideEmissionsOnPasture_Result_Method1": 0.190112527,
-	"VEERG_4_2_1_3__1_DirectNitrousOxideEmissionsOnPasture_Result_Method2": 0.184245255,
-	"VEERG_4_2_1_5__1_AtmosphericDepositionEmissionsFromUrineAndDungOnPasture_Result_Method1": 0.11777471,
-	"VEERG_4_2_1_5__1_AtmosphericDepositionEmissionsFromUrineAndDungOnPasture_Result_Method2": 0.114139936,
-	"VEERG_4_2_1_7__1_LeachingAndRunoffEmissionsFromUrineAndDungOnPasture_Result_Method1": 0.250948535,
-	"VEERG_4_2_1_7__1_LeachingAndRunoffEmissionsFromUrineAndDungOnPasture_Result_Method2": 0.243203737,
 	"VEERG_5_1_1_1__1_InorganicFertiliserApplicationN2OEmissions_Result_Method1": 0.1431067,
 	"VEERG_5_1_1_1__1_InorganicFertiliserApplicationN2OEmissions_Result_Method2":0.1431067,
 	"VEERG_5_1_1_3__1_InorganicFertiliserApplicationCO2Emissions_Result_Method1": 7.333333333,
@@ -26,9 +16,5 @@
 	"VEERG_8_2_1_1__1_FuelCombustionStationary_Result_CO2": 29.070800,
 	"VEERG_8_2_1_1__1_FuelCombustionStationary_Result_CH4": 0.072400,
 	"VEERG_8_2_1_1__1_FuelCombustionStationary_Result_N2O": 0.071400,
-	"VEERG_8_2_1_1__1_FuelCombustionStationary_Result_Scope3": 6.292400,
-	"VEERG_10_1_1_1__1_EmissionsFromWasteManagement_Scope1_Result_Method1": 438.82805,
-	"VEERG_10_1_1_1__1_EmissionsFromWasteManagement_Scope3_Result_Method1": 441.15,
-	"VEERG_14_1_1__1_LocationBasedScopeElectricityEmissions_Result_Method1": 16.8,
-	"VEERG_14_1_2__1_MarketBasedScopeElectricityEmissionsVariation_Result_Method1": 14.58
+	"VEERG_8_2_1_1__1_FuelCombustionStationary_Result_Scope3": 6.292400
 }
