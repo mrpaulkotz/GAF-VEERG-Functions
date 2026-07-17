@@ -1,0 +1,321 @@
+{
+	"X_Cell_Site_FarmName": "My test farm",
+	"X_Cell_Site_ReportingEntityName": "My test Farms Pty Ltd",
+	"X_Cell_Site_StartDate": "1/1/2025",
+	"X_Cell_Site_State": "Western Australia",
+	"X_Cell_Site_Region": "Western Australia - Outback (South)",
+	"X_Cell_Site_LeachingZone": "NO - Not in leaching zone",
+	"X_Cell_Site_Elevation": 307.7,
+	"X_Cell_Site_AverageTemperature": 18,
+	"X_Cell_Site_TotalRainfall": 601,
+	"X_Cell_Site_PotentialEvapotranspiration": 1326,
+	"X_Cell_Site_FrostDays": 7,
+	"X_Cell_Fertiliser_ProductionSystem": "Crop",
+	"X_Cell_Fertiliser_CropType": "Grains",
+	"X_Cell_Fertiliser_IrrigationMethod": "Sprinkler Irrigation",
+	"X_Cell_Fertiliser_AreaUnderCropping": 100,
+	"X_Cell_Fuel_IsMetroLocation": "Metro",
+	"X_Cell_Planting_Latitude": -33.8688,
+	"X_Cell_Planting_Longitude": 151.2093,
+	"X_Cell_Planting_PlantingDate": "1/01/2020",
+	"X_Cell_Planting_PlantingName": "My cool planting",
+	"X_Cell_Planting_PlantingAreaInHectares": 100,
+	"InputTables": [
+		{
+			"TableName": "Table_Input_InorganicFertiliser_Brands",
+			"MatrixType": "RowsToCols",
+			"ColumnOffset": 0,
+			"RowOffset": null,
+			"Rows": {
+				"Application1": {
+					"ProductName": "Aqua Finish",
+					"AmountAppliedPerHectare": 100,
+					"ApplicationUnit": "L",
+					"Density": 1.26,
+					"ApplicationArea": 100,
+					"TotalAmountApplied": 12600,
+					"Ingredient1": "Potassium - Generic",
+					"Ingredient1Fraction": 0.225,
+					"Ingredient2": "Phosphorus - Generic",
+					"Ingredient2Fraction": 0.04,
+					"Ingredient3": "Nitrogen - Generic",
+					"Ingredient3Fraction": 0.026,
+					"Ingredient4": null,
+					"Ingredient4Fraction": null,
+					"Ingredient5": null,
+					"Ingredient5Fraction": null,
+					"Ingredient6": null,
+					"Ingredient6Fraction": null,
+					"NApplicationRate": 3.276,
+					"UreaSourced": null,
+					"AmmoniaSource": null
+				},
+				"Application2": {
+					"ProductName": "CalPhos",
+					"AmountAppliedPerHectare": 100,
+					"ApplicationUnit": "L",
+					"Density": 1.285,
+					"ApplicationArea": 100,
+					"TotalAmountApplied": 12850,
+					"Ingredient1": "Phosphorus - Generic",
+					"Ingredient1Fraction": 0.135,
+					"Ingredient2": "Calcium - Generic",
+					"Ingredient2Fraction": 0.04,
+					"Ingredient3": null,
+					"Ingredient3Fraction": null,
+					"Ingredient4": null,
+					"Ingredient4Fraction": null,
+					"Ingredient5": null,
+					"Ingredient5Fraction": null,
+					"Ingredient6": null,
+					"Ingredient6Fraction": null,
+					"NApplicationRate": 0,
+					"UreaSourced": null,
+					"AmmoniaSource": null
+				},
+				"Application3": {
+					"ProductName": "CalPhos",
+					"AmountAppliedPerHectare": 100,
+					"ApplicationUnit": "L",
+					"Density": 1.285,
+					"ApplicationArea": 100,
+					"TotalAmountApplied": 12850,
+					"Ingredient1": "Phosphorus - Generic",
+					"Ingredient1Fraction": 0.135,
+					"Ingredient2": "Calcium - Generic",
+					"Ingredient2Fraction": 0.04,
+					"Ingredient3": null,
+					"Ingredient3Fraction": null,
+					"Ingredient4": null,
+					"Ingredient4Fraction": null,
+					"Ingredient5": null,
+					"Ingredient5Fraction": null,
+					"Ingredient6": null,
+					"Ingredient6Fraction": null,
+					"NApplicationRate": 0,
+					"UreaSourced": null,
+					"AmmoniaSource": null
+				},
+				"Application4": {
+					"ProductName": "Aqua Grow",
+					"AmountAppliedPerHectare": 100,
+					"ApplicationUnit": "L",
+					"Density": 1.26,
+					"ApplicationArea": 100,
+					"TotalAmountApplied": 12600,
+					"Ingredient1": "Potassium - Generic",
+					"Ingredient1Fraction": 0.105,
+					"Ingredient2": "Nitrogen - Generic",
+					"Ingredient2Fraction": 0.096,
+					"Ingredient3": "Phosphorus - Generic",
+					"Ingredient3Fraction": 0.05,
+					"Ingredient4": null,
+					"Ingredient4Fraction": null,
+					"Ingredient5": null,
+					"Ingredient5Fraction": null,
+					"Ingredient6": null,
+					"Ingredient6Fraction": null,
+					"NApplicationRate": 12.096,
+					"UreaSourced": null,
+					"AmmoniaSource": null
+				},
+				"Application5": {
+					"ProductName": "Aqua NitroCal",
+					"AmountAppliedPerHectare": 100,
+					"ApplicationUnit": "L",
+					"Density": 1.5,
+					"ApplicationArea": 100,
+					"TotalAmountApplied": 15000,
+					"Ingredient1": "Calcium - Generic",
+					"Ingredient1Fraction": 0.162,
+					"Ingredient2": "Nitrogen - Nitrate",
+					"Ingredient2Fraction": 0.132,
+					"Ingredient3": null,
+					"Ingredient3Fraction": null,
+					"Ingredient4": null,
+					"Ingredient4Fraction": null,
+					"Ingredient5": null,
+					"Ingredient5Fraction": null,
+					"Ingredient6": null,
+					"Ingredient6Fraction": null,
+					"NApplicationRate": 19.8,
+					"UreaSourced": null,
+					"AmmoniaSource": null
+				}
+			}
+		},
+		{
+			"TableName": "Table_Input_InorganicFertiliser_Custom",
+			"MatrixType": "RowsToCols",
+			"ColumnOffset": 0,
+			"RowOffset": null,
+			"Rows": {
+				"Application1": {
+					"ProductName": "My first custom blend",
+					"AmountAppliedPerHectare": 100,
+					"ApplicationArea": 100,
+					"TotalAmountApplied": 10000,
+					"Ingredient1": "Calcium nitrate",
+					"Ingredient1Fraction": 0.50,
+					"Ingredient2": "Zinc - Generic",
+					"Ingredient2Fraction": 0.20,
+					"Ingredient3": "Potassium - Generic",
+					"Ingredient3Fraction": 0.20,
+					"Ingredient4": "Sulfur - Generic",
+					"Ingredient4Fraction": 0.10,
+					"NApplicationRate": 7.75,
+					"UreaSourced": null,
+					"AmmoniaSource": null
+				},
+				"Application2": {
+					"ProductName": "My second custom blend",
+					"AmountAppliedPerHectare": 100,
+					"ApplicationArea": 100,
+					"TotalAmountApplied": 10000,
+					"Ingredient1": "Urea",
+					"Ingredient1Fraction": 1.0,
+					"Ingredient2": null,
+					"Ingredient2Fraction": null,
+					"Ingredient3": null,
+					"Ingredient3Fraction": null,
+					"Ingredient4": null,
+					"Ingredient4Fraction": null,
+					"NApplicationRate": 46,
+					"UreaSourced": null,
+					"AmmoniaSource": null
+				},
+				"Application3": {
+					"ProductName": "My third custom blend",
+					"AmountAppliedPerHectare": 100,
+					"ApplicationArea": 100,
+					"TotalAmountApplied": 10000,
+					"Ingredient1": "Ammonia",
+					"Ingredient1Fraction": 0.50,
+					"Ingredient2": null,
+					"Ingredient2Fraction": null,
+					"Ingredient3": null,
+					"Ingredient3Fraction": null,
+					"Ingredient4": null,
+					"Ingredient4Fraction": null,
+					"NApplicationRate": 41.175,
+					"UreaSourced": null,
+					"AmmoniaSource": null
+				}
+			}
+		},
+		{
+			"TableName": "Table_Input_Lime",
+			"MatrixType": "RowsToCols",
+			"ColumnOffset": 0,
+			"RowOffset": null,
+			"Rows": {
+				"Application1": {
+					"ProductName": "Lime product 1",
+					"AmountAppliedPerHectare": 1,
+					"ApplicationArea": 100,
+					"TotalAmountApplied": 100,
+					"PercentLime": "80%",
+					"PercentDolomite": "10%",
+					"PercentGypsum": "10%"
+				},
+				"Application2": {
+					"ProductName": "Lime product 2",
+					"AmountAppliedPerHectare": 1,
+					"ApplicationArea": 100,
+					"TotalAmountApplied": 100,
+					"PercentLime": "100%",
+					"PercentDolomite": null,
+					"PercentGypsum": null
+				},
+				"Application3": {
+					"ProductName": "Lime product 3",
+					"AmountAppliedPerHectare": 1,
+					"ApplicationArea": 100,
+					"TotalAmountApplied": 100,
+					"PercentLime": "0%",
+					"PercentDolomite": null,
+					"PercentGypsum": "100%"
+				}
+			}
+		},
+		{
+			"TableName": "Table_Input_OrganicFertiliser",
+			"MatrixType": "RowsToCols",
+			"ColumnOffset": 0,
+			"RowOffset": null,
+			"Rows": {
+				"Lime1": {
+					"OrganicFertiliserType": "Manure - Other",
+					"PercentNInFertiliser": "30%",
+					"AmountAppliedPerHectare": 10,
+					"AmountNAppliedPerHectare": 3,
+					"ApplicationArea": 100,
+					"TotalOrganicFertiliserApplied": 1000,
+					"TotalNApplied": 300
+				},
+				"Lime2": {
+					"OrganicFertiliserType": "Manure - Poultry",
+					"PercentNInFertiliser": "25%",
+					"AmountAppliedPerHectare": 10,
+					"AmountNAppliedPerHectare": 2.5,
+					"ApplicationArea": 100,
+					"TotalOrganicFertiliserApplied": 1000,
+					"TotalNApplied": 250
+				},
+				"Lime3": {
+					"OrganicFertiliserType": "Other organic fertiliser",
+					"PercentNInFertiliser": "16%",
+					"AmountAppliedPerHectare": 10,
+					"AmountNAppliedPerHectare": 1.6,
+					"ApplicationArea": 100,
+					"TotalOrganicFertiliserApplied": 1000,
+					"TotalNApplied": 160
+				}
+			}
+		},
+		{
+			"TableName": "Table_Input_Fuel",
+			"MatrixType": "RowsToCols",
+			"ColumnOffset": 0,
+			"RowOffset": null,
+			"AllowOverride": true,
+			"Rows": {
+				"Row1": {
+					"FuelUse": "Power standalone machinery or heating",
+					"FuelType": "Town gas in GJ",
+					"AmountPurchased": 100,
+					"AmountUnit": "GJ",
+					"PercentConsumed": "100%"
+				},
+				"Row2": {
+					"FuelUse": "Power standalone machinery or heating",
+					"FuelType": "Petrol",
+					"AmountPurchased": 10000,
+					"AmountUnit": "L",
+					"PercentConsumed": "100%"
+				},
+				"Row3": {
+					"FuelUse": "Cars and light commercial vehicles",
+					"FuelType": "Diesel",
+					"AmountPurchased": 10000,
+					"AmountUnit": "L",
+					"PercentConsumed": "100%"
+				},
+				"Row4": {
+					"FuelUse": "Off-road Agriculture and forestry equipment",
+					"FuelType": "Diesel",
+					"AmountPurchased": 10000,
+					"AmountUnit": "L",
+					"PercentConsumed": "100%"
+				},
+				"Row5": {
+					"FuelUse": "Vessels",
+					"FuelType": "Fuel oil",
+					"AmountPurchased": 10000,
+					"AmountUnit": "L",
+					"PercentConsumed": "100%"
+				}
+			}
+		}
+	]
+}

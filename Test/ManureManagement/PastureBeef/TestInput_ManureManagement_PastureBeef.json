@@ -44,7 +44,7 @@
           "Autumn": 91.25,
           "Winter": 91.25
         },
-        "Cows2to3Years": {
+        "Cows2To3Years": {
           "Spring": 91.25,
           "Summer": 91.25,
           "Autumn": 91.25,
@@ -68,7 +68,7 @@
           "Autumn": 91.25,
           "Winter": 91.25
         },
-        "Steers2to3Years": {
+        "Steers2To3Years": {
           "Spring": 91.25,
           "Summer": 91.25,
           "Autumn": 91.25,
@@ -144,7 +144,7 @@
           "November 2025": 30,
           "December 2025": 31
         },
-        "Cows2to3Years": {
+        "Cows2To3Years": {
           "January 2025": 31,
           "February 2025": 29,
           "March 2025": 31,
@@ -200,7 +200,7 @@
           "November 2025": 30,
           "December 2025": 31
         },
-        "Steers2to3Years": {
+        "Steers2To3Years": {
           "January 2025": 31,
           "February 2025": 29,
           "March 2025": 31,
@@ -260,7 +260,7 @@
           "Autumn": 100,
           "Winter": 100
         },
-        "Cows2to3Years": {
+        "Cows2To3Years": {
           "Spring": 100,
           "Summer": 100,
           "Autumn": 100,
@@ -284,7 +284,7 @@
           "Autumn": 100,
           "Winter": 100
         },
-        "Steers2to3Years": {
+        "Steers2To3Years": {
           "Spring": 100,
           "Summer": 100,
           "Autumn": 100,
@@ -360,7 +360,7 @@
           "November 2025": 100,
           "December 2025": 100
         },
-        "Cows2to3Years": {
+        "Cows2To3Years": {
           "January 2025": 100,
           "February 2025": 100,
           "March 2025": 100,
@@ -416,7 +416,7 @@
           "November 2025": 100,
           "December 2025": 100
         },
-        "Steers2to3Years": {
+        "Steers2To3Years": {
           "January 2025": 100,
           "February 2025": 100,
           "March 2025": 100,
@@ -476,7 +476,7 @@
           "Autumn": 320,
           "Winter": 330
         },
-        "Cows2to3Years": {
+        "Cows2To3Years": {
           "Spring": 550,
           "Summer": 530,
           "Autumn": 480,
@@ -500,7 +500,7 @@
           "Autumn": 340,
           "Winter": 360
         },
-        "Steers2to3Years": {
+        "Steers2To3Years": {
           "Spring": 480,
           "Summer": 470,
           "Autumn": 340,
@@ -576,7 +576,7 @@
           "November 2025": 420,
           "December 2025": 450
         },
-        "Cows2to3Years": {
+        "Cows2To3Years": {
           "January 2025": 530,
           "February 2025": 530,
           "March 2025": 480,
@@ -632,7 +632,7 @@
           "November 2025": 480,
           "December 2025": 470
         },
-        "Steers2to3Years": {
+        "Steers2To3Years": {
           "January 2025": 470,
           "February 2025": 470,
           "March 2025": 340,
@@ -692,7 +692,7 @@
           "Autumn": 0.22,
           "Winter": 0.11
         },
-        "Cows2to3Years": {
+        "Cows2To3Years": {
           "Spring": 0.66,
           "Summer": -0.22,
           "Autumn": -0.55,
@@ -716,7 +716,7 @@
           "Autumn": 0,
           "Winter": 0.44
         },
-        "Steers2to3Years": {
+        "Steers2To3Years": {
           "Spring": 1.1,
           "Summer": -0.11,
           "Autumn": 0,
@@ -792,7 +792,7 @@
           "November 2025": 0.99,
           "December 2025": 0.33
         },
-        "Cows2to3Years": {
+        "Cows2To3Years": {
           "January 2025": -0.22,
           "February 2025": -0.22,
           "March 2025": -0.55,
@@ -848,7 +848,7 @@
           "November 2025": 1.1,
           "December 2025": -0.11
         },
-        "Steers2to3Years": {
+        "Steers2To3Years": {
           "January 2025": -0.11,
           "February 2025": -0.11,
           "March 2025": 0,
@@ -908,7 +908,7 @@
           "Autumn": 0.5,
           "Winter": 0.75
         },
-        "Cows2to3Years": {
+        "Cows2To3Years": {
           "Spring": 0.8,
           "Summer": 0.58,
           "Autumn": 0.5,
@@ -932,7 +932,7 @@
           "Autumn": 0.5,
           "Winter": 0.75
         },
-        "Steers2to3Years": {
+        "Steers2To3Years": {
           "Spring": 0.8,
           "Summer": 0.58,
           "Autumn": 0.5,
@@ -1008,7 +1008,7 @@
           "November 2025": 0.8,
           "December 2025": 0.58
         },
-        "Cows2to3Years": {
+        "Cows2To3Years": {
           "January 2025": 0.58,
           "February 2025": 0.58,
           "March 2025": 0.5,
@@ -1064,7 +1064,7 @@
           "November 2025": 0.8,
           "December 2025": 0.58
         },
-        "Steers2to3Years": {
+        "Steers2To3Years": {
           "January 2025": 0.58,
           "February 2025": 0.58,
           "March 2025": 0.5,
@@ -1124,7 +1124,7 @@
           "Autumn": 0.06,
           "Winter": 0.2
         },
-        "Cows2to3Years": {
+        "Cows2To3Years": {
           "Spring": 0.2,
           "Summer": 0.09,
           "Autumn": 0.06,
@@ -1148,7 +1148,7 @@
           "Autumn": 0.06,
           "Winter": 0.2
         },
-        "Steers2to3Years": {
+        "Steers2To3Years": {
           "Spring": 0.2,
           "Summer": 0.09,
           "Autumn": 0.06,
@@ -1224,7 +1224,7 @@
           "November 2025": 0.2,
           "December 2025": 0.09
         },
-        "Cows2to3Years": {
+        "Cows2To3Years": {
           "January 2025": 0.09,
           "February 2025": 0.09,
           "March 2025": 0.06,
@@ -1280,7 +1280,7 @@
           "November 2025": 0.2,
           "December 2025": 0.09
         },
-        "Steers2to3Years": {
+        "Steers2To3Years": {
           "January 2025": 0.09,
           "February 2025": 0.09,
           "March 2025": 0.06,

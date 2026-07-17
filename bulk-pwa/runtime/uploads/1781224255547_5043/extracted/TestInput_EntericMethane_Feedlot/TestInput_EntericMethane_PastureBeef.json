@@ -49,7 +49,7 @@
           ]
         },
         {
-          "ColumnName": "Cows2to3Years",
+          "ColumnName": "Cows2To3Years",
           "Rows": [
             { "RowName": "Spring", "Value": 91.25 },
             { "RowName": "Summer", "Value": 91.25 },
@@ -85,7 +85,7 @@
           ]
         },
         {
-          "ColumnName": "Steers2to3Years",
+          "ColumnName": "Steers2To3Years",
           "Rows": [
             { "RowName": "Spring", "Value": 91.25 },
             { "RowName": "Summer", "Value": 91.25 },
@@ -176,7 +176,7 @@
           ]
         },
         {
-          "ColumnName": "Cows2to3Years",
+          "ColumnName": "Cows2To3Years",
           "Rows": [
             { "RowName": "January 2025", "Value": 31 },
             { "RowName": "February 2025", "Value": 29 },
@@ -244,7 +244,7 @@
           ]
         },
         {
-          "ColumnName": "Steers2to3Years",
+          "ColumnName": "Steers2To3Years",
           "Rows": [
             { "RowName": "January 2025", "Value": 31 },
             { "RowName": "February 2025", "Value": 29 },
@@ -319,7 +319,7 @@
           ]
         },
         {
-          "ColumnName": "Cows2to3Years",
+          "ColumnName": "Cows2To3Years",
           "Rows": [
             { "RowName": "Spring", "Value": 100 },
             { "RowName": "Summer", "Value": 100 },
@@ -355,7 +355,7 @@
           ]
         },
         {
-          "ColumnName": "Steers2to3Years",
+          "ColumnName": "Steers2To3Years",
           "Rows": [
             { "RowName": "Spring", "Value": 100 },
             { "RowName": "Summer", "Value": 100 },
@@ -446,7 +446,7 @@
           ]
         },
         {
-          "ColumnName": "Cows2to3Years",
+          "ColumnName": "Cows2To3Years",
           "Rows": [
             { "RowName": "January 2025", "Value": 100 },
             { "RowName": "February 2025", "Value": 100 },
@@ -514,7 +514,7 @@
           ]
         },
         {
-          "ColumnName": "Steers2to3Years",
+          "ColumnName": "Steers2To3Years",
           "Rows": [
             { "RowName": "January 2025", "Value": 100 },
             { "RowName": "February 2025", "Value": 100 },
@@ -589,7 +589,7 @@
           ]
         },
         {
-          "ColumnName": "Cows2to3Years",
+          "ColumnName": "Cows2To3Years",
           "Rows": [
             { "RowName": "Spring", "Value": 550 },
             { "RowName": "Summer", "Value": 530 },
@@ -625,7 +625,7 @@
           ]
         },
         {
-          "ColumnName": "Steers2to3Years",
+          "ColumnName": "Steers2To3Years",
           "Rows": [
             { "RowName": "Spring", "Value": 480 },
             { "RowName": "Summer", "Value": 470 },
@@ -716,7 +716,7 @@
           ]
         },
         {
-          "ColumnName": "Cows2to3Years",
+          "ColumnName": "Cows2To3Years",
           "Rows": [
             { "RowName": "January 2025", "Value": 530 },
             { "RowName": "February 2025", "Value": 530 },
@@ -784,7 +784,7 @@
           ]
         },
         {
-          "ColumnName": "Steers2to3Years",
+          "ColumnName": "Steers2To3Years",
           "Rows": [
             { "RowName": "January 2025", "Value": 470 },
             { "RowName": "February 2025", "Value": 470 },
@@ -859,7 +859,7 @@
           ]
         },
         {
-          "ColumnName": "Cows2to3Years",
+          "ColumnName": "Cows2To3Years",
           "Rows": [
             { "RowName": "Spring", "Value": 0.66 },
             { "RowName": "Summer", "Value": -0.22 },
@@ -895,7 +895,7 @@
           ]
         },
         {
-          "ColumnName": "Steers2to3Years",
+          "ColumnName": "Steers2To3Years",
           "Rows": [
             { "RowName": "Spring", "Value": 1.1 },
             { "RowName": "Summer", "Value": -0.11 },
@@ -986,7 +986,7 @@
           ]
         },
         {
-          "ColumnName": "Cows2to3Years",
+          "ColumnName": "Cows2To3Years",
           "Rows": [
             { "RowName": "January 2025", "Value": -0.22 },
             { "RowName": "February 2025", "Value": -0.22 },
@@ -1054,7 +1054,7 @@
           ]
         },
         {
-          "ColumnName": "Steers2to3Years",
+          "ColumnName": "Steers2To3Years",
           "Rows": [
             { "RowName": "January 2025", "Value": -0.11 },
             { "RowName": "February 2025", "Value": -0.11 },
@@ -1141,7 +1141,7 @@
           ]
         },
         {
-          "ColumnName": "Cows2to3Years",
+          "ColumnName": "Cows2To3Years",
           "Rows": [
             { "RowName": "Spring", "Value": 0.8 },
             { "RowName": "Summer", "Value": 0.58 },
@@ -1177,7 +1177,7 @@
           ]
         },
         {
-          "ColumnName": "Steers2to3Years",
+          "ColumnName": "Steers2To3Years",
           "Rows": [
             { "RowName": "Spring", "Value": 0.8 },
             { "RowName": "Summer", "Value": 0.58 },
@@ -1268,7 +1268,7 @@
           ]
         },
         {
-          "ColumnName": "Cows2to3Years",
+          "ColumnName": "Cows2To3Years",
           "Rows": [
             { "RowName": "January 2025", "Value": 0.58 },
             { "RowName": "February 2025", "Value": 0.58 },
@@ -1336,7 +1336,7 @@
           ]
         },
         {
-          "ColumnName": "Steers2to3Years",
+          "ColumnName": "Steers2To3Years",
           "Rows": [
             { "RowName": "January 2025", "Value": 0.58 },
             { "RowName": "February 2025", "Value": 0.58 },
@@ -1411,7 +1411,7 @@
           ]
         },
         {
-          "ColumnName": "Cows2to3Years",
+          "ColumnName": "Cows2To3Years",
           "Rows": [
             { "RowName": "Spring", "Value": 0.2 },
             { "RowName": "Summer", "Value": 0.09 },
@@ -1447,7 +1447,7 @@
           ]
         },
         {
-          "ColumnName": "Steers2to3Years",
+          "ColumnName": "Steers2To3Years",
           "Rows": [
             { "RowName": "Spring", "Value": 0.2 },
             { "RowName": "Summer", "Value": 0.09 },
@@ -1538,7 +1538,7 @@
           ]
         },
         {
-          "ColumnName": "Cows2to3Years",
+          "ColumnName": "Cows2To3Years",
           "Rows": [
             { "RowName": "January 2025", "Value": 0.09 },
             { "RowName": "February 2025", "Value": 0.09 },
@@ -1606,7 +1606,7 @@
           ]
         },
         {
-          "ColumnName": "Steers2to3Years",
+          "ColumnName": "Steers2To3Years",
           "Rows": [
             { "RowName": "January 2025", "Value": 0.09 },
             { "RowName": "February 2025", "Value": 0.09 },

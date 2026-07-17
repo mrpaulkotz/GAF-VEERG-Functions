@@ -98,6 +98,11 @@ if ([string]::IsNullOrWhiteSpace($nameContains)) {
   throw "Test entry '$TestID' in '$resolvedConfigPath' is missing TestExcelFile."
 }
 
+$testExcelDirectoryName = $null
+if (@($testEntry.PSObject.Properties.Name) -contains 'TestExcelDirectory') {
+  $testExcelDirectoryName = [string] $testEntry.TestExcelDirectory
+}
+
 $testInputFile = [string] $testEntry.TestInputFile
 if ([string]::IsNullOrWhiteSpace($testInputFile)) {
   throw "Test entry '$TestID' in '$resolvedConfigPath' is missing TestInputFile."
@@ -158,8 +163,17 @@ function Convert-ToNullableDouble {
   return $null
 }
 
+$excelSearchRoot = $resolvedExcelRoot
+if (-not [string]::IsNullOrWhiteSpace($testExcelDirectoryName)) {
+  $candidateSearchRoot = Join-Path $resolvedExcelRoot $testExcelDirectoryName
+  if (-not (Test-Path -LiteralPath $candidateSearchRoot -PathType Container)) {
+    throw "TestExcelDirectory '$testExcelDirectoryName' for TestID '$TestID' was not found under '$resolvedExcelRoot'."
+  }
+  $excelSearchRoot = (Resolve-Path -LiteralPath $candidateSearchRoot).Path
+}
+
 $excelFiles = @(
-  Get-ChildItem -Path $resolvedExcelRoot -File -Recurse |
+  Get-ChildItem -Path $excelSearchRoot -File -Recurse |
     Where-Object {
       $_.Name -notlike '~$*' -and
       $_.Name -match [regex]::Escape($nameContains) -and
@@ -169,7 +183,7 @@ $excelFiles = @(
 )
 
 if ($excelFiles.Count -eq 0) {
-  throw "No Excel files found under '$resolvedExcelRoot' with '$nameContains' in the filename."
+  throw "No Excel files found under '$excelSearchRoot' with '$nameContains' in the filename."
 }
 
 $preferredExcelFiles = @(

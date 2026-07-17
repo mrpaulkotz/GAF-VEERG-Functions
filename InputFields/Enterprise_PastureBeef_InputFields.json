@@ -1,7 +1,7 @@
 {
 	"schemaVersion": 1,
 	"generatedFrom": "Enterprise_PastureBeef_WIP_v01.xlsx",
-	"generatedAt": "2026-07-15T11:21:20Z",
+	"generatedAt": "2026-07-16T04:36:19Z",
 	"InputCells": [
 		{
 			"CellName": "X_Cell_Site_FarmName",
@@ -376,6 +376,70 @@
 	],
 	"InputTables": [
 		{
+			"TableName": "X_Table_Result_ActivityPeriodEmissions_RowsToCols",
+			"MatrixType": "RowsToCols",
+			"NumberOfRows": 6,
+			"NumberOfCols": 3,
+			"ColumnNames": {
+				"EmissionsCalculationCycle": "Emissions calculation cycle",
+				"CO2EEmissionsMethod1": "CO2-e emissions method 1",
+				"CO2EEmissionsMethod2": "CO2-e emissions method 2"
+			},
+			"Rows": {
+				"Row": {
+					"EmissionsCalculationCycle": {
+						"Row": 2,
+						"Col": 1,
+						"Header": "Emissions calculation cycle",
+						"CellType": "formula",
+						"CanOverwriteFormula": true
+					},
+					"CO2EEmissionsMethod1": {
+						"Row": 2,
+						"Col": 2,
+						"Header": "CO2-e emissions method 1",
+						"CellType": "formula",
+						"CanOverwriteFormula": true
+					},
+					"CO2EEmissionsMethod2": {
+						"Row": 2,
+						"Col": 3,
+						"Header": "CO2-e emissions method 2",
+						"CellType": "formula",
+						"CanOverwriteFormula": true
+					}
+				}
+			}
+		},
+		{
+			"TableName": "X_Table_Result_CarbonRemovalsFromPlantings_RowsToCols",
+			"MatrixType": "RowsToCols",
+			"NumberOfRows": 6,
+			"NumberOfCols": 2,
+			"ColumnNames": {
+				"EmissionsCalculationCycle": "Emissions calculation cycle",
+				"CO2RemovedAttributedToThisEnterprise": "CO2 removed attributed to this enterprise"
+			},
+			"Rows": {
+				"Row": {
+					"EmissionsCalculationCycle": {
+						"Row": 2,
+						"Col": 1,
+						"Header": "Emissions calculation cycle",
+						"CellType": "formula",
+						"CanOverwriteFormula": true
+					},
+					"CO2RemovedAttributedToThisEnterprise": {
+						"Row": 2,
+						"Col": 2,
+						"Header": "CO2 removed attributed to this enterprise",
+						"CellType": "number",
+						"CanOverwriteFormula": true
+					}
+				}
+			}
+		},
+		{
 			"TableName": "X_Table_PastureBeef_Duration_Method1",
 			"MatrixType": "ColsToRows",
 			"NumberOfRows": 5,
@@ -419,6 +483,10 @@
 						"CellType": "number"
 					}
 				}
+			},
+			"NotUsedWhen": {
+				"Field": "X_Cell_PastureBeef_Method1OrMethod2",
+				"Equals": "Method 2"
 			}
 		},
 		{
@@ -525,6 +593,10 @@
 						"CanOverWriteFormula": true
 					}
 				}
+			},
+			"NotUsedWhen": {
+				"Field": "X_Cell_PastureBeef_Method1OrMethod2",
+				"Equals": "Method 1"
 			}
 		},
 		{
@@ -571,6 +643,10 @@
 						"CellType": "number"
 					}
 				}
+			},
+			"NotUsedWhen": {
+				"Field": "X_Cell_PastureBeef_Method1OrMethod2",
+				"Equals": "Method 2"
 			}
 		},
 		{
@@ -677,6 +753,10 @@
 						"CanOverWriteFormula": true
 					}
 				}
+			},
+			"NotUsedWhen": {
+				"Field": "X_Cell_PastureBeef_Method1OrMethod2",
+				"Equals": "Method 1"
 			}
 		},
 		{
@@ -723,7 +803,14 @@
 						"CellType": "formula"
 					}
 				}
-			}
+			},
+			"NotUsedWhen": {
+				"Field": "X_Cell_PastureBeef_Method1OrMethod2",
+				"Equals": "Method 2"
+			},
+			"DefaultDataDocumentType": "JSON",
+			"DefaultDataFile": "node_modules/gaf-veerg-functions/generated-sourcedata/SourceData_PastureBeef.sourcedata.json",
+			"DefaultDataLocation": null
 		},
 		{
 			"TableName": "X_Table_PastureBeef_Liveweight_Method2",
@@ -829,7 +916,14 @@
 						"CanOverWriteFormula": true
 					}
 				}
-			}
+			},
+			"NotUsedWhen": {
+				"Field": "X_Cell_PastureBeef_Method1OrMethod2",
+				"Equals": "Method 1"
+			},
+			"DefaultDataDocumentType": "JSON",
+			"DefaultDataFile": "node_modules/gaf-veerg-functions/generated-sourcedata/SourceData_PastureBeef.sourcedata.json",
+			"DefaultDataLocation": null
 		},
 		{
 			"TableName": "X_Table_PastureBeef_LiveweightGain_Method1",
@@ -875,7 +969,14 @@
 						"CellType": "formula"
 					}
 				}
-			}
+			},
+			"NotUsedWhen": {
+				"Field": "X_Cell_PastureBeef_Method1OrMethod2",
+				"Equals": "Method 2"
+			},
+			"DefaultDataDocumentType": "JSON",
+			"DefaultDataFile": "node_modules/gaf-veerg-functions/generated-sourcedata/SourceData_PastureBeef.sourcedata.json",
+			"DefaultDataLocation": null
 		},
 		{
 			"TableName": "X_Table_PastureBeef_LiveweightGain_Method2",
@@ -981,7 +1082,14 @@
 						"CanOverWriteFormula": true
 					}
 				}
-			}
+			},
+			"NotUsedWhen": {
+				"Field": "X_Cell_PastureBeef_Method1OrMethod2",
+				"Equals": "Method 1"
+			},
+			"DefaultDataDocumentType": "JSON",
+			"DefaultDataFile": "node_modules/gaf-veerg-functions/generated-sourcedata/SourceData_PastureBeef.sourcedata.json",
+			"DefaultDataLocation": null
 		},
 		{
 			"TableName": "X_Table_PastureBeef_DryMatterDigestibility_Method1",
@@ -1027,7 +1135,14 @@
 						"CellType": "formula"
 					}
 				}
-			}
+			},
+			"NotUsedWhen": {
+				"Field": "X_Cell_PastureBeef_Method1OrMethod2",
+				"Equals": "Method 2"
+			},
+			"DefaultDataDocumentType": "JSON",
+			"DefaultDataFile": "node_modules/gaf-veerg-functions/generated-sourcedata/SourceData_PastureBeef.sourcedata.json",
+			"DefaultDataLocation": null
 		},
 		{
 			"TableName": "X_Table_PastureBeef_DryMatterDigestibility_Method2",
@@ -1133,7 +1248,14 @@
 						"CanOverWriteFormula": true
 					}
 				}
-			}
+			},
+			"NotUsedWhen": {
+				"Field": "X_Cell_PastureBeef_Method1OrMethod2",
+				"Equals": "Method 1"
+			},
+			"DefaultDataDocumentType": "JSON",
+			"DefaultDataFile": "node_modules/gaf-veerg-functions/generated-sourcedata/SourceData_PastureBeef.sourcedata.json",
+			"DefaultDataLocation": null
 		},
 		{
 			"TableName": "X_Table_PastureBeef_CrudeProtein_Method1",
@@ -1179,7 +1301,14 @@
 						"CellType": "formula"
 					}
 				}
-			}
+			},
+			"NotUsedWhen": {
+				"Field": "X_Cell_PastureBeef_Method1OrMethod2",
+				"Equals": "Method 2"
+			},
+			"DefaultDataDocumentType": "JSON",
+			"DefaultDataFile": "node_modules/gaf-veerg-functions/generated-sourcedata/SourceData_PastureBeef.sourcedata.json",
+			"DefaultDataLocation": null
 		},
 		{
 			"TableName": "X_Table_PastureBeef_CrudeProtein_Method2",
@@ -1285,7 +1414,14 @@
 						"CanOverWriteFormula": true
 					}
 				}
-			}
+			},
+			"NotUsedWhen": {
+				"Field": "X_Cell_PastureBeef_Method1OrMethod2",
+				"Equals": "Method 1"
+			},
+			"DefaultDataDocumentType": "JSON",
+			"DefaultDataFile": "node_modules/gaf-veerg-functions/generated-sourcedata/SourceData_PastureBeef.sourcedata.json",
+			"DefaultDataLocation": null
 		},
 		{
 			"TableName": "Table_Input_LivestockPurchases_Beefcattle49",
@@ -1495,7 +1631,8 @@
 						"Unit": "kg/head"
 					}
 				}
-			}
+			},
+			"CanMarkAsNotUsed": true
 		},
 		{
 			"TableName": "Table_Input_LivestockSales3",
@@ -1666,7 +1803,8 @@
 						"CellType": "formula"
 					}
 				}
-			}
+			},
+			"CanMarkAsNotUsed": true
 		},
 		{
 			"TableName": "Table_Input_InorganicFertiliser_Custom",
@@ -1837,7 +1975,8 @@
 						}
 					}
 				}
-			}
+			},
+			"CanMarkAsNotUsed": true
 		},
 		{
 			"TableName": "Table_Input_Lime",
@@ -1884,7 +2023,8 @@
 						"CellType": "formula"
 					}
 				}
-			}
+			},
+			"CanMarkAsNotUsed": true
 		},
 		{
 			"TableName": "Table_Input_OrganicFertiliser",
@@ -1934,7 +2074,8 @@
 						"Unit": "kg"
 					}
 				}
-			}
+			},
+			"CanMarkAsNotUsed": true
 		},
 		{
 			"TableName": "Table_Input_Fuel",
@@ -2027,7 +2168,8 @@
 						"CellType": "formula"
 					}
 				}
-			}
+			},
+			"CanMarkAsNotUsed": true
 		},
 		{
 			"TableName": "Table_Input_RECSurrendered",
@@ -2066,6 +2208,10 @@
 						"CellType": "formula"
 					}
 				}
+			},
+			"NotUsedWhen": {
+				"Field": "X_Cell_Electricity_CalculationMethod",
+				"Equals": "Location-based (Simpler)"
 			}
 		},
 		{
@@ -2101,6 +2247,10 @@
 						"CellType": "formula"
 					}
 				}
+			},
+			"NotUsedWhen": {
+				"Field": "X_Cell_Electricity_CalculationMethod",
+				"Equals": "Location-based (Simpler)"
 			}
 		}
 	],
@@ -2147,5 +2297,28 @@
 				]
 			}
 		]
-	]
+	],
+	"FirstClassResults": {
+		"Result_Enterprise_Method1": {
+			"Label": "Emissions for this activity period (Method 1)"
+		},
+		"Result_Enterprise_Method2": {
+			"Label": "Emissions for this activity period (Method 2)"
+		}
+	},
+	"ActivityPeriodResultTables": {
+		"X_Table_Result_ActivityPeriodEmissions_RowsToCols": {
+			"CycleLabelColumn": "EmissionsCalculationCycle",
+			"ResultColumns": {
+				"Result_Enterprise_Method1": "CO2EEmissionsMethod1",
+				"Result_Enterprise_Method2": "CO2EEmissionsMethod2"
+			}
+		},
+		"X_Table_Result_CarbonRemovalsFromPlantings_RowsToCols": {
+			"CycleLabelColumn": "EmissionsCalculationCycle",
+			"ResultColumns": {
+				"Allocated_CarbonRemovalsFromPlantings": "CO2RemovedAttributedToThisEnterprise"
+			}
+		}
+	}
 }

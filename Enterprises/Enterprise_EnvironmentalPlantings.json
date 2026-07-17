@@ -5,7 +5,8 @@
     "name": "Environmental Plantings Enterprise",
     "description": "An environmental plantings enterprise: carbon sequestration impacts from the plantings, plus the farm's energy, waste and upstream (Scope 3) emissions.",
     "templateWorkbook": "Enterprise_EnvironmentalPlantings_Template_WIP_v01.xlsx",
-    "outputWorkbook": "Enterprise_EnvironmentalPlantings_WIP_v01.xlsx"
+    "outputWorkbook": "Enterprise_EnvironmentalPlantings_WIP_v01.xlsx",
+    "allocatable": true
   },
 
   "customSheets": [

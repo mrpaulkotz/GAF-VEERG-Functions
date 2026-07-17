@@ -1,10 +1,12 @@
-{
+﻿{
   "_comment": "Per-field OVERRIDES for the Pasture Beef enterprise input fields. This file is SEPARATE from the enterprise definition (Enterprises/Enterprise_PastureBeef.json). It is hand-maintained and is NEVER overwritten by 'npm run build:input-fields'; instead it is merged over the generated InputFields/Enterprise_PastureBeef_InputFields.json on every build. Only the fields named here are touched - every other field, option and table comes straight from Excel. Any top-level key starting with '_' (like this one) is ignored.",
   "_usage": "Under 'InputCells' key each entry by its CellName; under 'InputTables' key each entry by its TableName and (optionally) its columns by column key. The properties you set are copied onto the matching field as-is, so you can add whatever the consuming app understands (Label, Group, Order, Hidden, Default, UseDefault, HelpText, ...). Setting an existing generated property (e.g. CellType) replaces it. Use 'FieldGroups' to lay out cells/tables into named groups in any order you like; each group's Items is an array of cell/table names and/or nested subgroups.",
   "_schema": {
     "InputCells": { "<CellName>": { "Label": "text", "Group": "text", "Order": 0, "Hidden": false, "UseDefault": false, "Default": "value", "DuplicateOf": "value", "CanMarkAsNotUsed": false, "NotUsedWhen": "condition" } },
     "InputTables": { "<TableName>": { "Label": "text", "Group": "text", "Columns": { "<ColumnKey>": { "Label": "text", "Default": "value", "CanMarkAsNotUsed": false, "NotUsedWhen": "condition" } } } },
-    "FieldGroups": [ { "Name": "text", "Items": [ "<CellOrTableName>", { "Name": "text", "Items": [ "<CellOrTableName>" ] } ] } ]
+    "FieldGroups": [ { "Name": "text", "Items": [ "<CellOrTableName>", { "Name": "text", "Items": [ "<CellOrTableName>" ] } ] } ],
+    "FirstClassResults": { "<ResultName>": { "Label": "text" } },
+    "ActivityPeriodResultTables": { "<TableName>": { "CycleLabelColumn": "<ColumnKey>", "ResultColumns": { "<ResultName>": "<ColumnKey>" } } }
   },
 
   "InputCells": {
@@ -50,12 +52,6 @@
     "X_Cell_Electricity_Market_AmountPurchasedGreenPower": {
       "NotUsedWhen": { "Field": "X_Cell_Electricity_CalculationMethod", "Equals": "Location-based (Simpler)" }
     },
-    "Table_Input_RECSurrendered": {
-      "NotUsedWhen": { "Field": "X_Cell_Electricity_CalculationMethod", "Equals": "Location-based (Simpler)" }
-    },
-    "Table_Input_RECConsumedByEntity": {
-      "NotUsedWhen": { "Field": "X_Cell_Electricity_CalculationMethod", "Equals": "Location-based (Simpler)" }
-    },
     "X_Cell_PastureBeef_Method1OrMethod2": {
       "Label": "Pasture beef input method",
       "CellType": "select",
@@ -63,6 +59,24 @@
         "Method 1": "Method 1",
         "Method 2": "Method 2"
       }
+    },
+    "X_Cell_PastureBeef_ProductionRegion":{
+        "DependentOn": "X_Cell_Site_State"
+    },
+	"X_Cell_Pasture_YieldPerHectare": {
+        "CanOverWriteFormula": true,
+        "DefaultDataDocumentType": "JSON",
+        "DefaultDataFile": "node_modules/gaf-veerg-functions/generated-sourcedata/AgResidue_SourceData.sourcedata.json",
+        "DefaultDataLocation": null
+    }
+  },
+
+  "InputTables": {
+    "Table_Input_RECSurrendered": {
+      "NotUsedWhen": { "Field": "X_Cell_Electricity_CalculationMethod", "Equals": "Location-based (Simpler)" }
+    },
+    "Table_Input_RECConsumedByEntity": {
+      "NotUsedWhen": { "Field": "X_Cell_Electricity_CalculationMethod", "Equals": "Location-based (Simpler)" }
     },
     "X_Table_PastureBeef_CrudeProtein_Method1": {
        "NotUsedWhen": { "Field": "X_Cell_PastureBeef_Method1OrMethod2", "Equals": "Method 2" },
@@ -142,19 +156,30 @@
     "Table_Input_LivestockPurchases_Beefcattle":{
         "CanMarkAsNotUsed": true
     },
-    "X_Cell_PastureBeef_ProductionRegion":{
-        "DependentOn": "X_Cell_Site_State"
+    "X_Table_Result_ActivityPeriodEmissions_RowsToCols":{
+      "Columns":{
+        "EmissionsCalculationCycle": {
+          "CanOverwriteFormula": true
+        },
+        "CO2EEmissionsMethod1": {
+          "CanOverwriteFormula": true
+        },
+        "CO2EEmissionsMethod2": {
+          "CanOverwriteFormula": true
+        }
+      }
     },
-	"X_Cell_Pasture_YieldPerHectare": {
-        "CanOverWriteFormula": true,
-        "DefaultDataDocumentType": "JSON",
-        "DefaultDataFile": "node_modules/gaf-veerg-functions/generated-sourcedata/AgResidue_SourceData.sourcedata.json",
-        "DefaultDataLocation": null
+    "X_Table_Result_CarbonRemovalsFromPlantings_RowsToCols":{
+      "Columns":{
+        "EmissionsCalculationCycle": {
+          "CanOverwriteFormula": true
+        },
+        "CO2RemovedAttributedToThisEnterprise": {
+          "CanOverwriteFormula": true
+        }
+      }
     }
-    
   },
-
-  "InputTables": {},
 
   "FieldGroups": [
     {
@@ -193,5 +218,29 @@
         "X_Cell_PastureBeef_Method1OrMethod2"
       ]
     }
-  ]
+  ],
+  "FirstClassResults": {
+    "Result_Enterprise_Method1": {
+      "Label": "Emissions for this activity period (Method 1)"
+    },
+    "Result_Enterprise_Method2": {
+      "Label": "Emissions for this activity period (Method 2)"
+    }
+  },
+  "ActivityPeriodResultTables": {
+    "X_Table_Result_ActivityPeriodEmissions_RowsToCols": {
+      "CycleLabelColumn": "EmissionsCalculationCycle",
+      "ResultColumns": {
+        "Result_Enterprise_Method1": "CO2EEmissionsMethod1",
+        "Result_Enterprise_Method2": "CO2EEmissionsMethod2"
+      }
+    },
+    "X_Table_Result_CarbonRemovalsFromPlantings_RowsToCols": {
+      "CycleLabelColumn": "EmissionsCalculationCycle",
+      "CurrentPeriodOnly": true,
+      "ResultColumns": {
+        "Allocated_CarbonRemovalsFromPlantings": "CO2RemovedAttributedToThisEnterprise"
+      }
+    }
+  }
 }

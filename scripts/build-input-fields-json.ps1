@@ -1280,6 +1280,13 @@ function Get-NamedRangeTables {
       if ($checked -gt 0 -and $textCount -ge [math]::Ceiling($checked / 2.0)) { $labelColumn = $true }
     }
 
+    # An explicit matrix-type suffix on the defined name overrides the heuristic:
+    #   *_RowsToCols -> header row holds the field columns (labelColumn = false)
+    #   *_ColsToRows -> column 1 holds the row labels     (labelColumn = true)
+    # The suffix is retained in the emitted TableName.
+    if ($shortName -match '(?i)_RowsToCols$') { $labelColumn = $false }
+    elseif ($shortName -match '(?i)_ColsToRows$') { $labelColumn = $true }
+
     # _Method2 on the table name marks the whole table as an overwritable formula default.
     $forceOverwrite = $shortName -match '(?i)_Method2'
 

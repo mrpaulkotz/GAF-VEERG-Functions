@@ -1,7 +1,7 @@
 {
 	"schemaVersion": 1,
 	"generatedFrom": "Enterprise_EnvironmentalPlantings_WIP_v01.xlsx",
-	"generatedAt": "2026-07-15T11:20:53Z",
+	"generatedAt": "2026-07-16T04:35:55Z",
 	"InputCells": [
 		{
 			"CellName": "X_Cell_Planting_Latitude",
@@ -22,6 +22,11 @@
 			"CellName": "X_Cell_Planting_PlantingName",
 			"Label": "Planting name",
 			"CellType": "text"
+		},
+		{
+			"CellName": "X_Cell_Planting_PlantingAreaInHectares",
+			"Label": "Planting area in hectares",
+			"CellType": "number"
 		},
 		{
 			"CellName": "X_Cell_Site_StartDate",
@@ -666,5 +671,21 @@
 				}
 			}
 		}
-	]
+	],
+	"FieldGroups": [
+		[
+			{
+				"Name": "",
+				"Items": []
+			}
+		]
+	],
+	"FirstClassResults": {
+		"X_Result_Planting_CarbonCapturedPerHectare": {
+			"Label": "Carbon captured per hectare"
+		},
+		"X_Result_Planting_CarbonCapturedTotalArea": {
+			"Label": "Carbon captured total area"
+		}
+	}
 }

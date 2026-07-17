@@ -1,5 +1,21 @@
 {
     "Tests": {
+        "Enterprises": {
+            "PastureBeef": {
+                "TestID": "Enterprise_PastureBeef",
+                "TestExcelFile": "Enterprise_PastureBeef",
+                "TestExcelDirectory": "Enterprises",
+                "TestInputFile": "Enterprises/PastureBeef/TestInput_Enterprise_PastureBeef.json",
+                "TestResultsFile": "Enterprises/PastureBeef/TestResults_Enterprise_PastureBeef.json"
+            },
+            "EnvironmentalPlantings": {
+                "TestID": "Enterprise_EnvironmentalPlantings",
+                "TestExcelFile": "Enterprise_EnvironmentalPlantings",
+                "TestExcelDirectory": "Enterprises",
+                "TestInputFile": "Enterprises/EnvironmentalPlantings/TestInput_Enterprise_EnvironmentalPlantings.json",
+                "TestResultsFile": "Enterprises/EnvironmentalPlantings/TestResults_Enterprise_EnvironmentalPlantings.json"
+            }
+        },
         "AgResidue": {
             "TestID": "6_AgResidue",
             "TestExcelFile": "6_AgriculturalResidue",
