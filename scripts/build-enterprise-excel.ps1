@@ -333,6 +333,47 @@ function Remove-RedundantSheetScopedNames {
 # Excel COM helpers
 # ---------------------------------------------------------------------------
 
+function Convert-StringifiedFormula {
+  # A formula typed with a leading apostrophe ('=...) is stored by Excel as TEXT:
+  # the cell value is the literal "=..." string, HasFormula is false and the cell
+  # carries a "'" PrefixCharacter. Rewrite those cells as real formulas (via
+  # Formula2, so spilling structured refs like Table[Col] are preserved) so they
+  # evaluate. Real formula cells are skipped because their Value2 is the result,
+  # not the "=" text, and HasFormula guards the rest. Returns the count converted.
+  param([Parameter(Mandatory = $true)] $Workbook)
+
+  $converted = 0
+  foreach ($ws in $Workbook.Worksheets) {
+    $ur = $null
+    try { $ur = $ws.UsedRange } catch { $ur = $null }
+    if ($null -eq $ur) { continue }
+    $v = $ur.Value2
+    $rowBase = [int] $ur.Row
+    $colBase = [int] $ur.Column
+    if ($v -is [System.Array]) {
+      $rows = $v.GetLength(0); $cols = $v.GetLength(1)
+      for ($i = 1; $i -le $rows; $i++) {
+        for ($j = 1; $j -le $cols; $j++) {
+          $cellVal = $v.GetValue($i, $j)
+          if ($cellVal -isnot [string] -or -not $cellVal.StartsWith('=')) { continue }
+          try {
+            $cell = $ws.Cells.Item($rowBase + $i - 1, $colBase + $j - 1)
+            if ([bool] $cell.HasFormula) { continue }
+            $cell.Formula2 = $cellVal
+            $converted++
+          } catch { }
+        }
+      }
+    } elseif ($v -is [string] -and $v.StartsWith('=')) {
+      try {
+        $cell = $ws.Cells.Item($rowBase, $colBase)
+        if (-not [bool] $cell.HasFormula) { $cell.Formula2 = $v; $converted++ }
+      } catch { }
+    }
+  }
+  return $converted
+}
+
 function New-ExcelApp {
   $x = New-Object -ComObject Excel.Application
   $x.Visible = $false
@@ -896,6 +937,11 @@ try {
   $namesStillExternal = 0
   $refsRepointed = 0
   if (-not $DryRun) {
+    # Convert stringified formulas ('=... stored as text) into real formulas
+    # before localisation so any external refs they carry get rebound too.
+    $stringifiedFixed = Convert-StringifiedFormula -Workbook $target
+    if ($stringifiedFixed -gt 0) { Write-Host ("Converted {0} stringified formula cell(s) to real formulas." -f $stringifiedFixed) }
+
     # Authoritative set of local sheet names (script-scoped so the regex
     # MatchEvaluator can see it reliably).
     $script:__localSheets = New-Object 'System.Collections.Generic.HashSet[string]' ([System.StringComparer]::OrdinalIgnoreCase)
