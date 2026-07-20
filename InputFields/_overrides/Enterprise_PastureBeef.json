@@ -62,6 +62,16 @@
         "Method 2": "Method 2"
       }
     },
+    "X_Cell_PastureBeef_HerdMovementMethod": {
+      "Label": "Herd movement data entry method",
+      "CellType": "select",
+      "HelpText": "Manual: enter every head count by hand (no cross-checking against sales and purchases). Automated: enter only the opening head count for each class at the start of the activity period; the head counts for every month/season are calculated from your purchases and sales, and each sale or purchase is validated against the herd on hand.",
+      "Options": {
+        "Manual": "Manual",
+        "Automated": "Automated"
+      },
+      "Default": "Manual"
+    },
     "X_Cell_PastureBeef_ProductionRegion":{
         "DependentOn": "X_Cell_Site_State"
     },
@@ -75,17 +85,14 @@
 
   "InputTables": {
     "Table_Input_RECSurrendered": {
-      "Label": "Renewable Energy Certificates (RECs) surrendered",
       "ChatHelp": true,
       "NotUsedWhen": { "Field": "X_Cell_Electricity_CalculationMethod", "Equals": "Location-based (Simpler)" }
     },
     "Table_Input_RECConsumedByEntity": {
-      "Label": "Renewable Energy Certificates (RECs) consumed by entity",
       "ChatHelp": true,
       "NotUsedWhen": { "Field": "X_Cell_Electricity_CalculationMethod", "Equals": "Location-based (Simpler)" }
     },
     "X_Table_PastureBeef_CrudeProtein_Method1": {
-      "Label" : "Crude protein (Method 1)",
       "ChatHelp": true,
        "NotUsedWhen": { "Field": "X_Cell_PastureBeef_Method1OrMethod2", "Equals": "Method 2" },
        "DefaultDataDocumentType": "JSON",
@@ -93,7 +100,6 @@
       "DefaultDataLocation": null
     },
     "X_Table_PastureBeef_DryMatterDigestibility_Method1": {
-      "Label" : "Dry matter digestibility (Method 1)",
       "ChatHelp": true,
       "NotUsedWhen": { "Field": "X_Cell_PastureBeef_Method1OrMethod2", "Equals": "Method 2" },
       "DefaultDataDocumentType": "JSON",
@@ -101,17 +107,14 @@
       "DefaultDataLocation": null
     },
     "X_Table_PastureBeef_Duration_Method1": {
-      "Label" : "Duration in herd (days) (Method 1)",
       "ChatHelp": true,
       "NotUsedWhen": { "Field": "X_Cell_PastureBeef_Method1OrMethod2", "Equals": "Method 2" }
     },
     "X_Table_PastureBeef_Head_Method1": {
-      "Label" : "Head of cattle (Method 1)",
       "ChatHelp": true,
       "NotUsedWhen": { "Field": "X_Cell_PastureBeef_Method1OrMethod2", "Equals": "Method 2" }
     },
     "X_Table_PastureBeef_Liveweight_Method1": {
-      "Label" : "Liveweight (Method 1)",
       "ChatHelp": true,
       "NotUsedWhen": { "Field": "X_Cell_PastureBeef_Method1OrMethod2", "Equals": "Method 2" },
       "DefaultDataDocumentType": "JSON",
@@ -119,7 +122,6 @@
       "DefaultDataLocation": null
     },
     "X_Table_PastureBeef_LiveweightGain_Method1": {
-      "Label" : "Liveweight gain (Method 1)",
       "ChatHelp": true,
       "NotUsedWhen": { "Field": "X_Cell_PastureBeef_Method1OrMethod2", "Equals": "Method 2" },
       "DefaultDataDocumentType": "JSON",
@@ -127,7 +129,6 @@
       "DefaultDataLocation": null
     },
     "X_Table_PastureBeef_CrudeProtein_Method2": {
-      "Label" : "Crude protein (Method 2)",
       "ChatHelp": true,
       "NotUsedWhen": { "Field": "X_Cell_PastureBeef_Method1OrMethod2", "Equals": "Method 1" },
       "DefaultDataDocumentType": "JSON",
@@ -135,7 +136,6 @@
       "DefaultDataLocation": null
     },
     "X_Table_PastureBeef_DryMatterDigestibility_Method2": {
-      "Label" : "Dry matter digestibility (Method 2)",
       "ChatHelp": true,
       "NotUsedWhen": { "Field": "X_Cell_PastureBeef_Method1OrMethod2", "Equals": "Method 1" },
       "DefaultDataDocumentType": "JSON",
@@ -143,17 +143,14 @@
       "DefaultDataLocation": null
     },
     "X_Table_PastureBeef_Duration_Method2": {
-      "Label" : "Duration in herd (days) (Method 2)",
       "ChatHelp": true,
       "NotUsedWhen": { "Field": "X_Cell_PastureBeef_Method1OrMethod2", "Equals": "Method 1" }
     },
     "X_Table_PastureBeef_Head_Method2": {
-      "Label" : "Head of cattle (Method 2)",
       "ChatHelp": true,
       "NotUsedWhen": { "Field": "X_Cell_PastureBeef_Method1OrMethod2", "Equals": "Method 1" }
     },
     "X_Table_PastureBeef_Liveweight_Method2": {
-      "Label" : "Liveweight (Method 2)",
       "ChatHelp": true,
       "NotUsedWhen": { "Field": "X_Cell_PastureBeef_Method1OrMethod2", "Equals": "Method 1" },
       "DefaultDataDocumentType": "JSON",
@@ -161,7 +158,6 @@
       "DefaultDataLocation": null
     },
     "X_Table_PastureBeef_LiveweightGain_Method2": {
-      "Label" : "Liveweight gain (Method 2)",
       "ChatHelp": true,
       "NotUsedWhen": { "Field": "X_Cell_PastureBeef_Method1OrMethod2", "Equals": "Method 1" },
       "DefaultDataDocumentType": "JSON",
@@ -169,27 +165,21 @@
       "DefaultDataLocation": null
     },
     "Table_Input_InorganicFertiliser_Brands":{
-        "CanMarkAsNotUsed": true,
-        "Label": "Inorganic fertiliser (branded product) applications"
+        "CanMarkAsNotUsed": true
     },
     "Table_Input_InorganicFertiliser_Custom":{
-        "CanMarkAsNotUsed": true,
-        "Label": "Inorganic fertiliser (Custom blends) applications"
+        "CanMarkAsNotUsed": true
     },
     "Table_Input_Lime":{
-        "CanMarkAsNotUsed": true,
-        "Label": "Lime applications"
+        "CanMarkAsNotUsed": true
     },
     "Table_Input_OrganicFertiliser":{
-        "CanMarkAsNotUsed": true,
-        "Label": "Organic fertiliser applications"
+        "CanMarkAsNotUsed": true
     },
     "Table_Input_Fuel":{
-        "CanMarkAsNotUsed": true,
-        "Label": "Fuel purchases"
+        "CanMarkAsNotUsed": true
     },
     "Table_Input_LivestockPurchases_Beefcattle":{
-        "Label": "Beef cattle purchases",
         "CanMarkAsNotUsed": true
     },
     "X_Table_Result_ActivityPeriodEmissions_RowsToCols":{
@@ -249,6 +239,7 @@
         "X_Cell_PastureBeef_Breed",
         "X_Cell_PastureBeef_GrazingProductionSystem",
         "X_Cell_PastureBeef_FencedWater",
+        "X_Cell_PastureBeef_HerdMovementMethod",
         "Table_Input_LivestockPurchases_Beefcattle",
         "Table_Input_LivestockSales",
         "X_Cell_PastureBeef_Method1OrMethod2"
@@ -289,9 +280,32 @@
         "X_Table_PastureBeef_Head_Method2",
         "X_Table_PastureBeef_Duration_Method2",
         "X_Table_PastureBeef_Head_Method1"
+      ],
+      "Deterministic": [
+        {
+          "Trigger": "Table_Input_LivestockSales",
+          "Targets": [
+            "X_Table_PastureBeef_Head_Method1",
+            "X_Table_PastureBeef_Head_Method2"
+          ]
+        }
       ]
     }
   ],
+
+  "HerdLedger": {
+    "MovementMethodField": "X_Cell_PastureBeef_HerdMovementMethod",
+    "AutomatedValue": "Automated",
+    "ManualValue": "Manual",
+    "OpeningStore": "__herdOpening",
+    "MethodSwitch": { "Fields": ["X_Cell_PastureBeef_Method1OrMethod2", "DataEntryMethod"], "Method1": "Method 1", "Method2": "Method 2" },
+    "HeadMethod1": { "Table": "X_Table_PastureBeef_Head_Method1", "Period": "season" },
+    "HeadMethod2": { "Table": "X_Table_PastureBeef_Head_Method2", "Period": "month" },
+    "Movements": [
+      { "Table": "Table_Input_LivestockPurchases_Beefcattle", "DateColumn": "PurchaseDate", "ClassColumn": "Class", "AmountColumn": "Quantity", "Sign": 1, "Label": "purchase" },
+      { "Table": "Table_Input_LivestockSales", "DateColumn": "SaleDate", "ClassColumn": "Class", "AmountColumn": "HeadSold", "Sign": -1, "Label": "sale" }
+    ]
+  },
 
   "Constraints": [
     {

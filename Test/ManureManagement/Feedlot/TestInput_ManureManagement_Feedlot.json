@@ -10,6 +10,8 @@
   "X_Cell_Site_TotalRainfall": 601,
   "X_Cell_Site_PotentialEvapotranspiration": 1326,
   "X_Cell_Site_FrostDays": 7,
+  "X_Cell_Feedlot_ProductionSystem": "Pasture",
+  "X_Cell_Feedlot_IrrigationMethod": "Not irrigated",
   "InputTables": [
     {
       "TableName": "X_Table_Feedlot_HerdMovement",
