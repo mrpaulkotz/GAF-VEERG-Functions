@@ -1455,6 +1455,44 @@ function Set-DateFieldTypes {
   }
 }
 
+function Set-NameFieldTypes {
+  # Any input field whose key contains 'name' (case-insensitive) is a free-text label
+  # (e.g. TransactionName, FarmName). The format-based detection reports these as
+  # 'number' when the representative body cell is blank; coerce that to 'text'.
+  # Dropdowns ('select'), computed ('formula') and already-correct types are untouched.
+  param([Parameter(Mandatory = $true)] $Model)
+
+  $coerce = {
+    param($Key, $Def)
+    if ($Key -notmatch '(?i)name') { return }
+    if ($null -eq $Def -or -not ($Def -is [System.Collections.IDictionary])) { return }
+    if (-not $Def.Contains('CellType')) { return }
+    if ($Def['CellType'] -eq 'number') { $Def['CellType'] = 'text' }
+  }
+
+  foreach ($cell in @($Model.InputCells)) {
+    if ($cell -is [System.Collections.IDictionary] -and $cell.Contains('CellName')) {
+      & $coerce $cell['CellName'] $cell
+    }
+  }
+
+  foreach ($table in @($Model.InputTables)) {
+    if (-not ($table -is [System.Collections.IDictionary])) { continue }
+    foreach ($container in @('Rows', 'Cols')) {
+      if (-not $table.Contains($container)) { continue }
+      $inner = $table[$container]
+      if (-not ($inner -is [System.Collections.IDictionary])) { continue }
+      foreach ($groupKey in @($inner.Keys)) {          # 'Row' or 'Column'
+        $fields = $inner[$groupKey]
+        if (-not ($fields -is [System.Collections.IDictionary])) { continue }
+        foreach ($fieldKey in @($fields.Keys)) {
+          & $coerce $fieldKey $fields[$fieldKey]
+        }
+      }
+    }
+  }
+}
+
 function ConvertTo-InputFieldsModel {
   param(
     [Parameter(Mandatory = $true)] $Workbook,
@@ -1478,6 +1516,7 @@ function ConvertTo-InputFieldsModel {
     InputTables   = $inputTables
   }
   Set-DateFieldTypes -Model $model
+  Set-NameFieldTypes -Model $model
   return $model
 }
 

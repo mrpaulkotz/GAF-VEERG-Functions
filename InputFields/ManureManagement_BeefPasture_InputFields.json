@@ -1187,7 +1187,7 @@
 			"Rows": {
 				"Row": {
 					"TransactionName": {
-						"CellType": "number"
+						"CellType": "text"
 					},
 					"Class": {
 						"CellType": "select",
