@@ -1,8 +1,328 @@
 {
 	"schemaVersion": 1,
 	"generatedFrom": "13_Scope3_WIP_v11.xlsx",
-	"generatedAt": "2026-07-17T07:53:04Z",
-	"InputCells": [],
+	"generatedAt": "2026-07-22T05:59:43Z",
+	"InputCells": [
+		{
+			"CellName": "X_Cell_Site_FarmName",
+			"Label": "Farm name",
+			"CellType": "text"
+		},
+		{
+			"CellName": "X_Cell_Site_ReportingEntityName",
+			"Label": "Reporting entity name",
+			"CellType": "text"
+		},
+		{
+			"CellName": "X_Cell_Site_StartDate",
+			"Label": "Emissions calculation period start date",
+			"CellType": "date"
+		},
+		{
+			"CellName": "X_Cell_Site_EndDate",
+			"Label": "Emissions calculation period end date",
+			"CellType": "formula"
+		},
+		{
+			"CellName": "X_Cell_Site_State",
+			"Label": "State",
+			"CellType": "select",
+			"Options": {
+				"New South Wales": "New South Wales",
+				"ACT": "ACT",
+				"Victoria": "Victoria",
+				"Queensland": "Queensland",
+				"South Australia": "South Australia",
+				"Western Australia": "Western Australia",
+				"Tasmania": "Tasmania",
+				"Northern Territory": "Northern Territory"
+			}
+		},
+		{
+			"CellName": "X_Cell_Site_Region",
+			"Label": "Region (ABS Statistical area level 4) if state is WA",
+			"CellType": "select",
+			"Options": {
+				"Bunbury": "Bunbury",
+				"Mandurah": "Mandurah",
+				"Perth - Inner": "Perth - Inner",
+				"Perth - North East": "Perth - North East",
+				"Perth - North West": "Perth - North West",
+				"Perth - South East": "Perth - South East",
+				"Perth - South West": "Perth - South West",
+				"Western Australia - Wheat Belt": "Western Australia - Wheat Belt",
+				"Western Australia - Outback (North)": "Western Australia - Outback (North)",
+				"Western Australia - Outback (South)": "Western Australia - Outback (South)"
+			}
+		},
+		{
+			"CellName": "X_Cell_Site_LeachingZone",
+			"Label": "Leaching zone",
+			"CellType": "select",
+			"Options": {
+				"YES - In leaching zone": "YES - In leaching zone",
+				"NO - Not in leaching zone": "NO - Not in leaching zone"
+			}
+		},
+		{
+			"CellName": "X_Cell_Site_Elevation",
+			"Label": "Elevation",
+			"CellType": "number"
+		},
+		{
+			"CellName": "X_Cell_Site_AverageTemperature",
+			"Label": "Average temperature for reporting period",
+			"CellType": "number"
+		},
+		{
+			"CellName": "X_Cell_Site_TotalRainfall",
+			"Label": "Total rainfall for reporting period",
+			"CellType": "number"
+		},
+		{
+			"CellName": "X_Cell_Site_PotentialEvapotranspiration",
+			"Label": "Potential evapotranspiration for reporting period",
+			"CellType": "number"
+		},
+		{
+			"CellName": "X_Cell_Site_FrostDays",
+			"Label": "Number of frost days for reporting period",
+			"CellType": "number"
+		},
+		{
+			"CellName": "X_Cell_Site_MapPetRatio",
+			"Label": "MAP:PET ratio",
+			"CellType": "formula"
+		},
+		{
+			"CellName": "X_Cell_Site_RainfallZone",
+			"Label": "Rainfall zone",
+			"CellType": "formula"
+		},
+		{
+			"CellName": "X_Cell_Site_ClimateZone",
+			"Label": "Climate zone",
+			"CellType": "formula"
+		},
+		{
+			"CellName": "X_Cell_Site_WetOrDryClimateZone",
+			"Label": "Wet or dry climate zone",
+			"CellType": "formula"
+		},
+		{
+			"CellName": "X_Cell_Site_TemperatureZone",
+			"Label": "Temperature zone",
+			"CellType": "formula"
+		},
+		{
+			"CellName": "X_Cell_Fuel_IsMetroLocation",
+			"Label": "Is the property in a Metropolitan location?",
+			"CellType": "select",
+			"Options": {
+				"Metro": "Metro",
+				"Non-metro": "Non-metro"
+			}
+		},
+		{
+			"CellName": "X_Cell_Fertiliser_ProductionSystem",
+			"Label": "Production system",
+			"CellType": "select",
+			"Options": {
+				"Pasture": "Pasture",
+				"Crop": "Crop"
+			}
+		},
+		{
+			"CellName": "X_Cell_Fertiliser_CropType",
+			"Label": "Crop type",
+			"CellType": "select",
+			"Options": {
+				"Pasture": "Pasture",
+				"Grains": "Grains",
+				"Maize": "Maize",
+				"Cotton": "Cotton"
+			}
+		},
+		{
+			"CellName": "X_Cell_Fertiliser_IrrigationMethod",
+			"Label": "Irrigation method",
+			"CellType": "select",
+			"Options": {
+				"Not irrigated": "Not irrigated",
+				"Drip irrigation": "Drip irrigation",
+				"Sprinkler irrigation": "Sprinkler irrigation",
+				"Surface irrigation": "Surface irrigation",
+				"Other irrigation": "Other irrigation"
+			}
+		},
+		{
+			"CellName": "X_Cell_Fertiliser_AreaUnderCropping",
+			"Label": "Area under cropping",
+			"CellType": "number"
+		},
+		{
+			"CellName": "X_Cell_FarmInputs_LickBlocks_DrySeasonMix",
+			"Label": "Lick block, dry season mix",
+			"CellType": "number"
+		},
+		{
+			"CellName": "X_Cell_FarmInputs_LickBlocks_Mineral",
+			"Label": "Lick block, mineral",
+			"CellType": "number"
+		},
+		{
+			"CellName": "X_Cell_FarmInputs_LickBlocks_Weaner",
+			"Label": "Lick block, weaner",
+			"CellType": "number"
+		},
+		{
+			"CellName": "X_Cell_FarmInputs_FeedRations_Chickens",
+			"Label": "Feed for chickens",
+			"CellType": "number"
+		},
+		{
+			"CellName": "X_Cell_FarmInputs_FeedRations_DairyCalves",
+			"Label": "Feed for dairy calves",
+			"CellType": "number"
+		},
+		{
+			"CellName": "X_Cell_FarmInputs_FeedRations_DairyCows",
+			"Label": "Feed for dairy cows",
+			"CellType": "number"
+		},
+		{
+			"CellName": "X_Cell_FarmInputs_FeedRations_Pigs",
+			"Label": "Feed for pigs",
+			"CellType": "number"
+		},
+		{
+			"CellName": "X_Cell_FarmInputs_Seed_BarleyGrain",
+			"Label": "Barley grain (for seed)",
+			"CellType": "number"
+		},
+		{
+			"CellName": "X_Cell_FarmInputs_Seed_MaizeGrain",
+			"Label": "Maize grain (for seed)",
+			"CellType": "number"
+		},
+		{
+			"CellName": "X_Cell_FarmInputs_Seed_OatGrain",
+			"Label": "Oat grain (for seed)",
+			"CellType": "number"
+		},
+		{
+			"CellName": "X_Cell_FarmInputs_Seed_SorghumGrain",
+			"Label": "Sorghum grain (for seed)",
+			"CellType": "number"
+		},
+		{
+			"CellName": "X_Cell_FarmInputs_Seed_WheatGrain",
+			"Label": "Wheat grain (for seed)",
+			"CellType": "number"
+		},
+		{
+			"CellName": "X_Cell_FarmInputs_Misc_AnimalEarTagsLarge",
+			"Label": "Animal ear tags (large)",
+			"CellType": "number"
+		},
+		{
+			"CellName": "X_Cell_FarmInputs_Misc_AnimalEarTagsSmall",
+			"Label": "Animal ear tags (small)",
+			"CellType": "number"
+		},
+		{
+			"CellName": "X_Cell_FarmInputs_Misc_NylonNetting",
+			"Label": "Nylon netting",
+			"CellType": "number"
+		},
+		{
+			"CellName": "X_Cell_WasteSentOffsite_MassNitrogenManure",
+			"Label": "",
+			"CellType": "number"
+		},
+		{
+			"CellName": "X_Cell_WasteSentOffsite_ManureProductionSystem",
+			"Label": "",
+			"CellType": "select",
+			"Options": {
+				"Pasture": "Pasture",
+				"Crop": "Crop"
+			}
+		},
+		{
+			"CellName": "X_Cell_WasteSentOffsite_ManureIrrigationMethod",
+			"Label": "",
+			"CellType": "select",
+			"Options": {
+				"Not irrigated": "Not irrigated",
+				"Drip irrigation": "Drip irrigation",
+				"Sprinkler irrigation": "Sprinkler irrigation",
+				"Surface irrigation": "Surface irrigation",
+				"Other irrigation": "Other irrigation"
+			}
+		},
+		{
+			"CellName": "X_Cell_Electricity_CalculationMethod",
+			"Label": "How do you want to calculate electricity emissions?",
+			"CellType": "select",
+			"Options": {
+				"Location-based (simpler)": "Location-based (simpler)",
+				"Market-based (more complex)": "Market-based (more complex)"
+			}
+		},
+		{
+			"CellName": "X_Cell_Electricity_Location_AmountPurchasedInkWh",
+			"Label": "Amount purchased in kWh",
+			"CellType": "number"
+		},
+		{
+			"CellName": "X_Cell_Electricity_Location_GridElectricityPurchasedFrom",
+			"Label": "Grid where electricity purchased from",
+			"CellType": "select",
+			"Options": {
+				"New South Wales": "New South Wales",
+				"ACT": "ACT",
+				"Victoria": "Victoria",
+				"Queensland": "Queensland",
+				"South Australia": "South Australia",
+				"Western Australia - South West Interconnected System (SWIS)": "Western Australia - South West Interconnected System (SWIS)",
+				"Western Australia - North Western Interconnected System (NWIS)": "Western Australia - North Western Interconnected System (NWIS)",
+				"Tasmania": "Tasmania",
+				"Northern Territory - Darwin Katherine Interconnected System (DKIS)": "Northern Territory - Darwin Katherine Interconnected System (DKIS)",
+				"National": "National"
+			}
+		},
+		{
+			"CellName": "X_Cell_Electricity_Market_AmountPurchasedExcludingGreenPower",
+			"Label": "Electricity purchased in kWh (excluding GreenPower providers)",
+			"CellType": "number"
+		},
+		{
+			"CellName": "X_Cell_Electricity_Market_RenewablePowerPercentage",
+			"Label": "Renewable Power Percentage",
+			"CellType": "percent"
+		},
+		{
+			"CellName": "X_Cell_Electricity_Market_JurisdictionalRenewablePowerPercentage",
+			"Label": "Jurisdictional renewable power percentage (ACT only)",
+			"CellType": "percent"
+		},
+		{
+			"CellName": "X_Cell_Electricity_Market_AmountPurchasedGreenPower",
+			"Label": "Electricity purchased from an accredited GreenPower provider",
+			"CellType": "number"
+		},
+		{
+			"CellName": "X_Cell_TotalElegibleVoluntarilySurrenderedRECs",
+			"Label": "Total elegible voluntarily surrendered RECs",
+			"CellType": "formula"
+		},
+		{
+			"CellName": "X_Cell_TotalElegibleRECsForElectricityProducedOnSite",
+			"Label": "Total elegible RECs for electricity produced on-site and consumed by entity",
+			"CellType": "formula"
+		}
+	],
 	"InputTables": [
 		{
 			"TableName": "Table_Input_Fuel",
@@ -641,7 +961,7 @@
 			"Rows": {
 				"Row": {
 					"FeedBlendName": {
-						"CellType": "number"
+						"CellType": "text"
 					},
 					"AmountFed": {
 						"CellType": "number",
@@ -673,8 +993,115 @@
 					},
 					"Ingredient1SourceRegion": {
 						"CellType": "select",
-						"DependentOn": "SUBSTITUTE(SUBSTITUTE(SUBSTITUTE(F63",
-						"Options": {}
+						"DependentOn": "Ingredient1",
+						"Options": {
+							"Sardineswhole": {
+								"SA": "SA"
+							},
+							"Barleygrain": {
+								"Australia": "Australia",
+								"NSW": "NSW",
+								"NT": "NT",
+								"QLD": "QLD",
+								"SA": "SA",
+								"TAS": "TAS",
+								"VIC": "VIC",
+								"WA": "WA"
+							},
+							"Maizegrain": {
+								"Australia": "Australia",
+								"NSW": "NSW",
+								"NT": "NT",
+								"QLD": "QLD",
+								"SA": "SA",
+								"VIC": "VIC",
+								"WA": "WA"
+							},
+							"Sorghumgrain": {
+								"Australia": "Australia",
+								"NSW": "NSW",
+								"QLD": "QLD",
+								"SA": "SA",
+								"VIC": "VIC"
+							},
+							"Wheatgrain": {
+								"Australia": "Australia",
+								"NSW": "NSW",
+								"NT": "NT",
+								"QLD": "QLD",
+								"SA": "SA",
+								"TAS": "TAS",
+								"VIC": "VIC",
+								"WA": "WA"
+							},
+							"Cerealhay": {
+								"Australia": "Australia",
+								"NSW": "NSW",
+								"QLD": "QLD",
+								"SA": "SA",
+								"TAS": "TAS",
+								"VIC": "VIC",
+								"WA": "WA"
+							},
+							"Cerealsilage": {
+								"Australia": "Australia",
+								"NSW": "NSW",
+								"QLD": "QLD",
+								"SA": "SA",
+								"TAS": "TAS",
+								"VIC": "VIC"
+							},
+							"Lucernehay": {
+								"Australia": "Australia",
+								"NSW": "NSW",
+								"QLD": "QLD",
+								"SA": "SA",
+								"TAS": "TAS",
+								"VIC": "VIC"
+							},
+							"Maizesilage": "n/a",
+							"Oatenhay": {
+								"Australia": "Australia",
+								"NSW": "NSW",
+								"QLD": "QLD",
+								"SA": "SA",
+								"VIC": "VIC",
+								"WA": "WA"
+							},
+							"Pasturehay": {
+								"Australia": "Australia",
+								"NSW": "NSW",
+								"QLD": "QLD",
+								"SA": "SA",
+								"TAS": "TAS",
+								"VIC": "VIC",
+								"WA": "WA"
+							},
+							"Canolameal": {
+								"Australia": "Australia"
+							},
+							"Meatmeal": {
+								"Australia": "Australia"
+							},
+							"Soybeanmeal": {
+								"Brazil": "Brazil"
+							},
+							"Wheatbran": {
+								"Australia": "Australia"
+							},
+							"Bentonite": {
+								"Australia": "Australia"
+							},
+							"Canolaoil": {
+								"Australia": "Australia"
+							},
+							"Cottonseed": {
+								"Australia": "Australia"
+							},
+							"Molasses": {
+								"QLD": "QLD"
+							}
+						}
 					},
 					"Ingredient1Percent": {
 						"CellType": "percent"
@@ -705,8 +1132,115 @@
 					},
 					"Ingredient2SourceRegion": {
 						"CellType": "select",
-						"DependentOn": "SUBSTITUTE(SUBSTITUTE(SUBSTITUTE(I63",
-						"Options": {}
+						"DependentOn": "Ingredient2",
+						"Options": {
+							"Sardineswhole": {
+								"SA": "SA"
+							},
+							"Barleygrain": {
+								"Australia": "Australia",
+								"NSW": "NSW",
+								"NT": "NT",
+								"QLD": "QLD",
+								"SA": "SA",
+								"TAS": "TAS",
+								"VIC": "VIC",
+								"WA": "WA"
+							},
+							"Maizegrain": {
+								"Australia": "Australia",
+								"NSW": "NSW",
+								"NT": "NT",
+								"QLD": "QLD",
+								"SA": "SA",
+								"VIC": "VIC",
+								"WA": "WA"
+							},
+							"Sorghumgrain": {
+								"Australia": "Australia",
+								"NSW": "NSW",
+								"QLD": "QLD",
+								"SA": "SA",
+								"VIC": "VIC"
+							},
+							"Wheatgrain": {
+								"Australia": "Australia",
+								"NSW": "NSW",
+								"NT": "NT",
+								"QLD": "QLD",
+								"SA": "SA",
+								"TAS": "TAS",
+								"VIC": "VIC",
+								"WA": "WA"
+							},
+							"Cerealhay": {
+								"Australia": "Australia",
+								"NSW": "NSW",
+								"QLD": "QLD",
+								"SA": "SA",
+								"TAS": "TAS",
+								"VIC": "VIC",
+								"WA": "WA"
+							},
+							"Cerealsilage": {
+								"Australia": "Australia",
+								"NSW": "NSW",
+								"QLD": "QLD",
+								"SA": "SA",
+								"TAS": "TAS",
+								"VIC": "VIC"
+							},
+							"Lucernehay": {
+								"Australia": "Australia",
+								"NSW": "NSW",
+								"QLD": "QLD",
+								"SA": "SA",
+								"TAS": "TAS",
+								"VIC": "VIC"
+							},
+							"Maizesilage": "n/a",
+							"Oatenhay": {
+								"Australia": "Australia",
+								"NSW": "NSW",
+								"QLD": "QLD",
+								"SA": "SA",
+								"VIC": "VIC",
+								"WA": "WA"
+							},
+							"Pasturehay": {
+								"Australia": "Australia",
+								"NSW": "NSW",
+								"QLD": "QLD",
+								"SA": "SA",
+								"TAS": "TAS",
+								"VIC": "VIC",
+								"WA": "WA"
+							},
+							"Canolameal": {
+								"Australia": "Australia"
+							},
+							"Meatmeal": {
+								"Australia": "Australia"
+							},
+							"Soybeanmeal": {
+								"Brazil": "Brazil"
+							},
+							"Wheatbran": {
+								"Australia": "Australia"
+							},
+							"Bentonite": {
+								"Australia": "Australia"
+							},
+							"Canolaoil": {
+								"Australia": "Australia"
+							},
+							"Cottonseed": {
+								"Australia": "Australia"
+							},
+							"Molasses": {
+								"QLD": "QLD"
+							}
+						}
 					},
 					"Ingredient2Percent": {
 						"CellType": "percent"
@@ -737,8 +1271,115 @@
 					},
 					"Ingredient3SourceRegion": {
 						"CellType": "select",
-						"DependentOn": "SUBSTITUTE(SUBSTITUTE(SUBSTITUTE(L63",
-						"Options": {}
+						"DependentOn": "Ingredient3",
+						"Options": {
+							"Sardineswhole": {
+								"SA": "SA"
+							},
+							"Barleygrain": {
+								"Australia": "Australia",
+								"NSW": "NSW",
+								"NT": "NT",
+								"QLD": "QLD",
+								"SA": "SA",
+								"TAS": "TAS",
+								"VIC": "VIC",
+								"WA": "WA"
+							},
+							"Maizegrain": {
+								"Australia": "Australia",
+								"NSW": "NSW",
+								"NT": "NT",
+								"QLD": "QLD",
+								"SA": "SA",
+								"VIC": "VIC",
+								"WA": "WA"
+							},
+							"Sorghumgrain": {
+								"Australia": "Australia",
+								"NSW": "NSW",
+								"QLD": "QLD",
+								"SA": "SA",
+								"VIC": "VIC"
+							},
+							"Wheatgrain": {
+								"Australia": "Australia",
+								"NSW": "NSW",
+								"NT": "NT",
+								"QLD": "QLD",
+								"SA": "SA",
+								"TAS": "TAS",
+								"VIC": "VIC",
+								"WA": "WA"
+							},
+							"Cerealhay": {
+								"Australia": "Australia",
+								"NSW": "NSW",
+								"QLD": "QLD",
+								"SA": "SA",
+								"TAS": "TAS",
+								"VIC": "VIC",
+								"WA": "WA"
+							},
+							"Cerealsilage": {
+								"Australia": "Australia",
+								"NSW": "NSW",
+								"QLD": "QLD",
+								"SA": "SA",
+								"TAS": "TAS",
+								"VIC": "VIC"
+							},
+							"Lucernehay": {
+								"Australia": "Australia",
+								"NSW": "NSW",
+								"QLD": "QLD",
+								"SA": "SA",
+								"TAS": "TAS",
+								"VIC": "VIC"
+							},
+							"Maizesilage": "n/a",
+							"Oatenhay": {
+								"Australia": "Australia",
+								"NSW": "NSW",
+								"QLD": "QLD",
+								"SA": "SA",
+								"VIC": "VIC",
+								"WA": "WA"
+							},
+							"Pasturehay": {
+								"Australia": "Australia",
+								"NSW": "NSW",
+								"QLD": "QLD",
+								"SA": "SA",
+								"TAS": "TAS",
+								"VIC": "VIC",
+								"WA": "WA"
+							},
+							"Canolameal": {
+								"Australia": "Australia"
+							},
+							"Meatmeal": {
+								"Australia": "Australia"
+							},
+							"Soybeanmeal": {
+								"Brazil": "Brazil"
+							},
+							"Wheatbran": {
+								"Australia": "Australia"
+							},
+							"Bentonite": {
+								"Australia": "Australia"
+							},
+							"Canolaoil": {
+								"Australia": "Australia"
+							},
+							"Cottonseed": {
+								"Australia": "Australia"
+							},
+							"Molasses": {
+								"QLD": "QLD"
+							}
+						}
 					},
 					"Ingredient3Percent": {
 						"CellType": "percent"
@@ -769,8 +1410,115 @@
 					},
 					"Ingredient4SourceRegion": {
 						"CellType": "select",
-						"DependentOn": "SUBSTITUTE(SUBSTITUTE(SUBSTITUTE(O63",
-						"Options": {}
+						"DependentOn": "Ingredient4",
+						"Options": {
+							"Sardineswhole": {
+								"SA": "SA"
+							},
+							"Barleygrain": {
+								"Australia": "Australia",
+								"NSW": "NSW",
+								"NT": "NT",
+								"QLD": "QLD",
+								"SA": "SA",
+								"TAS": "TAS",
+								"VIC": "VIC",
+								"WA": "WA"
+							},
+							"Maizegrain": {
+								"Australia": "Australia",
+								"NSW": "NSW",
+								"NT": "NT",
+								"QLD": "QLD",
+								"SA": "SA",
+								"VIC": "VIC",
+								"WA": "WA"
+							},
+							"Sorghumgrain": {
+								"Australia": "Australia",
+								"NSW": "NSW",
+								"QLD": "QLD",
+								"SA": "SA",
+								"VIC": "VIC"
+							},
+							"Wheatgrain": {
+								"Australia": "Australia",
+								"NSW": "NSW",
+								"NT": "NT",
+								"QLD": "QLD",
+								"SA": "SA",
+								"TAS": "TAS",
+								"VIC": "VIC",
+								"WA": "WA"
+							},
+							"Cerealhay": {
+								"Australia": "Australia",
+								"NSW": "NSW",
+								"QLD": "QLD",
+								"SA": "SA",
+								"TAS": "TAS",
+								"VIC": "VIC",
+								"WA": "WA"
+							},
+							"Cerealsilage": {
+								"Australia": "Australia",
+								"NSW": "NSW",
+								"QLD": "QLD",
+								"SA": "SA",
+								"TAS": "TAS",
+								"VIC": "VIC"
+							},
+							"Lucernehay": {
+								"Australia": "Australia",
+								"NSW": "NSW",
+								"QLD": "QLD",
+								"SA": "SA",
+								"TAS": "TAS",
+								"VIC": "VIC"
+							},
+							"Maizesilage": "n/a",
+							"Oatenhay": {
+								"Australia": "Australia",
+								"NSW": "NSW",
+								"QLD": "QLD",
+								"SA": "SA",
+								"VIC": "VIC",
+								"WA": "WA"
+							},
+							"Pasturehay": {
+								"Australia": "Australia",
+								"NSW": "NSW",
+								"QLD": "QLD",
+								"SA": "SA",
+								"TAS": "TAS",
+								"VIC": "VIC",
+								"WA": "WA"
+							},
+							"Canolameal": {
+								"Australia": "Australia"
+							},
+							"Meatmeal": {
+								"Australia": "Australia"
+							},
+							"Soybeanmeal": {
+								"Brazil": "Brazil"
+							},
+							"Wheatbran": {
+								"Australia": "Australia"
+							},
+							"Bentonite": {
+								"Australia": "Australia"
+							},
+							"Canolaoil": {
+								"Australia": "Australia"
+							},
+							"Cottonseed": {
+								"Australia": "Australia"
+							},
+							"Molasses": {
+								"QLD": "QLD"
+							}
+						}
 					},
 					"Ingredient4Percent": {
 						"CellType": "percent"
@@ -878,7 +1626,11 @@
 					},
 					"Class": {
 						"CellType": "select",
-						"Options": {}
+						"Options": {
+							"Milking cows": "Milking cows",
+							"Heifers > 1": "Heifers > 1",
+							"Heifers < 1 (weaned)": "Heifers < 1 (weaned)"
+						}
 					},
 					"Breed": {
 						"CellType": "select",
@@ -1221,7 +1973,7 @@
 					},
 					"WasteType": {
 						"CellType": "select",
-						"DependentOn": "E21",
+						"DependentOn": "TreatmentType",
 						"Options": {
 							"Landfill": {
 								"Food waste (including animal carcasses, spoiled animal feed or crop)": "Food waste (including animal carcasses, spoiled animal feed or crop)",

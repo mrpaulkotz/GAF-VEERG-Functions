@@ -1,7 +1,7 @@
 {
 	"schemaVersion": 1,
 	"generatedFrom": "4_2_ManureManagement_BeefPasture_WIP_v08.xlsx",
-	"generatedAt": "2026-07-17T07:53:53Z",
+	"generatedAt": "2026-07-22T06:00:32Z",
 	"InputCells": [
 		{
 			"CellName": "X_Cell_Site_FarmName",
@@ -155,6 +155,16 @@
 				"Yes": "Yes",
 				"No": "No"
 			}
+		},
+		{
+			"CellName": "X_Cell_PastureBeef_CalculatedMMSPastureRangeAndPaddock",
+			"Label": "Pasture range and paddock",
+			"CellType": "formula"
+		},
+		{
+			"CellName": "X_Cell_PastureBeef_CalculatedMMSAnaerobicLagoon",
+			"Label": "Anaerobic lagoon",
+			"CellType": "formula"
 		},
 		{
 			"CellName": "X_Cell_PastureBeef_GrazingProductionSystem",

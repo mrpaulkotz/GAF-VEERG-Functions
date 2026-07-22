@@ -1,7 +1,7 @@
 {
 	"schemaVersion": 1,
 	"generatedFrom": "5_Fertiliser_WIP_v07.xlsx",
-	"generatedAt": "2026-07-17T07:54:25Z",
+	"generatedAt": "2026-07-22T06:01:19Z",
 	"InputCells": [
 		{
 			"CellName": "X_Cell_Site_FarmName",
@@ -17,6 +17,11 @@
 			"CellName": "X_Cell_Site_StartDate",
 			"Label": "Emissions calculation period start date",
 			"CellType": "date"
+		},
+		{
+			"CellName": "X_Cell_Site_EndDate",
+			"Label": "Emissions calculation period end date",
+			"CellType": "formula"
 		},
 		{
 			"CellName": "X_Cell_Site_State",

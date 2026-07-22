@@ -1,7 +1,7 @@
 {
 	"schemaVersion": 1,
 	"generatedFrom": "Enterprise_EnvironmentalPlantings_WIP_v01.xlsx",
-	"generatedAt": "2026-07-17T07:55:02Z",
+	"generatedAt": "2026-07-22T06:02:09Z",
 	"InputCells": [
 		{
 			"CellName": "X_Cell_Planting_Latitude",
@@ -45,7 +45,10 @@
 			"Options": {
 				"Pasture": "Pasture",
 				"Crop": "Crop"
-			}
+			},
+			"UseDefault": true,
+			"Default": "Pasture",
+			"Hidden": true
 		},
 		{
 			"CellName": "X_Cell_Fertiliser_CropType",
@@ -56,7 +59,10 @@
 				"Grains": "Grains",
 				"Maize": "Maize",
 				"Cotton": "Cotton"
-			}
+			},
+			"UseDefault": true,
+			"Default": "Pasture",
+			"Hidden": true
 		},
 		{
 			"CellName": "X_Cell_Fertiliser_IrrigationMethod",
@@ -73,7 +79,9 @@
 		{
 			"CellName": "X_Cell_Fertiliser_AreaUnderCropping",
 			"Label": "Area under cropping",
-			"CellType": "number"
+			"CellType": "number",
+			"DuplicateOf": "X_Cell_Planting_PlantingAreaInHectares",
+			"Hidden": true
 		},
 		{
 			"CellName": "X_Cell_Fuel_IsMetroLocation",
@@ -308,7 +316,9 @@
 						"CellType": "formula"
 					}
 				}
-			}
+			},
+			"CanMarkAsNotUsed": true,
+			"Label": "Inorganic fertiliser (branded product) applications"
 		},
 		{
 			"TableName": "Table_Input_InorganicFertiliser_Custom",
@@ -479,7 +489,9 @@
 						}
 					}
 				}
-			}
+			},
+			"CanMarkAsNotUsed": true,
+			"Label": "Inorganic fertiliser (Custom blends) applications"
 		},
 		{
 			"TableName": "Table_Input_Lime",
@@ -526,7 +538,9 @@
 						"CellType": "formula"
 					}
 				}
-			}
+			},
+			"CanMarkAsNotUsed": true,
+			"Label": "Lime applications"
 		},
 		{
 			"TableName": "Table_Input_OrganicFertiliser",
@@ -576,7 +590,9 @@
 						"Unit": "kg"
 					}
 				}
-			}
+			},
+			"CanMarkAsNotUsed": true,
+			"Label": "Organic fertiliser applications"
 		},
 		{
 			"TableName": "Table_Input_Fuel",
@@ -669,14 +685,22 @@
 						"CellType": "formula"
 					}
 				}
-			}
+			},
+			"CanMarkAsNotUsed": true,
+			"Label": "Fuel purchases"
 		}
 	],
 	"FieldGroups": [
 		[
 			{
-				"Name": "",
-				"Items": []
+				"Name": "Planting information",
+				"Items": [
+					"X_Cell_Planting_Latitude",
+					"X_Cell_Planting_Longitude",
+					"X_Cell_Planting_PlantingAreaInHectares",
+					"X_Cell_Planting_PlantingDate",
+					"X_Cell_Planting_PlantingName"
+				]
 			}
 		]
 	],

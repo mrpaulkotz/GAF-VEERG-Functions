@@ -503,6 +503,47 @@ function Get-ListObjectColumnValues {
   return (New-Object System.Collections.Generic.List[string])
 }
 
+function Get-ListObjectHeaderRangeValues {
+  # Reads the header labels spanning a column range of a structured reference, e.g.
+  # Table[[#Headers],[ColStart]:[ColEnd]]. Returns the header text of every column from
+  # ColStart through ColEnd inclusive (order-independent of which endpoint is left-most).
+  param(
+    [Parameter(Mandatory = $true)] $Workbook,
+    [Parameter(Mandatory = $true)] [string] $TableName,
+    [Parameter(Mandatory = $true)] [string] $StartCol,
+    [Parameter(Mandatory = $true)] [string] $EndCol
+  )
+
+  foreach ($ws in @($Workbook.Worksheets)) {
+    if ($null -eq $ws) { continue }
+    $lo = $null
+    try { $lo = $ws.ListObjects.Item($TableName) } catch { $lo = $null }
+    if ($null -eq $lo) { continue }
+
+    $startIdx = $null; $endIdx = $null
+    foreach ($lc in @($lo.ListColumns)) {
+      $nm = ''
+      try { $nm = [string]$lc.Name } catch { $nm = '' }
+      if ($nm -eq $StartCol) { try { $startIdx = [int]$lc.Index } catch { } }
+      if ($nm -eq $EndCol) { try { $endIdx = [int]$lc.Index } catch { } }
+    }
+    if ($null -eq $startIdx -or $null -eq $endIdx) { return (New-Object System.Collections.Generic.List[string]) }
+    if ($startIdx -gt $endIdx) { $tmp = $startIdx; $startIdx = $endIdx; $endIdx = $tmp }
+
+    $result = New-Object System.Collections.Generic.List[string]
+    for ($i = $startIdx; $i -le $endIdx; $i++) {
+      $lc = $null
+      try { $lc = $lo.ListColumns.Item($i) } catch { $lc = $null }
+      if ($null -eq $lc) { continue }
+      $nm = ''
+      try { $nm = [string]$lc.Name } catch { $nm = '' }
+      if (-not [string]::IsNullOrWhiteSpace($nm)) { [void]$result.Add($nm) }
+    }
+    return $result
+  }
+  return (New-Object System.Collections.Generic.List[string])
+}
+
 function Resolve-StructuredOrEvaluated {
   # Resolves an expression to a flat value list. Structured references ("Name[Col]")
   # are read from the ListObject; anything else is evaluated on the worksheet.
@@ -511,6 +552,15 @@ function Resolve-StructuredOrEvaluated {
     [Parameter(Mandatory = $true)] $Workbook,
     [Parameter(Mandatory = $true)] [string] $Expression
   )
+
+  # Header range: Table[[#Headers],[ColStart]:[ColEnd]] resolves to the header labels of
+  # the spanned columns. Checked first because the nested brackets defeat the single-column
+  # pattern below and Worksheet.Evaluate is unreliable for cross-sheet structured refs.
+  $hdrRange = [regex]::Match($Expression, '(?i)^\s*([^\[\]]+?)\s*\[\s*\[#Headers\]\s*,\s*\[\s*([^\[\]]+?)\s*\]\s*:\s*\[\s*([^\[\]]+?)\s*\]\s*\]\s*$')
+  if ($hdrRange.Success) {
+    $vals = @(Get-ListObjectHeaderRangeValues -Workbook $Workbook -TableName $hdrRange.Groups[1].Value.Trim() -StartCol $hdrRange.Groups[2].Value.Trim() -EndCol $hdrRange.Groups[3].Value.Trim())
+    if ($vals.Count -gt 0) { return $vals }
+  }
 
   $sref = [regex]::Match($Expression, '^\s*([^\[\]]+?)\s*\[\s*([^\[\]]+?)\s*\]\s*$')
   if ($sref.Success) {
@@ -593,6 +643,62 @@ function Split-TopLevelAmpersand {
   return $parts
 }
 
+function Split-TopLevelComma {
+  # Splits a function-argument list on commas that sit at the top level (outside quotes
+  # and unnested parentheses), so nested calls such as SUBSTITUTE(SUBSTITUTE(...),...) keep
+  # their inner arguments intact. Quoted string literals are preserved as-is.
+  param([Parameter(Mandatory = $true)] [string] $Text)
+
+  $parts = New-Object System.Collections.Generic.List[string]
+  $depth = 0
+  $inQuote = $false
+  $sb = New-Object System.Text.StringBuilder
+  for ($i = 0; $i -lt $Text.Length; $i++) {
+    $ch = $Text[$i]
+    if ($ch -eq '"') { $inQuote = -not $inQuote; [void]$sb.Append($ch); continue }
+    if (-not $inQuote) {
+      if ($ch -eq '(') { $depth++ }
+      elseif ($ch -eq ')') { $depth-- }
+      elseif ($ch -eq ',' -and $depth -eq 0) { [void]$parts.Add($sb.ToString()); [void]$sb.Clear(); continue }
+    }
+    [void]$sb.Append($ch)
+  }
+  [void]$parts.Add($sb.ToString())
+  return $parts
+}
+
+function Resolve-CascadeDriver {
+  # Peels any (possibly nested) SUBSTITUTE(<inner>, "from", "to") wrappers off a cascade
+  # driver expression, returning the innermost bare reference together with the ordered
+  # (innermost-first) list of literal substitutions Excel would apply to the parent value.
+  # A non-SUBSTITUTE expression is returned verbatim with an empty substitution list.
+  #   Returns @{ Ref = <bare reference>; Subs = @([pscustomobject]@{ From; To } ...) }
+  param([Parameter(Mandatory = $true)] [string] $Text)
+
+  $ref = $Text.Trim()
+  $subs = New-Object System.Collections.Generic.List[object]
+
+  while ($ref -match '(?i)^SUBSTITUTE\s*\(') {
+    $inner = Get-InnerCallArg -Expr $ref -FuncName 'SUBSTITUTE'
+    if ([string]::IsNullOrWhiteSpace($inner)) { break }
+    $callArgs = @(Split-TopLevelComma -Text $inner)
+    if ($callArgs.Count -lt 3) { break }
+    $fromLit = [regex]::Match($callArgs[1].Trim(), '(?s)^"(.*)"$')
+    $toLit = [regex]::Match($callArgs[2].Trim(), '(?s)^"(.*)"$')
+    if (-not $fromLit.Success -or -not $toLit.Success) { break }
+    # Collected outermost-first here; reversed below so callers apply innermost-first
+    # (the order Excel evaluates nested SUBSTITUTE calls).
+    [void]$subs.Add([pscustomobject]@{
+        From = ($fromLit.Groups[1].Value -replace '""', '"')
+        To   = ($toLit.Groups[1].Value -replace '""', '"')
+      })
+    $ref = $callArgs[0].Trim()
+  }
+
+  $subs.Reverse()
+  return @{ Ref = $ref; Subs = $subs }
+}
+
 function Resolve-ValidationList {
   <#
     Inspects a cell's data validation and returns a hashtable:
@@ -672,70 +778,15 @@ function Resolve-ValidationList {
   }
 
   # --- Concatenated cascade (e.g. INDIRECT("Table_" & SUBSTITUTE($Parent," ","") & "[Col]")) ---
-  # When a SUBSTITUTE() normalises a parent reference, the parent's allowed values are
-  # known, so each branch can be expanded statically: build <prefix><stripped value><suffix>
-  # and resolve it. Produces nested Options keyed by the space-stripped parent value, with
-  # "n/a" for branches that resolve to nothing. Falls back to a warning when there is no
-  # SUBSTITUTE-normalised parent to enumerate (target chosen purely at runtime).
+  # The INDIRECT() argument concatenates static literals around a single driver reference.
+  # The driver may be a bare cell/name (=INDIRECT("Table_X[" & D17 & "]")) or wrapped in one
+  # or more SUBSTITUTE() calls that normalise the parent value
+  # (=INDIRECT("Table_X_" & SUBSTITUTE(SUBSTITUTE($P," ",""),",","") & "[Col]")). The
+  # parent's allowed values are enumerated, each is normalised with the SAME substitution
+  # chain, and the child branch <prefix><normalised value><suffix> is resolved. Produces
+  # nested Options keyed by the normalised parent value, with "n/a" for branches that
+  # resolve to nothing. Falls back to a warning when no single driver can be isolated.
   if ($isIndirect -and $hasConcat) {
-    $subMatch = [regex]::Match($expr, '(?i)SUBSTITUTE\(\s*([^,]+?)\s*,\s*"[^"]*"\s*,\s*"[^"]*"\s*\)')
-    if ($subMatch.Success) {
-      $parentRaw = $subMatch.Groups[1].Value.Trim()
-
-      # Split the INDIRECT(...) argument into the static literals before/after the driver.
-      $indArg = ''
-      $im = [regex]::Match($expr, '(?is)^INDIRECT\((.*)\)\s*$')
-      if ($im.Success) { $indArg = $im.Groups[1].Value }
-      $subSpan = $subMatch.Value
-      $idx = $indArg.IndexOf($subSpan)
-      $prefixExpr = if ($idx -ge 0) { $indArg.Substring(0, $idx) } else { '' }
-      $suffixExpr = if ($idx -ge 0) { $indArg.Substring($idx + $subSpan.Length) } else { '' }
-      $prefix = -join ([regex]::Matches($prefixExpr, '"([^"]*)"') | ForEach-Object { $_.Groups[1].Value })
-      $suffix = -join ([regex]::Matches($suffixExpr, '"([^"]*)"') | ForEach-Object { $_.Groups[1].Value })
-
-      $pinfo = Resolve-ParentInfo -Ref $parentRaw -Worksheet $Worksheet -NameIndex $NameIndex
-      $result['DependentOn'] = $pinfo.Name
-
-      # Enumerate the parent's allowed values by resolving the parent cell's own validation
-      # list (handles static, INDIRECT-structured and named-range parent lists alike).
-      $parentValues = @()
-      if ($null -ne $pinfo.Range) {
-        $parentWorksheet = $Worksheet
-        try { $parentWorksheet = $pinfo.Range.Worksheet } catch { $parentWorksheet = $Worksheet }
-        $parentList = Resolve-ValidationList -Cell $pinfo.Range -Worksheet $parentWorksheet -Workbook $Workbook -NameIndex $NameIndex -ContextName $pinfo.Name
-        if ($null -ne $parentList -and $parentList.Contains('Options')) {
-          $parentValues = @($parentList.Options.Keys)
-        }
-      }
-      foreach ($pv in $parentValues) {
-        $stripped = ($pv -replace '\s', '')
-        $built = "$prefix$stripped$suffix"
-        $childValues = @(Resolve-StructuredOrEvaluated -Worksheet $Worksheet -Workbook $Workbook -Expression $built)
-        # A branch that resolves to nothing - or only to a literal "n/a" placeholder cell -
-        # collapses to the bare string "n/a".
-        $realValues = @($childValues | Where-Object { $_ -notmatch '(?i)^\s*n/?a\s*$' })
-        if ($realValues.Count -eq 0) {
-          $result.Options[$stripped] = 'n/a'
-        }
-        else {
-          $nested = [ordered]@{}
-          foreach ($cv in $realValues) { $nested[$cv] = $cv }
-          $result.Options[$stripped] = $nested
-        }
-      }
-      if ($parentValues.Count -eq 0) {
-        Add-ValidationWarning "Select cell '$ContextName' cascading list has no resolvable parent values: $formula1"
-      }
-      return $result
-    }
-
-    # --- Concatenated cascade driven by a bare reference (no SUBSTITUTE) ---
-    # e.g. =TRIMRANGE(INDIRECT("Table_FuelTypesPerUse[" & D17 & "]")). The reference between
-    # the literal fragments (typically a sibling table-column cell) selects the child column.
-    # Enumerate the driver's allowed values and expand each branch by building
-    # <prefix><parent value><suffix> and resolving it. Options are keyed by the raw parent
-    # value (used verbatim, since there is no SUBSTITUTE normalisation), with "n/a" for
-    # branches that resolve to nothing.
     $indArg = Get-InnerCallArg -Expr $expr -FuncName 'INDIRECT'
     if (-not [string]::IsNullOrWhiteSpace($indArg)) {
       $literalBefore = New-Object System.Collections.Generic.List[string]
@@ -757,7 +808,12 @@ function Resolve-ValidationList {
       if ($driverCount -eq 1 -and -not [string]::IsNullOrWhiteSpace($driverRef)) {
         $prefix = -join $literalBefore
         $suffix = -join $literalAfter
-        $driverBare = ($driverRef -replace '\$', '')
+
+        # Peel any SUBSTITUTE() normalisation wrappers off the driver to reach the bare
+        # parent reference plus the ordered (innermost-first) literal substitutions.
+        $peeled = Resolve-CascadeDriver -Text $driverRef
+        $driverBare = ($peeled.Ref -replace '\$', '')
+        $subs = $peeled.Subs
 
         $pinfo = Resolve-ParentInfo -Ref $driverBare -Worksheet $Worksheet -NameIndex $NameIndex
 
@@ -798,16 +854,22 @@ function Resolve-ValidationList {
         }
 
         foreach ($pv in $parentValues) {
-          $built = "$prefix$pv$suffix"
+          # Apply the workbook's SUBSTITUTE chain so the child table name is built exactly
+          # as Excel would at runtime; the normalised value also keys the Options entry.
+          $key = [string]$pv
+          foreach ($s in $subs) { $key = $key.Replace($s.From, $s.To) }
+          $built = "$prefix$key$suffix"
           $childValues = @(Resolve-StructuredOrEvaluated -Worksheet $Worksheet -Workbook $Workbook -Expression $built)
+          # A branch that resolves to nothing - or only to a literal "n/a" placeholder cell -
+          # collapses to the bare string "n/a".
           $realValues = @($childValues | Where-Object { $_ -notmatch '(?i)^\s*n/?a\s*$' })
           if ($realValues.Count -eq 0) {
-            $result.Options[$pv] = 'n/a'
+            $result.Options[$key] = 'n/a'
           }
           else {
             $nested = [ordered]@{}
             foreach ($cv in $realValues) { $nested[$cv] = $cv }
-            $result.Options[$pv] = $nested
+            $result.Options[$key] = $nested
           }
         }
 

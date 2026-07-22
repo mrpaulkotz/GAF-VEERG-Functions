@@ -1,7 +1,7 @@
 {
 	"schemaVersion": 1,
 	"generatedFrom": "Enterprise_PastureBeef_WIP_v01.xlsx",
-	"generatedAt": "2026-07-17T07:55:22Z",
+	"generatedAt": "2026-07-22T06:02:38Z",
 	"InputCells": [
 		{
 			"CellName": "X_Cell_Site_FarmName",
@@ -2305,6 +2305,7 @@
 					"X_Cell_PastureBeef_Breed",
 					"X_Cell_PastureBeef_GrazingProductionSystem",
 					"X_Cell_PastureBeef_FencedWater",
+					"X_Cell_PastureBeef_HerdMovementMethod",
 					"Table_Input_LivestockPurchases_Beefcattle",
 					"Table_Input_LivestockSales",
 					"X_Cell_PastureBeef_Method1OrMethod2"
@@ -2345,9 +2346,58 @@
 				"X_Table_PastureBeef_Head_Method2",
 				"X_Table_PastureBeef_Duration_Method2",
 				"X_Table_PastureBeef_Head_Method1"
+			],
+			"Deterministic": [
+				{
+					"Trigger": "Table_Input_LivestockSales",
+					"Targets": [
+						"X_Table_PastureBeef_Head_Method1",
+						"X_Table_PastureBeef_Head_Method2"
+					]
+				}
 			]
 		}
 	],
+	"HerdLedger": {
+		"MovementMethodField": "X_Cell_PastureBeef_HerdMovementMethod",
+		"AutomatedValue": "Automated",
+		"ManualValue": "Manual",
+		"OpeningStore": "__herdOpening",
+		"MethodSwitch": {
+			"Fields": [
+				"X_Cell_PastureBeef_Method1OrMethod2",
+				"DataEntryMethod"
+			],
+			"Method1": "Method 1",
+			"Method2": "Method 2"
+		},
+		"HeadMethod1": {
+			"Table": "X_Table_PastureBeef_Head_Method1",
+			"Period": "season"
+		},
+		"HeadMethod2": {
+			"Table": "X_Table_PastureBeef_Head_Method2",
+			"Period": "month"
+		},
+		"Movements": [
+			{
+				"Table": "Table_Input_LivestockPurchases_Beefcattle",
+				"DateColumn": "PurchaseDate",
+				"ClassColumn": "Class",
+				"AmountColumn": "Quantity",
+				"Sign": 1,
+				"Label": "purchase"
+			},
+			{
+				"Table": "Table_Input_LivestockSales",
+				"DateColumn": "SaleDate",
+				"ClassColumn": "Class",
+				"AmountColumn": "HeadSold",
+				"Sign": -1,
+				"Label": "sale"
+			}
+		]
+	},
 	"Constraints": [
 		{
 			"Rule": "SalesNotExceedHead",

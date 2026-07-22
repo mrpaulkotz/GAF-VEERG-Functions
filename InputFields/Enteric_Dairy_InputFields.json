@@ -1,7 +1,376 @@
 {
 	"schemaVersion": 1,
 	"generatedFrom": "3_3_Enteric_Dairy_WIP_v04.xlsx",
-	"generatedAt": "2026-07-17T07:53:28Z",
-	"InputCells": [],
-	"InputTables": []
+	"generatedAt": "2026-07-22T06:00:07Z",
+	"InputCells": [
+		{
+			"CellName": "X_Cell_Site_FarmName",
+			"Label": "Farm name",
+			"CellType": "text"
+		},
+		{
+			"CellName": "X_Cell_Site_ReportingEntityName",
+			"Label": "Reporting entity name",
+			"CellType": "text"
+		},
+		{
+			"CellName": "X_Cell_Site_StartDate",
+			"Label": "Emissions calculation period start date",
+			"CellType": "date"
+		},
+		{
+			"CellName": "X_Cell_Site_EndDate",
+			"Label": "Emissions calculation period end date",
+			"CellType": "formula"
+		},
+		{
+			"CellName": "X_Cell_Site_State",
+			"Label": "State",
+			"CellType": "select",
+			"Options": {
+				"New South Wales": "New South Wales",
+				"ACT": "ACT",
+				"Victoria": "Victoria",
+				"Queensland": "Queensland",
+				"South Australia": "South Australia",
+				"Western Australia": "Western Australia",
+				"Tasmania": "Tasmania",
+				"Northern Territory": "Northern Territory"
+			}
+		},
+		{
+			"CellName": "X_Cell_Site_Region",
+			"Label": "Region (ABS Statistical area level 4) if state is WA",
+			"CellType": "select",
+			"Options": {
+				"Bunbury": "Bunbury",
+				"Mandurah": "Mandurah",
+				"Perth - Inner": "Perth - Inner",
+				"Perth - North East": "Perth - North East",
+				"Perth - North West": "Perth - North West",
+				"Perth - South East": "Perth - South East",
+				"Perth - South West": "Perth - South West",
+				"Western Australia - Wheat Belt": "Western Australia - Wheat Belt",
+				"Western Australia - Outback (North)": "Western Australia - Outback (North)",
+				"Western Australia - Outback (South)": "Western Australia - Outback (South)"
+			}
+		},
+		{
+			"CellName": "X_Cell_Site_LeachingZone",
+			"Label": "Leaching zone",
+			"CellType": "select",
+			"Options": {
+				"YES - In leaching zone": "YES - In leaching zone",
+				"NO - Not in leaching zone": "NO - Not in leaching zone"
+			}
+		},
+		{
+			"CellName": "X_Cell_Site_Elevation",
+			"Label": "Elevation",
+			"CellType": "number"
+		},
+		{
+			"CellName": "X_Cell_Site_AverageTemperature",
+			"Label": "Average temperature for reporting period",
+			"CellType": "number"
+		},
+		{
+			"CellName": "X_Cell_Site_TotalRainfall",
+			"Label": "Total rainfall for reporting period",
+			"CellType": "number"
+		},
+		{
+			"CellName": "X_Cell_Site_PotentialEvapotranspiration",
+			"Label": "Potential evapotranspiration for reporting period",
+			"CellType": "number"
+		},
+		{
+			"CellName": "X_Cell_Site_FrostDays",
+			"Label": "Number of frost days for reporting period",
+			"CellType": "number"
+		},
+		{
+			"CellName": "X_Cell_Site_MapPetRatio",
+			"Label": "MAP:PET ratio",
+			"CellType": "formula"
+		},
+		{
+			"CellName": "X_Cell_Site_RainfallZone",
+			"Label": "Rainfall zone",
+			"CellType": "formula"
+		},
+		{
+			"CellName": "X_Cell_Site_ClimateZone",
+			"Label": "Climate zone",
+			"CellType": "formula"
+		},
+		{
+			"CellName": "X_Cell_Site_WetOrDryClimateZone",
+			"Label": "Wet or dry climate zone",
+			"CellType": "formula"
+		},
+		{
+			"CellName": "X_Cell_Site_TemperatureZone",
+			"Label": "Temperature zone",
+			"CellType": "formula"
+		},
+		{
+			"CellName": "X_Cell_Dairy_Breed",
+			"Label": "Breed",
+			"CellType": "select",
+			"Options": {
+				"Medium Friesian": "Medium Friesian",
+				"Large Friesian": "Large Friesian",
+				"Holstein-Friesian": "Holstein-Friesian",
+				"Friesian crossbred": "Friesian crossbred",
+				"Jersey": "Jersey",
+				"Jersey crossbred": "Jersey crossbred",
+				"Ayrshire": "Ayrshire",
+				"Guernsey": "Guernsey",
+				"Brown Swiss": "Brown Swiss",
+				"Illawarra/Aussie Red": "Illawarra/Aussie Red"
+			}
+		},
+		{
+			"CellName": "X_Cell_Dairy_MilkProductionUnit",
+			"Label": "Milk production unit",
+			"CellType": "select",
+			"Options": {
+				"Litres of milk": "Litres of milk",
+				"Milk solids": "Milk solids"
+			}
+		},
+		{
+			"CellName": "X_Cell_Dairy_MilkProductionAmount",
+			"Label": "Average daily milk production",
+			"CellType": "number"
+		},
+		{
+			"CellName": "X_Cell_Dairy_MilkSolidsFatContent_Method1",
+			"Label": "Fat content in fat and protein corrected milk",
+			"CellType": "formula"
+		},
+		{
+			"CellName": "X_Cell_Dairy_MilkSolidsFatContent_Method2",
+			"Label": "0.04",
+			"CellType": "percent",
+			"CanOverWriteFormula": true
+		},
+		{
+			"CellName": "X_Cell_Dairy_MilkSolidsProteinContent_Method1",
+			"Label": "0.033",
+			"CellType": "formula"
+		},
+		{
+			"CellName": "X_Cell_Dairy_MilkSolidsProteinContent_Method2",
+			"Label": "0.033",
+			"CellType": "percent",
+			"CanOverWriteFormula": true
+		}
+	],
+	"InputTables": [
+		{
+			"TableName": "X_Table_Dairy_HerdMovement",
+			"MatrixType": "ColsToRows",
+			"NumberOfRows": 2,
+			"NumberOfCols": 5,
+			"ColumnNames": {
+				"MilkingCows": "Milking cows",
+				"HeifersOver1Year": "Heifers > 1 year",
+				"HeifersUnder1Year": "Heifers < 1 year",
+				"BullsOver1Year": "Bulls > 1 year",
+				"BullsUnder1Year": "Bulls < 1 year"
+			},
+			"Cols": {
+				"Column": {
+					"AverageNumberOfHeadBetween01Jan24And31Dec24": {
+						"Row": 2,
+						"Col": 2,
+						"Label": "Average number of head between 01 Jan 24 and 31 Dec 24",
+						"CellType": "number"
+					}
+				}
+			}
+		},
+		{
+			"TableName": "X_Table_Dairy_Liveweight_Method1",
+			"MatrixType": "ColsToRows",
+			"NumberOfRows": 3,
+			"NumberOfCols": 5,
+			"ColumnNames": {
+				"MilkingCows": "Milking cows",
+				"HeifersOver1Year": "Heifers > 1 year",
+				"HeifersUnder1Year": "Heifers < 1 year",
+				"BullsOver1Year": "Bulls > 1 year",
+				"BullsUnder1Year": "Bulls < 1 year"
+			},
+			"Cols": {
+				"Column": {
+					"AverageLiveweight": {
+						"Row": 2,
+						"Col": 2,
+						"Label": "Average liveweight",
+						"CellType": "formula"
+					},
+					"AverageLiveweightGain": {
+						"Row": 3,
+						"Col": 2,
+						"Label": "Average liveweight gain",
+						"CellType": "formula"
+					}
+				}
+			}
+		},
+		{
+			"TableName": "X_Table_Dairy_Liveweight_Method2",
+			"MatrixType": "ColsToRows",
+			"NumberOfRows": 3,
+			"NumberOfCols": 5,
+			"ColumnNames": {
+				"MilkingCows": "Milking cows",
+				"HeifersOver1Year": "Heifers > 1 year",
+				"HeifersUnder1Year": "Heifers < 1 year",
+				"BullsOver1Year": "Bulls > 1 year",
+				"BullsUnder1Year": "Bulls < 1 year"
+			},
+			"Cols": {
+				"Column": {
+					"AverageLiveweight": {
+						"Row": 2,
+						"Col": 2,
+						"Label": "Average liveweight",
+						"CellType": "number",
+						"CanOverWriteFormula": true
+					},
+					"AverageLiveweightGain": {
+						"Row": 3,
+						"Col": 2,
+						"Label": "Average liveweight gain",
+						"CellType": "number",
+						"CanOverWriteFormula": true
+					}
+				}
+			}
+		},
+		{
+			"TableName": "X_Table_Dairy_DurationOfStay_Method1",
+			"MatrixType": "ColsToRows",
+			"NumberOfRows": 3,
+			"NumberOfCols": 5,
+			"ColumnNames": {
+				"MilkingCows": "Milking cows",
+				"HeifersOver1Year": "Heifers > 1 year",
+				"HeifersUnder1Year": "Heifers < 1 year",
+				"BullsOver1Year": "Bulls > 1 year",
+				"BullsUnder1Year": "Bulls < 1 year"
+			},
+			"Cols": {
+				"Column": {
+					"AverageDurationOfStayBetween01Jan24And31Dec24WeanedLivestock": {
+						"Row": 2,
+						"Col": 2,
+						"Label": "Average duration of stay between 01 Jan 24 and 31 Dec 24 weaned livestock",
+						"CellType": "formula"
+					},
+					"AverageDurationOfStayBetween01Jan24And31Dec24PreWeanedLivestock": {
+						"Row": 3,
+						"Col": 2,
+						"Label": "Average duration of stay between 01 Jan 24 and 31 Dec 24 pre-weaned livestock",
+						"CellType": "formula"
+					}
+				}
+			}
+		},
+		{
+			"TableName": "X_Table_Dairy_DurationOfStay_Method2",
+			"MatrixType": "ColsToRows",
+			"NumberOfRows": 3,
+			"NumberOfCols": 5,
+			"ColumnNames": {
+				"MilkingCows": "Milking cows",
+				"HeifersOver1Year": "Heifers > 1 year",
+				"HeifersUnder1Year": "Heifers < 1 year",
+				"BullsOver1Year": "Bulls > 1 year",
+				"BullsUnder1Year": "Bulls < 1 year"
+			},
+			"Cols": {
+				"Column": {
+					"AverageDurationOfStayBetween01Jan24And31Dec24WeanedLivestock": {
+						"Row": 2,
+						"Col": 2,
+						"Label": "Average duration of stay between 01 Jan 24 and 31 Dec 24 weaned livestock",
+						"CellType": "number",
+						"CanOverWriteFormula": true
+					},
+					"AverageDurationOfStayBetween01Jan24And31Dec24PreWeanedLivestock": {
+						"Row": 3,
+						"Col": 2,
+						"Label": "Average duration of stay between 01 Jan 24 and 31 Dec 24 pre-weaned livestock",
+						"CellType": "number",
+						"CanOverWriteFormula": true
+					}
+				}
+			}
+		},
+		{
+			"TableName": "X_Table_Dairy_Diet_Method1",
+			"MatrixType": "ColsToRows",
+			"NumberOfRows": 3,
+			"NumberOfCols": 5,
+			"ColumnNames": {
+				"MilkingCows": "Milking cows",
+				"HeifersOver1Year": "Heifers > 1 year",
+				"HeifersUnder1Year": "Heifers < 1 year",
+				"BullsOver1Year": "Bulls > 1 year",
+				"BullsUnder1Year": "Bulls < 1 year"
+			},
+			"Cols": {
+				"Column": {
+					"DryMatterDigestibility": {
+						"Row": 2,
+						"Col": 2,
+						"Label": "Dry matter digestibility",
+						"CellType": "formula"
+					},
+					"CrudeProtein": {
+						"Row": 3,
+						"Col": 2,
+						"Label": "Crude protein",
+						"CellType": "formula"
+					}
+				}
+			}
+		},
+		{
+			"TableName": "X_Table_Dairy_Diet_Method2",
+			"MatrixType": "ColsToRows",
+			"NumberOfRows": 3,
+			"NumberOfCols": 5,
+			"ColumnNames": {
+				"MilkingCows": "Milking cows",
+				"HeifersOver1Year": "Heifers > 1 year",
+				"HeifersUnder1Year": "Heifers < 1 year",
+				"BullsOver1Year": "Bulls > 1 year",
+				"BullsUnder1Year": "Bulls < 1 year"
+			},
+			"Cols": {
+				"Column": {
+					"DryMatterDigestibility": {
+						"Row": 2,
+						"Col": 2,
+						"Label": "Dry matter digestibility",
+						"CellType": "number",
+						"CanOverWriteFormula": true
+					},
+					"CrudeProtein": {
+						"Row": 3,
+						"Col": 2,
+						"Label": "Crude protein",
+						"CellType": "number",
+						"CanOverWriteFormula": true
+					}
+				}
+			}
+		}
+	]
 }

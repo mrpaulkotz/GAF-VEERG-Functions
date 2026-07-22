@@ -1,7 +1,104 @@
 {
 	"schemaVersion": 1,
-	"generatedFrom": "3_1_Enteric_Feedlot_WIP_v01.xlsx",
-	"generatedAt": "2026-07-17T07:53:16Z",
+	"generatedFrom": "3_1_Enteric_Feedlot_WIP_v02.xlsx",
+	"generatedAt": "2026-07-22T05:59:56Z",
 	"InputCells": [],
-	"InputTables": []
+	"InputTables": [
+		{
+			"TableName": "X_Table_Feedlot_HerdMovement",
+			"MatrixType": "ColsToRows",
+			"NumberOfRows": 3,
+			"NumberOfCols": 3,
+			"ColumnNames": {
+				"Domestic": "Domestic",
+				"MidFed": "Mid-fed",
+				"LongFed": "Long-fed"
+			},
+			"Cols": {
+				"Column": {
+					"AverageNumberOfHeadBetween01Jan24And31Dec24": {
+						"Row": 2,
+						"Col": 2,
+						"Label": "Average number of head between 01 Jan 24 and 31 Dec 24",
+						"CellType": "number"
+					},
+					"AverageDurationOfStayBetween01Jan24And31Dec24": {
+						"Row": 3,
+						"Col": 2,
+						"Label": "Average duration of stay between 01 Jan 24 and 31 Dec 24",
+						"CellType": "number"
+					}
+				}
+			}
+		},
+		{
+			"TableName": "X_Table_Feedlot_Intake_Method1",
+			"MatrixType": "ColsToRows",
+			"NumberOfRows": 4,
+			"NumberOfCols": 3,
+			"ColumnNames": {
+				"Domestic": "Domestic",
+				"MidFed": "Mid-fed",
+				"LongFed": "Long-fed"
+			},
+			"Cols": {
+				"Column": {
+					"FeedIntake": {
+						"Row": 2,
+						"Col": 2,
+						"Label": "Feed intake",
+						"CellType": "formula"
+					},
+					"EtherExtract": {
+						"Row": 3,
+						"Col": 2,
+						"Label": "Ether extract",
+						"CellType": "formula"
+					},
+					"NDF": {
+						"Row": 4,
+						"Col": 2,
+						"Label": "NDF",
+						"CellType": "formula"
+					}
+				}
+			}
+		},
+		{
+			"TableName": "X_Table_Feedlot_Intake_Method2",
+			"MatrixType": "ColsToRows",
+			"NumberOfRows": 4,
+			"NumberOfCols": 3,
+			"ColumnNames": {
+				"Domestic": "Domestic",
+				"MidFed": "Mid-fed",
+				"LongFed": "Long-fed"
+			},
+			"Cols": {
+				"Column": {
+					"FeedIntake": {
+						"Row": 2,
+						"Col": 2,
+						"Label": "Feed intake",
+						"CellType": "number",
+						"CanOverWriteFormula": true
+					},
+					"EtherExtract": {
+						"Row": 3,
+						"Col": 2,
+						"Label": "Ether extract",
+						"CellType": "number",
+						"CanOverWriteFormula": true
+					},
+					"NDF": {
+						"Row": 4,
+						"Col": 2,
+						"Label": "NDF",
+						"CellType": "number",
+						"CanOverWriteFormula": true
+					}
+				}
+			}
+		}
+	]
 }

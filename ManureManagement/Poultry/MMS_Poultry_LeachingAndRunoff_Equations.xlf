@@ -100,8 +100,8 @@ VEERG_4_6_1_7__2_MassOfNitrogenLostToLeachingAndRunoffFromSolidStorage_Arguments
       LAMBDA(r,c,
         INDEX({
           "MN_jkm4T2","nitrogen in solid storage MMS treatment stage 2", "kg N", "Calculated from 4.6.1.3 (6)";
-          "FracWET","fraction of N available for leaching and runoff", "fraction", "Input";
-          "FracLEACH_MS","fraction of N lost through leaching and runoff", "fraction", "Input";
+          "FracWET","fraction of N available for leaching and runoff", "fraction", "Constant";
+          "FracLEACH_MS","fraction of N lost through leaching and runoff", "fraction", "Constant";
           "z", "location in leaching zone", "", "Input";
           "j", "production system", "", "Input";
           "ir", "irrigation method", "", "Input"

@@ -1,7 +1,533 @@
 {
 	"schemaVersion": 1,
 	"generatedFrom": "4_7_ManureManagement_OtherLivestock_WIP_v01.xlsx",
-	"generatedAt": "2026-07-17T07:54:19Z",
-	"InputCells": [],
-	"InputTables": []
+	"generatedAt": "2026-07-22T06:01:11Z",
+	"InputCells": [
+		{
+			"CellName": "X_Cell_Site_FarmName",
+			"Label": "Farm name",
+			"CellType": "text"
+		},
+		{
+			"CellName": "X_Cell_Site_ReportingEntityName",
+			"Label": "Reporting entity name",
+			"CellType": "text"
+		},
+		{
+			"CellName": "X_Cell_Site_StartDate",
+			"Label": "Emissions calculation period start date",
+			"CellType": "date"
+		},
+		{
+			"CellName": "X_Cell_Site_EndDate",
+			"Label": "Emissions calculation period end date",
+			"CellType": "formula"
+		},
+		{
+			"CellName": "X_Cell_Site_State",
+			"Label": "State",
+			"CellType": "select",
+			"Options": {
+				"New South Wales": "New South Wales",
+				"ACT": "ACT",
+				"Victoria": "Victoria",
+				"Queensland": "Queensland",
+				"South Australia": "South Australia",
+				"Western Australia": "Western Australia",
+				"Tasmania": "Tasmania",
+				"Northern Territory": "Northern Territory"
+			}
+		},
+		{
+			"CellName": "X_Cell_Site_Region",
+			"Label": "Region (ABS Statistical area level 4) if state is WA",
+			"CellType": "select",
+			"Options": {
+				"Bunbury": "Bunbury",
+				"Mandurah": "Mandurah",
+				"Perth - Inner": "Perth - Inner",
+				"Perth - North East": "Perth - North East",
+				"Perth - North West": "Perth - North West",
+				"Perth - South East": "Perth - South East",
+				"Perth - South West": "Perth - South West",
+				"Western Australia - Wheat Belt": "Western Australia - Wheat Belt",
+				"Western Australia - Outback (North)": "Western Australia - Outback (North)",
+				"Western Australia - Outback (South)": "Western Australia - Outback (South)"
+			}
+		},
+		{
+			"CellName": "X_Cell_Site_LeachingZone",
+			"Label": "Leaching zone",
+			"CellType": "select",
+			"Options": {
+				"YES - In leaching zone": "YES - In leaching zone",
+				"NO - Not in leaching zone": "NO - Not in leaching zone"
+			}
+		},
+		{
+			"CellName": "X_Cell_Site_Elevation",
+			"Label": "Elevation",
+			"CellType": "number"
+		},
+		{
+			"CellName": "X_Cell_Site_AverageTemperature",
+			"Label": "Average temperature for reporting period",
+			"CellType": "number"
+		},
+		{
+			"CellName": "X_Cell_Site_TotalRainfall",
+			"Label": "Total rainfall for reporting period",
+			"CellType": "number"
+		},
+		{
+			"CellName": "X_Cell_Site_PotentialEvapotranspiration",
+			"Label": "Potential evapotranspiration for reporting period",
+			"CellType": "number"
+		},
+		{
+			"CellName": "X_Cell_Site_FrostDays",
+			"Label": "Number of frost days for reporting period",
+			"CellType": "number"
+		},
+		{
+			"CellName": "X_Cell_Site_MapPetRatio",
+			"Label": "MAP:PET ratio",
+			"CellType": "formula"
+		},
+		{
+			"CellName": "X_Cell_Site_RainfallZone",
+			"Label": "Rainfall zone",
+			"CellType": "formula"
+		},
+		{
+			"CellName": "X_Cell_Site_ClimateZone",
+			"Label": "Climate zone",
+			"CellType": "formula"
+		},
+		{
+			"CellName": "X_Cell_Site_WetOrDryClimateZone",
+			"Label": "Wet or dry climate zone",
+			"CellType": "formula"
+		},
+		{
+			"CellName": "X_Cell_Site_TemperatureZone",
+			"Label": "Temperature zone",
+			"CellType": "formula"
+		},
+		{
+			"CellName": "X_Cell_OtherLivestock_Buffalo_FencedWater",
+			"Label": "Are all dams and natural water sources fenced off so buffalo cannot access them?",
+			"CellType": "select",
+			"Options": {
+				"Yes": "Yes",
+				"No": "No"
+			}
+		},
+		{
+			"CellName": "X_Cell_OtherLivestock_Buffalo_CalculatedMMSPastureRangeAndPaddock",
+			"Label": "Pasture range and paddock",
+			"CellType": "formula"
+		},
+		{
+			"CellName": "X_Cell_OtherLivestock_Buffalo_CalculatedMMSAnaerobicLagoon",
+			"Label": "Anaerobic lagoon",
+			"CellType": "formula"
+		},
+		{
+			"CellName": "X_Cell_OtherLivestock_Buffalo_GrazingProductionSystem",
+			"Label": "Where did the buffalo spend most of their time grazing?",
+			"CellType": "select",
+			"Options": {
+				"Pasture": "Pasture",
+				"Crop": "Crop"
+			}
+		},
+		{
+			"CellName": "X_Cell_OtherLivestock_Buffalo_GrazingIrrigationMethod",
+			"Label": "",
+			"CellType": "select",
+			"Options": {
+				"Not irrigated": "Not irrigated",
+				"Drip irrigation": "Drip irrigation",
+				"Sprinkler irrigation": "Sprinkler irrigation",
+				"Surface irrigation": "Surface irrigation",
+				"Other irrigation": "Other irrigation"
+			}
+		},
+		{
+			"CellName": "X_Cell_OtherLivestock_Goats_FencedWater",
+			"Label": "Are all dams and natural water sources fenced off so goats cannot access them?",
+			"CellType": "select",
+			"Options": {
+				"Yes": "Yes",
+				"No": "No"
+			}
+		},
+		{
+			"CellName": "X_Cell_OtherLivestock_Goats_CalculatedMMSPastureRangeAndPaddock",
+			"Label": "Pasture range and paddock",
+			"CellType": "formula"
+		},
+		{
+			"CellName": "X_Cell_OtherLivestock_Goats_CalculatedMMSAnaerobicLagoon",
+			"Label": "Anaerobic lagoon",
+			"CellType": "formula"
+		},
+		{
+			"CellName": "X_Cell_OtherLivestock_Goats_GrazingProductionSystem",
+			"Label": "Where did the goats spend most of their time grazing?",
+			"CellType": "select",
+			"Options": {
+				"Pasture": "Pasture",
+				"Crop": "Crop"
+			}
+		},
+		{
+			"CellName": "X_Cell_OtherLivestock_Goats_GrazingIrrigationMethod",
+			"Label": "",
+			"CellType": "select",
+			"Options": {
+				"Not irrigated": "Not irrigated",
+				"Drip irrigation": "Drip irrigation",
+				"Sprinkler irrigation": "Sprinkler irrigation",
+				"Surface irrigation": "Surface irrigation",
+				"Other irrigation": "Other irrigation"
+			}
+		},
+		{
+			"CellName": "X_Cell_OtherLivestock_Deer_FencedWater",
+			"Label": "Are all dams and natural water sources fenced off so deer cannot access them?",
+			"CellType": "select",
+			"Options": {
+				"Yes": "Yes",
+				"No": "No"
+			}
+		},
+		{
+			"CellName": "X_Cell_OtherLivestock_Deer_CalculatedMMSPastureRangeAndPaddock",
+			"Label": "Pasture range and paddock",
+			"CellType": "formula"
+		},
+		{
+			"CellName": "X_Cell_OtherLivestock_Deer_CalculatedMMSAnaerobicLagoon",
+			"Label": "Anaerobic lagoon",
+			"CellType": "formula"
+		},
+		{
+			"CellName": "X_Cell_OtherLivestock_Deer_GrazingProductionSystem",
+			"Label": "Where did the deer spend most of their time grazing?",
+			"CellType": "select",
+			"Options": {
+				"Pasture": "Pasture",
+				"Crop": "Crop"
+			}
+		},
+		{
+			"CellName": "X_Cell_OtherLivestock_Deer_GrazingIrrigationMethod",
+			"Label": "",
+			"CellType": "select",
+			"Options": {
+				"Not irrigated": "Not irrigated",
+				"Drip irrigation": "Drip irrigation",
+				"Sprinkler irrigation": "Sprinkler irrigation",
+				"Surface irrigation": "Surface irrigation",
+				"Other irrigation": "Other irrigation"
+			}
+		},
+		{
+			"CellName": "X_Cell_OtherLivestock_Others_Camels_Head",
+			"Label": "Average number of head between 01 Jan 24 and 31 Dec 24",
+			"CellType": "number"
+		},
+		{
+			"CellName": "X_Cell_OtherLivestock_Others_Alpacas_Head",
+			"Label": "4300",
+			"CellType": "number"
+		},
+		{
+			"CellName": "X_Cell_OtherLivestock_Others_Horses_Head",
+			"Label": "100",
+			"CellType": "number"
+		},
+		{
+			"CellName": "X_Cell_OtherLivestock_Others_Mules_Head",
+			"Label": "100",
+			"CellType": "number"
+		},
+		{
+			"CellName": "X_Cell_OtherLivestock_Others_Emus_Head",
+			"Label": "100",
+			"CellType": "number"
+		},
+		{
+			"CellName": "X_Cell_OtherLivestock_Others_Camels_FencedWater",
+			"Label": "Are all dams and natural water sources fenced off so livestock cannot access them?",
+			"CellType": "select",
+			"Options": {
+				"Yes": "Yes",
+				"No": "No"
+			}
+		},
+		{
+			"CellName": "X_Cell_OtherLivestock_Others_Alpacas_FencedWater",
+			"Label": "No",
+			"CellType": "select",
+			"Options": {
+				"Yes": "Yes",
+				"No": "No"
+			}
+		},
+		{
+			"CellName": "X_Cell_OtherLivestock_Others_Horses_FencedWater",
+			"Label": "No",
+			"CellType": "select",
+			"Options": {
+				"Yes": "Yes",
+				"No": "No"
+			}
+		},
+		{
+			"CellName": "X_Cell_OtherLivestock_Others_Mules_FencedWater",
+			"Label": "No",
+			"CellType": "select",
+			"Options": {
+				"Yes": "Yes",
+				"No": "No"
+			}
+		},
+		{
+			"CellName": "X_Cell_OtherLivestock_Others_Emus_FencedWater",
+			"Label": "No",
+			"CellType": "select",
+			"Options": {
+				"Yes": "Yes",
+				"No": "No"
+			}
+		},
+		{
+			"CellName": "X_Cell_OtherLivestock_Others_Camels_CalculatedMMSPastureRangeAndPaddock",
+			"Label": "Pasture range and paddock",
+			"CellType": "formula"
+		},
+		{
+			"CellName": "X_Cell_OtherLivestock_Others_Alpacas_CalculatedMMSPastureRangeAndPaddock",
+			"Label": "0.9966",
+			"CellType": "formula"
+		},
+		{
+			"CellName": "X_Cell_OtherLivestock_Others_Horses_CalculatedMMSPastureRangeAndPaddock",
+			"Label": "0.9966",
+			"CellType": "formula"
+		},
+		{
+			"CellName": "X_Cell_OtherLivestock_Others_Mules_CalculatedMMSPastureRangeAndPaddock",
+			"Label": "0.9966",
+			"CellType": "formula"
+		},
+		{
+			"CellName": "X_Cell_OtherLivestock_Others_Emus_CalculatedMMSPastureRangeAndPaddock",
+			"Label": "0.9966",
+			"CellType": "formula"
+		},
+		{
+			"CellName": "X_Cell_OtherLivestock_Others_Camels_CalculatedMMSAnaerobicLagoon",
+			"Label": "Anaerobic lagoon",
+			"CellType": "formula"
+		},
+		{
+			"CellName": "X_Cell_OtherLivestock_Others_Alpacas_CalculatedMMSAnaerobicLagoon",
+			"Label": "0.0034",
+			"CellType": "formula"
+		},
+		{
+			"CellName": "X_Cell_OtherLivestock_Others_Horses_CalculatedMMSAnaerobicLagoon",
+			"Label": "0.0034",
+			"CellType": "formula"
+		},
+		{
+			"CellName": "X_Cell_OtherLivestock_Others_Mules_CalculatedMMSAnaerobicLagoon",
+			"Label": "0.0034",
+			"CellType": "formula"
+		},
+		{
+			"CellName": "X_Cell_OtherLivestock_Others_Emus_CalculatedMMSAnaerobicLagoon",
+			"Label": "0.0034",
+			"CellType": "formula"
+		},
+		{
+			"CellName": "X_Cell_OtherLivestock_Others_Camels_GrazingProductionSystem",
+			"Label": "Where did the livestock spend most of their time grazing?",
+			"CellType": "select",
+			"Options": {
+				"Pasture": "Pasture",
+				"Crop": "Crop"
+			}
+		},
+		{
+			"CellName": "X_Cell_OtherLivestock_Others_Alpacas_GrazingProductionSystem",
+			"Label": "Pasture",
+			"CellType": "select",
+			"Options": {
+				"Pasture": "Pasture",
+				"Crop": "Crop"
+			}
+		},
+		{
+			"CellName": "X_Cell_OtherLivestock_Others_Horses_GrazingProductionSystem",
+			"Label": "Pasture",
+			"CellType": "select",
+			"Options": {
+				"Pasture": "Pasture",
+				"Crop": "Crop"
+			}
+		},
+		{
+			"CellName": "X_Cell_OtherLivestock_Others_Mules_GrazingProductionSystem",
+			"Label": "Crop",
+			"CellType": "select",
+			"Options": {
+				"Pasture": "Pasture",
+				"Crop": "Crop"
+			}
+		},
+		{
+			"CellName": "X_Cell_OtherLivestock_Others_Emus_GrazingProductionSystem",
+			"Label": "Crop",
+			"CellType": "select",
+			"Options": {
+				"Pasture": "Pasture",
+				"Crop": "Crop"
+			}
+		},
+		{
+			"CellName": "X_Cell_OtherLivestock_Others_Camels_GrazingIrrigationMethod",
+			"Label": "",
+			"CellType": "select",
+			"Options": {
+				"Not irrigated": "Not irrigated",
+				"Drip irrigation": "Drip irrigation",
+				"Sprinkler irrigation": "Sprinkler irrigation",
+				"Surface irrigation": "Surface irrigation",
+				"Other irrigation": "Other irrigation"
+			}
+		},
+		{
+			"CellName": "X_Cell_OtherLivestock_Others_Alpacas_GrazingIrrigationMethod",
+			"Label": "Drip irrigation",
+			"CellType": "select",
+			"Options": {
+				"Not irrigated": "Not irrigated",
+				"Drip irrigation": "Drip irrigation",
+				"Sprinkler irrigation": "Sprinkler irrigation",
+				"Surface irrigation": "Surface irrigation",
+				"Other irrigation": "Other irrigation"
+			}
+		},
+		{
+			"CellName": "X_Cell_OtherLivestock_Others_Horses_GrazingIrrigationMethod",
+			"Label": "Sprinkler irrigation",
+			"CellType": "select",
+			"Options": {
+				"Not irrigated": "Not irrigated",
+				"Drip irrigation": "Drip irrigation",
+				"Sprinkler irrigation": "Sprinkler irrigation",
+				"Surface irrigation": "Surface irrigation",
+				"Other irrigation": "Other irrigation"
+			}
+		},
+		{
+			"CellName": "X_Cell_OtherLivestock_Others_Mules_GrazingIrrigationMethod",
+			"Label": "Not irrigated",
+			"CellType": "select",
+			"Options": {
+				"Not irrigated": "Not irrigated",
+				"Drip irrigation": "Drip irrigation",
+				"Sprinkler irrigation": "Sprinkler irrigation",
+				"Surface irrigation": "Surface irrigation",
+				"Other irrigation": "Other irrigation"
+			}
+		},
+		{
+			"CellName": "X_Cell_OtherLivestock_Others_Emus_GrazingIrrigationMethod",
+			"Label": "Surface irrigation",
+			"CellType": "select",
+			"Options": {
+				"Not irrigated": "Not irrigated",
+				"Drip irrigation": "Drip irrigation",
+				"Sprinkler irrigation": "Sprinkler irrigation",
+				"Surface irrigation": "Surface irrigation",
+				"Other irrigation": "Other irrigation"
+			}
+		}
+	],
+	"InputTables": [
+		{
+			"TableName": "X_Table_OtherLivestock_Buffalo_Head",
+			"MatrixType": "ColsToRows",
+			"NumberOfRows": 2,
+			"NumberOfCols": 4,
+			"ColumnNames": {
+				"Bulls": "Bulls",
+				"Cows": "Cows",
+				"Steers": "Steers",
+				"Calves": "Calves"
+			},
+			"Cols": {
+				"Column": {
+					"AverageNumberOfHeadBetween01Jan24And31Dec24": {
+						"Row": 2,
+						"Col": 2,
+						"Label": "Average number of head between 01 Jan 24 and 31 Dec 24",
+						"CellType": "number"
+					}
+				}
+			}
+		},
+		{
+			"TableName": "X_Table_OtherLivestock_Goats_Head",
+			"MatrixType": "ColsToRows",
+			"NumberOfRows": 2,
+			"NumberOfCols": 6,
+			"ColumnNames": {
+				"BucksBilly": "Bucks / billy",
+				"Wethers": "Wethers",
+				"MaidenBreedingDoesNannies": "Maiden breeding does / nannies",
+				"BreedingDoesNannies": "Breeding does / nannies",
+				"Other": "Other",
+				"Kids": "Kids"
+			},
+			"Cols": {
+				"Column": {
+					"AverageNumberOfHeadBetween01Jan24And31Dec24": {
+						"Row": 2,
+						"Col": 2,
+						"Label": "Average number of head between 01 Jan 24 and 31 Dec 24",
+						"CellType": "number"
+					}
+				}
+			}
+		},
+		{
+			"TableName": "X_Table_OtherLivestock_Deer_Head",
+			"MatrixType": "ColsToRows",
+			"NumberOfRows": 2,
+			"NumberOfCols": 4,
+			"ColumnNames": {
+				"Bucks": "Bucks",
+				"BreedingDoes": "Breeding does",
+				"OtherDoes": "Other does",
+				"Fawn": "Fawn"
+			},
+			"Cols": {
+				"Column": {
+					"AverageNumberOfHeadBetween01Jan24And31Dec24": {
+						"Row": 2,
+						"Col": 2,
+						"Label": "Average number of head between 01 Jan 24 and 31 Dec 24",
+						"CellType": "number"
+					}
+				}
+			}
+		}
+	]
 }

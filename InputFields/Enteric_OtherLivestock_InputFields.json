@@ -1,7 +1,122 @@
 {
 	"schemaVersion": 1,
 	"generatedFrom": "3_6_Enteric_OtherLivestock_WIP_v01.xlsx",
-	"generatedAt": "2026-07-17T07:53:36Z",
-	"InputCells": [],
-	"InputTables": []
+	"generatedAt": "2026-07-22T06:00:16Z",
+	"InputCells": [
+		{
+			"CellName": "X_Cell_Site_FarmName",
+			"Label": "Farm name",
+			"CellType": "text"
+		},
+		{
+			"CellName": "X_Cell_Site_ReportingEntityName",
+			"Label": "Reporting entity name",
+			"CellType": "text"
+		},
+		{
+			"CellName": "X_Cell_Site_StartDate",
+			"Label": "Emissions calculation period start date",
+			"CellType": "date"
+		},
+		{
+			"CellName": "X_Cell_Site_EndDate",
+			"Label": "Emissions calculation period end date",
+			"CellType": "formula"
+		},
+		{
+			"CellName": "X_Cell_OtherLivestock_Others_Camels_Head",
+			"Label": "Average number of head between 01 Jan 24 and 31 Dec 24",
+			"CellType": "number"
+		},
+		{
+			"CellName": "X_Cell_OtherLivestock_Others_Alpacas_Head",
+			"Label": "4300",
+			"CellType": "number"
+		},
+		{
+			"CellName": "X_Cell_OtherLivestock_Others_Horses_Head",
+			"Label": "100",
+			"CellType": "number"
+		},
+		{
+			"CellName": "X_Cell_OtherLivestock_Others_Mules_Head",
+			"Label": "100",
+			"CellType": "number"
+		},
+		{
+			"CellName": "X_Cell_OtherLivestock_Others_Emus_Head",
+			"Label": "100",
+			"CellType": "number"
+		}
+	],
+	"InputTables": [
+		{
+			"TableName": "X_Table_OtherLivestock_Buffalo_Head",
+			"MatrixType": "ColsToRows",
+			"NumberOfRows": 2,
+			"NumberOfCols": 4,
+			"ColumnNames": {
+				"Bulls": "Bulls",
+				"Cows": "Cows",
+				"Steers": "Steers",
+				"Calves": "Calves"
+			},
+			"Cols": {
+				"Column": {
+					"AverageNumberOfHeadBetween01Jan24And31Dec24": {
+						"Row": 2,
+						"Col": 2,
+						"Label": "Average number of head between 01 Jan 24 and 31 Dec 24",
+						"CellType": "number"
+					}
+				}
+			}
+		},
+		{
+			"TableName": "X_Table_OtherLivestock_Goats_Head",
+			"MatrixType": "ColsToRows",
+			"NumberOfRows": 2,
+			"NumberOfCols": 6,
+			"ColumnNames": {
+				"BucksBilly": "Bucks / billy",
+				"Wethers": "Wethers",
+				"MaidenBreedingDoesNannies": "Maiden breeding does / nannies",
+				"BreedingDoesNannies": "Breeding does / nannies",
+				"Other": "Other",
+				"Kids": "Kids"
+			},
+			"Cols": {
+				"Column": {
+					"AverageNumberOfHeadBetween01Jan24And31Dec24": {
+						"Row": 2,
+						"Col": 2,
+						"Label": "Average number of head between 01 Jan 24 and 31 Dec 24",
+						"CellType": "number"
+					}
+				}
+			}
+		},
+		{
+			"TableName": "X_Table_OtherLivestock_Deer_Head",
+			"MatrixType": "ColsToRows",
+			"NumberOfRows": 2,
+			"NumberOfCols": 4,
+			"ColumnNames": {
+				"Bucks": "Bucks",
+				"BreedingDoes": "Breeding does",
+				"OtherDoes": "Other does",
+				"Fawn": "Fawn"
+			},
+			"Cols": {
+				"Column": {
+					"AverageNumberOfHeadBetween01Jan24And31Dec24": {
+						"Row": 2,
+						"Col": 2,
+						"Label": "Average number of head between 01 Jan 24 and 31 Dec 24",
+						"CellType": "number"
+					}
+				}
+			}
+		}
+	]
 }

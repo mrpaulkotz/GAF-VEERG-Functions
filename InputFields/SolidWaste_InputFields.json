@@ -1,7 +1,7 @@
 {
 	"schemaVersion": 1,
 	"generatedFrom": "10_SolidWaste_WIP_v02.xlsx",
-	"generatedAt": "2026-07-17T07:52:44Z",
+	"generatedAt": "2026-07-22T05:59:18Z",
 	"InputCells": [],
 	"InputTables": [
 		{
@@ -32,7 +32,7 @@
 					},
 					"WasteType": {
 						"CellType": "select",
-						"DependentOn": "E10",
+						"DependentOn": "TreatmentType",
 						"Options": {
 							"Landfill": {
 								"Food waste (including animal carcasses, spoiled animal feed or crop)": "Food waste (including animal carcasses, spoiled animal feed or crop)",

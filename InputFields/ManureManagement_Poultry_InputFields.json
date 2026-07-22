@@ -1,7 +1,7 @@
 {
 	"schemaVersion": 1,
 	"generatedFrom": "4_6_ManureManagement_Poultry_WIP_v03.xlsx",
-	"generatedAt": "2026-07-17T07:54:15Z",
+	"generatedAt": "2026-07-22T06:01:04Z",
 	"InputCells": [
 		{
 			"CellName": "X_Cell_Site_FarmName",
@@ -17,6 +17,11 @@
 			"CellName": "X_Cell_Site_StartDate",
 			"Label": "Emissions calculation period start date",
 			"CellType": "date"
+		},
+		{
+			"CellName": "X_Cell_Site_EndDate",
+			"Label": "Emissions calculation period end date",
+			"CellType": "formula"
 		},
 		{
 			"CellName": "X_Cell_Site_State",
@@ -85,6 +90,31 @@
 			"CellType": "number"
 		},
 		{
+			"CellName": "X_Cell_Site_MapPetRatio",
+			"Label": "MAP:PET ratio",
+			"CellType": "formula"
+		},
+		{
+			"CellName": "X_Cell_Site_RainfallZone",
+			"Label": "Rainfall zone",
+			"CellType": "formula"
+		},
+		{
+			"CellName": "X_Cell_Site_ClimateZone",
+			"Label": "Climate zone",
+			"CellType": "formula"
+		},
+		{
+			"CellName": "X_Cell_Site_WetOrDryClimateZone",
+			"Label": "Wet or dry climate zone",
+			"CellType": "formula"
+		},
+		{
+			"CellName": "X_Cell_Site_TemperatureZone",
+			"Label": "Temperature zone",
+			"CellType": "formula"
+		},
+		{
 			"CellName": "X_Cell_Poultry_ProductionSystem",
 			"Label": "Production system",
 			"CellType": "select",
@@ -95,16 +125,25 @@
 			}
 		},
 		{
-			"CellName": "X_Cell_Dairy_ManureAppliedProductionSystem",
+			"CellName": "X_Cell_Poultry_ManureAppliedProductionSystem",
 			"Label": "Where manure was deposited on farm soils, what is the closest match?",
 			"CellType": "select",
-			"Options": {}
+			"Options": {
+				"Pasture": "Pasture",
+				"Crop": "Crop"
+			}
 		},
 		{
-			"CellName": "X_Cell_Dairy_ManureAppliedIrrigationMethod",
+			"CellName": "X_Cell_Poultry_ManureAppliedIrrigationMethod",
 			"Label": "",
 			"CellType": "select",
-			"Options": {}
+			"Options": {
+				"Not irrigated": "Not irrigated",
+				"Drip irrigation": "Drip irrigation",
+				"Sprinkler irrigation": "Sprinkler irrigation",
+				"Surface irrigation": "Surface irrigation",
+				"Other irrigation": "Other irrigation"
+			}
 		}
 	],
 	"InputTables": [
