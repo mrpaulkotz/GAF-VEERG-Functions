@@ -53,6 +53,12 @@
                 "TestInputFile": "EntericMethane/PastureBeef/TestInput_EntericMethane_PastureBeef.json",
                 "TestResultsFile": "EntericMethane/PastureBeef/TestResults_EntericMethane_PastureBeef.json"
             },
+            "Dairy": {
+                "TestID": "3_3_Enteric_Dairy",
+                "TestExcelFile": "3_3_Enteric_Dairy",
+                "TestInputFile": "EntericMethane/Dairy/TestInput_EntericMethane_Dairy.json",
+                "TestResultsFile": "EntericMethane/Dairy/TestResults_EntericMethane_Dairy.json"
+            },
             "Swine": {
                 "TestID": "3_5_Enteric_Swine",
                 "TestExcelFile": "3_5_Enteric_Swine",

@@ -1,21 +1,226 @@
 {
-	"Input_Site_FarmName": "My test farm",
-	"Input_Site_ReportingEntityName": "My test Farms Pty Ltd",
-	"Input_Site_StartDate": "1/1/2025",
-	"Input_Feedlot_AverageHead_Domestic": 1000,
-	"Input_Feedlot_AverageHead_MidFed": 1000,
-	"Input_Feedlot_AverageHead_LongFed": 1000,
-	"Input_Feedlot_DurationOfStay_Domestic": 90,
-	"Input_Feedlot_DurationOfStay_MidFed": 120,
-	"Input_Feedlot_DurationOfStay_LongFed": 260,
-	"Input_Feedlot_FeedIntake_Domestic": 10.4,
-	"Input_Feedlot_FeedIntake_MidFed": 11.2,
-	"Input_Feedlot_FeedIntake_LongFed": 12.0,
-	"Input_Feedlot_EtherExtract_Domestic": 4.9,
-	"Input_Feedlot_EtherExtract_MidFed": 5.1,
-	"Input_Feedlot_EtherExtract_LongFed": 5.6,
-	"Input_Feedlot_NDF_Domestic": 23,
-	"Input_Feedlot_NDF_MidFed": 23,
-	"Input_Feedlot_NDF_LongFed": 25
+  "X_Cell_Site_FarmName": "My test farm",
+  "X_Cell_Site_ReportingEntityName": "My test Farms Pty Ltd",
+  "X_Cell_Site_StartDate": "1/1/2025",
+  "X_Cell_Site_State": "Western Australia",
+  "X_Cell_Site_Region": "Western Australia - Outback (South)",
+  "X_Cell_Site_LeachingZone": "NO - Not in leaching zone",
+  "X_Cell_Site_Elevation": 307.7,
+  "X_Cell_Site_AverageTemperature": 18,
+  "X_Cell_Site_TotalRainfall": 601,
+  "X_Cell_Site_PotentialEvapotranspiration": 1326,
+  "X_Cell_Site_FrostDays": 7,
+  "X_Cell_Dairy_Breed": "Medium Friesian",
+  "X_Cell_Dairy_MilkProductionUnit": "Litres of milk",
+  "X_Cell_Dairy_MilkProductionAmount": 20,
 
+  "InputTables": [
+    {
+      "TableName": "X_Table_Dairy_HerdMovement",
+      "MatrixType": "ColsToRows",
+      "ColumnOffset": null,
+      "RowOffset": null,
+      "Cols": {
+        "MilkingCows": {
+          "Head": 100
+        },
+        "HeifersOver1Year": {
+          "Head": 100
+        },
+        "HeifersUnder1Year": {
+          "Head": 100
+        },
+        "BullsOver1Year": {
+          "Head": 100
+        },
+        "BullsUnder1Year": {
+          "Head": 100
+        }
+      }
+    },
+    {
+      "TableName": "X_Table_Dairy_Liveweight_Method1",
+      "MatrixType": "ColsToRows",
+      "ColumnOffset": null,
+      "RowOffset": null,
+      "Cols": {
+        "MilkingCows": {
+          "AverageLiveweight": 550,
+          "LiveweightGain": 0.016
+        },
+        "HeifersOver1Year": {
+          "AverageLiveweight": 380,
+          "LiveweightGain": 0.6
+        },
+        "HeifersUnder1Year": {
+          "AverageLiveweight": 155,
+          "LiveweightGain": 0.57
+        },
+        "BullsOver1Year": {
+          "AverageLiveweight": 600,
+          "LiveweightGain": 0.1
+        },
+        "BullsUnder1Year": {
+          "AverageLiveweight": 225,
+          "LiveweightGain": 0.8
+        }
+      }
+    },
+    {
+      "TableName": "X_Table_Dairy_Liveweight_Method2",
+      "MatrixType": "ColsToRows",
+      "ColumnOffset": null,
+      "RowOffset": null,
+      "Cols": {
+        "MilkingCows": {
+          "AverageLiveweight": 550,
+          "LiveweightGain": 0.016
+        },
+        "HeifersOver1Year": {
+          "AverageLiveweight": 380,
+          "LiveweightGain": 0.6
+        },
+        "HeifersUnder1Year": {
+          "AverageLiveweight": 155,
+          "LiveweightGain": 0.57
+        },
+        "BullsOver1Year": {
+          "AverageLiveweight": 600,
+          "LiveweightGain": 0.1
+        },
+        "BullsUnder1Year": {
+          "AverageLiveweight": 225,
+          "LiveweightGain": 0.8
+        }
+      }
+    },
+    {
+      "TableName": "X_Table_Dairy_DurationOfStay_Method1",
+      "MatrixType": "ColsToRows",
+      "ColumnOffset": null,
+      "RowOffset": null,
+      "Cols": {
+        "MilkingCows": {
+          "DurationWeaned": 365,
+          "DurationPreWeaned": 0
+        },
+        "HeifersOver1Year": {
+          "DurationWeaned": 365,
+          "DurationPreWeaned": 0
+        },
+        "HeifersUnder1Year": {
+          "DurationWeaned": 281,
+          "DurationPreWeaned": 84
+        },
+        "BullsOver1Year": {
+          "DurationWeaned": 365,
+          "DurationPreWeaned": 0
+        },
+        "BullsUnder1Year": {
+          "DurationWeaned": 281,
+          "DurationPreWeaned": 84
+        }
+      }
+    },
+    {
+      "TableName": "X_Table_Dairy_DurationOfStay_Method2",
+      "MatrixType": "ColsToRows",
+      "ColumnOffset": null,
+      "RowOffset": null,
+      "Cols": {
+        "MilkingCows": {
+          "DurationWeaned": 365,
+          "DurationPreWeaned": 0
+        },
+        "HeifersOver1Year": {
+          "DurationWeaned": 365,
+          "DurationPreWeaned": 0
+        },
+        "HeifersUnder1Year": {
+          "DurationWeaned": 281,
+          "DurationPreWeaned": 84
+        },
+        "BullsOver1Year": {
+          "DurationWeaned": 365,
+          "DurationPreWeaned": 0
+        },
+        "BullsUnder1Year": {
+          "DurationWeaned": 281,
+          "DurationPreWeaned": 84
+        }
+      }
+    },
+    {
+      "TableName": "X_Table_Dairy_Diet_Method1",
+      "MatrixType": "ColsToRows",
+      "ColumnOffset": null,
+      "RowOffset": null,
+      "Cols": {
+        "MilkingCows": {
+          "DryMatterDigestibility": 0.75,
+          "CrudeProtein": 0.2
+        },
+        "HeifersOver1Year": {
+          "DryMatterDigestibility": 0.75,
+          "CrudeProtein": 0.2
+        },
+        "HeifersUnder1Year": {
+          "DryMatterDigestibility": 0.75,
+          "CrudeProtein": 0.2
+        },
+        "BullsOver1Year": {
+          "DryMatterDigestibility": 0.75,
+          "CrudeProtein": 0.2
+        },
+        "BullsUnder1Year": {
+          "DryMatterDigestibility": 0.75,
+          "CrudeProtein": 0.2
+        }
+      }
+    },
+    {
+      "TableName": "X_Table_Dairy_Diet_Method2",
+      "MatrixType": "ColsToRows",
+      "ColumnOffset": null,
+      "RowOffset": null,
+      "Cols": {
+        "MilkingCows": {
+          "DryMatterDigestibility": 0.75,
+          "CrudeProtein": 0.2
+        },
+        "HeifersOver1Year": {
+          "DryMatterDigestibility": 0.75,
+          "CrudeProtein": 0.2
+        },
+        "HeifersUnder1Year": {
+          "DryMatterDigestibility": 0.75,
+          "CrudeProtein": 0.2
+        },
+        "BullsOver1Year": {
+          "DryMatterDigestibility": 0.75,
+          "CrudeProtein": 0.2
+        },
+        "BullsUnder1Year": {
+          "DryMatterDigestibility": 0.75,
+          "CrudeProtein": 0.2
+        }
+      }
+    },
+    {
+      "TableName": "X_Table_Dairy_MilkSolidAttributes",
+      "MatrixType": "ColsToRows",
+      "ColumnOffset": null,
+      "RowOffset": null,
+      "Cols": {
+        "Method1": {
+          "FatContent": "4.0%",
+          "ProteinContent": "3.3%"
+        },
+        "Method2": {
+          "FatContent": "4.0%",
+          "ProteinContent": "3.3%"
+        }
+      }
+    }
+  ]
 }

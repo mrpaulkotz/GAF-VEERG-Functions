@@ -279,8 +279,8 @@ VEERG_3_3_1_1__5_MilkProductionFromMilkSolids_Arguments
         INDEX({
           "MPU", "input milk production unit", "", "Input";
           "MS_j", "daily production of milk solids", "kg MS/head/day", "Input";
-          "FC_j", "fat content in fat and protein corrected milk", "per cent", "Constant";
-          "PC_j", "protein content in fat and protein corrected milk", "per cent", "Constant"
+          "FC_j", "fat content in fat and protein corrected milk", "per cent", "Input";
+          "PC_j", "protein content in fat and protein corrected milk", "per cent", "Input"
         }, r, c)
       )
     )
