@@ -1,7 +1,7 @@
 {
 	"schemaVersion": 1,
 	"generatedFrom": "Enterprise_PastureBeef_WIP_v01.xlsx",
-	"generatedAt": "2026-07-22T06:02:38Z",
+	"generatedAt": "2026-07-23T06:42:40Z",
 	"InputCells": [
 		{
 			"CellName": "X_Cell_Site_FarmName",
@@ -75,6 +75,11 @@
 			"CellName": "X_Cell_Site_Elevation",
 			"Label": "Elevation",
 			"CellType": "number"
+		},
+		{
+			"CellName": "X_Cell_Site_EndDate",
+			"Label": "Elevation",
+			"CellType": "date"
 		},
 		{
 			"CellName": "X_Cell_Site_AverageTemperature",
@@ -167,6 +172,16 @@
 				"Yes": "Yes",
 				"No": "No"
 			}
+		},
+		{
+			"CellName": "X_Cell_PastureBeef_CalculatedMMSPastureRangeAndPaddock",
+			"Label": "Pasture range and paddock",
+			"CellType": "formula"
+		},
+		{
+			"CellName": "X_Cell_PastureBeef_CalculatedMMSAnaerobicLagoon",
+			"Label": "Anaerobic lagoon",
+			"CellType": "formula"
 		},
 		{
 			"CellName": "X_Cell_PastureBeef_GrazingProductionSystem",

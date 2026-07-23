@@ -10,6 +10,9 @@ $ErrorActionPreference = 'Stop'
 Add-Type -AssemblyName System.IO.Compression
 Add-Type -AssemblyName System.IO.Compression.FileSystem
 
+# Shared Excel Labs (AFE) named-function re-publish helper.
+. (Join-Path $PSScriptRoot 'afe-named-functions.ps1')
+
 function Normalize-Text {
   param(
     [Parameter(Mandatory = $true)]
@@ -308,12 +311,32 @@ foreach ($workbook in $workbooks) {
 
   if ($result.Updated.Count -eq 0) {
     Write-Host ("{0}: no module updates needed." -f $workbook.Name)
-    continue
+  } else {
+    $anyUpdates = $true
+    $action = if ($DryRun) { 'Would update' } else { 'Updated' }
+    Write-Host ("{0}: {1} modules {2}" -f $workbook.Name, $action, (($result.Updated | Sort-Object -Unique) -join ', '))
   }
 
-  $anyUpdates = $true
-  $action = if ($DryRun) { 'Would update' } else { 'Updated' }
-  Write-Host ("{0}: {1} modules {2}" -f $workbook.Name, $action, (($result.Updated | Sort-Object -Unique) -join ', '))
+  # A module blob update does not change the published <definedName> forms Excel
+  # actually evaluates, so re-publish the workbook's AFE functions to the Name
+  # Manager. Run this even when no blob changed: it is self-healing (only
+  # missing/stale names are rewritten, with a no-COM fast path when everything is
+  # already in sync), which performs the one-time full fix on first run and then
+  # touches only functions whose source later changes.
+  if (-not $DryRun) {
+    try {
+      $republish = Invoke-AfeNamedFunctionRepublish -WorkbookPath $workbook.FullName
+      if (@($republish.Republished).Count -gt 0) {
+        $anyUpdates = $true
+        Write-Host ("{0}: re-published {1} named function(s)." -f $workbook.Name, @($republish.Republished).Count)
+      }
+      foreach ($rf in @($republish.Failed)) {
+        Write-Host ("{0}: named-function re-publish failed: {1}" -f $workbook.Name, $rf)
+      }
+    } catch {
+      Write-Host ("{0}: named-function re-publish error: {1}" -f $workbook.Name, $_.Exception.Message)
+    }
+  }
 }
 
 if (-not $anyUpdates) {

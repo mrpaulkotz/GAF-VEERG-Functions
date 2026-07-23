@@ -12,6 +12,9 @@ $ErrorActionPreference = 'Stop'
 Add-Type -AssemblyName System.IO.Compression | Out-Null
 Add-Type -AssemblyName System.IO.Compression.FileSystem | Out-Null
 
+# Shared Excel Labs (AFE) named-function re-publish helper.
+. (Join-Path $PSScriptRoot 'afe-named-functions.ps1')
+
 # ---------------------------------------------------------------------------
 # Auto-discovery: with neither -ConfigPath nor -EnterpriseId, build every
 # enterprise config (Enterprises\Enterprise_*.json) in turn by re-invoking
@@ -130,11 +133,11 @@ function Merge-AfeModules {
   $target = Read-AfeProject -WorkbookPath $TargetPath
   if ($null -eq $target) {
     Write-Warning "Target workbook has no Excel Labs (AFE) project; skipping module merge."
-    return @()
+    return [pscustomobject]@{ Added = @(); Updated = @() }
   }
 
   $existing = @{}
-  foreach ($f in @($target.Project.files)) { $existing[$f.path] = $true }
+  foreach ($f in @($target.Project.files)) { $existing[$f.path] = $f }
 
   # Build a lookup of module path -> file object from all source workbooks.
   $available = @{}
@@ -147,23 +150,36 @@ function Merge-AfeModules {
   }
 
   $added = New-Object System.Collections.Generic.List[string]
+  $updated = New-Object System.Collections.Generic.List[string]
   $missing = New-Object System.Collections.Generic.List[string]
   $toAdd = New-Object System.Collections.Generic.List[object]
 
   foreach ($mp in ($RequiredModulePaths | Select-Object -Unique)) {
-    if ($existing.ContainsKey($mp)) { continue }
-    if ($available.ContainsKey($mp)) {
-      $toAdd.Add($available[$mp])
-      $added.Add($mp)
+    if (-not $available.ContainsKey($mp)) {
+      if (-not $existing.ContainsKey($mp)) { $missing.Add($mp) }
+      continue
+    }
+    $src = $available[$mp]
+    if ($existing.ContainsKey($mp)) {
+      # Module already present: refresh its content if the synced source differs,
+      # so xlf updates propagate into a pre-existing enterprise template module.
+      $tgt = $existing[$mp]
+      $srcText = [string] $src.text
+      $tgtText = [string] $tgt.text
+      if (($srcText -replace "`r`n?", "`n") -ne ($tgtText -replace "`r`n?", "`n")) {
+        $tgt.text = $src.text
+        $updated.Add($mp)
+      }
     } else {
-      $missing.Add($mp)
+      $toAdd.Add($src)
+      $added.Add($mp)
     }
   }
 
   foreach ($m in $missing) { Write-Warning "Excel Labs module not found in any source workbook: $m" }
 
-  if ($toAdd.Count -eq 0) { return @($added) }
-  if ($DryRun) { return @($added) }
+  if ($toAdd.Count -eq 0 -and $updated.Count -eq 0) { return [pscustomobject]@{ Added = @(); Updated = @() } }
+  if ($DryRun) { return [pscustomobject]@{ Added = @($added); Updated = @($updated) } }
 
   $fileList = New-Object System.Collections.Generic.List[object]
   foreach ($f in @($target.Project.files)) { $fileList.Add($f) }
@@ -182,7 +198,7 @@ function Merge-AfeModules {
     try { $writer.Write($newXml) } finally { $writer.Dispose() }
   } finally { $zip.Dispose() }
 
-  return @($added)
+  return [pscustomobject]@{ Added = @($added); Updated = @($updated) }
 }
 
 function Get-WorkbookScopedNameSet {
@@ -1144,9 +1160,20 @@ try {
   }
 
   # --- Merge Excel Labs modules into the saved workbook -----------------------
-  $mergedModules = @()
+  $mergedModules = [pscustomobject]@{ Added = @(); Updated = @() }
+  $republishResult = $null
   if (-not $DryRun) {
     $mergedModules = Merge-AfeModules -TargetPath $OutputPath -RequiredModulePaths $afeModulePaths -SourceWorkbookPaths $resolvedModuleWorkbooks
+
+    # --- Re-publish AFE module functions to the Name Manager ------------------
+    # Merging a module only refreshes the AFE blob; Excel evaluates the published
+    # <definedName> forms, so self-heal any that are missing or stale (first run
+    # fixes all, later runs touch only functions whose source changed).
+    $republishResult = Invoke-AfeNamedFunctionRepublish -WorkbookPath $OutputPath
+    if (@($republishResult.Republished).Count -gt 0) {
+      Write-Host ("Re-published {0} named function(s) to the Name Manager." -f @($republishResult.Republished).Count)
+    }
+    foreach ($rf in @($republishResult.Failed)) { Write-Warning ("Named-function re-publish failed: {0}" -f $rf) }
   } else {
     Write-Host ''
     Write-Host "Excel Labs modules required:"
@@ -1167,7 +1194,13 @@ try {
     Write-Host ("Defined names re-linked: {0}" -f $namesFixed)
     Write-Host ("Defined names skipped  : {0}" -f $namesFailed)
     Write-Host ("Sheet-scoped dupes rm  : {0}" -f $namesDeduped)
-    Write-Host ("Excel Labs modules add : {0}" -f @($mergedModules).Count)
+    Write-Host ("Excel Labs modules add : {0}" -f @($mergedModules.Added).Count)
+    Write-Host ("Excel Labs modules upd : {0}" -f @($mergedModules.Updated).Count)
+    foreach ($um in @($mergedModules.Updated)) { Write-Host ("  updated: {0}" -f $um) }
+    if ($null -ne $republishResult) {
+      Write-Host ("Named funcs re-published: {0}" -f @($republishResult.Republished).Count)
+      Write-Host ("Named funcs republish fail: {0}" -f @($republishResult.Failed).Count)
+    }
     Write-Host ("Refs localised (strip) : {0}" -f $refsLocalised)
     Write-Host ("Names localised (strip): {0}" -f $namesLocalised)
     Write-Host ("Names still external   : {0}" -f $namesStillExternal)
