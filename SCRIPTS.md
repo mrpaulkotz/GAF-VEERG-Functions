@@ -2,7 +2,7 @@
 
 ## npm run build
 
-Syncs all `.xlf` files in the repository into the Excel Labs AFE project embedded in every `.xlsx` workbook under `Excel/`.
+Syncs all `.xlf` files in the repository into the Excel Labs AFE project embedded in every `.xlsx` workbook under `Excel/`, and propagates the shared common sheets across all of those workbooks.
 
 ```powershell
 npm run build
@@ -10,10 +10,20 @@ npm run build
 
 **What it does:**
 1. Runs `scripts/sync-xlf-to-excel-labs.ps1` — reads every `.xlf` file and writes its content into the matching Excel Labs module inside each workbook.
-2. Prints a per-workbook summary of which modules were updated (or were already in sync).
-3. Workbooks that are open in Excel will be skipped with a warning.
+2. **Propagates the common sheets across all workbooks** — the same script's
+   `Sync-CommonSheetsAcrossWorkbooks` step copies the shared common sheets (e.g.
+   `Constants - Common`) from their canonical source into every module workbook under
+   `Excel/`, so the common data and Excel Labs (`Module.Func`) definitions stay identical
+   everywhere. This runs automatically as part of `npm run build`.
+3. Prints a per-workbook summary of which modules were updated (or were already in sync).
+4. Workbooks that are open in Excel will be skipped with a warning.
 
-**Dry run** (shows what would change without writing anything):
+Because the common-sheet propagation is built in, invoking
+`Sync-CommonSheetsAcrossWorkbooks` as a downstream command to `build.ps1` is a no-op
+(it reports that it already ran as part of the build).
+
+**Dry run** (shows what would change — including the common-sheet propagation — without
+writing anything):
 
 ```powershell
 npm run build:dry

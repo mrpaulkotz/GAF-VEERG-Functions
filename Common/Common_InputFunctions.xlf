@@ -244,7 +244,7 @@ Common_GetMCFTemperatureZone
     Temperature, MMS, TemperatureArray, MMSArray, ReturnArray,
     XLOOKUP(
         MEDIAN(
-            Temperature, 
+            ROUND(Temperature, 0), 
             MIN(TemperatureArray), 
             MAX(TemperatureArray)
         ),
