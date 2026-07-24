@@ -92,7 +92,71 @@ npm run build:source-data:dry
 
 ---
 
+## Source-data overrides
+
+Lets you replace the values of a generated source-data table in a workbook
+**without touching the pristine base `_Data` function**. Intended to run against a
+**duplicated** workbook (there is no reset/restore).
+
+### Override files
+
+Overrides live in `overrides/<Module>.overrides.json`. The shape mirrors the
+generated `generated-sourcedata/*.sourcedata.json`: each key is a base
+source-data function name **without** the `_Data` suffix, with `header` + `rows`.
+
+```json
+{
+  "Overrides": {
+    "SourceData_Dairy_LiveweightCowsAndHeifers": {
+      "header": ["Breed", "Milking Cows", "Heifers >1", "Heifers <1 (weaned)"],
+      "rows": [["Medium Friesian", 999, 888, 155]]
+    }
+  }
+}
+```
+
+Only **matrix** source-data tables (header + rows) are supported, matching the
+generated JSON contract.
+
+### How it works
+
+For each overridden table the script:
+
+1. Serialises `header` + `rows` into an Excel array `LAMBDA` constant.
+2. Upserts a `<name>_Data_Override` function into a dedicated Excel Labs (AFE)
+   module `SourceData_Overrides` and republishes so the workbook-scoped name
+   `SourceData_Overrides.<name>_Data_Override` exists.
+3. Repoints every consuming cell formula from the base dotted call
+   `<Module>.<name>_Data(` to `SourceData_Overrides.<name>_Data_Override(`.
+
+Overrides whose base table is not present in the target workbook, or whose
+serialised constant exceeds Excel's ~8192-char defined-name limit, are skipped.
+
+### Standalone
+
+```powershell
+npm run apply-source-data-overrides -- `
+  -WorkbookPath .\Excel\TestExcel\<duplicate>.xlsx `
+  -OverridesPath .\overrides\SourceData_Dairy.overrides.json
+```
+
+Add `-DryRun` to print the generated module text without modifying the workbook.
+
+### With the test workbook generator
+
+`create-test-excel-from-json.ps1` accepts `-IncludeOverrides` (and optional
+`-OverridesDir`, default `overrides/`). After the test workbook is created and
+test inputs are injected, every `*.overrides.json` under the overrides directory
+is applied to the generated workbook:
+
+```powershell
+npm run create-test-excel:overrides -- -TestID 3_3_Enteric_Dairy
+```
+
+---
+
 ## npm run build:input-fields
+
 
 Generates JSON descriptions of the user-input fields in the VEERG module workbooks
 under `Excel/`. The workbooks remain the source of truth; the JSON is a derived build

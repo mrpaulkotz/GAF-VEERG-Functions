@@ -7,7 +7,9 @@ param(
   [string] $Suffix = '_test',
   [ValidateSet('Test', 'Emissions')]
   [string] $Context = 'Test',
-  [double] $DifferenceTolerance = 0.00001
+  [double] $DifferenceTolerance = 0.00001,
+  [switch] $IncludeOverrides,
+  [string] $OverridesDir
 )
 
 Set-StrictMode -Version Latest
@@ -43,9 +45,12 @@ if ([string]::IsNullOrWhiteSpace($ConfigPath)) {
 if ([string]::IsNullOrWhiteSpace($InputFieldsRoot)) {
   $InputFieldsRoot = Join-Path $RepoRoot 'InputFields'
 }
-
 $resolvedExcelRoot = (Resolve-Path -LiteralPath $ExcelSearchRoot).Path
 $resolvedConfigPath = (Resolve-Path -LiteralPath $ConfigPath).Path
+
+if ($IncludeOverrides -and [string]::IsNullOrWhiteSpace($OverridesDir)) {
+  $OverridesDir = Join-Path $RepoRoot 'overrides'
+}
 
 if ([string]::IsNullOrWhiteSpace($TestID)) {
   throw "TestID is required. Example: npm run create-test-excel -- -TestID 3_1_Enteric_Feedlot"
@@ -1425,6 +1430,30 @@ try {
   }
   [GC]::Collect()
   [GC]::WaitForPendingFinalizers()
+}
+
+# Optionally apply source-data overrides to the freshly created workbook. This
+# runs as an independent pass (the override script opens/saves/closes the file
+# itself) so it must happen after the workbook above is fully closed.
+if ($IncludeOverrides) {
+  $resolvedOverridesDir = $null
+  if (Test-Path -LiteralPath $OverridesDir) {
+    $resolvedOverridesDir = (Resolve-Path -LiteralPath $OverridesDir).Path
+  }
+  if ($null -eq $resolvedOverridesDir) {
+    Write-Warning ("IncludeOverrides set but overrides directory not found: {0}" -f $OverridesDir)
+  } else {
+    $overrideFiles = @(Get-ChildItem -LiteralPath $resolvedOverridesDir -Filter '*.overrides.json' -File -ErrorAction SilentlyContinue)
+    if ($overrideFiles.Count -eq 0) {
+      Write-Warning ("IncludeOverrides set but no *.overrides.json files in: {0}" -f $resolvedOverridesDir)
+    } else {
+      $applyOverridesScript = Join-Path $PSScriptRoot 'apply-source-data-overrides.ps1'
+      foreach ($of in $overrideFiles) {
+        Write-Host ("`nApplying overrides file: {0}" -f $of.Name) -ForegroundColor Cyan
+        & $applyOverridesScript -WorkbookPath $targetPath -OverridesPath $of.FullName
+      }
+    }
+  }
 }
 
 Write-Host ("Source workbook: {0}" -f $sourceFile.FullName)

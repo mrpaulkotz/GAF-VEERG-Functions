@@ -1,0 +1,20 @@
+{
+  "_comment": "Source-data overrides for the Dairy module. Applied only when -IncludeOverrides is set, and only to a duplicated workbook. Each key is a base source-data function name (without the _Data suffix); header + rows mirror generated-sourcedata/SourceData_Dairy.sourcedata.json.",
+  "Overrides": {
+    "SourceData_Dairy_LiveweightCowsAndHeifers": {
+      "header": ["Breed", "Milking Cows", "Heifers >1", "Heifers <1 (weaned)"],
+      "rows": [
+        ["Medium Friesian", 999, 888, 155],
+        ["Large Friesian", 600, 415, 170],
+        ["Holstein-Friesian", 650, 450, 185],
+        ["Friesian crossbred", 500, 350, 145],
+        ["Jersey", 400, 275, 115],
+        ["Jersey crossbred", 450, 315, 130],
+        ["Ayrshire", 540, 375, 150],
+        ["Guernsey", 480, 335, 140],
+        ["Brown Swiss", 600, 415, 170],
+        ["Illawarra/Aussie Red", 550, 375, 150]
+      ]
+    }
+  }
+}
