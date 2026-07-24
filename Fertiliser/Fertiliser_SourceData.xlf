@@ -69,7 +69,7 @@ Fertiliser_FracGASF_Title
 =LAMBDA(("Fraction of inorganic fertiliser that volatilises as NH3 and NOx"));
 
 Fertiliser_FracGASF_Source
-=LAMBDA(("Table A.2.2.6: Fraction of inorganic fertiliser f that volatilises as NH3 and NOx ((kg NH3â€“N + NOxâ€“N)/kg N) (FracGASFf)"));
+=LAMBDA(("Table A.2.2.6: Fraction of inorganic fertiliser f that volatilises as NH3 and NOx ((kg NH3-N + NOx-N)/kg N) (FracGASFf)"));
 
 Fertiliser_FracGASF_Data
 =LAMBDA(
@@ -328,7 +328,7 @@ Fertiliser_Products_Source
 
 Fertiliser_Products_Data1
 =LAMBDA(
- MAKEARRAY(39, 32,
+ MAKEARRAY(24, 32,
  LAMBDA(r,c,
   INDEX({
 
@@ -355,7 +355,16 @@ Fertiliser_Products_Data1
 "Exclude - Absent ingredients > 2%","","Campbells fertilisers Australia","Bud-Wiser Dry","Bud-Wiser Dry - Campbells Fertilisers Australasia","","","kg","","","","Sulfur - Generic",0.094,"Magnesium",0.06,"Boron",0.045,"Zinc",0.027,"","","","","","","","","","","","","END ROW";
 "Exclude - Not relevant","","Campbells fertilisers Australia","Calbit C","Calbit C - Campbells Fertilisers Australasia","","Not fertiliser - Do not include","L","","","","","","","","","","","","","","","","","","","","","","","","END ROW";
 "Exclude - Not relevant","","Campbells fertilisers Australia","Calcium 175","Calcium 175 - Campbells Fertilisers Australasia","","Not fertiliser - Do not include","L","","","","","","","","","","","","","","","","","","","","","","","","END ROW";
-"Include","Use Lime EF for calcium","Campbells fertilisers Australia","CalPhos","Calphos - Campbells Fertilisers Australasia","Website","","L",1.285,"","","Phosphorus - Generic",0.135,"Calcium - Generic",0.04,"","","","","","","","","","","","","","","","","END ROW";
+"Include","Use Lime EF for calcium","Campbells fertilisers Australia","CalPhos","Calphos - Campbells Fertilisers Australasia","Website","","L",1.285,"","","Phosphorus - Generic",0.135,"Calcium - Generic",0.04,"","","","","","","","","","","","","","","","","END ROW"
+  }, r, c)
+)));
+
+/*
+Fertiliser_Products_Data2
+=LAMBDA(
+ MAKEARRAY(21, 28,
+ LAMBDA(r,c,
+  INDEX({
 "Include","50/50 nitrate and ammoniacal nitrogen (ammonium nitrate)","Campbells fertilisers Australia","Compass","Compass - Campbells Fertilisers Australasia","","","kg",1,"","","Nitrogen - Ammoniacal",0.075,"Nitrogen - Nitrate",0.075,"Potassium - Generic",0.125,"Phosphorus-Generic",0.065,"Sulfur - Generic",0.06,"","","","","","","","","","","END ROW";
 "Include - Absent ingredients < 2%","Controlled release N treated as generic Amount of urea calculated from urea nitrogen amount","Campbells fertilisers Australia","CoRoN 12-0-10","Coron 12-0-10 - Campbells Fertilisers Australasia","Website SDS Brochure","","L",1.215,"","","Urea",0.195652174,"Potassium - Generic",0.1,"Nitrogen - Generic",0.03,"Boron",0.005,"","","","","","","","","","","","","END ROW";
 "Include","Used Sulphate of Ammonia and Ammonium nitrate values from SDS","Campbells fertilisers Australia","Maximum Quick-N","Maximum Quick-N - Campbells Fertilisers Australasia","Website SDS","","kg",1,"","","Sulphate of ammonia",0.55,"Ammonium nitrate",0.3,"","","","","","","","","","","","","","","","","END ROW";
@@ -370,17 +379,8 @@ Fertiliser_Products_Data1
 "Include","Amount of urea calculated from urea nitrogen amount","Incitec Pivot Fertilisers","Easy N","https://www.incitecpivotfertilisers.com.au/products-services/our-products/liquids/easy-n/","Website brochure Bag tag","","L",1.32,"","","Urea",0.467391304,"Nitrogen - Nitrate",0.105,"Nitrogen - Ammoniacal",0.105,"Biuret",0.006,"","","","","","","","","","","","","END ROW";
 "Include","Use Lime EF for calcium","Risso-Chemical","Calcium Ammonium Nitrate","Calcium Ammonium Nitrate Balanced Fertilizer for Enhanced Crop Growth | Risso","","","kg",1,"","China","Nitrogen - Ammoniacal",0.27,"Nitrogen - Nitrate",0.135,"Calcium - Generic",0.12,"","","","","","","","","","","","","","","END ROW";
 "Include","Use Lime EF for calcium","SL Tec","CellCAL Plus","SLTEC_CellCALPLUS.pdf","Brochure","","L",1.138,"","","Calcium - Generic",0.059,"Copper",0.003,"Boron",0.001,"","","","","","","","","","","","","","","END ROW";
-"Include - Absent ingredients < 2%","Use muriate of potash (MOP) instead of 'potassium as chloride'","Incitec Pivot Fertilisers","CK55","Bag Tags","Bag tag","","kg",1,"","","Phosphorus - Generic",0.15,"Nitrogen - Ammoniacal",0.135,"Muriate of Potash (MOP)",0.125,"Flouride",0.023,"Sulfur - Generic",0.012,"","","","","","","","","","","END ROW"
-  }, r, c)
-)));
-
-/*
-Fertiliser_Products_Data2
-=LAMBDA(
- MAKEARRAY(6, 28,
- LAMBDA(r,c,
-  INDEX({
-"Exclude - Absent ingredients > 2%","","Campbells fertilisers Australia","Bud-Wiser Dry","kg","","","Sulfur - Generic",0.094,"Magnesium",0.06,"Boron",0.045,"Zinc",0.027,"","","","","","","","","","","","";
+"Include - Absent ingredients < 2%","Use muriate of potash (MOP) instead of 'potassium as chloride'","Incitec Pivot Fertilisers","CK55","Bag Tags","Bag tag","","kg",1,"","","Phosphorus - Generic",0.15,"Nitrogen - Ammoniacal",0.135,"Muriate of Potash (MOP)",0.125,"Flouride",0.023,"Sulfur - Generic",0.012,"","","","","","","","","","","END ROW";
+    "Exclude - Absent ingredients > 2%","","Campbells fertilisers Australia","Bud-Wiser Dry","kg","","","Sulfur - Generic",0.094,"Magnesium",0.06,"Boron",0.045,"Zinc",0.027,"","","","","","","","","","","","";
 "Exclude - Not relevant","","Campbells fertilisers Australia","Calbit C","L","","","","","","","","","","","","","","","","","","","","","","","";
 "Exclude - Not relevant","","Campbells fertilisers Australia","Calcium 175","L","","","","","","","","","","","","","","","","","","","","","","","";
 "Exclude - Absent ingredients > 2%","","Campbells fertilisers Australia","CalPhos","L",1.285,"","Phosphorus - Generic",0.135,"Calcium - Generic",0.04,"","","","","","","","","","","","","","";

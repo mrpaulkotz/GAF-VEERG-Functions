@@ -195,6 +195,52 @@ function Read-AfeWorkbookModules {
   return $modules
 }
 
+function ConvertFrom-AfeLongText {
+  # Excel stores a string literal longer than the 255-char formula-string limit
+  # as `_LONGTEXT("chunk1","chunk2",...)`, splitting the text into <=255-char
+  # chunks that concatenate back to the original. The source has a single
+  # "..." literal, so we unwrap each `_LONGTEXT(...)` back to one merged string
+  # for comparison. String-aware paren matching is required because the chunks
+  # contain (), {} and [] as literal text.
+  param(
+    [Parameter(Mandatory = $true)]
+    [AllowEmptyString()]
+    [string] $Text
+  )
+
+  if ([string]::IsNullOrEmpty($Text)) { return $Text }
+  $token = '_LONGTEXT('
+  while ($true) {
+    $idx = $Text.IndexOf($token)
+    if ($idx -lt 0) { break }
+    $openParen = $idx + $token.Length - 1  # index of the '('
+    $i = $openParen
+    $depth = 0
+    $inStr = $false
+    $close = -1
+    while ($i -lt $Text.Length) {
+      $ch = $Text[$i]
+      if ($inStr) {
+        if ($ch -eq '"') {
+          if (($i + 1) -lt $Text.Length -and $Text[$i + 1] -eq '"') { $i += 2; continue }
+          $inStr = $false
+        }
+        $i++; continue
+      }
+      if ($ch -eq '"') { $inStr = $true }
+      elseif ($ch -eq '(') { $depth++ }
+      elseif ($ch -eq ')') { $depth--; if ($depth -eq 0) { $close = $i; break } }
+      $i++
+    }
+    if ($close -lt 0) { break }  # malformed; leave as-is
+    $inner = $Text.Substring($openParen + 1, $close - $openParen - 1)
+    # Merge the split chunks: the separator between chunks is exactly `","`.
+    $merged = $inner -replace '","', ''
+    $Text = $Text.Substring(0, $idx) + $merged + $Text.Substring($close + 1)
+  }
+  return $Text
+}
+
 function Get-CanonicalAfeFormula {
   # Normalise a formula (either the raw published refersTo or a user-facing
   # formula) into an encoder-agnostic canonical string for comparison. We strip
@@ -212,8 +258,30 @@ function Get-CanonicalAfeFormula {
   # like FILTER), and can stack them (_xlfn._xlws.FILTER). Strip any _xl<..>.
   # marker generically -- real params/functions never start with "_xl".
   $s = [regex]::Replace($s, '(?i)_xl[a-z]+\.', '')
+  $s = $s -replace '\s+', ''         # whitespace/newlines (do before _LONGTEXT so chunk separators are exactly `","`)
+  # Excel prefixes a cross-module defined-name reference with a self-workbook
+  # external index, e.g. `[0]!Common_InputFunctions.Utility_Foo`. Strip the
+  # `[<n>]!` prefix (self-ref, semantically a no-op) so both sides converge.
+  $s = [regex]::Replace($s, '\[\d+\]!', '')
+  $s = ConvertFrom-AfeLongText -Text $s   # unwrap Excel's long-string chunking
   $s = $s -replace '[\[\]]', ''      # optional-param brackets (stripped both sides)
-  $s = $s -replace '\s+', ''         # whitespace/newlines
+  # Excel normalises numeric literals (strips trailing zeros: 0.50 -> 0.5, and
+  # rewrites scientific notation: 1.132e-4 -> 0.0001132). Parse every numeric
+  # token to a canonical round-trip value so data-array/scalar constants
+  # converge. Both the expected and stored forms pass through here, so the same
+  # transform applies to each side (safe for comparison). Identifiers with
+  # digits (e.g. VEERG_11_1) are protected by the leading (?<![\w.]) boundary.
+  $numRx = [regex]'(?<![\w.])\d+(?:\.\d+)?(?:[eE][+-]?\d+)?'
+  $s = $numRx.Replace($s, {
+      param($m)
+      $d = 0.0
+      if ([double]::TryParse($m.Value,
+          [System.Globalization.NumberStyles]::Float,
+          [System.Globalization.CultureInfo]::InvariantCulture, [ref] $d)) {
+        return $d.ToString('R', [System.Globalization.CultureInfo]::InvariantCulture)
+      }
+      return $m.Value
+    })
   if ($s.StartsWith('=')) { $s = $s.Substring(1) }
   return $s
 }
@@ -286,6 +354,7 @@ function Invoke-AfeNamedFunctionRepublish {
     Checked     = 0
     Republished = New-Object System.Collections.Generic.List[string]
     Failed      = New-Object System.Collections.Generic.List[string]
+    Skipped     = New-Object System.Collections.Generic.List[string]
     HasAfe      = $false
   }
 
@@ -310,12 +379,30 @@ function Invoke-AfeNamedFunctionRepublish {
   }
   if ($moduleFunctions.Count -eq 0) { return $result }
 
+  # Excel caps a defined name's RefersTo at ~8192 chars.
+  $maxRefersToLen = 8192
+
   # Desired defined names + expected canonical form.
   $desired = New-Object System.Collections.Generic.List[object]
   foreach ($mf in $moduleFunctions) {
+    $name = ('{0}.{1}' -f $mf.ModuleName, $mf.FuncName)
+    # Only =LAMBDA(...) functions are published by Excel Labs as reusable named
+    # functions. Non-LAMBDA helpers (plain formulas using structured table refs
+    # or [#This Row]) cannot be valid workbook-scoped defined names -- trying to
+    # add them fails and would otherwise leave a bogus name behind.
+    if ($mf.Formula -notmatch '^(?i)=\s*LAMBDA\s*\(') {
+      [void] $result.Skipped.Add(('{0} (not a LAMBDA)' -f $name))
+      continue
+    }
     $qualified = ConvertTo-QualifiedAfeFormula -Formula $mf.Formula -FuncModuleMap $funcModuleMap
+    # Giant data-array LAMBDAs exceed the RefersTo length limit and cannot be
+    # stored as a full defined name (Excel Labs itself truncates them).
+    if ($qualified.Length -gt $maxRefersToLen) {
+      [void] $result.Skipped.Add(('{0} (refersTo {1} > {2} chars)' -f $name, $qualified.Length, $maxRefersToLen))
+      continue
+    }
     $desired.Add([pscustomobject]@{
-        Name              = ('{0}.{1}' -f $mf.ModuleName, $mf.FuncName)
+        Name              = $name
         Formula           = $qualified
         CanonicalExpected = (Get-CanonicalAfeFormula -Text $qualified)
       })
@@ -356,9 +443,10 @@ function Invoke-AfeNamedFunctionRepublish {
     $wb = $excel.Workbooks.Open($WorkbookPath)
     try { $prevCalc = $excel.Calculation; $excel.Calculation = -4135 } catch { }  # xlCalculationManual (after Open)
 
+    $newlyAdded = @{}
     foreach ($m in $mismatches) {
       if (-not $currentNames.ContainsKey($m.Name)) {
-        try { $wb.Names.Add($m.Name, '=0') | Out-Null } catch { }
+        try { $wb.Names.Add($m.Name, '=0') | Out-Null; $newlyAdded[$m.Name] = $true } catch { }
       }
     }
 
@@ -374,6 +462,11 @@ function Invoke-AfeNamedFunctionRepublish {
         [void] $result.Republished.Add($m.Name)
       } catch {
         [void] $result.Failed.Add(('{0}: {1}' -f $m.Name, $_.Exception.Message))
+        # Roll back the pass-1 '=0' placeholder so a failed add never leaves a
+        # bogus name behind (restores the pre-run "name absent" state).
+        if ($newlyAdded.ContainsKey($m.Name)) {
+          try { $wb.Names.Item($m.Name).Delete() } catch { }
+        }
       }
     }
 

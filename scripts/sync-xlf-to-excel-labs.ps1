@@ -271,7 +271,13 @@ function Sync-Workbook {
 }
 
 $repoRootPath = (Resolve-Path $RepoRoot).Path
-$allWorkbooks = @(Get-ChildItem -Path (Join-Path $repoRootPath 'Excel') -Filter '*.xlsx' -File)
+# Exclude one-time backup snapshots (*.prename.bak.xlsx / *.prelink.bak.xlsx)
+# created by other scripts -- they must never be synced, re-published, or used
+# as propagation targets.
+$allWorkbooks = @(
+  Get-ChildItem -Path (Join-Path $repoRootPath 'Excel') -Filter '*.xlsx' -File |
+    Where-Object { $_.Name -notlike '*.bak.xlsx' }
+)
 $workbooks = $allWorkbooks
 $propagationWorkbooks = $allWorkbooks
 if (-not [string]::IsNullOrWhiteSpace($WorkbookPath)) {
