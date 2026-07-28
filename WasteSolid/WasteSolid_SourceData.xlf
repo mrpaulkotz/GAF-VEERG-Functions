@@ -35,10 +35,10 @@ Waste_EmissionFactorsForWasteTreatment_Data
         "Landfill", "Construction and demolition waste", 0.2, "NGAF 2025 table 15";
         
         "Incineration", "Food waste, green waste, wood, sludge", 0, "";
-        "Incineration", "Food waste (including animal carcasses, spoiled animal feed or crop)", "", "";
-        "Incineration", "Green waste (including crop residues or prunings)", "", "";
-        "Incineration", "Wood", "", "";
-        "Incineration", "Sludge", "", "";
+        "Incineration", "Food waste (including animal carcasses, spoiled animal feed or crop)", 0, "";
+        "Incineration", "Green waste (including crop residues or prunings)", 0, "";
+        "Incineration", "Wood", 0, "";
+        "Incineration", "Sludge", 0, "";
         "Incineration", "Paper and cardboard", 0.0169, "";
         "Incineration", "Textiles", 0.3667, "";
         "Incineration", "Rubber and leather", 0.4919, "";
@@ -47,18 +47,18 @@ Waste_EmissionFactorsForWasteTreatment_Data
         "Incineration", "Commercial and industrial waste", 1.649, "NGAF 2025 Table 18";
 
         "Composting", "All organic waste", 0.046, "NGAF 2025 Table 19";
-        "Composting", "Food waste (including animal carcasses, spoiled animal feed or crop)", "", "";
-        "Composting", "Green waste (including crop residues or prunings)", "", "";
-        "Composting", "Wood", "", "";
-        "Composting", "Sludge", "", "";
-        "Composting", "Paper and cardboard", "", "";
+        "Composting", "Food waste (including animal carcasses, spoiled animal feed or crop)", 0.046, "";
+        "Composting", "Green waste (including crop residues or prunings)", 0.046, "";
+        "Composting", "Wood", 0.046, "";
+        "Composting", "Sludge", 0.046, "";
+        "Composting", "Paper and cardboard", 0.046, "";
 
         "Anaerobic digestion", "All organic waste", 0.028, "NGAF 2025 Table 19";
-        "Anaerobic digestion", "Food waste (including animal carcasses, spoiled animal feed or crop)", "", "";
-        "Anaerobic digestion", "Green waste (including crop residues or prunings)", "", "";
-        "Anaerobic digestion", "Wood", "", "";
-        "Anaerobic digestion", "Sludge", "", "";
-        "Anaerobic digestion", "Paper and cardboard", "", ""
+        "Anaerobic digestion", "Food waste (including animal carcasses, spoiled animal feed or crop)", 0.028, "";
+        "Anaerobic digestion", "Green waste (including crop residues or prunings)", 0.028, "";
+        "Anaerobic digestion", "Wood", 0.028, "";
+        "Anaerobic digestion", "Sludge", 0.028, "";
+        "Anaerobic digestion", "Paper and cardboard", 0.028, ""
       }, r, c)
 )));
 
