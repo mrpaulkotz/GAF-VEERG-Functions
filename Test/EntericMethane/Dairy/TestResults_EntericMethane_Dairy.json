@@ -1,4 +1,14 @@
 {
-	"VEERG_3_3_1_1__1_TotalAnnualMethaneFromEntericFermentationVariation_Result_Method1": 32.46468268,
-	"VEERG_3_3_1_1__1_TotalAnnualMethaneFromEntericFermentationVariation_Result_Method2": 32.46468268
+	"Scenarios": [
+		{
+			"ScenarioName": "Scenario 1",
+			"VEERG_3_3_1_1__1_TotalAnnualMethaneFromEntericFermentationVariation_Result_Method1": 32.46468268,
+			"VEERG_3_3_1_1__1_TotalAnnualMethaneFromEntericFermentationVariation_Result_Method2": 32.46468268
+		},
+		{
+			"ScenarioName": "Scenario 2",
+			"VEERG_3_3_1_1__1_TotalAnnualMethaneFromEntericFermentationVariation_Result_Method1": 32.46468268,
+			"VEERG_3_3_1_1__1_TotalAnnualMethaneFromEntericFermentationVariation_Result_Method2": 32.46468268
+		}
+	]
 }

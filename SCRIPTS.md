@@ -337,6 +337,33 @@ npm run create-test-excel -- -TestID 13_Scope3
 > `-TestID` (case-insensitive); the value is the `TestID` of an entry in `Test/Test.json`
 > (e.g. `13_Scope3`, `3_1_Enteric_Feedlot`, `Enterprise_PastureBeef`).
 
+**Scenarios:** a `TestInputFile` may hold several named input sets under a top-level
+`Scenarios` array instead of a single flat object. Each scenario carries a `ScenarioName`
+plus the same `X_Cell_*` fields and optional `InputTables`:
+
+```jsonc
+{
+  "Scenarios": [
+    {
+      "ScenarioName": "Scenario 1",
+      "X_Cell_Site_FarmName": "My test farm",
+      "InputTables": [
+        { "TableName": "X_Table_Blah", "MatrixType": "ColsToRows" }
+      ]
+    }
+  ]
+}
+```
+
+Select one with `-ScenarioName`; if omitted, the **first** scenario is used. The chosen
+scenario name is added to the output file name so scenarios don't collide.
+
+```powershell
+npm run create-test-excel -- -TestID 13_Scope3 -ScenarioName "Scenario 1"
+```
+
+Input files with no `Scenarios` key keep their existing flat behaviour.
+
 **What it does:**
 1. Reads `Test/Test.json` and finds the entry whose `TestID` matches (searched
    recursively, so nested groups like `EntericMethane > Feedlot` work).
@@ -344,7 +371,8 @@ npm run create-test-excel -- -TestID 13_Scope3
    `TestExcelFile` needle (optionally scoped to `TestExcelDirectory`, e.g. `Enterprises`).
    Files with `Template` or `bak` in the name, `~$` lock files, `_expanded` copies, and
    previously generated `_test` workbooks are excluded from selection.
-3. Copies that workbook to `Excel/TestExcel/<name>_test_<timestamp>.xlsx`.
+3. Copies that workbook to `Excel/TestExcel/<name>_test_<timestamp>.xlsx` (a
+   `_<ScenarioName>` tag is inserted before the timestamp when a scenario is selected).
 4. Injects the inputs from the entry's `TestInputFile` into the copy (in `Test` context,
    every targeted input cell is written, including protected formula cells).
 5. Optionally applies source-data overrides (see below).

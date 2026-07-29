@@ -4,6 +4,7 @@ param(
   [string] $InputFieldsRoot,
   [string] $ConfigPath,
   [string] $TestID,
+  [string] $ScenarioName,
   [string] $Suffix = '_test',
   [ValidateSet('Test', 'Emissions')]
   [string] $Context = 'Test',
@@ -132,13 +133,164 @@ $resultsPath = if ([System.IO.Path]::IsPathRooted($testResultsFile)) {
 }
 
 $resolvedJsonPath = (Resolve-Path -LiteralPath $jsonPath).Path
+
+# --- Scenario selection ------------------------------------------------------
+# A TestInput or TestResults file may hold multiple named scenarios under a
+# top-level "Scenarios" array, each carrying the same flat fields (X_Cell_* for
+# inputs, result-cell names for results) plus, for inputs, an optional
+# InputTables array. Select one (by name, else the first) and treat it as the
+# effective object. Files with no "Scenarios" key keep their flat behaviour.
+#
+# The FIRST scenario is the full "default"; any later scenario inherits from it
+# and needs to list only the cells/tables it changes. Non-default selections are
+# deep-merged onto the first scenario (see Merge-ScenarioOnDefault).
+
+# Deep clone a JSON-derived object via a JSON round-trip.
+function Copy-JsonObject {
+  param([AllowNull()] $Value)
+  if ($null -eq $Value) { return $null }
+  return ($Value | ConvertTo-Json -Depth 50 -Compress | ConvertFrom-Json)
+}
+
+# Set (or add) a note property on a PSCustomObject.
+function Set-ObjProp {
+  param($Obj, [string] $Name, [AllowNull()] $Value)
+  if ($Obj.PSObject.Properties.Name -contains $Name) {
+    $Obj.$Name = $Value
+  } else {
+    $Obj | Add-Member -NotePropertyName $Name -NotePropertyValue $Value
+  }
+}
+
+# Merge an override column map ({ colKey -> { field -> value } }) onto a base
+# map, overriding matching fields and adding new columns/fields; base entries
+# not mentioned are left intact.
+function Merge-ColumnMap {
+  param($BaseMap, $OverMap)
+  foreach ($colProp in $OverMap.PSObject.Properties) {
+    $colName = $colProp.Name
+    $overCol = $colProp.Value
+    if (($BaseMap.PSObject.Properties.Name -contains $colName) -and ($BaseMap.$colName -is [pscustomobject]) -and ($overCol -is [pscustomobject])) {
+      foreach ($fieldProp in $overCol.PSObject.Properties) {
+        Set-ObjProp -Obj $BaseMap.$colName -Name $fieldProp.Name -Value $fieldProp.Value
+      }
+    } else {
+      Set-ObjProp -Obj $BaseMap -Name $colName -Value $overCol
+    }
+  }
+}
+
+# Merge an override InputTables array onto a base array, matching by TableName.
+# Matching tables merge property-by-property (Cols/Rows deep-merge by column);
+# unmatched override tables are appended; base tables not mentioned are kept.
+function Merge-InputTables {
+  param($BaseTables, $OverTables)
+  $result = New-Object System.Collections.Generic.List[object]
+  $index = @{}
+  foreach ($t in @($BaseTables)) {
+    if ($null -eq $t) { continue }
+    [void] $result.Add($t)
+    if ($t.PSObject.Properties.Name -contains 'TableName') { $index[[string] $t.TableName] = $t }
+  }
+  foreach ($ot in @($OverTables)) {
+    if ($null -eq $ot) { continue }
+    $tn = if ($ot.PSObject.Properties.Name -contains 'TableName') { [string] $ot.TableName } else { $null }
+    if (($null -ne $tn) -and $index.ContainsKey($tn)) {
+      $baseT = $index[$tn]
+      foreach ($p in $ot.PSObject.Properties) {
+        if (($p.Name -eq 'Cols' -or $p.Name -eq 'Rows') -and ($baseT.PSObject.Properties.Name -contains $p.Name) -and ($baseT.($p.Name) -is [pscustomobject]) -and ($p.Value -is [pscustomobject])) {
+          Merge-ColumnMap -BaseMap $baseT.($p.Name) -OverMap $p.Value
+        } else {
+          Set-ObjProp -Obj $baseT -Name $p.Name -Value $p.Value
+        }
+      }
+    } else {
+      [void] $result.Add($ot)
+      if ($null -ne $tn) { $index[$tn] = $ot }
+    }
+  }
+  return ,$result.ToArray()
+}
+
+# Produce a new scenario object = deep clone of $Default with $Override applied.
+function Merge-ScenarioOnDefault {
+  param($Default, $Override)
+  $merged = Copy-JsonObject $Default
+  foreach ($p in $Override.PSObject.Properties) {
+    if ($p.Name -eq 'InputTables') {
+      $baseTables = if ($merged.PSObject.Properties.Name -contains 'InputTables') { $merged.InputTables } else { @() }
+      $mergedTables = Merge-InputTables -BaseTables $baseTables -OverTables $p.Value
+      Set-ObjProp -Obj $merged -Name 'InputTables' -Value $mergedTables
+    } else {
+      Set-ObjProp -Obj $merged -Name $p.Name -Value $p.Value
+    }
+  }
+  return $merged
+}
+
+function Select-ScenarioObject {
+  param(
+    [Parameter(Mandatory = $true)] [object] $Object,
+    [AllowNull()] [string] $RequestedName,   # scenario name to match; strict when non-empty
+    [Parameter(Mandatory = $true)] [string] $SourceLabel
+  )
+
+  if (-not ($Object.PSObject.Properties.Name -contains 'Scenarios')) {
+    return [pscustomobject]@{ Object = $Object; Name = $null; HasScenarios = $false }
+  }
+
+  $scenarios = @($Object.Scenarios)
+  if ($scenarios.Count -eq 0) {
+    throw "$SourceLabel has an empty 'Scenarios' array."
+  }
+
+  $selected = $null
+  if (-not [string]::IsNullOrWhiteSpace($RequestedName)) {
+    $selected = $scenarios | Where-Object {
+      $_.PSObject.Properties.Name -contains 'ScenarioName' -and
+      [string]::Equals([string] $_.ScenarioName, $RequestedName, [System.StringComparison]::OrdinalIgnoreCase)
+    } | Select-Object -First 1
+    if ($null -eq $selected) {
+      $available = (@($scenarios | ForEach-Object { [string] $_.ScenarioName }) | Where-Object { -not [string]::IsNullOrWhiteSpace($_) }) -join ', '
+      throw "No scenario named '$RequestedName' found in $SourceLabel. Available: $available"
+    }
+  } else {
+    $selected = $scenarios[0]
+  }
+
+  # The first scenario is the full default; a later selection inherits from it
+  # and lists only its changes, so deep-merge it onto the first scenario.
+  if (-not [object]::ReferenceEquals($selected, $scenarios[0])) {
+    $selected = Merge-ScenarioOnDefault -Default $scenarios[0] -Override $selected
+  }
+
+  return [pscustomobject]@{ Object = $selected; Name = [string] $selected.ScenarioName; HasScenarios = $true }
+}
+
 $jsonRaw = Get-Content -LiteralPath $resolvedJsonPath -Raw
 $jsonObject = $jsonRaw | ConvertFrom-Json
+
+$resolvedScenarioName = $null
+$inputSelection = Select-ScenarioObject -Object $jsonObject -RequestedName $ScenarioName -SourceLabel ("TestInput '$resolvedJsonPath'")
+if ($inputSelection.HasScenarios) {
+  $resolvedScenarioName = $inputSelection.Name
+  $scenarioDisplay = if ([string]::IsNullOrWhiteSpace($resolvedScenarioName)) { '(first, unnamed)' } else { $resolvedScenarioName }
+  Write-Host ("Using scenario: {0}" -f $scenarioDisplay)
+  $jsonObject = $inputSelection.Object
+}
 $jsonProperties = @($jsonObject.PSObject.Properties)
 
 $resolvedResultsPath = (Resolve-Path -LiteralPath $resultsPath).Path
 $resultsRaw = Get-Content -LiteralPath $resolvedResultsPath -Raw
 $resultsObject = $resultsRaw | ConvertFrom-Json
+
+# Results may mirror the same Scenarios structure. Match the scenario chosen for
+# inputs: an explicit -ScenarioName wins, otherwise the input's resolved name.
+$resultsRequestedName = if (-not [string]::IsNullOrWhiteSpace($ScenarioName)) { $ScenarioName } else { $resolvedScenarioName }
+$resultsSelection = Select-ScenarioObject -Object $resultsObject -RequestedName $resultsRequestedName -SourceLabel ("TestResults '$resolvedResultsPath'")
+if ($resultsSelection.HasScenarios) {
+  $resultsObject = $resultsSelection.Object
+}
 $resultsProperties = @($resultsObject.PSObject.Properties)
 
 function Convert-ToNullableDouble {
@@ -238,10 +390,17 @@ if (-not (Test-Path -LiteralPath $testExcelDirectory)) {
   [void] (New-Item -ItemType Directory -Path $testExcelDirectory)
 }
 
-$targetPath = Join-Path $testExcelDirectory ($baseName + $Suffix + '_' + $timestamp + $ext)
+# Tag the output filename with the selected scenario so different scenarios of
+# the same test don't collide or overwrite each other.
+$scenarioTag = ''
+if (-not [string]::IsNullOrWhiteSpace($resolvedScenarioName)) {
+  $scenarioTag = '_' + [regex]::Replace($resolvedScenarioName, '[^A-Za-z0-9._-]+', '_')
+}
+
+$targetPath = Join-Path $testExcelDirectory ($baseName + $Suffix + $scenarioTag + '_' + $timestamp + $ext)
 $counter = 2
 while (Test-Path -LiteralPath $targetPath) {
-  $targetPath = Join-Path $testExcelDirectory ($baseName + $Suffix + '_' + $timestamp + '_' + $counter + $ext)
+  $targetPath = Join-Path $testExcelDirectory ($baseName + $Suffix + $scenarioTag + '_' + $timestamp + '_' + $counter + $ext)
   $counter++
 }
 
@@ -1034,6 +1193,8 @@ try {
     'TestInputFile',
     'TestResultsFile',
     'InputTables',
+    'ScenarioName',
+    'Scenarios',
     '__FormulaOverwritePolicy'
   )
 
@@ -1363,6 +1524,9 @@ try {
 
   foreach ($resultProp in $resultsProperties) {
     $resultName = [string] $resultProp.Name
+    if ($resultName -eq 'ScenarioName' -or $resultName -eq 'Scenarios') {
+      continue
+    }
     $nameEntry = $null
     try {
       $nameEntry = $workbook.Names.Item($resultName)
