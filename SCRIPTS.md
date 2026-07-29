@@ -323,6 +323,59 @@ npm run build:input-fields:dry
 
 ---
 
+## npm run create-test-excel
+
+Generates a ready-to-run **test workbook** for a single module by copying its source
+workbook, injecting the module's canned test inputs, and saving a timestamped copy under
+`Excel/TestExcel/`. Driven by the test registry in `Test/Test.json`.
+
+```powershell
+npm run create-test-excel -- -TestID 13_Scope3
+```
+
+> The `--` is required so npm forwards `-TestID` to the script. The parameter name is
+> `-TestID` (case-insensitive); the value is the `TestID` of an entry in `Test/Test.json`
+> (e.g. `13_Scope3`, `3_1_Enteric_Feedlot`, `Enterprise_PastureBeef`).
+
+**What it does:**
+1. Reads `Test/Test.json` and finds the entry whose `TestID` matches (searched
+   recursively, so nested groups like `EntericMethane > Feedlot` work).
+2. Locates the newest source workbook under `Excel/` whose file name contains the entry's
+   `TestExcelFile` needle (optionally scoped to `TestExcelDirectory`, e.g. `Enterprises`).
+   Files with `Template` or `bak` in the name, `~$` lock files, `_expanded` copies, and
+   previously generated `_test` workbooks are excluded from selection.
+3. Copies that workbook to `Excel/TestExcel/<name>_test_<timestamp>.xlsx`.
+4. Injects the inputs from the entry's `TestInputFile` into the copy (in `Test` context,
+   every targeted input cell is written, including protected formula cells).
+5. Optionally applies source-data overrides (see below).
+
+**Output location:** `Excel/TestExcel/`, e.g.
+`Excel/TestExcel/13_Scope3_WIP_v13_test_<timestamp>.xlsx`.
+
+**Test registry (`Test/Test.json`):** each entry provides:
+
+| Field | Purpose |
+|---|---|
+| `TestID` | Unique id passed via `-TestID`. |
+| `TestExcelFile` | Substring matched against source workbook file names. |
+| `TestExcelDirectory` | *(optional)* subfolder under `Excel/` to scope the search (e.g. `Enterprises`). |
+| `TestInputFile` | JSON of input values injected into the copy. |
+| `TestResultsFile` | Expected results (used by result-comparison tooling). |
+
+**With source-data overrides:** add `-IncludeOverrides` (optional `-OverridesDir`,
+default `overrides/`) to apply every `*.overrides.json` to the generated workbook after
+inputs are injected:
+
+```powershell
+npm run create-test-excel:overrides -- -TestID 3_3_Enteric_Dairy
+```
+
+**Notes:**
+- Close the source workbook in Excel before running — an open workbook causes a file-lock error.
+- Each run creates a new timestamped copy; it never overwrites a previous test workbook.
+
+---
+
 ## npm run expand-lambda-functions
 
 Expands VEERG LAMBDA references in a workbook, producing a new `_expanded` copy alongside the source file.

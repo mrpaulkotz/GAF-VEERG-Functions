@@ -110,6 +110,12 @@
             "TestInputFile": "RiceCultivation/TestInput_RiceCultivation.json",
             "TestResultsFile": "RiceCultivation/TestResults_RiceCultivation.json"
         },
+        "Scope3": {
+            "TestID": "13_Scope3",
+            "TestExcelFile": "13_Scope3",
+            "TestInputFile": "Scope3/TestInput_Scope3.json",
+            "TestResultsFile": "Scope3/TestResults_Scope3.json"
+        },
         "SupplementaryCO2": {
             "TestID": "12_SupplementaryCO2",
             "TestExcelFile": "12_SupplementaryCO2",

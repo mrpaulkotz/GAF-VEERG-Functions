@@ -181,6 +181,8 @@ $excelFiles = @(
   Get-ChildItem -Path $excelSearchRoot -File -Recurse |
     Where-Object {
       $_.Name -notlike '~$*' -and
+      $_.Name -notmatch '(?i)template' -and
+      $_.Name -notmatch '(?i)bak' -and
       $_.Name -match [regex]::Escape($nameContains) -and
       @('.xlsx', '.xlsm', '.xls') -contains $_.Extension.ToLowerInvariant()
     } |
