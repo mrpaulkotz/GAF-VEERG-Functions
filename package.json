@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "build": "powershell -NoProfile -ExecutionPolicy Bypass -File .\\build.ps1",
+    "build:menu": "powershell -NoProfile -ExecutionPolicy Bypass -File .\\build.ps1 -Menu",
     "build:dry": "powershell -NoProfile -ExecutionPolicy Bypass -File .\\scripts\\sync-xlf-to-excel-labs.ps1 -DryRun",
     "build:source-data": "powershell -NoProfile -ExecutionPolicy Bypass -File .\\scripts\\build-source-data-json.ps1",
     "build:source-data:dry": "powershell -NoProfile -ExecutionPolicy Bypass -File .\\scripts\\build-source-data-json.ps1 -DryRun",

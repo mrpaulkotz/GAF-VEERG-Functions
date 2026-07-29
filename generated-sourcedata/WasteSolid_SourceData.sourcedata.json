@@ -1,6 +1,6 @@
 {
     "generatedFrom":  "WasteSolid_SourceData.xlf",
-    "generatedAt":  "2026-07-23T06:39:03Z",
+    "generatedAt":  "2026-07-29T06:05:17Z",
     "schemaVersion":  1,
     "tables":  [
                    {
@@ -93,25 +93,25 @@
                                     [
                                         "Incineration",
                                         "Food waste (including animal carcasses, spoiled animal feed or crop)",
-                                        "",
+                                        0,
                                         ""
                                     ],
                                     [
                                         "Incineration",
                                         "Green waste (including crop residues or prunings)",
-                                        "",
+                                        0,
                                         ""
                                     ],
                                     [
                                         "Incineration",
                                         "Wood",
-                                        "",
+                                        0,
                                         ""
                                     ],
                                     [
                                         "Incineration",
                                         "Sludge",
-                                        "",
+                                        0,
                                         ""
                                     ],
                                     [
@@ -159,31 +159,31 @@
                                     [
                                         "Composting",
                                         "Food waste (including animal carcasses, spoiled animal feed or crop)",
-                                        "",
+                                        0.046,
                                         ""
                                     ],
                                     [
                                         "Composting",
                                         "Green waste (including crop residues or prunings)",
-                                        "",
+                                        0.046,
                                         ""
                                     ],
                                     [
                                         "Composting",
                                         "Wood",
-                                        "",
+                                        0.046,
                                         ""
                                     ],
                                     [
                                         "Composting",
                                         "Sludge",
-                                        "",
+                                        0.046,
                                         ""
                                     ],
                                     [
                                         "Composting",
                                         "Paper and cardboard",
-                                        "",
+                                        0.046,
                                         ""
                                     ],
                                     [
@@ -195,31 +195,31 @@
                                     [
                                         "Anaerobic digestion",
                                         "Food waste (including animal carcasses, spoiled animal feed or crop)",
-                                        "",
+                                        0.028,
                                         ""
                                     ],
                                     [
                                         "Anaerobic digestion",
                                         "Green waste (including crop residues or prunings)",
-                                        "",
+                                        0.028,
                                         ""
                                     ],
                                     [
                                         "Anaerobic digestion",
                                         "Wood",
-                                        "",
+                                        0.028,
                                         ""
                                     ],
                                     [
                                         "Anaerobic digestion",
                                         "Sludge",
-                                        "",
+                                        0.028,
                                         ""
                                     ],
                                     [
                                         "Anaerobic digestion",
                                         "Paper and cardboard",
-                                        "",
+                                        0.028,
                                         ""
                                     ]
                                 ]

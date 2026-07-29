@@ -54,6 +54,12 @@ Add-Type -AssemblyName System.IO.Compression.FileSystem | Out-Null
 # Shared Excel Labs (AFE) named-function re-publish helper.
 . (Join-Path $PSScriptRoot 'afe-named-functions.ps1')
 
+# Shared left-hand navigation-menu generator (Set-NavMenu).
+. (Join-Path $PSScriptRoot 'nav-menu.ps1')
+
+# Shared worksheet view helpers (Set-WorkbookZoom).
+. (Join-Path $PSScriptRoot 'worksheet-view.ps1')
+
 # ---------------------------------------------------------------------------
 # Import map: which sheet to pull from which source workbook (version-agnostic
 # stem - Resolve-SourceWorkbook always picks the latest _v<NN>). Sheet names are
@@ -1043,6 +1049,23 @@ try {
     if ($null -ne $links) { $externalLinks = @($links) }
   } catch { }
 
+  # --- Regenerate the column-A navigation menu on every sheet ----------------
+  # Seed categories from the tab-naming heuristic (covers template sheets not in
+  # the import map, e.g. '15 Scope 3' and 'Calcs - manure sent off-site'), then
+  # overlay the authoritative import-map categories. Home/Overview/Results and
+  # any Input* sheet are grouped by name inside Set-NavMenu.
+  $menuSheetsUpdated = 0
+  if (-not $DryRun) {
+    $menuCategory = Get-InferredCategoryMap -Workbook $target
+    foreach ($e in $ImportMap) { $menuCategory[[string] $e.Sheet] = [string] $e.Category }
+    try {
+      $menuSheetsUpdated = Set-NavMenu -Target $target -CategoryMap $menuCategory -Labels @{}
+      if ($menuSheetsUpdated -gt 0) { Write-Host ("Regenerated navigation menu on {0} sheet(s)." -f $menuSheetsUpdated) }
+    } catch {
+      Write-Warning ("Navigation menu generation failed: {0}" -f $_.Exception.Message)
+    }
+  }
+
   # --- Save & close -----------------------------------------------------------
   $target.Save()
   $target.Close($false)
@@ -1098,6 +1121,10 @@ try {
   $finalPass = Invoke-FinalRecalcAndLinkCleanup -TargetPath $OutputPath
   $externalLinks = @()   # all dead external links were stripped in XML above
   if ($finalPass.Set) { Write-Host "Set fullCalcOnLoad (workbook recalculates on open)." }
+
+  # Normalise the view zoom of every sheet to 100%.
+  $zoomChanged = Set-WorkbookZoom -Path $OutputPath -Zoom 100
+  if ($zoomChanged -gt 0) { Write-Host ("Set zoom to 100% on {0} sheet(s)." -f $zoomChanged) }
 
   # --- Summary ----------------------------------------------------------------
   Write-Host ''

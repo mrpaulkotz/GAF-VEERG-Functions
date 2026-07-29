@@ -1,5 +1,6 @@
 param(
   [string] $WorkbookPath,
+  [switch] $Menu,
   [Parameter(ValueFromRemainingArguments = $true)]
   [string[]] $Command
 )
@@ -13,6 +14,9 @@ $syncScript = Join-Path $repoRoot 'scripts\sync-xlf-to-excel-labs.ps1'
 $syncArgs = @{ RepoRoot = $repoRoot }
 if (-not [string]::IsNullOrWhiteSpace($WorkbookPath)) {
   $syncArgs['WorkbookPath'] = $WorkbookPath
+}
+if ($Menu) {
+  $syncArgs['Menu'] = $true
 }
 & $syncScript @syncArgs
 

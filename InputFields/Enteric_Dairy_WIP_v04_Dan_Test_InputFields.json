@@ -1,7 +1,7 @@
 {
 	"schemaVersion": 1,
-	"generatedFrom": "3_3_Enteric_Dairy_WIP_v04.xlsx",
-	"generatedAt": "2026-07-29T06:06:11Z",
+	"generatedFrom": "3_3_Enteric_Dairy_WIP_v04_Dan_Test.xlsx",
+	"generatedAt": "2026-07-29T06:06:16Z",
 	"InputCells": [
 		{
 			"CellName": "X_Cell_Site_FarmName",
@@ -143,7 +143,7 @@
 		{
 			"CellName": "X_Cell_Dairy_MilkProductionAmount",
 			"Label": "Average daily milk production",
-			"CellType": "number"
+			"CellType": "formula"
 		}
 	],
 	"InputTables": [

@@ -1,7 +1,11 @@
 param(
   [string] $RepoRoot = $(Split-Path $PSScriptRoot -Parent),
   [string] $WorkbookPath,
-  [switch] $DryRun
+  [switch] $DryRun,
+  # Opt-in: regenerate the left-hand navigation menu (column A) on every sheet
+  # of every workbook after syncing. Off by default because it opens each
+  # workbook via COM and rewrites its menu, which is slow and visually invasive.
+  [switch] $Menu
 )
 
 Set-StrictMode -Version Latest
@@ -12,6 +16,12 @@ Add-Type -AssemblyName System.IO.Compression.FileSystem
 
 # Shared Excel Labs (AFE) named-function re-publish helper.
 . (Join-Path $PSScriptRoot 'afe-named-functions.ps1')
+
+# Shared worksheet view helpers (Set-WorkbookZoom).
+. (Join-Path $PSScriptRoot 'worksheet-view.ps1')
+
+# Shared navigation-menu generator (Set-NavMenu / Get-InferredCategoryMap).
+. (Join-Path $PSScriptRoot 'nav-menu.ps1')
 
 function Normalize-Text {
   param(
@@ -341,6 +351,14 @@ foreach ($workbook in $workbooks) {
       }
     } catch {
       Write-Host ("{0}: named-function re-publish error: {1}" -f $workbook.Name, $_.Exception.Message)
+    }
+
+    # Normalise the view zoom of every sheet to 100%.
+    try {
+      $zoomChanged = Set-WorkbookZoom -Path $workbook.FullName -Zoom 100
+      if ($zoomChanged -gt 0) { Write-Host ("{0}: set zoom to 100% on {1} sheet(s)." -f $workbook.Name, $zoomChanged) }
+    } catch {
+      Write-Host ("{0}: zoom normalisation error: {1}" -f $workbook.Name, $_.Exception.Message)
     }
   }
 }
@@ -1113,4 +1131,84 @@ function Sync-CommonSheetsAcrossWorkbooks {
   }
 }
 
+# ---------------------------------------------------------------------------
+# Update-ChapterNavMenus
+# ---------------------------------------------------------------------------
+# Opens each workbook via COM and rebuilds its column-A navigation menu with the
+# shared Set-NavMenu generator. Section membership is inferred from tab names
+# (Get-InferredCategoryMap): 'Input - *' -> INPUTS, digit-prefixed calc tabs ->
+# CALCULATIONS, everything else -> APPENDICES, with Home/Overview/Results kept
+# untitled at the top. Chapter workbooks already carry the required menu cell
+# styles, so styling applies cleanly.
+function Update-ChapterNavMenus {
+  param(
+    [Parameter(Mandatory = $true)]
+    [System.IO.FileInfo[]] $Workbooks,
+
+    [switch] $DryRun
+  )
+
+  if ($Workbooks.Count -eq 0) {
+    Write-Host 'No workbooks found; skipping navigation-menu regeneration.'
+    return
+  }
+
+  $excel = $null
+  try {
+    $excel = New-Object -ComObject Excel.Application
+    $excel.Visible = $false
+    $excel.DisplayAlerts = $false
+    $excel.ScreenUpdating = $false
+    $excel.EnableEvents = $false
+    $excel.AskToUpdateLinks = $false
+
+    foreach ($workbookFile in $Workbooks) {
+      $workbook = $null
+      try {
+        try {
+          $workbook = $excel.Workbooks.Open($workbookFile.FullName, $null, $DryRun.IsPresent)
+        } catch {
+          Write-Host ("Skipping menu regeneration for {0}: {1}" -f $workbookFile.Name, $_.Exception.Message)
+          continue
+        }
+
+        $categoryMap = Get-InferredCategoryMap -Workbook $workbook
+        $updated = Set-NavMenu -Target $workbook -CategoryMap $categoryMap -Labels @{}
+
+        if ($DryRun) {
+          Write-Host ("{0}: would regenerate navigation menu on {1} sheet(s)." -f $workbookFile.Name, $updated)
+        } else {
+          [void] $workbook.Save()
+          Write-Host ("{0}: regenerated navigation menu on {1} sheet(s)." -f $workbookFile.Name, $updated)
+        }
+      } catch {
+        if (Test-IsTransientExcelComException $_) {
+          Write-Host ("Skipping menu regeneration for {0} after transient Excel COM error: {1}" -f $workbookFile.Name, $_.Exception.Message)
+          continue
+        }
+
+        Write-Host ("{0}: navigation-menu regeneration failed: {1}" -f $workbookFile.Name, $_.Exception.Message)
+      } finally {
+        if ($null -ne $workbook) {
+          Invoke-ComObjectCleanup -ComObject $workbook -Action { param($wb) [void] $wb.Close($false) }
+        }
+      }
+    }
+  } finally {
+    if ($null -ne $excel) {
+      Invoke-ComObjectCleanup -ComObject $excel -Action { param($app) $app.Quit() }
+    }
+
+    [GC]::Collect()
+    [GC]::WaitForPendingFinalizers()
+  }
+}
+
 Sync-CommonSheetsAcrossWorkbooks -Workbooks $propagationWorkbooks -DryRun:$DryRun
+
+# Opt-in: regenerate the column-A navigation menu on every sheet of every
+# workbook, inferring each sheet's section from its tab name. Runs last so the
+# menu reflects the final sheet set (after common-sheet propagation above).
+if ($Menu) {
+  Update-ChapterNavMenus -Workbooks $workbooks -DryRun:$DryRun
+}

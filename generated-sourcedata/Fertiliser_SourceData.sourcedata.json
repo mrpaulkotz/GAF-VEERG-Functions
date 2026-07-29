@@ -1,6 +1,6 @@
 {
     "generatedFrom":  "Fertiliser_SourceData.xlf",
-    "generatedAt":  "2026-07-23T06:39:02Z",
+    "generatedAt":  "2026-07-29T06:05:17Z",
     "schemaVersion":  1,
     "tables":  [
                    {
@@ -180,7 +180,7 @@
                        "variable":  "",
                        "description":  "",
                        "unit":  "",
-                       "source":  "Table A.2.2.6: Fraction of inorganic fertiliser f that volatilises as NH3 and NOx ((kg NH3â€“N + NOxâ€“N)/kg N) (FracGASFf)",
+                       "source":  "Table A.2.2.6: Fraction of inorganic fertiliser f that volatilises as NH3 and NOx ((kg NH3-N + NOx-N)/kg N) (FracGASFf)",
                        "variation":  "",
                        "header":  [
                                       "Fertiliser type f",

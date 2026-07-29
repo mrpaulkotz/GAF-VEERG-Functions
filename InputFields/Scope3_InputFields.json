@@ -1,7 +1,7 @@
 {
 	"schemaVersion": 1,
-	"generatedFrom": "13_Scope3_WIP_v11.xlsx",
-	"generatedAt": "2026-07-23T06:39:42Z",
+	"generatedFrom": "13_Scope3_WIP_v13.xlsx",
+	"generatedAt": "2026-07-29T06:05:48Z",
 	"InputCells": [
 		{
 			"CellName": "X_Cell_Site_FarmName",
@@ -236,12 +236,18 @@
 			"CellType": "number"
 		},
 		{
-			"CellName": "X_Cell_WasteSentOffsite_MassNitrogenManure",
+			"CellName": "X_Cell_ManureSentOffsite_MassNitrogenManure_Method1",
 			"Label": "",
 			"CellType": "number"
 		},
 		{
-			"CellName": "X_Cell_WasteSentOffsite_ManureProductionSystem",
+			"CellName": "X_Cell_ManureSentOffsite_MassNitrogenManure_Method2",
+			"Label": "",
+			"CellType": "number",
+			"CanOverWriteFormula": true
+		},
+		{
+			"CellName": "X_Cell_ManureSentOffsite_ManureProductionSystem",
 			"Label": "",
 			"CellType": "select",
 			"Options": {
@@ -250,7 +256,7 @@
 			}
 		},
 		{
-			"CellName": "X_Cell_WasteSentOffsite_ManureIrrigationMethod",
+			"CellName": "X_Cell_ManureSentOffsite_ManureIrrigationMethod",
 			"Label": "",
 			"CellType": "select",
 			"Options": {
@@ -327,14 +333,15 @@
 		{
 			"TableName": "Table_Input_Fuel",
 			"MatrixType": "RowsToCols",
-			"NumberOfCols": 6,
+			"NumberOfCols": 7,
 			"ColumnNames": {
 				"FuelUse": "Fuel use (select)",
 				"FuelType": "Fuel type (select)",
 				"AmountPurchased": "Amount purchased",
 				"AmountUnit": "Amount unit",
 				"PercentConsumed": "Percent consumed",
-				"AmountConsumed": "Amount consumed"
+				"AmountConsumed": "Amount consumed",
+				"AmountConsumedUnit": "Amount consumed unit"
 			},
 			"Rows": {
 				"Row": {
@@ -346,8 +353,7 @@
 							"Aviation": "Aviation",
 							"Cars and light commercial vehicles": "Cars and light commercial vehicles",
 							"Off-road Agriculture and forestry equipment": "Off-road Agriculture and forestry equipment",
-							"Vessels": "Vessels",
-							"General use": "General use"
+							"Vessels": "Vessels"
 						}
 					},
 					"FuelType": {
@@ -396,17 +402,6 @@
 								"Petrol": "Petrol",
 								"Diesel": "Diesel",
 								"Fuel oil": "Fuel oil"
-							},
-							"General use": {
-								"Petrol": "Petrol",
-								"Diesel": "Diesel",
-								"Liquefied petroleum gas (LPG)": "Liquefied petroleum gas (LPG)",
-								"Biodiesel": "Biodiesel",
-								"Ethanol": "Ethanol",
-								"Other biofuels": "Other biofuels",
-								"Renewable diesel": "Renewable diesel",
-								"Natural gas (via pipeline) in GJ": "Natural gas (via pipeline) in GJ",
-								"Town gas in GJ": "Town gas in GJ"
 							}
 						}
 					},
@@ -420,6 +415,9 @@
 						"CellType": "formula"
 					},
 					"AmountConsumed": {
+						"CellType": "formula"
+					},
+					"AmountConsumedUnit": {
 						"CellType": "formula"
 					}
 				}
@@ -460,15 +458,26 @@
 							"Aqua Finish": "Aqua Finish",
 							"Aqua Grow": "Aqua Grow",
 							"Aqua Nitro AN": "Aqua Nitro AN",
+							"Aqua NitroCal": "Aqua NitroCal",
+							"Aqua NitroCal (VI)": "Aqua NitroCal (VI)",
+							"Aqua NitroCal Ultimate": "Aqua NitroCal Ultimate",
 							"Aqua Start": "Aqua Start",
 							"Aqua Thio-Complete": "Aqua Thio-Complete",
 							"Aqua Thio-Emerge": "Aqua Thio-Emerge",
 							"Aqua Thio-Flourish": "Aqua Thio-Flourish",
+							"Asco Fol Plus": "Asco Fol Plus",
+							"Asco Plus": "Asco Plus",
+							"Asco Rhizo Plus": "Asco Rhizo Plus",
+							"Benefit PZ": "Benefit PZ",
 							"Boost-It": "Boost-It",
+							"Boroplus": "Boroplus",
+							"Brevisol Range": "Brevisol Range",
+							"Brexil Line": "Brexil Line",
 							"Bronze": "Bronze",
-							"Compass": "Compass",
-							"CoRoN 12-0-10": "CoRoN 12-0-10",
-							"Ingredient 1 source": "Ingredient 1 source"
+							"Bud-Wiser Dry": "Bud-Wiser Dry",
+							"Calbit C": "Calbit C",
+							"Calcium 175": "Calcium 175",
+							"CalPhos": "CalPhos"
 						}
 					},
 					"AmountAppliedPerHectare": {
@@ -555,8 +564,8 @@
 				"Ingredient4": "Ingredient 4",
 				"Ingredient4Percent": "Ingredient 4 percent",
 				"NApplicationRate": "N application rate (kg/ha)",
-				"UreaSource": "Urea source",
-				"AmmoniaSource": "Ammonia source"
+				"UreaSource": "Urea source (Select)",
+				"AmmoniaSource": "Ammonia source (select)"
 			},
 			"Rows": {
 				"Row": {
@@ -709,7 +718,7 @@
 			}
 		},
 		{
-			"TableName": "Table_Input_SoilAmeliorants",
+			"TableName": "Table_Input_Lime",
 			"MatrixType": "RowsToCols",
 			"NumberOfCols": 8,
 			"ColumnNames": {
@@ -751,6 +760,56 @@
 					},
 					"Total": {
 						"CellType": "formula"
+					}
+				}
+			}
+		},
+		{
+			"TableName": "Table_Input_OrganicFertiliser",
+			"MatrixType": "RowsToCols",
+			"NumberOfCols": 7,
+			"ColumnNames": {
+				"OrganicFertiliserType": "Organic fertiliser type (select)",
+				"PercentageOfNInFertiliser": "Percentage of N in fertiliser",
+				"AmountApplied": "Amount applied (kg/hectare)",
+				"AmountNApplied": "Amount N applied (kg/hectare)",
+				"ApplicationArea": "Application area (ha)",
+				"TotalOrganicFertliserApplied": "Total organic fertliser applied",
+				"TotalNitrogenApplied": "Total nitrogen applied (kg)"
+			},
+			"Rows": {
+				"Row": {
+					"OrganicFertiliserType": {
+						"CellType": "select",
+						"Options": {
+							"Manure - Cattle": "Manure - Cattle",
+							"Manure - Poultry": "Manure - Poultry",
+							"Manure - Swine": "Manure - Swine",
+							"Manure - Other": "Manure - Other",
+							"Other organic fertiliser": "Other organic fertiliser"
+						}
+					},
+					"PercentageOfNInFertiliser": {
+						"CellType": "percent"
+					},
+					"AmountApplied": {
+						"CellType": "number",
+						"Unit": "kg/hectare"
+					},
+					"AmountNApplied": {
+						"CellType": "formula",
+						"Unit": "kg/hectare"
+					},
+					"ApplicationArea": {
+						"CellType": "formula",
+						"Unit": "ha"
+					},
+					"TotalOrganicFertliserApplied": {
+						"CellType": "formula"
+					},
+					"TotalNitrogenApplied": {
+						"CellType": "formula",
+						"Unit": "kg"
 					}
 				}
 			}
@@ -1527,6 +1586,126 @@
 			}
 		},
 		{
+			"TableName": "Table_Input_ServicesAndContractors",
+			"MatrixType": "RowsToCols",
+			"NumberOfCols": 4,
+			"ColumnNames": {
+				"ServiceProviderContractor": "Service provider / contractor",
+				"Activity": "Activity",
+				"TotalAmount": "Total amount",
+				"AmountUnit": "Amount unit"
+			},
+			"Rows": {
+				"Row": {
+					"ServiceProviderContractor": {
+						"CellType": "text"
+					},
+					"Activity": {
+						"CellType": "text"
+					},
+					"TotalAmount": {
+						"CellType": "number"
+					},
+					"AmountUnit": {
+						"CellType": "select",
+						"Options": {
+							"Hour": "Hour",
+							"Hectare": "Hectare"
+						}
+					}
+				}
+			}
+		},
+		{
+			"TableName": "Table_Input_Packaging",
+			"MatrixType": "RowsToCols",
+			"NumberOfCols": 5,
+			"ColumnNames": {
+				"PackagingName": "Packaging name",
+				"QuantityPurchased": "Quantity purchased",
+				"PrimaryMaterial": "Primary material",
+				"WeightPerUnit": "Weight per unit (kg)",
+				"TotalWeightPurchased": "Total weight purchased (kg)"
+			},
+			"Rows": {
+				"Row": {
+					"PackagingName": {
+						"CellType": "text"
+					},
+					"QuantityPurchased": {
+						"CellType": "number"
+					},
+					"PrimaryMaterial": {
+						"CellType": "select",
+						"Options": {
+							"Corrugated board": "Corrugated board",
+							"Plastic crate polypropylene": "Plastic crate polypropylene",
+							"Plastic film LDPE": "Plastic film LDPE",
+							"Plastic sheet HDPE": "Plastic sheet HDPE"
+						}
+					},
+					"WeightPerUnit": {
+						"CellType": "number",
+						"Unit": "kg"
+					},
+					"TotalWeightPurchased": {
+						"CellType": "formula",
+						"Unit": "kg"
+					}
+				}
+			}
+		},
+		{
+			"TableName": "Table_Input_GrowMedia",
+			"MatrixType": "RowsToCols",
+			"NumberOfCols": 3,
+			"ColumnNames": {
+				"GrowMediaType": "Grow media type",
+				"TotalAmount": "Total amount",
+				"AmountUnit": "Amount unit"
+			},
+			"Rows": {
+				"Row": {
+					"GrowMediaType": {
+						"CellType": "text"
+					},
+					"TotalAmount": {
+						"CellType": "number"
+					},
+					"AmountUnit": {
+						"CellType": "select",
+						"Options": {
+							"kg": "kg",
+							"m3": "m3"
+						}
+					}
+				}
+			}
+		},
+		{
+			"TableName": "Table_Input_UncategorisedProductsServices",
+			"MatrixType": "RowsToCols",
+			"NumberOfCols": 3,
+			"ColumnNames": {
+				"ProductServiceName": "Product / service name",
+				"Amount": "Amount",
+				"AmountUnit": "Amount unit"
+			},
+			"Rows": {
+				"Row": {
+					"ProductServiceName": {
+						"CellType": "text"
+					},
+					"Amount": {
+						"CellType": "number"
+					},
+					"AmountUnit": {
+						"CellType": "text"
+					}
+				}
+			}
+		},
+		{
 			"TableName": "Table_Input_LivestockPurchases_Beefcattle",
 			"MatrixType": "RowsToCols",
 			"NumberOfCols": 8,
@@ -1680,13 +1859,7 @@
 					},
 					"Class": {
 						"CellType": "select",
-						"Options": {
-							"Sows": "Sows",
-							"Boars": "Boars",
-							"Gilts": "Gilts",
-							"Slaughter pigs": "Slaughter pigs",
-							"Slaughter pigs at turnoff": "Slaughter pigs at turnoff"
-						}
+						"Options": {}
 					},
 					"Quantity": {
 						"CellType": "number",
@@ -1739,126 +1912,6 @@
 					"LiveweightMethod2": {
 						"CellType": "number",
 						"Unit": "kg/head"
-					}
-				}
-			}
-		},
-		{
-			"TableName": "Table_Input_ServicesAndContractors",
-			"MatrixType": "RowsToCols",
-			"NumberOfCols": 4,
-			"ColumnNames": {
-				"ServiceProviderContractor": "Service provider / contractor",
-				"Activity": "Activity",
-				"TotalAmount": "Total amount",
-				"AmountUnit": "Amount unit"
-			},
-			"Rows": {
-				"Row": {
-					"ServiceProviderContractor": {
-						"CellType": "text"
-					},
-					"Activity": {
-						"CellType": "text"
-					},
-					"TotalAmount": {
-						"CellType": "number"
-					},
-					"AmountUnit": {
-						"CellType": "select",
-						"Options": {
-							"Hour": "Hour",
-							"Hectare": "Hectare"
-						}
-					}
-				}
-			}
-		},
-		{
-			"TableName": "Table_Input_Packaging",
-			"MatrixType": "RowsToCols",
-			"NumberOfCols": 5,
-			"ColumnNames": {
-				"PackagingName": "Packaging name",
-				"QuantityPurchased": "Quantity purchased",
-				"PrimaryMaterial": "Primary material",
-				"WeightPerUnit": "Weight per unit (kg)",
-				"TotalWeightPurchased": "Total weight purchased (kg)"
-			},
-			"Rows": {
-				"Row": {
-					"PackagingName": {
-						"CellType": "text"
-					},
-					"QuantityPurchased": {
-						"CellType": "number"
-					},
-					"PrimaryMaterial": {
-						"CellType": "select",
-						"Options": {
-							"Corrugated board": "Corrugated board",
-							"Plastic crate polypropylene": "Plastic crate polypropylene",
-							"Plastic film LDPE": "Plastic film LDPE",
-							"Plastic sheet HDPE": "Plastic sheet HDPE"
-						}
-					},
-					"WeightPerUnit": {
-						"CellType": "number",
-						"Unit": "kg"
-					},
-					"TotalWeightPurchased": {
-						"CellType": "formula",
-						"Unit": "kg"
-					}
-				}
-			}
-		},
-		{
-			"TableName": "Table_Input_GrowMedia",
-			"MatrixType": "RowsToCols",
-			"NumberOfCols": 3,
-			"ColumnNames": {
-				"GrowMediaType": "Grow media type",
-				"TotalAmount": "Total amount",
-				"AmountUnit": "Amount unit"
-			},
-			"Rows": {
-				"Row": {
-					"GrowMediaType": {
-						"CellType": "text"
-					},
-					"TotalAmount": {
-						"CellType": "number"
-					},
-					"AmountUnit": {
-						"CellType": "select",
-						"Options": {
-							"kg": "kg",
-							"m3": "m3"
-						}
-					}
-				}
-			}
-		},
-		{
-			"TableName": "Table_Input_UncategorisedProductsServices",
-			"MatrixType": "RowsToCols",
-			"NumberOfCols": 3,
-			"ColumnNames": {
-				"ProductServiceName": "Product / service name",
-				"Amount": "Amount",
-				"AmountUnit": "Amount unit"
-			},
-			"Rows": {
-				"Row": {
-					"ProductServiceName": {
-						"CellType": "text"
-					},
-					"Amount": {
-						"CellType": "number"
-					},
-					"AmountUnit": {
-						"CellType": "text"
 					}
 				}
 			}
@@ -1978,7 +2031,7 @@
 							"Landfill": {
 								"Food waste (including animal carcasses, spoiled animal feed or crop)": "Food waste (including animal carcasses, spoiled animal feed or crop)",
 								"Paper and cardboard": "Paper and cardboard",
-								"Green waste (including crop residues or prunnings)": "Green waste (including crop residues or prunnings)",
+								"Green waste (including crop residues or prunings)": "Green waste (including crop residues or prunings)",
 								"Wood": "Wood",
 								"Textiles": "Textiles",
 								"Sludge": "Sludge",
@@ -1989,25 +2042,37 @@
 								"Construction and demolition waste": "Construction and demolition waste"
 							},
 							"Incineration": {
-								"Food waste, green waste, wood, sludge": "Food waste, green waste, wood, sludge",
+								"Food waste (including animal carcasses, spoiled animal feed or crop)": "Food waste (including animal carcasses, spoiled animal feed or crop)",
+								"Green waste (including crop residues or prunings)": "Green waste (including crop residues or prunings)",
+								"Wood": "Wood",
+								"Sludge": "Sludge",
 								"Paper and cardboard": "Paper and cardboard",
 								"Textiles": "Textiles",
 								"Rubber and leather": "Rubber and leather",
-								"Inert Waste": "Inert Waste",
-								"Municipal Solid Waste": "Municipal Solid Waste",
-								"Industrial Waste": "Industrial Waste"
+								"Inert waste (including concrete, metal, plastic or glass)": "Inert waste (including concrete, metal, plastic or glass)",
+								"Municipal solid waste": "Municipal solid waste",
+								"Commercial and industrial waste": "Commercial and industrial waste"
 							},
 							"Composting": {
-								"All organic waste": "All organic waste"
+								"Food waste (including animal carcasses, spoiled animal feed or crop)": "Food waste (including animal carcasses, spoiled animal feed or crop)",
+								"Green waste (including crop residues or prunings)": "Green waste (including crop residues or prunings)",
+								"Wood": "Wood",
+								"Sludge": "Sludge",
+								"Paper and cardboard": "Paper and cardboard"
 							},
 							"Anaerobicdigestion": {
-								"All organic waste": "All organic waste"
+								"Food waste (including animal carcasses, spoiled animal feed or crop)": "Food waste (including animal carcasses, spoiled animal feed or crop)",
+								"Green waste (including crop residues or prunings)": "Green waste (including crop residues or prunings)",
+								"Wood": "Wood",
+								"Sludge": "Sludge",
+								"Paper and cardboard": "Paper and cardboard"
 							}
 						}
 					},
 					"TreatmentLocation": {
 						"CellType": "select",
 						"Options": {
+							"Treated on-site": "Treated on-site",
 							"Removed and treated off-site": "Removed and treated off-site"
 						}
 					},

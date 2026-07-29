@@ -15,6 +15,12 @@ Add-Type -AssemblyName System.IO.Compression.FileSystem | Out-Null
 # Shared Excel Labs (AFE) named-function re-publish helper.
 . (Join-Path $PSScriptRoot 'afe-named-functions.ps1')
 
+# Shared left-hand navigation-menu generator (Set-NavMenu / Get-InferredCategoryMap).
+. (Join-Path $PSScriptRoot 'nav-menu.ps1')
+
+# Shared worksheet view helpers (Set-WorkbookZoom).
+. (Join-Path $PSScriptRoot 'worksheet-view.ps1')
+
 # ---------------------------------------------------------------------------
 # Auto-discovery: with neither -ConfigPath nor -EnterpriseId, build every
 # enterprise config (Enterprises\Enterprise_*.json) in turn by re-invoking
@@ -404,144 +410,6 @@ function Get-WorksheetNames {
   $names = New-Object System.Collections.Generic.List[string]
   foreach ($ws in $Workbook.Worksheets) { $names.Add([string] $ws.Name) }
   return $names
-}
-
-# ---------------------------------------------------------------------------
-# Navigation menu generation (column A of every sheet)
-# ---------------------------------------------------------------------------
-# Rebuilds the left-hand navigation menu on every worksheet from the final
-# sheet set, so it always matches the assembled enterprise. Layout mirrors the
-# source workbooks:
-#   A1              logo (in-cell image, style 'Input page heading') - preserved
-#   A3..            untitled group (Home, Results) - no title
-#   (blank) INPUTS  title + one link per input sheet
-#   (blank) CALC..  title + one link per equation sheet
-#   (blank) APPEND. title + one link per appendix sheet
-# Each link is =HYPERLINK("#'Sheet'!A1","Label"). The link to the sheet the menu
-# is drawn on uses that group's 'selected' style; all others use the default.
-function Set-EnterpriseNavMenu {
-  param(
-    $Target,        # target workbook COM object
-    [hashtable] $CategoryMap,  # sheet name -> category (input|calculation|constants|common|custom)
-    [hashtable] $Labels        # sheet name -> friendly menu label (override; else derived)
-  )
-
-  $titleStyle   = 'Menu section title'
-  $defaultStyle = 'Menu link default'
-  $logoStyle    = 'Input page heading'
-  $firstMenuRow = 3      # A1 = logo, A2 = gap
-  $clearToRow   = 160    # column A is a pure nav gutter; safe to blank below the logo
-
-  # Fixed group definitions (order = render order). Title colour mirrors the
-  # source design (INPUTS blue, CALCULATIONS green, APPENDICES grey).
-  $groups = @(
-    [pscustomobject]@{ Id = 'untitled';   Title = $null;          Selected = 'Menu link selected results';   TitleColor = $null },
-    [pscustomobject]@{ Id = 'inputs';     Title = 'INPUTS';       Selected = 'Menu link selected input';     TitleColor = 26316 },
-    [pscustomobject]@{ Id = 'equations';  Title = 'CALCULATIONS'; Selected = 'Menu link selected equations'; TitleColor = 32768 },
-    [pscustomobject]@{ Id = 'appendices'; Title = 'APPENDICES';   Selected = 'Menu link selected';           TitleColor = 4210752 }
-  )
-
-  # Resolve Style objects once (assigning by object is more reliable via COM).
-  $styleCache = @{}
-  $getStyle = {
-    param($name)
-    if (-not $styleCache.ContainsKey($name)) { $styleCache[$name] = $Target.Styles.Item($name) }
-    return $styleCache[$name]
-  }
-
-  # Group assignment for a sheet.
-  $groupOf = {
-    param($name)
-    if ($name -eq 'Home' -or $name -eq 'Results') { return 'untitled' }
-    if ($name -like 'Input*') { return 'inputs' }
-    $cat = if ($CategoryMap.ContainsKey($name)) { [string] $CategoryMap[$name] } else { '' }
-    if ($cat -eq 'calculation') { return 'equations' }
-    return 'appendices'
-  }
-
-  # Friendly label for a sheet (explicit override, else strip 'Input - ' prefix).
-  $labelOf = {
-    param($name)
-    if ($Labels.ContainsKey($name)) { return [string] $Labels[$name] }
-    if ($name -like 'Input - *') { return $name.Substring(8) }
-    return $name
-  }
-
-  # Collect members per group in worksheet tab order.
-  $members = @{ 'untitled' = @(); 'inputs' = @(); 'equations' = @(); 'appendices' = @() }
-  foreach ($ws in $Target.Worksheets) {
-    $n = [string] $ws.Name
-    $g = & $groupOf $n
-    $members[$g] += $n
-  }
-  # Untitled group always leads with Home then Results.
-  $ut = @()
-  foreach ($x in @('Home', 'Results')) { if ($members['untitled'] -contains $x) { $ut += $x } }
-  foreach ($x in $members['untitled']) { if ($ut -notcontains $x) { $ut += $x } }
-  $members['untitled'] = $ut
-
-  # Flatten into an ordered render plan (blank marker between groups).
-  $rows = New-Object System.Collections.Generic.List[object]
-  $firstGroup = $true
-  foreach ($grp in $groups) {
-    $mem = @($members[$grp.Id])
-    if ($mem.Count -eq 0) { continue }
-    if (-not $firstGroup) { $rows.Add([pscustomobject]@{ Kind = 'blank' }) }
-    $firstGroup = $false
-    if ($grp.Title) { $rows.Add([pscustomobject]@{ Kind = 'title'; Text = $grp.Title; Color = $grp.TitleColor }) }
-    foreach ($n in $mem) {
-      $rows.Add([pscustomobject]@{ Kind = 'link'; Text = (& $labelOf $n); Target = $n; Selected = $grp.Selected })
-    }
-  }
-
-  # Locate a donor sheet that carries the logo, to seed sheets missing it.
-  $logoDonor = $null
-  foreach ($ws in $Target.Worksheets) {
-    try { if ([string] $ws.Cells.Item(1, 1).Style.Name -eq $logoStyle) { $logoDonor = $ws; break } } catch { }
-  }
-
-  $updated = 0
-  foreach ($ws in $Target.Worksheets) {
-    $sn = [string] $ws.Name
-
-    # Ensure the A1 logo is present (copy the whole cell incl. in-cell image).
-    if ($null -ne $logoDonor) {
-      $hasLogo = $false
-      try { $hasLogo = ([string] $ws.Cells.Item(1, 1).Style.Name -eq $logoStyle) } catch { }
-      if (-not $hasLogo -and $ws.Name -ne $logoDonor.Name) {
-        try { $logoDonor.Range('A1').Copy($ws.Range('A1')) | Out-Null } catch { Write-Warning ("Menu: could not copy logo to '{0}': {1}" -f $sn, $_.Exception.Message) }
-      }
-    }
-
-    # Blank the old menu (contents + formats) below the logo.
-    try { $ws.Range("A2:A$clearToRow").Clear() | Out-Null } catch { }
-
-    # Write the unified menu.
-    $r = $firstMenuRow
-    foreach ($row in $rows) {
-      switch ($row.Kind) {
-        'blank' { $r++ ; continue }
-        'title' {
-          $cell = $ws.Cells.Item($r, 1)
-          try { $cell.Style = (& $getStyle $titleStyle) } catch { }
-          $cell.Value2 = $row.Text
-          if ($null -ne $row.Color) { try { $cell.Font.Color = $row.Color } catch { } }
-        }
-        'link' {
-          $cell = $ws.Cells.Item($r, 1)
-          $styleName = if ($row.Target -eq $sn) { $row.Selected } else { $defaultStyle }
-          # Write the formula first: entering a HYPERLINK auto-applies Excel's
-          # built-in 'Hyperlink' style, so the menu style must be set afterwards.
-          $cell.Formula = "=HYPERLINK(""#'$($row.Target)'!A1"", ""$($row.Text)"")"
-          try { $cell.Style = (& $getStyle $styleName) } catch { }
-        }
-      }
-      $r++
-    }
-    $updated++
-  }
-
-  return $updated
 }
 
 # ---------------------------------------------------------------------------
@@ -1107,7 +975,7 @@ try {
     $menuCategory = @{}
     foreach ($cs in @($config.customSheets)) { $menuCategory[[string] $cs.name] = 'custom' }
     foreach ($entry in $plan) { if (-not $menuCategory.ContainsKey($entry.Name)) { $menuCategory[$entry.Name] = $entry.Category } }
-    $menuSheetsUpdated = Set-EnterpriseNavMenu -Target $target -CategoryMap $menuCategory -Labels $menuLabels
+    $menuSheetsUpdated = Set-NavMenu -Target $target -CategoryMap $menuCategory -Labels $menuLabels
     if ($menuSheetsUpdated -gt 0) { Write-Host ("Regenerated navigation menu on {0} sheet(s)." -f $menuSheetsUpdated) }
   }
 
@@ -1178,6 +1046,12 @@ try {
     Write-Host ''
     Write-Host "Excel Labs modules required:"
     foreach ($mp in ($afeModulePaths | Select-Object -Unique | Sort-Object)) { Write-Host ("  {0}" -f $mp) }
+  }
+
+  # --- Normalise the view zoom of every sheet to 100% -------------------------
+  if (-not $DryRun) {
+    $zoomChanged = Set-WorkbookZoom -Path $OutputPath -Zoom 100
+    if ($zoomChanged -gt 0) { Write-Host ("Set zoom to 100% on {0} sheet(s)." -f $zoomChanged) }
   }
 
   # --- Summary ----------------------------------------------------------------
