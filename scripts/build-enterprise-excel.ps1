@@ -1,13 +1,19 @@
 param(
-  [string] $RepoRoot = (Split-Path $PSScriptRoot -Parent),
-  [string] $ConfigPath,
+  [Parameter(Position = 0)]
   [string] $EnterpriseId,
+  [string] $RepoRoot,
+  [string] $ConfigPath,
   [string] $OutputPath,
   [switch] $DryRun
 )
 
 Set-StrictMode -Version Latest
 $ErrorActionPreference = 'Stop'
+
+# $PSScriptRoot can be empty while param() defaults are evaluated (e.g. when a
+# positional argument is bound via -File), so resolve RepoRoot here in the body
+# where it is reliably populated.
+if ([string]::IsNullOrWhiteSpace($RepoRoot)) { $RepoRoot = Split-Path $PSScriptRoot -Parent }
 
 Add-Type -AssemblyName System.IO.Compression | Out-Null
 Add-Type -AssemblyName System.IO.Compression.FileSystem | Out-Null

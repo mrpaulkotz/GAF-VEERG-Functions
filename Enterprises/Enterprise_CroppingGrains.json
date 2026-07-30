@@ -1,11 +1,11 @@
 {
   "schemaVersion": 1,
   "enterprise": {
-    "id": "PastureBeef",
-    "name": "Pasture Beef Enterprise",
-    "description": "A grazing beef enterprise: enteric fermentation and manure emissions from the herd, plus the farm's energy, waste and upstream (Scope 3) emissions.",
-    "templateWorkbook": "Enterprise_PastureBeef_Template_WIP_v01.xlsx",
-    "outputWorkbook": "Enterprise_PastureBeef_WIP_v01.xlsx",
+    "id": "CroppingGrains",
+    "name": "Cropping Grains Enterprise",
+    "description": "A cropping grains enterprise: emissions from crop production, plus the farm's energy, waste and upstream (Scope 3) emissions.",
+    "templateWorkbook": "Enterprise_CroppingGrains_Template_WIP_v01.xlsx",
+    "outputWorkbook": "Enterprise_CroppingGrains_WIP_v01.xlsx",
     "allocatable": false
   },
 
@@ -17,12 +17,6 @@
       "description": "The single enterprise-wide results tab, unique to this enterprise. Module Results tabs are NOT imported; this sheet reads each module's result cells directly by named range."
     },
     {
-      "name": "Input - Site",
-      "kind": "input",
-      "source": "custom",
-      "description": "Site-specific inputs for this enterprise. Has fewer fields than the typical module excel site sheet."
-    },
-    {
       "name": "Input - Enterprise",
       "kind": "input",
       "source": "custom",
@@ -32,20 +26,14 @@
       "name": "Input - Fert Prod System",
       "kind": "input",
       "source": "custom",
-      "description": "Non-user editable inputs that take values from the imported 'Input - Pasture' sheet"
+      "description": "Non-user editable inputs that take values from the imported 'Input - Crop' sheet"
     }
   ],
 
   "modules": [
     {
-      "id": "Enteric_BeefPasture",
-      "comment": "Enteric and Manure both ship an 'Input - Pasture Beef' sheet that backs the same 17 named ranges, but 7 of them sit at different rows (Enteric's date/digestibility block is ~7 rows higher than Manure's). Manure is the master: it keeps the canonical 'Input - Pasture Beef' sheet and owns those named ranges. Enteric's copy is imported under a distinct name via renameSheets so it does not collide; the builder drops the renamed copy's duplicate name definitions (master keeps them) and repoints Enteric's own formulas to this copy. Remove this rename once a single enterprise-level input sheet replaces the per-module input sheets.",
-      "renameSheets": { "Input - Pasture Beef": "Input - Pasture Beef (Enteric)" }
-    },
-    "ManureManagement_BeefPasture",
-    {
       "id": "Fertiliser",
-      "comment": "Pasture beef has its own fertiliser production systems inputs.",
+      "comment": "Grain cropping has its own fertiliser production systems inputs.",
       "include": {
         "input": ["Input - Fertiliser"],
         "calculation": ["5.1.1.1-2 Inorganic fert N2O", "5.1.1.3-4 Inorganic fert CO2", "5.2.1.1-2 Organic Fert N2O", "5.3.1.1-2 Lime CO2", "5.4.1.1-4 Atmos deposition", "5.5.1.1-2 Leaching and runoff"],
@@ -57,10 +45,10 @@
     "SolidWaste",
     {
       "id": "AgriculturalResidue",
-      "comment": "Pasture beef only needs the pasture residue chain. The workbook now ships crop- and pasture-specific leaching/runoff sheets, so this imports Input - Pasture plus 6.2 Pasture residue N2O and 6.3 Leach runoff pasture (which depends only on the pasture residue sheet and Input - Pasture, not on any crop sheet or Input - Crop). The crop input, 6.1 Crop residue N2O and 6.4 Residue burning are not required. A bare string (like the entries above) imports every sheet the registry lists for that module; this object form subsets them.",
+      "comment": "Grain cropping only needs the crop residue chain. The workbook now ships crop- and pasture-specific leaching/runoff sheets, so this imports Input - Crop plus 6.1 Crop residue N2O, 6.3 Leach runoff crop and 6.4 Residue burning (which depends only on the crop residue sheet and Input - Crop, not on any pasture sheet or Input - Pasture). The pasture input, 6.2 Pasture residue N2O is not required. A bare string (like the entries above) imports every sheet the registry lists for that module; this object form subsets them.",
       "include": {
-        "input": ["Input - Pasture"],
-        "calculation": ["6.2.1.1-2 Pasture residue N2O", "6.3.1.1-2 Leach runoff pasture"],
+        "input": ["Input - Crop"],
+        "calculation": ["6.1.1.1-2 Crop residue N2O", "6.3.1.1-2 Leach runoff crop", "6.4.1.1-2 Residue burning"],
         "constants": ["Constants - Ag Residue"]
       }
     },
@@ -94,9 +82,8 @@
         "Results": "Results",
         "Input - Enterprise": "Enterprise",
         "Input - Site": "Site",
-        "Input - Pasture Beef": "Pasture Beef",
-        "Input - Pasture Beef (Enteric)": "Pasture Beef (Enteric)",
-        "Input - Pasture": "Pasture",
+        "Input - Crop": "Crop",
+        "Input - Fert Prod System": "Fert Prod System",
         "Input - Fertiliser": "Fertiliser",
         "Input - Fuel": "Fuel",
         "Input - Electricity": "Electricity",
@@ -104,19 +91,15 @@
         "Input - Freight": "Freight",
         "Input - Waste sent off-site": "Waste sent off-site",
         "Input - Manure sent off-site": "Manure sent off-site",
-        "3.2.1.1-2 Enteric Methane": "3.2.1.1-2 Enteric methane",
-        "4.2.1.1-2 Methane": "4.2.1.1-2 Manure methane",
-        "4.2.1.3-4 Soil direct N20": "4.2.1.3-4 Soil direct N2O",
-        "4.2.1.5-6 Soil Atmos Dep": "4.2.1.5-6 Soil atm. deposition",
-        "4.2.1.7-8 Soil leach runoff": "4.2.1.7-8 Soil leach & runoff",
         "5.1.1.1-2 Inorganic fert N2O": "5.1.1.1-2 Inorganic fert N2O",
         "5.1.1.3-4 Inorganic fert CO2": "5.1.1.3-4 Inorganic fert CO2",
         "5.2.1.1-2 Organic Fert N2O": "5.2.1.1-2 Organic fert N2O",
         "5.3.1.1-2 Lime CO2": "5.3.1.1-2 Lime CO2",
         "5.4.1.1-4 Atmos deposition": "5.4.1.1-4 Atmos. deposition",
         "5.5.1.1-2 Leaching and runoff": "5.5.1.1-2 Leaching & runoff",
-        "6.2.1.1-2 Pasture residue N2O": "6.2.1.1-2 Pasture residue N2O",
-        "6.3.1.1-2 Leach runoff pasture": "6.3.1.1-2 Leach & runoff (pasture)",
+        "6.1.1.1-2 Crop residue N2O": "6.1.1.1-2 Crop residue N2O",
+        "6.3.1.1-2 Leach runoff crop": "6.3.1.1-2 Leach & runoff (crop)",
+        "6.4.1.1-2 Residue burning": "6.4.1.1-2 Residue burning",
         "8.1.1.1-2 Transport fuel": "8.1.1.1-2 Transport fuel",
         "8.2.1.1-2 Stationary fuel": "8.2.1.1-2 Stationary fuel",
         "14.1.1-2 Purchased electricity": "14.1.1-2 Purchased electricity",

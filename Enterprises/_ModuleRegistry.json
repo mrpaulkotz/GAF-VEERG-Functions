@@ -313,7 +313,7 @@
       "sourceWorkbook": "5_Fertiliser",
       "groups": ["Cropping"],
       "sheets": {
-        "input": ["Input - Fertiliser"],
+        "input": ["Input - Fert Prod System", "Input - Fertiliser"],
         "calculation": [
           "5.1.1.1-2 Inorganic fert N2O",
           "5.1.1.3-4 Inorganic fert CO2",
