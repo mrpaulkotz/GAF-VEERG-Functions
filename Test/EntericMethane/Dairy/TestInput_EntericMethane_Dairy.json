@@ -230,7 +230,6 @@
     {
     "ScenarioName": "Scenario 2",
     "X_Cell_Dairy_MilkProductionAmount": 17.99,
-
     "InputTables": [
       {
         "TableName": "X_Table_Dairy_HerdMovement",

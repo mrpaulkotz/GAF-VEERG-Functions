@@ -41,6 +41,7 @@
     "Fertiliser",
     "Electricity_Scope2",
     "Fuel",
+    "SolidWaste",
     {
       "id": "AgriculturalResidue",
       "comment": "Pasture beef only needs the pasture residue chain. The workbook now ships crop- and pasture-specific leaching/runoff sheets, so this imports Input - Pasture plus 6.2 Pasture residue N2O and 6.3 Leach runoff pasture (which depends only on the pasture residue sheet and Input - Pasture, not on any crop sheet or Input - Crop). The crop input, 6.1 Crop residue N2O and 6.4 Residue burning are not required. A bare string (like the entries above) imports every sheet the registry lists for that module; this object form subsets them.",
@@ -48,6 +49,15 @@
         "input": ["Input - Pasture"],
         "calculation": ["6.2.1.1-2 Pasture residue N2O", "6.3.1.1-2 Leach runoff pasture"],
         "constants": ["Constants - Ag Residue"]
+      }
+    },
+    {
+      "id": "Scope3",
+      "comment": "Scope 3 contains livestock purchase inputs that are not required here as there is already a livestock purchases module in Pasture Beef herd movement",
+      "include": {
+        "input": ["Input - Farm Inputs", "Input - Freight", "Input - Manure sent off-site"],
+        "calculation": ["15 Scope 3", "Calcs - Manure sent off-site"],
+        "constants": ["Constants - Scope 3"]
       }
     }
   ],
@@ -77,6 +87,10 @@
         "Input - Fertiliser": "Fertiliser",
         "Input - Fuel": "Fuel",
         "Input - Electricity": "Electricity",
+        "Input - Farm Inputs": "Farm Inputs",
+        "Input - Freight": "Freight",
+        "Input - Waste sent off-site": "Waste sent off-site",
+        "Input - Manure sent off-site": "Manure sent off-site",
         "3.2.1.1-2 Enteric Methane": "3.2.1.1-2 Enteric methane",
         "4.2.1.1-2 Methane": "4.2.1.1-2 Manure methane",
         "4.2.1.3-4 Soil direct N20": "4.2.1.3-4 Soil direct N2O",
@@ -93,12 +107,15 @@
         "8.1.1.1-2 Transport fuel": "8.1.1.1-2 Transport fuel",
         "8.2.1.1-2 Stationary fuel": "8.2.1.1-2 Stationary fuel",
         "14.1.1-2 Purchased electricity": "14.1.1-2 Purchased electricity",
+        "15 Scope 3": "15 Scope 3",
+        "Calcs - Manure sent off-site": "Calcs - Manure sent off-site",
         "Constants - Pasture Beef": "Constants - Pasture Beef",
         "Constants - Ag Residue": "Constants - Ag residue",
         "Constants - Common Livestock": "Constants - Common Livestock",
         "Constants - Electricity": "Constants - Electricity",
         "Constants - Fertiliser": "Constants - Fertiliser",
         "Constants - Fuel": "Constants - Fuel",
+        "Constants - Scope 3": "Constants - Scope 3",
         "Constants - Common": "Constants - Common",
         "Acknowledgements": "Acknowledgements"
       }

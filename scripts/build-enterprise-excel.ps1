@@ -21,6 +21,9 @@ Add-Type -AssemblyName System.IO.Compression.FileSystem | Out-Null
 # Shared worksheet view helpers (Set-WorkbookZoom).
 . (Join-Path $PSScriptRoot 'worksheet-view.ps1')
 
+# Shared phantom external-link remover (Remove-ExternalLinkArtifacts).
+. (Join-Path $PSScriptRoot 'external-links.ps1')
+
 # ---------------------------------------------------------------------------
 # Auto-discovery: with neither -ConfigPath nor -EnterpriseId, build every
 # enterprise config (Enterprises\Enterprise_*.json) in turn by re-invoking
@@ -979,6 +982,43 @@ try {
     if ($menuSheetsUpdated -gt 0) { Write-Host ("Regenerated navigation menu on {0} sheet(s)." -f $menuSheetsUpdated) }
   }
 
+  # --- Blank cells that reference tables/sheets absent from the enterprise ----
+  # After localisation, any cell formula still carrying an external workbook
+  # qualifier ('<path>[book.xlsx]Sheet'!.. or '<path>book.xlsx'!Table[Col])
+  # points at a table/sheet that was NOT imported (e.g. Table_Input_Livestock-
+  # Purchases_Dairy on the Pasture Beef enterprise). BreakLink below would bake
+  # the SOURCE workbook's cached value into those cells; the enterprise expects
+  # them blank, so clear them first (leaving nothing for BreakLink to freeze).
+  $externalCellsBlanked = 0
+  if (-not $DryRun) {
+    # A quoted qualifier that still names another workbook: it contains a
+    # [book.xlsx] token or a '.xls*' path and is immediately followed by '!'.
+    $reExternalCell = [regex] "'[^']*(?:\[[^'\]]*\]|\.xls[A-Za-z]*)[^']*'!"
+    foreach ($ws in $target.Worksheets) {
+      $ur = $ws.UsedRange
+      $f = $ur.Formula2
+      $rowBase = [int] $ur.Row
+      $colBase = [int] $ur.Column
+      if ($f -is [System.Array]) {
+        $rows = $f.GetLength(0); $cols = $f.GetLength(1)
+        for ($i = 1; $i -le $rows; $i++) {
+          for ($j = 1; $j -le $cols; $j++) {
+            $v = $f.GetValue($i, $j)
+            if ($v -isnot [string] -or -not $v.Contains('[')) { continue }
+            if ($reExternalCell.IsMatch($v)) {
+              try { $ws.Cells.Item($rowBase + $i - 1, $colBase + $j - 1).ClearContents() | Out-Null; $externalCellsBlanked++ } catch { }
+            }
+          }
+        }
+      } elseif ($f -is [string] -and $f.Contains('[')) {
+        if ($reExternalCell.IsMatch($f)) {
+          try { $ws.Cells.Item($rowBase, $colBase).ClearContents() | Out-Null; $externalCellsBlanked++ } catch { }
+        }
+      }
+    }
+    if ($externalCellsBlanked -gt 0) { Write-Host ("Blanked {0} cell(s) referencing absent external table(s)/sheet(s)." -f $externalCellsBlanked) }
+  }
+
   # --- Break any leftover external links (make workbook self-contained) -------
   # Every resolvable cross-sheet reference was localised/repointed above, so any
   # link source still registered is either a phantom entry (link table row with
@@ -1048,6 +1088,24 @@ try {
     foreach ($mp in ($afeModulePaths | Select-Object -Unique | Sort-Object)) { Write-Host ("  {0}" -f $mp) }
   }
 
+  # --- Strip phantom external-workbook links (post-save, via XML) -------------
+  # One-sheet-at-a-time copy leaves dead 'xlPathMissing' links to other modules'
+  # sheets, held only by orphan '[N]' (N>=1) defined names. COM BreakLink cannot
+  # remove them; the '[0]!' self-reference LAMBDA names are preserved.
+  $phantomPartsRemoved = 0
+  $phantomNamesRemoved = 0
+  if (-not $DryRun) {
+    $linkStrip = Remove-ExternalLinkArtifacts -TargetPath $OutputPath
+    $phantomPartsRemoved = [int] $linkStrip.PartsRemoved
+    $phantomNamesRemoved = [int] $linkStrip.NamesRemoved
+    if ($phantomPartsRemoved -gt 0 -or $phantomNamesRemoved -gt 0) {
+      Write-Host ("Removed {0} phantom external link part(s), {1} orphan defined name(s), {2} external reference(s)." -f `
+        $phantomPartsRemoved, $phantomNamesRemoved, $linkStrip.ReferencesRemoved)
+      # These links are now gone from the file; drop the stale COM-pass warning.
+      if ($phantomPartsRemoved -gt 0) { $externalLinks = @() }
+    }
+  }
+
   # --- Normalise the view zoom of every sheet to 100% -------------------------
   if (-not $DryRun) {
     $zoomChanged = Set-WorkbookZoom -Path $OutputPath -Zoom 100
@@ -1079,7 +1137,10 @@ try {
     Write-Host ("Names localised (strip): {0}" -f $namesLocalised)
     Write-Host ("Names still external   : {0}" -f $namesStillExternal)
     Write-Host ("Refs repointed (rename): {0}" -f $refsRepointed)
+    Write-Host ("External cells blanked : {0}" -f $externalCellsBlanked)
     Write-Host ("External links broken  : {0}" -f $linksBroken)
+    Write-Host ("Phantom link parts rm  : {0}" -f $phantomPartsRemoved)
+    Write-Host ("Phantom orphan names rm: {0}" -f $phantomNamesRemoved)
     Write-Host ("Nav menu regenerated   : {0}" -f $menuSheetsUpdated)
   }
   if (@($externalLinks).Count -gt 0) {

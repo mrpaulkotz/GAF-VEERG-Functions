@@ -448,8 +448,9 @@
       "sheets": {
         "input": [
           "Input - Farm Inputs",
+          "Input - Livestock purchases",
           "Input - Freight",
-          "Input - Waste sent off-site"
+          "Input - Manure sent off-site"
         ],
         "calculation": [
           "15 Scope 3",
