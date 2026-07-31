@@ -30,6 +30,9 @@ Add-Type -AssemblyName System.IO.Compression.FileSystem | Out-Null
 # Shared phantom external-link remover (Remove-ExternalLinkArtifacts).
 . (Join-Path $PSScriptRoot 'external-links.ps1')
 
+# Shared pre-flight file-accessibility guard (Assert-FilesAccessible).
+. (Join-Path $PSScriptRoot 'file-access.ps1')
+
 # ---------------------------------------------------------------------------
 # Auto-discovery: with neither -ConfigPath nor -EnterpriseId, build every
 # enterprise config (Enterprises\Enterprise_*.json) in turn by re-invoking
@@ -463,6 +466,9 @@ if (-not [string]::IsNullOrWhiteSpace($templateName)) {
   # sheet is pruned after save so references resolve to the template's cell.
   $templateNameSet = Get-WorkbookScopedNameSet -Path $templatePath
   if (-not $DryRun) {
+    # Pre-flight: the template must be readable and the output must not be open,
+    # or the copy/overwrite below (and later save) would fail mid-build.
+    Assert-FilesAccessible -RequiredReadPaths @($templatePath) -WritePaths @($OutputPath)
     $destDir = Split-Path -Parent $OutputPath
     if ($destDir -and -not (Test-Path -LiteralPath $destDir)) { New-Item -ItemType Directory -Path $destDir -Force | Out-Null }
     Copy-Item -LiteralPath $templatePath -Destination $OutputPath -Force
@@ -595,6 +601,11 @@ $openSources = @{}   # resolvedPath -> workbook COM
 $sourceSheetSets = @{}  # resolvedPath -> HashSet of sheet names
 $resolvedModuleWorkbooks = New-Object System.Collections.Generic.List[string]
 
+# Pre-flight: every module source workbook must exist and be closed before we
+# spin up Excel and start opening them (fail fast with a clear list).
+$preflightSources = @($moduleWorkbookHints | ForEach-Object { Resolve-SourceWorkbook -ExcelDir $excelDir -HintName $_ } | Select-Object -Unique)
+Assert-FilesAccessible -RequiredReadPaths $preflightSources
+
 try {
   $excel = New-ExcelApp
 
@@ -643,6 +654,26 @@ try {
         if ($sourceSheetSets[$rp].Contains($entry.Name)) { $entry.ProviderPath = $rp; break }
       }
     }
+  }
+
+  # --- Validate every module sheet exists in its source workbook -------------
+  # A sheet named in a module's include list (or the registry) that is absent
+  # from the resolved source workbook would otherwise surface later as a raw
+  # 'Invalid index (DISP_E_BADINDEX)' from Worksheets.Item during the copy.
+  # Fail fast instead with the exact sheet + workbook so the config (or the
+  # source workbook's tab names) can be corrected. Runs in dry-run too.
+  $missingSheets = New-Object System.Collections.Generic.List[string]
+  foreach ($entry in $plan) {
+    if ([string]::IsNullOrWhiteSpace($entry.SourceHint)) { continue }  # common sheets handled above
+    $rp = $entry.ProviderPath
+    if ([string]::IsNullOrWhiteSpace($rp) -or $null -eq $sourceSheetSets[$rp] -or -not $sourceSheetSets[$rp].Contains($entry.OriginalName)) {
+      $wbName = if ([string]::IsNullOrWhiteSpace($rp)) { $entry.SourceHint } else { [System.IO.Path]::GetFileName($rp) }
+      $missingSheets.Add(("  - '{0}' (category {1}) not found in {2}" -f $entry.OriginalName, $entry.Category, $wbName))
+    }
+  }
+  if ($missingSheets.Count -gt 0) {
+    throw ("Config references {0} sheet(s) that do not exist in their source workbook:`n{1}`nCheck the sheet names in {2} against the source workbook tab names." -f `
+      $missingSheets.Count, ($missingSheets -join "`n"), $configPathResolved)
   }
 
   # --- Renamed-sheet bookkeeping ---------------------------------------------

@@ -60,6 +60,9 @@ Add-Type -AssemblyName System.IO.Compression.FileSystem | Out-Null
 # Shared worksheet view helpers (Set-WorkbookZoom).
 . (Join-Path $PSScriptRoot 'worksheet-view.ps1')
 
+# Shared pre-flight file-accessibility guard (Assert-FilesAccessible).
+. (Join-Path $PSScriptRoot 'file-access.ps1')
+
 # ---------------------------------------------------------------------------
 # Import map: which sheet to pull from which source workbook (version-agnostic
 # stem - Resolve-SourceWorkbook always picks the latest _v<NN>). Sheet names are
@@ -710,6 +713,11 @@ foreach ($h in ($sourceHints | Sort-Object)) {
   Write-Host ("  {0,-34} -> {1}" -f $h, [System.IO.Path]::GetFileName($hintToResolved[$h]))
 }
 Write-Host ''
+
+# Pre-flight: template + every source must exist and be closed; the output must
+# not be open (a build overwrites it). Fails fast with a clear list otherwise.
+$writePreflight = if ($DryRun) { @() } else { @($OutputPath) }
+Assert-FilesAccessible -RequiredReadPaths (@($TemplatePath) + $resolvedSources) -WritePaths $writePreflight
 
 if (-not $DryRun) {
   Copy-Item -LiteralPath $TemplatePath -Destination $OutputPath -Force

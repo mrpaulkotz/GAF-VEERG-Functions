@@ -448,7 +448,10 @@
       "sheets": {
         "input": [
           "Input - Farm Inputs",
-          "Input - Livestock purchases",
+          "Input - Beef cattle purchases",
+          "Input - Dairy cattle purchases",
+          "Input - Pig purchases",
+          "Input - Poultry purchases",
           "Input - Freight",
           "Input - Manure sent off-site"
         ],
