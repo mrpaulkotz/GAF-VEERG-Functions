@@ -1,7 +1,7 @@
 {
 	"schemaVersion": 1,
 	"generatedFrom": "Enterprise_Dairy_WIP_v01.xlsx",
-	"generatedAt": "2026-08-03T03:43:45Z",
+	"generatedAt": "2026-08-03T05:09:46Z",
 	"InputCells": [
 		{
 			"CellName": "X_Cell_Site_FarmName",
@@ -125,40 +125,13 @@
 			"CellType": "formula"
 		},
 		{
-			"CellName": "X_Cell_Dairy_Breed",
-			"Label": "Breed",
-			"CellType": "select",
-			"Options": {
-				"Medium Friesian": "Medium Friesian",
-				"Large Friesian": "Large Friesian",
-				"Holstein-Friesian": "Holstein-Friesian",
-				"Friesian crossbred": "Friesian crossbred",
-				"Jersey": "Jersey",
-				"Jersey crossbred": "Jersey crossbred",
-				"Ayrshire": "Ayrshire",
-				"Guernsey": "Guernsey",
-				"Brown Swiss": "Brown Swiss",
-				"Illawarra/Aussie Red": "Illawarra/Aussie Red"
-			}
-		},
-		{
-			"CellName": "X_Cell_Dairy_MilkProductionUnit",
-			"Label": "Milk production for the full 365 days of the year",
-			"CellType": "number"
-		},
-		{
-			"CellName": "X_Cell_Dairy_MilkProductionAmount",
-			"Label": "Average daily milk production",
-			"CellType": "number"
-		},
-		{
 			"CellName": "X_Cell_Dairy_MilkSolidsFatContent_Method1",
 			"Label": "Fat content in fat and protein corrected milk",
 			"CellType": "formula"
 		},
 		{
 			"CellName": "X_Cell_Dairy_MilkSolidsFatContent_Method2",
-			"Label": "0.033",
+			"Label": "0.04",
 			"CellType": "percent",
 			"CanOverWriteFormula": true
 		},
@@ -169,7 +142,7 @@
 		},
 		{
 			"CellName": "X_Cell_Dairy_MilkSolidsProteinContent_Method2",
-			"Label": "0",
+			"Label": "0.033",
 			"CellType": "percent",
 			"CanOverWriteFormula": true
 		},
@@ -324,6 +297,37 @@
 				"Surface irrigation": "Surface irrigation",
 				"Other irrigation": "Other irrigation"
 			}
+		},
+		{
+			"CellName": "X_Cell_Dairy_Breed",
+			"Label": "Breed",
+			"CellType": "select",
+			"Options": {
+				"Medium Friesian": "Medium Friesian",
+				"Large Friesian": "Large Friesian",
+				"Holstein-Friesian": "Holstein-Friesian",
+				"Friesian crossbred": "Friesian crossbred",
+				"Jersey": "Jersey",
+				"Jersey crossbred": "Jersey crossbred",
+				"Ayrshire": "Ayrshire",
+				"Guernsey": "Guernsey",
+				"Brown Swiss": "Brown Swiss",
+				"Illawarra/Aussie Red": "Illawarra/Aussie Red"
+			}
+		},
+		{
+			"CellName": "X_Cell_Dairy_MilkProductionUnit",
+			"Label": "Milk production unit",
+			"CellType": "select",
+			"Options": {
+				"Litres of milk": "Litres of milk",
+				"Milk solids": "Milk solids"
+			}
+		},
+		{
+			"CellName": "X_Cell_Dairy_MilkProductionAmount",
+			"Label": "Average daily milk production",
+			"CellType": "number"
 		},
 		{
 			"CellName": "X_Cell_Pasture_PastureType",
@@ -617,235 +621,6 @@
 						"Row": 2,
 						"Col": 2,
 						"Header": "CO2 removed attributed to this enterprise",
-						"CellType": "formula"
-					}
-				}
-			}
-		},
-		{
-			"TableName": "X_Table_Dairy_HerdMovement",
-			"MatrixType": "ColsToRows",
-			"NumberOfRows": 2,
-			"NumberOfCols": 5,
-			"ColumnNames": {
-				"MilkingCows": "Milking cows",
-				"HeifersOver1Year": "Heifers > 1 year",
-				"HeifersUnder1Year": "Heifers < 1 year",
-				"BullsOver1Year": "Bulls > 1 year",
-				"BullsUnder1Year": "Bulls < 1 year"
-			},
-			"Cols": {
-				"Column": {
-					"AverageNumberOfHeadBetweenNONotInLeachingZoneAnd02Nov00": {
-						"Row": 2,
-						"Col": 2,
-						"Label": "Average number of head between NO - Not in leaching zone and 02 Nov 00",
-						"CellType": "number"
-					}
-				}
-			}
-		},
-		{
-			"TableName": "X_Table_Dairy_Liveweight_Method1",
-			"MatrixType": "ColsToRows",
-			"NumberOfRows": 3,
-			"NumberOfCols": 5,
-			"ColumnNames": {
-				"MilkingCows": "Milking cows",
-				"HeifersOver1Year": "Heifers > 1 year",
-				"HeifersUnder1Year": "Heifers < 1 year",
-				"BullsOver1Year": "Bulls > 1 year",
-				"BullsUnder1Year": "Bulls < 1 year"
-			},
-			"Cols": {
-				"Column": {
-					"AverageLiveweight": {
-						"Row": 2,
-						"Col": 2,
-						"Label": "Average liveweight",
-						"CellType": "formula"
-					},
-					"AverageLiveweightGain": {
-						"Row": 3,
-						"Col": 2,
-						"Label": "Average liveweight gain",
-						"CellType": "formula"
-					}
-				}
-			}
-		},
-		{
-			"TableName": "X_Table_Dairy_Liveweight_Method2",
-			"MatrixType": "ColsToRows",
-			"NumberOfRows": 3,
-			"NumberOfCols": 5,
-			"ColumnNames": {
-				"MilkingCows": "Milking cows",
-				"HeifersOver1Year": "Heifers > 1 year",
-				"HeifersUnder1Year": "Heifers < 1 year",
-				"BullsOver1Year": "Bulls > 1 year",
-				"BullsUnder1Year": "Bulls < 1 year"
-			},
-			"Cols": {
-				"Column": {
-					"AverageLiveweight": {
-						"Row": 2,
-						"Col": 2,
-						"Label": "Average liveweight",
-						"CellType": "number",
-						"CanOverWriteFormula": true
-					},
-					"AverageLiveweightGain": {
-						"Row": 3,
-						"Col": 2,
-						"Label": "Average liveweight gain",
-						"CellType": "number",
-						"CanOverWriteFormula": true
-					}
-				}
-			}
-		},
-		{
-			"TableName": "X_Table_Dairy_DurationOfStay_Method1",
-			"MatrixType": "ColsToRows",
-			"NumberOfRows": 3,
-			"NumberOfCols": 5,
-			"ColumnNames": {
-				"MilkingCows": "Milking cows",
-				"HeifersOver1Year": "Heifers > 1 year",
-				"HeifersUnder1Year": "Heifers < 1 year",
-				"BullsOver1Year": "Bulls > 1 year",
-				"BullsUnder1Year": "Bulls < 1 year"
-			},
-			"Cols": {
-				"Column": {
-					"AverageDurationOfStayBetweenNONotInLeachingZoneAnd02Nov00WeanedLivestock": {
-						"Row": 2,
-						"Col": 2,
-						"Label": "Average duration of stay between NO - Not in leaching zone and 02 Nov 00 weaned livestock",
-						"CellType": "formula"
-					},
-					"AverageDurationOfStayBetweenNONotInLeachingZoneAnd02Nov00PreWeanedLivestock": {
-						"Row": 3,
-						"Col": 2,
-						"Label": "Average duration of stay between NO - Not in leaching zone and 02 Nov 00 pre-weaned livestock",
-						"CellType": "formula"
-					}
-				}
-			}
-		},
-		{
-			"TableName": "X_Table_Dairy_DurationOfStay_Method2",
-			"MatrixType": "ColsToRows",
-			"NumberOfRows": 3,
-			"NumberOfCols": 5,
-			"ColumnNames": {
-				"MilkingCows": "Milking cows",
-				"HeifersOver1Year": "Heifers > 1 year",
-				"HeifersUnder1Year": "Heifers < 1 year",
-				"BullsOver1Year": "Bulls > 1 year",
-				"BullsUnder1Year": "Bulls < 1 year"
-			},
-			"Cols": {
-				"Column": {
-					"AverageDurationOfStayBetweenNONotInLeachingZoneAnd02Nov00WeanedLivestock": {
-						"Row": 2,
-						"Col": 2,
-						"Label": "Average duration of stay between NO - Not in leaching zone and 02 Nov 00 weaned livestock",
-						"CellType": "number",
-						"CanOverWriteFormula": true
-					},
-					"AverageDurationOfStayBetweenNONotInLeachingZoneAnd02Nov00PreWeanedLivestock": {
-						"Row": 3,
-						"Col": 2,
-						"Label": "Average duration of stay between NO - Not in leaching zone and 02 Nov 00 pre-weaned livestock",
-						"CellType": "number",
-						"CanOverWriteFormula": true
-					}
-				}
-			}
-		},
-		{
-			"TableName": "X_Table_Dairy_Diet_Method1",
-			"MatrixType": "ColsToRows",
-			"NumberOfRows": 3,
-			"NumberOfCols": 5,
-			"ColumnNames": {
-				"MilkingCows": "Milking cows",
-				"HeifersOver1Year": "Heifers > 1 year",
-				"HeifersUnder1Year": "Heifers < 1 year",
-				"BullsOver1Year": "Bulls > 1 year",
-				"BullsUnder1Year": "Bulls < 1 year"
-			},
-			"Cols": {
-				"Column": {
-					"DryMatterDigestibility": {
-						"Row": 2,
-						"Col": 2,
-						"Label": "Dry matter digestibility",
-						"CellType": "formula"
-					},
-					"CrudeProtein": {
-						"Row": 3,
-						"Col": 2,
-						"Label": "Crude protein",
-						"CellType": "formula"
-					}
-				}
-			}
-		},
-		{
-			"TableName": "X_Table_Dairy_Diet_Method2",
-			"MatrixType": "ColsToRows",
-			"NumberOfRows": 3,
-			"NumberOfCols": 5,
-			"ColumnNames": {
-				"MilkingCows": "Milking cows",
-				"HeifersOver1Year": "Heifers > 1 year",
-				"HeifersUnder1Year": "Heifers < 1 year",
-				"BullsOver1Year": "Bulls > 1 year",
-				"BullsUnder1Year": "Bulls < 1 year"
-			},
-			"Cols": {
-				"Column": {
-					"DryMatterDigestibility": {
-						"Row": 2,
-						"Col": 2,
-						"Label": "Dry matter digestibility",
-						"CellType": "number",
-						"CanOverWriteFormula": true
-					},
-					"CrudeProtein": {
-						"Row": 3,
-						"Col": 2,
-						"Label": "Crude protein",
-						"CellType": "number",
-						"CanOverWriteFormula": true
-					}
-				}
-			}
-		},
-		{
-			"TableName": "X_Table_Dairy_MilkSolidAttributes",
-			"MatrixType": "ColsToRows",
-			"NumberOfRows": 3,
-			"NumberOfCols": 2,
-			"ColumnNames": {
-				"Col2": "",
-				"Col3": ""
-			},
-			"Cols": {
-				"Column": {
-					"ForMilkSolidsOnly": {
-						"Row": 2,
-						"Col": 2,
-						"Label": "For milk solids only:",
-						"CellType": "text"
-					},
-					"FatContentInFatAndProteinCorrectedMilk": {
-						"Row": 3,
-						"Col": 2,
-						"Label": "Fat content in fat and protein corrected milk",
 						"CellType": "formula"
 					}
 				}
@@ -1401,6 +1176,235 @@
 					"Col4": {
 						"Row": 2,
 						"Col": 4,
+						"CellType": "formula"
+					}
+				}
+			}
+		},
+		{
+			"TableName": "X_Table_Dairy_HerdMovement",
+			"MatrixType": "ColsToRows",
+			"NumberOfRows": 2,
+			"NumberOfCols": 5,
+			"ColumnNames": {
+				"MilkingCows": "Milking cows",
+				"HeifersOver1Year": "Heifers > 1 year",
+				"HeifersUnder1Year": "Heifers < 1 year",
+				"BullsOver1Year": "Bulls > 1 year",
+				"BullsUnder1Year": "Bulls < 1 year"
+			},
+			"Cols": {
+				"Column": {
+					"AverageNumberOfHeadBetween01Jan24And02Nov00": {
+						"Row": 2,
+						"Col": 2,
+						"Label": "Average number of head between 01 Jan 24 and 02 Nov 00",
+						"CellType": "number"
+					}
+				}
+			}
+		},
+		{
+			"TableName": "X_Table_Dairy_Liveweight_Method1",
+			"MatrixType": "ColsToRows",
+			"NumberOfRows": 3,
+			"NumberOfCols": 5,
+			"ColumnNames": {
+				"MilkingCows": "Milking cows",
+				"HeifersOver1Year": "Heifers > 1 year",
+				"HeifersUnder1Year": "Heifers < 1 year",
+				"BullsOver1Year": "Bulls > 1 year",
+				"BullsUnder1Year": "Bulls < 1 year"
+			},
+			"Cols": {
+				"Column": {
+					"AverageLiveweight": {
+						"Row": 2,
+						"Col": 2,
+						"Label": "Average liveweight",
+						"CellType": "formula"
+					},
+					"AverageLiveweightGain": {
+						"Row": 3,
+						"Col": 2,
+						"Label": "Average liveweight gain",
+						"CellType": "formula"
+					}
+				}
+			}
+		},
+		{
+			"TableName": "X_Table_Dairy_Liveweight_Method2",
+			"MatrixType": "ColsToRows",
+			"NumberOfRows": 3,
+			"NumberOfCols": 5,
+			"ColumnNames": {
+				"MilkingCows": "Milking cows",
+				"HeifersOver1Year": "Heifers > 1 year",
+				"HeifersUnder1Year": "Heifers < 1 year",
+				"BullsOver1Year": "Bulls > 1 year",
+				"BullsUnder1Year": "Bulls < 1 year"
+			},
+			"Cols": {
+				"Column": {
+					"AverageLiveweight": {
+						"Row": 2,
+						"Col": 2,
+						"Label": "Average liveweight",
+						"CellType": "number",
+						"CanOverWriteFormula": true
+					},
+					"AverageLiveweightGain": {
+						"Row": 3,
+						"Col": 2,
+						"Label": "Average liveweight gain",
+						"CellType": "number",
+						"CanOverWriteFormula": true
+					}
+				}
+			}
+		},
+		{
+			"TableName": "X_Table_Dairy_DurationOfStay_Method1",
+			"MatrixType": "ColsToRows",
+			"NumberOfRows": 3,
+			"NumberOfCols": 5,
+			"ColumnNames": {
+				"MilkingCows": "Milking cows",
+				"HeifersOver1Year": "Heifers > 1 year",
+				"HeifersUnder1Year": "Heifers < 1 year",
+				"BullsOver1Year": "Bulls > 1 year",
+				"BullsUnder1Year": "Bulls < 1 year"
+			},
+			"Cols": {
+				"Column": {
+					"AverageDurationOfStayBetween01Jan24And02Nov00WeanedLivestock": {
+						"Row": 2,
+						"Col": 2,
+						"Label": "Average duration of stay between 01 Jan 24 and 02 Nov 00 weaned livestock",
+						"CellType": "formula"
+					},
+					"AverageDurationOfStayBetween01Jan24And02Nov00PreWeanedLivestock": {
+						"Row": 3,
+						"Col": 2,
+						"Label": "Average duration of stay between 01 Jan 24 and 02 Nov 00 pre-weaned livestock",
+						"CellType": "formula"
+					}
+				}
+			}
+		},
+		{
+			"TableName": "X_Table_Dairy_DurationOfStay_Method2",
+			"MatrixType": "ColsToRows",
+			"NumberOfRows": 3,
+			"NumberOfCols": 5,
+			"ColumnNames": {
+				"MilkingCows": "Milking cows",
+				"HeifersOver1Year": "Heifers > 1 year",
+				"HeifersUnder1Year": "Heifers < 1 year",
+				"BullsOver1Year": "Bulls > 1 year",
+				"BullsUnder1Year": "Bulls < 1 year"
+			},
+			"Cols": {
+				"Column": {
+					"AverageDurationOfStayBetween01Jan24And02Nov00WeanedLivestock": {
+						"Row": 2,
+						"Col": 2,
+						"Label": "Average duration of stay between 01 Jan 24 and 02 Nov 00 weaned livestock",
+						"CellType": "number",
+						"CanOverWriteFormula": true
+					},
+					"AverageDurationOfStayBetween01Jan24And02Nov00PreWeanedLivestock": {
+						"Row": 3,
+						"Col": 2,
+						"Label": "Average duration of stay between 01 Jan 24 and 02 Nov 00 pre-weaned livestock",
+						"CellType": "number",
+						"CanOverWriteFormula": true
+					}
+				}
+			}
+		},
+		{
+			"TableName": "X_Table_Dairy_Diet_Method1",
+			"MatrixType": "ColsToRows",
+			"NumberOfRows": 3,
+			"NumberOfCols": 5,
+			"ColumnNames": {
+				"MilkingCows": "Milking cows",
+				"HeifersOver1Year": "Heifers > 1 year",
+				"HeifersUnder1Year": "Heifers < 1 year",
+				"BullsOver1Year": "Bulls > 1 year",
+				"BullsUnder1Year": "Bulls < 1 year"
+			},
+			"Cols": {
+				"Column": {
+					"DryMatterDigestibility": {
+						"Row": 2,
+						"Col": 2,
+						"Label": "Dry matter digestibility",
+						"CellType": "formula"
+					},
+					"CrudeProtein": {
+						"Row": 3,
+						"Col": 2,
+						"Label": "Crude protein",
+						"CellType": "formula"
+					}
+				}
+			}
+		},
+		{
+			"TableName": "X_Table_Dairy_Diet_Method2",
+			"MatrixType": "ColsToRows",
+			"NumberOfRows": 3,
+			"NumberOfCols": 5,
+			"ColumnNames": {
+				"MilkingCows": "Milking cows",
+				"HeifersOver1Year": "Heifers > 1 year",
+				"HeifersUnder1Year": "Heifers < 1 year",
+				"BullsOver1Year": "Bulls > 1 year",
+				"BullsUnder1Year": "Bulls < 1 year"
+			},
+			"Cols": {
+				"Column": {
+					"DryMatterDigestibility": {
+						"Row": 2,
+						"Col": 2,
+						"Label": "Dry matter digestibility",
+						"CellType": "number",
+						"CanOverWriteFormula": true
+					},
+					"CrudeProtein": {
+						"Row": 3,
+						"Col": 2,
+						"Label": "Crude protein",
+						"CellType": "number",
+						"CanOverWriteFormula": true
+					}
+				}
+			}
+		},
+		{
+			"TableName": "X_Table_Dairy_MilkSolidAttributes",
+			"MatrixType": "ColsToRows",
+			"NumberOfRows": 3,
+			"NumberOfCols": 2,
+			"ColumnNames": {
+				"Method1": "Method 1 (don't edit)",
+				"Method2": "Method 2 (edit if known)"
+			},
+			"Cols": {
+				"Column": {
+					"FatContentInFatAndProteinCorrectedMilk": {
+						"Row": 2,
+						"Col": 2,
+						"Label": "Fat content in fat and protein corrected milk",
+						"CellType": "formula"
+					},
+					"ProteinContentInFatAndProteinCorrectedMilk": {
+						"Row": 3,
+						"Col": 2,
+						"Label": "Protein content in fat and protein corrected milk",
 						"CellType": "formula"
 					}
 				}

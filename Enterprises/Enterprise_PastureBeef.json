@@ -44,11 +44,14 @@
 
   "modules": [
     {
+      "id": "ManureManagement_BeefPasture",
+      "comment": "IMPORT-ORDER RULE: the CANONICAL module for a shared input sheet must be listed FIRST. The first-imported module claims the workbook-scoped X_Cell_*/X_Table_* named ranges and keeps its input sheet unrenamed as the master. Enteric and Manure both ship an 'Input - Pasture Beef' sheet that backs the same 17 named ranges, but 7 of them sit at different rows (Enteric's date/digestibility block is ~7 rows higher than Manure's). Manure is the master, so it is imported before Enteric_BeefPasture."
+    },
+    {
       "id": "Enteric_BeefPasture",
-      "comment": "Enteric and Manure both ship an 'Input - Pasture Beef' sheet that backs the same 17 named ranges, but 7 of them sit at different rows (Enteric's date/digestibility block is ~7 rows higher than Manure's). Manure is the master: it keeps the canonical 'Input - Pasture Beef' sheet and owns those named ranges. Enteric's copy is imported under a distinct name via renameSheets so it does not collide; the builder drops the renamed copy's duplicate name definitions (master keeps them) and repoints Enteric's own formulas to this copy. Remove this rename once a single enterprise-level input sheet replaces the per-module input sheets.",
+      "comment": "Duplicate of the shared input sheet: imported AFTER the canonical ManureManagement_BeefPasture and renamed via renameSheets so it does not collide. The builder leaves Enteric's duplicate name definitions as sheet-scoped shadows (master keeps the workbook-scoped names) and repoints Enteric's own formulas to the renamed copy. Remove this rename once a single enterprise-level input sheet replaces the per-module input sheets.",
       "renameSheets": { "Input - Pasture Beef": "Input - Pasture Beef (Enteric)" }
     },
-    "ManureManagement_BeefPasture",
     {
       "id": "Fertiliser",
       "comment": "Pasture beef has its own fertiliser production systems inputs.",

@@ -44,11 +44,14 @@
 
   "modules": [
     {
+      "id": "ManureManagement_Dairy",
+      "comment": "IMPORT-ORDER RULE: the CANONICAL module for a shared input sheet must be listed FIRST. The first-imported module claims the workbook-scoped X_Cell_*/X_Table_* named ranges and keeps its input sheet unrenamed as the master. ManureManagement_Dairy has the full set of inputs, so it is imported before Enteric_Dairy (which ships a duplicate 'Input - Dairy' sheet backing the same names)."
+    },
+    {
       "id": "Enteric_Dairy",
-      "comment": "Enteric and Manure both ship an 'Input - Dairy' sheet but the manure management sheet has the full set of inputs.",
+      "comment": "Duplicate of the shared input sheet: imported AFTER the canonical ManureManagement_Dairy and renamed via renameSheets so it does not collide. The builder leaves Enteric's duplicate name definitions as sheet-scoped shadows (master keeps the workbook-scoped names) and repoints Enteric's own formulas to the renamed copy.",
       "renameSheets": { "Input - Dairy": "Input - Dairy (Enteric)" }
     },
-    "ManureManagement_Dairy",
     {
       "id": "Fertiliser",
       "comment": "Dairy has its own fertiliser production systems inputs.",
