@@ -550,6 +550,54 @@ npm run audit-names:commit
 
 ---
 
+## npm run find-errors
+
+One read-only checker that scans every workbook and reports remaining errors in a
+single place. It reads the `.xlsx` package XML directly — no Excel, no COM, no
+add-in — so it is fast and never produces the false `#NAME?` a headless recalc
+would (VEERG.* LAMBDAs only resolve with the Excel Labs add-in loaded). It reports
+whatever was last computed and saved into the file:
+
+- **`[cell]`** — cells whose cached value is an Excel error (`#REF!`, `#NAME?`,
+  `#VALUE!`, `#DIV/0!`, `#N/A`, `#NULL!`, `#NUM!`, `#SPILL!`, `#CALC!`), with the
+  sheet, address, error token and stored formula. Cells carrying a `vm`
+  (value-metadata) pointer are **skipped**: those are rich values — a modern
+  "Place in Cell" image (e.g. the logo pasted into `A1` on most sheets), a linked
+  data type, etc. — whose `#VALUE!` is only the fallback text for clients that
+  can't render them, not a real error.
+- **`[name]`** — defined names whose RefersTo contains an error token (`dangling`
+  plain ref) or is empty. The `.xlf`-maintained library LAMBDAs that carry an
+  internal `#REF!` (`broken-fn`) are **hidden by default** as known noise; pass
+  `-IncludeLibraryFunctions` to list them too.
+- **`[link]`** — leftover external links to other workbook files.
+
+```
+npm run find-errors
+```
+
+Scans `Excel/*.xlsx` and `Excel/Enterprises/*.xlsx` (excluding lock files,
+`*_expanded*`, `*_template*` and `*.bak`).
+
+**Variants:**
+
+| Command | Description |
+|---|---|
+| `npm run find-errors` | Scan all workbooks; list up to 50 per category each |
+| `npm run find-errors -- -WorkbookPath <path>` | Scan a single workbook |
+| `npm run find-errors -- -Max 0` | List every finding (no per-category cap) |
+| `npm run find-errors -- -IncludeLibraryFunctions` | Also list the `broken-fn` `.xlf` library LAMBDAs |
+| `npm run find-errors -- -FailOnError` | Exit code 1 if any `[cell]` or `[name]` error is found (CI gate) |
+
+> **Cached-value caveat:** cell errors reflect the values Excel last *saved*. A
+> workbook that a build touched but that has not since been opened in Excel *with
+> the add-in* and recalculated may show stale `#NAME?`/`#VALUE!` that clear on the
+> next real recalc. `broken-fn` names are the `.xlf`-maintained library LAMBDAs
+> with internal `#REF!` (hidden unless `-IncludeLibraryFunctions`, and never the
+> target of automated deletion); `dangling` names are cruft that
+> `npm run audit-names:commit` removes.
+
+---
+
 ## Notes
 
 - Close the target workbook in Excel before running either command. An open workbook causes a file-lock error and will be skipped.
