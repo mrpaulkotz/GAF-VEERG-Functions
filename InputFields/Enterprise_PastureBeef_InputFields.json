@@ -1,7 +1,7 @@
 {
 	"schemaVersion": 1,
 	"generatedFrom": "Enterprise_PastureBeef_WIP_v01.xlsx",
-	"generatedAt": "2026-07-29T06:07:52Z",
+	"generatedAt": "2026-08-03T03:44:22Z",
 	"InputCells": [
 		{
 			"CellName": "X_Cell_Site_FarmName",
@@ -250,11 +250,7 @@
 		{
 			"CellName": "X_Cell_Fertiliser_ProductionSystem",
 			"Label": "Production system",
-			"CellType": "select",
-			"Options": {
-				"Pasture": "Pasture",
-				"Crop": "Crop"
-			},
+			"CellType": "text",
 			"Hidden": true,
 			"UseDefault": true,
 			"Default": "Pasture"
@@ -262,13 +258,7 @@
 		{
 			"CellName": "X_Cell_Fertiliser_CropType",
 			"Label": "Crop type",
-			"CellType": "select",
-			"Options": {
-				"Pasture": "Pasture",
-				"Grains": "Grains",
-				"Maize": "Maize",
-				"Cotton": "Cotton"
-			},
+			"CellType": "text",
 			"Hidden": true,
 			"UseDefault": true,
 			"Default": "Pasture"
@@ -276,21 +266,14 @@
 		{
 			"CellName": "X_Cell_Fertiliser_IrrigationMethod",
 			"Label": "Irrigation method",
-			"CellType": "select",
-			"Options": {
-				"Not irrigated": "Not irrigated",
-				"Drip irrigation": "Drip irrigation",
-				"Sprinkler irrigation": "Sprinkler irrigation",
-				"Surface irrigation": "Surface irrigation",
-				"Other irrigation": "Other irrigation"
-			},
+			"CellType": "formula",
 			"Hidden": true,
 			"DuplicateOf": "X_Cell_Pasture_IrrigationMethod"
 		},
 		{
 			"CellName": "X_Cell_Fertiliser_AreaUnderCropping",
 			"Label": "Area under cropping",
-			"CellType": "number",
+			"CellType": "formula",
 			"Hidden": true,
 			"DuplicateOf": "X_Cell_Pasture_AreaUnderPasture"
 		},
@@ -387,6 +370,113 @@
 			"CellName": "X_Cell_TotalElegibleRECsForElectricityProducedOnSite",
 			"Label": "Total elegible RECs for electricity produced on-site and consumed by entity",
 			"CellType": "formula"
+		},
+		{
+			"CellName": "X_Cell_FarmInputs_LickBlocks_DrySeasonMix",
+			"Label": "Lick block, dry season mix",
+			"CellType": "number"
+		},
+		{
+			"CellName": "X_Cell_FarmInputs_LickBlocks_Mineral",
+			"Label": "Lick block, mineral",
+			"CellType": "number"
+		},
+		{
+			"CellName": "X_Cell_FarmInputs_LickBlocks_Weaner",
+			"Label": "Lick block, weaner",
+			"CellType": "number"
+		},
+		{
+			"CellName": "X_Cell_FarmInputs_FeedRations_Chickens",
+			"Label": "Feed for chickens",
+			"CellType": "number"
+		},
+		{
+			"CellName": "X_Cell_FarmInputs_FeedRations_DairyCalves",
+			"Label": "Feed for dairy calves",
+			"CellType": "number"
+		},
+		{
+			"CellName": "X_Cell_FarmInputs_FeedRations_DairyCows",
+			"Label": "Feed for dairy cows",
+			"CellType": "number"
+		},
+		{
+			"CellName": "X_Cell_FarmInputs_FeedRations_Pigs",
+			"Label": "Feed for pigs",
+			"CellType": "number"
+		},
+		{
+			"CellName": "X_Cell_FarmInputs_Seed_BarleyGrain",
+			"Label": "Barley grain (for seed)",
+			"CellType": "number"
+		},
+		{
+			"CellName": "X_Cell_FarmInputs_Seed_MaizeGrain",
+			"Label": "Maize grain (for seed)",
+			"CellType": "number"
+		},
+		{
+			"CellName": "X_Cell_FarmInputs_Seed_OatGrain",
+			"Label": "Oat grain (for seed)",
+			"CellType": "number"
+		},
+		{
+			"CellName": "X_Cell_FarmInputs_Seed_SorghumGrain",
+			"Label": "Sorghum grain (for seed)",
+			"CellType": "number"
+		},
+		{
+			"CellName": "X_Cell_FarmInputs_Seed_WheatGrain",
+			"Label": "Wheat grain (for seed)",
+			"CellType": "number"
+		},
+		{
+			"CellName": "X_Cell_FarmInputs_Misc_AnimalEarTagsLarge",
+			"Label": "Animal ear tags (large)",
+			"CellType": "number"
+		},
+		{
+			"CellName": "X_Cell_FarmInputs_Misc_AnimalEarTagsSmall",
+			"Label": "Animal ear tags (small)",
+			"CellType": "number"
+		},
+		{
+			"CellName": "X_Cell_FarmInputs_Misc_NylonNetting",
+			"Label": "Nylon netting",
+			"CellType": "number"
+		},
+		{
+			"CellName": "X_Cell_ManureSentOffsite_MassNitrogenManure_Method1",
+			"Label": "",
+			"CellType": "number"
+		},
+		{
+			"CellName": "X_Cell_ManureSentOffsite_MassNitrogenManure_Method2",
+			"Label": "",
+			"CellType": "number",
+			"CanOverWriteFormula": true
+		},
+		{
+			"CellName": "X_Cell_ManureSentOffsite_ManureProductionSystem",
+			"Label": "",
+			"CellType": "select",
+			"Options": {
+				"Pasture": "Pasture",
+				"Crop": "Crop"
+			}
+		},
+		{
+			"CellName": "X_Cell_ManureSentOffsite_ManureIrrigationMethod",
+			"Label": "",
+			"CellType": "select",
+			"Options": {
+				"Not irrigated": "Not irrigated",
+				"Drip irrigation": "Drip irrigation",
+				"Sprinkler irrigation": "Sprinkler irrigation",
+				"Surface irrigation": "Surface irrigation",
+				"Other irrigation": "Other irrigation"
+			}
 		}
 	],
 	"InputTables": [
@@ -448,7 +538,7 @@
 						"Row": 2,
 						"Col": 2,
 						"Header": "CO2 removed attributed to this enterprise",
-						"CellType": "number",
+						"CellType": "formula",
 						"CanOverwriteFormula": true
 					}
 				}
@@ -1457,88 +1547,7 @@
 			"DefaultDataLocation": null
 		},
 		{
-			"TableName": "Table_Input_LivestockPurchases_Beefcattle49",
-			"MatrixType": "RowsToCols",
-			"NumberOfCols": 8,
-			"ColumnNames": {
-				"TransactionName": "Transaction name",
-				"PurchaseDate": "Purchase date",
-				"Class": "Class (select)",
-				"PurchaseClass": "Purchase class (select)",
-				"SourceRegion": "Source region (Select)",
-				"Quantity": "Quantity (head)",
-				"LiveweightMethod1": "Liveweight (kg/head) Method 1",
-				"LiveweightMethod2": "Liveweight (kg/head) Method 2"
-			},
-			"Rows": {
-				"Row": {
-					"TransactionName": {
-						"CellType": "text"
-					},
-					"PurchaseDate": {
-						"CellType": "date"
-					},
-					"Class": {
-						"CellType": "select",
-						"Options": {
-							"Bulls < 1 year": "Bulls < 1 year",
-							"Bulls > 1 year": "Bulls > 1 year",
-							"Cows < 1 year": "Cows < 1 year",
-							"Cows 1-2 years": "Cows 1-2 years",
-							"Cows 2-3 years": "Cows 2-3 years",
-							"Cows > 3 years": "Cows > 3 years",
-							"Steers < 1 year": "Steers < 1 year",
-							"Steers 1-2 years": "Steers 1-2 years",
-							"Steers 2-3 years": "Steers 2-3 years",
-							"Steers >3 years": "Steers >3 years"
-						}
-					},
-					"PurchaseClass": {
-						"CellType": "select",
-						"Options": {
-							"Cattle, for manufacturing beef": "Cattle, for manufacturing beef",
-							"Cattle, for prime beef": "Cattle, for prime beef",
-							"Cattle, weaners": "Cattle, weaners"
-						}
-					},
-					"SourceRegion": {
-						"CellType": "select",
-						"Options": {
-							"ACT": "ACT",
-							"NSW": "NSW",
-							"SA": "SA",
-							"TAS": "TAS",
-							"VIC": "VIC",
-							"WA - South west": "WA - South west",
-							"WA - Pilbara": "WA - Pilbara",
-							"WA - Kimberley": "WA - Kimberley",
-							"NT - Alice Springs": "NT - Alice Springs",
-							"NT - Barkly": "NT - Barkly",
-							"NT - Northern": "NT - Northern",
-							"QLD - High": "QLD - High",
-							"QLD - Moderate/High": "QLD - Moderate/High",
-							"QLD - Moderate/Low": "QLD - Moderate/Low",
-							"QLD - Low": "QLD - Low",
-							"Australia": "Australia"
-						}
-					},
-					"Quantity": {
-						"CellType": "number",
-						"Unit": "head"
-					},
-					"LiveweightMethod1": {
-						"CellType": "formula",
-						"Unit": "kg/head"
-					},
-					"LiveweightMethod2": {
-						"CellType": "number",
-						"Unit": "kg/head"
-					}
-				}
-			}
-		},
-		{
-			"TableName": "Table_Input_LivestockSales48",
+			"TableName": "Table_Input_LivestockSales",
 			"MatrixType": "RowsToCols",
 			"NumberOfCols": 6,
 			"ColumnNames": {
@@ -1666,54 +1675,6 @@
 				}
 			},
 			"CanMarkAsNotUsed": true
-		},
-		{
-			"TableName": "Table_Input_LivestockSales",
-			"MatrixType": "RowsToCols",
-			"NumberOfCols": 6,
-			"ColumnNames": {
-				"TransactionName": "Transaction name",
-				"Class": "Class (select)",
-				"SaleDate": "Sale date",
-				"HeadSold": "Head sold",
-				"AverageWeightPerHead": "Average weight per head (kg)",
-				"TotalLiveweightSold": "Total liveweight sold"
-			},
-			"Rows": {
-				"Row": {
-					"TransactionName": {
-						"CellType": "text"
-					},
-					"Class": {
-						"CellType": "select",
-						"Options": {
-							"Bulls < 1 year": "Bulls < 1 year",
-							"Bulls > 1 year": "Bulls > 1 year",
-							"Cows < 1 year": "Cows < 1 year",
-							"Cows 1-2 years": "Cows 1-2 years",
-							"Cows 2-3 years": "Cows 2-3 years",
-							"Cows > 3 years": "Cows > 3 years",
-							"Steers < 1 year": "Steers < 1 year",
-							"Steers 1-2 years": "Steers 1-2 years",
-							"Steers 2-3 years": "Steers 2-3 years",
-							"Steers >3 years": "Steers >3 years"
-						}
-					},
-					"SaleDate": {
-						"CellType": "date"
-					},
-					"HeadSold": {
-						"CellType": "number"
-					},
-					"AverageWeightPerHead": {
-						"CellType": "number",
-						"Unit": "kg"
-					},
-					"TotalLiveweightSold": {
-						"CellType": "formula"
-					}
-				}
-			}
 		},
 		{
 			"TableName": "Table_Input_InorganicFertiliser_Brands",
@@ -2286,6 +2247,1070 @@
 			"NotUsedWhen": {
 				"Field": "X_Cell_Electricity_CalculationMethod",
 				"Equals": "Location-based (Simpler)"
+			}
+		},
+		{
+			"TableName": "Table_Input_Pesticides",
+			"MatrixType": "RowsToCols",
+			"NumberOfCols": 15,
+			"ColumnNames": {
+				"ProductName": "Product name",
+				"AmountAppliedPerHa": "Amount applied per ha",
+				"ApplicationUnit": "Application unit (select)",
+				"ApplicationArea": "Application area (ha)",
+				"TotalApplied": "Total applied",
+				"ConstituentUnit": "Constituent unit (select)",
+				"ActiveIngredient1": "Active ingredient 1 (select)",
+				"ActiveIngredient1Amount": "Active ingredient 1 amount",
+				"TotalActiveIngredient1": "Total active ingredient 1 (kg)",
+				"ActiveIngredient2": "Active ingredient 2 (select)",
+				"ActiveIngredient2Amount": "Active ingredient 2 amount",
+				"TotalActiveIngredient2": "Total active ingredient 2 (kg)",
+				"ActiveIngredient3": "Active ingredient 3 (select)",
+				"ActiveIngredient3Amount": "Active ingredient 3 amount",
+				"TotalActiveIngredient3": "Total active ingredient 3 (kg)"
+			},
+			"Rows": {
+				"Row": {
+					"ProductName": {
+						"CellType": "text"
+					},
+					"AmountAppliedPerHa": {
+						"CellType": "number"
+					},
+					"ApplicationUnit": {
+						"CellType": "select",
+						"Options": {
+							"kg / hectare": "kg / hectare",
+							"litre / hectare": "litre / hectare"
+						}
+					},
+					"ApplicationArea": {
+						"CellType": "number",
+						"Unit": "ha"
+					},
+					"TotalApplied": {
+						"CellType": "formula"
+					},
+					"ConstituentUnit": {
+						"CellType": "select",
+						"Options": {
+							"grams/litre or grams/kg": "grams/litre or grams/kg",
+							"fraction of product": "fraction of product"
+						}
+					},
+					"ActiveIngredient1": {
+						"CellType": "select",
+						"Options": {
+							"2,4-D": "2,4-D",
+							"Atrazine": "Atrazine",
+							"Diuron": "Diuron",
+							"Glyphosate": "Glyphosate",
+							"Mancozeb": "Mancozeb",
+							"MCPA": "MCPA",
+							"Metolachlor": "Metolachlor",
+							"Metsulfuron-methyl": "Metsulfuron-methyl",
+							"Pesticides (generic)": "Pesticides (generic)",
+							"Tri-allate": "Tri-allate",
+							"Tribenuron methyl": "Tribenuron methyl",
+							"Trifluralin": "Trifluralin"
+						}
+					},
+					"ActiveIngredient1Amount": {
+						"CellType": "number"
+					},
+					"TotalActiveIngredient1": {
+						"CellType": "formula",
+						"Unit": "kg"
+					},
+					"ActiveIngredient2": {
+						"CellType": "select",
+						"Options": {
+							"2,4-D": "2,4-D",
+							"Atrazine": "Atrazine",
+							"Diuron": "Diuron",
+							"Glyphosate": "Glyphosate",
+							"Mancozeb": "Mancozeb",
+							"MCPA": "MCPA",
+							"Metolachlor": "Metolachlor",
+							"Metsulfuron-methyl": "Metsulfuron-methyl",
+							"Pesticides (generic)": "Pesticides (generic)",
+							"Tri-allate": "Tri-allate",
+							"Tribenuron methyl": "Tribenuron methyl",
+							"Trifluralin": "Trifluralin"
+						}
+					},
+					"ActiveIngredient2Amount": {
+						"CellType": "number"
+					},
+					"TotalActiveIngredient2": {
+						"CellType": "formula",
+						"Unit": "kg"
+					},
+					"ActiveIngredient3": {
+						"CellType": "select",
+						"Options": {
+							"2,4-D": "2,4-D",
+							"Atrazine": "Atrazine",
+							"Diuron": "Diuron",
+							"Glyphosate": "Glyphosate",
+							"Mancozeb": "Mancozeb",
+							"MCPA": "MCPA",
+							"Metolachlor": "Metolachlor",
+							"Metsulfuron-methyl": "Metsulfuron-methyl",
+							"Pesticides (generic)": "Pesticides (generic)",
+							"Tri-allate": "Tri-allate",
+							"Tribenuron methyl": "Tribenuron methyl",
+							"Trifluralin": "Trifluralin"
+						}
+					},
+					"ActiveIngredient3Amount": {
+						"CellType": "number"
+					},
+					"TotalActiveIngredient3": {
+						"CellType": "formula",
+						"Unit": "kg"
+					}
+				}
+			}
+		},
+		{
+			"TableName": "Table_Input_ChemicalsCleaning",
+			"MatrixType": "RowsToCols",
+			"NumberOfCols": 3,
+			"ColumnNames": {
+				"ProductName": "Product name",
+				"Type": "Type (select)",
+				"QuantityPurchased": "Quantity purchased (kg)"
+			},
+			"Rows": {
+				"Row": {
+					"ProductName": {
+						"CellType": "text"
+					},
+					"Type": {
+						"CellType": "select",
+						"Options": {
+							"Alkaline cleaner": "Alkaline cleaner",
+							"Bleach": "Bleach",
+							"Phosphoric acid": "Phosphoric acid"
+						}
+					},
+					"QuantityPurchased": {
+						"CellType": "number",
+						"Unit": "kg"
+					}
+				}
+			}
+		},
+		{
+			"TableName": "Table_Input_ChemicalsPharmacy",
+			"MatrixType": "RowsToCols",
+			"NumberOfCols": 3,
+			"ColumnNames": {
+				"ProductName": "Product name",
+				"Type": "Type (select)",
+				"NumberOfHeadTreated": "Number of head treated"
+			},
+			"Rows": {
+				"Row": {
+					"ProductName": {
+						"CellType": "text"
+					},
+					"Type": {
+						"CellType": "select",
+						"Options": {
+							"Parasite control for cattle (external), dipping": "Parasite control for cattle (external), dipping",
+							"Parasite control for cattle (internal)": "Parasite control for cattle (internal)",
+							"Parasite control for sheep (external)": "Parasite control for sheep (external)",
+							"Parasite control for sheep (internal)": "Parasite control for sheep (internal)"
+						}
+					},
+					"NumberOfHeadTreated": {
+						"CellType": "number"
+					}
+				}
+			}
+		},
+		{
+			"TableName": "Table_Input_FeedBlends",
+			"MatrixType": "RowsToCols",
+			"NumberOfCols": 14,
+			"ColumnNames": {
+				"FeedBlendName": "Feed blend name",
+				"AmountFed": "Amount fed (kg)",
+				"Ingredient1": "Ingredient 1 (select)",
+				"Ingredient1SourceRegion": "Ingredient 1 source region",
+				"Ingredient1Percent": "Ingredient 1 percent",
+				"Ingredient2": "Ingredient 2 (select)",
+				"Ingredient2SourceRegion": "Ingredient 2 source region",
+				"Ingredient2Percent": "Ingredient 2 percent",
+				"Ingredient3": "Ingredient 3 (select)",
+				"Ingredient3SourceRegion": "Ingredient 3 source region",
+				"Ingredient3Percent": "Ingredient 3 percent",
+				"Ingredient4": "Ingredient 4 (select)",
+				"Ingredient4SourceRegion": "Ingredient 4 source region",
+				"Ingredient4Percent": "Ingredient 4 percent"
+			},
+			"Rows": {
+				"Row": {
+					"FeedBlendName": {
+						"CellType": "text"
+					},
+					"AmountFed": {
+						"CellType": "number",
+						"Unit": "kg"
+					},
+					"Ingredient1": {
+						"CellType": "select",
+						"Options": {
+							"Sardines (whole)": "Sardines (whole)",
+							"Barley grain": "Barley grain",
+							"Maize grain": "Maize grain",
+							"Sorghum grain": "Sorghum grain",
+							"Wheat grain": "Wheat grain",
+							"Cereal hay": "Cereal hay",
+							"Cereal silage": "Cereal silage",
+							"Lucerne hay": "Lucerne hay",
+							"Maize silage": "Maize silage",
+							"Oaten hay": "Oaten hay",
+							"Pasture hay": "Pasture hay",
+							"Canola meal": "Canola meal",
+							"Meat meal": "Meat meal",
+							"Soybean meal": "Soybean meal",
+							"Wheat bran": "Wheat bran",
+							"Bentonite": "Bentonite",
+							"Canola oil": "Canola oil",
+							"Cotton seed": "Cotton seed",
+							"Molasses": "Molasses"
+						}
+					},
+					"Ingredient1SourceRegion": {
+						"CellType": "select",
+						"DependentOn": "Ingredient1",
+						"Options": {
+							"Sardineswhole": {
+								"SA": "SA"
+							},
+							"Barleygrain": {
+								"Australia": "Australia",
+								"NSW": "NSW",
+								"NT": "NT",
+								"QLD": "QLD",
+								"SA": "SA",
+								"TAS": "TAS",
+								"VIC": "VIC",
+								"WA": "WA"
+							},
+							"Maizegrain": {
+								"Australia": "Australia",
+								"NSW": "NSW",
+								"NT": "NT",
+								"QLD": "QLD",
+								"SA": "SA",
+								"VIC": "VIC",
+								"WA": "WA"
+							},
+							"Sorghumgrain": {
+								"Australia": "Australia",
+								"NSW": "NSW",
+								"QLD": "QLD",
+								"SA": "SA",
+								"VIC": "VIC"
+							},
+							"Wheatgrain": {
+								"Australia": "Australia",
+								"NSW": "NSW",
+								"NT": "NT",
+								"QLD": "QLD",
+								"SA": "SA",
+								"TAS": "TAS",
+								"VIC": "VIC",
+								"WA": "WA"
+							},
+							"Cerealhay": {
+								"Australia": "Australia",
+								"NSW": "NSW",
+								"QLD": "QLD",
+								"SA": "SA",
+								"TAS": "TAS",
+								"VIC": "VIC",
+								"WA": "WA"
+							},
+							"Cerealsilage": {
+								"Australia": "Australia",
+								"NSW": "NSW",
+								"QLD": "QLD",
+								"SA": "SA",
+								"TAS": "TAS",
+								"VIC": "VIC"
+							},
+							"Lucernehay": {
+								"Australia": "Australia",
+								"NSW": "NSW",
+								"QLD": "QLD",
+								"SA": "SA",
+								"TAS": "TAS",
+								"VIC": "VIC"
+							},
+							"Maizesilage": "n/a",
+							"Oatenhay": {
+								"Australia": "Australia",
+								"NSW": "NSW",
+								"QLD": "QLD",
+								"SA": "SA",
+								"VIC": "VIC",
+								"WA": "WA"
+							},
+							"Pasturehay": {
+								"Australia": "Australia",
+								"NSW": "NSW",
+								"QLD": "QLD",
+								"SA": "SA",
+								"TAS": "TAS",
+								"VIC": "VIC",
+								"WA": "WA"
+							},
+							"Canolameal": {
+								"Australia": "Australia"
+							},
+							"Meatmeal": {
+								"Australia": "Australia"
+							},
+							"Soybeanmeal": {
+								"Brazil": "Brazil"
+							},
+							"Wheatbran": {
+								"Australia": "Australia"
+							},
+							"Bentonite": {
+								"Australia": "Australia"
+							},
+							"Canolaoil": {
+								"Australia": "Australia"
+							},
+							"Cottonseed": {
+								"Australia": "Australia"
+							},
+							"Molasses": {
+								"QLD": "QLD"
+							}
+						}
+					},
+					"Ingredient1Percent": {
+						"CellType": "percent"
+					},
+					"Ingredient2": {
+						"CellType": "select",
+						"Options": {
+							"Sardines (whole)": "Sardines (whole)",
+							"Barley grain": "Barley grain",
+							"Maize grain": "Maize grain",
+							"Sorghum grain": "Sorghum grain",
+							"Wheat grain": "Wheat grain",
+							"Cereal hay": "Cereal hay",
+							"Cereal silage": "Cereal silage",
+							"Lucerne hay": "Lucerne hay",
+							"Maize silage": "Maize silage",
+							"Oaten hay": "Oaten hay",
+							"Pasture hay": "Pasture hay",
+							"Canola meal": "Canola meal",
+							"Meat meal": "Meat meal",
+							"Soybean meal": "Soybean meal",
+							"Wheat bran": "Wheat bran",
+							"Bentonite": "Bentonite",
+							"Canola oil": "Canola oil",
+							"Cotton seed": "Cotton seed",
+							"Molasses": "Molasses"
+						}
+					},
+					"Ingredient2SourceRegion": {
+						"CellType": "select",
+						"DependentOn": "Ingredient2",
+						"Options": {
+							"Sardineswhole": {
+								"SA": "SA"
+							},
+							"Barleygrain": {
+								"Australia": "Australia",
+								"NSW": "NSW",
+								"NT": "NT",
+								"QLD": "QLD",
+								"SA": "SA",
+								"TAS": "TAS",
+								"VIC": "VIC",
+								"WA": "WA"
+							},
+							"Maizegrain": {
+								"Australia": "Australia",
+								"NSW": "NSW",
+								"NT": "NT",
+								"QLD": "QLD",
+								"SA": "SA",
+								"VIC": "VIC",
+								"WA": "WA"
+							},
+							"Sorghumgrain": {
+								"Australia": "Australia",
+								"NSW": "NSW",
+								"QLD": "QLD",
+								"SA": "SA",
+								"VIC": "VIC"
+							},
+							"Wheatgrain": {
+								"Australia": "Australia",
+								"NSW": "NSW",
+								"NT": "NT",
+								"QLD": "QLD",
+								"SA": "SA",
+								"TAS": "TAS",
+								"VIC": "VIC",
+								"WA": "WA"
+							},
+							"Cerealhay": {
+								"Australia": "Australia",
+								"NSW": "NSW",
+								"QLD": "QLD",
+								"SA": "SA",
+								"TAS": "TAS",
+								"VIC": "VIC",
+								"WA": "WA"
+							},
+							"Cerealsilage": {
+								"Australia": "Australia",
+								"NSW": "NSW",
+								"QLD": "QLD",
+								"SA": "SA",
+								"TAS": "TAS",
+								"VIC": "VIC"
+							},
+							"Lucernehay": {
+								"Australia": "Australia",
+								"NSW": "NSW",
+								"QLD": "QLD",
+								"SA": "SA",
+								"TAS": "TAS",
+								"VIC": "VIC"
+							},
+							"Maizesilage": "n/a",
+							"Oatenhay": {
+								"Australia": "Australia",
+								"NSW": "NSW",
+								"QLD": "QLD",
+								"SA": "SA",
+								"VIC": "VIC",
+								"WA": "WA"
+							},
+							"Pasturehay": {
+								"Australia": "Australia",
+								"NSW": "NSW",
+								"QLD": "QLD",
+								"SA": "SA",
+								"TAS": "TAS",
+								"VIC": "VIC",
+								"WA": "WA"
+							},
+							"Canolameal": {
+								"Australia": "Australia"
+							},
+							"Meatmeal": {
+								"Australia": "Australia"
+							},
+							"Soybeanmeal": {
+								"Brazil": "Brazil"
+							},
+							"Wheatbran": {
+								"Australia": "Australia"
+							},
+							"Bentonite": {
+								"Australia": "Australia"
+							},
+							"Canolaoil": {
+								"Australia": "Australia"
+							},
+							"Cottonseed": {
+								"Australia": "Australia"
+							},
+							"Molasses": {
+								"QLD": "QLD"
+							}
+						}
+					},
+					"Ingredient2Percent": {
+						"CellType": "percent"
+					},
+					"Ingredient3": {
+						"CellType": "select",
+						"Options": {
+							"Sardines (whole)": "Sardines (whole)",
+							"Barley grain": "Barley grain",
+							"Maize grain": "Maize grain",
+							"Sorghum grain": "Sorghum grain",
+							"Wheat grain": "Wheat grain",
+							"Cereal hay": "Cereal hay",
+							"Cereal silage": "Cereal silage",
+							"Lucerne hay": "Lucerne hay",
+							"Maize silage": "Maize silage",
+							"Oaten hay": "Oaten hay",
+							"Pasture hay": "Pasture hay",
+							"Canola meal": "Canola meal",
+							"Meat meal": "Meat meal",
+							"Soybean meal": "Soybean meal",
+							"Wheat bran": "Wheat bran",
+							"Bentonite": "Bentonite",
+							"Canola oil": "Canola oil",
+							"Cotton seed": "Cotton seed",
+							"Molasses": "Molasses"
+						}
+					},
+					"Ingredient3SourceRegion": {
+						"CellType": "select",
+						"DependentOn": "Ingredient3",
+						"Options": {
+							"Sardineswhole": {
+								"SA": "SA"
+							},
+							"Barleygrain": {
+								"Australia": "Australia",
+								"NSW": "NSW",
+								"NT": "NT",
+								"QLD": "QLD",
+								"SA": "SA",
+								"TAS": "TAS",
+								"VIC": "VIC",
+								"WA": "WA"
+							},
+							"Maizegrain": {
+								"Australia": "Australia",
+								"NSW": "NSW",
+								"NT": "NT",
+								"QLD": "QLD",
+								"SA": "SA",
+								"VIC": "VIC",
+								"WA": "WA"
+							},
+							"Sorghumgrain": {
+								"Australia": "Australia",
+								"NSW": "NSW",
+								"QLD": "QLD",
+								"SA": "SA",
+								"VIC": "VIC"
+							},
+							"Wheatgrain": {
+								"Australia": "Australia",
+								"NSW": "NSW",
+								"NT": "NT",
+								"QLD": "QLD",
+								"SA": "SA",
+								"TAS": "TAS",
+								"VIC": "VIC",
+								"WA": "WA"
+							},
+							"Cerealhay": {
+								"Australia": "Australia",
+								"NSW": "NSW",
+								"QLD": "QLD",
+								"SA": "SA",
+								"TAS": "TAS",
+								"VIC": "VIC",
+								"WA": "WA"
+							},
+							"Cerealsilage": {
+								"Australia": "Australia",
+								"NSW": "NSW",
+								"QLD": "QLD",
+								"SA": "SA",
+								"TAS": "TAS",
+								"VIC": "VIC"
+							},
+							"Lucernehay": {
+								"Australia": "Australia",
+								"NSW": "NSW",
+								"QLD": "QLD",
+								"SA": "SA",
+								"TAS": "TAS",
+								"VIC": "VIC"
+							},
+							"Maizesilage": "n/a",
+							"Oatenhay": {
+								"Australia": "Australia",
+								"NSW": "NSW",
+								"QLD": "QLD",
+								"SA": "SA",
+								"VIC": "VIC",
+								"WA": "WA"
+							},
+							"Pasturehay": {
+								"Australia": "Australia",
+								"NSW": "NSW",
+								"QLD": "QLD",
+								"SA": "SA",
+								"TAS": "TAS",
+								"VIC": "VIC",
+								"WA": "WA"
+							},
+							"Canolameal": {
+								"Australia": "Australia"
+							},
+							"Meatmeal": {
+								"Australia": "Australia"
+							},
+							"Soybeanmeal": {
+								"Brazil": "Brazil"
+							},
+							"Wheatbran": {
+								"Australia": "Australia"
+							},
+							"Bentonite": {
+								"Australia": "Australia"
+							},
+							"Canolaoil": {
+								"Australia": "Australia"
+							},
+							"Cottonseed": {
+								"Australia": "Australia"
+							},
+							"Molasses": {
+								"QLD": "QLD"
+							}
+						}
+					},
+					"Ingredient3Percent": {
+						"CellType": "percent"
+					},
+					"Ingredient4": {
+						"CellType": "select",
+						"Options": {
+							"Sardines (whole)": "Sardines (whole)",
+							"Barley grain": "Barley grain",
+							"Maize grain": "Maize grain",
+							"Sorghum grain": "Sorghum grain",
+							"Wheat grain": "Wheat grain",
+							"Cereal hay": "Cereal hay",
+							"Cereal silage": "Cereal silage",
+							"Lucerne hay": "Lucerne hay",
+							"Maize silage": "Maize silage",
+							"Oaten hay": "Oaten hay",
+							"Pasture hay": "Pasture hay",
+							"Canola meal": "Canola meal",
+							"Meat meal": "Meat meal",
+							"Soybean meal": "Soybean meal",
+							"Wheat bran": "Wheat bran",
+							"Bentonite": "Bentonite",
+							"Canola oil": "Canola oil",
+							"Cotton seed": "Cotton seed",
+							"Molasses": "Molasses"
+						}
+					},
+					"Ingredient4SourceRegion": {
+						"CellType": "select",
+						"DependentOn": "Ingredient4",
+						"Options": {
+							"Sardineswhole": {
+								"SA": "SA"
+							},
+							"Barleygrain": {
+								"Australia": "Australia",
+								"NSW": "NSW",
+								"NT": "NT",
+								"QLD": "QLD",
+								"SA": "SA",
+								"TAS": "TAS",
+								"VIC": "VIC",
+								"WA": "WA"
+							},
+							"Maizegrain": {
+								"Australia": "Australia",
+								"NSW": "NSW",
+								"NT": "NT",
+								"QLD": "QLD",
+								"SA": "SA",
+								"VIC": "VIC",
+								"WA": "WA"
+							},
+							"Sorghumgrain": {
+								"Australia": "Australia",
+								"NSW": "NSW",
+								"QLD": "QLD",
+								"SA": "SA",
+								"VIC": "VIC"
+							},
+							"Wheatgrain": {
+								"Australia": "Australia",
+								"NSW": "NSW",
+								"NT": "NT",
+								"QLD": "QLD",
+								"SA": "SA",
+								"TAS": "TAS",
+								"VIC": "VIC",
+								"WA": "WA"
+							},
+							"Cerealhay": {
+								"Australia": "Australia",
+								"NSW": "NSW",
+								"QLD": "QLD",
+								"SA": "SA",
+								"TAS": "TAS",
+								"VIC": "VIC",
+								"WA": "WA"
+							},
+							"Cerealsilage": {
+								"Australia": "Australia",
+								"NSW": "NSW",
+								"QLD": "QLD",
+								"SA": "SA",
+								"TAS": "TAS",
+								"VIC": "VIC"
+							},
+							"Lucernehay": {
+								"Australia": "Australia",
+								"NSW": "NSW",
+								"QLD": "QLD",
+								"SA": "SA",
+								"TAS": "TAS",
+								"VIC": "VIC"
+							},
+							"Maizesilage": "n/a",
+							"Oatenhay": {
+								"Australia": "Australia",
+								"NSW": "NSW",
+								"QLD": "QLD",
+								"SA": "SA",
+								"VIC": "VIC",
+								"WA": "WA"
+							},
+							"Pasturehay": {
+								"Australia": "Australia",
+								"NSW": "NSW",
+								"QLD": "QLD",
+								"SA": "SA",
+								"TAS": "TAS",
+								"VIC": "VIC",
+								"WA": "WA"
+							},
+							"Canolameal": {
+								"Australia": "Australia"
+							},
+							"Meatmeal": {
+								"Australia": "Australia"
+							},
+							"Soybeanmeal": {
+								"Brazil": "Brazil"
+							},
+							"Wheatbran": {
+								"Australia": "Australia"
+							},
+							"Bentonite": {
+								"Australia": "Australia"
+							},
+							"Canolaoil": {
+								"Australia": "Australia"
+							},
+							"Cottonseed": {
+								"Australia": "Australia"
+							},
+							"Molasses": {
+								"QLD": "QLD"
+							}
+						}
+					},
+					"Ingredient4Percent": {
+						"CellType": "percent"
+					}
+				}
+			}
+		},
+		{
+			"TableName": "Table_Input_ServicesAndContractors",
+			"MatrixType": "RowsToCols",
+			"NumberOfCols": 4,
+			"ColumnNames": {
+				"ServiceProviderContractor": "Service provider / contractor",
+				"Activity": "Activity",
+				"TotalAmount": "Total amount",
+				"AmountUnit": "Amount unit"
+			},
+			"Rows": {
+				"Row": {
+					"ServiceProviderContractor": {
+						"CellType": "text"
+					},
+					"Activity": {
+						"CellType": "text"
+					},
+					"TotalAmount": {
+						"CellType": "number"
+					},
+					"AmountUnit": {
+						"CellType": "select",
+						"Options": {
+							"Hour": "Hour",
+							"Hectare": "Hectare"
+						}
+					}
+				}
+			}
+		},
+		{
+			"TableName": "Table_Input_Packaging",
+			"MatrixType": "RowsToCols",
+			"NumberOfCols": 5,
+			"ColumnNames": {
+				"PackagingName": "Packaging name",
+				"QuantityPurchased": "Quantity purchased",
+				"PrimaryMaterial": "Primary material",
+				"WeightPerUnit": "Weight per unit (kg)",
+				"TotalWeightPurchased": "Total weight purchased (kg)"
+			},
+			"Rows": {
+				"Row": {
+					"PackagingName": {
+						"CellType": "text"
+					},
+					"QuantityPurchased": {
+						"CellType": "number"
+					},
+					"PrimaryMaterial": {
+						"CellType": "select",
+						"Options": {
+							"Corrugated board": "Corrugated board",
+							"Plastic crate polypropylene": "Plastic crate polypropylene",
+							"Plastic film LDPE": "Plastic film LDPE",
+							"Plastic sheet HDPE": "Plastic sheet HDPE"
+						}
+					},
+					"WeightPerUnit": {
+						"CellType": "number",
+						"Unit": "kg"
+					},
+					"TotalWeightPurchased": {
+						"CellType": "formula",
+						"Unit": "kg"
+					}
+				}
+			}
+		},
+		{
+			"TableName": "Table_Input_GrowMedia",
+			"MatrixType": "RowsToCols",
+			"NumberOfCols": 3,
+			"ColumnNames": {
+				"GrowMediaType": "Grow media type",
+				"TotalAmount": "Total amount",
+				"AmountUnit": "Amount unit"
+			},
+			"Rows": {
+				"Row": {
+					"GrowMediaType": {
+						"CellType": "text"
+					},
+					"TotalAmount": {
+						"CellType": "number"
+					},
+					"AmountUnit": {
+						"CellType": "select",
+						"Options": {
+							"kg": "kg",
+							"m3": "m3"
+						}
+					}
+				}
+			}
+		},
+		{
+			"TableName": "Table_Input_UncategorisedProductsServices",
+			"MatrixType": "RowsToCols",
+			"NumberOfCols": 3,
+			"ColumnNames": {
+				"ProductServiceName": "Product / service name",
+				"Amount": "Amount",
+				"AmountUnit": "Amount unit"
+			},
+			"Rows": {
+				"Row": {
+					"ProductServiceName": {
+						"CellType": "text"
+					},
+					"Amount": {
+						"CellType": "number"
+					},
+					"AmountUnit": {
+						"CellType": "text"
+					}
+				}
+			}
+		},
+		{
+			"TableName": "Table_Input_FreightIncoming",
+			"MatrixType": "RowsToCols",
+			"NumberOfCols": 5,
+			"ColumnNames": {
+				"RouteName": "Route name",
+				"FreightType": "Freight type (select)",
+				"RouteDistance": "Route distance (km)",
+				"AverageWeightOfFreightPerTrip": "Average weight of freight per trip (t)",
+				"NumberOfTripsTaken": "Number of trips taken"
+			},
+			"Rows": {
+				"Row": {
+					"RouteName": {
+						"CellType": "text"
+					},
+					"FreightType": {
+						"CellType": "select",
+						"Options": {
+							"Transport in truck": "Transport in truck",
+							"Rail": "Rail",
+							"Long haul flight": "Long haul flight",
+							"medium haul flight": "medium haul flight",
+							"Small container ship": "Small container ship",
+							"Large container ship": "Large container ship"
+						}
+					},
+					"RouteDistance": {
+						"CellType": "number",
+						"Unit": "km"
+					},
+					"AverageWeightOfFreightPerTrip": {
+						"CellType": "number",
+						"Unit": "t"
+					},
+					"NumberOfTripsTaken": {
+						"CellType": "number"
+					}
+				}
+			}
+		},
+		{
+			"TableName": "Table_Input_FreightOutgoing",
+			"MatrixType": "RowsToCols",
+			"NumberOfCols": 5,
+			"ColumnNames": {
+				"RouteName": "Route name",
+				"FreightType": "Freight type (select)",
+				"RouteDistance": "Route distance (km)",
+				"AverageWeightOfFreightPerTrip": "Average weight of freight per trip (t)",
+				"NumberOfTripsTaken": "Number of trips taken"
+			},
+			"Rows": {
+				"Row": {
+					"RouteName": {
+						"CellType": "text"
+					},
+					"FreightType": {
+						"CellType": "select",
+						"Options": {
+							"Transport in truck": "Transport in truck",
+							"Rail": "Rail",
+							"Long haul flight": "Long haul flight",
+							"medium haul flight": "medium haul flight",
+							"Small container ship": "Small container ship",
+							"Large container ship": "Large container ship"
+						}
+					},
+					"RouteDistance": {
+						"CellType": "number",
+						"Unit": "km"
+					},
+					"AverageWeightOfFreightPerTrip": {
+						"CellType": "number",
+						"Unit": "t"
+					},
+					"NumberOfTripsTaken": {
+						"CellType": "number"
+					}
+				}
+			}
+		},
+		{
+			"TableName": "Table_Input_SolidWaste",
+			"MatrixType": "RowsToCols",
+			"NumberOfCols": 6,
+			"ColumnNames": {
+				"Description": "Description",
+				"TreatmentType": "Treatment type (select)",
+				"WasteType": "Waste type (select)",
+				"TreatmentLocation": "Treatment location (select)",
+				"Amount": "Amount",
+				"AmountUnit": "Amount unit (select)"
+			},
+			"Rows": {
+				"Row": {
+					"Description": {
+						"CellType": "text"
+					},
+					"TreatmentType": {
+						"CellType": "select",
+						"Options": {
+							"Landfill": "Landfill",
+							"Incineration": "Incineration",
+							"Composting": "Composting",
+							"Anaerobic digestion": "Anaerobic digestion"
+						}
+					},
+					"WasteType": {
+						"CellType": "select",
+						"DependentOn": "TreatmentType",
+						"Options": {
+							"Landfill": {
+								"Food waste (including animal carcasses, spoiled animal feed or crop)": "Food waste (including animal carcasses, spoiled animal feed or crop)",
+								"Paper and cardboard": "Paper and cardboard",
+								"Green waste (including crop residues or prunings)": "Green waste (including crop residues or prunings)",
+								"Wood": "Wood",
+								"Textiles": "Textiles",
+								"Sludge": "Sludge",
+								"Rubber and leather": "Rubber and leather",
+								"Inert waste (including concrete, metal, plastic or glass)": "Inert waste (including concrete, metal, plastic or glass)",
+								"Municipal solid waste": "Municipal solid waste",
+								"Commercial and industrial waste": "Commercial and industrial waste",
+								"Construction and demolition waste": "Construction and demolition waste"
+							},
+							"Incineration": {
+								"Food waste (including animal carcasses, spoiled animal feed or crop)": "Food waste (including animal carcasses, spoiled animal feed or crop)",
+								"Green waste (including crop residues or prunings)": "Green waste (including crop residues or prunings)",
+								"Wood": "Wood",
+								"Sludge": "Sludge",
+								"Paper and cardboard": "Paper and cardboard",
+								"Textiles": "Textiles",
+								"Rubber and leather": "Rubber and leather",
+								"Inert waste (including concrete, metal, plastic or glass)": "Inert waste (including concrete, metal, plastic or glass)",
+								"Municipal solid waste": "Municipal solid waste",
+								"Commercial and industrial waste": "Commercial and industrial waste"
+							},
+							"Composting": {
+								"Food waste (including animal carcasses, spoiled animal feed or crop)": "Food waste (including animal carcasses, spoiled animal feed or crop)",
+								"Green waste (including crop residues or prunings)": "Green waste (including crop residues or prunings)",
+								"Wood": "Wood",
+								"Sludge": "Sludge",
+								"Paper and cardboard": "Paper and cardboard"
+							},
+							"Anaerobicdigestion": {
+								"Food waste (including animal carcasses, spoiled animal feed or crop)": "Food waste (including animal carcasses, spoiled animal feed or crop)",
+								"Green waste (including crop residues or prunings)": "Green waste (including crop residues or prunings)",
+								"Wood": "Wood",
+								"Sludge": "Sludge",
+								"Paper and cardboard": "Paper and cardboard"
+							}
+						}
+					},
+					"TreatmentLocation": {
+						"CellType": "select",
+						"Options": {
+							"Treated on-site": "Treated on-site",
+							"Removed and treated off-site": "Removed and treated off-site"
+						}
+					},
+					"Amount": {
+						"CellType": "number"
+					},
+					"AmountUnit": {
+						"CellType": "select",
+						"Options": {
+							"tonnes": "tonnes",
+							"cubic metres m3": "cubic metres m3"
+						}
+					}
+				}
 			}
 		}
 	],

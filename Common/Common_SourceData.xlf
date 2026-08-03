@@ -425,7 +425,7 @@ Common_SourceData_LeachingZones_Variation
 
 Common_SourceData_LeachingZones_Data
    =LAMBDA(
-    MAKEARRAY(4, 2, 
+    MAKEARRAY(3, 2, 
       LAMBDA(r,c, 
         INDEX({
           "Leaching Zone", "Leaching criteria";
@@ -605,7 +605,7 @@ Common_SourceData_EFN2O_NIRReference
 
 Common_SourceData_EFN2O_Data
   =LAMBDA(
-    MAKEARRAY(15, 5, 
+    MAKEARRAY(14, 5, 
       LAMBDA(r,c, 
         INDEX({
           "Production system j","EFN2O", "Production system only", "Irrigation method", "Rainfall zone";
@@ -781,7 +781,7 @@ Common_SourceData_MCFTemperatureZone_Source
 
 Common_SourceData_MCFTemperatureZone_Data
   =LAMBDA(
-    MAKEARRAY(22, 16, 
+    MAKEARRAY(21, 16, 
       LAMBDA(r,c, 
         INDEX({
           "Temperature zone", "MAT (ºC)", "Uncovered anerobic lagoon", "Covered lagoon", "Liquid Slurry (without natural crust)", "Daily spread (b)", "Composting (passive windrow)", "Solid Storage", "Pit Storage <1 month", "Deep Litter", "Poultry Manure (with/without litter)", "", "Direct processing into pelletized fertiliser", "Direct application to soil", "Pasture, Range and Paddock (c)(d)", "MAT raw";

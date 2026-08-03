@@ -158,7 +158,7 @@ Refrigerants_LeakageRates_Source
 
 Refrigerants_LeakageRates_Data
 =LAMBDA(
-  MAKEARRAY(81, 2,
+  MAKEARRAY(8, 2,
     LAMBDA(r,c,
       INDEX({
         "Product", "Annual leakage rate (%)";

@@ -338,7 +338,7 @@ SourceData_Poultry_Liveweights_Variation
 
 SourceData_Poultry_Liveweights_Data
   =LAMBDA(
-    MAKEARRAY(9, 3, 
+    MAKEARRAY(5, 2, 
       LAMBDA(r,c, 
         INDEX({
           "Livestock Class j", "Average Liveweight (kg)";

@@ -1,7 +1,7 @@
 {
 	"schemaVersion": 1,
 	"generatedFrom": "Enterprise_EnvironmentalPlantings_WIP_v01.xlsx",
-	"generatedAt": "2026-07-29T06:07:35Z",
+	"generatedAt": "2026-08-03T03:43:55Z",
 	"InputCells": [
 		{
 			"CellName": "X_Cell_Planting_Latitude",
@@ -37,6 +37,15 @@
 			"CellName": "X_Cell_Site_EndDate",
 			"Label": "Emissions calculation period end date",
 			"CellType": "formula"
+		},
+		{
+			"CellName": "X_Cell_Fuel_IsMetroLocation",
+			"Label": "Is the property in a Metropolitan location?",
+			"CellType": "select",
+			"Options": {
+				"Metro": "Metro",
+				"Non-metro": "Non-metro"
+			}
 		},
 		{
 			"CellName": "X_Cell_Fertiliser_ProductionSystem",
@@ -82,15 +91,6 @@
 			"CellType": "number",
 			"DuplicateOf": "X_Cell_Planting_PlantingAreaInHectares",
 			"Hidden": true
-		},
-		{
-			"CellName": "X_Cell_Fuel_IsMetroLocation",
-			"Label": "Is the property in a Metropolitan location?",
-			"CellType": "select",
-			"Options": {
-				"Metro": "Metro",
-				"Non-metro": "Non-metro"
-			}
 		},
 		{
 			"CellName": "X_Cell_Site_FarmName",

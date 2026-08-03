@@ -1,7 +1,7 @@
 {
 	"schemaVersion": 1,
 	"generatedFrom": "6_AgriculturalResidue_WIP_v03.xlsx",
-	"generatedAt": "2026-07-29T06:07:14Z",
+	"generatedAt": "2026-08-03T03:42:46Z",
 	"InputCells": [
 		{
 			"CellName": "X_Cell_Site_FarmName",
@@ -184,6 +184,11 @@
 		{
 			"CellName": "X_Cell_Crop_NumberOfBales",
 			"Label": "Number of bales",
+			"CellType": "formula"
+		},
+		{
+			"CellName": "X_Cell_Crop_TotalResidueBaled",
+			"Label": "Total residue baled",
 			"CellType": "formula"
 		},
 		{

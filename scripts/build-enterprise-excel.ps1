@@ -4,7 +4,8 @@ param(
   [string] $RepoRoot,
   [string] $ConfigPath,
   [string] $OutputPath,
-  [switch] $DryRun
+  [switch] $DryRun,
+  [switch] $PruneShadowsOnly
 )
 
 Set-StrictMode -Version Latest
@@ -51,7 +52,7 @@ if ([string]::IsNullOrWhiteSpace($ConfigPath) -and [string]::IsNullOrWhiteSpace(
   foreach ($cfg in $discovered) {
     Write-Host ''
     Write-Host ("=== Building {0} ===" -f $cfg.Name)
-    & $PSCommandPath -RepoRoot $RepoRoot -ConfigPath $cfg.FullName -DryRun:$DryRun
+    & $PSCommandPath -RepoRoot $RepoRoot -ConfigPath $cfg.FullName -DryRun:$DryRun -PruneShadowsOnly:$PruneShadowsOnly
   }
   return
 }
@@ -465,7 +466,7 @@ if (-not [string]::IsNullOrWhiteSpace($templateName)) {
   # authoritative: any sheet-scoped shadow of them dragged in by a copied source
   # sheet is pruned after save so references resolve to the template's cell.
   $templateNameSet = Get-WorkbookScopedNameSet -Path $templatePath
-  if (-not $DryRun) {
+  if (-not $DryRun -and -not $PruneShadowsOnly) {
     # Pre-flight: the template must be readable and the output must not be open,
     # or the copy/overwrite below (and later save) would fail mid-build.
     Assert-FilesAccessible -RequiredReadPaths @($templatePath) -WritePaths @($OutputPath)
@@ -484,8 +485,31 @@ Write-Host ("Enterprise : {0}" -f $config.enterprise.name)
 Write-Host ("Config     : {0}" -f $configPathResolved)
 if ($templatePath) { Write-Host ("Template   : {0}" -f $templatePath) }
 Write-Host ("Output     : {0}" -f $OutputPath)
-Write-Host ("Mode       : {0}" -f $(if ($DryRun) { 'DRY RUN' } else { 'BUILD' }))
+Write-Host ("Mode       : {0}" -f $(if ($PruneShadowsOnly) { 'PRUNE SHADOWS' } elseif ($DryRun) { 'DRY RUN' } else { 'BUILD' }))
 Write-Host ''
+
+# --- Prune-only mode ----------------------------------------------------------
+# Strip the redundant sheet-scoped (shadow) copies of workbook-scoped names that
+# accumulate when module sheets are copied into the enterprise book, WITHOUT a
+# full rebuild. Reuses the same authoritative-name set (template's workbook-scoped
+# names) and prune as a normal build.
+if ($PruneShadowsOnly) {
+  if (-not (Test-Path -LiteralPath $OutputPath)) {
+    throw "Cannot prune: enterprise output workbook not found: $OutputPath"
+  }
+  if ($DryRun) {
+    Write-Host 'DRY RUN: would prune redundant sheet-scoped (shadow) names; re-run without -DryRun to apply.'
+    return
+  }
+  Assert-FilesAccessible -WritePaths @($OutputPath)
+  if ($null -eq $templateNameSet) {
+    Write-Warning 'No enterprise template configured; only IDENTICAL sheet-scoped duplicates will be pruned.'
+  }
+  Write-Host 'Pruning redundant sheet-scoped (shadow) names...'
+  $dedup = Remove-RedundantSheetScopedNames -TargetPath $OutputPath -AuthoritativeNames $templateNameSet
+  Write-Host ("  Removed {0} shadow name(s); kept {1}." -f $dedup.Removed, $dedup.Kept) -ForegroundColor Green
+  return
+}
 
 # --- Resolve selected modules -------------------------------------------------
 $selectedModules = New-Object System.Collections.Generic.List[object]

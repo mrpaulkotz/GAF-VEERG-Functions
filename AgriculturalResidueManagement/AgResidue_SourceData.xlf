@@ -82,7 +82,7 @@ CropFractionRemoved_Source
 
 CropFractionRemoved_Data
 =LAMBDA(
-  MAKEARRAY(20, 3,
+  MAKEARRAY(17, 3,
     LAMBDA(r,c,
       INDEX({
         "Crop type c", "State", "Fraction removed FFODc";

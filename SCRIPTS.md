@@ -309,6 +309,21 @@ field is still emitted (with empty `Options`), so one problematic dropdown does 
 the rest of the build. Close the target workbook in Excel before running — an open
 workbook causes a file-lock error.
 
+**`Duplicate input cell/table name` warnings (enterprise workbooks):** these come from
+sheet-scoped *shadow* copies of workbook-scoped `X_Cell_*`/`X_Table_*` names that Excel
+creates when module sheets are copied into an enterprise book (one per sheet plus the
+real workbook-scoped name — visible in Name Manager). The builder collapses the `Sheet!`
+scope prefix, so each shadow looks like a duplicate. Clean them out of the enterprise
+workbook (no full rebuild) with:
+
+```powershell
+npm run prune-enterprise-names -- -EnterpriseId Dairy
+npm run prune-enterprise-names -- -EnterpriseId PastureBeef
+```
+
+Run with no `-EnterpriseId` to prune every enterprise, or add `-DryRun` to preview. Then
+re-run `npm run build:input-fields` and the warnings are gone.
+
 **Single workbook:**
 
 ```powershell
