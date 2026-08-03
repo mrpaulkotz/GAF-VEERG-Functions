@@ -32,12 +32,17 @@
 .PARAMETER Commit
   Actually write the defined names and save the workbook. Without it the script
   runs read-only and only reports what it WOULD do.
+
+.PARAMETER Backup
+  When saving (-Commit), first write a one-time backup copy of the workbook
+  under Excel/Backups/Backup_PreTableRanges/. Off by default.
 #>
 param(
   [string] $RepoRoot = (Split-Path $PSScriptRoot -Parent),
   [string] $WorkbookPath,
   [string] $TitleStyle = 'Table name',
-  [switch] $Commit
+  [switch] $Commit,
+  [switch] $Backup
 )
 
 Set-StrictMode -Version Latest
@@ -55,6 +60,7 @@ function Resolve-Workbook {
   }
   $excelDir = Join-Path $RepoRoot 'Excel'
   $candidates = Get-ChildItem -LiteralPath $excelDir -Filter '4_2_ManureManagement_BeefPasture_WIP_v*.xlsx' -File |
+    Where-Object { $_.Name -notmatch '(?i)\.bak' } |
     Sort-Object {
       if ($_.BaseName -match '_v(\d+)$') { [int] $Matches[1] } else { 0 }
     } -Descending
@@ -305,7 +311,20 @@ try {
         Write-Warning ("Failed to add '{0}': {1}" -f $p.Name, $_.Exception.Message)
       }
     }
-    if ($added -gt 0) { $wb.Save() }
+    if ($added -gt 0) {
+      if ($Backup) {
+        $backupDir = [IO.Path]::Combine((Split-Path $resolved -Parent), 'Backups', 'Backup_PreTableRanges')
+        if (-not (Test-Path -LiteralPath $backupDir)) {
+          New-Item -ItemType Directory -Path $backupDir -Force | Out-Null
+        }
+        $bak = [IO.Path]::Combine($backupDir, [IO.Path]::GetFileName($resolved))
+        if (-not (Test-Path -LiteralPath $bak)) {
+          Copy-Item -LiteralPath $resolved -Destination $bak -Force
+          Write-Host ("Backup   : {0}" -f (Join-Path 'Backups\Backup_PreTableRanges' (Split-Path $bak -Leaf))) -ForegroundColor DarkGray
+        }
+      }
+      $wb.Save()
+    }
   }
 
   # --- Summary --------------------------------------------------------------

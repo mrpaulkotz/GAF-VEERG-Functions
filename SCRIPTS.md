@@ -434,10 +434,112 @@ npm run expand-lambda-functions:auto
 
 ---
 
+## npm run apply-names
+
+Rewrites cell/range references in formulas to use an existing **defined name**
+instead of the raw address — the equivalent of Excel's built-in **Apply Names**
+feature, but it also rewrites **cross-sheet** references (Excel's built-in only
+handles same-sheet ones).
+
+```powershell
+npm run apply-names
+```
+
+**What it does (per workbook):**
+1. Enumerates every **workbook-scoped** defined name whose `RefersTo` is a plain
+   single-sheet cell or contiguous range (e.g. `='Constants'!$G$5` or
+   `='Data'!$D$83:$H$140`). Names that refer to formulas/`LAMBDA`s, unions,
+   external workbooks, `#REF!` errors or Excel built-ins (`Print_Area`, …) are
+   skipped.
+2. Rewrites every reference to that cell/range — same-sheet or cross-sheet,
+   qualified or bare, pure or embedded — to use the name. Single-cell range
+   endpoints (address adjacent to `:`) are left alone so multi-cell ranges are
+   not partially rewritten.
+
+Runs on **all** top-level `Excel/*.xlsx` by default (skips lock files,
+`*_expanded*` and `*.bak` backups). Pass `-WorkbookPath` to target one workbook,
+or `-NamePattern` (regex, default `.`) to restrict which names are applied.
+
+**Dry run is the default** — proposed rewrites are reported as `old -> new` but
+nothing is written. To apply and save (add `-Backup` to first write a one-time
+copy under `Excel/Backups/Backup_PreApply/`):
+
+```powershell
+npm run apply-names:commit
+```
+
+**Variants:**
+
+| Command | Description |
+|---|---|
+| `npm run apply-names` | Dry run — all workbooks, report only |
+| `npm run apply-names -- -WorkbookPath <path>` | Dry run — single workbook |
+| `npm run apply-names:commit` | Apply and save (all workbooks) |
+| `npm run apply-names:commit -- -WorkbookPath <path>` | Apply and save — single workbook |
+
+> Related: `npm run name-constants` (`scripts/name-sourcedata-constants.ps1`)
+> *creates* workbook-scoped names for scalar `*_Data` constant cells (both
+> `SourceData_*_Data` and module-prefixed constants like
+> `Fertiliser_FracGASMSoil_Data`) and applies them. Run it first to create
+> names, then `apply-names` to propagate all existing names broadly. Backups are
+> off by default here too; pass `-Backup` for a one-time copy under
+> `Excel/Backups/Backup_PreName/`.
+
+---
+
+## npm run audit-names
+
+Standalone **defined-name hygiene** audit. Scans every defined name in each
+workbook and reports issues; optionally deletes the clearly-safe cruft. Run it
+whenever you like — e.g. after `npm run build-enterprise`.
+
+```powershell
+npm run audit-names
+```
+
+**Issue categories:**
+
+| Category | Meaning | Action on `:commit` |
+|---|---|---|
+| `dangling` | Plain reference that resolves to an Excel error, e.g. `=#REF!#REF!`, `=#NAME?` — leftover cruft | **Deleted** |
+| `broken-fn` | A `LAMBDA`/formula name that *contains* a broken internal reference (a real Excel-Labs function maintained in the `.xlf` source) | Kept — reported only |
+| `external` | A plain reference to another workbook **file**, e.g. `=[Book.xlsx]Sheet!$A$1` | Deleted only with `-RemoveExternal` |
+| `empty` | Blank `RefersTo` | Kept — reported only |
+| `hidden` | `Name.Visible = False` (often import/add-in cruft) | Deleted only with `-RemoveHidden` |
+| `dup` | Two or more names pointing at the **same** target cell/range | Kept — reported only |
+
+Excel-internal names (anything with the reserved `_xl` prefix — `_xlpm.*`,
+`_xlop.*` `LAMBDA` parameter placeholders, `_xlfn.*`/`_xlws.*` shims,
+`_xlnm.*` built-ins) are ignored. Any formulas that reference a name about to be
+deleted are reported first so you can see the impact.
+
+Runs on **all** top-level `Excel/*.xlsx` by default (skips lock files,
+`*_expanded*` and `*.bak` backups). Pass `-WorkbookPath` to target one workbook.
+
+**Dry run is the default** — issues are reported but nothing is written. To apply
+deletions and save (add `-Backup` to first write a one-time copy under
+`Excel/Backups/Backup_PreAudit/`):
+
+```powershell
+npm run audit-names:commit
+```
+
+**Variants:**
+
+| Command | Description |
+|---|---|
+| `npm run audit-names` | Dry run — all workbooks, report only |
+| `npm run audit-names -- -WorkbookPath <path>` | Dry run — single workbook |
+| `npm run audit-names:commit` | Delete `dangling` names and save |
+| `npm run audit-names:commit -- -RemoveExternal -RemoveHidden` | Also delete `external` and `hidden` names |
+
+---
+
 ## Notes
 
 - Close the target workbook in Excel before running either command. An open workbook causes a file-lock error and will be skipped.
 - `npm run build` does **not** run the expand step. These are separate operations.
 - `npm run build` **does** refresh the `*.sourcedata.json` artifacts via `build:source-data`.
 - `npm run build` **does** refresh the `InputFields/*_InputFields.json` artifacts via `build:input-fields`.
+- `apply-names` and `audit-names` are **on-demand** maintenance tasks — they are *not* part of `npm run build`. Both default to a dry run and only write when invoked with `:commit`. Backups are **off by default** (commit regularly instead); pass `-Backup` to write a one-time copy under `Excel/Backups/Backup_PreApply/` / `Excel/Backups/Backup_PreAudit/` before saving. Any `*.bak` files are ignored by the workbook-discovery step.
 - `build.cmd` is a thin wrapper that calls `build.ps1` directly and accepts the same arguments.

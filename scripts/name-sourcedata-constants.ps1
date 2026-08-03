@@ -13,8 +13,9 @@
   address (e.g. ='Constants - Pasture Beef'!$G$5). This script:
 
     1. Finds cells whose formula is a SINGLE call to a function whose (bare)
-       name matches -FunctionPattern (default: contains a "SourceData_" segment
-       and ends with "_Data") AND whose result is a single (scalar) value.
+       name matches -FunctionPattern (default: ends with "_Data", covering both
+       SourceData_-prefixed and module-prefixed constants such as
+       Fertiliser_FracGASMSoil_Data) AND whose result is a single (scalar) value.
     2. Adds a workbook-scoped defined name = the BARE function name (module
        prefix stripped), RefersTo that cell.
     3. Rewrites every reference to that cell (pure or embedded, same-sheet or
@@ -25,7 +26,8 @@
 
   DRY-RUN by default: the naming + Apply-Names is performed IN MEMORY and the
   formula changes are diffed and reported, but the file is NOT written. Pass
-  -Commit to save (a one-time *.prename.bak.xlsx backup is created first).
+  -Commit to save. Add -Backup to also write a one-time backup under
+  Excel/Backups/Backup_PreName/ before saving.
 
 .PARAMETER WorkbookPath
   Full path to a single .xlsx to process. If omitted, every top-level
@@ -33,16 +35,22 @@
 
 .PARAMETER FunctionPattern
   Regex (case-insensitive) tested against the BARE function name. Default
-  '(^|_)SourceData_.*_Data$'.
+  '_Data$' (any source-data constant function; SourceData_-prefixed or
+  module-prefixed like Fertiliser_FracGASMSoil_Data).
 
 .PARAMETER Commit
   Actually write the names / rewrites and save. Without it, reports only.
+
+.PARAMETER Backup
+  When saving (-Commit), first write a one-time backup copy of the workbook
+  under Excel/Backups/Backup_PreName/. Off by default.
 #>
 param(
   [string] $RepoRoot = (Split-Path $PSScriptRoot -Parent),
   [string] $WorkbookPath,
-  [string] $FunctionPattern = '(^|_)SourceData_.*_Data$',
-  [switch] $Commit
+  [string] $FunctionPattern = '_Data$',
+  [switch] $Commit,
+  [switch] $Backup
 )
 
 Set-StrictMode -Version Latest
@@ -60,7 +68,11 @@ function Get-TargetWorkbooks {
   $excelDir = Join-Path $RepoRoot 'Excel'
   if (-not (Test-Path -LiteralPath $excelDir)) { throw "Excel folder not found: $excelDir" }
   Get-ChildItem -LiteralPath $excelDir -Filter '*.xlsx' -File |
-    Where-Object { $_.Name -notlike '~$*' -and $_.BaseName -notmatch '(?i)_expanded' } |
+    Where-Object {
+      $_.Name -notlike '~$*' -and
+      $_.BaseName -notmatch '(?i)_expanded' -and
+      $_.Name -notmatch '(?i)\.bak'
+    } |
     Sort-Object FullName |
     ForEach-Object { $_.FullName }
 }
@@ -321,11 +333,16 @@ function Invoke-Workbook {
 
     # ---- Save (commit only). ---------------------------------------------
     if ($Commit -and ($renamedCells -gt 0 -or $rewriteCount -gt 0)) {
-      $bak = [IO.Path]::Combine((Split-Path $Path -Parent),
-        ([IO.Path]::GetFileNameWithoutExtension($Path) + '.prename.bak.xlsx'))
-      if (-not (Test-Path -LiteralPath $bak)) {
-        Copy-Item -LiteralPath $Path -Destination $bak -Force
-        Write-Host ("  Backup : {0}" -f (Split-Path $bak -Leaf)) -ForegroundColor DarkGray
+      if ($Backup) {
+        $backupDir = [IO.Path]::Combine((Split-Path $Path -Parent), 'Backups', 'Backup_PreName')
+        if (-not (Test-Path -LiteralPath $backupDir)) {
+          New-Item -ItemType Directory -Path $backupDir -Force | Out-Null
+        }
+        $bak = [IO.Path]::Combine($backupDir, [IO.Path]::GetFileName($Path))
+        if (-not (Test-Path -LiteralPath $bak)) {
+          Copy-Item -LiteralPath $Path -Destination $bak -Force
+          Write-Host ("  Backup : {0}" -f (Join-Path 'Backups\Backup_PreName' (Split-Path $bak -Leaf))) -ForegroundColor DarkGray
+        }
       }
       $wb.Save()
       Write-Host '  Saved.' -ForegroundColor Green

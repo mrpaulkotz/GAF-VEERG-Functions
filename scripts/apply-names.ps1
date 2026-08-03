@@ -25,12 +25,13 @@
   maintenance task). Pass -WorkbookPath to target a single workbook.
 
   DRY-RUN by default: the rewrites are computed IN MEMORY and reported as
-  old -> new, but the file is NOT written. Pass -Commit to save (a one-time
-  *.preapply.bak.xlsx backup is created first).
+  old -> new, but the file is NOT written. Pass -Commit to save. Add -Backup to
+  also write a one-time backup under Excel/Backups/Backup_PreApply/ before saving.
 
 .PARAMETER WorkbookPath
   Full path to a single .xlsx to process. If omitted, every top-level
-  Excel/*.xlsx (excluding lock files and *_expanded* outputs) is processed.
+  Excel/*.xlsx (excluding lock files, *_expanded* outputs and *.bak backups) is
+  processed.
 
 .PARAMETER NamePattern
   Optional regex (case-insensitive) tested against the defined name. Only names
@@ -38,12 +39,17 @@
 
 .PARAMETER Commit
   Actually write the rewrites and save. Without it, reports only.
+
+.PARAMETER Backup
+  When saving (-Commit), first write a one-time backup copy of the workbook
+  under Excel/Backups/Backup_PreApply/. Off by default.
 #>
 param(
   [string] $RepoRoot = (Split-Path $PSScriptRoot -Parent),
   [string] $WorkbookPath,
   [string] $NamePattern = '.',
-  [switch] $Commit
+  [switch] $Commit,
+  [switch] $Backup
 )
 
 Set-StrictMode -Version Latest
@@ -61,7 +67,7 @@ function Get-TargetWorkbooks {
   $excelDir = Join-Path $RepoRoot 'Excel'
   if (-not (Test-Path -LiteralPath $excelDir)) { throw "Excel folder not found: $excelDir" }
   Get-ChildItem -LiteralPath $excelDir -Filter '*.xlsx' -File |
-    Where-Object { $_.Name -notlike '~$*' -and $_.BaseName -notmatch '(?i)_expanded' -and $_.BaseName -notmatch '(?i)\.(prename|preapply)\.bak$' } |
+    Where-Object { $_.Name -notlike '~$*' -and $_.BaseName -notmatch '(?i)_expanded' -and $_.Name -notmatch '(?i)\.bak' } |
     Sort-Object FullName |
     ForEach-Object { $_.FullName }
 }
@@ -258,11 +264,16 @@ function Invoke-Workbook {
 
     # ---- Save (commit only). ---------------------------------------------
     if ($Commit -and $rewriteCount -gt 0) {
-      $bak = [IO.Path]::Combine((Split-Path $Path -Parent),
-        ([IO.Path]::GetFileNameWithoutExtension($Path) + '.preapply.bak.xlsx'))
-      if (-not (Test-Path -LiteralPath $bak)) {
-        Copy-Item -LiteralPath $Path -Destination $bak -Force
-        Write-Host ("  Backup : {0}" -f (Split-Path $bak -Leaf)) -ForegroundColor DarkGray
+      if ($Backup) {
+        $backupDir = [IO.Path]::Combine((Split-Path $Path -Parent), 'Backups', 'Backup_PreApply')
+        if (-not (Test-Path -LiteralPath $backupDir)) {
+          New-Item -ItemType Directory -Path $backupDir -Force | Out-Null
+        }
+        $bak = [IO.Path]::Combine($backupDir, [IO.Path]::GetFileName($Path))
+        if (-not (Test-Path -LiteralPath $bak)) {
+          Copy-Item -LiteralPath $Path -Destination $bak -Force
+          Write-Host ("  Backup : {0}" -f (Join-Path 'Backups\Backup_PreApply' (Split-Path $bak -Leaf))) -ForegroundColor DarkGray
+        }
       }
       $wb.Save()
       Write-Host '  Saved.' -ForegroundColor Green

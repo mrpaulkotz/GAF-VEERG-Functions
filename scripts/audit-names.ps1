@@ -34,8 +34,8 @@
   default; pass -WorkbookPath to target a single workbook.
 
   DRY-RUN by default: issues are reported but nothing is written. Pass -Commit to
-  apply deletions and save (a one-time *.preaudit.bak.xlsx backup is created
-  first).
+  apply deletions and save. Add -Backup to also write a one-time backup under
+  Excel/Backups/Backup_PreAudit/ before saving.
 
 .PARAMETER WorkbookPath
   Full path to a single .xlsx to process. If omitted, every top-level
@@ -49,13 +49,18 @@
 
 .PARAMETER RemoveHidden
   Also delete [hidden] names (on -Commit).
+
+.PARAMETER Backup
+  When saving (-Commit), first write a one-time backup copy of the workbook
+  under Excel/Backups/Backup_PreAudit/. Off by default.
 #>
 param(
   [string] $RepoRoot = (Split-Path $PSScriptRoot -Parent),
   [string] $WorkbookPath,
   [switch] $Commit,
   [switch] $RemoveExternal,
-  [switch] $RemoveHidden
+  [switch] $RemoveHidden,
+  [switch] $Backup
 )
 
 Set-StrictMode -Version Latest
@@ -76,7 +81,7 @@ function Get-TargetWorkbooks {
   $excelDir = Join-Path $RepoRoot 'Excel'
   if (-not (Test-Path -LiteralPath $excelDir)) { throw "Excel folder not found: $excelDir" }
   Get-ChildItem -LiteralPath $excelDir -Filter '*.xlsx' -File |
-    Where-Object { $_.Name -notlike '~$*' -and $_.BaseName -notmatch '(?i)_expanded' -and $_.BaseName -notmatch '(?i)\.(prename|preapply|prebroken|preaudit)\.bak$' } |
+    Where-Object { $_.Name -notlike '~$*' -and $_.BaseName -notmatch '(?i)_expanded' -and $_.Name -notmatch '(?i)\.bak' } |
     Sort-Object FullName |
     ForEach-Object { $_.FullName }
 }
@@ -237,11 +242,16 @@ function Invoke-Workbook {
 
     # ---- Save (commit only). -------------------------------------------
     if ($Commit -and $removed -gt 0) {
-      $bak = [IO.Path]::Combine((Split-Path $Path -Parent),
-        ([IO.Path]::GetFileNameWithoutExtension($Path) + '.preaudit.bak.xlsx'))
-      if (-not (Test-Path -LiteralPath $bak)) {
-        Copy-Item -LiteralPath $Path -Destination $bak -Force
-        Write-Host ("  Backup : {0}" -f (Split-Path $bak -Leaf)) -ForegroundColor DarkGray
+      if ($Backup) {
+        $backupDir = [IO.Path]::Combine((Split-Path $Path -Parent), 'Backups', 'Backup_PreAudit')
+        if (-not (Test-Path -LiteralPath $backupDir)) {
+          New-Item -ItemType Directory -Path $backupDir -Force | Out-Null
+        }
+        $bak = [IO.Path]::Combine($backupDir, [IO.Path]::GetFileName($Path))
+        if (-not (Test-Path -LiteralPath $bak)) {
+          Copy-Item -LiteralPath $Path -Destination $bak -Force
+          Write-Host ("  Backup : {0}" -f (Join-Path 'Backups\Backup_PreAudit' (Split-Path $bak -Leaf))) -ForegroundColor DarkGray
+        }
       }
       $wb.Save()
       Write-Host '  Saved.' -ForegroundColor Green
