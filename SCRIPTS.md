@@ -558,13 +558,18 @@ add-in — so it is fast and never produces the false `#NAME?` a headless recalc
 would (VEERG.* LAMBDAs only resolve with the Excel Labs add-in loaded). It reports
 whatever was last computed and saved into the file:
 
-- **`[cell]`** — cells whose cached value is an Excel error (`#REF!`, `#NAME?`,
-  `#VALUE!`, `#DIV/0!`, `#N/A`, `#NULL!`, `#NUM!`, `#SPILL!`, `#CALC!`), with the
-  sheet, address, error token and stored formula. Cells carrying a `vm`
-  (value-metadata) pointer are **skipped**: those are rich values — a modern
-  "Place in Cell" image (e.g. the logo pasted into `A1` on most sheets), a linked
-  data type, etc. — whose `#VALUE!` is only the fallback text for clients that
-  can't render them, not a real error.
+- **`[cell]`** — cells that are in error, in two forms: a **cached error** (the
+  stored value is an Excel error — `#REF!`, `#NAME?`, `#VALUE!`, `#DIV/0!`, `#N/A`,
+  `#NULL!`, `#NUM!`, `#SPILL!`, `#CALC!` — i.e. the cell currently evaluates to an
+  error), or a **formula error** where the stored formula *text* contains an error
+  token (e.g. a `#REF!` left in the arguments) even though the cell currently
+  evaluates to a valid value because a function swallowed the bad reference
+  (shown as `#REF! (in formula)`). Each is listed with the sheet, address, error
+  token and stored formula. Cells carrying a `vm` (value-metadata) pointer are
+  **skipped**: those are rich values — a modern "Place in Cell" image (e.g. the
+  logo pasted into `A1` on most sheets), a linked data type, etc. — whose
+  `#VALUE!` is only the fallback text for clients that can't render them, not a
+  real error.
 - **`[name]`** — defined names whose RefersTo contains an error token (`dangling`
   plain ref) or is empty. The `.xlf`-maintained library LAMBDAs that carry an
   internal `#REF!` (`broken-fn`) are **hidden by default** as known noise; pass

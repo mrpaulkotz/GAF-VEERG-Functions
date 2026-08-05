@@ -344,7 +344,7 @@ LWG_j = liveweight gain (kg/day)
 VEERG_4_3_1_3__6_NitrogenRetainedByBody
   =LAMBDA(
     MP_j, L_j, Z_j, LWG_j,
-    (((0.032 * MP_j * 1.03) / 6.38) + ((0.212 - 0.008 * (L_j - 2) - ((0.140 - 0.008 * (L_j - 2)) / (1 + EXP(-6 * (Z_j - 0.4))))) * (LWG_j * 0.92))) * (1 / 6.25)
+    ((0.032 * MP_j * 1.03) / 6.38) + ((0.212 - 0.008 * (L_j - 2) - ((0.140 - 0.008 * (L_j - 2)) / (1 + EXP(-6 * (Z_j - 0.4))))) * (LWG_j * 0.92)) * (1 / 6.25)
   );
 
 VEERG_4_3_1_3__6_NitrogenRetainedByBody_Title

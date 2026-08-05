@@ -164,7 +164,15 @@ function Get-SheetMap {
 }
 
 # ---------------------------------------------------------------------------
-# Cell errors: every <c t="e"> in every worksheet part.
+# Cell errors. Two kinds are reported:
+#   * cached error   - the cell's stored value is an Excel error (t="e"), i.e. it
+#                      currently EVALUATES to an error.
+#   * formula error  - the cell's stored <f> formula TEXT contains an error token
+#                      (e.g. a #REF! left in the arguments) even though the cell
+#                      currently evaluates to a valid value because a function
+#                      swallowed the bad reference. A #REF! baked into a formula
+#                      is always a real problem, so it is flagged regardless of
+#                      the cached result.
 # ---------------------------------------------------------------------------
 function Get-CellErrors {
   param($Zip, [array] $SheetMap)
@@ -173,20 +181,35 @@ function Get-CellErrors {
     if ([string]::IsNullOrEmpty($sheet.Part)) { continue }
     $text = Read-ZipEntryText -Zip $Zip -EntryName $sheet.Part
     if ($null -eq $text) { continue }
-    if ($text.IndexOf('t="e"') -lt 0) { continue }   # fast skip: no error cells
+    # Fast skip: nothing to find unless the sheet has a cached error cell or an
+    # error token somewhere in its text (e.g. #REF! inside a formula).
+    if ($text.IndexOf('t="e"') -lt 0 -and -not $script:ErrorRegex.IsMatch($text)) { continue }
     $doc = New-XmlDoc -Text $text
     $ns = New-NsManager -Doc $doc -Namespaces @{ x = $script:NsMain }
-    foreach ($c in @($doc.SelectNodes("//x:c[@t='e']", $ns))) {
+    foreach ($c in @($doc.SelectNodes("//x:c[@t='e' or x:f]", $ns))) {
       $ref = $c.GetAttribute('r')
+      $isCachedError = ($c.GetAttribute('t') -eq 'e')
       # Cells with a value-metadata pointer (vm) are RICH VALUES - an in-cell
       # ("Place in Cell") image, a linked data type, etc. Their t="e"/#VALUE! is
       # just the fallback text for clients that can't render the rich value, not
       # a real error, so skip them.
-      if (-not [string]::IsNullOrEmpty($c.GetAttribute('vm'))) { continue }
+      if ($isCachedError -and -not [string]::IsNullOrEmpty($c.GetAttribute('vm'))) { continue }
       $vNode = $c.SelectSingleNode('x:v', $ns)
       $fNode = $c.SelectSingleNode('x:f', $ns)
-      $val = if ($null -ne $vNode) { $vNode.InnerText } else { '#(error)' }
-      $formula = if ($null -ne $fNode) { '=' + $fNode.InnerText } else { '' }
+      $formulaText = if ($null -ne $fNode) { $fNode.InnerText } else { '' }
+      $formulaMatch = $script:ErrorRegex.Match($formulaText)
+
+      if ($isCachedError) {
+        # Currently evaluates to an error.
+        $val = if ($null -ne $vNode) { $vNode.InnerText } else { '#(error)' }
+      } elseif ($formulaMatch.Success) {
+        # Latent error: the formula carries an error token but the cell currently
+        # evaluates fine (a function masked the bad reference).
+        $val = $formulaMatch.Value + ' (in formula)'
+      } else {
+        continue   # ordinary formula cell, no error
+      }
+      $formula = if ($null -ne $fNode) { '=' + $formulaText } else { '' }
       $errors += [pscustomobject]@{
         Sheet = $sheet.Name; Cell = $ref; Error = $val; Formula = $formula
       }
