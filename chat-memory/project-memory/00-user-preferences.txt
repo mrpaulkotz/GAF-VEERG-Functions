@@ -1,0 +1,4 @@
+# Working preferences (USER memory — applies across all projects)
+
+## Excel — check with the user before spending tokens
+- When cell contents in an Excel file need to be checked, ASK THE USER to check it manually FIRST. Same for named functions in the Name Manager and Excel Labs modules. More often than not the user can fix issues manually. Avoid COM/XML probing to inspect cells/names/modules until the user has had a chance to look.

@@ -1,0 +1,56 @@
+SCRIPT — scripts/build-data-quality-list.ps1
+============================================
+
+Purpose
+-------
+Builds each enterprise's list of user-input labels from
+InputFields/Enterprise_<Id>_InputFields.json. Has two output modes:
+  * Default (COM): writes labels into Table_Input_DataQuality[Input], preserving
+    existing score columns across re-runs. (NOT the chosen path — see -TextOutput.)
+  * -TextOutput   : writes one .txt per enterprise (one label per line), no Excel.
+
+Parameters
+----------
+  [Position 0] EnterpriseId   Optional single id (e.g. Dairy). Omit = all four.
+  RepoRoot                     Defaults to parent of scripts/ (resolved in body,
+                               because $PSScriptRoot is empty during param eval
+                               when invoked via -File).
+  -DryRun                      Print lists, write nothing.
+  -TextOutput                  Text-file mode (skips COM + workbook resolution).
+  -OutputDir <path>            Text dest; default <RepoRoot>/generated-datalists.
+  -KeepDuplicateLabels         Keep exact-duplicate labels (default collapses).
+
+How to run (chosen path)
+------------------------
+  powershell -NoProfile -ExecutionPolicy Bypass -File .\scripts\build-data-quality-list.ps1 -TextOutput
+
+  Single enterprise:
+  powershell -NoProfile -ExecutionPolicy Bypass -File .\scripts\build-data-quality-list.ps1 Dairy -TextOutput
+
+Label pipeline (Get-EnterpriseInputLabels)
+------------------------------------------
+InputCells:
+  - Group by base key = cell name with trailing _Method<N> stripped (Method1/2
+    collapse to one).
+  - Include a group only if any member CellType != 'formula' (drop computed).
+  - Pick first non-empty, non-numeric label (skip default-value labels like
+    "0.04"); else first non-empty; else skip with a warning.
+InputTables:
+  - Skip ^X_Table_Result_ (computed result tables).
+  - Collapse method/matrix variants: strip trailing _(Method<N>|RowsToCols|
+    ColsToRows) via a seen-set.
+  - One row per ColumnNames value: "<humanised context> - <column label>".
+Humanising (ConvertTo-HumanContext):
+  - Strip prefix ^(X_Table_|X_Cell_|M\d+_Table_|Table_Input_|Table_).
+  - Split on '_'; split CamelCase via (?<=[a-z0-9])(?=[A-Z]) and
+    (?<=[A-Z])(?=[A-Z][a-z]); join with spaces.
+  - e.g. Table_Input_Fuel -> "Fuel"; X_Table_Dairy_ProductionSystems ->
+    "Dairy Production Systems".
+De-dupe: exact-duplicate labels collapsed unless -KeepDuplicateLabels.
+Returns , $array (leading comma stops PS array enumeration).
+
+Not done (intentionally)
+------------------------
+  - No npm script added (build-data-quality:text) — left as direct invocation.
+  - Not wired into build pipeline.
+  - SCRIPTS.md not updated.

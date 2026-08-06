@@ -326,111 +326,228 @@ Fertiliser_Products_Title
 Fertiliser_Products_Source
 =LAMBDA((""));
 
+/*
+Fertiliser product data - Excel MAKEARRAY export
+------------------------------------------------------------
+Products: 134 (Include only; combined from main + batch 1 + batch 2 workbooks)
+Arrays: 5 | Rows per array: 30 (final array: 14) | Columns: 31
+
+Excluded columns: Include or exclude, Analysis base, Analysis source, Analysis flag, Notes, Link, Data source, END ROW.
+Ingredient percent values are evaluated decimal fractions (=46/100 -> 0.46); empty cells are "".
+
+Column order (31):
+  1. Company
+  2. Product name
+  3. Unit
+  4. Density
+  5. Contains inhibitor
+  6. Urea source
+  7. Ammonia source
+  8. N declared
+  9. P declared
+  10. K declared
+  11. S declared
+  12. Ingredient 1
+  13. Ingredient 1 percent
+  14. Ingredient 2
+  15. Ingredient 2 percent
+  16. Ingredient 3
+  17. Ingredient 3 percent
+  18. Ingredient 4
+  19. Ingredient 4 percent
+  20. Ingredient 5
+  21. Ingredient 5 percent
+  22. Ingredient 6
+  23. Ingredient 6 percent
+  24. Ingredient 7
+  25. Ingredient 7 percent
+  26. Ingredient 8
+  27. Ingredient 8 percent
+  28. Ingredient 9
+  29. Ingredient 9 percent
+  30. Ingredient 10
+  31. Ingredient 10 percent
+  
+------------------------------------------------------------
+*/
+
 Fertiliser_Products_Data1
 =LAMBDA(
- MAKEARRAY(24, 32,
+ MAKEARRAY(30, 31,
  LAMBDA(r,c,
   INDEX({
-
-"Include or exclude","Notes","Company","Product Name","Link","Data source","Source images","Unit","Density (l to kg)","Urea source","Ammonia source","Ingredient 1","Ingredient 1 percent","Ingredient 2","Ingredient 2 percent","Ingredient 3","Ingredient 3 percent","Ingredient 4","Ingredient 4 percent","Ingredient 5","Ingredient 5 percent","Ingredient 6","Ingredient 6 percent","Ingredient 7","Ingredient 7 percent","Ingredient 8","Ingredient 8 percent","Ingredient 9","Ingredient 9 percent","Ingredient 10","Ingredient 10 percent","END ROW";
-"Include","","Campbells fertilisers Australia","Aqua Finish","Aqua Finish - Campbells Fertilisers Australasia","Website","","L",1.26,"","","Potassium - Generic",0.225,"Phosphorus - Generic",0.04,"Nitrogen - Generic",0.026,"","","","","","","","","","","","","","","END ROW";
-"Include","","Campbells fertilisers Australia","Aqua Grow","Aqua Grow - Campbells Fertilisers Australasia","Website","","L",1.26,"","","Potassium - Generic",0.105,"Nitrogen - Generic",0.096,"Phosphorus - Generic",0.05,"","","","","","","","","","","","","","","END ROW";
-"Include","","Campbells fertilisers Australia","Aqua Nitro AN","Aqua Nitro AN - Campbells Fertilisers Australasia","Website. Brochure","","L",1.24,"","","Nitrogen - Ammoniacal",0.223,"","","","","","","","","","","","","","","","","","","END ROW";
-"Include","Use Lime EF for calcium","Campbells fertilisers Australia","Aqua NitroCal","Aqua NitroCal - Campbells Fertilisers Australasia","Website SDS","","L",1.5,"","","Calcium - Generic",0.162,"Nitrogen - Nitrate",0.132,"","","","","","","","","","","","","","","","","END ROW";
-"Include","Use Lime EF for calcium","Campbells fertilisers Australia","Aqua NitroCal (VI)","Aqua NitroCal (VI) - Campbells Fertilisers Australasia","Website SDS","","L",1.5,"","","Calcium - Generic",0.187,"Nitrogen - Nitrate",0.132,"","","","","","","","","","","","","","","","","END ROW";
-"Include","Use Lime EF for calcium","Campbells fertilisers Australia","Aqua NitroCal Ultimate","Aqua NitroCal Ultimate - Campbells Fertilisers Australasia","Website SDS","","L",1.5,"","","Calcium - Generic",0.183,"Nitrogen  - Nitrate",0.132,"","","","","","","","","","","","","","","","","END ROW";
-"Include","","Campbells fertilisers Australia","Aqua Start","Aqua Start - Campbells Fertilisers Australasia","Website SDS","","L",1.25,"","","Nitrogen - Generic",0.103,"Phosphorus - Generic",0.1,"Potassium - Generic",0.034,"","","","","","","","","","","","","","","END ROW";
-"Include","","Campbells fertilisers Australia","Aqua Thio-Complete","Aqua Thio-Complete - Campbells Fertilisers Australasia","Website SDS","","L",1.43,"","","Potassium - Generic",0.225,"Phosphorus - Generic",0.038,"Nitrogen - Generic",0.025,"","","","","","","","","","","","","","","END ROW";
-"Include","","Campbells fertilisers Australia","Aqua Thio-Emerge","Aqua Thio-Emerge - Campbells Fertilisers Australasia","Website SDS","","L",1.29,"","","Nitrogen - Generic",0.105,"Phosphorus - Generic",0.094,"Potassium - Generic",0.04,"Sulfur - Generic",0.03,"","","","","","","","","","","","","END ROW";
-"Include","","Campbells fertilisers Australia","Aqua Thio-Flourish","Aqua Thio-Flourish - Campbells Fertilisers Australasia","Website SDS","","L",1.32,"","","Potassium - Generic",0.108,"Nitrogen - Generic",0.095,"Sulfur - Generic",0.081,"Phosphorus - Generic",0.047,"","","","","","","","","","","","","END ROW";
-"Exclude - Not relevant","","Campbells fertilisers Australia","Asco Fol Plus","Asco Fol Plus - Campbells Fertilisers Australasia","","Organic - Do not include","","","","","","","","","","","","","","","","","","","","","","","","","END ROW";
-"Exclude - Not relevant","","Campbells fertilisers Australia","Asco Plus","Asco Plus - Campbells Fertilisers Australasia","","Organic - Do not include","","","","","","","","","","","","","","","","","","","","","","","","","END ROW";
-"Exclude - Not relevant","","Campbells fertilisers Australia","Asco Rhizo Plus","Asco Rhizo Plus - Campbells Fertilisers Australasia","","Biostimulant - Do not include","","","","","","","","","","","","","","","","","","","","","","","","","END ROW";
-"Exclude - Not relevant","","Campbells fertilisers Australia","Benefit PZ","Benefit PZ - Campbells Fertilisers Australasia","","Not fertiliser - Do not include","","","","","","","","","","","","","","","","","","","","","","","","","END ROW";
-"Include - Absent ingredients < 2%","Amount of urea calculated from urea nitrogen amount","Campbells fertilisers Australia","Boost-It","Boost-It - Campbells Fertilisers Australasia","Website SDS","","kg",1,"","","Urea",0.52173913,"Potassium - Generic",0.08,"Sulfur - Generic",0.053,"Phosphorus - Generic",0.052,"Magnesium",0.013,"Zinc",0.002,"Manganese",0.0035,"Iron",0.0013,"Copper",0.0007,"Boron",0.0007,"END ROW";
-"Exclude - Not relevant","","Campbells fertilisers Australia","Boroplus","Boroplus - Campbells Fertilisers Australasia","","Not fertiliser - Do not include","","","","","","","","","","","","","","","","","","","","","","","","","END ROW";
-"Exclude - Not relevant","","Campbells fertilisers Australia","Brevisol Range","BreviSol Range - Campbells Fertilisers Australasia","","Not fertiliser - Do not include","","","","","","","","","","","","","","","","","","","","","","","","","END ROW";
-"Exclude - Not relevant","","Campbells fertilisers Australia","Brexil Line","Brexil Line - Campbells Fertilisers Australasia","","Not fertiliser - Do not include","","","","","","","","","","","","","","","","","","","","","","","","","END ROW";
-"Include","","Campbells fertilisers Australia","Bronze","Bronze - Campbells Fertilisers Australasia","Website","","kg","","","","Muriate of Potash (MOP)",0.232,"Nitrogen - Generic",0.17,"Sulfur - Generic",0.005,"Magnesium",0.0024,"Phosphorus - Generic",0.0004,"","","","","","","","","","","END ROW";
-"Exclude - Absent ingredients > 2%","","Campbells fertilisers Australia","Bud-Wiser Dry","Bud-Wiser Dry - Campbells Fertilisers Australasia","","","kg","","","","Sulfur - Generic",0.094,"Magnesium",0.06,"Boron",0.045,"Zinc",0.027,"","","","","","","","","","","","","END ROW";
-"Exclude - Not relevant","","Campbells fertilisers Australia","Calbit C","Calbit C - Campbells Fertilisers Australasia","","Not fertiliser - Do not include","L","","","","","","","","","","","","","","","","","","","","","","","","END ROW";
-"Exclude - Not relevant","","Campbells fertilisers Australia","Calcium 175","Calcium 175 - Campbells Fertilisers Australasia","","Not fertiliser - Do not include","L","","","","","","","","","","","","","","","","","","","","","","","","END ROW";
-"Include","Use Lime EF for calcium","Campbells fertilisers Australia","CalPhos","Calphos - Campbells Fertilisers Australasia","Website","","L",1.285,"","","Phosphorus - Generic",0.135,"Calcium - Generic",0.04,"","","","","","","","","","","","","","","","","END ROW"
+"Campbells fertilisers Australia","Aqua Finish","L",1.26,"","","",2.6,4,22.5,"","Potassium - Generic",0.225,"Phosphorus - Generic",0.04,"Nitrogen - Generic",0.026,"","","","","","","","","","","","","","";
+"Campbells fertilisers Australia","Aqua Grow","L",1.26,"","","",9.6,5,10.5,"","Potassium - Generic",0.105,"Nitrogen - Generic",0.096,"Phosphorus - Generic",0.05,"","","","","","","","","","","","","","";
+"Campbells fertilisers Australia","Aqua Nitro AN","L",1.24,"","","",22.3,"","","","Nitrogen - Ammoniacal",0.223,"","","","","","","","","","","","","","","","","","";
+"Campbells fertilisers Australia","Aqua NitroCal","L",1.5,"","","",13.2,"","","","Calcium",0.162,"Nitrogen - Nitrate",0.132,"","","","","","","","","","","","","","","","";
+"Campbells fertilisers Australia","Aqua NitroCal (VI)","L",1.5,"","","",13.2,"","","","Calcium",0.187,"Nitrogen - Nitrate",0.132,"","","","","","","","","","","","","","","","";
+"Campbells fertilisers Australia","Aqua NitroCal Ultimate","L",1.5,"","","",13.2,"","","","Calcium",0.183,"Nitrogen - Nitrate",0.132,"","","","","","","","","","","","","","","","";
+"Campbells fertilisers Australia","Aqua Start","L",1.25,"","","",10.3,10,3.4,"","Nitrogen - Generic",0.103,"Phosphorus - Generic",0.1,"Potassium - Generic",0.034,"","","","","","","","","","","","","","";
+"Campbells fertilisers Australia","Aqua Thio-Complete","L",1.43,"","","",2.5,3.8,22.5,"","Potassium - Generic",0.225,"Phosphorus - Generic",0.038,"Nitrogen - Generic",0.025,"","","","","","","","","","","","","","";
+"Campbells fertilisers Australia","Aqua Thio-Emerge","L",1.29,"","","",10.5,9.4,4,3,"Nitrogen - Generic",0.105,"Phosphorus - Generic",0.094,"Potassium - Generic",0.04,"Sulfur - Generic",0.03,"","","","","","","","","","","","";
+"Campbells fertilisers Australia","Aqua Thio-Flourish","L",1.32,"","","",9.5,4.7,10.8,8.1,"Potassium - Generic",0.108,"Nitrogen - Generic",0.095,"Sulfur - Generic",0.081,"Phosphorus - Generic",0.047,"","","","","","","","","","","","";
+"Campbells fertilisers Australia","Boost-It","kg",1,"","","",24,5.2,8,5.3,"Urea",0.521739,"Potassium - Generic",0.08,"Sulfur - Generic",0.053,"Phosphorus - Generic",0.052,"Magnesium",0.013,"Zinc",0.002,"Manganese",0.0035,"Iron",0.0013,"Copper",0.0007,"Boron",0.0007;
+"Campbells fertilisers Australia","Bronze","kg",1,"","","",17,0.04,11.6,0.5,"Muriate of potash (MOP)",0.232,"Nitrogen - Generic",0.17,"Sulfur - Generic",0.005,"Magnesium",0.0024,"Phosphorus - Generic",0.0004,"","","","","","","","","","";
+"Campbells fertilisers Australia","Calbit C","L",1.45,"","","","","","","","Calcium",0.107,"","","","","","","","","","","","","","","","","","";
+"Campbells fertilisers Australia","Compass","kg",1,"","","",15,6.5,12.5,6,"Nitrogen - Ammoniacal",0.075,"Nitrogen - Nitrate",0.075,"Potassium - Generic",0.125,"Phosphorus - Generic",0.065,"Sulfur - Generic",0.06,"","","","","","","","","","";
+"Campbells fertilisers Australia","CoRoN 12-0-10","L",1.215,"","","",12,"",10,"","Urea",0.195652,"Potassium - Generic",0.1,"Nitrogen - Generic",0.03,"Boron",0.005,"","","","","","","","","","","","";
+"Campbells fertilisers Australia","Maximum Quick-N","kg",1,"","","",21.66,"","",13.2,"Sulphate of ammonia (SOA)",0.55,"Ammonium nitrate (AN)",0.3,"","","","","","","","","","","","","","","","";
+"SL Tec","Crop Booster PLUS","L",1.319,"","","",5,15,2.1,"","Phosphorus - Generic",0.15,"Calcium",0.04,"Nitrogen - Ammoniacal",0.029,"Nitrogen - Nitrate",0.021,"Potassium - Generic",0.021,"Copper",0.005,"Zinc",0.004,"Manganese",0.004,"Magnesium",0.002,"","";
+"Risso-Chemical","Ammonium Bicarbonate","kg",1,"","","China",17.7,"","","","Nitrogen - Ammoniacal",0.177,"","","","","","","","","","","","","","","","","","";
+"Risso-Chemical","Ammonium Sulfate","kg",1,"","","China",21,"","",24,"Sulfur - Generic",0.24,"Nitrogen - Ammoniacal",0.21,"","","","","","","","","","","","","","","","";
+"Ravensdown","Ammonium Sulphate - Granular","kg",1,"","","",21,"","",24,"Sulphate of ammonia (SOA)",1,"","","","","","","","","","","","","","","","","","";
+"Impact Fertilisers","Di-Ammonium Phosphate (DAP)","kg",1,"","","",18,20,"","","Diammonium phosphate (DAP)",1,"","","","","","","","","","","","","","","","","","";
+"Incitec Pivot Fertilisers","Basalt BooSSta","kg",1,"","","",8,14,"",27.6,"Sulfur - Generic",0.276,"Phosphorus - Generic",0.14,"Nitrogen - Generic",0.08,"Fluoride",0.024,"","","","","","","","","","","","";
+"Summit Fertilizers","DAPSZC","kg",1,"","","",16.9,18.2,"",8,"Phosphorus - Generic",0.182,"Nitrogen - Generic",0.169,"Sulfur - Generic",0.08,"Zinc",0.002,"Copper",0.001,"","","","","","","","","","";
+"Incitec Pivot Fertilisers","Easy N","L",1.32,"","","",42.5,"","","","Urea",0.467391,"Nitrogen - Nitrate",0.105,"Nitrogen - Ammoniacal",0.105,"Biuret",0.006,"","","","","","","","","","","","";
+"Risso-Chemical","Calcium Ammonium nitrate","kg",1,"","","China",40.5,"","","","Nitrogen - Ammoniacal",0.27,"Nitrogen - Nitrate",0.135,"Calcium",0.12,"","","","","","","","","","","","","","";
+"SL Tec","CellCAL Plus","L",1.138,"","","","","","","","Calcium",0.059,"Copper",0.003,"Boron",0.001,"","","","","","","","","","","","","","";
+"Incitec Pivot Fertilisers","CK55","kg",1,"","","",13.5,15,6.25,1.2,"Phosphorus - Generic",0.15,"Nitrogen - Ammoniacal",0.135,"Muriate of potash (MOP)",0.125,"Fluoride",0.023,"Sulfur - Generic",0.012,"","","","","","","","","","";
+"Switch Ag","Crop K","L",1.25,"","","",3,"",21,"","Potassium - Generic",0.21,"Nitrogen - Generic",0.03,"","","","","","","","","","","","","","","","";
+"Switch Ag","Crop Starter","L",1.2,"","","",5,3,8,"","Potassium - Generic",0.08,"Nitrogen - Generic",0.05,"Phosphorus - Generic",0.03,"","","","","","","","","","","","","","";
+"Incitec Pivot Fertilisers","Gran-Am","kg",1,"","","",21,"","",24,"Sulphate of ammonia (SOA)",1,"","","","","","","","","","","","","","","","","",""
   }, r, c)
-)));
+ )))
 
-/*
+
 Fertiliser_Products_Data2
 =LAMBDA(
- MAKEARRAY(21, 28,
+ MAKEARRAY(30, 31,
  LAMBDA(r,c,
   INDEX({
-"Include","50/50 nitrate and ammoniacal nitrogen (ammonium nitrate)","Campbells fertilisers Australia","Compass","Compass - Campbells Fertilisers Australasia","","","kg",1,"","","Nitrogen - Ammoniacal",0.075,"Nitrogen - Nitrate",0.075,"Potassium - Generic",0.125,"Phosphorus-Generic",0.065,"Sulfur - Generic",0.06,"","","","","","","","","","","END ROW";
-"Include - Absent ingredients < 2%","Controlled release N treated as generic Amount of urea calculated from urea nitrogen amount","Campbells fertilisers Australia","CoRoN 12-0-10","Coron 12-0-10 - Campbells Fertilisers Australasia","Website SDS Brochure","","L",1.215,"","","Urea",0.195652174,"Potassium - Generic",0.1,"Nitrogen - Generic",0.03,"Boron",0.005,"","","","","","","","","","","","","END ROW";
-"Include","Used Sulphate of Ammonia and Ammonium nitrate values from SDS","Campbells fertilisers Australia","Maximum Quick-N","Maximum Quick-N - Campbells Fertilisers Australasia","Website SDS","","kg",1,"","","Sulphate of ammonia",0.55,"Ammonium nitrate",0.3,"","","","","","","","","","","","","","","","","END ROW";
-"Exclude - Absent ingredients > 2%","","Agsta","AgStar Manganese","AgStar Manganese | Welcome to Agstar","Label SDS","","L",1.47,"","","Manganese nitrate",0.45,"","","","","","","","","","","","","","","","","","","END ROW";
-"Include","","SL Tec","Crop Booster PLUS","https://www.sltec.com.au/sltec/fact_sheets/SLTEC_CropBoosterPlus.pdf","Brochure website","","L",1.319,"","","Phosphorus - Generic",0.15,"Calcium - Generic",0.04,"Nitrogen - Ammoniacal",0.029,"Nitrogen - Nitrate",0.021,"Potassium - Generic",0.021,"Cooper",0.005,"Zinc",0.004,"Manganese",0.004,"Magnesium",0.002,"","","END ROW";
-"Include","Ingredient is actually ammonium bicarbonate the elemental composition has 17.7% Nitrogen","Risso-Chemical","Ammonium Bicarbonate","Ammonium Bicarbonate High-Quality Fertilizer & Leavening Agent","Website SDS  https://merckindex.rsc.org/monographs/m1764?access=ft","","kg",1,"","China","Nitrogen - Ammoniacal",0.177,"","","","","","","","","","","","","","","","","","","END ROW";
-"Include","","Risso-Chemical","Ammonium Sulfate","Ammonium Sulfate Fertilizer High-Quality Nitrogen and Sulfur for Crops","Website","","kg",1,"","China","Sulfur - Generic",0.24,"Nitrogen - Ammoniacal",0.21,"","","","","","","","","","","","","","","","","END ROW";
-"Include","","Ravensdown","Ammonium Sulphate - Granular","Ravensdown | Granular Ammonium Sulphate (GAS/SOA)","Website SDS","","kg",1,"","","Sulfur - Generic",0.23,"Nitrogen - Ammoniacal",0.2,"","","","","","","","","","","","","","","","","END ROW";
-"Include","","Impact Fertilisers","Di-Ammonium Phosphate (DAP)","Di-Ammonium Phosphate (DAP) - Impact Fertilisers","Website","","kg",1,"","","Phosphorus - Generic",0.202,"Nitrogen - Generic",0.18,"Sulfur - Generic",0.015,"","","","","","","","","","","","","","","END ROW";
-"Include - Absent ingredients < 2%","","Incitec Pivot Fertilisers","Basalt BooSSta","Bag Tags","Brochure","","kg",1,"","","Sulfur - Generic",0.276,"Phosphorus - Generic",0.14,"Nitrogen - Generic",0.08,"Flouride",0.024,"","","","","","","","","","","","","END ROW";
-"Include - Absent ingredients < 2%","","Summit Fertilizers","DAPSZC","Microsoft Word - DAPSZC Safety Data Sheet","SDS","","kg",1,"","","Phosphorus - Generic",0.182,"Nitrogen - Generic",0.169,"Sulfur - Generic",0.08,"Zinc - Generic",0.002,"Copper",0.001,"","","","","","","","","","","END ROW";
-"Include","Amount of urea calculated from urea nitrogen amount","Incitec Pivot Fertilisers","Easy N","https://www.incitecpivotfertilisers.com.au/products-services/our-products/liquids/easy-n/","Website brochure Bag tag","","L",1.32,"","","Urea",0.467391304,"Nitrogen - Nitrate",0.105,"Nitrogen - Ammoniacal",0.105,"Biuret",0.006,"","","","","","","","","","","","","END ROW";
-"Include","Use Lime EF for calcium","Risso-Chemical","Calcium Ammonium Nitrate","Calcium Ammonium Nitrate Balanced Fertilizer for Enhanced Crop Growth | Risso","","","kg",1,"","China","Nitrogen - Ammoniacal",0.27,"Nitrogen - Nitrate",0.135,"Calcium - Generic",0.12,"","","","","","","","","","","","","","","END ROW";
-"Include","Use Lime EF for calcium","SL Tec","CellCAL Plus","SLTEC_CellCALPLUS.pdf","Brochure","","L",1.138,"","","Calcium - Generic",0.059,"Copper",0.003,"Boron",0.001,"","","","","","","","","","","","","","","END ROW";
-"Include - Absent ingredients < 2%","Use muriate of potash (MOP) instead of 'potassium as chloride'","Incitec Pivot Fertilisers","CK55","Bag Tags","Bag tag","","kg",1,"","","Phosphorus - Generic",0.15,"Nitrogen - Ammoniacal",0.135,"Muriate of Potash (MOP)",0.125,"Flouride",0.023,"Sulfur - Generic",0.012,"","","","","","","","","","","END ROW";
-    "Exclude - Absent ingredients > 2%","","Campbells fertilisers Australia","Bud-Wiser Dry","kg","","","Sulfur - Generic",0.094,"Magnesium",0.06,"Boron",0.045,"Zinc",0.027,"","","","","","","","","","","","";
-"Exclude - Not relevant","","Campbells fertilisers Australia","Calbit C","L","","","","","","","","","","","","","","","","","","","","","","","";
-"Exclude - Not relevant","","Campbells fertilisers Australia","Calcium 175","L","","","","","","","","","","","","","","","","","","","","","","","";
-"Exclude - Absent ingredients > 2%","","Campbells fertilisers Australia","CalPhos","L",1.285,"","Phosphorus - Generic",0.135,"Calcium - Generic",0.04,"","","","","","","","","","","","","","";
-"Include","50/50 nitrate and ammoniacal nitrogen (ammonium nitrate)","","Campbells fertilisers Australia","Compass","kg",1,"","Nitrogen - Ammoniacal",0.075,"Nitrogen - Nitrate",0.075,"Potassium - Generic",0.125,"Phosphorus-Generic",0.065,"Sulfur - Generic",0.06,"","","","","","","","";
-"Include - Absent ingredients < 2%","Controlled release N treated as generic","","Campbells fertilisers Australia","CoRoN 12-0-10","L",1.215,"","Nitrogen - Ureic",0.09,"Potassium - Generic",0.1,"Nitrogen - Generic",0.03,"Boron",0.005,"","","","","","","","",""
+"Campbells fertilisers Australia","Encal","L",1.5,"","","",9,"","",13.94,"Sulphate of ammonia (SOA)",0.580645,"Magnesium",0.012,"","","","","","","","","","","","","","","","";
+"Incitec Pivot Fertilisers","Granulock SS","kg",1,"","","",10,17.5,"",12,"Phosphorus - Generic",0.175,"Sulfur - Generic",0.12,"Nitrogen - Ammoniacal",0.1,"Fluoride",0.03,"","","","","","","","","","","","";
+"Incitec Pivot Fertilisers","Granulock Z","kg",1,"","","",11,21.8,"",4,"Phosphorus - Generic",0.218,"Nitrogen - Generic",0.11,"Sulfur - Generic",0.04,"Fluoride",0.03,"Zinc",0.01,"","","","","","","","","","";
+"Incitec Pivot Fertilisers","Farm Ag Leichhardt","kg",1,"","","",32.5,5.4,6.25,"","Urea",0.6,"Nitrogen - Ammoniacal",0.049,"Phosphorus - Generic",0.054,"Muriate of potash (MOP)",0.125,"","","","","","","","","","","","";
+"Ravensdown","Flexi-N NBPT","kg",1,"Yes","","",45.54,"","","","Urea",0.99,"","","","","","","","","","","","","","","","","","";
+"Campbells fertilisers Australia","Gold Premium","kg",1,"","","",14.87,2.2,16.6,8,"Ammonium nitrate (AN)",0.441176,"Potassium - Generic",0.166,"Sulfur - Generic",0.08,"Phosphorus - Generic",0.022,"Magnesium",0.012,"Boron",0.0002,"Zinc",0.0001,"","","","","","";
+"SL Tec","High NS","L",1.299,"","","",38,"","",2,"Urea",0.46087,"Nitrogen - Ammoniacal",0.092,"Nitrogen - Nitrate",0.076,"Sulfur - Generic",0.02,"","","","","","","","","","","","";
+"Impact Fertilisers","Impact SSP","kg",1,"","","","",8.8,"",11,"Single superphosphate (SSP)",1,"","","","","","","","","","","","","","","","","","";
+"Switch Ag","In Crop","L",1.2,"","","",10,1,11,"","Potassium - Generic",0.11,"Nitrogen - Generic",0.1,"Phosphorus - Generic",0.01,"","","","","","","","","","","","","","";
+"Switch Ag","K20","L",1.3,"","","",3,"",22,"","Potassium - Generic",0.22,"Nitrogen - Generic",0.03,"","","","","","","","","","","","","","","","";
+"Loveland Agriproducts","Maximum N-Pact","L",1.185,"","","",23.8,"","","","Urea",0.517391,"","","","","","","","","","","","","","","","","","";
+"SL Tec","Nitro Combi TE","L",1.255,"","","","","",0.1,4.4,"Sulfur - Generic",0.044,"Zinc",0.022,"Iron",0.022,"Manganese",0.016,"Boron",0.008,"Magnesium",0.007,"Fulvic acid (organic)",0.005,"Copper",0.003,"Potassium - Generic",0.001,"Molybdenum",0.0003;
+"Switch Ag","PastureMAXX","L",1.23,"","","",9.71,"",3.25,2.11,"Nitrogen - Generic",0.0971,"Potassium - Generic",0.0325,"Sulfur - Generic",0.0211,"Zinc",0.015,"Iron",0.0111,"Manganese",0.0115,"Magnesium",0.0045,"Boron",0.002,"","","","";
+"Campbells fertilisers Australia","Platinum Nergetic","kg",1,"","","",10,10.9,10,4.34,"Monoammonium phosphate (MAP)",0.4178,"Ammonium nitrate (AN)",0.1728,"Potassium sulphate",0.240964,"Double superphosphate",0.1,"Magnesium",0.012,"Zinc",0.0036,"Boron",0.001,"Glaze Extend G3 Flexi",0.0519,"","","","";
+"Impact Fertilisers","Sulphate of ammonia (SOA)","kg",1,"","","",21,"","",24,"Sulphate of ammonia (SOA)",1,"","","","","","","","","","","","","","","","","","";
+"Impact Fertilisers","Mono-Ammonium Phosphate (MAP)","kg",1,"","","",10,21.9,"",1.5,"Monoammonium phosphate (MAP)",1,"","","","","","","","","","","","","","","","","","";
+"Impact Fertilisers","Urea","kg",1,"","","",46,"","","","Urea",1,"","","","","","","","","","","","","","","","","","";
+"Koch Fertiliser Australia","Muriate of potash (MOP)","kg",1,"","","","","",50,"","Muriate of potash (MOP)",1,"","","","","","","","","","","","","","","","","","";
+"Risso-Chemical","Urea Ammonium nitrate (UAN 32-0-0)","L",1.32,"","China","China",32,"","","","Urea-ammonium nitrate (UAN)",1,"","","","","","","","","","","","","","","","","","";
+"Risso-Chemical","Polypeptide Urea","kg",1,"","China","",46,"","","","Urea",1,"Polypeptide (amino acids)",0,"","","","","","","","","","","","","","","","";
+"Yara Australia","YaraTera CALCINIT","kg",1,"","","",15.5,"","","","Calcium nitrate",1,"","","","","","","","","","","","","","","","","","";
+"Yara Australia","YaraLiva NITRABOR","kg",1,"","","",15.4,"","","","Calcium nitrate",0.993548,"Boron",0.003,"","","","","","","","","","","","","","","","";
+"Yara Australia","YaraMila COMPLEX","kg",1,"","","",12,5,15,8,"Nitrogen - Nitrate",0.05,"Nitrogen - Ammoniacal",0.07,"Phosphorus - Generic",0.05,"Potassium - Generic",0.15,"Sulfur - Generic",0.08,"Magnesium",0.016,"Zinc",0.0002,"Boron",0.00015,"","","","";
+"Yara Australia","YaraRega 9-0-30 (14)","kg",1,"","","",9,"",30,14,"Potassium - Generic",0.3,"Sulfur - Generic",0.14,"Nitrogen - Nitrate",0.045,"Nitrogen - Ammoniacal",0.045,"","","","","","","","","","","","";
+"Yara Australia","YaraRega 13-2-21","kg",1,"","","",13,1.75,21,10.8,"Potassium - Generic",0.21,"Sulfur - Generic",0.108,"Nitrogen - Ammoniacal",0.077,"Nitrogen - Nitrate",0.053,"Phosphorus - Generic",0.0175,"Magnesium",0.004,"Zinc",0.0008,"Boron",0.0008,"","","","";
+"Yara Australia","YaraRega 15-7-13 (7S)","kg",1,"","","",15,6.5,12.5,7.2,"Nitrogen - Nitrate",0.095,"Potassium - Generic",0.125,"Sulfur - Generic",0.072,"Phosphorus - Generic",0.065,"Nitrogen - Ammoniacal",0.055,"Magnesium",0.0066,"Boron",0.001,"Zinc",0.0006,"","","","";
+"Yara Australia","YaraTera CALCINIT B","kg",1,"","","",15.5,"","","","Calcium nitrate",1,"Boron",0.001,"","","","","","","","","","","","","","","","";
+"Yara Australia","YaraTera KRISTA MAP","kg",1,"","","",10,21.9,"","","Monoammonium phosphate (MAP)",1,"","","","","","","","","","","","","","","","","","";
+"Yara Australia","YaraTera KRISTALON RED","kg",1,"","","",12,5.2,29.9,1,"Potassium - Generic",0.299,"Nitrogen - Nitrate",0.101,"Phosphorus - Generic",0.052,"Nitrogen - Ammoniacal",0.019,"Sulfur - Generic",0.01,"Magnesium",0.006,"Iron",0.0007,"Manganese",0.0004,"Zinc",0.00025,"Boron",0.00025;
+"Yara Australia","YaraTera KRISTALON SPECIAL","kg",1,"","","",18,7.9,14.9,2,"Potassium - Generic",0.149,"Urea",0.213043,"Phosphorus - Generic",0.079,"Nitrogen - Nitrate",0.049,"Nitrogen - Ammoniacal",0.033,"Sulfur - Generic",0.02,"Magnesium",0.018,"Iron",0.0007,"Manganese",0.0004,"Zinc",0.00025
   }, r, c)
-)));
+ )))
 
 
 Fertiliser_Products_Data3
 =LAMBDA(
- MAKEARRAY(20, 35,
+ MAKEARRAY(30, 31,
  LAMBDA(r,c,
   INDEX({
-"Rustica Nergetic","kg",1,"Potassium - Generic",0.141,"Location not specified","Nitrogen - Generic",0.12,"Location not specified","Sulfur - Generic",0.096,"Location not specified","Phosphorus - Generic",0.052,"Location not specified","Magnesium - generic",0.012,"Location not specified","Zinc - Generic",0.0008,"Location not specified","Iron - generic",0.0007,"Location not specified","Manganese - Generic",0.0006,"Location not specified","Boron - generic",0.0002,"Location not specified","","","";
-"SETnSIZE","L",1.3,"Potassium - Generic",0.0792,"Location not specified","Phosphorus - Generic",0.0605,"Location not specified","Nitrogen - Generic",0.0108,"Location not specified","Zinc - Generic",0.0107,"Location not specified","Magnesium - generic",0.0104,"Location not specified","Manganese - Generic",0.0075,"Location not specified","Sulfur - Generic",0.0054,"Location not specified","Cobalt - generic",0.0018,"Location not specified","Iron - generic",0.0015,"Location not specified","Copper - generic",0.0011,"Location not specified";
-"SOA","kg",1,"Nitrogen - Ammoniacal",0.21,"Location not specified","Sulfur - Generic",0.24,"Location not specified","","","","","","","","","","","","","","","","","","","","","","","","";
-"Solu-MAP","kg",1,"Phosphorus - Generic",0.266,"Location not specified","Nitrogen - Ammoniacal",0.12,"Location not specified","","","","","","","","","","","","","","","","","","","","","","","","";
-"Solu-MKP","kg",1,"Phosphorus - Generic",0.227,"Location not specified","Potassium - Generic",0.285,"Location not specified","","","","","","","","","","","","","","","","","","","","","","","","";
-"Solu-Sam","kg",1,"Nitrogen - Ammoniacal",0.208,"Location not specified","Sulfur - Generic",0.238,"Location not specified","","","","","","","","","","","","","","","","","","","","","","","","";
-"Solu-Zinc","kg",1,"Zinc - Generic",0.21,"Location not specified","Sulfur - Generic",0.105,"Location not specified","","","","","","","","","","","","","","","","","","","","","","","","";
-"Thio-K","L",1.47,"Potassium - Generic",0.3,"Location not specified","Sulfur - Generic",0.25,"Location not specified","","","","","","","","","","","","","","","","","","","","","","","","";
-"Thio-N","L",1.32,"Nitrogen - Generic",0.372,"Location not specified","Sulfur - Generic",0.07,"Location not specified","","","","","","","","","","","","","","","","","","","","","","","","";
-"Thio-N Plus","L",1.32,"Nitrogen - Generic",0.364,"Location not specified","Sulfur - Generic",0.07,"Location not specified","","","","","","","","","","","","","","","","","","","","","","","","";
-"Thio-Sul","L",1.35,"Sulfur - Generic",0.35,"Location not specified","Nitrogen - Ammoniacal",0.16,"Location not specified","","","","","","","","","","","","","","","","","","","","","","","","";
-"UAS","L",1.235,"Nitrogen - Generic",0.209,"Location not specified","Sulfur - Generic",0.067,"Location not specified","Nitrogen - Ammoniacal",0.057,"Location not specified","","","","","","","","","","","","","","","","","","","","","";
-"Yara Liquids N-FOL 24+TE","kg",1,"Nitrogen - Generic",0.19,"Location not specified","Potassium - Generic",0.166,"Location not specified","Sulfur - Generic",0.03,"Location not specified","Phosphorus - Generic",0.026,"Location not specified","Magnesium - generic",0.018,"Location not specified","Iron - generic",0.0007,"Location not specified","Manganese - Generic",0.0004,"Location not specified","Boron - generic",0.00025,"Location not specified","Zinc - Generic",0.00025,"Location not specified","Copper - generic",0.0001,"Location not specified";
-"Yara Unika Plus","kg",1,"Potassium - Generic",0.382,"Location not specified","Nitrogen - Generic",0.12,"Location not specified","Sulfur - Generic",0.007,"Location not specified","","","","","","","","","","","","","","","","","","","","","";
-"YaraMila 21-7-3(4)","kg",1,"Nitrogen - Generic",0.21,"Location not specified","Phosphorus - Generic",0.074,"Location not specified","Sulfur - Generic",0.04,"Location not specified","Potassium - Generic",0.025,"Location not specified","Magnesium - generic",0.004,"Location not specified","Zinc - Generic",0.0015,"Location not specified","","","","","","","","","","","","";
-"YaraRega 13-2-21","kg",1,"Potassium - Generic",0.21,"Location not specified","Sulfur - Generic",0.108,"Location not specified","Nitrogen - Ammoniacal",0.077,"Location not specified","Nitrogen from Nitrate",0.053,"Location not specified","Phosphorus - Generic",0.0175,"Location not specified","Magnesium - generic",0.004,"Location not specified","Boron - generic",0.0008,"Location not specified","Zinc - Generic",0.0008,"Location not specified","","","","","","";
-"YaraRega 9-0-30 (14)","kg",1,"Potassium - Generic",0.3,"Location not specified","Sulfur - Generic",0.14,"Location not specified","Nitrogen - Ammoniacal",0.045,"Location not specified","Nitrogen from Nitrate",0.045,"Location not specified","","","","","","","","","","","","","","","","","","";
-"YaraTera KRISTA K PLUS","kg",1,"Nitrogen - Generic",0.137,"Location not specified","Potassium - Generic",0.384,"Location not specified","","","","","","","","","","","","","","","","","","","","","","","","";
-"YaraTera KRISTA MAP","kg",1,"Phosphorus - Generic",0.266,"Location not specified","Nitrogen - Ammoniacal",0.12,"Location not specified","","","","","","","","","","","","","","","","","","","","","","","","";
-"YaraTera KRISTA MKP","kg",1,"Potassium - Generic",0.282,"Location not specified","Phosphorus - Generic",0.227,"Location not specified","","","","","","","","","","","","","","","","","","","","","","","",""
+"Yara Australia","YaraMila 21-7-3(4)","kg",1,"","","",21,7.4,2.5,4,"Nitrogen - Nitrate",0.105,"Nitrogen - Ammoniacal",0.105,"Phosphorus - Generic",0.074,"Sulfur - Generic",0.04,"Potassium - Generic",0.025,"Magnesium",0.004,"Zinc",0.0015,"","","","","","";
+"Yara Australia","YaraTera KRISTALON SCARLET","kg",1,"","","",7.5,"",29.9,4,"Potassium - Generic",0.299,"Nitrogen - Nitrate",0.052,"Sulfur - Generic",0.04,"Magnesium",0.027,"Nitrogen - Ammoniacal",0.023,"","","","","","","","","","";
+"Campbells fertilisers Australia","Solu-MAP","kg",1,"","","",10,21.9,"","","Monoammonium phosphate (MAP)",1,"","","","","","","","","","","","","","","","","","";
+"Campbells fertilisers Australia","Solu-Sam","kg",1,"","","",21,"","",24,"Sulphate of ammonia (SOA)",1,"","","","","","","","","","","","","","","","","","";
+"Campbells fertilisers Australia","Rustica Plus","kg",1,"","","",12,5,14,9.7,"Potassium - Generic",0.14,"Sulfur - Generic",0.097,"Nitrogen - Nitrate",0.06,"Nitrogen - Ammoniacal",0.06,"Phosphorus - Generic",0.05,"Calcium",0.031,"Magnesium",0.012,"Zinc",0.001,"Boron",0.0002,"","";
+"Campbells fertilisers Australia","Platinum Plus","kg",1,"","","",10,11,10,6,"Phosphorus - Generic",0.11,"Potassium - Generic",0.1,"Sulfur - Generic",0.06,"Nitrogen - Nitrate",0.05,"Nitrogen - Ammoniacal",0.05,"Calcium",0.043,"Magnesium",0.012,"Zinc",0.0036,"Boron",0.001,"","";
+"Campbells fertilisers Australia","Tropika","kg",1,"","","",11,2.6,20.8,4,"Nitrogen - Nitrate",0.055,"Nitrogen - Ammoniacal",0.055,"Phosphorus - Generic",0.026,"Potassium - Generic",0.208,"Sulfur - Generic",0.04,"Magnesium",0.024,"","","","","","","","";
+"Campbells fertilisers Australia","Rustica Nergetic","kg",1,"","","",12,5.2,14.1,9.6,"Potassium - Generic",0.141,"Sulfur - Generic",0.096,"Nitrogen - Nitrate",0.06,"Nitrogen - Ammoniacal",0.06,"Phosphorus - Generic",0.052,"Magnesium",0.012,"Zinc",0.0008,"Iron",0.0007,"Manganese",0.0006,"Boron",0.0002;
+"Campbells fertilisers Australia","Quick-N Nergetic","kg",1,"","","",25,"","",12.8,"Sulphate of ammonia (SOA)",0.533333,"Ammonium nitrate (AN)",0.409496,"Zinc",0.001,"Manganese",0.001,"Boron",0.0001,"Molybdenum",0.00001,"","","","","","","","";
+"FertPro Manufacturing Pty. Ltd.","(SSP) Single Super Fertiliser","kg",1,"","","","",8.8,"",11,"Single superphosphate (SSP)",1,"","","","","","","","","","","","","","","","","","";
+"Impact Fertilisers","ZincStar","kg",1,"","","",10,21.9,0,2,"Monoammonium phosphate (MAP)",1,"Zinc",0.01,"","","","","","","","","","","","","","","","";
+"Baileys (Simplot) [listed as Impact]","Apex GaIXe Low P 21-1-6","kg",1,"","","",21,0.86,5.8,4.2,"Nitrogen - Generic",0.21,"Potassium - Generic",0.058,"Sulfur - Generic",0.042,"Phosphorus - Generic",0.0086,"","","","","","","","","","","","";
+"Incitec Pivot Fertilisers","SuPerfect","kg",1,"","","","",8.8,"",11,"Single superphosphate (SSP)",1,"","","","","","","","","","","","","","","","","","";
+"Incitec Pivot Fertilisers [listed as Summit]","Big N","kg",1,"","","",82.35,"","","","Ammonia",1,"","","","","","","","","","","","","","","","","","";
+"Incitec Pivot Fertilisers","Entec Urea","kg",1,"Yes","","",46,"","","","Urea",1,"","","","","","","","","","","","","","","","","","";
+"Incitec Pivot Fertilisers (or Ravensdown - see note)","Flexi-N NI only","kg",1,"Yes","","",45.54,"","","","Urea",0.99,"Urease/nitrification inhibitor",0.01,"","","","","","","","","","","","","","","","";
+"Nutri-Tech Solutions (NTS)","Muriate Of Potash MOP","kg",1,"","","","","",50,"","Muriate of potash (MOP)",1,"","","","","","","","","","","","","","","","","","";
+"Nuturf","MAP NUTURF","kg",1,"","","",10,21.9,"","","Monoammonium phosphate (MAP)",1,"","","","","","","","","","","","","","","","","","";
+"Campbells fertilisers Australia","Quick-N","kg",1,"","","",26,"","",13,"Sulphate of ammonia (SOA)",0.541667,"Ammonium nitrate (AN)",0.433976,"","","","","","","","","","","","","","","","";
+"SLTEC Fertilizers","UAS","L",1.235,"","","",26.6,"","",6.7,"Urea",0.450815,"Sulphate of ammonia (SOA)",0.279167,"","","","","","","","","","","","","","","","";
+"SLTEC Fertilizers","Triazone Urea","L",1.28,"","","",0,"","","","Urea",0.652174,"","","","","","","","","","","","","","","","","","";
+"Marnco [listed as SLTEC]","Ammo 36N","kg",1,"","","",36,"","",9.6,"Nitrogen - Generic",0.36,"Sulfur - Generic",0.096,"","","","","","","","","","","","","","","","";
+"Risso-Chemical","Risso Liquid NPK (200-200-200)","L",1.3,"","","",20,8.73,16.6,"","Nitrogen - Generic",0.2,"Phosphorus - Generic",0.08728,"Potassium - Generic",0.16602,"","","","","","","","","","","","","","";
+"Turf Group Australia (Simplot)","Super Cal 15-0-12","kg",1,"","","",15,"",9.96,"","Nitrogen - Nitrate",0.084737,"Potassium - Generic",0.099612,"Calcium nitrate",0.421053,"Magnesium",0.005,"Boron",0.0002,"","","","","","","","","","";
+"Incitec Pivot Fertilisers","CK 88","kg",1,"","","",15.1,4.4,11.5,13.6,"Nitrogen - Generic",0.151,"Phosphorus - Generic",0.044,"Potassium - Generic",0.115,"Sulfur - Generic",0.136,"","","","","","","","","","","","";
+"Incitec Pivot Fertilisers","CropLift 15","kg",1,"","","",14.6,12.1,"",11.6,"Nitrogen - Generic",0.146,"Phosphorus - Generic",0.121,"Sulfur - Generic",0.116,"","","","","","","","","","","","","","";
+"Incitec Pivot Fertilisers","NPKS 19-13-0-9","kg",1,"","","",19,13,0,9,"Nitrogen - Generic",0.19,"Phosphorus - Generic",0.13,"Sulfur - Generic",0.09,"","","","","","","","","","","","","","";
+"Incitec Pivot Fertilisers","PastureBoosta","kg",1,"","","",23.8,3.7,13,4.1,"Nitrogen - Generic",0.238,"Phosphorus - Generic",0.037,"Potassium - Generic",0.13,"Sulfur - Generic",0.041,"","","","","","","","","","","","";
+"Incitec Pivot Fertilisers","Greentop K","kg",1,"","","",32.8,"",11,2.9,"Urea",0.66087,"Nitrogen - Ammoniacal",0.024,"Potassium - Generic",0.11,"Sulfur - Generic",0.029,"","","","","","","","","","","","";
+"Incitec Pivot Fertilisers","HayBoosta","kg",1,"","","",11.7,4.7,23.9,4.6,"Nitrogen - Generic",0.117,"Phosphorus - Generic",0.047,"Potassium - Generic",0.239,"Sulfur - Generic",0.046,"","","","","","","","","","","",""
   }, r, c)
-)));
+ )))
+
 
 Fertiliser_Products_Data4
 =LAMBDA(
- MAKEARRAY(5, 35,
+ MAKEARRAY(30, 31,
  LAMBDA(r,c,
   INDEX({
-"YaraTera KRISTALON RED","kg",1,"Potassium - Generic",0.2988,"Location not specified","Nitrogen - Generic",0.12,"Location not specified","Phosphorus - Generic",0.05244,"Location not specified","Sulfur - Generic",0.01,"Location not specified","Magnesium - generic",0.00603,"Location not specified","Iron - generic",0.0007,"Location not specified","Manganese - Generic",0.0004,"Location not specified","Boron - generic",0.00025,"Location not specified","Zinc - Generic",0.00025,"Location not specified","Copper - generic",0.0001,"Location not specified";
-"YaraTera KRISTALON SPECIAL","kg",1,"Nitrogen - Generic",0.18,"Location not specified","Potassium - Generic",0.149,"Location not specified","Phosphorus - Generic",0.079,"Location not specified","Sulfur - Generic",0.02,"Location not specified","Magnesium - generic",0.018,"Location not specified","Iron - generic",0.0007,"Location not specified","Manganese - Generic",0.0004,"Location not specified","Boron - generic",0.00025,"Location not specified","Zinc - Generic",0.00025,"Location not specified","Copper - generic",0.0001,"Location not specified";
-"YaraVita Glytrel ZnP","L",1.354,"Zinc - Generic",0.1,"Location not specified","Phosphorus - Generic",0.044,"Location not specified","","","","","","","","","","","","","","","","","","","","","","","","";
-"YaraVita Zintrac","L",1.734,"Zinc - Generic",0.7,"Location not specified","Nitrogen - Generic",0.018,"Location not specified","","","","","","","","","","","","","","","","","","","","","","","","";
-"ZincStar","kg",1,"Nitrogen - Ammoniacal",0.1,"Location not specified","Phosphorus - Generic",0.22,"Location not specified","Sulfur - Generic",0.02,"Location not specified","Zinc - Generic",0.01,"Location not specified","","","","","","","","","","","","","","","","","",""
+"Impact Fertilisers","Impact Super Potash 1&1","kg",1,"","","","",4.4,25,5.5,"Single superphosphate (SSP)",0.5,"Muriate of potash (MOP)",0.5,"","","","","","","","","","","","","","","","";
+"Impact Fertilisers","Impact Super Potash 2&1","kg",1,"","","","",5.84,16.8,7.29,"Single superphosphate (SSP)",0.663158,"Muriate of potash (MOP)",0.336,"","","","","","","","","","","","","","","","";
+"Impact Fertilisers","Impact Super Potash 3&1","kg",1,"","","","",6.58,12.5,8.22,"Single superphosphate (SSP)",0.747368,"Muriate of potash (MOP)",0.25,"","","","","","","","","","","","","","","","";
+"Impact Fertilisers","Impact Super Potash 4&1","kg",1,"","","","",7.04,10,8.8,"Single superphosphate (SSP)",0.8,"Muriate of potash (MOP)",0.2,"","","","","","","","","","","","","","","","";
+"Impact Fertilisers","Impact Super Potash 5&1","kg",1,"","","","",7.32,8.4,9.15,"Single superphosphate (SSP)",0.831579,"Muriate of potash (MOP)",0.168,"","","","","","","","","","","","","","","","";
+"Pacific Fertiliser / Incitec Pivot Fertilisers","Cal-Gran","kg",1,"","","",23.9,"","",10.8,"Nitrogen - Nitrate",0.074,"Nitrogen - Ammoniacal",0.165,"Sulfur - Generic",0.108,"Calcium",0.044,"","","","","","","","","","","","";
+"Pacific Fertiliser / Incitec Pivot Fertilisers","Cal-Gran 50/50","kg",1,"","","",17.9,"",15,3.6,"Nitrogen - Nitrate",0.055,"Nitrogen - Ammoniacal",0.124,"Potassium - Generic",0.15,"Sulfur - Generic",0.036,"Calcium",0.044,"","","","","","","","","","";
+"Pacific Fertiliser / Incitec Pivot Fertilisers","Cal-Gran 50/50 (S)","kg",1,"","","",16.9,"",14.4,8.7,"Nitrogen - Nitrate",0.052,"Nitrogen - Ammoniacal",0.117,"Potassium - Generic",0.144,"Sulfur - Generic",0.087,"Calcium",0.044,"","","","","","","","","","";
+"Pacific Fertiliser / Incitec Pivot Fertilisers","Cal-Gran 130","kg",1,"","","",18.8,1,12.5,3.7,"Nitrogen - Nitrate",0.058,"Nitrogen - Ammoniacal",0.13,"Phosphorus - Generic",0.01,"Potassium - Generic",0.125,"Sulfur - Generic",0.037,"Calcium",0.044,"","","","","","","","";
+"Pacific Fertiliser / Incitec Pivot Fertilisers","Cal-Gran 150","kg",1,"","","",18.6,3,12.5,1.4,"Nitrogen - Nitrate",0.058,"Nitrogen - Ammoniacal",0.128,"Phosphorus - Generic",0.03,"Potassium - Generic",0.125,"Sulfur - Generic",0.014,"Calcium",0.044,"","","","","","","","";
+"Pacific Fertiliser / Incitec Pivot Fertilisers","Cal-Gran Extra K","kg",1,"","","",15.8,"",19,3.2,"Nitrogen - Nitrate",0.049,"Nitrogen - Ammoniacal",0.109,"Potassium - Generic",0.19,"Sulfur - Generic",0.032,"Calcium",0.039,"","","","","","","","","","";
+"Incitec Pivot Fertilisers","Dairy Pro","kg",1,"","","",25.9,3.9,15.9,0.3,"Nitrogen - Generic",0.259,"Phosphorus - Generic",0.039,"Potassium - Generic",0.159,"Sulfur - Generic",0.003,"","","","","","","","","","","","";
+"Yara Australia","YaraMila ACTYVA S","kg",1,"","","",15.6,6.37,12.45,2.6,"Nitrogen - Nitrate",0.058,"Nitrogen - Ammoniacal",0.098,"Phosphorus - Generic",0.063714,"Potassium - Generic",0.124515,"Sulfur - Generic",0.026,"","","","","","","","","","";
+"CSBP","Agflow Extra","kg",1,"","","",11.15,17.52,"",3.6,"Monoammonium phosphate (MAP)",0.8,"Sulphate of ammonia (SOA)",0.15,"Copper","No data","Molybdenum","No data","Zinc","No data","","","","","","","","","","";
+"CSBP","Super & Potash 3:1","kg",1,"","","","",5.5,15,6.88,"Single superphosphate (SSP)",0.625,"Muriate of potash (MOP)",0.3,"","","","","","","","","","","","","","","","";
+"Yara","YaraBela CAN-27","kg",1,"","","",27,"","","","Calcium ammonium nitrate (CAN)",1,"","","","","","","","","","","","","","","","","","";
+"Incitec Pivot Fertilisers","Cal-Gran Aftergraze","kg",1,"","","",20.6,3,7.5,3.8,"Nitrogen - Nitrate",0.064,"Nitrogen - Ammoniacal",0.142,"Phosphorus - Generic",0.03,"Potassium - Generic",0.075,"Sulfur - Generic",0.038,"Calcium",0.044,"","","","","","","","";
+"Incitec Pivot Fertilisers","Cal-Gran Prodress","kg",1,"","","",17.8,1,15,2.5,"Nitrogen - Nitrate",0.055,"Nitrogen - Ammoniacal",0.123,"Phosphorus - Generic",0.01,"Potassium - Generic",0.15,"Sulfur - Generic",0.025,"Calcium",0.044,"","","","","","","","";
+"Wengfu Australia","Wengfu PrimeZinc 10","kg",1,"","","",10,22,"",1.5,"Nitrogen - Generic",0.1,"Phosphorus - Generic",0.22,"Sulfur - Generic",0.015,"Zinc",0.01,"","","","","","","","","","","","";
+"Wengfu Australia","Wengfu Pasture King","kg",1,"","","","",15.7,"",4.6,"Phosphorus - Generic",0.157,"Sulfur - Generic",0.046,"Calcium",0.14,"","","","","","","","","","","","","","";
+"Wengfu Australia","Wengfu SuStain","kg",1,"","","","","","",90,"Sulfur - Generic",0.9,"","","","","","","","","","","","","","","","","","";
+"Wengfu Australia","Wengfu Slam","kg",1,"","","",19.5,0.7,"",23,"Nitrogen - Generic",0.195,"Phosphorus - Generic",0.007,"Sulfur - Generic",0.23,"","","","","","","","","","","","","","";
+"Wengfu Australia","Wengfu Prime MSZ","kg",1,"","","",10,18,"",8,"Nitrogen - Generic",0.1,"Phosphorus - Generic",0.18,"Sulfur - Generic",0.08,"Zinc",0.005,"","","","","","","","","","","","";
+"Wengfu Australia","Wengfu 9-20-0-10 MAP SuStain","kg",1,"","","",9,19.8,0,10.4,"Nitrogen - Generic",0.09,"Phosphorus - Generic",0.198,"Sulfur - Generic",0.104,"","","","","","","","","","","","","","";
+"Wengfu Australia","Wengfu 15-17-0-15 DAP SuStain","kg",1,"","","",15.2,16.9,0,15.2,"Nitrogen - Generic",0.152,"Phosphorus - Generic",0.169,"Sulfur - Generic",0.152,"","","","","","","","","","","","","","";
+"Wengfu Australia","Wengfu 16-18-0-10 DAP SuStain","kg",1,"","","",16.2,18,0,10.4,"Nitrogen - Generic",0.162,"Phosphorus - Generic",0.18,"Sulfur - Generic",0.104,"","","","","","","","","","","","","","";
+"Wengfu Australia","Wengfu 5-15-0-6 Fast Start Legume","kg",1,"","","",5,15.4,0,6.3,"Nitrogen - Generic",0.05,"Phosphorus - Generic",0.154,"Sulfur - Generic",0.063,"","","","","","","","","","","","","","";
+"Wengfu Australia","Wengfu 9-20-0-10 PrimeZinc","kg",1,"","","",9,19.8,0,10.4,"Nitrogen - Generic",0.09,"Phosphorus - Generic",0.198,"Sulfur - Generic",0.104,"Zinc",0.009,"","","","","","","","","","","","";
+"Wengfu Australia","Wengfu 12-18-0-6 PrimeZinc","kg",1,"","","",11.9,17.6,0,5.9,"Nitrogen - Generic",0.119,"Phosphorus - Generic",0.176,"Sulfur - Generic",0.059,"Zinc",0.008,"","","","","","","","","","","","";
+"Wengfu Australia","Wengfu 14-13-0-11 PrimeZinc","kg",1,"","","",14.1,12.8,0,10.7,"Nitrogen - Generic",0.141,"Phosphorus - Generic",0.128,"Sulfur - Generic",0.107,"Zinc",0.006,"","","","","","","","","","","",""
   }, r, c)
-)));
-*/
+ )))
+
+
+Fertiliser_Products_Data5
+=LAMBDA(
+ MAKEARRAY(14, 31,
+ LAMBDA(r,c,
+  INDEX({
+"Wengfu Australia","Wengfu 19-13-0-7 PrimeZinc","kg",1,"","","",18.6,12.7,0,6.8,"Nitrogen - Generic",0.186,"Phosphorus - Generic",0.127,"Sulfur - Generic",0.068,"Zinc",0.006,"","","","","","","","","","","","";
+"Wengfu Australia","Wengfu Booster K","kg",1,"","","",32,0,11,3,"Nitrogen - Generic",0.32,"Potassium - Generic",0.11,"Sulfur - Generic",0.03,"","","","","","","","","","","","","","";
+"Wengfu Australia","Wengfu Booster Rich 1","kg",1,"","","",31,6,0,6,"Nitrogen - Generic",0.31,"Phosphorus - Generic",0.06,"Sulfur - Generic",0.06,"","","","","","","","","","","","","","";
+"Wengfu Australia","Wengfu Booster Grass DAP","kg",1,"","","",21,4,8,7,"Nitrogen - Generic",0.21,"Phosphorus - Generic",0.04,"Potassium - Generic",0.08,"Sulfur - Generic",0.07,"","","","","","","","","","","","";
+"Wengfu Australia","Wengfu Aftergraze","kg",1,"","","",23,0,25,0,"Nitrogen - Generic",0.23,"Potassium - Generic",0.25,"","","","","","","","","","","","","","","","";
+"Wengfu Australia","Wengfu Sidedress","kg",1,"","","",25,4,13,4,"Nitrogen - Generic",0.25,"Phosphorus - Generic",0.04,"Potassium - Generic",0.13,"Sulfur - Generic",0.04,"","","","","","","","","","","","";
+"Wengfu Australia","Wengfu Pasture Booster","kg",1,"","","",13,5,24,5,"Nitrogen - Generic",0.13,"Phosphorus - Generic",0.05,"Potassium - Generic",0.24,"Sulfur - Generic",0.05,"","","","","","","","","","","","";
+"Wengfu Australia","Wengfu DAP Hay Booster","kg",1,"","","",11,5,24,4,"Nitrogen - Generic",0.11,"Phosphorus - Generic",0.05,"Potassium - Generic",0.24,"Sulfur - Generic",0.04,"","","","","","","","","","","","";
+"Wengfu Australia","Wengfu MAP Hay Booster","kg",1,"","","",11,8,20,6,"Nitrogen - Generic",0.11,"Phosphorus - Generic",0.08,"Potassium - Generic",0.2,"Sulfur - Generic",0.06,"","","","","","","","","","","","";
+"Wengfu Australia","Wengfu Fodder Booster","kg",1,"","","",9,4,5,15,"Nitrogen - Generic",0.09,"Phosphorus - Generic",0.04,"Potassium - Generic",0.05,"Sulfur - Generic",0.15,"","","","","","","","","","","","";
+"CSBP","K-Till Extra","kg",1,"","","",10.73,10.95,11.35,6.55,"Monoammonium phosphate (MAP)",0.5,"Sulphate of ammonia (SOA)",0.273,"Muriate of potash (MOP)",0.227,"Copper","No data","Zinc","No data","","","","","","","","","","";
+"CSBP","Agras Extra","kg",1,"","","",16.95,8.06,"",15.17,"Sulphate of ammonia (SOA)",0.632,"Monoammonium phosphate (MAP)",0.368,"Zinc","No data","Copper","No data","Molybdenum","No data","Cobalt","No data","","","","","","","","";
+"CSBP","Super Copper Zinc Moly","kg",1,"","","","",8.8,"",11,"Single superphosphate (SSP)",1,"Copper",0.006,"Zinc",0.003,"Molybdenum",0.0006,"","","","","","","","","","","","";
+"CSBP","Flexi-N","L",1.32,"","","",32,"","","","Urea-ammonium nitrate (UAN)",1,"","","","","","","","","","","","","","","","","",""
+  }, r, c)
+ )))
 
 
 

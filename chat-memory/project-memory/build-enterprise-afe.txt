@@ -1,0 +1,65 @@
+# build-enterprise-excel.ps1 — Excel Labs (AFE) module merge
+
+`Merge-AfeModules` merges Excel Labs modules from the source/chapter workbooks
+(`$resolvedModuleWorkbooks`) into the enterprise output (built from a template
+in `Excel/Enterprises/*_Template_*.xlsx`). AFE file objects have `.path` and
+`.text` (module code). The blob lives in `customXml/item*.xml` as base64
+`<AFEJSONBlob>` (UTF-16/Unicode).
+
+## Bug fixed (2026-07): existing modules were never refreshed
+Original loop did `if ($existing.ContainsKey($mp)) { continue }` — it only ADDED
+missing modules and skipped any already in the template. So updating a `.xlf`
+(e.g. `Common_InputFunctions`), running `npm run build` (which syncs it into the
+chapter workbooks), then `npm run build-enterprise` did NOT propagate the change
+to the enterprise files, because the template already contained the module.
+
+Fix: `$existing` now maps path -> file object; for a required module already
+present, compare `.text` (LF-normalized) against the synced source and update it
+in place when different. Write-back now triggers on additions OR updates.
+`Merge-AfeModules` returns `[pscustomobject]@{ Added=@(); Updated=@() }`; summary
+prints "Excel Labs modules add/upd". Verified: both Enterprise_PastureBeef and
+Enterprise_EnvironmentalPlantings report `updated: /projects/Common_InputFunctions`.
+
+Workflow to propagate an xlf change to enterprises: edit .xlf -> `npm run build`
+(syncs chapters) -> `npm run build-enterprise`.
+
+## Shadow-name pruning + standalone prune mode (2026-08)
+Copying module sheets into an enterprise book makes Excel create SHEET-SCOPED
+shadow copies of every workbook-scoped name a sheet references (`'Sheet'!X_Cell_*`,
+`'Sheet'!Module.Func`, etc.). `Remove-RedundantSheetScopedNames` prunes them from
+`xl/workbook.xml` (zip/XML, no COM — deleting via COM is pathologically slow). A
+sheet-scoped name is removed iff it (a) is IDENTICAL to the workbook-scoped one, or
+(b) the name is AUTHORITATIVE (in the template's workbook-scoped set from
+`Get-WorkbookScopedNameSet`). Also sets `<calcPr fullCalcOnLoad="1">` so cached
+#REF!/#VALUE! from removed shadows recompute on open.
+
+These shadows surface as `Duplicate input cell/table name` warnings in
+build-input-fields (it strips the `Sheet!` scope so shadow == workbook-scoped).
+Fix without a full rebuild via `-PruneShadowsOnly` (npm `prune-enterprise-names`):
+resolves the template + authoritative names as normal, then runs the prune on the
+EXISTING output workbook and returns. Guards the template Copy-Item so the built
+book isn't clobbered; supports `-DryRun`; flows through auto-discovery (no
+`-EnterpriseId` = all enterprises). `-EnterpriseId Dairy|PastureBeef` maps to
+`Enterprises/Enterprise_<Id>.json`.
+
+## IMPORT-ORDER RULE for shared/duplicate input sheets (2026-08)
+When two modules ship the SAME input sheet + named ranges (Enteric vs
+ManureManagement both have 'Input - Dairy' / 'Input - Pasture Beef'), the
+FIRST module listed in config `modules[]` claims the workbook-scoped
+X_Cell_*/X_Table_* names and keeps its sheet as the unrenamed master. So the
+CANONICAL module (the one with the full/correct input set = ManureManagement)
+MUST be listed FIRST; the duplicate (Enteric) is listed AFTER with
+`renameSheets` (e.g. 'Input - Dairy' -> 'Input - Dairy (Enteric)').
+- Symptom of getting it wrong: build-input-fields floods `Duplicate input
+  cell/table name` warnings AND the workbook-scoped name binds to the wrong
+  (subset/renamed) sheet. Probing the pruned Dairy book showed [WB] name ->
+  'Input - Dairy (Enteric)' while 10-14 sheet-scoped shadows -> master
+  'Input - Dairy'. Fix = reorder so Manure is first (done for Dairy +
+  PastureBeef). Requires a full `npm run build-enterprise` to take effect;
+  prune-enterprise-names cannot fix it (shadows differ from the wb-scoped copy
+  and aren't in the template's authoritative set, so the prune correctly leaves
+  them).
+- Open follow-up: shadows also disagree with each other (e.g.
+  X_Cell_Dairy_MilkProductionUnit -> $E$49 vs $E$50), i.e. the Enteric and
+  Manure 'Input - Dairy' sheets have a row-offset drift. Verify the module
+  workbooks' input rows line up after the reorder rebuild.

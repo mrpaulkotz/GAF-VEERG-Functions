@@ -1,0 +1,34 @@
+# scripts/name-sourcedata-constants.ps1 (one-off maintenance)
+
+Purpose: name scalar "constant" cells that call a `SourceData_*_Data` function and
+route references to them through the new workbook-scoped name.
+
+- npm: `name-constants` (dry-run, default) / `name-constants:commit` (writes).
+- Params: `-WorkbookPath <file>` (single) else ALL top-level `Excel/*.xlsx`
+  (skips `~$*`, `*_expanded*`, and any `.bak`). `-FunctionPattern` (default
+  BROADENED to `_Data$`, tested vs BARE fn name — matches both `SourceData_*_Data`
+  AND module-prefixed constants like `Fertiliser_FracGASMSoil_Data`; the old
+  `(^|_)SourceData_.*_Data$` missed the module-prefixed ones). `-Commit`. `-Backup`
+  (OFF by default; when set, one-time copy to `Excel/Backups/Backup_PreName/`).
+- Target cell = formula is a SINGLE outer call to a `*_Data` function (module-dotted
+  or bare) whose result is scalar (Value2 not array, not spilled >1, not `#error`).
+  Excludes wrapped array displays like `Utility_DisplayArrayInTable(..._Data(), ...)`.
+- Name assigned = BARE fn name (strip `Module.` prefix), workbook-scoped, RefersTo cell.
+  No collision with the Excel-Labs LAMBDA name because that is `Module.Fn` (dotted).
+
+## Key lesson: ApplyNames is SAME-SHEET only
+Excel's native `Range.ApplyNames` does NOT rewrite cross-sheet references (all the
+constant refs here are cross-sheet, e.g. `='Constants - Dairy'!$D$160`). So the script
+rewrites references MANUALLY with regex:
+- Qualified ref (any host sheet): `(?<![A-Za-z0-9_'])(?:'Sheet'|Sheet)!\$?COL\$?ROW(?![0-9A-Za-z_:])`
+- Bare same-sheet ref (only on the source sheet).
+- Range endpoints (address adjacent to `:`) are conservatively SKIPPED.
+- Embedded refs are handled (e.g. `...!$D$221/100` -> `SourceData_..._Data/100`).
+Dry-run computes new formula strings and reports old->new WITHOUT writing; `-Commit`
+sets `$cell.Formula` and saves. Backup only when `-Backup` is set (one-time copy to
+`Excel/Backups/Backup_PreName/`), OFF by default.
+
+## Validated dry-run (2024, all workbooks)
+98 cells named, 97 refs rewritten, 0 conflicts, 0 duplicates across 23 workbooks.
+Each workbook internally consistent (different modules put constants at different rows,
+e.g. Enteric Dairy D221=Fat vs ManureMgmt Dairy D227=Fat). NOT yet committed by default.

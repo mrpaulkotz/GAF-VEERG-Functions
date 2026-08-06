@@ -1,0 +1,50 @@
+# find-excel-errors.ps1 (npm run find-errors)
+
+Single read-only checker consolidating error detection across the pipeline.
+Scans Excel/*.xlsx + Excel/Enterprises/*.xlsx (excludes ~$, _expanded,
+_template, .bak). Reads .xlsx package XML directly — NO COM, NO Excel, NO add-in
+(deliberate: a headless recalc would falsely report #NAME? for every VEERG.*
+LAMBDA since the add-in isn't loaded). Reports CACHED saved values only.
+
+Categories:
+- [cell]  Two forms: (1) CACHED error = <c t="e"> cells (currently evaluate to an
+          error); (2) FORMULA error = a cell whose stored <f> text contains an
+          error token (e.g. #REF! left in args) even though the cached value is
+          valid because a function swallowed the bad ref — shown as
+          "#REF! (in formula)". Both give sheet, addr, token, stored formula.
+          SKIPS cells with a `vm` (value-metadata) attribute (t="e" only): those
+          are RICH VALUES (modern "Place in Cell" images backed by xl/richData/*,
+          linked data types, etc.) whose t="e"/#VALUE! is only fallback text, not
+          a real error. The VEERG workbooks have a pasted logo placed in A1 of
+          most sheets this way (<c r="A1" t="e" vm="1"><v>#VALUE!</v></c>).
+          NOTE: the formula-text scan is what catches latent #REF! that a wrapper
+          function masks, e.g. CommonCropping_GetFracWET(I16,I18,#REF!,#REF!,...)
+          returning 1 (found on the Poultry leach/runoff sheets, 204 across 11
+          workbooks). Fast-skip gate now also checks ErrorRegex over sheet text,
+          not just t="e".
+- [name]  defined names in xl/workbook.xml whose RefersTo has an error token
+          (dangling = plain ref, broken-fn = LAMBDA with internal #REF!) or is
+          empty. Sheet vs workbook scope resolved via localSheetId → <sheets>.
+- [link]  external links from xl/externalLinks/_rels/*.rels targets.
+
+Params: -RepoRoot, -WorkbookPath (single file), -Max (per-category cap, default
+50, 0=unlimited), -IncludeLibraryFunctions (also show broken-fn .xlf library
+LAMBDAs; HIDDEN by default as known noise), -FailOnError (exit 1 if any
+[cell]/[name] found).
+
+Baseline run 2026-08-03: 493 cell errors, 746 broken names, 0 external links
+across all 28 workbooks. Most broken names are the .xlf library LAMBDAs with
+internal #REF! (broken-fn — known WIP, audit-names never auto-deletes them) plus
+dangling #REF! cruft (audit-names:commit removes). Cell #NAME?/#VALUE! are mostly
+stale cached values that clear on a real recalc in Excel-with-add-in.
+
+PS5.1 gotchas hit while building it:
+- ZipArchiveMode lives in System.IO.Compression; ZipFile in
+  System.IO.Compression.FileSystem — Add-Type BOTH assemblies.
+- Returning an XmlDocument or XmlNamespaceManager from a function → PowerShell
+  auto-enumerates it (doc→child nodes, nsmgr→prefix strings) so the caller gets
+  an Object[]. Wrap the return with the comma operator: `return ,$doc` /
+  `return ,$ns`.
+- Dot-sourcing the script sets Set-StrictMode -Version Latest in the interactive
+  session, which breaks the npm.ps1 wrapper ($MyInvocation.Statement). Run it as
+  a child process (powershell -File ...) or Set-StrictMode -Off after.

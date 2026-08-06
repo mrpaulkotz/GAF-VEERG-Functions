@@ -1,0 +1,46 @@
+DATA QUALITY INPUT LIST — TASK OVERVIEW
+=======================================
+
+Goal
+----
+The Common workbook gained a hand-authored "Input - Data quality" sheet holding a
+ListObject table "Table_Input_DataQuality" with an "Input" column. For each
+enterprise, that Input column should list every user input for the enterprise so
+the user can assign data-quality scores per input.
+
+Final approach (agreed)
+------------------------
+Do NOT write into the workbooks via COM and do NOT wire this into the build.
+Instead, generate one plain-text file per enterprise (one input label per line)
+that the user pastes into the table's Input column manually.
+
+Design decisions (locked)
+-------------------------
+1. Text = Label only (better auto-labels handled separately later).
+2. Scope = InputCells + InputTables.
+3. Include ALL inputs (incl. Site/Common).
+4. Repeatable script (on-demand, not in build).
+5. All four enterprises.
+6. Target table = Table_Input_DataQuality, column "Input".
+7. Exclude computed (formula) cells and result tables (X_Table_Result_*).
+8. Table columns rendered as "table context - column label".
+9. Combine Method1/Method2 (only the _Method<N> NAME suffix is collapsed; a
+   literal "(Method 1)" inside a label's TEXT is not collapsed).
+
+Result (input counts)
+---------------------
+CroppingGrains        184
+Dairy                 236
+EnvironmentalPlantings 79
+PastureBeef           256
+
+Output files written to: generated-datalists/
+  Enterprise_<Id>_DataQualityInputs.txt  (UTF-8, one label per line)
+
+Known skips (no usable label — expected)
+----------------------------------------
+X_Cell_ManureSentOffsite_MassNitrogenManure
+X_Cell_ManureSentOffsite_ManureProductionSystem
+X_Cell_ManureSentOffsite_ManureIrrigationMethod
+X_Cell_Dairy_ManureAppliedIrrigationMethod
+X_Cell_PastureBeef_GrazingIrrigationMethod
