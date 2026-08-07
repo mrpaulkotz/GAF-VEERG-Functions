@@ -1,7 +1,7 @@
 {
 	"schemaVersion": 1,
 	"generatedFrom": "Enterprise_PastureBeef_WIP_v01.xlsx",
-	"generatedAt": "2026-08-06T23:46:33Z",
+	"generatedAt": "2026-08-07T01:21:26Z",
 	"InputCells": [
 		{
 			"CellName": "X_Cell_Site_FarmName",
@@ -3367,10 +3367,10 @@
 						}
 					},
 					"Notes": {
-						"CellType": "number"
+						"CellType": "text"
 					},
 					"EvidenceFiles": {
-						"CellType": "number"
+						"CellType": "text"
 					},
 					"Score": {
 						"CellType": "formula"
@@ -3427,10 +3427,10 @@
 						}
 					},
 					"Notes": {
-						"CellType": "number"
+						"CellType": "text"
 					},
 					"EvidenceFiles": {
-						"CellType": "number"
+						"CellType": "text"
 					},
 					"Score": {
 						"CellType": "formula"
@@ -3487,10 +3487,10 @@
 						}
 					},
 					"Notes": {
-						"CellType": "number"
+						"CellType": "text"
 					},
 					"EvidenceFiles": {
-						"CellType": "number"
+						"CellType": "text"
 					},
 					"Score": {
 						"CellType": "formula"
@@ -3547,10 +3547,10 @@
 						}
 					},
 					"Notes": {
-						"CellType": "number"
+						"CellType": "text"
 					},
 					"EvidenceFiles": {
-						"CellType": "number"
+						"CellType": "text"
 					},
 					"Score": {
 						"CellType": "formula"
@@ -3607,10 +3607,10 @@
 						}
 					},
 					"Notes": {
-						"CellType": "number"
+						"CellType": "text"
 					},
 					"EvidenceFiles": {
-						"CellType": "number"
+						"CellType": "text"
 					},
 					"Score": {
 						"CellType": "formula"

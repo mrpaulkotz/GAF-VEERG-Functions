@@ -571,7 +571,14 @@ function Resolve-StructuredOrEvaluated {
 }
 
 function Get-CellTypeByFormat {
-  param([Parameter(Mandatory = $true)] $Cell)
+  # $FallbackRange: the rest of the field's column/row (all data cells), checked only
+  # when $Cell itself doesn't already resolve to percent/text. The single representative
+  # cell (usually the first data row) is often blank with no format of its own yet, and a
+  # blank sample shouldn't mask a column the author explicitly formatted as Text elsewhere.
+  param(
+    [Parameter(Mandatory = $true)] $Cell,
+    [AllowNull()] $FallbackRange = $null
+  )
 
   $fmt = ''
   try { $fmt = [string]$Cell.NumberFormat } catch { $fmt = '' }
@@ -585,6 +592,18 @@ function Get-CellTypeByFormat {
     if ($val -is [string] -and -not [string]::IsNullOrWhiteSpace($val)) { return 'text' }
   }
   catch { }
+
+  if ($null -ne $FallbackRange) {
+    foreach ($fc in @($FallbackRange.Cells)) {
+      if ($null -eq $fc) { continue }
+      $fcHasFormula = $false
+      try { $fcHasFormula = [bool]$fc.HasFormula } catch { $fcHasFormula = $false }
+      if ($fcHasFormula) { continue }   # a formula's format doesn't reflect an author's text intent
+      $fcFmt = ''
+      try { $fcFmt = [string]$fc.NumberFormat } catch { $fcFmt = '' }
+      if ($fcFmt -eq '@' -or $fcFmt -match '(?i)text') { return 'text' }
+    }
+  }
 
   return 'number'
 }
@@ -1126,7 +1145,9 @@ function Get-InputCells {
 function Get-FieldDefFromCell {
   # Builds a field definition (CellType / Options / Unit / CanOverWriteFormula) from a
   # single representative body cell plus its header/label text. Shared by ListObject
-  # columns and named-range matrix tables. $BodyCell may be $null.
+  # columns and named-range matrix tables. $BodyCell may be $null. $ColumnRange, when
+  # supplied, is the rest of the field's data cells (whole column/row) - see
+  # Get-CellTypeByFormat for why a single blank sample cell isn't enough on its own.
   param(
     [Parameter(Mandatory = $true)] [AllowNull()] $BodyCell,
     [Parameter(Mandatory = $true)] [AllowEmptyString()] [string] $Header,
@@ -1134,7 +1155,8 @@ function Get-FieldDefFromCell {
     [Parameter(Mandatory = $true)] $Workbook,
     [Parameter(Mandatory = $true)] [hashtable] $NameIndex,
     [Parameter(Mandatory = $true)] [string] $ContextName,
-    [bool] $ForceOverwrite = $false
+    [bool] $ForceOverwrite = $false,
+    [AllowNull()] $ColumnRange = $null
   )
 
   $def = [ordered]@{}
@@ -1161,7 +1183,7 @@ function Get-FieldDefFromCell {
     $def['CellType'] = 'formula'
   }
   elseif ($null -ne $BodyCell) {
-    $def['CellType'] = Get-CellTypeByFormat -Cell $BodyCell
+    $def['CellType'] = Get-CellTypeByFormat -Cell $BodyCell -FallbackRange $ColumnRange
   }
   else {
     $def['CellType'] = 'number'
@@ -1186,13 +1208,14 @@ function Get-TableFieldDef {
   )
 
   $bodyCell = $null
+  $columnRange = $null
   try {
     $body = $Column.DataBodyRange
-    if ($null -ne $body) { $bodyCell = $body.Cells.Item(1, 1) }
+    if ($null -ne $body) { $bodyCell = $body.Cells.Item(1, 1); $columnRange = $body }
   }
   catch { $bodyCell = $null }
 
-  return (Get-FieldDefFromCell -BodyCell $bodyCell -Header $Header -Worksheet $Worksheet -Workbook $Workbook -NameIndex $NameIndex -ContextName $ContextName)
+  return (Get-FieldDefFromCell -BodyCell $bodyCell -Header $Header -Worksheet $Worksheet -Workbook $Workbook -NameIndex $NameIndex -ContextName $ContextName -ColumnRange $columnRange)
 }
 
 function Get-InputTables {
@@ -1397,8 +1420,12 @@ function Get-NamedRangeTables {
         try { $label = [string]$range.Cells.Item($i, 1).Value2 } catch { $label = '' }
         $bodyCell = $null
         try { $bodyCell = $range.Cells.Item($i, 2) } catch { $bodyCell = $null }
+        $rowRange = $null
+        if ($colCount -ge 2) {
+          try { $rowRange = $worksheet.Range($range.Cells.Item($i, 2), $range.Cells.Item($i, $colCount)) } catch { $rowRange = $null }
+        }
         $ctx = if ([string]::IsNullOrWhiteSpace($label)) { "{0}.R{1}" -f $shortName, $i } else { "{0}.{1}" -f $shortName, $label }
-        $cellDef = Get-FieldDefFromCell -BodyCell $bodyCell -Header $label -Worksheet $worksheet -Workbook $Workbook -NameIndex $NameIndex -ContextName $ctx -ForceOverwrite $forceOverwrite
+        $cellDef = Get-FieldDefFromCell -BodyCell $bodyCell -Header $label -Worksheet $worksheet -Workbook $Workbook -NameIndex $NameIndex -ContextName $ctx -ForceOverwrite $forceOverwrite -ColumnRange $rowRange
         & $addField $fieldDefs (Get-FieldKeyFromHeader -Header $label) ("Row$i") $i 2 $label 'Label' $cellDef
       }
 
@@ -1424,8 +1451,12 @@ function Get-NamedRangeTables {
         if (Test-IsPeriodLabel -Label $header) { continue }
         $bodyCell = $null
         try { $bodyCell = $range.Cells.Item(2, $jx) } catch { $bodyCell = $null }
+        $colRange = $null
+        if ($rowCount -ge 2) {
+          try { $colRange = $worksheet.Range($range.Cells.Item(2, $jx), $range.Cells.Item($rowCount, $jx)) } catch { $colRange = $null }
+        }
         $ctx = if ([string]::IsNullOrWhiteSpace($header)) { "{0}.C{1}" -f $shortName, $jx } else { "{0}.{1}" -f $shortName, $header }
-        $cellDef = Get-FieldDefFromCell -BodyCell $bodyCell -Header $header -Worksheet $worksheet -Workbook $Workbook -NameIndex $NameIndex -ContextName $ctx -ForceOverwrite $forceOverwrite
+        $cellDef = Get-FieldDefFromCell -BodyCell $bodyCell -Header $header -Worksheet $worksheet -Workbook $Workbook -NameIndex $NameIndex -ContextName $ctx -ForceOverwrite $forceOverwrite -ColumnRange $colRange
         & $addField $fieldDefs (Get-FieldKeyFromHeader -Header $header) ("Col$jx") 2 $jx $header 'Header' $cellDef
       }
 
