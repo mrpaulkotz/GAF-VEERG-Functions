@@ -1,7 +1,7 @@
 {
 	"schemaVersion": 1,
 	"generatedFrom": "Enterprise_EnvironmentalPlantings_WIP_v01.xlsx",
-	"generatedAt": "2026-08-03T05:09:54Z",
+	"generatedAt": "2026-08-06T23:46:00Z",
 	"InputCells": [
 		{
 			"CellName": "X_Cell_Planting_Latitude",
@@ -688,6 +688,48 @@
 			},
 			"CanMarkAsNotUsed": true,
 			"Label": "Fuel purchases"
+		},
+		{
+			"TableName": "Table_Input_DataQuality",
+			"MatrixType": "RowsToCols",
+			"NumberOfCols": 7,
+			"ColumnNames": {
+				"Input": "Input",
+				"TemporalRepresentativeness": "Temporal representativeness",
+				"SpatialResolution": "Spatial resolution",
+				"SampleSize": "Sample size",
+				"Notes": "Notes",
+				"EvidenceFiles": "Evidence files",
+				"Score": "Score"
+			},
+			"Rows": {
+				"Row": {
+					"Input": {
+						"CellType": "text"
+					},
+					"TemporalRepresentativeness": {
+						"CellType": "select",
+						"Options": {}
+					},
+					"SpatialResolution": {
+						"CellType": "select",
+						"Options": {}
+					},
+					"SampleSize": {
+						"CellType": "select",
+						"Options": {}
+					},
+					"Notes": {
+						"CellType": "number"
+					},
+					"EvidenceFiles": {
+						"CellType": "number"
+					},
+					"Score": {
+						"CellType": "number"
+					}
+				}
+			}
 		}
 	],
 	"FieldGroups": [

@@ -143,13 +143,13 @@ VEERG_6_1_1_1__2__MassOfNitrogenInCropResidues_Arguments_Method2
 --------------------------------------
 VEERG_6_1_1_2__1__FractionOfCropResidueRemovedBaled
 Fraction of crop residue that is removed for crop c, calculated where residues are baled
-FFODcbaled
+FFODc
 dimensionless
 FFOD_{c}=\frac{B\times M_{B}}{P_{c}\times R_{AG,c}}
-B = number of bales generated (dimensionless)
+B = number of bales generated (number)
 MB = mass of each bale (kg)
 Pc = annual production of crop c (kg)
-RAGc = residue to crop ratio for crop c (dimensionless)
+RAGc = residue to crop ratio for crop c (fraction)
 c = Crop type
 --------------------------------------
 */
@@ -165,10 +165,10 @@ VEERG_6_1_1_2__1__FractionOfCropResidueRemovedBaled_Title
   =LAMBDA("Fraction of crop residue that is removed for crop c, calculated where residues are baled");
 
 VEERG_6_1_1_2__1__FractionOfCropResidueRemovedBaled_Variable
-  =LAMBDA("FFOD_cbaled");
+  =LAMBDA("FFOD_c");
 
 VEERG_6_1_1_2__1__FractionOfCropResidueRemovedBaled_Unit
-  =LAMBDA("dimensionless");
+  =LAMBDA("fraction");
 
 VEERG_6_1_1_2__1__FractionOfCropResidueRemovedBaled_Source
   =LAMBDA("VEERG 2026: 6.1.1.2, Equation (1)");
@@ -177,7 +177,7 @@ VEERG_6_1_1_2__1__FractionOfCropResidueRemovedBaled_NIRReference
   =LAMBDA("");
 
 VEERG_6_1_1_2__1__FractionOfCropResidueRemovedBaled_LatexEquation
-  =LAMBDA("FFOD_{c,baled}=\frac{B\times M_{B}}{P_{c}\times R_{AG,c}}");
+  =LAMBDA("FFOD_{c}=\frac{B\times M_{B}}{P_{c}\times R_{AG,c}}");
 
 VEERG_6_1_1_2__1__FractionOfCropResidueRemovedBaled_Arguments
   =LAMBDA(
@@ -195,7 +195,7 @@ VEERG_6_1_1_2__1__FractionOfCropResidueRemovedBaled_Arguments
   );
 
 VEERG_6_1_1_2__1__FractionOfCropResidueRemovedBaled_Variation
-  =LAMBDA("VARIATION FROM SOURCE: Added 'baled' to variable subscript");
+  =LAMBDA("");
 
 
 
@@ -209,6 +209,7 @@ dimensionless
 --------------------------------------
 */
 
+/*
 VEERG_6_1_1_2__1a__FractionOfCropResidueRemoved
   =LAMBDA(
     FFOD_cbaled, FFOD_cother,
@@ -248,3 +249,4 @@ VEERG_6_1_1_2__1a__FractionOfCropResidueRemoved_Arguments
 
 VEERG_6_1_1_2__1a__FractionOfCropResidueRemoved_Variation
   =LAMBDA("VARIATION FROM SOURCE: Added this equation to accommodate user-defined residue removal other than baling.");
+  */

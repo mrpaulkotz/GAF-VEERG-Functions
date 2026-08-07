@@ -1,7 +1,7 @@
 {
 	"schemaVersion": 1,
 	"generatedFrom": "Enterprise_PastureBeef_WIP_v01.xlsx",
-	"generatedAt": "2026-08-03T05:10:23Z",
+	"generatedAt": "2026-08-06T23:46:33Z",
 	"InputCells": [
 		{
 			"CellName": "X_Cell_Site_FarmName",
@@ -19,6 +19,11 @@
 			"CellType": "date"
 		},
 		{
+			"CellName": "X_Cell_Site_EndDate",
+			"Label": "Emissions calculation period end date",
+			"CellType": "formula"
+		},
+		{
 			"CellName": "X_Cell_Enterprise_ProductionTimeframeStart",
 			"Label": "Production timeframe start",
 			"CellType": "number",
@@ -29,6 +34,11 @@
 			"Label": "Production timeframe end",
 			"CellType": "number",
 			"Hidden": true
+		},
+		{
+			"CellName": "X_Cell_Enterprise_PercentIncomeFromGrain",
+			"Label": "Percentage of income from manure sold",
+			"CellType": "percent"
 		},
 		{
 			"CellName": "X_Cell_Site_State",
@@ -75,11 +85,6 @@
 			"CellName": "X_Cell_Site_Elevation",
 			"Label": "Elevation",
 			"CellType": "number"
-		},
-		{
-			"CellName": "X_Cell_Site_EndDate",
-			"Label": "Elevation",
-			"CellType": "date"
 		},
 		{
 			"CellName": "X_Cell_Site_AverageTemperature",
@@ -3309,6 +3314,306 @@
 							"tonnes": "tonnes",
 							"cubic metres m3": "cubic metres m3"
 						}
+					}
+				}
+			}
+		},
+		{
+			"TableName": "Table_Input_DataQuality_Enterprise",
+			"MatrixType": "RowsToCols",
+			"NumberOfCols": 7,
+			"ColumnNames": {
+				"Input": "Input",
+				"WhenWasTheDataSourced": "When was the data sourced?",
+				"WhereIsTheDataSourcedFrom": "Where is the data sourced from?",
+				"HowMuchOfTheDataWasFromDirectSamples": "How much of the data was from direct samples?",
+				"Notes": "Notes",
+				"EvidenceFiles": "Evidence files",
+				"Score": "Score"
+			},
+			"Rows": {
+				"Row": {
+					"Input": {
+						"CellType": "text"
+					},
+					"WhenWasTheDataSourced": {
+						"CellType": "select",
+						"Options": {
+							"During this emissions calculation period": "During this emissions calculation period",
+							"Within 2 years of this emissions calculation period": "Within 2 years of this emissions calculation period",
+							"Within 3 years of this emissions calculation period": "Within 3 years of this emissions calculation period",
+							"Within 4 years of this emissions calculation period": "Within 4 years of this emissions calculation period",
+							"Unknown, or more than 4 years of this emissions calculation period": "Unknown, or more than 4 years of this emissions calculation period"
+						}
+					},
+					"WhereIsTheDataSourcedFrom": {
+						"CellType": "select",
+						"Options": {
+							"This location with spatial partitioning": "This location with spatial partitioning",
+							"This location without spatial partitioning": "This location without spatial partitioning",
+							"Regional-level data from a government or industry database/survey": "Regional-level data from a government or industry database/survey",
+							"State-level data from a government or industry database/survey": "State-level data from a government or industry database/survey",
+							"National-level data from a government or industry database/survey": "National-level data from a government or industry database/survey"
+						}
+					},
+					"HowMuchOfTheDataWasFromDirectSamples": {
+						"CellType": "select",
+						"Options": {
+							"Over 90%": "Over 90%",
+							"Between 51% and 90%": "Between 51% and 90%",
+							"Between 21% and 50%": "Between 21% and 50%",
+							"Less than 20%": "Less than 20%",
+							"Unknown": "Unknown"
+						}
+					},
+					"Notes": {
+						"CellType": "number"
+					},
+					"EvidenceFiles": {
+						"CellType": "number"
+					},
+					"Score": {
+						"CellType": "formula"
+					}
+				}
+			}
+		},
+		{
+			"TableName": "Table_Input_DataQuality_Site",
+			"MatrixType": "RowsToCols",
+			"NumberOfCols": 7,
+			"ColumnNames": {
+				"Input": "Input",
+				"WhenWasTheDataSourced": "When was the data sourced?",
+				"WhereIsTheDataSourcedFrom": "Where is the data sourced from?",
+				"HowMuchOfTheDataWasFromDirectSamples": "How much of the data was from direct samples?",
+				"Notes": "Notes",
+				"EvidenceFiles": "Evidence files",
+				"Score": "Score"
+			},
+			"Rows": {
+				"Row": {
+					"Input": {
+						"CellType": "text"
+					},
+					"WhenWasTheDataSourced": {
+						"CellType": "select",
+						"Options": {
+							"During this emissions calculation period": "During this emissions calculation period",
+							"Within 2 years of this emissions calculation period": "Within 2 years of this emissions calculation period",
+							"Within 3 years of this emissions calculation period": "Within 3 years of this emissions calculation period",
+							"Within 4 years of this emissions calculation period": "Within 4 years of this emissions calculation period",
+							"Unknown, or more than 4 years of this emissions calculation period": "Unknown, or more than 4 years of this emissions calculation period"
+						}
+					},
+					"WhereIsTheDataSourcedFrom": {
+						"CellType": "select",
+						"Options": {
+							"This location with spatial partitioning": "This location with spatial partitioning",
+							"This location without spatial partitioning": "This location without spatial partitioning",
+							"Regional-level data from a government or industry database/survey": "Regional-level data from a government or industry database/survey",
+							"State-level data from a government or industry database/survey": "State-level data from a government or industry database/survey",
+							"National-level data from a government or industry database/survey": "National-level data from a government or industry database/survey"
+						}
+					},
+					"HowMuchOfTheDataWasFromDirectSamples": {
+						"CellType": "select",
+						"Options": {
+							"Over 90%": "Over 90%",
+							"Between 51% and 90%": "Between 51% and 90%",
+							"Between 21% and 50%": "Between 21% and 50%",
+							"Less than 20%": "Less than 20%",
+							"Unknown": "Unknown"
+						}
+					},
+					"Notes": {
+						"CellType": "number"
+					},
+					"EvidenceFiles": {
+						"CellType": "number"
+					},
+					"Score": {
+						"CellType": "formula"
+					}
+				}
+			}
+		},
+		{
+			"TableName": "Table_Input_DataQuality_Site142",
+			"MatrixType": "RowsToCols",
+			"NumberOfCols": 7,
+			"ColumnNames": {
+				"Input": "Input",
+				"WhenWasTheDataSourced": "When was the data sourced?",
+				"WhereIsTheDataSourcedFrom": "Where is the data sourced from?",
+				"HowMuchOfTheDataWasFromDirectSamples": "How much of the data was from direct samples?",
+				"Notes": "Notes",
+				"EvidenceFiles": "Evidence files",
+				"Score": "Score"
+			},
+			"Rows": {
+				"Row": {
+					"Input": {
+						"CellType": "text"
+					},
+					"WhenWasTheDataSourced": {
+						"CellType": "select",
+						"Options": {
+							"During this emissions calculation period": "During this emissions calculation period",
+							"Within 2 years of this emissions calculation period": "Within 2 years of this emissions calculation period",
+							"Within 3 years of this emissions calculation period": "Within 3 years of this emissions calculation period",
+							"Within 4 years of this emissions calculation period": "Within 4 years of this emissions calculation period",
+							"Unknown, or more than 4 years of this emissions calculation period": "Unknown, or more than 4 years of this emissions calculation period"
+						}
+					},
+					"WhereIsTheDataSourcedFrom": {
+						"CellType": "select",
+						"Options": {
+							"This location with spatial partitioning": "This location with spatial partitioning",
+							"This location without spatial partitioning": "This location without spatial partitioning",
+							"Regional-level data from a government or industry database/survey": "Regional-level data from a government or industry database/survey",
+							"State-level data from a government or industry database/survey": "State-level data from a government or industry database/survey",
+							"National-level data from a government or industry database/survey": "National-level data from a government or industry database/survey"
+						}
+					},
+					"HowMuchOfTheDataWasFromDirectSamples": {
+						"CellType": "select",
+						"Options": {
+							"Over 90%": "Over 90%",
+							"Between 51% and 90%": "Between 51% and 90%",
+							"Between 21% and 50%": "Between 21% and 50%",
+							"Less than 20%": "Less than 20%",
+							"Unknown": "Unknown"
+						}
+					},
+					"Notes": {
+						"CellType": "number"
+					},
+					"EvidenceFiles": {
+						"CellType": "number"
+					},
+					"Score": {
+						"CellType": "formula"
+					}
+				}
+			}
+		},
+		{
+			"TableName": "Table_Input_DataQuality_Site143",
+			"MatrixType": "RowsToCols",
+			"NumberOfCols": 7,
+			"ColumnNames": {
+				"Input": "Input",
+				"WhenWasTheDataSourced": "When was the data sourced?",
+				"WhereIsTheDataSourcedFrom": "Where is the data sourced from?",
+				"HowMuchOfTheDataWasFromDirectSamples": "How much of the data was from direct samples?",
+				"Notes": "Notes",
+				"EvidenceFiles": "Evidence files",
+				"Score": "Score"
+			},
+			"Rows": {
+				"Row": {
+					"Input": {
+						"CellType": "text"
+					},
+					"WhenWasTheDataSourced": {
+						"CellType": "select",
+						"Options": {
+							"During this emissions calculation period": "During this emissions calculation period",
+							"Within 2 years of this emissions calculation period": "Within 2 years of this emissions calculation period",
+							"Within 3 years of this emissions calculation period": "Within 3 years of this emissions calculation period",
+							"Within 4 years of this emissions calculation period": "Within 4 years of this emissions calculation period",
+							"Unknown, or more than 4 years of this emissions calculation period": "Unknown, or more than 4 years of this emissions calculation period"
+						}
+					},
+					"WhereIsTheDataSourcedFrom": {
+						"CellType": "select",
+						"Options": {
+							"This location with spatial partitioning": "This location with spatial partitioning",
+							"This location without spatial partitioning": "This location without spatial partitioning",
+							"Regional-level data from a government or industry database/survey": "Regional-level data from a government or industry database/survey",
+							"State-level data from a government or industry database/survey": "State-level data from a government or industry database/survey",
+							"National-level data from a government or industry database/survey": "National-level data from a government or industry database/survey"
+						}
+					},
+					"HowMuchOfTheDataWasFromDirectSamples": {
+						"CellType": "select",
+						"Options": {
+							"Over 90%": "Over 90%",
+							"Between 51% and 90%": "Between 51% and 90%",
+							"Between 21% and 50%": "Between 21% and 50%",
+							"Less than 20%": "Less than 20%",
+							"Unknown": "Unknown"
+						}
+					},
+					"Notes": {
+						"CellType": "number"
+					},
+					"EvidenceFiles": {
+						"CellType": "number"
+					},
+					"Score": {
+						"CellType": "formula"
+					}
+				}
+			}
+		},
+		{
+			"TableName": "Table_Input_DataQuality_Site143144",
+			"MatrixType": "RowsToCols",
+			"NumberOfCols": 7,
+			"ColumnNames": {
+				"Input": "Input",
+				"WhenWasTheDataSourced": "When was the data sourced?",
+				"WhereIsTheDataSourcedFrom": "Where is the data sourced from?",
+				"HowMuchOfTheDataWasFromDirectSamples": "How much of the data was from direct samples?",
+				"Notes": "Notes",
+				"EvidenceFiles": "Evidence files",
+				"Score": "Score"
+			},
+			"Rows": {
+				"Row": {
+					"Input": {
+						"CellType": "text"
+					},
+					"WhenWasTheDataSourced": {
+						"CellType": "select",
+						"Options": {
+							"During this emissions calculation period": "During this emissions calculation period",
+							"Within 2 years of this emissions calculation period": "Within 2 years of this emissions calculation period",
+							"Within 3 years of this emissions calculation period": "Within 3 years of this emissions calculation period",
+							"Within 4 years of this emissions calculation period": "Within 4 years of this emissions calculation period",
+							"Unknown, or more than 4 years of this emissions calculation period": "Unknown, or more than 4 years of this emissions calculation period"
+						}
+					},
+					"WhereIsTheDataSourcedFrom": {
+						"CellType": "select",
+						"Options": {
+							"This location with spatial partitioning": "This location with spatial partitioning",
+							"This location without spatial partitioning": "This location without spatial partitioning",
+							"Regional-level data from a government or industry database/survey": "Regional-level data from a government or industry database/survey",
+							"State-level data from a government or industry database/survey": "State-level data from a government or industry database/survey",
+							"National-level data from a government or industry database/survey": "National-level data from a government or industry database/survey"
+						}
+					},
+					"HowMuchOfTheDataWasFromDirectSamples": {
+						"CellType": "select",
+						"Options": {
+							"Over 90%": "Over 90%",
+							"Between 51% and 90%": "Between 51% and 90%",
+							"Between 21% and 50%": "Between 21% and 50%",
+							"Less than 20%": "Less than 20%",
+							"Unknown": "Unknown"
+						}
+					},
+					"Notes": {
+						"CellType": "number"
+					},
+					"EvidenceFiles": {
+						"CellType": "number"
+					},
+					"Score": {
+						"CellType": "formula"
 					}
 				}
 			}

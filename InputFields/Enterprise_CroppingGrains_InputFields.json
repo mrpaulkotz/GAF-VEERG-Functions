@@ -1,7 +1,7 @@
 {
 	"schemaVersion": 1,
 	"generatedFrom": "Enterprise_CroppingGrains_WIP_v01.xlsx",
-	"generatedAt": "2026-08-03T05:09:17Z",
+	"generatedAt": "2026-08-06T23:45:03Z",
 	"InputCells": [
 		{
 			"CellName": "X_Cell_Site_FarmName",
@@ -17,6 +17,11 @@
 			"CellName": "X_Cell_Site_StartDate",
 			"Label": "Emissions calculation period start date",
 			"CellType": "date"
+		},
+		{
+			"CellName": "X_Cell_Site_EndDate",
+			"Label": "Emissions calculation period end date",
+			"CellType": "formula"
 		},
 		{
 			"CellName": "X_Cell_Enterprise_ProductionTimeframeStart",
@@ -83,11 +88,6 @@
 			"CellName": "X_Cell_Site_Elevation",
 			"Label": "Elevation",
 			"CellType": "number"
-		},
-		{
-			"CellName": "X_Cell_Site_EndDate",
-			"Label": "Elevation",
-			"CellType": "date"
 		},
 		{
 			"CellName": "X_Cell_Site_AverageTemperature",
@@ -2102,6 +2102,48 @@
 							"tonnes": "tonnes",
 							"cubic metres m3": "cubic metres m3"
 						}
+					}
+				}
+			}
+		},
+		{
+			"TableName": "Table_Input_DataQuality",
+			"MatrixType": "RowsToCols",
+			"NumberOfCols": 7,
+			"ColumnNames": {
+				"Input": "Input",
+				"TemporalRepresentativeness": "Temporal representativeness",
+				"SpatialResolution": "Spatial resolution",
+				"SampleSize": "Sample size",
+				"Notes": "Notes",
+				"EvidenceFiles": "Evidence files",
+				"Score": "Score"
+			},
+			"Rows": {
+				"Row": {
+					"Input": {
+						"CellType": "text"
+					},
+					"TemporalRepresentativeness": {
+						"CellType": "select",
+						"Options": {}
+					},
+					"SpatialResolution": {
+						"CellType": "select",
+						"Options": {}
+					},
+					"SampleSize": {
+						"CellType": "select",
+						"Options": {}
+					},
+					"Notes": {
+						"CellType": "number"
+					},
+					"EvidenceFiles": {
+						"CellType": "number"
+					},
+					"Score": {
+						"CellType": "number"
 					}
 				}
 			}

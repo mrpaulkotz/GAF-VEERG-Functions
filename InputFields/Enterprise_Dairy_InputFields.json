@@ -1,7 +1,7 @@
 {
 	"schemaVersion": 1,
 	"generatedFrom": "Enterprise_Dairy_WIP_v01.xlsx",
-	"generatedAt": "2026-08-03T05:09:46Z",
+	"generatedAt": "2026-08-06T23:45:44Z",
 	"InputCells": [
 		{
 			"CellName": "X_Cell_Site_FarmName",
@@ -19,6 +19,11 @@
 			"CellType": "date"
 		},
 		{
+			"CellName": "X_Cell_Site_EndDate",
+			"Label": "Emissions calculation period end date",
+			"CellType": "formula"
+		},
+		{
 			"CellName": "X_Cell_Enterprise_ProductionTimeframeStart",
 			"Label": "Production timeframe start",
 			"CellType": "number"
@@ -26,6 +31,11 @@
 		{
 			"CellName": "X_Cell_Enterprise_ProductionTimeframeEnd",
 			"Label": "Production timeframe end",
+			"CellType": "number"
+		},
+		{
+			"CellName": "X_Cell_Enterprise_PercentIncomeFromGrain",
+			"Label": "",
 			"CellType": "number"
 		},
 		{
@@ -73,11 +83,6 @@
 			"CellName": "X_Cell_Site_Elevation",
 			"Label": "Elevation",
 			"CellType": "number"
-		},
-		{
-			"CellName": "X_Cell_Site_EndDate",
-			"Label": "Elevation",
-			"CellType": "date"
 		},
 		{
 			"CellName": "X_Cell_Site_AverageTemperature",
@@ -536,7 +541,7 @@
 		{
 			"CellName": "X_Cell_ManureSentOffsite_MassNitrogenManure_Method1",
 			"Label": "",
-			"CellType": "number"
+			"CellType": "formula"
 		},
 		{
 			"CellName": "X_Cell_ManureSentOffsite_MassNitrogenManure_Method2",
@@ -1195,10 +1200,10 @@
 			},
 			"Cols": {
 				"Column": {
-					"AverageNumberOfHeadBetween01Jan24And02Nov00": {
+					"AverageNumberOfHeadBetween01Jan24And31Dec24": {
 						"Row": 2,
 						"Col": 2,
-						"Label": "Average number of head between 01 Jan 24 and 02 Nov 00",
+						"Label": "Average number of head between 01 Jan 24 and 31 Dec 24",
 						"CellType": "number"
 					}
 				}
@@ -1278,16 +1283,16 @@
 			},
 			"Cols": {
 				"Column": {
-					"AverageDurationOfStayBetween01Jan24And02Nov00WeanedLivestock": {
+					"AverageDurationOfStayBetween01Jan24And31Dec24WeanedLivestock": {
 						"Row": 2,
 						"Col": 2,
-						"Label": "Average duration of stay between 01 Jan 24 and 02 Nov 00 weaned livestock",
+						"Label": "Average duration of stay between 01 Jan 24 and 31 Dec 24 weaned livestock",
 						"CellType": "formula"
 					},
-					"AverageDurationOfStayBetween01Jan24And02Nov00PreWeanedLivestock": {
+					"AverageDurationOfStayBetween01Jan24And31Dec24PreWeanedLivestock": {
 						"Row": 3,
 						"Col": 2,
-						"Label": "Average duration of stay between 01 Jan 24 and 02 Nov 00 pre-weaned livestock",
+						"Label": "Average duration of stay between 01 Jan 24 and 31 Dec 24 pre-weaned livestock",
 						"CellType": "formula"
 					}
 				}
@@ -1307,17 +1312,17 @@
 			},
 			"Cols": {
 				"Column": {
-					"AverageDurationOfStayBetween01Jan24And02Nov00WeanedLivestock": {
+					"AverageDurationOfStayBetween01Jan24And31Dec24WeanedLivestock": {
 						"Row": 2,
 						"Col": 2,
-						"Label": "Average duration of stay between 01 Jan 24 and 02 Nov 00 weaned livestock",
+						"Label": "Average duration of stay between 01 Jan 24 and 31 Dec 24 weaned livestock",
 						"CellType": "number",
 						"CanOverWriteFormula": true
 					},
-					"AverageDurationOfStayBetween01Jan24And02Nov00PreWeanedLivestock": {
+					"AverageDurationOfStayBetween01Jan24And31Dec24PreWeanedLivestock": {
 						"Row": 3,
 						"Col": 2,
-						"Label": "Average duration of stay between 01 Jan 24 and 02 Nov 00 pre-weaned livestock",
+						"Label": "Average duration of stay between 01 Jan 24 and 31 Dec 24 pre-weaned livestock",
 						"CellType": "number",
 						"CanOverWriteFormula": true
 					}
@@ -3126,6 +3131,48 @@
 							"tonnes": "tonnes",
 							"cubic metres m3": "cubic metres m3"
 						}
+					}
+				}
+			}
+		},
+		{
+			"TableName": "Table_Input_DataQuality",
+			"MatrixType": "RowsToCols",
+			"NumberOfCols": 7,
+			"ColumnNames": {
+				"Input": "Input",
+				"TemporalRepresentativeness": "Temporal representativeness",
+				"SpatialResolution": "Spatial resolution",
+				"SampleSize": "Sample size",
+				"Notes": "Notes",
+				"EvidenceFiles": "Evidence files",
+				"Score": "Score"
+			},
+			"Rows": {
+				"Row": {
+					"Input": {
+						"CellType": "text"
+					},
+					"TemporalRepresentativeness": {
+						"CellType": "select",
+						"Options": {}
+					},
+					"SpatialResolution": {
+						"CellType": "select",
+						"Options": {}
+					},
+					"SampleSize": {
+						"CellType": "select",
+						"Options": {}
+					},
+					"Notes": {
+						"CellType": "number"
+					},
+					"EvidenceFiles": {
+						"CellType": "number"
+					},
+					"Score": {
+						"CellType": "number"
 					}
 				}
 			}

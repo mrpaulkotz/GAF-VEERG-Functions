@@ -17,10 +17,9 @@
   "X_Cell_Crop_IrrigationMethod": "Sprinkler Irrigation",
   "X_Cell_Crop_AreaUnderCropping": 1000,
   "X_Cell_Crop_YieldPerHectare": 10,
-  "X_Cell_Crop_PercentResidueBaled": "10%",
+  "X_Cell_Crop_PercentResidueBaled": "11%",
   "X_Cell_Crop_AverageWeightPerBale": 60,
-  "X_Cell_Crop_NumberOfBales": 25000,
-  "X_Cell_Crop_PercentResidueGrazed": "1%",
+  "X_Cell_Crop_NumberOfBales": 27500,
   "X_Cell_Crop_PercentResidueBurned": "30%",
 
   "X_Cell_Pasture_PastureType": "Grass clover mixture",
