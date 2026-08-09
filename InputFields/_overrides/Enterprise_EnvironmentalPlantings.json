@@ -16,6 +16,9 @@
     "X_Cell_Planting_PlantingName":{
       "Hidden": true
     },
+    "X_Cell_Planting_PlantingDate":{
+      "Hidden": true
+    },
     "X_Cell_Fertiliser_AreaUnderCropping":{
       "DuplicateOf": "X_Cell_Planting_PlantingAreaInHectares",
       "Hidden": true
@@ -61,15 +64,11 @@
       "Items": [
         "X_Cell_Planting_Latitude",
         "X_Cell_Planting_Longitude",
-        "X_Cell_Planting_PlantingAreaInHectares",
-        "X_Cell_Planting_PlantingDate"
+        "X_Cell_Planting_PlantingAreaInHectares"
       ]
     }
   ],
   "FirstClassResults": {
-    "X_Result_Planting_CarbonCapturedPerHectare": {
-      "Label": "Carbon captured per hectare"
-    },
     "X_Result_Planting_CarbonCapturedTotalArea": {
       "Label": "Carbon captured total area"
     }

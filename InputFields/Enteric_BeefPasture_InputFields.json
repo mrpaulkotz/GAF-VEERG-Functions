@@ -1,7 +1,7 @@
 {
 	"schemaVersion": 1,
 	"generatedFrom": "3_2_Enteric_BeefPasture_WIP_v05.xlsx",
-	"generatedAt": "2026-08-06T23:42:36Z",
+	"generatedAt": "2026-08-07T06:23:17Z",
 	"InputCells": [
 		{
 			"CellName": "X_Cell_Site_FarmName",
@@ -12,11 +12,6 @@
 			"CellName": "X_Cell_Site_ReportingEntityName",
 			"Label": "Reporting entity name",
 			"CellType": "text"
-		},
-		{
-			"CellName": "X_Cell_Site_StartDate",
-			"Label": "Emissions calculation period start date",
-			"CellType": "date"
 		},
 		{
 			"CellName": "X_Cell_Site_State",

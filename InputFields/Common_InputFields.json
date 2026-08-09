@@ -1,68 +1,7 @@
 {
 	"schemaVersion": 1,
 	"generatedFrom": "Common_v03.xlsx",
-	"generatedAt": "2026-08-06T23:44:28Z",
+	"generatedAt": "2026-08-07T06:25:18Z",
 	"InputCells": [],
-	"InputTables": [
-		{
-			"TableName": "Table_Input_DataQuality",
-			"MatrixType": "RowsToCols",
-			"NumberOfCols": 7,
-			"ColumnNames": {
-				"Input": "Input",
-				"TemporalRepresentativeness": "Temporal representativeness",
-				"SpatialResolution": "Spatial resolution",
-				"SampleSize": "Sample size",
-				"Notes": "Notes",
-				"EvidenceFiles": "Evidence files",
-				"Score": "Score"
-			},
-			"Rows": {
-				"Row": {
-					"Input": {
-						"CellType": "text"
-					},
-					"TemporalRepresentativeness": {
-						"CellType": "select",
-						"Options": {
-							"TR5": "TR5",
-							"TR4": "TR4",
-							"TR3": "TR3",
-							"TR2": "TR2",
-							"TR1": "TR1"
-						}
-					},
-					"SpatialResolution": {
-						"CellType": "select",
-						"Options": {
-							"SR5": "SR5",
-							"SR4": "SR4",
-							"SR3": "SR3",
-							"SR2": "SR2",
-							"SR1": "SR1"
-						}
-					},
-					"SampleSize": {
-						"CellType": "select",
-						"Options": {
-							"SS5": "SS5",
-							"SS4": "SS4",
-							"SS3": "SS3",
-							"SS2": "SS2",
-							"SS1": "SS1"
-						}
-					},
-					"Notes": {
-						"CellType": "number"
-					},
-					"EvidenceFiles": {
-						"CellType": "number"
-					},
-					"Score": {
-						"CellType": "formula"
-					}
-				}
-			}
-		}
-	]
+	"InputTables": []
 }

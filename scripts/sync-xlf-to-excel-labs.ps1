@@ -541,6 +541,16 @@ function Sync-CommonSheetsAcrossWorkbooks {
         return
       }
 
+      # A plain substring Range.Replace() is unsafe here: table names can be prefixes
+      # of other table names in the same workbook (e.g. Table_SourceData_FracWET is a
+      # prefix of Table_SourceData_FracWETIrrigation), and Excel's built-in Find/Replace
+      # over formula cells has proven unreliable for this exact redirect - observed it
+      # silently no-op on a table whose name prefixes another table's name, in the same
+      # workbook and run where the non-prefixed table's redirect worked fine. Rewrite
+      # formula text directly via a word-boundary regex instead, so the match is always
+      # an exact whole-identifier match, never a partial/ambiguous one.
+      $tokenPattern = [regex]::new('(?<![A-Za-z0-9_])' + [regex]::Escape($OldTableName) + '(?![A-Za-z0-9_])')
+
       $maxAttempts = 8
       $attempt = 0
       while ($true) {
@@ -549,13 +559,21 @@ function Sync-CommonSheetsAcrossWorkbooks {
           $wsCount = [int] $Workbook.Worksheets.Count
           for ($wsIndex = 1; $wsIndex -le $wsCount; $wsIndex++) {
             $worksheet = $Workbook.Worksheets.Item($wsIndex)
-            try {
-              $formulaCells = $worksheet.UsedRange.SpecialCells(-4123)
-              if ($null -ne $formulaCells) {
-                [void] $formulaCells.Replace($OldTableName, $NewTableName, 2, 1, $false, $false, $false, $false)
+            $formulaCells = $null
+            try { $formulaCells = $worksheet.UsedRange.SpecialCells(-4123) } catch { $formulaCells = $null }
+            if ($null -eq $formulaCells) { continue }
+
+            foreach ($area in @($formulaCells.Areas)) {
+              foreach ($cell in @($area.Cells)) {
+                $f = $null
+                try { $f = [string] $cell.Formula2 } catch { $f = $null }
+                if ([string]::IsNullOrEmpty($f)) { continue }
+                # Cheap substring pre-filter before the regex match on every formula cell.
+                if ($f.IndexOf($OldTableName, [System.StringComparison]::Ordinal) -lt 0) { continue }
+                if (-not $tokenPattern.IsMatch($f)) { continue }
+                $newF = $tokenPattern.Replace($f, $NewTableName)
+                try { $cell.Formula2 = $newF } catch { try { $cell.Formula = $newF } catch { } }
               }
-            } catch {
-              # No formula cells on this worksheet.
             }
           }
 
@@ -582,8 +600,8 @@ function Sync-CommonSheetsAcrossWorkbooks {
 
             try {
               $refersTo = [string] $name.RefersTo
-              if (-not [string]::IsNullOrEmpty($refersTo) -and $refersTo.Contains($OldTableName)) {
-                $name.RefersTo = $refersTo.Replace($OldTableName, $NewTableName)
+              if (-not [string]::IsNullOrEmpty($refersTo) -and $tokenPattern.IsMatch($refersTo)) {
+                $name.RefersTo = $tokenPattern.Replace($refersTo, $NewTableName)
               }
             } catch {
               # Skip names that cannot be read or updated.
@@ -967,14 +985,44 @@ function Sync-CommonSheetsAcrossWorkbooks {
 
               $sourceTables = @($sourceSheet.ListObjects)
               $newTables = @($newSheet.ListObjects)
-              $tableCount = [Math]::Min($sourceTables.Count, $newTables.Count)
 
-              for ($i = 0; $i -lt $tableCount; $i++) {
-                $previousTableName = [string] $sourceTables[$i].DisplayName
-                $incomingTableName = [string] $newTables[$i].DisplayName
+              # Pair each source table with its copy in the freshly-pasted sheet by
+              # anchor cell (top-left Row/Column) rather than raw ListObjects collection
+              # index. .ListObjects enumeration order is not guaranteed to stay aligned
+              # between two separate sheets/workbooks, but $newSheet is a straight copy
+              # of $sourceSheet, so a table's anchor cell is guaranteed identical in
+              # both - matching on it is reliable even when the sheet holds many tables.
+              # An index-based mismatch here previously caused the WRONG old/new table
+              # names to be paired, so cell formulas referencing the table that fell out
+              # of alignment never got redirected before the old sheet was deleted, and
+              # collapsed to #REF!.
+              $newTablesByPosition = @{}
+              foreach ($nt in $newTables) {
+                try {
+                  $posKey = "{0},{1}" -f [int] $nt.Range.Row, [int] $nt.Range.Column
+                  $newTablesByPosition[$posKey] = $nt
+                } catch { }
+              }
+
+              $tablePairs = New-Object System.Collections.Generic.List[object]
+              foreach ($st in $sourceTables) {
+                $posKey = $null
+                try { $posKey = "{0},{1}" -f [int] $st.Range.Row, [int] $st.Range.Column } catch { $posKey = $null }
+                $nt = $null
+                if ($null -ne $posKey -and $newTablesByPosition.ContainsKey($posKey)) { $nt = $newTablesByPosition[$posKey] }
+                if ($null -eq $nt) {
+                  Write-Warning ("Could not match table '{0}' (sheet '{1}', workbook '{2}') to its copy by position; table reference sync skipped for this table." -f [string] $st.DisplayName, $sheetName, $targetWorkbookFile.Name)
+                  continue
+                }
+                $tablePairs.Add([pscustomobject]@{ Source = $st; New = $nt })
+              }
+
+              foreach ($pair in $tablePairs) {
+                $previousTableName = [string] $pair.Source.DisplayName
+                $incomingTableName = [string] $pair.New.DisplayName
 
                 if ([string]::IsNullOrWhiteSpace($previousTableName) -or [string]::IsNullOrWhiteSpace($incomingTableName)) {
-                  Write-Warning ("Skipping table reference sync for workbook '{0}', sheet '{1}', table index {2}: source name='{3}', target name='{4}'" -f $targetWorkbookFile.Name, $sheetName, $i, $previousTableName, $incomingTableName)
+                  Write-Warning ("Skipping table reference sync for workbook '{0}', sheet '{1}': source name='{2}', target name='{3}'" -f $targetWorkbookFile.Name, $sheetName, $previousTableName, $incomingTableName)
                   continue
                 }
 
@@ -1044,12 +1092,14 @@ function Sync-CommonSheetsAcrossWorkbooks {
 
               [void] $oldSheet.Delete()
 
-              # Rename tables back to canonical names.
-              for ($i = 0; $i -lt $tableCount; $i++) {
-                $canonicalTableName = [string] $sourceTables[$i].DisplayName
-                $currentTableName   = [string] $newTables[$i].DisplayName
+              # Rename tables back to canonical names, using the same position-matched
+              # pairs as above so this stays correct even when a table couldn't be
+              # matched (and was skipped rather than mis-paired).
+              foreach ($pair in $tablePairs) {
+                $canonicalTableName = [string] $pair.Source.DisplayName
+                $currentTableName   = [string] $pair.New.DisplayName
                 if ($currentTableName -ne $canonicalTableName) {
-                  $newTables[$i].DisplayName = $canonicalTableName
+                  $pair.New.DisplayName = $canonicalTableName
                 }
               }
             } else {

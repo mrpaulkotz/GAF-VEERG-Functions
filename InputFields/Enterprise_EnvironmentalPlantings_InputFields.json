@@ -1,7 +1,7 @@
 {
 	"schemaVersion": 1,
 	"generatedFrom": "Enterprise_EnvironmentalPlantings_WIP_v01.xlsx",
-	"generatedAt": "2026-08-06T23:46:00Z",
+	"generatedAt": "2026-08-07T06:26:37Z",
 	"InputCells": [
 		{
 			"CellName": "X_Cell_Planting_Latitude",
@@ -16,12 +16,14 @@
 		{
 			"CellName": "X_Cell_Planting_PlantingDate",
 			"Label": "Date planted",
-			"CellType": "date"
+			"CellType": "date",
+			"Hidden": true
 		},
 		{
 			"CellName": "X_Cell_Planting_PlantingName",
 			"Label": "Planting name",
-			"CellType": "text"
+			"CellType": "text",
+			"Hidden": true
 		},
 		{
 			"CellName": "X_Cell_Planting_PlantingAreaInHectares",
@@ -37,6 +39,11 @@
 			"CellName": "X_Cell_Site_EndDate",
 			"Label": "Emissions calculation period end date",
 			"CellType": "formula"
+		},
+		{
+			"CellName": "X_Cell_Planting_CarbonCapturedPerHectare",
+			"Label": "Carbon captured per hectare",
+			"CellType": "number"
 		},
 		{
 			"CellName": "X_Cell_Fuel_IsMetroLocation",
@@ -739,17 +746,12 @@
 				"Items": [
 					"X_Cell_Planting_Latitude",
 					"X_Cell_Planting_Longitude",
-					"X_Cell_Planting_PlantingAreaInHectares",
-					"X_Cell_Planting_PlantingDate",
-					"X_Cell_Planting_PlantingName"
+					"X_Cell_Planting_PlantingAreaInHectares"
 				]
 			}
 		]
 	],
 	"FirstClassResults": {
-		"X_Result_Planting_CarbonCapturedPerHectare": {
-			"Label": "Carbon captured per hectare"
-		},
 		"X_Result_Planting_CarbonCapturedTotalArea": {
 			"Label": "Carbon captured total area"
 		}
