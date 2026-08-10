@@ -1332,6 +1332,21 @@ function Update-ChapterNavMenus {
 
 Sync-CommonSheetsAcrossWorkbooks -Workbooks $propagationWorkbooks -DryRun:$DryRun
 
+# The sheet-copy above (like any Excel COM sheet-copy between two separately-
+# open workbooks) leaves a phantom xl/externalLinks/* artifact behind on every
+# target pointing back at the Common source - it carries no cached data and is
+# referenced by no cell formula or defined name (see
+# chat-memory/project-memory/phantom-external-links.txt). This is a recurring
+# byproduct of the .Copy() call itself, not something COM lets us prevent at
+# the source, so self-heal it here on every run rather than requiring a
+# separate manual `remove-phantom-external-links.ps1 -Commit` pass.
+if (-not $DryRun) {
+  $phantomLinkScript = Join-Path $PSScriptRoot 'remove-phantom-external-links.ps1'
+  $phantomLinkArgs = @{ RepoRoot = $repoRootPath; Commit = $true }
+  if (-not [string]::IsNullOrWhiteSpace($WorkbookPath)) { $phantomLinkArgs['WorkbookPath'] = $WorkbookPath }
+  & $phantomLinkScript @phantomLinkArgs
+}
+
 # Opt-in: regenerate the column-A navigation menu on every sheet of every
 # workbook, inferring each sheet's section from its tab name. Runs last so the
 # menu reflects the final sheet set (after common-sheet propagation above).

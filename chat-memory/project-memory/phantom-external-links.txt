@@ -45,12 +45,31 @@ exactly one phantom link, pointing at `Common_v03.xlsx`
 actual data and is genuinely unused). Confirmed safe to remove: zero cell
 formulas anywhere referenced `[1]`, and after removal both workbooks re-scan
 fully clean via `find-excel-errors.ps1` with the `[0]!` LAMBDA definitions
-completely untouched. Full-repo scan afterwards: 0 phantom links across all 27
-workbooks - these two were the only ones affected, not a systemic issue.
+completely untouched. Full-repo scan afterwards at the time: 0 phantom links
+across all 27 workbooks.
+
+## It's not a one-off - Sync-CommonSheetsAcrossWorkbooks RECREATES it every run
+The very next `npm run build` (or any `sync-xlf-to-excel-labs.ps1` run that
+propagates Common) brought it back on ALL 18 workbooks that got a
+Common-sheet copy that run, each with the exact same signature (position
+`[1]`, empty sheetDataSet, points at Common_v03.xlsx). This is a byproduct of
+the `$sourceSheet.Copy(...)` COM call itself - copying a sheet from one
+separately-open workbook into another appears to make Excel create this
+placeholder external-link bookkeeping EVERY time, regardless of whether
+anything on the copied sheet actually needs it. Not preventable at the source
+(same category as the sheet-scoped shadow-name duplication `.Copy()` also
+causes - see excel-com-errors.txt / build-enterprise-afe.txt - both are
+`.Copy()` side effects cleaned up after the fact rather than avoided).
+FIX: `sync-xlf-to-excel-labs.ps1` now calls this script itself
+(`-Commit`, scoped to the same `-WorkbookPath` if the outer run was scoped)
+immediately after `Sync-CommonSheetsAcrossWorkbooks`, so every build
+self-heals instead of needing a manual rerun. Verified: running the sync
+scoped to a single already-clean workbook recreated the phantom link during
+the Common-sheet-replace step AND the self-heal step removed it in the same
+run, confirmed via a follow-up `find-excel-errors.ps1` scan (CLEAN).
 
 Usage: `-WorkbookPath <file>` for one file, omit for all `Excel/*.xlsx` +
 `Excel/Enterprises/*.xlsx` (excludes `~$*`, `_expanded`, `_template`, `.bak`).
-Dry-run (report only) by default; `-Commit` to write. No npm script wired up
-yet (one-off/occasional-use tool, matches audit-names.ps1's own
-external-link report/removal, just for the workbook-part-level artifacts
-audit-names doesn't touch).
+Dry-run (report only) by default; `-Commit` to write. Wired into
+`sync-xlf-to-excel-labs.ps1` (self-heal, always `-Commit`, gated `-not $DryRun`);
+still runnable standalone for a one-off check/cleanup outside a full build.
