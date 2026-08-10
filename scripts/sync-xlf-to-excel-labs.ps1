@@ -284,10 +284,24 @@ $repoRootPath = (Resolve-Path $RepoRoot).Path
 # Exclude one-time backup snapshots (*.prename.bak.xlsx / *.prelink.bak.xlsx)
 # created by other scripts -- they must never be synced, re-published, or used
 # as propagation targets.
-$allWorkbooks = @(
+#
+# Enterprise TEMPLATES are included: they are hand-authored source content,
+# same as any chapter workbook, and should stay in sync with .xlf/Common like
+# everything else. The GENERATED enterprise output workbooks
+# (Enterprise_<Id>_WIP_v01.xlsx) are deliberately excluded - build-enterprise-
+# excel.ps1 always rebuilds them fresh from their template + module sheets, so
+# anything this script wrote directly to a generated output would just be
+# overwritten by the next enterprise build (the exact class of bug chased down
+# in Common_v03.xlsx's phantom external links).
+$chapterWorkbooks = @(
   Get-ChildItem -Path (Join-Path $repoRootPath 'Excel') -Filter '*.xlsx' -File |
     Where-Object { $_.Name -notlike '*.bak.xlsx' }
 )
+$enterpriseTemplates = @(
+  Get-ChildItem -Path (Join-Path $repoRootPath 'Excel\Enterprises') -Filter '*_Template_*.xlsx' -File -ErrorAction SilentlyContinue |
+    Where-Object { $_.Name -notlike '*.bak.xlsx' -and $_.Name -notlike '~$*' }
+)
+$allWorkbooks = @($chapterWorkbooks + $enterpriseTemplates)
 $workbooks = $allWorkbooks
 $propagationWorkbooks = $allWorkbooks
 if (-not [string]::IsNullOrWhiteSpace($WorkbookPath)) {
@@ -470,6 +484,33 @@ function Sync-CommonSheetsAcrossWorkbooks {
       return
     }
 
+    # Hard gate: refuse to propagate a Common source that itself carries an external-
+    # workbook reference. Sheets copied out of $sourceWorkbook bring along any name a
+    # formula on them depends on, so a single stray external link here (e.g. someone
+    # had an Enterprise workbook open while editing Common and Excel captured a
+    # cross-workbook reference by mistake) gets silently baked into EVERY module
+    # workbook on every build. Fail loudly instead, before touching any target.
+    $externalNameRegex = [regex]::new('\[[^\]]*\.xls[a-z]{0,2}\]', 'IgnoreCase')
+    $poisonedNames = New-Object System.Collections.Generic.List[string]
+    $srcNameCount = 0
+    try { if ($null -ne $sourceWorkbook.Names) { $srcNameCount = [int] $sourceWorkbook.Names.Count } } catch { $srcNameCount = 0 }
+    for ($srcNameIndex = 1; $srcNameIndex -le $srcNameCount; $srcNameIndex++) {
+      $srcName = $null
+      try { $srcName = $sourceWorkbook.Names.Item($srcNameIndex) } catch { continue }
+      if ($null -eq $srcName) { continue }
+      try {
+        $srcRefersTo = [string] $srcName.RefersTo
+        $srcHasFormula = $srcRefersTo.IndexOf('(') -ge 0
+        if (-not $srcHasFormula -and $externalNameRegex.IsMatch($srcRefersTo)) {
+          $poisonedNames.Add(("{0} -> {1}" -f [string] $srcName.Name, $srcRefersTo))
+        }
+      } catch { }
+    }
+    if ($poisonedNames.Count -gt 0) {
+      $fixHint = "npm run audit-names:commit -- -RemoveExternal -WorkbookPath .\Excel\{0}" -f $sourceWorkbookFile.Name
+      throw ("Refusing to propagate '{0}': it carries {1} defined name(s) with an external-workbook reference, which would get copied into every module workbook. Fix these in {0} first (e.g. {2}), then re-run the build.`n  {3}" -f $sourceWorkbookFile.Name, $poisonedNames.Count, $fixHint, ($poisonedNames -join "`n  "))
+    }
+
     $targetWorkbookFiles = @($Workbooks | Where-Object { $_.FullName -ne $sourceWorkbookFile.FullName })
     if ($targetWorkbookFiles.Count -eq 0) {
       Write-Host ("{0} is the only workbook found; no target workbooks for sheet propagation." -f $sourceWorkbookFile.Name)
@@ -522,34 +563,45 @@ function Sync-CommonSheetsAcrossWorkbooks {
     }
 
     function Replace-WorkbookTableReferences {
+      # $Redirects: a list of objects each with OldTableName/NewTableName, ALL applied
+      # in a single pass over the workbook - one COM read per formula area rather than
+      # one full-workbook scan per redirect. With ~21 tables on Constants - Common,
+      # that's the difference between 21 scans and 1.
       param(
         [Parameter(Mandatory = $true)]
         $Workbook,
 
         [Parameter(Mandatory = $true)]
-        [string] $OldTableName,
-
-        [Parameter(Mandatory = $true)]
-        [string] $NewTableName
+        [System.Collections.Generic.List[object]] $Redirects
       )
 
-      if ([string]::IsNullOrWhiteSpace($OldTableName) -or [string]::IsNullOrWhiteSpace($NewTableName)) {
-        return
+      $lookup = @{}
+      $oldNames = New-Object System.Collections.Generic.List[string]
+      foreach ($r in $Redirects) {
+        $old = [string] $r.OldTableName
+        $new = [string] $r.NewTableName
+        if ([string]::IsNullOrWhiteSpace($old) -or [string]::IsNullOrWhiteSpace($new)) { continue }
+        if ($old -eq $new) { continue }
+        if ($lookup.ContainsKey($old)) { continue }
+        $lookup[$old] = $new
+        $oldNames.Add($old)
       }
-
-      if ($OldTableName -eq $NewTableName) {
-        return
-      }
+      if ($oldNames.Count -eq 0) { return }
 
       # A plain substring Range.Replace() is unsafe here: table names can be prefixes
       # of other table names in the same workbook (e.g. Table_SourceData_FracWET is a
       # prefix of Table_SourceData_FracWETIrrigation), and Excel's built-in Find/Replace
       # over formula cells has proven unreliable for this exact redirect - observed it
       # silently no-op on a table whose name prefixes another table's name, in the same
-      # workbook and run where the non-prefixed table's redirect worked fine. Rewrite
-      # formula text directly via a word-boundary regex instead, so the match is always
-      # an exact whole-identifier match, never a partial/ambiguous one.
-      $tokenPattern = [regex]::new('(?<![A-Za-z0-9_])' + [regex]::Escape($OldTableName) + '(?![A-Za-z0-9_])')
+      # workbook and run where the non-prefixed table's redirect worked fine. Build ONE
+      # combined, word-boundary-anchored regex from every pending old name (longest
+      # first) and resolve all matches against the ORIGINAL text in a single pass, via
+      # a lookup MatchEvaluator - applying N separate Replace() calls in sequence would
+      # risk an earlier replacement's output (e.g. an old name plus a numeric suffix)
+      # accidentally satisfying a later rule's pattern.
+      $sortedOld = @($oldNames | Sort-Object -Property Length -Descending)
+      $combinedPattern = [regex]::new('(?<![A-Za-z0-9_])(' + (($sortedOld | ForEach-Object { [regex]::Escape($_) }) -join '|') + ')(?![A-Za-z0-9_])')
+      $evaluator = [System.Text.RegularExpressions.MatchEvaluator] { param($m) $lookup[$m.Value] }
 
       $maxAttempts = 8
       $attempt = 0
@@ -564,15 +616,37 @@ function Sync-CommonSheetsAcrossWorkbooks {
             if ($null -eq $formulaCells) { continue }
 
             foreach ($area in @($formulaCells.Areas)) {
-              foreach ($cell in @($area.Cells)) {
+              $areaRows = [int] $area.Rows.Count
+              $areaCols = [int] $area.Columns.Count
+
+              if ($areaRows -eq 1 -and $areaCols -eq 1) {
+                # A single-cell area returns Formula2 as a scalar, not an array.
                 $f = $null
-                try { $f = [string] $cell.Formula2 } catch { $f = $null }
-                if ([string]::IsNullOrEmpty($f)) { continue }
-                # Cheap substring pre-filter before the regex match on every formula cell.
-                if ($f.IndexOf($OldTableName, [System.StringComparison]::Ordinal) -lt 0) { continue }
-                if (-not $tokenPattern.IsMatch($f)) { continue }
-                $newF = $tokenPattern.Replace($f, $NewTableName)
-                try { $cell.Formula2 = $newF } catch { try { $cell.Formula = $newF } catch { } }
+                try { $f = [string] $area.Formula2 } catch { $f = $null }
+                if ([string]::IsNullOrEmpty($f) -or -not $combinedPattern.IsMatch($f)) { continue }
+                $newF = $combinedPattern.Replace($f, $evaluator)
+                try { $area.Formula2 = $newF } catch { try { $area.Formula = $newF } catch { } }
+                continue
+              }
+
+              # One COM round trip per area (not per cell, not per redirect) to read
+              # every formula in it as a 2D array, then do all matching/replacing in
+              # memory. Only cells that actually change get written back individually.
+              $formulas = $null
+              try { $formulas = $area.Formula2 } catch { $formulas = $null }
+              if ($null -eq $formulas) { continue }
+
+              $rLo = $formulas.GetLowerBound(0); $rHi = $formulas.GetUpperBound(0)
+              $cLo = $formulas.GetLowerBound(1); $cHi = $formulas.GetUpperBound(1)
+              for ($r = $rLo; $r -le $rHi; $r++) {
+                for ($c = $cLo; $c -le $cHi; $c++) {
+                  $f = [string] $formulas[$r, $c]
+                  if ([string]::IsNullOrEmpty($f) -or -not $combinedPattern.IsMatch($f)) { continue }
+                  $newF = $combinedPattern.Replace($f, $evaluator)
+                  $cellRow = $r - $rLo + 1
+                  $cellCol = $c - $cLo + 1
+                  try { $area.Cells.Item($cellRow, $cellCol).Formula2 = $newF } catch { try { $area.Cells.Item($cellRow, $cellCol).Formula = $newF } catch { } }
+                }
               }
             }
           }
@@ -600,8 +674,8 @@ function Sync-CommonSheetsAcrossWorkbooks {
 
             try {
               $refersTo = [string] $name.RefersTo
-              if (-not [string]::IsNullOrEmpty($refersTo) -and $tokenPattern.IsMatch($refersTo)) {
-                $name.RefersTo = $tokenPattern.Replace($refersTo, $NewTableName)
+              if (-not [string]::IsNullOrEmpty($refersTo) -and $combinedPattern.IsMatch($refersTo)) {
+                $name.RefersTo = $combinedPattern.Replace($refersTo, $evaluator)
               }
             } catch {
               # Skip names that cannot be read or updated.
@@ -1017,6 +1091,7 @@ function Sync-CommonSheetsAcrossWorkbooks {
                 $tablePairs.Add([pscustomobject]@{ Source = $st; New = $nt })
               }
 
+              $pendingRedirects = New-Object System.Collections.Generic.List[object]
               foreach ($pair in $tablePairs) {
                 $previousTableName = [string] $pair.Source.DisplayName
                 $incomingTableName = [string] $pair.New.DisplayName
@@ -1026,8 +1101,9 @@ function Sync-CommonSheetsAcrossWorkbooks {
                   continue
                 }
 
-                Replace-WorkbookTableReferences -Workbook $targetWorkbook -OldTableName $previousTableName -NewTableName $incomingTableName
+                $pendingRedirects.Add([pscustomobject]@{ OldTableName = $previousTableName; NewTableName = $incomingTableName })
               }
+              Replace-WorkbookTableReferences -Workbook $targetWorkbook -Redirects $pendingRedirects
 
               # When the original tab was renamed, Excel rewrote all cell formulas that
               # contained 'Constants - Common'! to use the new temporary name.  Redirect

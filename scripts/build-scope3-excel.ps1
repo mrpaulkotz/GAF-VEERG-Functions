@@ -886,6 +886,23 @@ try {
   }
   if ($refsRestored -gt 0) { Write-Host ("Restored {0} captured reference(s)." -f $refsRestored) }
 
+  # --- Single enumeration of target.Names, reused below by both the restore
+  #     pass and the upsert pass. Previously each did its own full COM
+  #     enumeration, and the restore pass additionally re-scanned the whole
+  #     collection PER CAPTURED NAME (O(capturedNames x totalNames) COM
+  #     property reads on a workbook that can carry thousands of names). Every
+  #     entry seen for a given Name string is kept (not just the first), so
+  #     the restore pass's workbook-scoped-vs-sheet-scoped filtering still has
+  #     every candidate to check, exactly as the original per-name re-scan did.
+  $targetNamesByString = @{}
+  foreach ($tn in $target.Names) {
+    $nm2 = $null
+    try { $nm2 = [string] $tn.Name } catch { continue }
+    if ([string]::IsNullOrWhiteSpace($nm2)) { continue }
+    if (-not $targetNamesByString.ContainsKey($nm2)) { $targetNamesByString[$nm2] = New-Object System.Collections.Generic.List[object] }
+    $targetNamesByString[$nm2].Add($tn)
+  }
+
   # --- Restore template names that broke when placeholders were deleted -------
   # Only repair a name that is currently broken (#REF! / empty) and whose
   # captured definition now targets sheets that are all present locally.
@@ -901,12 +918,13 @@ try {
     # (valid) duplicate and mask the broken workbook-scoped name, so match by
     # NameLocal having no '!' qualifier instead.
     $cur = $null
-    foreach ($tn in $target.Names) {
-      try {
-        if ([string] $tn.Name -ne $nm) { continue }
-        if (([string] $tn.NameLocal) -like '*!*') { continue }   # skip sheet-scoped duplicate
+    if ($targetNamesByString.ContainsKey($nm)) {
+      foreach ($tn in $targetNamesByString[$nm]) {
+        $ln = $null
+        try { $ln = [string] $tn.NameLocal } catch { continue }
+        if ($ln -like '*!*') { continue }   # skip sheet-scoped duplicate
         $cur = $tn; break
-      } catch { }
+      }
     }
     $curRt = ''
     if ($null -ne $cur) { try { $curRt = [string] $cur.RefersTo } catch { } }
@@ -916,7 +934,13 @@ try {
     # to the source file; the template's own local definition is authoritative.
     if ($null -eq $cur -or $curRt -match '#REF' -or $curRt -match '\[' -or [string]::IsNullOrWhiteSpace($curRt)) {
       try {
-        if ($null -ne $cur) { $cur.RefersTo = $rt } else { [void] $target.Names.Add($nm, $rt) }
+        if ($null -ne $cur) {
+          $cur.RefersTo = $rt
+        } else {
+          $added = $target.Names.Add($nm, $rt)
+          if (-not $targetNamesByString.ContainsKey($nm)) { $targetNamesByString[$nm] = New-Object System.Collections.Generic.List[object] }
+          $targetNamesByString[$nm].Add($added)
+        }
         $namesRestored++
       } catch { }
     }
@@ -924,10 +948,14 @@ try {
   if ($namesRestored -gt 0) { Write-Host ("Restored {0} broken template name definition(s)." -f $namesRestored) }
 
   # --- Upsert workbook-scoped defined names from the source workbooks --------
+  # $targetNameSet mirrors the original "last entry wins per Name string" of a
+  # fresh foreach ($tn in $target.Names) enumeration, sourced from the same
+  # pass above (now including anything the restore step just added).
   $namesAdded = 0; $namesFixed = 0; $namesFailed = 0; $namesSkippedNonLocal = 0
   $targetNameSet = @{}
-  foreach ($tn in $target.Names) {
-    try { $targetNameSet[[string] $tn.Name] = $tn } catch { }
+  foreach ($nm2 in $targetNamesByString.Keys) {
+    $list = $targetNamesByString[$nm2]
+    $targetNameSet[$nm2] = $list[$list.Count - 1]
   }
   foreach ($rp in $resolvedSources) {
     $srcWb = $openSources[$rp]

@@ -447,7 +447,12 @@
       "groups": ["Livestock"],
       "sheets": {
         "input": [
-          "Input - Farm Inputs",
+          "Input - Common farm inputs",
+          "Input - Processing inputs",
+          "Input - Crop pasture farm input",
+          "Input - Hort farm Inputs",
+          "Input - Livestock farm Inputs",
+          "Input - Aquaculture inputs",
           "Input - Beef cattle purchases",
           "Input - Dairy cattle purchases",
           "Input - Pig purchases",

@@ -77,7 +77,7 @@
       "id": "Scope3",
       "comment": "Scope 3 contains livestock purchase inputs that are not required here as there is already a livestock purchases module in Pasture Beef herd movement",
       "include": {
-        "input": ["Input - Beef cattle purchases","Input - Farm Inputs", "Input - Freight", "Input - Manure sent off-site"],
+        "input": ["Input - Beef cattle purchases","Input - Common farm inputs", "Input - Crop pasture farm input", "Input - Livestock farm Inputs", "Input - Freight", "Input - Manure sent off-site"],
         "calculation": ["15 Scope 3", "Calcs - Manure sent off-site"],
         "constants": ["Constants - Scope 3"]
       }
@@ -112,11 +112,12 @@
         "Input - Fertiliser": "Fertiliser",
         "Input - Fuel": "Fuel",
         "Input - Electricity": "Electricity",
-        "Input - Farm Inputs": "Farm Inputs",
+        "Input - Common farm inputs": "Common farm inputs",
+        "Input - Crop pasture farm input": "Crop pasture farm input",
+        "Input - Livestock farm Inputs": "Livestock farm Inputs",
         "Input - Freight": "Freight",
         "Input - Waste sent off-site": "Waste sent off-site",
         "Input - Manure sent off-site": "Manure sent off-site",
-        "3.2.1.1-2 Enteric Methane": "3.2.1.1-2 Enteric methane",
         "4.2.1.1-2 Methane": "4.2.1.1-2 Manure methane",
         "4.2.1.3-4 Soil direct N20": "4.2.1.3-4 Soil direct N2O",
         "4.2.1.5-6 Soil Atmos Dep": "4.2.1.5-6 Soil atm. deposition",
