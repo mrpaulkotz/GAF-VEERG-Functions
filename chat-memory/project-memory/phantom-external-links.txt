@@ -1,0 +1,56 @@
+# scripts/remove-phantom-external-links.ps1 (2026-08, new)
+
+XML/zip-only cleanup for orphaned `xl/externalLinks/*` package parts. These
+survive even after every formula/name that referenced them is gone: Excel's
+COM API has no way to remove them once created (`BreakLink` throws on a
+missing/renamed path; deleting the last name that referenced a workbook via
+`Name.Delete()` does not touch the external-link bookkeeping itself). They are
+also otherwise INVISIBLE - Excel's own Edit Links dialog and Name Manager stop
+surfacing a link once nothing references it, so the only way to find one is to
+read the package XML directly (exactly what `find-excel-errors.ps1`'s [link]
+category does, which is how these get noticed in the first place).
+
+## Detecting "phantom" vs live
+`xl/workbook.xml`'s `<externalReferences>` list gives each entry a 1-based
+POSITION - that position is the `[N]` index formulas/names use to reference
+it (`[1]Sheet!$A$1`, `'[2]Sheet'!$A$1`, etc.). An entry is phantom iff NO cell
+formula anywhere in the workbook and NO defined name's RefersTo contains that
+exact `[N]`. If some (not all) entries in a workbook are phantom, the
+remaining live ones are renumbered to close the gap and every formula/name
+using an old index is rewritten to the new one, via the same
+combined-regex-plus-lookup-MatchEvaluator technique used in
+sync-xlf-to-excel-labs.ps1's table-redirect fix (one pass, no risk of one
+rewrite's output satisfying another rewrite's pattern).
+
+## `[0]!` is NOT a real external-link index - do not touch it
+Excel Labs (AFE) LAMBDA definitions cross-reference sibling functions in the
+same module using a `[0]!ModuleName.FuncName(...)` prefix, e.g.
+`CommonLivestock_InputFunctions.AverageLiveweightEndOfMonth`'s body calls
+`[0]!CommonLivestock_InputFunctions.LivestockMovement_...(...)`. This is
+Excel's own internal "current workbook" self-reference convention for LAMBDA
+cross-calls, UNRELATED to `<externalReferences>` (position 0 does not exist -
+positions start at 1). It shows up inconsistently even within one formula
+(one call prefixed `[0]!`, the next plain, no prefix) and appears on
+functions that are ALREADY broken by unrelated `#REF!` errors elsewhere in
+their body - so it is decorative/an artifact of how these functions got
+synced in, not a real dependency. The detection regex is therefore
+`\[([1-9][0-9]*)\]` (never matches `[0]`), so `[0]!` usage is neither counted
+as a "usage" of a real link nor ever renumbered against.
+
+## Verified findings (2026-08 run)
+`10_SolidWaste_WIP_v02.xlsx` and `6_AgriculturalResidue_WIP_v04.xlsx` each had
+exactly one phantom link, pointing at `Common_v03.xlsx`
+(`xl/externalLinks/externalLink1.xml`, `<sheetDataSet>` with EMPTY
+`<sheetData sheetId="N"/>` elements - no cached rows, confirming it carries no
+actual data and is genuinely unused). Confirmed safe to remove: zero cell
+formulas anywhere referenced `[1]`, and after removal both workbooks re-scan
+fully clean via `find-excel-errors.ps1` with the `[0]!` LAMBDA definitions
+completely untouched. Full-repo scan afterwards: 0 phantom links across all 27
+workbooks - these two were the only ones affected, not a systemic issue.
+
+Usage: `-WorkbookPath <file>` for one file, omit for all `Excel/*.xlsx` +
+`Excel/Enterprises/*.xlsx` (excludes `~$*`, `_expanded`, `_template`, `.bak`).
+Dry-run (report only) by default; `-Commit` to write. No npm script wired up
+yet (one-off/occasional-use tool, matches audit-names.ps1's own
+external-link report/removal, just for the workbook-part-level artifacts
+audit-names doesn't touch).

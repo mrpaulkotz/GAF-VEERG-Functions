@@ -1,0 +1,97 @@
+# sync-xlf-to-excel-labs.ps1 - Sync-CommonSheetsAcrossWorkbooks (2026-08)
+
+Runs as part of `npm run build`. Picks the highest-versioned `Common*.xlsx` as
+canonical source, propagates its "Constants - Common"/"Home" sheets into every
+OTHER top-level `Excel/*.xlsx` (non-recursive discovery - see "Enterprise
+templates" below for the one addition to that set). For each target: renames
+the existing sheet aside, copies the source sheet in, reconciles table
+references, deletes the old sheet.
+
+## Table-reference redirect bug (position-based pairing was wrong)
+`Replace-WorkbookTableReferences` used to pair `$sourceTables[$i]` with
+`$newTables[$i]` by raw `.ListObjects` collection INDEX. Common's
+"Constants - Common" sheet carries 21 tables; `.ListObjects` enumeration order
+from a freshly-opened source workbook is not guaranteed to line up with the
+order in a freshly-pasted copy inside a different workbook. FIX: pair tables
+by ANCHOR CELL POSITION (`Range.Row`/`Range.Column`) instead - the pasted copy
+is a straight layout copy of the source sheet, so a table's top-left cell is
+guaranteed identical in both, unlike collection enumeration order.
+
+## Excel's native Range.Replace() silently no-ops on prefix collisions
+Even with correct table pairing, redirecting `Table_SourceData_FracWET` (old
+name) -> `Table_SourceData_FracWET37` (temp name Excel assigned to avoid a
+collision with the not-yet-deleted old sheet's copy) via
+`$formulaCells.Replace($old, $new, 2, 1, ...)` (LookAt=xlPart) SILENTLY FAILED
+to touch a formula on `6.3.1.1-2 Leaching and runoff` that referenced it -
+while the SAME call for `Table_SourceData_FracWETIrrigation` (a DIFFERENT
+table whose name happens to be PREFIXED by the first one) worked fine in the
+same run. Confirmed via a diagnostic pass that printed the formula after each
+per-table redirect: the FracWET redirect step made literally zero change.
+Root cause not fully pinned down (a genuine Excel Find/Replace ambiguity
+between a name and a longer name that starts with it, most likely), but the
+fix sidesteps it entirely: read each formula area as a 2D array via
+`.Formula2` (one COM call per area, not per cell), build ONE combined
+word-boundary regex from ALL pending redirects for the workbook
+(`(?<![A-Za-z0-9_])(Name1|Name2|...)(?![A-Za-z0-9_])`, longest names first)
+with a MatchEvaluator dictionary lookup, and write back only cells that
+changed. Applying every redirect's dictionary lookup against the ORIGINAL text
+in one regex pass (not N sequential `.Replace()` calls) also guarantees no
+redirect's OUTPUT (e.g. a numeric suffix) can accidentally satisfy a LATER
+redirect's pattern.
+
+## Performance: consolidate the redirect loop itself
+Originally called once per table pair (up to 21 times for Constants - Common),
+each call doing its own full-workbook scan. Collecting all pending redirects
+first and calling `Replace-WorkbookTableReferences` ONCE per sheet-replacement
+(single combined regex, single pass) measured ~3x faster on
+`6_AgriculturalResidue_WIP_v04.xlsx` (1:47 -> 34s for the sync).
+
+## Root-caused incident: Common_v03.xlsx poisoning every module workbook
+User reported `='C:\...\Enterprises\[Enterprise_CroppingGrains_Template_WIP_v01.xlsx]Input - Enterprise'!$E$12`-style named
+cells appearing in module workbooks (e.g. `X_Cell_Site_StartDate` in
+`10_SolidWaste_WIP_v02.xlsx`) after a build. Traced to `Common_v03.xlsx`
+ITSELF carrying 11 workbook-scoped defined names (`X_Cell_Site_StartDate`,
+`X_Cell_Enterprise_ProductionTimeframeStart/End`,
+`X_Cell_Enterprise_PercentIncomeFromGrain`, six `Result_*` names) with an
+external reference to `Enterprise_CroppingGrains_Template_WIP_v01.xlsx` -
+almost certainly created by accident (Common edited while the Enterprise
+template was also open in Excel). Because a formula on Common's own
+"Constants - Common"/"Home" sheet references these names, copying that sheet
+into a module workbook drags the (poisoned) name definition along with it -
+so EVERY `npm run build` re-poisoned every module workbook, even ones already
+cleaned up by hand.
+- Cleanup: `audit-names.ps1`'s existing `external` category already matches
+  this correctly once read via COM (`.RefersTo` resolves to the display path
+  with `[Book.xlsx]` in brackets - the raw XML `[1]` indexed form only shows
+  up if you read the package directly, which is a red herring, not a gap in
+  the regex). Ran `-RemoveExternal -Commit` against `Common_v03.xlsx` first,
+  then across all workbooks - removed all 11 from Common plus their
+  already-propagated copies from 23 already-infected module workbooks (253
+  names total across 24 workbooks).
+- PREVENTION (the actual fix, not just cleanup): `Sync-CommonSheetsAcrossWorkbooks`
+  now hard-fails BEFORE touching any target if the resolved Common source
+  workbook itself carries any non-formula name whose RefersTo matches
+  `\[[^\]]*\.xls[a-z]{0,2}\]` (same external-reference pattern as
+  audit-names.ps1) - lists every offending name + a ready-to-run fix command,
+  aborts the whole build. Verified: trips correctly against a poisoned Common,
+  and a real build afterwards (post-cleanup) completes with no external links
+  reappearing.
+
+## Enterprise TEMPLATE workbooks now included; generated OUTPUTS excluded
+`Excel/Enterprises/` was previously entirely outside this script's discovery
+(non-recursive `Excel/*.xlsx` scan). Templates (`*_Template_*.xlsx`) are
+hand-authored source content like any chapter workbook and should stay in
+sync with `.xlf`/Common the same way; the GENERATED enterprise output
+(`Enterprise_<Id>_WIP_v01.xlsx`, no `_Template` in the name) is deliberately
+still excluded, because `build-enterprise-excel.ps1` always rebuilds it fresh
+from template + modules on every real run - anything this script wrote
+directly to a generated output would just be overwritten by the next
+enterprise build (the exact same class of bug as the Common poisoning
+incident above, just self-inflicted instead of via Common). Discovery: add a
+SEPARATE `Get-ChildItem Excel\Enterprises -Filter *_Template_*.xlsx` list,
+concatenated onto the normal chapter-workbook list, rather than recursing
+(which would have picked up the generated outputs too). First real run:
+all 4 templates got `Common_InputFunctions`/`Common_SourceData` updated (they
+had never been through this pipeline before) and `Constants - Common`/`Home`
+replaced from Common_v03.xlsx; EnvironmentalPlantings' template has no sheet
+literally named `Home` so only got `Constants - Common` - expected, not a bug.

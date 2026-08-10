@@ -26,6 +26,25 @@ Categories:
           (dangling = plain ref, broken-fn = LAMBDA with internal #REF!) or is
           empty. Sheet vs workbook scope resolved via localSheetId → <sheets>.
 - [link]  external links from xl/externalLinks/_rels/*.rels targets.
+- [sum]   (added 2026-08) SUM(...) calls whose literal range argument is a
+          different size than the contiguous block of data actually in those
+          rows/columns — catches "rows added/removed but the SUM range wasn't
+          updated". Structured table refs and named ranges skipped (they
+          resize themselves). Text cells reading "N/A", "Not used", "Summed
+          above", "Enter value" count as valid data IF the other cells in the
+          same strip being checked are genuinely numeric — a text cell only
+          counts against a REFERENCE range: for a block sum, the strip itself;
+          for a single-row/column sum, the sum's own stated range on that same
+          line (a single-cell strip has nothing else to compare against).
+          Without this, a label column that happens to contain "N/A" mixed
+          with real text labels gets misread as numeric data and wrongly
+          pulled into the block (real bug hit on '4.6.1.1-2 Methane'!E222).
+          Document a deliberately-partial SUM by adding a no-op comment to the
+          formula: `=SUM(G128:G131)+N("Partial: reason")` — N() coerces the
+          text to 0 (result unaffected); the checker skips any formula whose
+          text matches `N("Partial...` (case-insensitive, any wording after
+          "Partial"). Advisory only, not part of -FailOnError. -SkipSumCheck
+          to omit it from a scan.
 
 Params: -RepoRoot, -WorkbookPath (single file), -Max (per-category cap, default
 50, 0=unlimited), -IncludeLibraryFunctions (also show broken-fn .xlf library

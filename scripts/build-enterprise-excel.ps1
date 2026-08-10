@@ -425,6 +425,20 @@ function Get-WorksheetNames {
   return $names
 }
 
+# Lightweight phase-timing: call Mark-Phase(name) at the end of each phase to
+# print how long it took (since the previous call, or since the timer was
+# started) and reset the clock for the next phase. Temporary profiling aid for
+# finding where a build actually spends its time - not gated behind any flag
+# since it is cheap and the output is easy to ignore.
+$script:__phaseTimer = $null
+function Mark-Phase {
+  param([string] $Name)
+  if ($null -eq $script:__phaseTimer) { $script:__phaseTimer = [System.Diagnostics.Stopwatch]::StartNew(); return }
+  $elapsed = $script:__phaseTimer.Elapsed
+  Write-Host ("  [timing] {0}: {1:mm\:ss\.fff}" -f $Name, $elapsed) -ForegroundColor DarkGray
+  $script:__phaseTimer.Restart()
+}
+
 # ---------------------------------------------------------------------------
 # Main
 # ---------------------------------------------------------------------------
@@ -632,6 +646,7 @@ Assert-FilesAccessible -RequiredReadPaths $preflightSources
 
 try {
   $excel = New-ExcelApp
+  Mark-Phase 'init'
 
   foreach ($hint in $moduleWorkbookHints) {
     $resolved = Resolve-SourceWorkbook -ExcelDir $excelDir -HintName $hint
@@ -680,6 +695,7 @@ try {
     }
   }
 
+  Mark-Phase 'open sources + resolve providers'
   # --- Validate every module sheet exists in its source workbook -------------
   # A sheet named in a module's include list (or the registry) that is absent
   # from the resolved source workbook would otherwise surface later as a raw
@@ -700,6 +716,7 @@ try {
       $missingSheets.Count, ($missingSheets -join "`n"), $configPathResolved)
   }
 
+  Mark-Phase 'validate module sheets'
   # --- Renamed-sheet bookkeeping ---------------------------------------------
   # A module may import a sheet under a distinct name (options renameSheets) so
   # it does not collide with another module's same-named sheet + duplicate
@@ -718,6 +735,7 @@ try {
     }
   }
 
+  Mark-Phase 'renamed-sheet bookkeeping'
   # --- Open target and determine what already exists --------------------------
   # A real build opens the freshly-seeded output read-write. A dry run has not
   # copied the template, so it previews against the template (read-only) when one
@@ -742,6 +760,7 @@ try {
     }
   }
 
+  Mark-Phase 'open target workbook'
   # --- Report / execute the plan ----------------------------------------------
   Write-Host ''
   Write-Host "Sheets to import:"
@@ -772,17 +791,25 @@ try {
     $imported.Add($entry.Name)
   }
 
+  Mark-Phase 'sheet copy (import plan)'
   # --- Upsert workbook-scoped defined names (functions + ranges) --------------
   $namesAdded = 0; $namesFixed = 0; $namesFailed = 0
   if (-not $DryRun) {
     # Snapshot existing target names.
+    $__targetNameCount = 0
+    try { $__targetNameCount = [int] $target.Names.Count } catch { }
+    $__snapshotSw = [System.Diagnostics.Stopwatch]::StartNew()
     $targetNameSet = @{}
     foreach ($tn in $target.Names) {
       try { $targetNameSet[[string] $tn.Name] = $tn } catch { }
     }
+    Write-Host ("  [timing]   snapshot target.Names: {0} name(s), {1:mm\:ss\.fff}" -f $__targetNameCount, $__snapshotSw.Elapsed) -ForegroundColor DarkGray
 
     foreach ($rp in $resolvedModuleWorkbooks) {
       $srcWb = $openSources[$rp]
+      $__srcNameCount = 0
+      try { $__srcNameCount = [int] $srcWb.Names.Count } catch { }
+      $__srcSw = [System.Diagnostics.Stopwatch]::StartNew()
       foreach ($sn in $srcWb.Names) {
         $nm = $null; $refers = $null; $localName = $null
         try { $nm = [string] $sn.Name; $refers = [string] $sn.RefersTo; $localName = [string] $sn.NameLocal } catch { continue }
@@ -819,9 +846,11 @@ try {
           $namesAdded++
         } catch { $namesFailed++ }
       }
+      Write-Host ("  [timing]   {0}: {1} name(s), {2:mm\:ss\.fff}" -f (Split-Path $rp -Leaf), $__srcNameCount, $__srcSw.Elapsed) -ForegroundColor DarkGray
     }
   }
 
+  Mark-Phase 'name upsert'
   # --- Reorder sheets --------------------------------------------------------
   # Tab order follows options.menu.labels (authoritative when present) so the
   # physical tab order matches the navigation menu. Sheets not listed in the
@@ -872,6 +901,7 @@ try {
     }
   }
 
+  Mark-Phase 'reorder sheets'
   # --- Localise externalised references (strip workbook prefix) --------------
   # Copying sheets one-at-a-time externalises cross-sheet refs to the form
   #   '<path>[book.xlsx]Sheet Name'!$A$1
@@ -884,6 +914,7 @@ try {
   $namesLocalised = 0
   $namesStillExternal = 0
   $refsRepointed = 0
+  $externalCellsBlanked = 0
   if (-not $DryRun) {
     # Convert stringified formulas ('=... stored as text) into real formulas
     # before localisation so any external refs they carry get rebound too.
@@ -929,7 +960,57 @@ try {
       return $m.Value
     }
 
+    # A quoted qualifier that STILL names another workbook after localisation:
+    # it contains a [book.xlsx] token or a '.xls*' path and is immediately
+    # followed by '!'. Used below to decide whether a cell must be blanked
+    # instead of having its localised/repointed formula written back.
+    $reExternalCell = [regex] "'[^']*(?:\[[^'\]]*\]|\.xls[A-Za-z]*)[^']*'!"
+
+    # Per-sheet repoint rules: a module whose input sheet was imported under a
+    # distinct name still holds formulas that reference the ORIGINAL sheet
+    # name; after localisation those bind to the master copy (different row
+    # layout) and misread. Built once, keyed by sheet name, so the merged pass
+    # below can look up the (possibly several) needle/replacement pairs for a
+    # sheet instead of re-scanning the workbook once per rename record.
+    $repointRulesBySheet = @{}
+    foreach ($rec in $renameRecords) {
+      $needle = "'" + $rec.Original + "'!"
+      $repl = "'" + $rec.NewName + "'!"
+      $moduleSheets = @($plan | Where-Object { $_.ProviderPath -eq $rec.ProviderPath } | ForEach-Object { $_.Name }) | Select-Object -Unique
+      foreach ($sName in $moduleSheets) {
+        if (-not $script:__localSheets.Contains($sName)) { continue }
+        if (-not $repointRulesBySheet.ContainsKey($sName)) { $repointRulesBySheet[$sName] = New-Object System.Collections.Generic.List[object] }
+        $repointRulesBySheet[$sName].Add([pscustomobject]@{ Needle = $needle; Repl = $repl })
+      }
+    }
+
+    # Localise -> repoint (renamed module sheets only) -> decide blank, all on
+    # the SAME in-memory formula text, then a single write per changed cell.
+    # Each stage logically depends on the previous one's output so they must
+    # run in this order, but that does not require re-reading the array from
+    # COM three times (once per stage, as three separate full-workbook passes
+    # previously did) - one read, one transform, one write per cell.
+    $applyTransform = {
+      param($v, $rules)
+      $new = $reExtRef.Replace($v, $eval)
+      $new = $reTableRef.Replace($new, $evalTable)
+      $wasLocalised = ($new -ne $v)
+
+      $afterRepoint = $new
+      if ($null -ne $rules) {
+        foreach ($rule in $rules) {
+          if ($afterRepoint.Contains($rule.Needle)) { $afterRepoint = $afterRepoint.Replace($rule.Needle, $rule.Repl) }
+        }
+      }
+      $wasRepointed = ($afterRepoint -ne $new)
+
+      [pscustomobject]@{ Value = $afterRepoint; Localised = $wasLocalised; Repointed = $wasRepointed; Blank = $reExternalCell.IsMatch($afterRepoint) }
+    }
+
     foreach ($ws in $target.Worksheets) {
+      $rules = $null
+      if ($repointRulesBySheet.ContainsKey([string] $ws.Name)) { $rules = $repointRulesBySheet[[string] $ws.Name] }
+
       $ur = $ws.UsedRange
       # Formula2 (dynamic-array aware) preserves spilling structured refs like
       # Table[Col]. Writing via the legacy .Formula would force an implicit
@@ -942,23 +1023,46 @@ try {
         for ($i = 1; $i -le $rows; $i++) {
           for ($j = 1; $j -le $cols; $j++) {
             $v = $f.GetValue($i, $j)
-            if ($v -isnot [string] -or -not $v.Contains('[')) { continue }
-            $new = $reExtRef.Replace($v, $eval)
-            $new = $reTableRef.Replace($new, $evalTable)
-            if ($new -ne $v) {
-              try { $ws.Cells.Item($rowBase + $i - 1, $colBase + $j - 1).Formula2 = $new; $refsLocalised++ } catch { }
+            if ($v -isnot [string]) { continue }
+            # A repoint needle ('OriginalSheetName'!) never requires a '[' - it is
+            # a plain LOCAL cross-sheet reference, not an externalised one - so the
+            # localise pass's bracket pre-filter alone would silently skip cells
+            # that only need repointing. Only pay for the extra per-rule scan on
+            # sheets that actually carry repoint rules.
+            $mayMatch = $v.Contains('[')
+            if (-not $mayMatch -and $null -ne $rules) {
+              foreach ($rule in $rules) { if ($v.Contains($rule.Needle)) { $mayMatch = $true; break } }
+            }
+            if (-not $mayMatch) { continue }
+            $r = & $applyTransform $v $rules
+            if ($r.Localised) { $refsLocalised++ }
+            if ($r.Repointed) { $refsRepointed++ }
+            if ($r.Blank) {
+              try { $ws.Cells.Item($rowBase + $i - 1, $colBase + $j - 1).ClearContents() | Out-Null; $externalCellsBlanked++ } catch { }
+            } elseif ($r.Value -ne $v) {
+              try { $ws.Cells.Item($rowBase + $i - 1, $colBase + $j - 1).Formula2 = $r.Value } catch { }
             }
           }
         }
-      } elseif ($f -is [string] -and $f.Contains('[')) {
-        $new = $reExtRef.Replace($f, $eval)
-        $new = $reTableRef.Replace($new, $evalTable)
-        if ($new -ne $f) {
-          try { $ws.Cells.Item($rowBase, $colBase).Formula2 = $new; $refsLocalised++ } catch { }
+      } elseif ($f -is [string]) {
+        $mayMatch = $f.Contains('[')
+        if (-not $mayMatch -and $null -ne $rules) {
+          foreach ($rule in $rules) { if ($f.Contains($rule.Needle)) { $mayMatch = $true; break } }
+        }
+        if (-not $mayMatch) { continue }
+        $r = & $applyTransform $f $rules
+        if ($r.Localised) { $refsLocalised++ }
+        if ($r.Repointed) { $refsRepointed++ }
+        if ($r.Blank) {
+          try { $ws.Cells.Item($rowBase, $colBase).ClearContents() | Out-Null; $externalCellsBlanked++ } catch { }
+        } elseif ($r.Value -ne $f) {
+          try { $ws.Cells.Item($rowBase, $colBase).Formula2 = $r.Value } catch { }
         }
       }
     }
     if ($refsLocalised -gt 0) { Write-Host ("Localised {0} externalised reference cell(s)." -f $refsLocalised) }
+    if ($refsRepointed -gt 0) { Write-Host ("Repointed {0} reference(s) to renamed sheet copies." -f $refsRepointed) }
+    if ($externalCellsBlanked -gt 0) { Write-Host ("Blanked {0} cell(s) referencing absent external table(s)/sheet(s)." -f $externalCellsBlanked) }
 
     # --- Localise externalised defined-name RefersTo ------------------------
     # Copying sheets one-at-a-time also externalises the sheet-scoped names that
@@ -984,44 +1088,6 @@ try {
     }
     if ($namesLocalised -gt 0) { Write-Host ("Localised {0} externalised defined-name(s)." -f $namesLocalised) }
     if ($namesStillExternal -gt 0) { Write-Host ("Defined names still external (target sheet absent): {0}" -f $namesStillExternal) }
-
-    # --- Repoint refs on renamed-module sheets to the renamed copy -----------
-    # A module whose input sheet was imported under a distinct name still holds
-    # formulas that reference the ORIGINAL sheet name. After the localise pass
-    # those bind to the master copy (different row layout) and misread. Rebind
-    # every '<Original>'! reference on that module's own sheets to '<NewName>'!.
-    foreach ($rec in $renameRecords) {
-      $needle = "'" + $rec.Original + "'!"
-      $repl = "'" + $rec.NewName + "'!"
-      $moduleSheets = @($plan | Where-Object { $_.ProviderPath -eq $rec.ProviderPath } | ForEach-Object { $_.Name }) | Select-Object -Unique
-      foreach ($sName in $moduleSheets) {
-        if (-not $script:__localSheets.Contains($sName)) { continue }
-        $ws = $target.Worksheets.Item($sName)
-        $ur = $ws.UsedRange
-        $f = $ur.Formula2
-        $rowBase = [int] $ur.Row
-        $colBase = [int] $ur.Column
-        if ($f -is [System.Array]) {
-          $rows = $f.GetLength(0); $cols = $f.GetLength(1)
-          for ($i = 1; $i -le $rows; $i++) {
-            for ($j = 1; $j -le $cols; $j++) {
-              $v = $f.GetValue($i, $j)
-              if ($v -isnot [string] -or -not $v.Contains($needle)) { continue }
-              $new = $v.Replace($needle, $repl)
-              if ($new -ne $v) {
-                try { $ws.Cells.Item($rowBase + $i - 1, $colBase + $j - 1).Formula2 = $new; $refsRepointed++ } catch { }
-              }
-            }
-          }
-        } elseif ($f -is [string] -and $f.Contains($needle)) {
-          $new = $f.Replace($needle, $repl)
-          if ($new -ne $f) {
-            try { $ws.Cells.Item($rowBase, $colBase).Formula2 = $new; $refsRepointed++ } catch { }
-          }
-        }
-      }
-    }
-    if ($refsRepointed -gt 0) { Write-Host ("Repointed {0} reference(s) to renamed sheet copies." -f $refsRepointed) }
   }
 
   # Redundant sheet-scoped defined names are pruned AFTER save, directly from
@@ -1030,6 +1096,7 @@ try {
   # recalculating for tens of minutes. $namesDeduped is populated post-save.
   $namesDeduped = 0
 
+  Mark-Phase 'localise/repoint/blank references'
   # --- Regenerate the column-A navigation menu on every sheet ----------------
   # Rebuilt from the final sheet set so it always matches the assembled
   # enterprise (links, labels, groups). Runs after reorder so tab order (used
@@ -1043,43 +1110,7 @@ try {
     if ($menuSheetsUpdated -gt 0) { Write-Host ("Regenerated navigation menu on {0} sheet(s)." -f $menuSheetsUpdated) }
   }
 
-  # --- Blank cells that reference tables/sheets absent from the enterprise ----
-  # After localisation, any cell formula still carrying an external workbook
-  # qualifier ('<path>[book.xlsx]Sheet'!.. or '<path>book.xlsx'!Table[Col])
-  # points at a table/sheet that was NOT imported (e.g. Table_Input_Livestock-
-  # Purchases_Dairy on the Pasture Beef enterprise). BreakLink below would bake
-  # the SOURCE workbook's cached value into those cells; the enterprise expects
-  # them blank, so clear them first (leaving nothing for BreakLink to freeze).
-  $externalCellsBlanked = 0
-  if (-not $DryRun) {
-    # A quoted qualifier that still names another workbook: it contains a
-    # [book.xlsx] token or a '.xls*' path and is immediately followed by '!'.
-    $reExternalCell = [regex] "'[^']*(?:\[[^'\]]*\]|\.xls[A-Za-z]*)[^']*'!"
-    foreach ($ws in $target.Worksheets) {
-      $ur = $ws.UsedRange
-      $f = $ur.Formula2
-      $rowBase = [int] $ur.Row
-      $colBase = [int] $ur.Column
-      if ($f -is [System.Array]) {
-        $rows = $f.GetLength(0); $cols = $f.GetLength(1)
-        for ($i = 1; $i -le $rows; $i++) {
-          for ($j = 1; $j -le $cols; $j++) {
-            $v = $f.GetValue($i, $j)
-            if ($v -isnot [string] -or -not $v.Contains('[')) { continue }
-            if ($reExternalCell.IsMatch($v)) {
-              try { $ws.Cells.Item($rowBase + $i - 1, $colBase + $j - 1).ClearContents() | Out-Null; $externalCellsBlanked++ } catch { }
-            }
-          }
-        }
-      } elseif ($f -is [string] -and $f.Contains('[')) {
-        if ($reExternalCell.IsMatch($f)) {
-          try { $ws.Cells.Item($rowBase, $colBase).ClearContents() | Out-Null; $externalCellsBlanked++ } catch { }
-        }
-      }
-    }
-    if ($externalCellsBlanked -gt 0) { Write-Host ("Blanked {0} cell(s) referencing absent external table(s)/sheet(s)." -f $externalCellsBlanked) }
-  }
-
+  Mark-Phase 'nav menu regen'
   # --- Break any leftover external links (make workbook self-contained) -------
   # Every resolvable cross-sheet reference was localised/repointed above, so any
   # link source still registered is either a phantom entry (link table row with
@@ -1101,6 +1132,7 @@ try {
     if ($linksBroken -gt 0) { Write-Host ("Broke {0} leftover external link source(s)." -f $linksBroken) }
   }
 
+  Mark-Phase 'break external links'
   # --- Detect leftover external links ----------------------------------------
   $externalLinks = @()
   try {
@@ -1108,6 +1140,7 @@ try {
     if ($null -ne $links) { $externalLinks = @($links) }
   } catch { }
 
+  Mark-Phase 'detect external links'
   # --- Save & close -----------------------------------------------------------
   if (-not $DryRun) {
     $target.Save()
@@ -1119,6 +1152,7 @@ try {
   [System.Runtime.InteropServices.Marshal]::ReleaseComObject($excel) | Out-Null
   $excel = $null
 
+  Mark-Phase 'save & close'
   # --- Prune redundant sheet-scoped defined names (post-save, via XML) --------
   if (-not $DryRun) {
     $dedup = Remove-RedundantSheetScopedNames -TargetPath $OutputPath -AuthoritativeNames $templateNameSet
@@ -1128,6 +1162,7 @@ try {
     }
   }
 
+  Mark-Phase 'prune shadow names (XML)'
   # --- Merge Excel Labs modules into the saved workbook -----------------------
   $mergedModules = [pscustomobject]@{ Added = @(); Updated = @() }
   $republishResult = $null
@@ -1149,6 +1184,7 @@ try {
     foreach ($mp in ($afeModulePaths | Select-Object -Unique | Sort-Object)) { Write-Host ("  {0}" -f $mp) }
   }
 
+  Mark-Phase 'AFE module merge'
   # --- Strip phantom external-workbook links (post-save, via XML) -------------
   # One-sheet-at-a-time copy leaves dead 'xlPathMissing' links to other modules'
   # sheets, held only by orphan '[N]' (N>=1) defined names. COM BreakLink cannot
@@ -1167,12 +1203,14 @@ try {
     }
   }
 
+  Mark-Phase 'strip phantom links (XML)'
   # --- Normalise the view zoom of every sheet to 100% -------------------------
   if (-not $DryRun) {
     $zoomChanged = Set-WorkbookZoom -Path $OutputPath -Zoom 100
     if ($zoomChanged -gt 0) { Write-Host ("Set zoom to 100% on {0} sheet(s)." -f $zoomChanged) }
   }
 
+  Mark-Phase 'zoom normalisation'
   # --- Summary ----------------------------------------------------------------
   Write-Host ''
   Write-Host "===================== Summary ====================="

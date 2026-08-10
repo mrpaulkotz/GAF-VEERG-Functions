@@ -1,0 +1,82 @@
+# build-enterprise-excel.ps1 performance investigation (2026-08)
+
+Baseline (PastureBeef, ~degraded environment): 16:16. After the fixes below,
+in a CLEAN environment (no orphaned Excel processes - see excel-com-errors.txt,
+this matters MORE than any code fix found here): ~12-13 min.
+
+## Phase-timing instrumentation (kept, permanent)
+Added `Mark-Phase 'name'` calls (a tiny script-scoped Stopwatch that prints
+elapsed-since-last-call and restarts) at every major phase boundary: open
+sources, validate, rename bookkeeping, open target, sheet copy, name upsert
+(with a per-source-workbook sub-breakdown + a `target.Names.Count` +
+snapshot-loop timing line), reorder, localise/repoint/blank, nav menu, break
+links, save, prune shadow names, AFE merge, strip phantom links, zoom. Cheap,
+always-on, `[timing]` prefix in DarkGray - this is how every finding below was
+actually found rather than guessed. Use this FIRST on any future "build X is
+slow" complaint instead of re-deriving where the time goes from scratch.
+
+## Consolidated 3 redundant full-workbook formula passes into 1
+"Localise externalised references", "repoint refs on renamed-module sheets"
+and "blank cells referencing absent external tables" were three SEPARATE
+`foreach ($ws in $target.Worksheets) { $ur.Formula2; ...; write back }` passes
+- each already batch-reading via `.Formula2` (good) but still re-reading the
+same worksheets 2-3 times. They have a real dependency order (each stage's
+output feeds the next), so merged into ONE pass: read once, apply
+localise-regex then (if the sheet has a rename record) repoint-substring then
+blank-check to the SAME in-memory string, write back once (either the final
+formula or a ClearContents). Counts (`refsLocalised`/`refsRepointed`/
+`externalCellsBlanked`) still increment independently per stage to match the
+original reporting semantics, even though only one write happens.
+- BUG CAUGHT AND FIXED during this: the merged loop's cheap pre-filter
+  (`$v.Contains('[')`, inherited from the localise stage) silently skipped
+  cells that only needed REPOINTING, because a repoint needle
+  (`'OriginalSheetName'!`) is a plain LOCAL reference and never contains `[`.
+  Symptom: `Repointed 9` vs the correct `Repointed 11` on PastureBeef, with
+  every OTHER count identical between runs - a small, easy-to-miss diff that
+  only showed up because the summary counts were compared line-by-line
+  against a known-good baseline run. Fix: widen the pre-filter to also scan
+  the sheet's repoint rules (if any) before skipping a cell. General lesson:
+  when merging N passes' filter conditions into one, the union of ALL their
+  triggers is needed, not just the first stage's.
+- Net effect on THIS phase specifically was noise-level in total-time
+  comparisons (16:16 baseline vs 16:13 vs 17:21 for three otherwise-identical
+  runs) - the phase itself just isn't a big enough fraction of the total for
+  the consolidation to show up over run-to-run variance. Kept anyway: fewer
+  COM round-trips is strictly better hygiene, and it was needed to unblock
+  finding the REAL bottlenecks below via phase timing.
+
+## The real bottlenecks (clean-environment, PastureBeef, 42 sheets imported)
+In descending order: sheet copy (4:28, inherent per-sheet COM `.Copy()`, no
+batch equivalent found), localise/repoint/blank (3:35), nav menu (2:04),
+name upsert (1:27, of which "snapshot target.Names" alone is ~1:00-1:39 for
+its 43,395 entries at that point in the build - see below), AFE merge (0:34),
+prune shadow names via XML (0:39). Everything else under a few seconds.
+
+## nav-menu batch-array-write attempt: tried, reverted (see excel-com-errors.txt)
+Batching nav-menu.ps1's ~2500 per-cell HYPERLINK formula writes (50 sheets x
+~50 rows) into one `$range.Formula2 = $object2DArray` call per sheet worked in
+isolation and against the FINISHED file, but threw
+`Unable to cast object of type 'System.Object[,]' to type 'System.String'`
+against the actual live-build workbook state (~43,395 names, before post-save
+shadow-name pruning). Reverted via `git checkout -- scripts/nav-menu.ps1` -
+the file is back to its original per-cell-write form, verified correct.
+
+## The one big lever NOT taken: prune-then-reopen
+Both "name upsert" (specifically its `snapshot target.Names` sub-step) and
+the nav-menu array-write failure trace back to the SAME root condition: the
+target workbook still carries ~43k defined names (mostly sheet-scoped shadow
+copies from the sheet-copy step) at the point these phases run, because
+shadow-name pruning is deliberately a POST-SAVE, XML-only step
+(`Remove-RedundantSheetScopedNames` - see excel-com-errors.txt entry #22 on
+why it can't run via COM pre-save: 40+ min pegged, never finished). The
+un-taken structural fix: save once right after the sheet-copy step, prune
+shadow names on that intermediate save via the existing fast XML method, then
+REOPEN the (now ~655-name) file via COM to do name-upsert/localise/nav-menu
+against a small collection instead of a bloated one. Plausible payoff: BOTH
+remaining slow phases AND the array-write COM limitation might resolve
+together, since the array-write failure was specifically NOT reproducible
+against a small/already-pruned file. Not implemented - bigger, riskier change
+to a script with a lot of hard-won ordering-sensitive logic; explicitly
+deferred by user request ("try the smaller intervention first" -> nav-menu
+fix didn't pan out -> "we'll leave it there"). Worth revisiting if
+build-enterprise speed becomes a priority again.
