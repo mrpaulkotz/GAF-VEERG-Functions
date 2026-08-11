@@ -208,18 +208,38 @@ function Get-SheetMap {
 }
 
 # ---------------------------------------------------------------------------
+# Whether the workbook is flagged for a full recalc the next time it's opened
+# in Excel (xl/workbook.xml's <calcPr fullCalcOnLoad="1">). Excel sets this
+# after structural edits it isn't sure the calc chain / cached values still
+# cover (sheet copy/delete, name changes, etc.) - when set, EVERY cached cell
+# value (t="e" included) is provisional and gets silently overwritten by a
+# real recalculation on next open, so a cached #REF! here is not evidence of
+# an actual error, just a stale snapshot from before the flag was set.
+# ---------------------------------------------------------------------------
+function Get-FullCalcOnLoad {
+  param($Zip)
+  $wbText = Read-ZipEntryText -Zip $Zip -EntryName 'xl/workbook.xml'
+  if ($null -eq $wbText) { return $false }
+  return [regex]::IsMatch($wbText, '<calcPr\b[^>]*\bfullCalcOnLoad="1"')
+}
+
+# ---------------------------------------------------------------------------
 # Cell errors. Two kinds are reported:
 #   * cached error   - the cell's stored value is an Excel error (t="e"), i.e. it
-#                      currently EVALUATES to an error.
+#                      currently EVALUATES to an error. Skipped when the
+#                      workbook is flagged fullCalcOnLoad="1" - see
+#                      Get-FullCalcOnLoad - since the cached value is known
+#                      stale pending a recalc Excel will do automatically on
+#                      next open, not a real error.
 #   * formula error  - the cell's stored <f> formula TEXT contains an error token
 #                      (e.g. a #REF! left in the arguments) even though the cell
 #                      currently evaluates to a valid value because a function
 #                      swallowed the bad reference. A #REF! baked into a formula
 #                      is always a real problem, so it is flagged regardless of
-#                      the cached result.
+#                      the cached result or fullCalcOnLoad.
 # ---------------------------------------------------------------------------
 function Get-CellErrors {
-  param($Zip, [array] $SheetMap)
+  param($Zip, [array] $SheetMap, [switch] $FullCalcOnLoad)
   $errors = @()
   foreach ($sheet in $SheetMap) {
     if ([string]::IsNullOrEmpty($sheet.Part)) { continue }
@@ -243,7 +263,9 @@ function Get-CellErrors {
       $formulaText = if ($null -ne $fNode) { $fNode.InnerText } else { '' }
       $formulaMatch = $script:ErrorRegex.Match($formulaText)
 
-      if ($isCachedError) {
+      if ($isCachedError -and $FullCalcOnLoad) {
+        continue   # stale cache pending Excel's own recalc-on-load - not a real error
+      } elseif ($isCachedError) {
         # Currently evaluates to an error.
         $val = if ($null -ne $vNode) { $vNode.InnerText } else { '#(error)' }
       } elseif ($formulaMatch.Success) {
@@ -675,7 +697,8 @@ foreach ($path in $workbooks) {
     $zip = [System.IO.Compression.ZipFile]::Open($path, [System.IO.Compression.ZipArchiveMode]::Read)
     try {
       $sheetMap   = @(Get-SheetMap -Zip $zip)
-      $cellErrors = @(Get-CellErrors  -Zip $zip -SheetMap $sheetMap)
+      $fullCalcOnLoad = Get-FullCalcOnLoad -Zip $zip
+      $cellErrors = @(Get-CellErrors  -Zip $zip -SheetMap $sheetMap -FullCalcOnLoad:$fullCalcOnLoad)
       $nameErrors = @(Get-NameErrors  -Zip $zip -SheetMap $sheetMap -IncludeLibraryFunctions:$IncludeLibraryFunctions)
       $extLinks   = @(Get-ExternalLinks -Zip $zip)
       if (-not $SkipSumCheck) {

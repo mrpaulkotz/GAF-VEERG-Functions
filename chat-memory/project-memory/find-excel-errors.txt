@@ -46,6 +46,26 @@ Categories:
           "Partial"). Advisory only, not part of -FailOnError. -SkipSumCheck
           to omit it from a scan.
 
+- [cell] fullCalcOnLoad guard (added 2026-08): cached-error (t="e") cells are
+          SKIPPED entirely when xl/workbook.xml's <calcPr fullCalcOnLoad="1">
+          is set — that flag means Excel does a full recalc the moment the
+          file is opened, so every cached value (errors included) is a stale
+          snapshot from before whatever change set the flag, not a real
+          error. User reported 21 #REF! cell errors in
+          13_Scope3_WIP_v14.xlsx (X_Cell_Site_* names, Table_SourceData_*
+          lookups) that showed no error when actually opened in Excel — this
+          was the ONLY workbook in the repo with fullCalcOnLoad="1" set,
+          confirming the cache-vs-flag mismatch was the whole story, not a
+          real bug in those formulas. Get-FullCalcOnLoad reads the flag once
+          per workbook; Get-CellErrors takes -FullCalcOnLoad and `continue`s
+          past any t="e" cell when set. Formula-embedded error tokens (the
+          "#REF! (in formula)" form) are UNCHANGED — those are real regardless
+          of calc state, since a literal #REF! baked into formula text doesn't
+          get fixed by a recalc. Verified: full-repo rescan after the fix
+          dropped 13_Scope3_WIP_v14.xlsx to CLEAN while the two Enterprise
+          workbooks with genuine, unrelated cell errors (neither has
+          fullCalcOnLoad set) were untouched by the change.
+
 Params: -RepoRoot, -WorkbookPath (single file), -Max (per-category cap, default
 50, 0=unlimited), -IncludeLibraryFunctions (also show broken-fn .xlf library
 LAMBDAs; HIDDEN by default as known noise), -FailOnError (exit 1 if any
