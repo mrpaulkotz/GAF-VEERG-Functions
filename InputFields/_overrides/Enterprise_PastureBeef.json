@@ -37,21 +37,27 @@
       "Default": "Pasture"
     },
     "X_Cell_Electricity_Location_AmountPurchasedInkWh": {
+      "DependentOn": "X_Cell_Electricity_CalculationMethod",
       "NotUsedWhen": { "Field": "X_Cell_Electricity_CalculationMethod", "Equals": "Market-based (More complex)" }
     },
     "X_Cell_Electricity_Location_GridElectricityPurchasedFrom": {
+      "DependentOn": "X_Cell_Electricity_CalculationMethod",
       "NotUsedWhen": { "Field": "X_Cell_Electricity_CalculationMethod", "Equals": "Market-based (More complex)" }
     },
     "X_Cell_Electricity_Market_AmountPurchasedExcludingGreenPower": {
+      "DependentOn": "X_Cell_Electricity_CalculationMethod",
       "NotUsedWhen": { "Field": "X_Cell_Electricity_CalculationMethod", "Equals": "Location-based (Simpler)" }
     },
     "X_Cell_Electricity_Market_RenewablePowerPercentage": {
+      "DependentOn": "X_Cell_Electricity_CalculationMethod",
       "NotUsedWhen": { "Field": "X_Cell_Electricity_CalculationMethod", "Equals": "Location-based (Simpler)" }
     },
     "X_Cell_Electricity_Market_JurisdictionalRenewablePowerPercentage": {
+      "DependentOn": "X_Cell_Electricity_CalculationMethod",
       "NotUsedWhen": { "Field": "X_Cell_Electricity_CalculationMethod", "Equals": "Location-based (Simpler)" }
     },
     "X_Cell_Electricity_Market_AmountPurchasedGreenPower": {
+      "DependentOn": "X_Cell_Electricity_CalculationMethod",
       "NotUsedWhen": { "Field": "X_Cell_Electricity_CalculationMethod", "Equals": "Location-based (Simpler)" }
     },
     "X_Cell_PastureBeef_Method1OrMethod2": {
@@ -86,10 +92,12 @@
   "InputTables": {
     "Table_Input_RECSurrendered": {
       "ChatHelp": true,
+      "DependentOn": "X_Cell_Electricity_CalculationMethod",
       "NotUsedWhen": { "Field": "X_Cell_Electricity_CalculationMethod", "Equals": "Location-based (Simpler)" }
     },
     "Table_Input_RECConsumedByEntity": {
       "ChatHelp": true,
+      "DependentOn": "X_Cell_Electricity_CalculationMethod",
       "NotUsedWhen": { "Field": "X_Cell_Electricity_CalculationMethod", "Equals": "Location-based (Simpler)" }
     },
     "X_Table_PastureBeef_CrudeProtein_Method1": {
@@ -186,7 +194,11 @@
         "CanMarkAsNotUsed": true
     },
     "Table_Input_LivestockPurchases_Beefcattle":{
-        "CanMarkAsNotUsed": true
+        "CanMarkAsNotUsed": true,
+        "DependentOn": ["X_Cell_PastureBeef_Method1OrMethod2", "X_Cell_PastureBeef_HerdMovementMethod"]
+    },
+    "Table_Input_LivestockSales": {
+        "DependentOn": ["X_Cell_PastureBeef_Method1OrMethod2", "X_Cell_PastureBeef_HerdMovementMethod"]
     },
     "X_Table_Result_ActivityPeriodEmissions_RowsToCols":{
       "Columns":{
@@ -212,72 +224,77 @@
       }
     },
     "Table_Input_Mortalities": {
-  "MatrixType": "RowsToCols",
-  "ExcelExcluded": true,
-  "ColumnNames": { "Class": "Class (select)", "Date": "Date", "HeadCount": "Head count", "Cause": "Cause (optional)" },
-  "Rows": { "Row": {
-    "Class": { "CellType": "select", "Options": { 
-      "BullsUnder1Year": "Bulls < 1 year",
-				"BullsOver1Year": "Bulls > 1 year",
-				"CowsUnder1Year": "Cows < 1 year",
-				"Cows1To2Years": "Cows 1-2 years",
-				"Cows2To3Years": "Cows 2-3 years",
-				"CowsOver3Years": "Cows > 3 years",
-				"SteersUnder1Year": "Steers < 1 year",
-				"Steers1To2Years": "Steers 1-2 years",
-				"Steers2To3Years": "Steers 2-3 years",
-				"SteersOver3Years": "Steers >3 years"
-     } },
-    "Date": { "CellType": "date" },
-    "HeadCount": { "CellType": "number" },
-    "Cause": { "CellType": "text" }
-  } }
-},
-"Table_Input_HerdTransfersIn": {
-  "MatrixType": "RowsToCols",
-  "ExcelExcluded": true,
-  "ColumnNames": { "Class": "Class (select)", "Date": "Transfer date", "HeadCount": "Head count", "TransferredFrom": "Transferred from (optional)" },
-  "Rows": { "Row": {
-    "Class": { "CellType": "select", "Options": { 
-      "BullsUnder1Year": "Bulls < 1 year",
-				"BullsOver1Year": "Bulls > 1 year",
-				"CowsUnder1Year": "Cows < 1 year",
-				"Cows1To2Years": "Cows 1-2 years",
-				"Cows2To3Years": "Cows 2-3 years",
-				"CowsOver3Years": "Cows > 3 years",
-				"SteersUnder1Year": "Steers < 1 year",
-				"Steers1To2Years": "Steers 1-2 years",
-				"Steers2To3Years": "Steers 2-3 years",
-				"SteersOver3Years": "Steers >3 years"
-     } },
-    "Date": { "CellType": "date" },
-    "HeadCount": { "CellType": "number" },
-    "TransferredFrom": { "CellType": "text" }
-  } }
-},
-"Table_Input_HerdTransfersOut": {
-  "MatrixType": "RowsToCols",
-  "ExcelExcluded": true,
-  "ColumnNames": { "Class": "Class (select)", "Date": "Transfer date", "HeadCount": "Head count", "TransferredTo": "Transferred to (optional)" },
-  "Rows": { "Row": {
-    "Class": { "CellType": "select", "Options": { 
-      "BullsUnder1Year": "Bulls < 1 year",
-				"BullsOver1Year": "Bulls > 1 year",
-				"CowsUnder1Year": "Cows < 1 year",
-				"Cows1To2Years": "Cows 1-2 years",
-				"Cows2To3Years": "Cows 2-3 years",
-				"CowsOver3Years": "Cows > 3 years",
-				"SteersUnder1Year": "Steers < 1 year",
-				"Steers1To2Years": "Steers 1-2 years",
-				"Steers2To3Years": "Steers 2-3 years",
-				"SteersOver3Years": "Steers >3 years"
-     } },
-    "Date": { "CellType": "date" },
-    "HeadCount": { "CellType": "number" },
-    "TransferredTo": { "CellType": "text" }
-  } }
-}
-
+      "ChatHelp": true,
+      "ExcelExcluded": true,
+      "DependentOn": ["X_Cell_PastureBeef_Method1OrMethod2", "X_Cell_PastureBeef_HerdMovementMethod"],
+      "MatrixType": "RowsToCols",
+      "ColumnNames": { "Class": "Class (select)", "Date": "Date", "HeadCount": "Head count", "Cause": "Cause (optional)" },
+      "Rows": { "Row": {
+        "Class": { "CellType": "select", "Options": {
+          "BullsUnder1Year": "Bulls < 1 year",
+          "BullsOver1Year": "Bulls > 1 year",
+          "CowsUnder1Year": "Cows < 1 year",
+          "Cows1To2Years": "Cows 1-2 years",
+          "Cows2To3Years": "Cows 2-3 years",
+          "CowsOver3Years": "Cows > 3 years",
+          "SteersUnder1Year": "Steers < 1 year",
+          "Steers1To2Years": "Steers 1-2 years",
+          "Steers2To3Years": "Steers 2-3 years",
+          "SteersOver3Years": "Steers >3 years"
+        } },
+        "Date": { "CellType": "date" },
+        "HeadCount": { "CellType": "number" },
+        "Cause": { "CellType": "text" }
+      } }
+    },
+    "Table_Input_HerdTransfersIn": {
+      "ChatHelp": true,
+      "ExcelExcluded": true,
+      "DependentOn": ["X_Cell_PastureBeef_Method1OrMethod2", "X_Cell_PastureBeef_HerdMovementMethod"],
+      "MatrixType": "RowsToCols",
+      "ColumnNames": { "Class": "Class (select)", "Date": "Transfer date", "HeadCount": "Head count", "TransferredFrom": "Transferred from (optional)" },
+      "Rows": { "Row": {
+        "Class": { "CellType": "select", "Options": {
+          "BullsUnder1Year": "Bulls < 1 year",
+          "BullsOver1Year": "Bulls > 1 year",
+          "CowsUnder1Year": "Cows < 1 year",
+          "Cows1To2Years": "Cows 1-2 years",
+          "Cows2To3Years": "Cows 2-3 years",
+          "CowsOver3Years": "Cows > 3 years",
+          "SteersUnder1Year": "Steers < 1 year",
+          "Steers1To2Years": "Steers 1-2 years",
+          "Steers2To3Years": "Steers 2-3 years",
+          "SteersOver3Years": "Steers >3 years"
+        } },
+        "Date": { "CellType": "date" },
+        "HeadCount": { "CellType": "number" },
+        "TransferredFrom": { "CellType": "text" }
+      } }
+    },
+    "Table_Input_HerdTransfersOut": {
+      "ChatHelp": true,
+      "ExcelExcluded": true,
+      "DependentOn": ["X_Cell_PastureBeef_Method1OrMethod2", "X_Cell_PastureBeef_HerdMovementMethod"],
+      "MatrixType": "RowsToCols",
+      "ColumnNames": { "Class": "Class (select)", "Date": "Transfer date", "HeadCount": "Head count", "TransferredTo": "Transferred to (optional)" },
+      "Rows": { "Row": {
+        "Class": { "CellType": "select", "Options": {
+          "BullsUnder1Year": "Bulls < 1 year",
+          "BullsOver1Year": "Bulls > 1 year",
+          "CowsUnder1Year": "Cows < 1 year",
+          "Cows1To2Years": "Cows 1-2 years",
+          "Cows2To3Years": "Cows 2-3 years",
+          "CowsOver3Years": "Cows > 3 years",
+          "SteersUnder1Year": "Steers < 1 year",
+          "Steers1To2Years": "Steers 1-2 years",
+          "Steers2To3Years": "Steers 2-3 years",
+          "SteersOver3Years": "Steers >3 years"
+        } },
+        "Date": { "CellType": "date" },
+        "HeadCount": { "CellType": "number" },
+        "TransferredTo": { "CellType": "text" }
+      } }
+    }
   },
 
   "FieldGroups": [
@@ -315,6 +332,9 @@
         "X_Cell_PastureBeef_HerdMovementMethod",
         "Table_Input_LivestockPurchases_Beefcattle",
         "Table_Input_LivestockSales",
+        "Table_Input_Mortalities",
+        "Table_Input_HerdTransfersIn",
+        "Table_Input_HerdTransfersOut",
         "X_Cell_PastureBeef_Method1OrMethod2"
       ]
     }
