@@ -69,10 +69,23 @@ $script:NsRel  = 'http://schemas.openxmlformats.org/officeDocument/2006/relation
 $script:NsPkg  = 'http://schemas.openxmlformats.org/package/2006/relationships'
 $script:NsCt   = 'http://schemas.openxmlformats.org/package/2006/content-types'
 
-# A real external-link index: [N] where N is 1+ digits and N != 0. 0 is Excel
-# Labs' internal self/LAMBDA-cross-reference marker, unrelated to
-# <externalReferences> positions (which start at 1).
-$script:ExtRefRegex = [regex]::new('\[([1-9][0-9]*)\]')
+# A real external-link index: [N] where N is 1+ digits and N != 0, used ONLY
+# in genuine external-reference syntax - [N]!Name, [N]SheetName!, or
+# '[N]Sheet Name'! (all zero-width-checked via lookahead so the match itself
+# stays exactly "[N]", which the renumber pass below depends on). A bare [N]
+# substring is NOT enough: source-citation text like "Dairy Australia [1]" or
+# "IPCC (2019), Chapter 10 [4]" shows up verbatim in LAMBDA description
+# strings and their cached <v> results, and a plain \[([1-9][0-9]*)\] match
+# false-positives on those, making a genuinely phantom link look "used" and
+# never get cleaned up (found via 13_Scope3_WIP_v14.xlsx and 3 other
+# workbooks still reporting the Common_v03.xlsx external link after a
+# reported-clean run). 0 is Excel Labs' internal self/LAMBDA-cross-reference
+# marker, unrelated to <externalReferences> positions (which start at 1).
+$script:ExtRefRegex = [regex]::new(
+  '\[(?<idx>[1-9][0-9]*)\](?=!)' +
+  "|(?<=')\[(?<idx>[1-9][0-9]*)\](?=[^'\r\n]*'!)" +
+  '|\[(?<idx>[1-9][0-9]*)\](?=[A-Za-z_][A-Za-z0-9_.]*!)'
+)
 
 # ---------------------------------------------------------------------------
 # Workbook discovery (matches find-excel-errors.ps1 / audit-names.ps1).
@@ -154,12 +167,12 @@ function Get-UsedExternalIndices {
     if ($entry.FullName -notmatch '^xl/worksheets/sheet\d+\.xml$') { continue }
     $text = Read-ZipEntryText -Zip $Zip -EntryName $entry.FullName
     if ($null -eq $text -or $text.IndexOf('[') -lt 0) { continue }
-    foreach ($m in $script:ExtRefRegex.Matches($text)) { [void] $used.Add([int] $m.Groups[1].Value) }
+    foreach ($m in $script:ExtRefRegex.Matches($text)) { [void] $used.Add([int] $m.Groups['idx'].Value) }
   }
 
   $wbText = Read-ZipEntryText -Zip $Zip -EntryName 'xl/workbook.xml'
   if ($null -ne $wbText) {
-    foreach ($m in $script:ExtRefRegex.Matches($wbText)) { [void] $used.Add([int] $m.Groups[1].Value) }
+    foreach ($m in $script:ExtRefRegex.Matches($wbText)) { [void] $used.Add([int] $m.Groups['idx'].Value) }
   }
 
   return ,$used   # comma prevents PowerShell from enumerating (and un-wrapping to $null when empty)
@@ -230,8 +243,16 @@ function Repair-PhantomExternalLinks {
     #     renumbers can collide (mirrors the lookup-MatchEvaluator approach used to
     #     fix the same class of collision risk in sync-xlf-to-excel-labs.ps1). ------
     if ($renumber.Count -gt 0) {
-      $renumberPattern = [regex]::new('\[(' + (($renumber.Keys | Sort-Object -Descending) -join '|') + ')\](?!\d)')
-      $renumberEval = [System.Text.RegularExpressions.MatchEvaluator] { param($m) '[' + $renumber[[int] $m.Groups[1].Value] + ']' }
+      # Same genuine-usage-only constraint as $script:ExtRefRegex above - a bare
+      # \[(oldPos)\] would also rewrite citation text like "Chapter 10 [4]"
+      # into "Chapter 10 [3]" if 4 happened to be a renumbered position.
+      $digits = ($renumber.Keys | Sort-Object -Descending) -join '|'
+      $renumberPattern = [regex]::new(
+        "\[(?<idx>$digits)\](?=!)" +
+        "|(?<=')\[(?<idx>$digits)\](?=[^'\r\n]*'!)" +
+        "|\[(?<idx>$digits)\](?=[A-Za-z_][A-Za-z0-9_.]*!)"
+      )
+      $renumberEval = [System.Text.RegularExpressions.MatchEvaluator] { param($m) '[' + $renumber[[int] $m.Groups['idx'].Value] + ']' }
 
       foreach ($entry in @($zip.Entries | Where-Object { $_.FullName -match '^xl/worksheets/sheet\d+\.xml$' })) {
         $text = Read-ZipEntryText -Zip $zip -EntryName $entry.FullName

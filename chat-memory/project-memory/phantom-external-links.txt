@@ -73,3 +73,33 @@ Usage: `-WorkbookPath <file>` for one file, omit for all `Excel/*.xlsx` +
 Dry-run (report only) by default; `-Commit` to write. Wired into
 `sync-xlf-to-excel-labs.ps1` (self-heal, always `-Commit`, gated `-not $DryRun`);
 still runnable standalone for a one-off check/cleanup outside a full build.
+
+## Detection regex false-negative: citation text like "...[1]" masked real phantoms
+User reported 4 workbooks (`13_Scope3_WIP_v14.xlsx`, `3_3_Enteric_Dairy_WIP_v04.xlsx`,
+`4_2_ManureManagement_BeefPasture_WIP_v10.xlsx`, `4_3_ManureManagement_Dairy_WIP_v12.xlsx`)
+still showing the Common_v03.xlsx external-link warning after the self-heal fix
+above went in - `remove-phantom-external-links.ps1` itself reported them CLEAN,
+so this was a DETECTION bug, not a missed self-heal wiring. Root cause: the
+original `$script:ExtRefRegex = '\[([1-9][0-9]*)\]'` matched ANY bracketed
+number ANYWHERE in worksheet/workbook.xml text, including inside source-citation
+strings baked into LAMBDA description text and their cached `<v>` results -
+`_xlfn.LAMBDA("...value is consistently 'Dairy Australia [1]' and is not used
+in calculation.")` and `_xlfn.LAMBDA("IPCC (2019), Chapter 10 [4]")`. A bare
+"[1]" substring there made `Get-UsedExternalIndices` believe position [1] was
+still referenced, so the genuinely-phantom (empty `<sheetDataSet>`, same
+signature as every other case in this file) link was never flagged.
+FIX: `$script:ExtRefRegex` now requires genuine external-reference syntax via
+zero-width lookaround (match stays exactly `[N]`, unchanged for the renumber
+pass): `[N]!Name`, `[N]SheetName!`, or `'[N]Sheet Name'!` - never a bare `[N]`
+with arbitrary text on either side. Applied the identical constraint to the
+renumber-pass regex too (same latent bug: it would have string-replaced a
+citation number like "Chapter 10 [4]" into "[3]" if 4 ever became a
+renumbered position - not yet triggered in this repo since no workbook has
+had a *partial* phantom set, but same root cause, fixed preemptively).
+Verified: isolated regex test confirmed `[3]Sheet1!$A$1` ->
+`[1]Sheet1!$A$1`, `'[5]Constants - Common'!$A$1` -> `'[2]...'!$A$1`, and
+`[3]!SomeExternalName` -> `[1]!SomeExternalName` all rewrite correctly while
+`Dairy Australia [3]"...` and `Chapter 10 [5]</v>` are left untouched. Full
+repo dry-run after the fix flagged exactly these 4 workbooks (1 phantom each,
+position [1]) and nothing else; `-Commit` removed all 4; `find-excel-errors.ps1`
+confirmed CLEAN on each afterward.
