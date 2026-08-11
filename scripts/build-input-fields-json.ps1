@@ -349,6 +349,17 @@ function Merge-Override {
       foreach ($cellOv in $prop.Value.PSObject.Properties) {
         $target = @($Base['InputCells']) | Where-Object { $_['CellName'] -eq $cellOv.Name } | Select-Object -First 1
         if ($null -eq $target) {
+          # ExcelExcluded: a field the consuming (web) app needs that has no
+          # Excel cell backing it at all - the override IS the complete field
+          # definition, not a patch onto a generated one, so add it wholesale
+          # instead of warning about an "unknown" target.
+          $exProp = $cellOv.Value.PSObject.Properties['ExcelExcluded']
+          if ($null -ne $exProp -and $exProp.Value -eq $true) {
+            $newCell = [ordered]@{ CellName = $cellOv.Name }
+            & $applyProps $newCell $cellOv.Value
+            $Base['InputCells'] = @($Base['InputCells']) + $newCell
+            continue
+          }
           Add-ValidationWarning "Override references unknown InputCell '$($cellOv.Name)'"
           continue
         }
@@ -361,6 +372,17 @@ function Merge-Override {
       foreach ($tblOv in $prop.Value.PSObject.Properties) {
         $tbl = @($Base['InputTables']) | Where-Object { $_['TableName'] -eq $tblOv.Name } | Select-Object -First 1
         if ($null -eq $tbl) {
+          # Same ExcelExcluded wholesale-add as InputCells above - these tables
+          # (e.g. Table_Input_Mortalities) are web-app-only, so the override
+          # already carries the full shape (MatrixType/ColumnNames/Rows.Row.*)
+          # a generated table would have, not just column patches.
+          $exProp = $tblOv.Value.PSObject.Properties['ExcelExcluded']
+          if ($null -ne $exProp -and $exProp.Value -eq $true) {
+            $newTbl = [ordered]@{ TableName = $tblOv.Name }
+            & $applyProps $newTbl $tblOv.Value
+            $Base['InputTables'] = @($Base['InputTables']) + $newTbl
+            continue
+          }
           Add-ValidationWarning "Override references unknown InputTable '$($tblOv.Name)'"
           continue
         }

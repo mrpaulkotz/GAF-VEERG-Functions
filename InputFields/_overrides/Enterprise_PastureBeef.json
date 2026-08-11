@@ -3,8 +3,8 @@
   "_usage": "Under 'InputCells' key each entry by its CellName; under 'InputTables' key each entry by its TableName and (optionally) its columns by column key. The properties you set are copied onto the matching field as-is, so you can add whatever the consuming app understands (Label, Group, Order, Hidden, Default, UseDefault, HelpText, ...). Setting an existing generated property (e.g. CellType) replaces it. Use 'FieldGroups' to lay out cells/tables into named groups in any order you like; each group's Items is an array of cell/table names and/or nested subgroups.",
   "_usage_influences": "Use 'Influences' to declare, in ONE place, sets of cells/tables that influence each other (a change to any member affects the others). Each entry's 'Members' is a flat list of cell and/or table names that all mutually influence every other member of the same set - the relationship is undirected, so you never repeat it per field. The consuming app derives each field's influenced/influenced-by list from these sets; do not add per-field Influences/InfluencedBy attributes.",
   "_schema": {
-    "InputCells": { "<CellName>": { "Label": "text", "Group": "text", "ChatHelp": false, "CanRollOver": false, "Order": 0, "Hidden": false, "UseDefault": false, "Default": "value", "DuplicateOf": "value", "CanMarkAsNotUsed": false, "NotUsedWhen": "condition" } },
-    "InputTables": { "<TableName>": { "Label": "text", "Group": "text", "ChatHelp":false, "CanRollOver": false, "Columns": { "<ColumnKey>": { "Label": "text", "Default": "value", "CanMarkAsNotUsed": false, "NotUsedWhen": "condition" } } } },
+    "InputCells": { "<CellName>": { "Label": "text", "Group": "text", "ChatHelp": false, "CanRollOver": false, "ExcelExcluded": false, "Order": 0, "Hidden": false, "UseDefault": false, "Default": "value", "DuplicateOf": "value", "CanMarkAsNotUsed": false, "NotUsedWhen": "condition" } },
+    "InputTables": { "<TableName>": { "Label": "text", "Group": "text", "ChatHelp":false, "CanRollOver": false, "ExcelExcluded": false, "Columns": { "<ColumnKey>": { "Label": "text", "Default": "value", "CanMarkAsNotUsed": false, "NotUsedWhen": "condition" } } } },
     "FieldGroups": [ { "Name": "text", "Items": [ "<CellOrTableName>", { "Name": "text", "Items": [ "<CellOrTableName>" ] } ] } ],
     "FirstClassResults": { "<ResultName>": { "Label": "text" } },
     "ActivityPeriodResultTables": { "<TableName>": { "CycleLabelColumn": "<ColumnKey>", "ResultColumns": { "<ResultName>": "<ColumnKey>" } } },
@@ -210,7 +210,74 @@
           "CanOverwriteFormula": true
         }
       }
-    }
+    },
+    "Table_Input_Mortalities": {
+  "MatrixType": "RowsToCols",
+  "ExcelExcluded": true,
+  "ColumnNames": { "Class": "Class (select)", "Date": "Date", "HeadCount": "Head count", "Cause": "Cause (optional)" },
+  "Rows": { "Row": {
+    "Class": { "CellType": "select", "Options": { 
+      "BullsUnder1Year": "Bulls < 1 year",
+				"BullsOver1Year": "Bulls > 1 year",
+				"CowsUnder1Year": "Cows < 1 year",
+				"Cows1To2Years": "Cows 1-2 years",
+				"Cows2To3Years": "Cows 2-3 years",
+				"CowsOver3Years": "Cows > 3 years",
+				"SteersUnder1Year": "Steers < 1 year",
+				"Steers1To2Years": "Steers 1-2 years",
+				"Steers2To3Years": "Steers 2-3 years",
+				"SteersOver3Years": "Steers >3 years"
+     } },
+    "Date": { "CellType": "date" },
+    "HeadCount": { "CellType": "number" },
+    "Cause": { "CellType": "text" }
+  } }
+},
+"Table_Input_HerdTransfersIn": {
+  "MatrixType": "RowsToCols",
+  "ExcelExcluded": true,
+  "ColumnNames": { "Class": "Class (select)", "Date": "Transfer date", "HeadCount": "Head count", "TransferredFrom": "Transferred from (optional)" },
+  "Rows": { "Row": {
+    "Class": { "CellType": "select", "Options": { 
+      "BullsUnder1Year": "Bulls < 1 year",
+				"BullsOver1Year": "Bulls > 1 year",
+				"CowsUnder1Year": "Cows < 1 year",
+				"Cows1To2Years": "Cows 1-2 years",
+				"Cows2To3Years": "Cows 2-3 years",
+				"CowsOver3Years": "Cows > 3 years",
+				"SteersUnder1Year": "Steers < 1 year",
+				"Steers1To2Years": "Steers 1-2 years",
+				"Steers2To3Years": "Steers 2-3 years",
+				"SteersOver3Years": "Steers >3 years"
+     } },
+    "Date": { "CellType": "date" },
+    "HeadCount": { "CellType": "number" },
+    "TransferredFrom": { "CellType": "text" }
+  } }
+},
+"Table_Input_HerdTransfersOut": {
+  "MatrixType": "RowsToCols",
+  "ExcelExcluded": true,
+  "ColumnNames": { "Class": "Class (select)", "Date": "Transfer date", "HeadCount": "Head count", "TransferredTo": "Transferred to (optional)" },
+  "Rows": { "Row": {
+    "Class": { "CellType": "select", "Options": { 
+      "BullsUnder1Year": "Bulls < 1 year",
+				"BullsOver1Year": "Bulls > 1 year",
+				"CowsUnder1Year": "Cows < 1 year",
+				"Cows1To2Years": "Cows 1-2 years",
+				"Cows2To3Years": "Cows 2-3 years",
+				"CowsOver3Years": "Cows > 3 years",
+				"SteersUnder1Year": "Steers < 1 year",
+				"Steers1To2Years": "Steers 1-2 years",
+				"Steers2To3Years": "Steers 2-3 years",
+				"SteersOver3Years": "Steers >3 years"
+     } },
+    "Date": { "CellType": "date" },
+    "HeadCount": { "CellType": "number" },
+    "TransferredTo": { "CellType": "text" }
+  } }
+}
+
   },
 
   "FieldGroups": [
@@ -309,7 +376,10 @@
     "HeadMethod2": { "Table": "X_Table_PastureBeef_Head_Method2", "Period": "month" },
     "Movements": [
       { "Table": "Table_Input_LivestockPurchases_Beefcattle", "DateColumn": "PurchaseDate", "ClassColumn": "Class", "AmountColumn": "Quantity", "Sign": 1, "Label": "purchase" },
-      { "Table": "Table_Input_LivestockSales", "DateColumn": "SaleDate", "ClassColumn": "Class", "AmountColumn": "HeadSold", "Sign": -1, "Label": "sale" }
+      { "Table": "Table_Input_LivestockSales", "DateColumn": "SaleDate", "ClassColumn": "Class", "AmountColumn": "HeadSold", "Sign": -1, "Label": "sale" },
+      { "Table": "Table_Input_Mortalities", "DateColumn": "Date", "ClassColumn": "Class", "AmountColumn": "HeadCount", "Sign": -1, "Label": "mortality" },
+      { "Table": "Table_Input_HerdTransfersIn", "DateColumn": "Date", "ClassColumn": "Class", "AmountColumn": "HeadCount", "Sign": 1, "Label": "transfer in" },
+      { "Table": "Table_Input_HerdTransfersOut", "DateColumn": "Date", "ClassColumn": "Class", "AmountColumn": "HeadCount", "Sign": -1, "Label": "transfer out" }
     ]
   },
 
