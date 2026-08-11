@@ -34,6 +34,49 @@ to patch onto. Verified: `-WorkbookPath Enterprise_PastureBeef_WIP_v01.xlsx`
 dropped from 3 "unknown InputTable" warnings to 0, and all 3 tables now
 appear correctly in the generated `Enterprise_PastureBeef_InputFields.json`.
 
+# Fixed-row Excel tables (Table_Input_DataQuality_*) via named-cell-style detection (2026-08)
+Some `Table_Input_*` ListObjects (the 5 `Table_Input_DataQuality_*` tables:
+Enterprise/Site/PastureBeef/PastureManagement/FertiliserApplications) are NOT
+open user-add-a-row tables like the rest - their row set is fixed (a
+predetermined list of scoring criteria, e.g. "Electricity purchased", "Fuel
+used") and their first column ("Data type") is a read-only row IDENTITY
+label the author typed directly, not a field. `Get-InputTables` used to treat
+every ListObject uniformly (every column = an editable field, table = grow
+as many rows as the user wants), so that label column was wrongly emitted as
+a per-row free-text field and the actual fixed row list was never captured
+anywhere in the output at all.
+- Detection: this workbook already has a rich (72-entry) named-cell-style
+  convention - EVERY genuinely editable or calculated-but-overwritable cell
+  carries an "Input ..."-prefixed style (`Input text`, `Input select`,
+  `Input number general calculated`, ...); fixed/display content uses a
+  non-"Input" style (`Content normal`, `Content bold`, `Number display
+  decimal`, ...). This is a far more robust signal than format or HasFormula
+  (which can't distinguish "hand-typed label" from "hand-typed free-text
+  field" - both look identical by format). Spot-checked directly via package
+  XML style lookups before implementing: all 5 DataQuality tables' first
+  column data cells = "Content normal"; known-good open-add tables
+  (`Table_Input_LivestockSales`, `Table_Input_InorganicFertiliser_Brands`)
+  have "Input text"/"Input select" on their first column - zero false
+  positives on either side.
+- Implementation: `Get-InputTables`'s ListObject loop checks ONLY the first
+  column's representative body cell (`ListColumns[0].DataBodyRange.Cells(1,1)
+  .Style.Name`); if it exists and does NOT match `(?i)^Input\b`, that column
+  is excluded entirely from `ColumnNames`/`Rows.Row` (not emitted as a
+  field), and its per-row text values (via `Get-FieldKeyFromHeader` for
+  stable keys, same helper the named-range ColsToRows path already uses for
+  row labels) are captured as a new `RowLabels` ordered dict (key -> display
+  text), alongside `FixedRows: true` and `NumberOfRows`. Deliberately scoped
+  to ONLY the first column (not "any non-Input column in any table") to
+  avoid risking a false positive silently dropping a real field elsewhere in
+  the repo that hasn't been individually verified.
+- Verified end-to-end against `Enterprise_PastureBeef_WIP_v01.xlsx`: all 5
+  DataQuality tables now emit `FixedRows: true` + the correct `RowLabels`
+  (e.g. Enterprise's 6: "Liveweight sold", "Liveweight grown", "Manure
+  produced", "Manure sold", "Percent income from liveweight sold", "Percent
+  income from manure sold") with the "Data type" column gone from the field
+  schema; `LivestockSales`/`InorganicFertiliser_Brands` unaffected
+  (`FixedRows` absent, first column still a normal field).
+
 # Cascading (dependent) select options
 - Dependent dropdowns use validation like =INDIRECT("Table_..._" & SUBSTITUTE($E$7," ","") & "[Region]"). Parent driver $E$7 may itself be a passthrough formula (=X_Cell_Site_State).
 - Resolve-ParentInfo follows passthrough formulas to find the true source cell w/ the list validation. It must follow BOTH cell-address passthroughs (=$X$Y) AND bare defined-name passthroughs (=X_Cell_Site_State). Fixed a bug where only address form was followed, leaving Options={} and DependentOn as a raw address (e.g. E7). Now DependentOn resolves to the named cell and Options are the nested per-parent lists ("n/a" for parent values with no child table).

@@ -1282,6 +1282,35 @@ function Get-InputTables {
       foreach ($h in $headers) { if (Test-IsPeriodLabel -Label $h) { $periodCount++ } }
       $matrixType = if ($periodCount -ge 2) { 'ColsToRows' } else { 'RowsToCols' }
 
+      # Fixed-row table: the first column is a non-editable row IDENTITY label
+      # (e.g. Table_Input_DataQuality_*'s "Data type" column - "Electricity
+      # purchased", "Fuel used", ...) rather than a field the user fills in on
+      # each new row they add. Detected via the workbook's own named-style
+      # convention: every genuinely editable/calculated cell already carries an
+      # "Input ..." style (Input text, Input select, Input number ... calculated,
+      # etc.); fixed/display content uses a non-"Input" style (Content normal,
+      # Content bold, ...). This is more robust than inferring from format or
+      # HasFormula alone, since a hand-typed label and a hand-typed free-text
+      # field look identical by format - only the author's own style choice
+      # tells them apart. Spot-checked: all 5 DataQuality tables' first column
+      # is "Content normal"; known free-add tables (LivestockSales,
+      # InorganicFertiliser_Brands) have "Input text"/"Input select" instead.
+      $labelColumnName = $null
+      if ($columns.Count -gt 0) {
+        $firstCell = $null
+        try {
+          $firstBody = $columns[0].DataBodyRange
+          if ($null -ne $firstBody) { $firstCell = $firstBody.Cells.Item(1, 1) }
+        } catch { $firstCell = $null }
+        if ($null -ne $firstCell) {
+          $styleName = ''
+          try { $styleName = [string]$firstCell.Style.Name } catch { $styleName = '' }
+          if (-not [string]::IsNullOrWhiteSpace($styleName) -and $styleName -notmatch '(?i)^Input\b') {
+            $labelColumnName = $headers[0]
+          }
+        }
+      }
+
       $tableObj = [ordered]@{
         TableName  = $tableName
         MatrixType = $matrixType
@@ -1294,6 +1323,7 @@ function Get-InputTables {
         try { $header = [string]$col.Name } catch { $header = '' }
         if ([string]::IsNullOrWhiteSpace($header)) { continue }
         if (Test-IsPeriodLabel -Label $header) { continue }
+        if ($null -ne $labelColumnName -and $header -eq $labelColumnName) { continue }
         $fieldKey = Get-FieldKeyFromHeader -Header $header
         if ([string]::IsNullOrWhiteSpace($fieldKey)) { continue }
         if (-not $columnNames.Contains($fieldKey)) { $columnNames[$fieldKey] = (Remove-YearFromLabel $header) }
@@ -1311,6 +1341,34 @@ function Get-InputTables {
           Add-ValidationWarning "Input table '$tableName' produced no field definitions."
         }
         $tableObj['Rows'] = [ordered]@{ 'Row' = $fieldDefs }
+      }
+
+      # The label column itself isn't a field - it's the fixed set of row
+      # identities the SAME field schema above gets rendered against. Capture
+      # its actual per-row text values (in sheet order) so the consumer knows
+      # exactly how many predetermined rows there are and what each is called,
+      # instead of treating the table as user-add-a-row.
+      if ($null -ne $labelColumnName) {
+        $labelCol = $columns | Where-Object { $_.Name -eq $labelColumnName } | Select-Object -First 1
+        $rowLabels = [ordered]@{}
+        $labelBody = $null
+        try { $labelBody = $labelCol.DataBodyRange } catch { $labelBody = $null }
+        if ($null -ne $labelBody) {
+          $rCount = 0
+          try { $rCount = [int]$labelBody.Rows.Count } catch { $rCount = 0 }
+          for ($i = 1; $i -le $rCount; $i++) {
+            $lv = ''
+            try { $lv = [string]$labelBody.Cells.Item($i, 1).Value2 } catch { $lv = '' }
+            if ([string]::IsNullOrWhiteSpace($lv)) { continue }
+            $rKey = Get-FieldKeyFromHeader -Header $lv
+            $candidate = $rKey; $n = 2
+            while ($rowLabels.Contains($candidate)) { $candidate = "$rKey$n"; $n++ }
+            $rowLabels[$candidate] = $lv
+          }
+        }
+        $tableObj['FixedRows'] = $true
+        $tableObj['NumberOfRows'] = $rowLabels.Count
+        $tableObj['RowLabels'] = $rowLabels
       }
 
       $tSheet = [int]::MaxValue; $tRow = [int]::MaxValue; $tCol = [int]::MaxValue
