@@ -1,7 +1,7 @@
 {
 	"schemaVersion": 1,
 	"generatedFrom": "4_3_ManureManagement_Dairy_WIP_v12.xlsx",
-	"generatedAt": "2026-08-10T01:45:38Z",
+	"generatedAt": "2026-08-11T06:33:04Z",
 	"InputCells": [
 		{
 			"CellName": "X_Cell_Site_FarmName",
@@ -12,6 +12,11 @@
 			"CellName": "X_Cell_Site_ReportingEntityName",
 			"Label": "Reporting entity name",
 			"CellType": "text"
+		},
+		{
+			"CellName": "X_Cell_Site_StartDate",
+			"Label": "Emissions calculation period start date",
+			"CellType": "date"
 		},
 		{
 			"CellName": "X_Cell_Site_EndDate",

@@ -1,7 +1,7 @@
 {
 	"schemaVersion": 1,
 	"generatedFrom": "Enterprise_CroppingGrains_WIP_v01.xlsx",
-	"generatedAt": "2026-08-10T01:47:30Z",
+	"generatedAt": "2026-08-11T06:34:12Z",
 	"InputCells": [
 		{
 			"CellName": "X_Cell_Site_FarmName",
@@ -217,11 +217,6 @@
 			"CellType": "formula"
 		},
 		{
-			"CellName": "X_Cell_Crop_PercentResidueGrazed",
-			"Label": "Percentage of residue that was grazed",
-			"CellType": "percent"
-		},
-		{
 			"CellName": "X_Cell_Crop_PercentResidueBurned",
 			"Label": "Percentage of residue that was burned",
 			"CellType": "percent"
@@ -317,41 +312,6 @@
 			"CellType": "formula"
 		},
 		{
-			"CellName": "X_Cell_FarmInputs_LickBlocks_DrySeasonMix",
-			"Label": "Lick block, dry season mix",
-			"CellType": "number"
-		},
-		{
-			"CellName": "X_Cell_FarmInputs_LickBlocks_Mineral",
-			"Label": "Lick block, mineral",
-			"CellType": "number"
-		},
-		{
-			"CellName": "X_Cell_FarmInputs_LickBlocks_Weaner",
-			"Label": "Lick block, weaner",
-			"CellType": "number"
-		},
-		{
-			"CellName": "X_Cell_FarmInputs_FeedRations_Chickens",
-			"Label": "Feed for chickens",
-			"CellType": "number"
-		},
-		{
-			"CellName": "X_Cell_FarmInputs_FeedRations_DairyCalves",
-			"Label": "Feed for dairy calves",
-			"CellType": "number"
-		},
-		{
-			"CellName": "X_Cell_FarmInputs_FeedRations_DairyCows",
-			"Label": "Feed for dairy cows",
-			"CellType": "number"
-		},
-		{
-			"CellName": "X_Cell_FarmInputs_FeedRations_Pigs",
-			"Label": "Feed for pigs",
-			"CellType": "number"
-		},
-		{
 			"CellName": "X_Cell_FarmInputs_Seed_BarleyGrain",
 			"Label": "Barley grain (for seed)",
 			"CellType": "number"
@@ -374,21 +334,6 @@
 		{
 			"CellName": "X_Cell_FarmInputs_Seed_WheatGrain",
 			"Label": "Wheat grain (for seed)",
-			"CellType": "number"
-		},
-		{
-			"CellName": "X_Cell_FarmInputs_Misc_AnimalEarTagsLarge",
-			"Label": "Animal ear tags (large)",
-			"CellType": "number"
-		},
-		{
-			"CellName": "X_Cell_FarmInputs_Misc_AnimalEarTagsSmall",
-			"Label": "Animal ear tags (small)",
-			"CellType": "number"
-		},
-		{
-			"CellName": "X_Cell_FarmInputs_Misc_NylonNetting",
-			"Label": "Nylon netting",
 			"CellType": "number"
 		},
 		{
@@ -487,13 +432,13 @@
 		{
 			"TableName": "Table_Input_InorganicFertiliser_Brands",
 			"MatrixType": "RowsToCols",
-			"NumberOfCols": 21,
+			"NumberOfCols": 22,
 			"ColumnNames": {
 				"Product": "Product (select)",
 				"AmountAppliedPerHectare": "Amount applied per hectare",
 				"ApplicationUnit": "Application unit",
-				"Density": "Density",
 				"ApplicationArea": "Application area (ha)",
+				"Density": "Density",
 				"TotalApplied": "Total applied (kg)",
 				"Ingredient1": "Ingredient 1",
 				"Ingredient1Percent": "Ingredient 1 percent",
@@ -507,6 +452,7 @@
 				"Ingredient5Percent": "Ingredient 5 percent",
 				"Ingredient6": "Ingredient 6",
 				"Ingredient6Percent": "Ingredient 6 percent",
+				"N": "% N (Ingredients)",
 				"NApplicationRate": "N application rate (kg/ha)",
 				"UreaSource": "Urea source",
 				"AmmoniaSource": "Ammonia source"
@@ -526,19 +472,130 @@
 							"Aqua Thio-Complete": "Aqua Thio-Complete",
 							"Aqua Thio-Emerge": "Aqua Thio-Emerge",
 							"Aqua Thio-Flourish": "Aqua Thio-Flourish",
-							"Asco Fol Plus": "Asco Fol Plus",
-							"Asco Plus": "Asco Plus",
-							"Asco Rhizo Plus": "Asco Rhizo Plus",
-							"Benefit PZ": "Benefit PZ",
 							"Boost-It": "Boost-It",
-							"Boroplus": "Boroplus",
-							"Brevisol Range": "Brevisol Range",
-							"Brexil Line": "Brexil Line",
 							"Bronze": "Bronze",
-							"Bud-Wiser Dry": "Bud-Wiser Dry",
 							"Calbit C": "Calbit C",
-							"Calcium 175": "Calcium 175",
-							"CalPhos": "CalPhos"
+							"Compass": "Compass",
+							"CoRoN 12-0-10": "CoRoN 12-0-10",
+							"Maximum Quick-N": "Maximum Quick-N",
+							"Crop Booster PLUS": "Crop Booster PLUS",
+							"Ammonium Bicarbonate": "Ammonium Bicarbonate",
+							"Ammonium Sulfate": "Ammonium Sulfate",
+							"Ammonium Sulphate - Granular": "Ammonium Sulphate - Granular",
+							"Di-Ammonium Phosphate (DAP)": "Di-Ammonium Phosphate (DAP)",
+							"Basalt BooSSta": "Basalt BooSSta",
+							"DAPSZC": "DAPSZC",
+							"Easy N": "Easy N",
+							"Calcium Ammonium nitrate": "Calcium Ammonium nitrate",
+							"CellCAL Plus": "CellCAL Plus",
+							"CK55": "CK55",
+							"Crop K": "Crop K",
+							"Crop Starter": "Crop Starter",
+							"Gran-Am": "Gran-Am",
+							"Encal": "Encal",
+							"Granulock SS": "Granulock SS",
+							"Granulock Z": "Granulock Z",
+							"Farm Ag Leichhardt": "Farm Ag Leichhardt",
+							"Flexi-N NBPT": "Flexi-N NBPT",
+							"Gold Premium": "Gold Premium",
+							"High NS": "High NS",
+							"Impact SSP": "Impact SSP",
+							"In Crop": "In Crop",
+							"K20": "K20",
+							"Maximum N-Pact": "Maximum N-Pact",
+							"Nitro Combi TE": "Nitro Combi TE",
+							"PastureMAXX": "PastureMAXX",
+							"Platinum Nergetic": "Platinum Nergetic",
+							"Sulphate of ammonia (SOA)": "Sulphate of ammonia (SOA)",
+							"Mono-Ammonium Phosphate (MAP)": "Mono-Ammonium Phosphate (MAP)",
+							"Urea": "Urea",
+							"Muriate of potash (MOP)": "Muriate of potash (MOP)",
+							"Urea Ammonium nitrate (UAN 32-0-0)": "Urea Ammonium nitrate (UAN 32-0-0)",
+							"Polypeptide Urea": "Polypeptide Urea",
+							"YaraTera CALCINIT": "YaraTera CALCINIT",
+							"YaraLiva NITRABOR": "YaraLiva NITRABOR",
+							"YaraMila COMPLEX": "YaraMila COMPLEX",
+							"YaraRega 9-0-30 (14)": "YaraRega 9-0-30 (14)",
+							"YaraRega 13-2-21": "YaraRega 13-2-21",
+							"YaraRega 15-7-13 (7S)": "YaraRega 15-7-13 (7S)",
+							"YaraTera CALCINIT B": "YaraTera CALCINIT B",
+							"YaraTera KRISTA MAP": "YaraTera KRISTA MAP",
+							"YaraTera KRISTALON RED": "YaraTera KRISTALON RED",
+							"YaraTera KRISTALON SPECIAL": "YaraTera KRISTALON SPECIAL",
+							"YaraMila 21-7-3(4)": "YaraMila 21-7-3(4)",
+							"YaraTera KRISTALON SCARLET": "YaraTera KRISTALON SCARLET",
+							"Solu-MAP": "Solu-MAP",
+							"Solu-Sam": "Solu-Sam",
+							"Rustica Plus": "Rustica Plus",
+							"Platinum Plus": "Platinum Plus",
+							"Tropika": "Tropika",
+							"Rustica Nergetic": "Rustica Nergetic",
+							"Quick-N Nergetic": "Quick-N Nergetic",
+							"(SSP) Single Super Fertiliser": "(SSP) Single Super Fertiliser",
+							"ZincStar": "ZincStar",
+							"Apex GaIXe Low P 21-1-6": "Apex GaIXe Low P 21-1-6",
+							"SuPerfect": "SuPerfect",
+							"Big N": "Big N",
+							"Entec Urea": "Entec Urea",
+							"Flexi-N NI only": "Flexi-N NI only",
+							"Muriate Of Potash MOP": "Muriate Of Potash MOP",
+							"MAP NUTURF": "MAP NUTURF",
+							"Quick-N": "Quick-N",
+							"UAS": "UAS",
+							"Triazone Urea": "Triazone Urea",
+							"Ammo 36N": "Ammo 36N",
+							"Risso Liquid NPK (200-200-200)": "Risso Liquid NPK (200-200-200)",
+							"Super Cal 15-0-12": "Super Cal 15-0-12",
+							"CK 88": "CK 88",
+							"CropLift 15": "CropLift 15",
+							"NPKS 19-13-0-9": "NPKS 19-13-0-9",
+							"PastureBoosta": "PastureBoosta",
+							"Greentop K": "Greentop K",
+							"HayBoosta": "HayBoosta",
+							"Impact Super Potash 1&1": "Impact Super Potash 1&1",
+							"Impact Super Potash 2&1": "Impact Super Potash 2&1",
+							"Impact Super Potash 3&1": "Impact Super Potash 3&1",
+							"Impact Super Potash 4&1": "Impact Super Potash 4&1",
+							"Impact Super Potash 5&1": "Impact Super Potash 5&1",
+							"Cal-Gran": "Cal-Gran",
+							"Cal-Gran 50/50": "Cal-Gran 50/50",
+							"Cal-Gran 50/50 (S)": "Cal-Gran 50/50 (S)",
+							"Cal-Gran 130": "Cal-Gran 130",
+							"Cal-Gran 150": "Cal-Gran 150",
+							"Cal-Gran Extra K": "Cal-Gran Extra K",
+							"Dairy Pro": "Dairy Pro",
+							"YaraMila ACTYVA S": "YaraMila ACTYVA S",
+							"Agflow Extra": "Agflow Extra",
+							"Super & Potash 3:1": "Super & Potash 3:1",
+							"YaraBela CAN-27": "YaraBela CAN-27",
+							"Cal-Gran Aftergraze": "Cal-Gran Aftergraze",
+							"Cal-Gran Prodress": "Cal-Gran Prodress",
+							"Wengfu PrimeZinc 10": "Wengfu PrimeZinc 10",
+							"Wengfu Pasture King": "Wengfu Pasture King",
+							"Wengfu SuStain": "Wengfu SuStain",
+							"Wengfu Slam": "Wengfu Slam",
+							"Wengfu Prime MSZ": "Wengfu Prime MSZ",
+							"Wengfu 9-20-0-10 MAP SuStain": "Wengfu 9-20-0-10 MAP SuStain",
+							"Wengfu 15-17-0-15 DAP SuStain": "Wengfu 15-17-0-15 DAP SuStain",
+							"Wengfu 16-18-0-10 DAP SuStain": "Wengfu 16-18-0-10 DAP SuStain",
+							"Wengfu 5-15-0-6 Fast Start Legume": "Wengfu 5-15-0-6 Fast Start Legume",
+							"Wengfu 9-20-0-10 PrimeZinc": "Wengfu 9-20-0-10 PrimeZinc",
+							"Wengfu 12-18-0-6 PrimeZinc": "Wengfu 12-18-0-6 PrimeZinc",
+							"Wengfu 14-13-0-11 PrimeZinc": "Wengfu 14-13-0-11 PrimeZinc",
+							"Wengfu 19-13-0-7 PrimeZinc": "Wengfu 19-13-0-7 PrimeZinc",
+							"Wengfu Booster K": "Wengfu Booster K",
+							"Wengfu Booster Rich 1": "Wengfu Booster Rich 1",
+							"Wengfu Booster Grass DAP": "Wengfu Booster Grass DAP",
+							"Wengfu Aftergraze": "Wengfu Aftergraze",
+							"Wengfu Sidedress": "Wengfu Sidedress",
+							"Wengfu Pasture Booster": "Wengfu Pasture Booster",
+							"Wengfu DAP Hay Booster": "Wengfu DAP Hay Booster",
+							"Wengfu MAP Hay Booster": "Wengfu MAP Hay Booster",
+							"Wengfu Fodder Booster": "Wengfu Fodder Booster",
+							"K-Till Extra": "K-Till Extra",
+							"Agras Extra": "Agras Extra",
+							"Super Copper Zinc Moly": "Super Copper Zinc Moly",
+							"Flexi-N": "Flexi-N"
 						}
 					},
 					"AmountAppliedPerHectare": {
@@ -547,12 +604,12 @@
 					"ApplicationUnit": {
 						"CellType": "formula"
 					},
-					"Density": {
-						"CellType": "formula"
-					},
 					"ApplicationArea": {
 						"CellType": "formula",
 						"Unit": "ha"
+					},
+					"Density": {
+						"CellType": "formula"
 					},
 					"TotalApplied": {
 						"CellType": "formula",
@@ -593,6 +650,10 @@
 					},
 					"Ingredient6Percent": {
 						"CellType": "formula"
+					},
+					"N": {
+						"CellType": "formula",
+						"Unit": "declared"
 					},
 					"NApplicationRate": {
 						"CellType": "formula",
@@ -1043,6 +1104,89 @@
 			}
 		},
 		{
+			"TableName": "Table_Input_ChemicalsCleaning",
+			"MatrixType": "RowsToCols",
+			"NumberOfCols": 3,
+			"ColumnNames": {
+				"ProductName": "Product name",
+				"Type": "Type (select)",
+				"QuantityPurchased": "Quantity purchased (kg)"
+			},
+			"Rows": {
+				"Row": {
+					"ProductName": {
+						"CellType": "text"
+					},
+					"Type": {
+						"CellType": "select",
+						"Options": {
+							"Alkaline cleaner": "Alkaline cleaner",
+							"Bleach": "Bleach",
+							"Phosphoric acid": "Phosphoric acid"
+						}
+					},
+					"QuantityPurchased": {
+						"CellType": "number",
+						"Unit": "kg"
+					}
+				}
+			}
+		},
+		{
+			"TableName": "Table_Input_ServicesAndContractors",
+			"MatrixType": "RowsToCols",
+			"NumberOfCols": 4,
+			"ColumnNames": {
+				"ServiceProviderContractor": "Service provider / contractor",
+				"Activity": "Activity",
+				"TotalAmount": "Total amount",
+				"AmountUnit": "Amount unit"
+			},
+			"Rows": {
+				"Row": {
+					"ServiceProviderContractor": {
+						"CellType": "text"
+					},
+					"Activity": {
+						"CellType": "text"
+					},
+					"TotalAmount": {
+						"CellType": "number"
+					},
+					"AmountUnit": {
+						"CellType": "select",
+						"Options": {
+							"Hour": "Hour",
+							"Hectare": "Hectare"
+						}
+					}
+				}
+			}
+		},
+		{
+			"TableName": "Table_Input_UncategorisedProductsServices",
+			"MatrixType": "RowsToCols",
+			"NumberOfCols": 3,
+			"ColumnNames": {
+				"ProductServiceName": "Product / service name",
+				"Amount": "Amount",
+				"AmountUnit": "Amount unit"
+			},
+			"Rows": {
+				"Row": {
+					"ProductServiceName": {
+						"CellType": "text"
+					},
+					"Amount": {
+						"CellType": "number"
+					},
+					"AmountUnit": {
+						"CellType": "text"
+					}
+				}
+			}
+		},
+		{
 			"TableName": "Table_Input_Pesticides",
 			"MatrixType": "RowsToCols",
 			"NumberOfCols": 15,
@@ -1163,772 +1307,6 @@
 					"TotalActiveIngredient3": {
 						"CellType": "formula",
 						"Unit": "kg"
-					}
-				}
-			}
-		},
-		{
-			"TableName": "Table_Input_ChemicalsCleaning",
-			"MatrixType": "RowsToCols",
-			"NumberOfCols": 3,
-			"ColumnNames": {
-				"ProductName": "Product name",
-				"Type": "Type (select)",
-				"QuantityPurchased": "Quantity purchased (kg)"
-			},
-			"Rows": {
-				"Row": {
-					"ProductName": {
-						"CellType": "text"
-					},
-					"Type": {
-						"CellType": "select",
-						"Options": {
-							"Alkaline cleaner": "Alkaline cleaner",
-							"Bleach": "Bleach",
-							"Phosphoric acid": "Phosphoric acid"
-						}
-					},
-					"QuantityPurchased": {
-						"CellType": "number",
-						"Unit": "kg"
-					}
-				}
-			}
-		},
-		{
-			"TableName": "Table_Input_ChemicalsPharmacy",
-			"MatrixType": "RowsToCols",
-			"NumberOfCols": 3,
-			"ColumnNames": {
-				"ProductName": "Product name",
-				"Type": "Type (select)",
-				"NumberOfHeadTreated": "Number of head treated"
-			},
-			"Rows": {
-				"Row": {
-					"ProductName": {
-						"CellType": "text"
-					},
-					"Type": {
-						"CellType": "select",
-						"Options": {
-							"Parasite control for cattle (external), dipping": "Parasite control for cattle (external), dipping",
-							"Parasite control for cattle (internal)": "Parasite control for cattle (internal)",
-							"Parasite control for sheep (external)": "Parasite control for sheep (external)",
-							"Parasite control for sheep (internal)": "Parasite control for sheep (internal)"
-						}
-					},
-					"NumberOfHeadTreated": {
-						"CellType": "number"
-					}
-				}
-			}
-		},
-		{
-			"TableName": "Table_Input_FeedBlends",
-			"MatrixType": "RowsToCols",
-			"NumberOfCols": 14,
-			"ColumnNames": {
-				"FeedBlendName": "Feed blend name",
-				"AmountFed": "Amount fed (kg)",
-				"Ingredient1": "Ingredient 1 (select)",
-				"Ingredient1SourceRegion": "Ingredient 1 source region",
-				"Ingredient1Percent": "Ingredient 1 percent",
-				"Ingredient2": "Ingredient 2 (select)",
-				"Ingredient2SourceRegion": "Ingredient 2 source region",
-				"Ingredient2Percent": "Ingredient 2 percent",
-				"Ingredient3": "Ingredient 3 (select)",
-				"Ingredient3SourceRegion": "Ingredient 3 source region",
-				"Ingredient3Percent": "Ingredient 3 percent",
-				"Ingredient4": "Ingredient 4 (select)",
-				"Ingredient4SourceRegion": "Ingredient 4 source region",
-				"Ingredient4Percent": "Ingredient 4 percent"
-			},
-			"Rows": {
-				"Row": {
-					"FeedBlendName": {
-						"CellType": "text"
-					},
-					"AmountFed": {
-						"CellType": "number",
-						"Unit": "kg"
-					},
-					"Ingredient1": {
-						"CellType": "select",
-						"Options": {
-							"Sardines (whole)": "Sardines (whole)",
-							"Barley grain": "Barley grain",
-							"Maize grain": "Maize grain",
-							"Sorghum grain": "Sorghum grain",
-							"Wheat grain": "Wheat grain",
-							"Cereal hay": "Cereal hay",
-							"Cereal silage": "Cereal silage",
-							"Lucerne hay": "Lucerne hay",
-							"Maize silage": "Maize silage",
-							"Oaten hay": "Oaten hay",
-							"Pasture hay": "Pasture hay",
-							"Canola meal": "Canola meal",
-							"Meat meal": "Meat meal",
-							"Soybean meal": "Soybean meal",
-							"Wheat bran": "Wheat bran",
-							"Bentonite": "Bentonite",
-							"Canola oil": "Canola oil",
-							"Cotton seed": "Cotton seed",
-							"Molasses": "Molasses"
-						}
-					},
-					"Ingredient1SourceRegion": {
-						"CellType": "select",
-						"DependentOn": "Ingredient1",
-						"Options": {
-							"Sardineswhole": {
-								"SA": "SA"
-							},
-							"Barleygrain": {
-								"Australia": "Australia",
-								"NSW": "NSW",
-								"NT": "NT",
-								"QLD": "QLD",
-								"SA": "SA",
-								"TAS": "TAS",
-								"VIC": "VIC",
-								"WA": "WA"
-							},
-							"Maizegrain": {
-								"Australia": "Australia",
-								"NSW": "NSW",
-								"NT": "NT",
-								"QLD": "QLD",
-								"SA": "SA",
-								"VIC": "VIC",
-								"WA": "WA"
-							},
-							"Sorghumgrain": {
-								"Australia": "Australia",
-								"NSW": "NSW",
-								"QLD": "QLD",
-								"SA": "SA",
-								"VIC": "VIC"
-							},
-							"Wheatgrain": {
-								"Australia": "Australia",
-								"NSW": "NSW",
-								"NT": "NT",
-								"QLD": "QLD",
-								"SA": "SA",
-								"TAS": "TAS",
-								"VIC": "VIC",
-								"WA": "WA"
-							},
-							"Cerealhay": {
-								"Australia": "Australia",
-								"NSW": "NSW",
-								"QLD": "QLD",
-								"SA": "SA",
-								"TAS": "TAS",
-								"VIC": "VIC",
-								"WA": "WA"
-							},
-							"Cerealsilage": {
-								"Australia": "Australia",
-								"NSW": "NSW",
-								"QLD": "QLD",
-								"SA": "SA",
-								"TAS": "TAS",
-								"VIC": "VIC"
-							},
-							"Lucernehay": {
-								"Australia": "Australia",
-								"NSW": "NSW",
-								"QLD": "QLD",
-								"SA": "SA",
-								"TAS": "TAS",
-								"VIC": "VIC"
-							},
-							"Maizesilage": "n/a",
-							"Oatenhay": {
-								"Australia": "Australia",
-								"NSW": "NSW",
-								"QLD": "QLD",
-								"SA": "SA",
-								"VIC": "VIC",
-								"WA": "WA"
-							},
-							"Pasturehay": {
-								"Australia": "Australia",
-								"NSW": "NSW",
-								"QLD": "QLD",
-								"SA": "SA",
-								"TAS": "TAS",
-								"VIC": "VIC",
-								"WA": "WA"
-							},
-							"Canolameal": {
-								"Australia": "Australia"
-							},
-							"Meatmeal": {
-								"Australia": "Australia"
-							},
-							"Soybeanmeal": {
-								"Brazil": "Brazil"
-							},
-							"Wheatbran": {
-								"Australia": "Australia"
-							},
-							"Bentonite": {
-								"Australia": "Australia"
-							},
-							"Canolaoil": {
-								"Australia": "Australia"
-							},
-							"Cottonseed": {
-								"Australia": "Australia"
-							},
-							"Molasses": {
-								"QLD": "QLD"
-							}
-						}
-					},
-					"Ingredient1Percent": {
-						"CellType": "percent"
-					},
-					"Ingredient2": {
-						"CellType": "select",
-						"Options": {
-							"Sardines (whole)": "Sardines (whole)",
-							"Barley grain": "Barley grain",
-							"Maize grain": "Maize grain",
-							"Sorghum grain": "Sorghum grain",
-							"Wheat grain": "Wheat grain",
-							"Cereal hay": "Cereal hay",
-							"Cereal silage": "Cereal silage",
-							"Lucerne hay": "Lucerne hay",
-							"Maize silage": "Maize silage",
-							"Oaten hay": "Oaten hay",
-							"Pasture hay": "Pasture hay",
-							"Canola meal": "Canola meal",
-							"Meat meal": "Meat meal",
-							"Soybean meal": "Soybean meal",
-							"Wheat bran": "Wheat bran",
-							"Bentonite": "Bentonite",
-							"Canola oil": "Canola oil",
-							"Cotton seed": "Cotton seed",
-							"Molasses": "Molasses"
-						}
-					},
-					"Ingredient2SourceRegion": {
-						"CellType": "select",
-						"DependentOn": "Ingredient2",
-						"Options": {
-							"Sardineswhole": {
-								"SA": "SA"
-							},
-							"Barleygrain": {
-								"Australia": "Australia",
-								"NSW": "NSW",
-								"NT": "NT",
-								"QLD": "QLD",
-								"SA": "SA",
-								"TAS": "TAS",
-								"VIC": "VIC",
-								"WA": "WA"
-							},
-							"Maizegrain": {
-								"Australia": "Australia",
-								"NSW": "NSW",
-								"NT": "NT",
-								"QLD": "QLD",
-								"SA": "SA",
-								"VIC": "VIC",
-								"WA": "WA"
-							},
-							"Sorghumgrain": {
-								"Australia": "Australia",
-								"NSW": "NSW",
-								"QLD": "QLD",
-								"SA": "SA",
-								"VIC": "VIC"
-							},
-							"Wheatgrain": {
-								"Australia": "Australia",
-								"NSW": "NSW",
-								"NT": "NT",
-								"QLD": "QLD",
-								"SA": "SA",
-								"TAS": "TAS",
-								"VIC": "VIC",
-								"WA": "WA"
-							},
-							"Cerealhay": {
-								"Australia": "Australia",
-								"NSW": "NSW",
-								"QLD": "QLD",
-								"SA": "SA",
-								"TAS": "TAS",
-								"VIC": "VIC",
-								"WA": "WA"
-							},
-							"Cerealsilage": {
-								"Australia": "Australia",
-								"NSW": "NSW",
-								"QLD": "QLD",
-								"SA": "SA",
-								"TAS": "TAS",
-								"VIC": "VIC"
-							},
-							"Lucernehay": {
-								"Australia": "Australia",
-								"NSW": "NSW",
-								"QLD": "QLD",
-								"SA": "SA",
-								"TAS": "TAS",
-								"VIC": "VIC"
-							},
-							"Maizesilage": "n/a",
-							"Oatenhay": {
-								"Australia": "Australia",
-								"NSW": "NSW",
-								"QLD": "QLD",
-								"SA": "SA",
-								"VIC": "VIC",
-								"WA": "WA"
-							},
-							"Pasturehay": {
-								"Australia": "Australia",
-								"NSW": "NSW",
-								"QLD": "QLD",
-								"SA": "SA",
-								"TAS": "TAS",
-								"VIC": "VIC",
-								"WA": "WA"
-							},
-							"Canolameal": {
-								"Australia": "Australia"
-							},
-							"Meatmeal": {
-								"Australia": "Australia"
-							},
-							"Soybeanmeal": {
-								"Brazil": "Brazil"
-							},
-							"Wheatbran": {
-								"Australia": "Australia"
-							},
-							"Bentonite": {
-								"Australia": "Australia"
-							},
-							"Canolaoil": {
-								"Australia": "Australia"
-							},
-							"Cottonseed": {
-								"Australia": "Australia"
-							},
-							"Molasses": {
-								"QLD": "QLD"
-							}
-						}
-					},
-					"Ingredient2Percent": {
-						"CellType": "percent"
-					},
-					"Ingredient3": {
-						"CellType": "select",
-						"Options": {
-							"Sardines (whole)": "Sardines (whole)",
-							"Barley grain": "Barley grain",
-							"Maize grain": "Maize grain",
-							"Sorghum grain": "Sorghum grain",
-							"Wheat grain": "Wheat grain",
-							"Cereal hay": "Cereal hay",
-							"Cereal silage": "Cereal silage",
-							"Lucerne hay": "Lucerne hay",
-							"Maize silage": "Maize silage",
-							"Oaten hay": "Oaten hay",
-							"Pasture hay": "Pasture hay",
-							"Canola meal": "Canola meal",
-							"Meat meal": "Meat meal",
-							"Soybean meal": "Soybean meal",
-							"Wheat bran": "Wheat bran",
-							"Bentonite": "Bentonite",
-							"Canola oil": "Canola oil",
-							"Cotton seed": "Cotton seed",
-							"Molasses": "Molasses"
-						}
-					},
-					"Ingredient3SourceRegion": {
-						"CellType": "select",
-						"DependentOn": "Ingredient3",
-						"Options": {
-							"Sardineswhole": {
-								"SA": "SA"
-							},
-							"Barleygrain": {
-								"Australia": "Australia",
-								"NSW": "NSW",
-								"NT": "NT",
-								"QLD": "QLD",
-								"SA": "SA",
-								"TAS": "TAS",
-								"VIC": "VIC",
-								"WA": "WA"
-							},
-							"Maizegrain": {
-								"Australia": "Australia",
-								"NSW": "NSW",
-								"NT": "NT",
-								"QLD": "QLD",
-								"SA": "SA",
-								"VIC": "VIC",
-								"WA": "WA"
-							},
-							"Sorghumgrain": {
-								"Australia": "Australia",
-								"NSW": "NSW",
-								"QLD": "QLD",
-								"SA": "SA",
-								"VIC": "VIC"
-							},
-							"Wheatgrain": {
-								"Australia": "Australia",
-								"NSW": "NSW",
-								"NT": "NT",
-								"QLD": "QLD",
-								"SA": "SA",
-								"TAS": "TAS",
-								"VIC": "VIC",
-								"WA": "WA"
-							},
-							"Cerealhay": {
-								"Australia": "Australia",
-								"NSW": "NSW",
-								"QLD": "QLD",
-								"SA": "SA",
-								"TAS": "TAS",
-								"VIC": "VIC",
-								"WA": "WA"
-							},
-							"Cerealsilage": {
-								"Australia": "Australia",
-								"NSW": "NSW",
-								"QLD": "QLD",
-								"SA": "SA",
-								"TAS": "TAS",
-								"VIC": "VIC"
-							},
-							"Lucernehay": {
-								"Australia": "Australia",
-								"NSW": "NSW",
-								"QLD": "QLD",
-								"SA": "SA",
-								"TAS": "TAS",
-								"VIC": "VIC"
-							},
-							"Maizesilage": "n/a",
-							"Oatenhay": {
-								"Australia": "Australia",
-								"NSW": "NSW",
-								"QLD": "QLD",
-								"SA": "SA",
-								"VIC": "VIC",
-								"WA": "WA"
-							},
-							"Pasturehay": {
-								"Australia": "Australia",
-								"NSW": "NSW",
-								"QLD": "QLD",
-								"SA": "SA",
-								"TAS": "TAS",
-								"VIC": "VIC",
-								"WA": "WA"
-							},
-							"Canolameal": {
-								"Australia": "Australia"
-							},
-							"Meatmeal": {
-								"Australia": "Australia"
-							},
-							"Soybeanmeal": {
-								"Brazil": "Brazil"
-							},
-							"Wheatbran": {
-								"Australia": "Australia"
-							},
-							"Bentonite": {
-								"Australia": "Australia"
-							},
-							"Canolaoil": {
-								"Australia": "Australia"
-							},
-							"Cottonseed": {
-								"Australia": "Australia"
-							},
-							"Molasses": {
-								"QLD": "QLD"
-							}
-						}
-					},
-					"Ingredient3Percent": {
-						"CellType": "percent"
-					},
-					"Ingredient4": {
-						"CellType": "select",
-						"Options": {
-							"Sardines (whole)": "Sardines (whole)",
-							"Barley grain": "Barley grain",
-							"Maize grain": "Maize grain",
-							"Sorghum grain": "Sorghum grain",
-							"Wheat grain": "Wheat grain",
-							"Cereal hay": "Cereal hay",
-							"Cereal silage": "Cereal silage",
-							"Lucerne hay": "Lucerne hay",
-							"Maize silage": "Maize silage",
-							"Oaten hay": "Oaten hay",
-							"Pasture hay": "Pasture hay",
-							"Canola meal": "Canola meal",
-							"Meat meal": "Meat meal",
-							"Soybean meal": "Soybean meal",
-							"Wheat bran": "Wheat bran",
-							"Bentonite": "Bentonite",
-							"Canola oil": "Canola oil",
-							"Cotton seed": "Cotton seed",
-							"Molasses": "Molasses"
-						}
-					},
-					"Ingredient4SourceRegion": {
-						"CellType": "select",
-						"DependentOn": "Ingredient4",
-						"Options": {
-							"Sardineswhole": {
-								"SA": "SA"
-							},
-							"Barleygrain": {
-								"Australia": "Australia",
-								"NSW": "NSW",
-								"NT": "NT",
-								"QLD": "QLD",
-								"SA": "SA",
-								"TAS": "TAS",
-								"VIC": "VIC",
-								"WA": "WA"
-							},
-							"Maizegrain": {
-								"Australia": "Australia",
-								"NSW": "NSW",
-								"NT": "NT",
-								"QLD": "QLD",
-								"SA": "SA",
-								"VIC": "VIC",
-								"WA": "WA"
-							},
-							"Sorghumgrain": {
-								"Australia": "Australia",
-								"NSW": "NSW",
-								"QLD": "QLD",
-								"SA": "SA",
-								"VIC": "VIC"
-							},
-							"Wheatgrain": {
-								"Australia": "Australia",
-								"NSW": "NSW",
-								"NT": "NT",
-								"QLD": "QLD",
-								"SA": "SA",
-								"TAS": "TAS",
-								"VIC": "VIC",
-								"WA": "WA"
-							},
-							"Cerealhay": {
-								"Australia": "Australia",
-								"NSW": "NSW",
-								"QLD": "QLD",
-								"SA": "SA",
-								"TAS": "TAS",
-								"VIC": "VIC",
-								"WA": "WA"
-							},
-							"Cerealsilage": {
-								"Australia": "Australia",
-								"NSW": "NSW",
-								"QLD": "QLD",
-								"SA": "SA",
-								"TAS": "TAS",
-								"VIC": "VIC"
-							},
-							"Lucernehay": {
-								"Australia": "Australia",
-								"NSW": "NSW",
-								"QLD": "QLD",
-								"SA": "SA",
-								"TAS": "TAS",
-								"VIC": "VIC"
-							},
-							"Maizesilage": "n/a",
-							"Oatenhay": {
-								"Australia": "Australia",
-								"NSW": "NSW",
-								"QLD": "QLD",
-								"SA": "SA",
-								"VIC": "VIC",
-								"WA": "WA"
-							},
-							"Pasturehay": {
-								"Australia": "Australia",
-								"NSW": "NSW",
-								"QLD": "QLD",
-								"SA": "SA",
-								"TAS": "TAS",
-								"VIC": "VIC",
-								"WA": "WA"
-							},
-							"Canolameal": {
-								"Australia": "Australia"
-							},
-							"Meatmeal": {
-								"Australia": "Australia"
-							},
-							"Soybeanmeal": {
-								"Brazil": "Brazil"
-							},
-							"Wheatbran": {
-								"Australia": "Australia"
-							},
-							"Bentonite": {
-								"Australia": "Australia"
-							},
-							"Canolaoil": {
-								"Australia": "Australia"
-							},
-							"Cottonseed": {
-								"Australia": "Australia"
-							},
-							"Molasses": {
-								"QLD": "QLD"
-							}
-						}
-					},
-					"Ingredient4Percent": {
-						"CellType": "percent"
-					}
-				}
-			}
-		},
-		{
-			"TableName": "Table_Input_ServicesAndContractors",
-			"MatrixType": "RowsToCols",
-			"NumberOfCols": 4,
-			"ColumnNames": {
-				"ServiceProviderContractor": "Service provider / contractor",
-				"Activity": "Activity",
-				"TotalAmount": "Total amount",
-				"AmountUnit": "Amount unit"
-			},
-			"Rows": {
-				"Row": {
-					"ServiceProviderContractor": {
-						"CellType": "text"
-					},
-					"Activity": {
-						"CellType": "text"
-					},
-					"TotalAmount": {
-						"CellType": "number"
-					},
-					"AmountUnit": {
-						"CellType": "select",
-						"Options": {
-							"Hour": "Hour",
-							"Hectare": "Hectare"
-						}
-					}
-				}
-			}
-		},
-		{
-			"TableName": "Table_Input_Packaging",
-			"MatrixType": "RowsToCols",
-			"NumberOfCols": 5,
-			"ColumnNames": {
-				"PackagingName": "Packaging name",
-				"QuantityPurchased": "Quantity purchased",
-				"PrimaryMaterial": "Primary material",
-				"WeightPerUnit": "Weight per unit (kg)",
-				"TotalWeightPurchased": "Total weight purchased (kg)"
-			},
-			"Rows": {
-				"Row": {
-					"PackagingName": {
-						"CellType": "text"
-					},
-					"QuantityPurchased": {
-						"CellType": "number"
-					},
-					"PrimaryMaterial": {
-						"CellType": "select",
-						"Options": {
-							"Corrugated board": "Corrugated board",
-							"Plastic crate polypropylene": "Plastic crate polypropylene",
-							"Plastic film LDPE": "Plastic film LDPE",
-							"Plastic sheet HDPE": "Plastic sheet HDPE"
-						}
-					},
-					"WeightPerUnit": {
-						"CellType": "number",
-						"Unit": "kg"
-					},
-					"TotalWeightPurchased": {
-						"CellType": "formula",
-						"Unit": "kg"
-					}
-				}
-			}
-		},
-		{
-			"TableName": "Table_Input_GrowMedia",
-			"MatrixType": "RowsToCols",
-			"NumberOfCols": 3,
-			"ColumnNames": {
-				"GrowMediaType": "Grow media type",
-				"TotalAmount": "Total amount",
-				"AmountUnit": "Amount unit"
-			},
-			"Rows": {
-				"Row": {
-					"GrowMediaType": {
-						"CellType": "text"
-					},
-					"TotalAmount": {
-						"CellType": "number"
-					},
-					"AmountUnit": {
-						"CellType": "select",
-						"Options": {
-							"kg": "kg",
-							"m3": "m3"
-						}
-					}
-				}
-			}
-		},
-		{
-			"TableName": "Table_Input_UncategorisedProductsServices",
-			"MatrixType": "RowsToCols",
-			"NumberOfCols": 3,
-			"ColumnNames": {
-				"ProductServiceName": "Product / service name",
-				"Amount": "Amount",
-				"AmountUnit": "Amount unit"
-			},
-			"Rows": {
-				"Row": {
-					"ProductServiceName": {
-						"CellType": "text"
-					},
-					"Amount": {
-						"CellType": "number"
-					},
-					"AmountUnit": {
-						"CellType": "text"
 					}
 				}
 			}
@@ -2126,15 +1504,33 @@
 					},
 					"TemporalRepresentativeness": {
 						"CellType": "select",
-						"Options": {}
+						"Options": {
+							"TR5": "TR5",
+							"TR4": "TR4",
+							"TR3": "TR3",
+							"TR2": "TR2",
+							"TR1": "TR1"
+						}
 					},
 					"SpatialResolution": {
 						"CellType": "select",
-						"Options": {}
+						"Options": {
+							"SR5": "SR5",
+							"SR4": "SR4",
+							"SR3": "SR3",
+							"SR2": "SR2",
+							"SR1": "SR1"
+						}
 					},
 					"SampleSize": {
 						"CellType": "select",
-						"Options": {}
+						"Options": {
+							"SS5": "SS5",
+							"SS4": "SS4",
+							"SS3": "SS3",
+							"SS2": "SS2",
+							"SS1": "SS1"
+						}
 					},
 					"Notes": {
 						"CellType": "number"
@@ -2143,7 +1539,7 @@
 						"CellType": "number"
 					},
 					"Score": {
-						"CellType": "number"
+						"CellType": "formula"
 					}
 				}
 			}

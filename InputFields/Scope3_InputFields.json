@@ -1,7 +1,7 @@
 {
 	"schemaVersion": 1,
-	"generatedFrom": "13_Scope3_WIP_v13.xlsx",
-	"generatedAt": "2026-08-10T01:43:26Z",
+	"generatedFrom": "13_Scope3_WIP_v14.xlsx",
+	"generatedAt": "2026-08-11T06:32:07Z",
 	"InputCells": [
 		{
 			"CellName": "X_Cell_Site_FarmName",
@@ -12,6 +12,11 @@
 			"CellName": "X_Cell_Site_ReportingEntityName",
 			"Label": "Reporting entity name",
 			"CellType": "text"
+		},
+		{
+			"CellName": "X_Cell_Site_StartDate",
+			"Label": "Emissions calculation period start date",
+			"CellType": "date"
 		},
 		{
 			"CellName": "X_Cell_Site_EndDate",
@@ -139,6 +144,36 @@
 			"CellType": "number"
 		},
 		{
+			"CellName": "X_Cell_FarmInputs_Seed_BarleyGrain",
+			"Label": "Barley grain (for seed)",
+			"CellType": "number"
+		},
+		{
+			"CellName": "X_Cell_FarmInputs_Seed_MaizeGrain",
+			"Label": "Maize grain (for seed)",
+			"CellType": "number"
+		},
+		{
+			"CellName": "X_Cell_FarmInputs_Seed_OatGrain",
+			"Label": "Oat grain (for seed)",
+			"CellType": "number"
+		},
+		{
+			"CellName": "X_Cell_FarmInputs_Seed_SorghumGrain",
+			"Label": "Sorghum grain (for seed)",
+			"CellType": "number"
+		},
+		{
+			"CellName": "X_Cell_FarmInputs_Seed_WheatGrain",
+			"Label": "Wheat grain (for seed)",
+			"CellType": "number"
+		},
+		{
+			"CellName": "X_Cell_FarmInputs_Misc_NylonNetting",
+			"Label": "Nylon netting",
+			"CellType": "number"
+		},
+		{
 			"CellName": "X_Cell_FarmInputs_LickBlocks_DrySeasonMix",
 			"Label": "Lick block, dry season mix",
 			"CellType": "number"
@@ -174,31 +209,6 @@
 			"CellType": "number"
 		},
 		{
-			"CellName": "X_Cell_FarmInputs_Seed_BarleyGrain",
-			"Label": "Barley grain (for seed)",
-			"CellType": "number"
-		},
-		{
-			"CellName": "X_Cell_FarmInputs_Seed_MaizeGrain",
-			"Label": "Maize grain (for seed)",
-			"CellType": "number"
-		},
-		{
-			"CellName": "X_Cell_FarmInputs_Seed_OatGrain",
-			"Label": "Oat grain (for seed)",
-			"CellType": "number"
-		},
-		{
-			"CellName": "X_Cell_FarmInputs_Seed_SorghumGrain",
-			"Label": "Sorghum grain (for seed)",
-			"CellType": "number"
-		},
-		{
-			"CellName": "X_Cell_FarmInputs_Seed_WheatGrain",
-			"Label": "Wheat grain (for seed)",
-			"CellType": "number"
-		},
-		{
 			"CellName": "X_Cell_FarmInputs_Misc_AnimalEarTagsLarge",
 			"Label": "Animal ear tags (large)",
 			"CellType": "number"
@@ -206,11 +216,6 @@
 		{
 			"CellName": "X_Cell_FarmInputs_Misc_AnimalEarTagsSmall",
 			"Label": "Animal ear tags (small)",
-			"CellType": "number"
-		},
-		{
-			"CellName": "X_Cell_FarmInputs_Misc_NylonNetting",
-			"Label": "Nylon netting",
 			"CellType": "number"
 		},
 		{
@@ -404,13 +409,13 @@
 		{
 			"TableName": "Table_Input_InorganicFertiliser_Brands",
 			"MatrixType": "RowsToCols",
-			"NumberOfCols": 21,
+			"NumberOfCols": 22,
 			"ColumnNames": {
 				"Product": "Product (select)",
 				"AmountAppliedPerHectare": "Amount applied per hectare",
 				"ApplicationUnit": "Application unit",
-				"Density": "Density",
 				"ApplicationArea": "Application area (ha)",
+				"Density": "Density",
 				"TotalApplied": "Total applied (kg)",
 				"Ingredient1": "Ingredient 1",
 				"Ingredient1Percent": "Ingredient 1 percent",
@@ -424,6 +429,7 @@
 				"Ingredient5Percent": "Ingredient 5 percent",
 				"Ingredient6": "Ingredient 6",
 				"Ingredient6Percent": "Ingredient 6 percent",
+				"N": "% N (Ingredients)",
 				"NApplicationRate": "N application rate (kg/ha)",
 				"UreaSource": "Urea source",
 				"AmmoniaSource": "Ammonia source"
@@ -433,29 +439,24 @@
 					"Product": {
 						"CellType": "select",
 						"Options": {
-							"Aqua Finish": "Aqua Finish",
-							"Aqua Grow": "Aqua Grow",
-							"Aqua Nitro AN": "Aqua Nitro AN",
-							"Aqua NitroCal": "Aqua NitroCal",
-							"Aqua NitroCal (VI)": "Aqua NitroCal (VI)",
-							"Aqua NitroCal Ultimate": "Aqua NitroCal Ultimate",
-							"Aqua Start": "Aqua Start",
-							"Aqua Thio-Complete": "Aqua Thio-Complete",
-							"Aqua Thio-Emerge": "Aqua Thio-Emerge",
-							"Aqua Thio-Flourish": "Aqua Thio-Flourish",
-							"Asco Fol Plus": "Asco Fol Plus",
-							"Asco Plus": "Asco Plus",
-							"Asco Rhizo Plus": "Asco Rhizo Plus",
-							"Benefit PZ": "Benefit PZ",
-							"Boost-It": "Boost-It",
-							"Boroplus": "Boroplus",
-							"Brevisol Range": "Brevisol Range",
-							"Brexil Line": "Brexil Line",
-							"Bronze": "Bronze",
-							"Bud-Wiser Dry": "Bud-Wiser Dry",
-							"Calbit C": "Calbit C",
-							"Calcium 175": "Calcium 175",
-							"CalPhos": "CalPhos"
+							"Notes": "Notes",
+							"Use Lime EF for calcium": "Use Lime EF for calcium",
+							"Amount of urea calculated from urea nitrogen amount": "Amount of urea calculated from urea nitrogen amount",
+							"Ingredient 1": "Ingredient 1",
+							"Wengfu 19-13-0-7 PrimeZinc": "Wengfu 19-13-0-7 PrimeZinc",
+							"Wengfu Booster K": "Wengfu Booster K",
+							"Wengfu Booster Rich 1": "Wengfu Booster Rich 1",
+							"Wengfu Booster Grass DAP": "Wengfu Booster Grass DAP",
+							"Wengfu Aftergraze": "Wengfu Aftergraze",
+							"Wengfu Sidedress": "Wengfu Sidedress",
+							"Wengfu Pasture Booster": "Wengfu Pasture Booster",
+							"Wengfu DAP Hay Booster": "Wengfu DAP Hay Booster",
+							"Wengfu MAP Hay Booster": "Wengfu MAP Hay Booster",
+							"Wengfu Fodder Booster": "Wengfu Fodder Booster",
+							"K-Till Extra": "K-Till Extra",
+							"Agras Extra": "Agras Extra",
+							"Super Copper Zinc Moly": "Super Copper Zinc Moly",
+							"Flexi-N": "Flexi-N"
 						}
 					},
 					"AmountAppliedPerHectare": {
@@ -464,12 +465,12 @@
 					"ApplicationUnit": {
 						"CellType": "formula"
 					},
+					"ApplicationArea": {
+						"CellType": "formula",
+						"Unit": "ha"
+					},
 					"Density": {
 						"CellType": "formula"
-					},
-					"ApplicationArea": {
-						"CellType": "number",
-						"Unit": "ha"
 					},
 					"TotalApplied": {
 						"CellType": "formula",
@@ -510,6 +511,10 @@
 					},
 					"Ingredient6Percent": {
 						"CellType": "formula"
+					},
+					"N": {
+						"CellType": "formula",
+						"Unit": "declared"
 					},
 					"NApplicationRate": {
 						"CellType": "formula",
@@ -555,7 +560,7 @@
 						"Unit": "kg / ha"
 					},
 					"ApplicationArea": {
-						"CellType": "number",
+						"CellType": "formula",
 						"Unit": "ha"
 					},
 					"TotalApplied": {
@@ -793,6 +798,128 @@
 			}
 		},
 		{
+			"TableName": "Table_Input_ChemicalsCleaning",
+			"MatrixType": "RowsToCols",
+			"NumberOfCols": 3,
+			"ColumnNames": {
+				"ProductName": "Product name",
+				"Type": "Type (select)",
+				"QuantityPurchased": "Quantity purchased (kg)"
+			},
+			"Rows": {
+				"Row": {
+					"ProductName": {
+						"CellType": "text"
+					},
+					"Type": {
+						"CellType": "select",
+						"Options": {
+							"Alkaline cleaner": "Alkaline cleaner",
+							"Bleach": "Bleach",
+							"Phosphoric acid": "Phosphoric acid"
+						}
+					},
+					"QuantityPurchased": {
+						"CellType": "number",
+						"Unit": "kg"
+					}
+				}
+			}
+		},
+		{
+			"TableName": "Table_Input_ServicesAndContractors",
+			"MatrixType": "RowsToCols",
+			"NumberOfCols": 4,
+			"ColumnNames": {
+				"ServiceProviderContractor": "Service provider / contractor",
+				"Activity": "Activity",
+				"TotalAmount": "Total amount",
+				"AmountUnit": "Amount unit"
+			},
+			"Rows": {
+				"Row": {
+					"ServiceProviderContractor": {
+						"CellType": "text"
+					},
+					"Activity": {
+						"CellType": "text"
+					},
+					"TotalAmount": {
+						"CellType": "number"
+					},
+					"AmountUnit": {
+						"CellType": "select",
+						"Options": {
+							"Hour": "Hour",
+							"Hectare": "Hectare"
+						}
+					}
+				}
+			}
+		},
+		{
+			"TableName": "Table_Input_UncategorisedProductsServices",
+			"MatrixType": "RowsToCols",
+			"NumberOfCols": 3,
+			"ColumnNames": {
+				"ProductServiceName": "Product / service name",
+				"Amount": "Amount",
+				"AmountUnit": "Amount unit"
+			},
+			"Rows": {
+				"Row": {
+					"ProductServiceName": {
+						"CellType": "text"
+					},
+					"Amount": {
+						"CellType": "number"
+					},
+					"AmountUnit": {
+						"CellType": "text"
+					}
+				}
+			}
+		},
+		{
+			"TableName": "Table_Input_Packaging",
+			"MatrixType": "RowsToCols",
+			"NumberOfCols": 5,
+			"ColumnNames": {
+				"PackagingName": "Packaging name",
+				"QuantityPurchased": "Quantity purchased",
+				"PrimaryMaterial": "Primary material",
+				"WeightPerUnit": "Weight per unit (kg)",
+				"TotalWeightPurchased": "Total weight purchased (kg)"
+			},
+			"Rows": {
+				"Row": {
+					"PackagingName": {
+						"CellType": "text"
+					},
+					"QuantityPurchased": {
+						"CellType": "number"
+					},
+					"PrimaryMaterial": {
+						"CellType": "select",
+						"Options": {
+							"Corrugated board": "Corrugated board",
+							"Plastic crate polypropylene": "Plastic crate polypropylene",
+							"Plastic film LDPE": "Plastic film LDPE",
+							"Plastic sheet HDPE": "Plastic sheet HDPE"
+						}
+					},
+					"WeightPerUnit": {
+						"CellType": "number",
+						"Unit": "kg"
+					},
+					"TotalWeightPurchased": {
+						"CellType": "formula",
+						"Unit": "kg"
+					}
+				}
+			}
+		},
+		{
 			"TableName": "Table_Input_Pesticides",
 			"MatrixType": "RowsToCols",
 			"NumberOfCols": 15,
@@ -918,59 +1045,28 @@
 			}
 		},
 		{
-			"TableName": "Table_Input_ChemicalsCleaning",
+			"TableName": "Table_Input_GrowMedia",
 			"MatrixType": "RowsToCols",
 			"NumberOfCols": 3,
 			"ColumnNames": {
-				"ProductName": "Product name",
-				"Type": "Type (select)",
-				"QuantityPurchased": "Quantity purchased (kg)"
+				"GrowMediaType": "Grow media type",
+				"TotalAmount": "Total amount",
+				"AmountUnit": "Amount unit"
 			},
 			"Rows": {
 				"Row": {
-					"ProductName": {
+					"GrowMediaType": {
 						"CellType": "text"
 					},
-					"Type": {
-						"CellType": "select",
-						"Options": {
-							"Alkaline cleaner": "Alkaline cleaner",
-							"Bleach": "Bleach",
-							"Phosphoric acid": "Phosphoric acid"
-						}
-					},
-					"QuantityPurchased": {
-						"CellType": "number",
-						"Unit": "kg"
-					}
-				}
-			}
-		},
-		{
-			"TableName": "Table_Input_ChemicalsPharmacy",
-			"MatrixType": "RowsToCols",
-			"NumberOfCols": 3,
-			"ColumnNames": {
-				"ProductName": "Product name",
-				"Type": "Type (select)",
-				"NumberOfHeadTreated": "Number of head treated"
-			},
-			"Rows": {
-				"Row": {
-					"ProductName": {
-						"CellType": "text"
-					},
-					"Type": {
-						"CellType": "select",
-						"Options": {
-							"Parasite control for cattle (external), dipping": "Parasite control for cattle (external), dipping",
-							"Parasite control for cattle (internal)": "Parasite control for cattle (internal)",
-							"Parasite control for sheep (external)": "Parasite control for sheep (external)",
-							"Parasite control for sheep (internal)": "Parasite control for sheep (internal)"
-						}
-					},
-					"NumberOfHeadTreated": {
+					"TotalAmount": {
 						"CellType": "number"
+					},
+					"AmountUnit": {
+						"CellType": "select",
+						"Options": {
+							"kg": "kg",
+							"m3": "m3"
+						}
 					}
 				}
 			}
@@ -1564,121 +1660,30 @@
 			}
 		},
 		{
-			"TableName": "Table_Input_ServicesAndContractors",
-			"MatrixType": "RowsToCols",
-			"NumberOfCols": 4,
-			"ColumnNames": {
-				"ServiceProviderContractor": "Service provider / contractor",
-				"Activity": "Activity",
-				"TotalAmount": "Total amount",
-				"AmountUnit": "Amount unit"
-			},
-			"Rows": {
-				"Row": {
-					"ServiceProviderContractor": {
-						"CellType": "text"
-					},
-					"Activity": {
-						"CellType": "text"
-					},
-					"TotalAmount": {
-						"CellType": "number"
-					},
-					"AmountUnit": {
-						"CellType": "select",
-						"Options": {
-							"Hour": "Hour",
-							"Hectare": "Hectare"
-						}
-					}
-				}
-			}
-		},
-		{
-			"TableName": "Table_Input_Packaging",
-			"MatrixType": "RowsToCols",
-			"NumberOfCols": 5,
-			"ColumnNames": {
-				"PackagingName": "Packaging name",
-				"QuantityPurchased": "Quantity purchased",
-				"PrimaryMaterial": "Primary material",
-				"WeightPerUnit": "Weight per unit (kg)",
-				"TotalWeightPurchased": "Total weight purchased (kg)"
-			},
-			"Rows": {
-				"Row": {
-					"PackagingName": {
-						"CellType": "text"
-					},
-					"QuantityPurchased": {
-						"CellType": "number"
-					},
-					"PrimaryMaterial": {
-						"CellType": "select",
-						"Options": {
-							"Corrugated board": "Corrugated board",
-							"Plastic crate polypropylene": "Plastic crate polypropylene",
-							"Plastic film LDPE": "Plastic film LDPE",
-							"Plastic sheet HDPE": "Plastic sheet HDPE"
-						}
-					},
-					"WeightPerUnit": {
-						"CellType": "number",
-						"Unit": "kg"
-					},
-					"TotalWeightPurchased": {
-						"CellType": "formula",
-						"Unit": "kg"
-					}
-				}
-			}
-		},
-		{
-			"TableName": "Table_Input_GrowMedia",
+			"TableName": "Table_Input_ChemicalsPharmacy",
 			"MatrixType": "RowsToCols",
 			"NumberOfCols": 3,
 			"ColumnNames": {
-				"GrowMediaType": "Grow media type",
-				"TotalAmount": "Total amount",
-				"AmountUnit": "Amount unit"
+				"ProductName": "Product name",
+				"Type": "Type (select)",
+				"NumberOfHeadTreated": "Number of head treated"
 			},
 			"Rows": {
 				"Row": {
-					"GrowMediaType": {
+					"ProductName": {
 						"CellType": "text"
 					},
-					"TotalAmount": {
-						"CellType": "number"
-					},
-					"AmountUnit": {
+					"Type": {
 						"CellType": "select",
 						"Options": {
-							"kg": "kg",
-							"m3": "m3"
+							"Parasite control for cattle (external), dipping": "Parasite control for cattle (external), dipping",
+							"Parasite control for cattle (internal)": "Parasite control for cattle (internal)",
+							"Parasite control for sheep (external)": "Parasite control for sheep (external)",
+							"Parasite control for sheep (internal)": "Parasite control for sheep (internal)"
 						}
-					}
-				}
-			}
-		},
-		{
-			"TableName": "Table_Input_UncategorisedProductsServices",
-			"MatrixType": "RowsToCols",
-			"NumberOfCols": 3,
-			"ColumnNames": {
-				"ProductServiceName": "Product / service name",
-				"Amount": "Amount",
-				"AmountUnit": "Amount unit"
-			},
-			"Rows": {
-				"Row": {
-					"ProductServiceName": {
-						"CellType": "text"
 					},
-					"Amount": {
+					"NumberOfHeadTreated": {
 						"CellType": "number"
-					},
-					"AmountUnit": {
-						"CellType": "text"
 					}
 				}
 			}
