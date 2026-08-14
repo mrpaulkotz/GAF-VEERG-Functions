@@ -407,7 +407,7 @@ Fertiliser_Products_Data1
 "Switch Ag","Crop Starter","L",1.2,"","","",5,3,8,"","Potassium - Generic",0.08,"Nitrogen - Generic",0.05,"Phosphorus - Generic",0.03,"","","","","","","","","","","","","","";
 "Incitec Pivot Fertilisers","Gran-Am","kg",1,"","","",21,"","",24,"Sulphate of ammonia (SOA)",1,"","","","","","","","","","","","","","","","","",""
   }, r, c)
- )))
+ )));
 
 
 Fertiliser_Products_Data2
@@ -446,7 +446,7 @@ Fertiliser_Products_Data2
 "Yara Australia","YaraTera KRISTALON RED","kg",1,"","","",12,5.2,29.9,1,"Potassium - Generic",0.299,"Nitrogen - Nitrate",0.101,"Phosphorus - Generic",0.052,"Nitrogen - Ammoniacal",0.019,"Sulfur - Generic",0.01,"Magnesium",0.006,"Iron",0.0007,"Manganese",0.0004,"Zinc",0.00025,"Boron",0.00025;
 "Yara Australia","YaraTera KRISTALON SPECIAL","kg",1,"","","",18,7.9,14.9,2,"Potassium - Generic",0.149,"Urea",0.213043,"Phosphorus - Generic",0.079,"Nitrogen - Nitrate",0.049,"Nitrogen - Ammoniacal",0.033,"Sulfur - Generic",0.02,"Magnesium",0.018,"Iron",0.0007,"Manganese",0.0004,"Zinc",0.00025
   }, r, c)
- )))
+ )));
 
 
 Fertiliser_Products_Data3
@@ -485,7 +485,7 @@ Fertiliser_Products_Data3
 "Incitec Pivot Fertilisers","Greentop K","kg",1,"","","",32.8,"",11,2.9,"Urea",0.66087,"Nitrogen - Ammoniacal",0.024,"Potassium - Generic",0.11,"Sulfur - Generic",0.029,"","","","","","","","","","","","";
 "Incitec Pivot Fertilisers","HayBoosta","kg",1,"","","",11.7,4.7,23.9,4.6,"Nitrogen - Generic",0.117,"Phosphorus - Generic",0.047,"Potassium - Generic",0.239,"Sulfur - Generic",0.046,"","","","","","","","","","","",""
   }, r, c)
- )))
+ )));
 
 
 Fertiliser_Products_Data4
@@ -524,7 +524,7 @@ Fertiliser_Products_Data4
 "Wengfu Australia","Wengfu 12-18-0-6 PrimeZinc","kg",1,"","","",11.9,17.6,0,5.9,"Nitrogen - Generic",0.119,"Phosphorus - Generic",0.176,"Sulfur - Generic",0.059,"Zinc",0.008,"","","","","","","","","","","","";
 "Wengfu Australia","Wengfu 14-13-0-11 PrimeZinc","kg",1,"","","",14.1,12.8,0,10.7,"Nitrogen - Generic",0.141,"Phosphorus - Generic",0.128,"Sulfur - Generic",0.107,"Zinc",0.006,"","","","","","","","","","","",""
   }, r, c)
- )))
+ )));
 
 
 Fertiliser_Products_Data5
@@ -547,7 +547,7 @@ Fertiliser_Products_Data5
 "CSBP","Super Copper Zinc Moly","kg",1,"","","","",8.8,"",11,"Single superphosphate (SSP)",1,"Copper",0.006,"Zinc",0.003,"Molybdenum",0.0006,"","","","","","","","","","","","";
 "CSBP","Flexi-N","L",1.32,"","","",32,"","","","Urea-ammonium nitrate (UAN)",1,"","","","","","","","","","","","","","","","","",""
   }, r, c)
- )))
+ )));
 
 
 

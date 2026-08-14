@@ -374,3 +374,33 @@ Scope3_SoilAmendments_Data
         "Soil ameliorants", "Soil ameliorants", "Limestone (crushed)", "Australia", "kg", 0.0485, "at market"
       }, r, c)
 )));
+
+
+/*
+============================================================================
+Fish feed and bait
+============================================================================
+*/
+
+Scope3_FishFeedAndBait_Title
+=LAMBDA(("Fish feed and bait scope 3"));
+
+Scope3_FishFeedAndBait_Source
+=LAMBDA(("VEERG 2026: Table A.3.1.1: Life-cycle emission factors for purchased feed (kg CO2e/kg) (EFj)"));
+
+Scope3_FishFeedAndBait_Variation
+=LAMBDA((""));
+
+Scope3_FishFeedAndBait_Data
+=LAMBDA(
+  MAKEARRAY(6, 6,
+    LAMBDA(r,c,
+      INDEX({
+        "Category", "Product name", "Region of origin", "Product Unit", "GHG emission intensity", "System boundary";
+        "Fish feed and bait", "Sardines (whole)", "Australia", "kg", 0.3, "Not specified";
+        "Fish feed and bait", "Low Animal Protein Formulated Feed", "Australia", "kg", 2.2, "Not specified";
+        "Fish feed and bait", "Squid", "Australia", "kg", 0.3, "Not specified";
+        "Fish feed and bait", "Whole fish", "Australia", "kg", 0.3, "Not specified";
+        "Fish feed and bait", "Custom Bait", "Australia", "kg", 0.08, "Not specified"
+      }, r, c)
+)));

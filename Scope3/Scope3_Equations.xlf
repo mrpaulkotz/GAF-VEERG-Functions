@@ -74,6 +74,12 @@ VEERG_15_2_1_1__1_EmissionsFromPurchasedFeed
     Q_j * EF_j
   );
 
+VEERG_15_2_1_1__1_EmissionsFromPurchasedFeedVariation
+  =LAMBDA(
+    Q_j, EF_j,
+    (Q_j * EF_j) * 10 ^ -3
+  );
+
 VEERG_15_2_1_1__1_EmissionsFromPurchasedFeed_Title
   =LAMBDA("Emissions from purchased feed");
 
@@ -92,6 +98,9 @@ VEERG_15_2_1_1__1_EmissionsFromPurchasedFeed_NIRReference
 VEERG_15_2_1_1__1_EmissionsFromPurchasedFeed_LatexEquation
   =LAMBDA("E=\sum\nolimits_j\left(Q_j\times EF_j\right)");
 
+VEERG_15_2_1_1__1_EmissionsFromPurchasedFeed_LatexEquationVariation
+  =LAMBDA("E=\sum\nolimits_j\left(Q_j\times EF_j\right) \times 10^{-3}");
+
 VEERG_15_2_1_1__1_EmissionsFromPurchasedFeed_Arguments
   =LAMBDA(
     MAKEARRAY(3, 4,
@@ -104,6 +113,22 @@ VEERG_15_2_1_1__1_EmissionsFromPurchasedFeed_Arguments
       )
     )
   );
+
+VEERG_15_2_1_1__1_EmissionsFromPurchasedFeed_ArgumentsVariation
+  =LAMBDA(
+    MAKEARRAY(3, 4,
+      LAMBDA(r,c,
+        INDEX({
+          "Q_j", "quantity of feed type j purchased", "kg", "Input";
+          "EF_j", "emission factor of purchased feed", "kg CO2e/kg", "Constant";
+          "j", "feed type", "", "Input"
+        }, r, c)
+      )
+    )
+  );
+
+VEERG_15_2_1_1__1_EmissionsFromPurchasedFeed_Variation
+  =LAMBDA("VARIATION ON SOURCE: Input Q_j in kg instead of t to match EF units. Multiply by 10^-3 to convert kg CO2e to t CO2e.");
 
 /*
 --------------------------------------
@@ -123,6 +148,13 @@ VEERG_15_3_1_1__1_EmissionsFromPurchasedMineralSupplements
     Q_m * EF_m
   );
 
+VEERG_15_3_1_1__1_EmissionsFromPurchasedMineralSupplementsVariation
+  =LAMBDA(
+    Q_m, EF_m,
+    (Q_m * EF_m) * 10 ^ -3
+  );
+
+
 VEERG_15_3_1_1__1_EmissionsFromPurchasedMineralSupplements_Title
   =LAMBDA("Total emissions from purchased mineral supplements");
 
@@ -141,6 +173,9 @@ VEERG_15_3_1_1__1_EmissionsFromPurchasedMineralSupplements_NIRReference
 VEERG_15_3_1_1__1_EmissionsFromPurchasedMineralSupplements_LatexEquation
   =LAMBDA("E=\sum\nolimits_m\left(Q_m\times EF_m\right)");
 
+VEERG_15_3_1_1__1_EmissionsFromPurchasedMineralSupplements_LatexEquationVariation
+  =LAMBDA("E=\sum\nolimits_m\left(Q_m\times EF_m\right) \times 10^{-3}");
+
 VEERG_15_3_1_1__1_EmissionsFromPurchasedMineralSupplements_Arguments
   =LAMBDA(
     MAKEARRAY(3, 4,
@@ -153,6 +188,22 @@ VEERG_15_3_1_1__1_EmissionsFromPurchasedMineralSupplements_Arguments
       )
     )
   );
+
+VEERG_15_3_1_1__1_EmissionsFromPurchasedMineralSupplements_ArgumentsVariation
+  =LAMBDA(
+    MAKEARRAY(3, 4,
+      LAMBDA(r,c,
+        INDEX({
+          "Q_m", "total quantity of mineral supplement type m used", "kg", "Input";
+          "EF_m", "emission factor of purchased mineral supplement", "kg CO2e/kg", "Constant";
+          "m", "mineral supplement type", "", "Input"
+        }, r, c)
+      )
+    )
+  );
+
+VEERG_15_3_1_1__1_EmissionsFromPurchasedMineralSupplements_Variation
+  =LAMBDA("VARIATION ON SOURCE: Input Q_j in kg instead of t to match EF units. Multiply by 10^-3 to convert kg CO2e to t CO2e.");
 
 /*
 --------------------------------------
