@@ -3,8 +3,8 @@
   "_usage": "Under 'InputCells' key each entry by its CellName; under 'InputTables' key each entry by its TableName and (optionally) its columns by column key. The properties you set are copied onto the matching field as-is, so you can add whatever the consuming app understands (Label, Group, Order, Hidden, Default, UseDefault, HelpText, ...). Setting an existing generated property (e.g. CellType) replaces it. Use 'FieldGroups' to lay out cells/tables into named groups in any order you like; each group's Items is an array of cell/table names and/or nested subgroups.",
   "_usage_influences": "Use 'Influences' to declare, in ONE place, sets of cells/tables that influence each other (a change to any member affects the others). Each entry's 'Members' is a flat list of cell and/or table names that all mutually influence every other member of the same set - the relationship is undirected, so you never repeat it per field. The consuming app derives each field's influenced/influenced-by list from these sets; do not add per-field Influences/InfluencedBy attributes.",
   "_schema": {
-    "InputCells": { "<CellName>": { "Label": "text", "Group": "text", "ChatHelp": false, "CanRollOver": false, "ExcelExcluded": false, "Order": 0, "Hidden": false, "UseDefault": false, "Default": "value", "DuplicateOf": "value", "CanMarkAsNotUsed": false, "AllowsAttachment": false, "NotUsedWhen": "condition" } },
-    "InputTables": { "<TableName>": { "Label": "text", "Group": "text", "ChatHelp":false, "CanRollOver": false, "ExcelExcluded": false, "Columns": { "<ColumnKey>": { "Label": "text", "Default": "value", "CanMarkAsNotUsed": false, "AllowsAttachment": false, "NotUsedWhen": "condition" } } } },
+    "InputCells": { "<CellName>": { "Label": "text", "Group": "text", "ChatHelp": false, "CanRollOver": false, "ExcelExcluded": false, "Order": 0, "Hidden": false, "UseDefault": false, "Default": "value", "DuplicateOf": "value", "CanMarkAsNotUsed": false, "AllowsAttachment": false, "Optional": false, "NotUsedWhen": "condition" } },
+    "InputTables": { "<TableName>": { "Label": "text", "Group": "text", "ChatHelp":false, "CanRollOver": false, "ExcelExcluded": false, "FixedRows": false, "Columns": { "<ColumnKey>": { "Label": "text", "Default": "value", "CanMarkAsNotUsed": false, "AllowsAttachment": false, "Optional": false, "NotUsedWhen": "condition" } } } },
     "FieldGroups": [ { "Name": "text", "Items": [ "<CellOrTableName>", { "Name": "text", "Items": [ "<CellOrTableName>" ] } ] } ],
     "FirstClassResults": { "<ResultName>": { "Label": "text" } },
     "ActivityPeriodResultTables": { "<TableName>": { "CycleLabelColumn": "<ColumnKey>", "ResultColumns": { "<ResultName>": "<ColumnKey>" } } },
@@ -69,6 +69,7 @@
     "X_Cell_PastureBeef_Method1OrMethod2": {
       "Label": "Pasture beef input method",
       "CellType": "select",
+      "ExcelExcluded": true,
       "Options": {
         "Method 1": "Method 1",
         "Method 2": "Method 2"
@@ -77,6 +78,7 @@
     "X_Cell_PastureBeef_HerdMovementMethod": {
       "Label": "Herd movement data entry method",
       "CellType": "select",
+      "ExcelExcluded": true,
       "HelpText": "Manual: enter every head count by hand (no cross-checking against sales and purchases). Automated: enter only the opening head count for each class at the start of the activity period; the head counts for every month/season are calculated from your purchases and sales, and each sale or purchase is validated against the herd on hand.",
       "Options": {
         "Manual": "Manual",
@@ -93,6 +95,42 @@
         "DefaultDataDocumentType": "JSON",
         "DefaultDataFile": "node_modules/gaf-veerg-functions/generated-sourcedata/AgResidue_SourceData.sourcedata.json",
         "DefaultDataLocation": null
+    },
+    "X_Cell_FarmInputs_FeedRations_DairyCalves":{
+        "Default": 0,
+        "Hidden": true
+    },
+  "X_Cell_FarmInputs_FeedRations_DairyCows": {
+        "Default": 0,
+        "Hidden": true
+    },
+  "X_Cell_FarmInputs_FeedRations_Pigs": {
+        "Default": 0,
+        "Hidden": true
+    },
+    "X_Cell_FarmInputs_FeedRations_Chickens": {
+        "Default": 0,
+        "Hidden": true
+    },
+  "X_Cell_FarmInputs_Seed_BarleyGrain": {
+        "Default": 0,
+        "Hidden": true
+    },
+  "X_Cell_FarmInputs_Seed_MaizeGrain": {
+        "Default": 0,
+        "Hidden": true
+    },
+  "X_Cell_FarmInputs_Seed_OatGrain": {
+        "Default": 0,
+        "Hidden": true
+    },
+  "X_Cell_FarmInputs_Seed_SorghumGrain": {
+        "Default": 0,
+        "Hidden": true
+    },
+  "X_Cell_FarmInputs_Seed_WheatGrain": {
+        "Default": 0,
+        "Hidden": true
     }
   },
 
@@ -217,9 +255,11 @@
         "DependentOn": ["X_Cell_PastureBeef_Method1OrMethod2", "X_Cell_PastureBeef_HerdMovementMethod"]
     },
     "Table_Input_LivestockSales": {
+      "AllowsAttachment": true,
         "DependentOn": ["X_Cell_PastureBeef_Method1OrMethod2", "X_Cell_PastureBeef_HerdMovementMethod"]
     },
     "X_Table_Result_ActivityPeriodEmissions_RowsToCols":{
+      "FixedRows": true,
       "Columns":{
         "EmissionsCalculationCycle": {
           "CanOverwriteFormula": true
@@ -233,6 +273,7 @@
       }
     },
     "X_Table_Result_CarbonRemovalsFromPlantings_RowsToCols":{
+      "FixedRows": true,
       "Columns":{
         "EmissionsCalculationCycle": {
           "CanOverwriteFormula": true
@@ -313,10 +354,124 @@
         "HeadCount": { "CellType": "number" },
         "TransferredTo": { "CellType": "text" }
       } }
+    },
+    "Table_Input_DataQuality_Enterprise": {
+      "Columns": {
+        "Notes": { "Optional": true },
+        "EvidenceFiles": { "Optional": true }
+      }
+    },
+    "Table_Input_DataQuality_Site": {
+      "Columns": {
+        "Notes": { "Optional": true },
+        "EvidenceFiles": { "Optional": true }
+      }
+    },
+    "Table_Input_DataQuality_PastureBeef": {
+      "Columns": {
+        "Notes": { "Optional": true },
+        "EvidenceFiles": { "Optional": true }
+      }
+    },
+    "Table_Input_DataQuality_PastureManagement": {
+      "Columns": {
+        "Notes": { "Optional": true },
+        "EvidenceFiles": { "Optional": true }
+      }
+    },
+    "Table_Input_DataQuality_FertiliserApplications": {
+      "Columns": {
+        "Notes": { "Optional": true },
+        "EvidenceFiles": { "Optional": true }
+      }
+    },
+    "Table_Input_DataQuality_FuelElectricity": {
+      "Columns": {
+        "Notes": { "Optional": true },
+        "EvidenceFiles": { "Optional": true }
+      }
+    },
+    "Table_Input_DataQuality_FarmInputsFreightWaste": {
+      "Columns": {
+        "Notes": { "Optional": true },
+        "EvidenceFiles": { "Optional": true }
+      }
     }
   },
 
   "FieldGroups": [
+    {
+      "Name": "Enterprise",
+      "Items": [
+        "X_Cell_Enteprise_PercentIncomeFromLiveweight",
+        "X_Cell_Enteprise_PercentIncomeFromManure",
+        "X_Cell_Enteprise_PercentManureSold",
+        "X_Cell_Enteprise_PercentManureAppliedAsFertiliserOwnFarm",
+        "Table_Input_Enterprise_PlantingRemovals",
+        "X_Table_Result_CarbonRemovalsFromPlantings_RowsToCols",
+        "X_Table_Result_ActivityPeriodEmissions_RowsToCols"
+      ]
+    },
+    {
+      "Name": "Herd production system",
+      "Items": [
+        "X_Cell_PastureBeef_ProductionRegion",
+        "X_Cell_PastureBeef_Breed",
+        "X_Cell_PastureBeef_GrazingProductionSystem",
+        "X_Cell_PastureBeef_GrazingIrrigationMethod",
+        "X_Cell_PastureBeef_FencedWater"
+      ]
+    },
+    {
+      "Name": "Herd movement",
+      "Items": [
+        "X_Cell_PastureBeef_Method1OrMethod2",
+        "X_Cell_PastureBeef_HerdMovementMethod",
+        "X_Table_PastureBeef_Head_Method1",
+        "X_Table_PastureBeef_Duration_Method1",
+        "X_Table_PastureBeef_Liveweight_Method1",
+        "X_Table_PastureBeef_LiveweightGain_Method1",
+        "X_Table_PastureBeef_Head_Method2",
+        "X_Table_PastureBeef_Duration_Method2",
+        "X_Table_PastureBeef_Liveweight_Method2",
+        "X_Table_PastureBeef_LiveweightGain_Method2",
+        "Table_Input_LivestockPurchases_Beefcattle",
+        "Table_Input_LivestockSales",
+        "Table_Input_Mortalities",
+        "Table_Input_HerdTransfersIn",
+        "Table_Input_HerdTransfersOut"
+      ]
+    },
+    {
+      "Name": "Pasture management",
+      "Items": [
+        "X_Cell_Pasture_PastureType",
+        "X_Cell_Pasture_YieldPerHectare",
+        "X_Cell_Pasture_IrrigationMethod",
+        "X_Cell_Pasture_AreaUnderPasture",
+        "X_Cell_Pasture_AreaRemovedOrRenewed",
+        "Table_Input_InorganicFertiliser_Brands",
+        "Table_Input_InorganicFertiliser_Custom",
+        "Table_Input_Lime",
+        "Table_Input_OrganicFertiliser"
+      ]
+    },
+    {
+      "Name": "Herd diet",
+      "Items": [
+        "X_Table_PastureBeef_CrudeProtein_Method1",
+        "X_Table_PastureBeef_DryMatterDigestibility_Method1",
+        "X_Table_PastureBeef_CrudeProtein_Method2",
+        "X_Table_PastureBeef_DryMatterDigestibility_Method2"
+      ]
+    },
+    {
+      "Name": "Fuel",
+      "Items": [
+        "Table_Input_Fuel",
+        "X_Cell_Fuel_IsMetroLocation"
+      ]
+    },
     {
       "Name": "Electricity",
       "Items": [
@@ -342,28 +497,42 @@
       ]
     },
     {
-      "Name": "Herd",
+      "Name": "Farm input purchases",
       "Items": [
-        "X_Cell_PastureBeef_ProductionRegion",
-        "X_Cell_PastureBeef_Breed",
-        "X_Cell_PastureBeef_GrazingProductionSystem",
-        "X_Cell_PastureBeef_FencedWater",
-        "X_Cell_PastureBeef_HerdMovementMethod",
-        "Table_Input_LivestockPurchases_Beefcattle",
-        "Table_Input_LivestockSales",
-        "Table_Input_Mortalities",
-        "Table_Input_HerdTransfersIn",
-        "Table_Input_HerdTransfersOut",
-        "X_Cell_PastureBeef_Method1OrMethod2"
+        "X_Cell_FarmInputs_LickBlocks_Mineral",
+        "X_Cell_FarmInputs_LickBlocks_Weaner",
+        "X_Cell_FarmInputs_LickBlocks_DrySeasonMix",
+        "X_Cell_FarmInputs_Misc_AnimalEarTagsLarge",
+        "X_Cell_FarmInputs_Misc_AnimalEarTagsSmall",
+        "Table_Input_Pesticides",
+        "Table_Input_ChemicalsCleaning",
+        "Table_Input_ChemicalsPharmacy",
+        "Table_Input_FeedBlends",
+        "Table_Input_FreightIncoming",
+        "Table_Input_FreightOutgoing",
+        "Table_Input_ServicesAndContractors",
+        "Table_Input_UncategorisedProductsServices"
+      ]
+    },
+    {
+      "Name": "Data quality",
+      "Items": [
+        "Table_Input_DataQuality_Enterprise",
+        "Table_Input_DataQuality_PastureBeef",
+        "Table_Input_DataQuality_FarmInputsFreightWaste",
+        "Table_Input_DataQuality_Site",
+        "Table_Input_DataQuality_PastureManagement",
+        "Table_Input_DataQuality_FertiliserApplications",
+        "Table_Input_DataQuality_FuelElectricity"
       ]
     }
   ],
   "FirstClassResults": {
-    "Result_Enterprise_Method1": {
-      "Label": "Emissions for this activity period (Method 1)"
+    "Result_Enterprise_Net_Method1": {
+      "Label": "Net emissions for this activity period (Method 1)"
     },
-    "Result_Enterprise_Method2": {
-      "Label": "Emissions for this activity period (Method 2)"
+    "Result_Enterprise_Net_Method2": {
+      "Label": "Net emissions for this activity period (Method 2)"
     }
   },
   "ActivityPeriodResultTables": {

@@ -1,7 +1,7 @@
 {
 	"schemaVersion": 1,
-	"generatedFrom": "5_Fertiliser_WIP_v09.xlsx",
-	"generatedAt": "2026-08-11T06:33:34Z",
+	"generatedFrom": "5_Fertiliser_WIP_v10.xlsx",
+	"generatedAt": "2026-08-17T10:53:43Z",
 	"InputCells": [
 		{
 			"CellName": "X_Cell_Site_FarmName",
@@ -329,7 +329,7 @@
 						"CellType": "formula"
 					},
 					"ApplicationArea": {
-						"CellType": "formula",
+						"CellType": "number",
 						"Unit": "ha"
 					},
 					"Density": {

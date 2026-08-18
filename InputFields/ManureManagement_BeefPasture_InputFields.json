@@ -1,7 +1,7 @@
 {
 	"schemaVersion": 1,
 	"generatedFrom": "4_2_ManureManagement_BeefPasture_WIP_v10.xlsx",
-	"generatedAt": "2026-08-11T06:32:55Z",
+	"generatedAt": "2026-08-18T07:23:00Z",
 	"InputCells": [
 		{
 			"CellName": "X_Cell_Site_FarmName",
@@ -17,6 +17,11 @@
 			"CellName": "X_Cell_Site_StartDate",
 			"Label": "Emissions calculation period start date",
 			"CellType": "date"
+		},
+		{
+			"CellName": "X_Cell_Site_EndDate",
+			"Label": "Emissions calculation period end date",
+			"CellType": "formula"
 		},
 		{
 			"CellName": "X_Cell_Site_State",
@@ -62,27 +67,32 @@
 		{
 			"CellName": "X_Cell_Site_Elevation",
 			"Label": "Elevation",
-			"CellType": "number"
+			"CellType": "number",
+			"Unit": "Meters"
 		},
 		{
 			"CellName": "X_Cell_Site_AverageTemperature",
 			"Label": "Average temperature for reporting period",
-			"CellType": "number"
+			"CellType": "number",
+			"Unit": "Degrees celsius"
 		},
 		{
 			"CellName": "X_Cell_Site_TotalRainfall",
 			"Label": "Total rainfall for reporting period",
-			"CellType": "number"
+			"CellType": "number",
+			"Unit": "Millimetres"
 		},
 		{
 			"CellName": "X_Cell_Site_PotentialEvapotranspiration",
 			"Label": "Potential evapotranspiration for reporting period",
-			"CellType": "number"
+			"CellType": "number",
+			"Unit": "Millimetres"
 		},
 		{
 			"CellName": "X_Cell_Site_FrostDays",
 			"Label": "Number of frost days for reporting period",
-			"CellType": "number"
+			"CellType": "number",
+			"Unit": "Days"
 		},
 		{
 			"CellName": "X_Cell_Site_MapPetRatio",
@@ -159,12 +169,14 @@
 		{
 			"CellName": "X_Cell_PastureBeef_CalculatedMMSPastureRangeAndPaddock",
 			"Label": "Pasture range and paddock",
-			"CellType": "formula"
+			"CellType": "formula",
+			"Unit": "Percent"
 		},
 		{
 			"CellName": "X_Cell_PastureBeef_CalculatedMMSAnaerobicLagoon",
 			"Label": "Anaerobic lagoon",
-			"CellType": "formula"
+			"CellType": "formula",
+			"Unit": "Percent"
 		},
 		{
 			"CellName": "X_Cell_PastureBeef_GrazingProductionSystem",

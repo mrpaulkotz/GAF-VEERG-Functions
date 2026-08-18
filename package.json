@@ -26,6 +26,8 @@
     "build-enterprise": "powershell -NoProfile -ExecutionPolicy Bypass -File .\\scripts\\build-enterprise-excel.ps1",
     "build-enterprise:dry": "powershell -NoProfile -ExecutionPolicy Bypass -File .\\scripts\\build-enterprise-excel.ps1 -DryRun",
     "prune-enterprise-names": "powershell -NoProfile -ExecutionPolicy Bypass -File .\\scripts\\build-enterprise-excel.ps1 -PruneShadowsOnly",
+    "clean-enterprise": "powershell -NoProfile -ExecutionPolicy Bypass -File .\\scripts\\clean-enterprise-excel.ps1",
+    "clean-enterprise:dry": "powershell -NoProfile -ExecutionPolicy Bypass -File .\\scripts\\clean-enterprise-excel.ps1 -DryRun",
     "build-scope3": "powershell -NoProfile -ExecutionPolicy Bypass -File .\\scripts\\build-scope3-excel.ps1",
     "build-enterprise-testinput": "powershell -NoProfile -ExecutionPolicy Bypass -File .\\scripts\\build-enterprise-testinput-json.ps1",
     "build-enterprise-testinput:dry": "powershell -NoProfile -ExecutionPolicy Bypass -File .\\scripts\\build-enterprise-testinput-json.ps1 -DryRun",

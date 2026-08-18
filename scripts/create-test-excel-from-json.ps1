@@ -502,9 +502,16 @@ function Get-InputFieldFileCandidates {
     [void] $candidates.Add(($inputBaseName.Substring('TestInput_'.Length) + '_InputFields.json'))
   }
 
-  $excelBaseName = [string] $TestExcelFile
+  # GetFileNameWithoutExtension first: TestExcelFile carries its .xlsx extension, which otherwise sits
+  # after the "_WIP_vNN" suffix and stops the anchored ($) regex below from ever matching — so this
+  # candidate silently never resolved for ANY enterprise workbook, regardless of filename. Also strips a
+  # "_Template"/"_Clean" workbook-variant suffix (e.g. Enterprise_PastureBeef_Clean_WIP_v01.xlsx), so
+  # switching which physical workbook variant an enterprise uses doesn't change which InputFields file
+  # its formula-overwrite policy / table column order is read from.
+  $excelBaseName = [System.IO.Path]::GetFileNameWithoutExtension([string] $TestExcelFile)
   if (-not [string]::IsNullOrWhiteSpace($excelBaseName)) {
     $excelBaseName = [regex]::Replace($excelBaseName, '_WIP_v\d+$', '', [System.Text.RegularExpressions.RegexOptions]::IgnoreCase)
+    $excelBaseName = [regex]::Replace($excelBaseName, '_(Template|Clean)$', '', [System.Text.RegularExpressions.RegexOptions]::IgnoreCase)
     $excelBaseName = [regex]::Replace($excelBaseName, '^\d+(?:_\d+)?_', '')
     if (-not [string]::IsNullOrWhiteSpace($excelBaseName)) {
       [void] $candidates.Add(($excelBaseName + '_InputFields.json'))
@@ -826,6 +833,44 @@ function Test-CellContainsFormula {
   return $false
 }
 
+# Returns the 1-based positions along one axis of $TableRange (columns, probing row 1 — or rows,
+# probing column 1, when $AlongRows) that do NOT already contain a formula. Used to place an add-row
+# table's JSON fields into the correct Excel columns without any name-based cross-referencing against a
+# separately-generated InputFields schema file: that schema can rename/reorder fields independently of
+# the actual target workbook, whereas the workbook's OWN cells are the one thing guaranteed to still be
+# true at write time. A calculated-column formula (Table_Input_LivestockSales' "Total liveweight sold",
+# say) is filled all the way down every existing row of an Excel Table, so probing row/column 1 reliably
+# identifies which slot(s) the app never writes into — the row's JSON object omits exactly those fields,
+# so walking only the non-formula positions in order lines back up with the JSON's own field order.
+function Get-NonFormulaPositions {
+  param(
+    [Parameter(Mandatory = $true)]
+    [object] $TableRange,
+
+    [Parameter(Mandatory = $true)]
+    [int] $Count,
+
+    [Parameter(Mandatory = $false)]
+    [bool] $AlongRows = $false
+  )
+
+  $positions = New-Object System.Collections.Generic.List[int]
+  for ($i = 1; $i -le $Count; $i++) {
+    $probeCell = $null
+    try {
+      $probeCell = if ($AlongRows) { $TableRange.Rows.Item($i).Columns.Item(1) } else { $TableRange.Rows.Item(1).Columns.Item($i) }
+    } catch {
+      $probeCell = $null
+    }
+
+    if (-not (Test-CellContainsFormula -Cell $probeCell)) {
+      [void] $positions.Add($i)
+    }
+  }
+
+  return @($positions)
+}
+
 function Set-CellValueIfWritable {
   param(
     [Parameter(Mandatory = $false)]
@@ -865,7 +910,18 @@ function Set-CellValueIfWritable {
     $Value -is [double] -or
     $Value -is [decimal]
   ) {
-    $Cell.Value2 = [string] $Value
+    # Every "percent" CellType is entered/stored/validated app-side as a whole number (50 meaning 50%),
+    # never a 0-1 fraction. Excel's own percent number format expects the underlying cell value to be
+    # the fraction (0.5), and multiplies by 100 only for display — writing 50 unconverted into a
+    # percent-formatted cell therefore displays as 5000%. Detect that format here (the one place all
+    # cell writes funnel through) and convert, rather than changing the app's 0-100 convention.
+    $numericValue = [double] $Value
+    $numberFormat = $null
+    try { $numberFormat = [string] $Cell.NumberFormat } catch { $numberFormat = $null }
+    if ($numberFormat -and $numberFormat.Contains('%')) {
+      $numericValue = $numericValue / 100
+    }
+    $Cell.Value2 = [string] $numericValue
   } else {
     $Cell.Value2 = $Value
   }
@@ -1374,6 +1430,30 @@ try {
       }
 
       $requestedColsToRows = [string]::Equals($matrixType, 'ColsToRows', [System.StringComparison]::OrdinalIgnoreCase)
+      # Resolve each JSON field to its true Excel column (or row, when ColsToRows) by probing the actual
+      # target cells for pre-existing formulas, rather than by its raw position within the row's JSON
+      # object (a suppressed formula column is simply absent from that object, not present-with-null, so
+      # raw positional indexing silently shifts every field after such a gap into the wrong slot) or by
+      # cross-referencing field names against a separately-generated InputFields schema file (that file
+      # can rename/reorder fields independently of the actual target workbook — see
+      # Get-NonFormulaPositions above for why probing the real cells is the reliable source of truth).
+      #
+      # A CanOverwriteFormula-enabled field is never omitted from the app's JSON row the way a
+      # suppressed formula field is (see isSuppressedFormulaField client-side) — so a table with ANY
+      # overwrite-allowed field (already known via $formulaOverwriteTableNames, populated from either
+      # the on-disk InputFields scan or an embedded __FormulaOverwritePolicy — e.g.
+      # X_Table_Result_ActivityPeriodEmissions_RowsToCols, whose columns are ALL overwrite-enabled
+      # formulas) has a complete row with no gaps, so probing for formulas would wrongly exclude every
+      # one of its columns. Fall back to plain positional order for such tables instead.
+      $tableAllowsFormulaOverwrite = $overwriteAllFormulas -or $formulaOverwriteTableNames.Contains($tableRangeName)
+      $nonFormulaPositions = if ($tableAllowsFormulaOverwrite) {
+        @(1..$(if ($requestedColsToRows) { $tableRangeRowCount } else { $tableRangeColumnCount }))
+      } elseif ($requestedColsToRows) {
+        Get-NonFormulaPositions -TableRange $tableRange -Count $tableRangeRowCount -AlongRows $true
+      } else {
+        Get-NonFormulaPositions -TableRange $tableRange -Count $tableRangeColumnCount -AlongRows $false
+      }
+
       for ($rowIndex = 0; $rowIndex -lt $rowEntries.Count; $rowIndex++) {
         $entry = $rowEntries[$rowIndex]
         if ($null -eq $entry) {
@@ -1382,11 +1462,21 @@ try {
 
         $entryData = $entry.Data
         $entryProps = @()
-        if ($null -ne $entryData -and $null -ne $entryData.PSObject -and $null -ne $entryData.PSObject.Properties -and -not ($entryData -is [string])) {
-          $entryProps = @($entryData.PSObject.Properties)
+        $entryDataIsObject = $null -ne $entryData -and $null -ne $entryData.PSObject -and $null -ne $entryData.PSObject.Properties -and -not ($entryData -is [string])
+        if ($entryDataIsObject) {
+          # A null-valued property carries nothing to write — and, critically, it's the ONLY reliable
+          # signal (short of trusting field names) that a property is a formula-suppressed field which
+          # picked up a stray value at some point and got blanked back to null rather than removed (see
+          # applyFormulaNulls server-side) rather than a genuinely unfilled real field, which this app
+          # always represents as "" (empty string), never null. Dropping null-valued properties BEFORE
+          # indexing into $nonFormulaPositions is what stops a stray nulled formula key sitting midway
+          # through a previously-calculated row from shifting every real (non-null) field after it into
+          # the wrong column. Since every generation always starts from a fresh copy of the pristine
+          # template, skipping a null has no visible effect either way (the cell is already blank).
+          $entryProps = @($entryData.PSObject.Properties | Where-Object { $null -ne $_.Value })
         }
 
-        if ($entryProps.Count -eq 0) {
+        if ($entryProps.Count -eq 0 -and -not $entryDataIsObject) {
           $entryProps = @([pscustomobject]@{ Name = 'Value'; Value = $entryData })
         }
 
@@ -1396,8 +1486,14 @@ try {
             continue
           }
 
-          $targetRowPosition = if ($requestedColsToRows) { $colIndex + 1 + $rowOffset } else { $rowIndex + 1 + $rowOffset }
-          $targetColumnPosition = if ($requestedColsToRows) { $rowIndex + 1 + $columnOffset } else { $colIndex + 1 + $columnOffset }
+          if ($colIndex -ge $nonFormulaPositions.Count) {
+            [void] $tableFailedDetails.Add(($tableRangeName + ': field ''' + [string] $prop.Name + ''' has no remaining non-formula column to write into (row has more fields than the table has writable columns)'))
+            continue
+          }
+          $resolvedPosition = $nonFormulaPositions[$colIndex]
+
+          $targetRowPosition = if ($requestedColsToRows) { $resolvedPosition + $rowOffset } else { $rowIndex + 1 + $rowOffset }
+          $targetColumnPosition = if ($requestedColsToRows) { $rowIndex + 1 + $columnOffset } else { $resolvedPosition + $columnOffset }
 
           if ($targetColumnPosition -lt 1 -or $targetColumnPosition -gt $tableRangeColumnCount) {
             [void] $tableFailed.Add($tableRangeName)
@@ -1442,6 +1538,14 @@ try {
       }
 
       $rows = @(Convert-TableRowsToList -RowsRaw $col.Rows)
+      # ensureColsForFormulaSkipping (server-side) clears a formula-suppressed column's Rows to an empty
+      # array rather than dropping the column entirely — it still occupies a $columns slot, but has
+      # nothing to write. Excluding it here (rather than at the position-mapping step below) means it
+      # never consumes a real Excel column position, the same way a genuinely-omitted formula column
+      # (one the app never set at all) doesn't.
+      if ($rows.Count -eq 0) {
+        continue
+      }
       if ($rows.Count -gt $maxRowsPerColumn) {
         $maxRowsPerColumn = $rows.Count
       }
@@ -1469,11 +1573,33 @@ try {
       [void] $tableFailedDetails.Add(($tableRangeName + ': MatrixType=ColsToRows does not fit named range; using RowsToCols fallback'))
     }
 
+    # Resolve each prepared column to its true Excel column (or row, when ColsToRows) by probing the
+    # actual target cells for pre-existing formulas — same reasoning and mechanism as the Rows-branch
+    # above (see Get-NonFormulaPositions): a formula-suppressed column that was never set is simply
+    # absent from $preparedColumns (and one that WAS set then blanked back out is excluded just above),
+    # so raw positional indexing (colIndex -> column N) silently shifts every column after such a gap
+    # into the wrong Excel column — e.g. Table_Input_LivestockPurchases_Beefcattle's LiveweightMethod2
+    # landing in LiveweightMethod1's (protected, formula) column and being dropped.
+    $tableAllowsFormulaOverwrite = $overwriteAllFormulas -or $formulaOverwriteTableNames.Contains($tableRangeName)
+    $nonFormulaPositions = if ($tableAllowsFormulaOverwrite) {
+      @(1..$(if ($isColsToRows) { $tableRangeRowCount } else { $tableRangeColumnCount }))
+    } elseif ($isColsToRows) {
+      Get-NonFormulaPositions -TableRange $tableRange -Count $tableRangeRowCount -AlongRows $true
+    } else {
+      Get-NonFormulaPositions -TableRange $tableRange -Count $tableRangeColumnCount -AlongRows $false
+    }
+
     for ($colIndex = 0; $colIndex -lt $preparedColumns.Count; $colIndex++) {
       $colEntry = $preparedColumns[$colIndex]
       if ($null -eq $colEntry) {
         continue
       }
+
+      if ($colIndex -ge $nonFormulaPositions.Count) {
+        [void] $tableFailedDetails.Add(($tableRangeName + ': column ''' + [string] $colEntry.Column.ColumnName + ''' has no remaining non-formula column/row slot to write into'))
+        continue
+      }
+      $resolvedPosition = $nonFormulaPositions[$colIndex]
 
       $rows = @($colEntry.Rows)
 
@@ -1483,8 +1609,8 @@ try {
           continue
         }
 
-        $targetRowPosition = if ($isColsToRows) { $colIndex + 1 + $rowOffset } else { $rowIndex + 1 + $rowOffset }
-        $targetColumnPosition = if ($isColsToRows) { $rowIndex + 1 + $columnOffset } else { $colIndex + 1 + $columnOffset }
+        $targetRowPosition = if ($isColsToRows) { $resolvedPosition + $rowOffset } else { $rowIndex + 1 + $rowOffset }
+        $targetColumnPosition = if ($isColsToRows) { $rowIndex + 1 + $columnOffset } else { $resolvedPosition + $columnOffset }
 
         if ($targetColumnPosition -lt 1 -or $targetColumnPosition -gt $tableRangeColumnCount) {
           [void] $tableFailed.Add($tableRangeName)

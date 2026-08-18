@@ -1,7 +1,7 @@
 {
 	"schemaVersion": 1,
 	"generatedFrom": "Enterprise_PastureBeef_WIP_v01.xlsx",
-	"generatedAt": "2026-08-11T08:07:07Z",
+	"generatedAt": "2026-08-18T08:32:27Z",
 	"InputCells": [
 		{
 			"CellName": "X_Cell_Site_FarmName",
@@ -34,6 +34,64 @@
 			"Label": "Production timeframe end",
 			"CellType": "number",
 			"Hidden": true
+		},
+		{
+			"CellName": "X_Cell_Enterprise_ProductionTimeframeLength",
+			"Label": "Production timeframe length",
+			"CellType": "formula",
+			"Unit": "Months"
+		},
+		{
+			"CellName": "X_Cell_Enterprise_LiveweightSold",
+			"Label": "Liveweight sold",
+			"CellType": "formula"
+		},
+		{
+			"CellName": "X_Cell_Enteprise_LiveweightGrown_Method1",
+			"Label": "Liveweight grown - method 1",
+			"CellType": "formula"
+		},
+		{
+			"CellName": "X_Cell_Enteprise_LiveweightGrown_Method2",
+			"Label": "Liveweight grown - method 2",
+			"CellType": "number",
+			"CanOverWriteFormula": true
+		},
+		{
+			"CellName": "X_Cell_Enteprise_ManureProduced_Method1",
+			"Label": "Manure produced - method 1",
+			"CellType": "formula"
+		},
+		{
+			"CellName": "X_Cell_Enteprise_ManureProduced_Method2",
+			"Label": "Manure produced - method 2",
+			"CellType": "number",
+			"CanOverWriteFormula": true
+		},
+		{
+			"CellName": "X_Cell_Enteprise_PercentManureSold",
+			"Label": "Percent manure sold",
+			"CellType": "percent"
+		},
+		{
+			"CellName": "X_Cell_Enteprise_PercentManureAppliedAsFertiliserOwnFarm",
+			"Label": "Percent manure applied as fertiliser on own farm",
+			"CellType": "percent"
+		},
+		{
+			"CellName": "X_Cell_Enteprise_PercentManureAppliedAsWaste",
+			"Label": "Percent manure applied to soil with no purpose (as waste)",
+			"CellType": "formula"
+		},
+		{
+			"CellName": "X_Cell_Enteprise_PercentIncomeFromLiveweight",
+			"Label": "Percentage of income from liveweight sold",
+			"CellType": "percent"
+		},
+		{
+			"CellName": "X_Cell_Enteprise_PercentIncomeFromManure",
+			"Label": "Percentage of income from manure sold",
+			"CellType": "percent"
 		},
 		{
 			"CellName": "X_Cell_Site_State",
@@ -79,27 +137,32 @@
 		{
 			"CellName": "X_Cell_Site_Elevation",
 			"Label": "Elevation",
-			"CellType": "number"
+			"CellType": "number",
+			"Unit": "Meters"
 		},
 		{
 			"CellName": "X_Cell_Site_AverageTemperature",
 			"Label": "Average temperature for reporting period",
-			"CellType": "number"
+			"CellType": "number",
+			"Unit": "Degrees celsius"
 		},
 		{
 			"CellName": "X_Cell_Site_TotalRainfall",
 			"Label": "Total rainfall for reporting period",
-			"CellType": "number"
+			"CellType": "number",
+			"Unit": "Millimetres"
 		},
 		{
 			"CellName": "X_Cell_Site_PotentialEvapotranspiration",
 			"Label": "Potential evapotranspiration for reporting period",
-			"CellType": "number"
+			"CellType": "number",
+			"Unit": "Millimetres"
 		},
 		{
 			"CellName": "X_Cell_Site_FrostDays",
 			"Label": "Number of frost days for reporting period",
-			"CellType": "number"
+			"CellType": "number",
+			"Unit": "Days"
 		},
 		{
 			"CellName": "X_Cell_Site_MapPetRatio",
@@ -124,16 +187,6 @@
 		{
 			"CellName": "X_Cell_Site_TemperatureZone",
 			"Label": "Temperature zone",
-			"CellType": "formula"
-		},
-		{
-			"CellName": "X_Cell_PastureBeef_CalculatedMMSPastureRangeAndPaddock",
-			"Label": "Pasture range and paddock",
-			"CellType": "formula"
-		},
-		{
-			"CellName": "X_Cell_PastureBeef_CalculatedMMSAnaerobicLagoon",
-			"Label": "Anaerobic lagoon",
 			"CellType": "formula"
 		},
 		{
@@ -184,6 +237,18 @@
 			}
 		},
 		{
+			"CellName": "X_Cell_PastureBeef_CalculatedMMSPastureRangeAndPaddock",
+			"Label": "Pasture range and paddock",
+			"CellType": "formula",
+			"Unit": "Percent"
+		},
+		{
+			"CellName": "X_Cell_PastureBeef_CalculatedMMSAnaerobicLagoon",
+			"Label": "Anaerobic lagoon",
+			"CellType": "formula",
+			"Unit": "Percent"
+		},
+		{
 			"CellName": "X_Cell_PastureBeef_GrazingProductionSystem",
 			"Label": "Where did the livestock spend most of their time grazing?",
 			"CellType": "select",
@@ -231,13 +296,16 @@
 		{
 			"CellName": "X_Cell_Pasture_AreaUnderPasture",
 			"Label": "Area under pasture",
-			"CellType": "number"
+			"CellType": "number",
+			"Unit": "Hectares"
 		},
 		{
 			"CellName": "X_Cell_Pasture_YieldPerHectare",
 			"Label": "Pasture yield",
 			"CellType": "formula",
+			"Unit": "Tonnes dry matter / hectare",
 			"CanOverWriteFormula": true,
+			"AllowsAttachment": true,
 			"DefaultDataDocumentType": "JSON",
 			"DefaultDataFile": "node_modules/gaf-veerg-functions/generated-sourcedata/AgResidue_SourceData.sourcedata.json",
 			"DefaultDataLocation": null
@@ -245,7 +313,8 @@
 		{
 			"CellName": "X_Cell_Pasture_AreaRemovedOrRenewed",
 			"Label": "Area of pasture renewed or removed",
-			"CellType": "number"
+			"CellType": "number",
+			"Unit": "Hectares"
 		},
 		{
 			"CellName": "X_Cell_Fertiliser_ProductionSystem",
@@ -299,6 +368,8 @@
 			"CellName": "X_Cell_Electricity_Location_AmountPurchasedInkWh",
 			"Label": "Amount purchased in kWh",
 			"CellType": "number",
+			"Unit": "kWh",
+			"AllowsAttachment": true,
 			"DependentOn": "X_Cell_Electricity_CalculationMethod",
 			"NotUsedWhen": {
 				"Field": "X_Cell_Electricity_CalculationMethod",
@@ -321,6 +392,7 @@
 				"Northern Territory - Darwin Katherine Interconnected System (DKIS)": "Northern Territory - Darwin Katherine Interconnected System (DKIS)",
 				"National": "National"
 			},
+			"AllowsAttachment": true,
 			"DependentOn": "X_Cell_Electricity_CalculationMethod",
 			"NotUsedWhen": {
 				"Field": "X_Cell_Electricity_CalculationMethod",
@@ -331,6 +403,8 @@
 			"CellName": "X_Cell_Electricity_Market_AmountPurchasedExcludingGreenPower",
 			"Label": "Electricity purchased in kWh (excluding GreenPower providers)",
 			"CellType": "number",
+			"Unit": "kWh",
+			"AllowsAttachment": true,
 			"DependentOn": "X_Cell_Electricity_CalculationMethod",
 			"NotUsedWhen": {
 				"Field": "X_Cell_Electricity_CalculationMethod",
@@ -341,6 +415,8 @@
 			"CellName": "X_Cell_Electricity_Market_RenewablePowerPercentage",
 			"Label": "Renewable Power Percentage",
 			"CellType": "percent",
+			"Unit": "percent",
+			"AllowsAttachment": true,
 			"DependentOn": "X_Cell_Electricity_CalculationMethod",
 			"NotUsedWhen": {
 				"Field": "X_Cell_Electricity_CalculationMethod",
@@ -351,6 +427,8 @@
 			"CellName": "X_Cell_Electricity_Market_JurisdictionalRenewablePowerPercentage",
 			"Label": "Jurisdictional renewable power percentage (ACT only)",
 			"CellType": "percent",
+			"Unit": "percent",
+			"AllowsAttachment": true,
 			"DependentOn": "X_Cell_Electricity_CalculationMethod",
 			"NotUsedWhen": {
 				"Field": "X_Cell_Electricity_CalculationMethod",
@@ -361,6 +439,8 @@
 			"CellName": "X_Cell_Electricity_Market_AmountPurchasedGreenPower",
 			"Label": "Electricity purchased from an accredited GreenPower provider",
 			"CellType": "number",
+			"Unit": "kWh",
+			"AllowsAttachment": true,
 			"DependentOn": "X_Cell_Electricity_CalculationMethod",
 			"NotUsedWhen": {
 				"Field": "X_Cell_Electricity_CalculationMethod",
@@ -370,92 +450,128 @@
 		{
 			"CellName": "X_Cell_TotalElegibleVoluntarilySurrenderedRECs",
 			"Label": "Total elegible voluntarily surrendered RECs",
-			"CellType": "formula"
+			"CellType": "formula",
+			"Unit": "MWh"
 		},
 		{
 			"CellName": "X_Cell_TotalElegibleRECsForElectricityProducedOnSite",
 			"Label": "Total elegible RECs for electricity produced on-site and consumed by entity",
-			"CellType": "formula"
+			"CellType": "formula",
+			"Unit": "MWh"
 		},
 		{
 			"CellName": "X_Cell_FarmInputs_Seed_BarleyGrain",
 			"Label": "Barley grain (for seed)",
-			"CellType": "number"
+			"CellType": "number",
+			"Unit": "kg",
+			"Default": 0,
+			"Hidden": true
 		},
 		{
 			"CellName": "X_Cell_FarmInputs_Seed_MaizeGrain",
 			"Label": "Maize grain (for seed)",
-			"CellType": "number"
+			"CellType": "number",
+			"Unit": "kg",
+			"Default": 0,
+			"Hidden": true
 		},
 		{
 			"CellName": "X_Cell_FarmInputs_Seed_OatGrain",
 			"Label": "Oat grain (for seed)",
-			"CellType": "number"
+			"CellType": "number",
+			"Unit": "kg",
+			"Default": 0,
+			"Hidden": true
 		},
 		{
 			"CellName": "X_Cell_FarmInputs_Seed_SorghumGrain",
 			"Label": "Sorghum grain (for seed)",
-			"CellType": "number"
+			"CellType": "number",
+			"Unit": "kg",
+			"Default": 0,
+			"Hidden": true
 		},
 		{
 			"CellName": "X_Cell_FarmInputs_Seed_WheatGrain",
 			"Label": "Wheat grain (for seed)",
-			"CellType": "number"
+			"CellType": "number",
+			"Unit": "kg",
+			"Default": 0,
+			"Hidden": true
 		},
 		{
 			"CellName": "X_Cell_FarmInputs_LickBlocks_DrySeasonMix",
 			"Label": "Lick block, dry season mix",
-			"CellType": "number"
+			"CellType": "number",
+			"Unit": "kg"
 		},
 		{
 			"CellName": "X_Cell_FarmInputs_LickBlocks_Mineral",
 			"Label": "Lick block, mineral",
-			"CellType": "number"
+			"CellType": "number",
+			"Unit": "kg"
 		},
 		{
 			"CellName": "X_Cell_FarmInputs_LickBlocks_Weaner",
 			"Label": "Lick block, weaner",
-			"CellType": "number"
+			"CellType": "number",
+			"Unit": "kg"
 		},
 		{
 			"CellName": "X_Cell_FarmInputs_FeedRations_Chickens",
 			"Label": "Feed for chickens",
-			"CellType": "number"
+			"CellType": "number",
+			"Unit": "kg",
+			"Default": 0,
+			"Hidden": true
 		},
 		{
 			"CellName": "X_Cell_FarmInputs_FeedRations_DairyCalves",
 			"Label": "Feed for dairy calves",
-			"CellType": "number"
+			"CellType": "number",
+			"Unit": "kg",
+			"Default": 0,
+			"Hidden": true
 		},
 		{
 			"CellName": "X_Cell_FarmInputs_FeedRations_DairyCows",
 			"Label": "Feed for dairy cows",
-			"CellType": "number"
+			"CellType": "number",
+			"Unit": "kg",
+			"Default": 0,
+			"Hidden": true
 		},
 		{
 			"CellName": "X_Cell_FarmInputs_FeedRations_Pigs",
 			"Label": "Feed for pigs",
-			"CellType": "number"
+			"CellType": "number",
+			"Unit": "kg",
+			"Default": 0,
+			"Hidden": true
 		},
 		{
 			"CellName": "X_Cell_FarmInputs_Misc_AnimalEarTagsLarge",
 			"Label": "Animal ear tags (large)",
-			"CellType": "number"
+			"CellType": "number",
+			"Unit": "tags"
 		},
 		{
 			"CellName": "X_Cell_FarmInputs_Misc_AnimalEarTagsSmall",
 			"Label": "Animal ear tags (small)",
-			"CellType": "number"
+			"CellType": "number",
+			"Unit": "tags"
 		},
 		{
 			"CellName": "X_Cell_ManureSentOffsite_MassNitrogenManure_Method1",
 			"Label": "",
-			"CellType": "number"
+			"CellType": "number",
+			"Unit": "kg N"
 		},
 		{
 			"CellName": "X_Cell_ManureSentOffsite_MassNitrogenManure_Method2",
 			"Label": "",
 			"CellType": "number",
+			"Unit": "kg N",
 			"CanOverWriteFormula": true
 		},
 		{
@@ -478,9 +594,58 @@
 				"Surface irrigation": "Surface irrigation",
 				"Other irrigation": "Other irrigation"
 			}
+		},
+		{
+			"CellName": "X_Cell_PastureBeef_Method1OrMethod2",
+			"Label": "Pasture beef input method",
+			"CellType": "select",
+			"ExcelExcluded": true,
+			"Options": {
+				"Method 1": "Method 1",
+				"Method 2": "Method 2"
+			}
+		},
+		{
+			"CellName": "X_Cell_PastureBeef_HerdMovementMethod",
+			"Label": "Herd movement data entry method",
+			"CellType": "select",
+			"ExcelExcluded": true,
+			"HelpText": "Manual: enter every head count by hand (no cross-checking against sales and purchases). Automated: enter only the opening head count for each class at the start of the activity period; the head counts for every month/season are calculated from your purchases and sales, and each sale or purchase is validated against the herd on hand.",
+			"Options": {
+				"Manual": "Manual",
+				"Automated": "Automated"
+			},
+			"Default": "Manual"
 		}
 	],
 	"InputTables": [
+		{
+			"TableName": "Table_Input_Enterprise_PlantingRemovals",
+			"MatrixType": "RowsToCols",
+			"NumberOfCols": 4,
+			"ColumnNames": {
+				"PlantingName": "Planting name",
+				"TotalRemovedCO2": "Total removed CO2",
+				"PercentAllocatedToThisEnterprise": "Percent allocated to this enterprise",
+				"RemovalAllocatedToThisEnterprise": "Removal allocated to this enterprise"
+			},
+			"Rows": {
+				"Row": {
+					"PlantingName": {
+						"CellType": "text"
+					},
+					"TotalRemovedCO2": {
+						"CellType": "number"
+					},
+					"PercentAllocatedToThisEnterprise": {
+						"CellType": "percent"
+					},
+					"RemovalAllocatedToThisEnterprise": {
+						"CellType": "formula"
+					}
+				}
+			}
+		},
 		{
 			"TableName": "X_Table_Result_ActivityPeriodEmissions_RowsToCols",
 			"MatrixType": "RowsToCols",
@@ -515,7 +680,8 @@
 						"CanOverwriteFormula": true
 					}
 				}
-			}
+			},
+			"FixedRows": true
 		},
 		{
 			"TableName": "X_Table_Result_CarbonRemovalsFromPlantings_RowsToCols",
@@ -543,7 +709,8 @@
 						"CanOverwriteFormula": true
 					}
 				}
-			}
+			},
+			"FixedRows": true
 		},
 		{
 			"TableName": "X_Table_PastureBeef_Duration_Method1",
@@ -1033,6 +1200,7 @@
 			},
 			"ChatHelp": true,
 			"CanRollOver": true,
+			"AllowsAttachment": true,
 			"NotUsedWhen": {
 				"Field": "X_Cell_PastureBeef_Method1OrMethod2",
 				"Equals": "Method 1"
@@ -1202,6 +1370,7 @@
 			},
 			"ChatHelp": true,
 			"CanRollOver": true,
+			"AllowsAttachment": true,
 			"NotUsedWhen": {
 				"Field": "X_Cell_PastureBeef_Method1OrMethod2",
 				"Equals": "Method 1"
@@ -1370,6 +1539,7 @@
 				}
 			},
 			"ChatHelp": true,
+			"AllowsAttachment": true,
 			"NotUsedWhen": {
 				"Field": "X_Cell_PastureBeef_Method1OrMethod2",
 				"Equals": "Method 1"
@@ -1539,6 +1709,7 @@
 			},
 			"ChatHelp": true,
 			"CanRollOver": true,
+			"AllowsAttachment": true,
 			"NotUsedWhen": {
 				"Field": "X_Cell_PastureBeef_Method1OrMethod2",
 				"Equals": "Method 1"
@@ -1594,6 +1765,7 @@
 					}
 				}
 			},
+			"AllowsAttachment": true,
 			"DependentOn": [
 				"X_Cell_PastureBeef_Method1OrMethod2",
 				"X_Cell_PastureBeef_HerdMovementMethod"
@@ -1680,6 +1852,7 @@
 				}
 			},
 			"CanMarkAsNotUsed": true,
+			"AllowsAttachment": true,
 			"DependentOn": [
 				"X_Cell_PastureBeef_Method1OrMethod2",
 				"X_Cell_PastureBeef_HerdMovementMethod"
@@ -1861,7 +2034,7 @@
 						"CellType": "formula"
 					},
 					"ApplicationArea": {
-						"CellType": "formula",
+						"CellType": "number",
 						"Unit": "ha"
 					},
 					"Density": {
@@ -1923,7 +2096,8 @@
 					}
 				}
 			},
-			"CanMarkAsNotUsed": true
+			"CanMarkAsNotUsed": true,
+			"AllowsAttachment": true
 		},
 		{
 			"TableName": "Table_Input_InorganicFertiliser_Custom",
@@ -2095,7 +2269,8 @@
 					}
 				}
 			},
-			"CanMarkAsNotUsed": true
+			"CanMarkAsNotUsed": true,
+			"AllowsAttachment": true
 		},
 		{
 			"TableName": "Table_Input_Lime",
@@ -2143,7 +2318,8 @@
 					}
 				}
 			},
-			"CanMarkAsNotUsed": true
+			"CanMarkAsNotUsed": true,
+			"AllowsAttachment": true
 		},
 		{
 			"TableName": "Table_Input_OrganicFertiliser",
@@ -2194,7 +2370,8 @@
 					}
 				}
 			},
-			"CanMarkAsNotUsed": true
+			"CanMarkAsNotUsed": true,
+			"AllowsAttachment": true
 		},
 		{
 			"TableName": "Table_Input_Fuel",
@@ -2288,7 +2465,8 @@
 					}
 				}
 			},
-			"CanMarkAsNotUsed": true
+			"CanMarkAsNotUsed": true,
+			"AllowsAttachment": true
 		},
 		{
 			"TableName": "Table_Input_RECSurrendered",
@@ -2332,6 +2510,7 @@
 				"Certs": "2024 certs"
 			},
 			"ChatHelp": true,
+			"AllowsAttachment": true,
 			"DependentOn": "X_Cell_Electricity_CalculationMethod",
 			"NotUsedWhen": {
 				"Field": "X_Cell_Electricity_CalculationMethod",
@@ -2376,6 +2555,7 @@
 				"45597": "45597"
 			},
 			"ChatHelp": true,
+			"AllowsAttachment": true,
 			"DependentOn": "X_Cell_Electricity_CalculationMethod",
 			"NotUsedWhen": {
 				"Field": "X_Cell_Electricity_CalculationMethod",
@@ -2593,8 +2773,9 @@
 		{
 			"TableName": "Table_Input_FeedBlends",
 			"MatrixType": "RowsToCols",
-			"NumberOfCols": 13,
+			"NumberOfCols": 14,
 			"ColumnNames": {
+				"FeedBlendName": "Feed blend name",
 				"AmountFed": "Amount fed (kg)",
 				"Ingredient1": "Ingredient 1 (select)",
 				"Ingredient1SourceRegion": "Ingredient 1 source region",
@@ -2611,6 +2792,9 @@
 			},
 			"Rows": {
 				"Row": {
+					"FeedBlendName": {
+						"CellType": "text"
+					},
 					"AmountFed": {
 						"CellType": "number",
 						"Unit": "kg"
@@ -2618,7 +2802,6 @@
 					"Ingredient1": {
 						"CellType": "select",
 						"Options": {
-							"Sardines (whole)": "Sardines (whole)",
 							"Barley grain": "Barley grain",
 							"Maize grain": "Maize grain",
 							"Sorghum grain": "Sorghum grain",
@@ -2643,9 +2826,6 @@
 						"CellType": "select",
 						"DependentOn": "Ingredient1",
 						"Options": {
-							"Sardineswhole": {
-								"SA": "SA"
-							},
 							"Barleygrain": {
 								"Australia": "Australia",
 								"NSW": "NSW",
@@ -2757,7 +2937,6 @@
 					"Ingredient2": {
 						"CellType": "select",
 						"Options": {
-							"Sardines (whole)": "Sardines (whole)",
 							"Barley grain": "Barley grain",
 							"Maize grain": "Maize grain",
 							"Sorghum grain": "Sorghum grain",
@@ -2782,9 +2961,6 @@
 						"CellType": "select",
 						"DependentOn": "Ingredient2",
 						"Options": {
-							"Sardineswhole": {
-								"SA": "SA"
-							},
 							"Barleygrain": {
 								"Australia": "Australia",
 								"NSW": "NSW",
@@ -2896,7 +3072,6 @@
 					"Ingredient3": {
 						"CellType": "select",
 						"Options": {
-							"Sardines (whole)": "Sardines (whole)",
 							"Barley grain": "Barley grain",
 							"Maize grain": "Maize grain",
 							"Sorghum grain": "Sorghum grain",
@@ -2921,9 +3096,6 @@
 						"CellType": "select",
 						"DependentOn": "Ingredient3",
 						"Options": {
-							"Sardineswhole": {
-								"SA": "SA"
-							},
 							"Barleygrain": {
 								"Australia": "Australia",
 								"NSW": "NSW",
@@ -3035,7 +3207,6 @@
 					"Ingredient4": {
 						"CellType": "select",
 						"Options": {
-							"Sardines (whole)": "Sardines (whole)",
 							"Barley grain": "Barley grain",
 							"Maize grain": "Maize grain",
 							"Sorghum grain": "Sorghum grain",
@@ -3060,9 +3231,6 @@
 						"CellType": "select",
 						"DependentOn": "Ingredient4",
 						"Options": {
-							"Sardineswhole": {
-								"SA": "SA"
-							},
 							"Barleygrain": {
 								"Australia": "Australia",
 								"NSW": "NSW",
@@ -3172,11 +3340,6 @@
 						"CellType": "percent"
 					}
 				}
-			},
-			"FixedRows": true,
-			"NumberOfRows": 1,
-			"RowLabels": {
-				"HayBalesInPaddock": "Hay bales in paddock"
 			}
 		},
 		{
@@ -3211,8 +3374,9 @@
 		{
 			"TableName": "Table_Input_FreightIncoming",
 			"MatrixType": "RowsToCols",
-			"NumberOfCols": 4,
+			"NumberOfCols": 5,
 			"ColumnNames": {
+				"RouteName": "Route name",
 				"FreightType": "Freight type (select)",
 				"RouteDistance": "Route distance (km)",
 				"AverageWeightOfFreightPerTrip": "Average weight of freight per trip (t)",
@@ -3220,6 +3384,9 @@
 			},
 			"Rows": {
 				"Row": {
+					"RouteName": {
+						"CellType": "text"
+					},
 					"FreightType": {
 						"CellType": "select",
 						"Options": {
@@ -3243,19 +3410,14 @@
 						"CellType": "number"
 					}
 				}
-			},
-			"FixedRows": true,
-			"NumberOfRows": 2,
-			"RowLabels": {
-				"MelbourneDepotToFarmDepotWeekly": "Melbourne depot to farm depot weekly",
-				"FertiliserSupplierToFarm": "Fertiliser supplier to farm"
 			}
 		},
 		{
 			"TableName": "Table_Input_FreightOutgoing",
 			"MatrixType": "RowsToCols",
-			"NumberOfCols": 4,
+			"NumberOfCols": 5,
 			"ColumnNames": {
+				"RouteName": "Route name",
 				"FreightType": "Freight type (select)",
 				"RouteDistance": "Route distance (km)",
 				"AverageWeightOfFreightPerTrip": "Average weight of freight per trip (t)",
@@ -3263,6 +3425,9 @@
 			},
 			"Rows": {
 				"Row": {
+					"RouteName": {
+						"CellType": "text"
+					},
 					"FreightType": {
 						"CellType": "select",
 						"Options": {
@@ -3286,18 +3451,14 @@
 						"CellType": "number"
 					}
 				}
-			},
-			"FixedRows": true,
-			"NumberOfRows": 1,
-			"RowLabels": {
-				"FarmToBulkHandler": "Farm to bulk handler"
 			}
 		},
 		{
 			"TableName": "Table_Input_SolidWaste",
 			"MatrixType": "RowsToCols",
-			"NumberOfCols": 5,
+			"NumberOfCols": 6,
 			"ColumnNames": {
+				"Description": "Description",
 				"TreatmentType": "Treatment type (select)",
 				"WasteType": "Waste type (select)",
 				"TreatmentLocation": "Treatment location (select)",
@@ -3306,6 +3467,9 @@
 			},
 			"Rows": {
 				"Row": {
+					"Description": {
+						"CellType": "text"
+					},
 					"TreatmentType": {
 						"CellType": "select",
 						"Options": {
@@ -3378,33 +3542,6 @@
 						}
 					}
 				}
-			},
-			"FixedRows": true,
-			"NumberOfRows": 23,
-			"RowLabels": {
-				"CompostPaperAndCardboardOnSite": "Compost paper and cardboard on site (tonnes)",
-				"CompostPaperAndCardboardOnSite2": "Compost paper and cardboard on site (m3)",
-				"CompostFoodWasteOnSite": "Compost food waste on site (tonnes)",
-				"CompostFoodWasteOnSite2": "Compost food waste on site (m3)",
-				"LandfillFoodWasteOffsite": "Landfill food waste offsite (tonnes)",
-				"LandfillFoodWasteOffsite2": "Landfill food waste offsite (m3)",
-				"LandfillFoodWasteOnSite": "Landfill food waste on site (tonnes)",
-				"LandfillFoodWasteOnSite2": "Landfill food waste on site (m3)",
-				"LandfillPaperOffsite": "Landfill Paper offsite (tonnes)",
-				"LandfillPaperWasteOffsite": "Landfill Paper waste offsite (m3)",
-				"LandfillPaperWasteOnSite": "Landfill Paper waste on site (tonnes)",
-				"LandfillPaperOnSite": "Landfill Paper on site (m3)",
-				"LandfillGreenWasteOffsite": "Landfill Green waste offsite (tonnes)",
-				"LandfillGreenWasteOffsite2": "Landfill Green waste offsite (m3)",
-				"LandfillGreenWasteOnSite": "Landfill Green waste on site (tonnes)",
-				"LandfillGreenWasteOnSite2": "Landfill Green waste on site (m3)",
-				"IncinerationPaperAndCardboardOnSite": "Incineration paper and cardboard on site (tonnes)",
-				"IncinerationPaperAndCardboardOnSite2": "Incineration paper and cardboard on site (m3)",
-				"IncinerationGreenWasteOnSite": "Incineration green waste on site (tonnes)",
-				"IncinerationGreenWasteOnSite2": "Incineration green waste on site (m3)",
-				"IncinerationGreenWasteOffsite": "Incineration green waste offsite (tonnes)",
-				"IncinerationGreenWasteOffsite2": "Incineration green waste offsite (m3)",
-				"IncinerationGreenWasteOnSite3": "Incineration green waste on site (m3)"
 			}
 		},
 		{
@@ -3452,10 +3589,12 @@
 						}
 					},
 					"Notes": {
-						"CellType": "text"
+						"CellType": "text",
+						"Optional": true
 					},
 					"EvidenceFiles": {
-						"CellType": "text"
+						"CellType": "text",
+						"Optional": true
 					},
 					"Score": {
 						"CellType": "formula"
@@ -3518,10 +3657,12 @@
 						}
 					},
 					"Notes": {
-						"CellType": "text"
+						"CellType": "text",
+						"Optional": true
 					},
 					"EvidenceFiles": {
-						"CellType": "text"
+						"CellType": "text",
+						"Optional": true
 					},
 					"Score": {
 						"CellType": "formula"
@@ -3584,10 +3725,12 @@
 						}
 					},
 					"Notes": {
-						"CellType": "text"
+						"CellType": "text",
+						"Optional": true
 					},
 					"EvidenceFiles": {
-						"CellType": "text"
+						"CellType": "text",
+						"Optional": true
 					},
 					"Score": {
 						"CellType": "formula"
@@ -3656,10 +3799,12 @@
 						}
 					},
 					"Notes": {
-						"CellType": "text"
+						"CellType": "text",
+						"Optional": true
 					},
 					"EvidenceFiles": {
-						"CellType": "text"
+						"CellType": "text",
+						"Optional": true
 					},
 					"Score": {
 						"CellType": "formula"
@@ -3721,10 +3866,12 @@
 						}
 					},
 					"Notes": {
-						"CellType": "text"
+						"CellType": "text",
+						"Optional": true
 					},
 					"EvidenceFiles": {
-						"CellType": "text"
+						"CellType": "text",
+						"Optional": true
 					},
 					"Score": {
 						"CellType": "formula"
@@ -3738,6 +3885,138 @@
 				"CustomInorganicFertiliserBlendApplications": "Custom inorganic fertiliser blend applications",
 				"LimeApplications": "Lime applications",
 				"OrganicFertiliserApplications": "Organic fertiliser applications"
+			}
+		},
+		{
+			"TableName": "Table_Input_DataQuality_FuelElectricity",
+			"MatrixType": "RowsToCols",
+			"NumberOfCols": 6,
+			"ColumnNames": {
+				"WhenWasTheDataSourced": "When was the data sourced?",
+				"WhereIsTheDataSourcedFrom": "Where is the data sourced from?",
+				"HowMuchOfTheDataWasFromDirectSamples": "How much of the data was from direct samples?",
+				"Notes": "Notes",
+				"EvidenceFiles": "Evidence files",
+				"Score": "Score"
+			},
+			"Rows": {
+				"Row": {
+					"WhenWasTheDataSourced": {
+						"CellType": "select",
+						"Options": {
+							"During this emissions calculation period": "During this emissions calculation period",
+							"Within 2 years of this emissions calculation period": "Within 2 years of this emissions calculation period",
+							"Within 3 years of this emissions calculation period": "Within 3 years of this emissions calculation period",
+							"Within 4 years of this emissions calculation period": "Within 4 years of this emissions calculation period",
+							"Unknown, or more than 4 years of this emissions calculation period": "Unknown, or more than 4 years of this emissions calculation period"
+						}
+					},
+					"WhereIsTheDataSourcedFrom": {
+						"CellType": "select",
+						"Options": {
+							"This location with spatial partitioning": "This location with spatial partitioning",
+							"This location without spatial partitioning": "This location without spatial partitioning",
+							"Regional-level data from a government or industry database/survey": "Regional-level data from a government or industry database/survey",
+							"State-level data from a government or industry database/survey": "State-level data from a government or industry database/survey",
+							"National-level data from a government or industry database/survey": "National-level data from a government or industry database/survey"
+						}
+					},
+					"HowMuchOfTheDataWasFromDirectSamples": {
+						"CellType": "select",
+						"Options": {
+							"Over 90%": "Over 90%",
+							"Between 51% and 90%": "Between 51% and 90%",
+							"Between 21% and 50%": "Between 21% and 50%",
+							"Less than 20%": "Less than 20%",
+							"Unknown": "Unknown"
+						}
+					},
+					"Notes": {
+						"CellType": "text",
+						"Optional": true
+					},
+					"EvidenceFiles": {
+						"CellType": "text",
+						"Optional": true
+					},
+					"Score": {
+						"CellType": "formula"
+					}
+				}
+			},
+			"FixedRows": true,
+			"NumberOfRows": 4,
+			"RowLabels": {
+				"FuelPurchases": "Fuel purchases",
+				"FuelConsumption": "Fuel consumption",
+				"ElectricityConsumption": "Electricity consumption",
+				"ElectricityGeneration": "Electricity generation"
+			}
+		},
+		{
+			"TableName": "Table_Input_DataQuality_FarmInputsFreightWaste",
+			"MatrixType": "RowsToCols",
+			"NumberOfCols": 6,
+			"ColumnNames": {
+				"WhenWasTheDataSourced": "When was the data sourced?",
+				"WhereIsTheDataSourcedFrom": "Where is the data sourced from?",
+				"HowMuchOfTheDataWasFromDirectSamples": "How much of the data was from direct samples?",
+				"Notes": "Notes",
+				"EvidenceFiles": "Evidence files",
+				"Score": "Score"
+			},
+			"Rows": {
+				"Row": {
+					"WhenWasTheDataSourced": {
+						"CellType": "select",
+						"Options": {
+							"During this emissions calculation period": "During this emissions calculation period",
+							"Within 2 years of this emissions calculation period": "Within 2 years of this emissions calculation period",
+							"Within 3 years of this emissions calculation period": "Within 3 years of this emissions calculation period",
+							"Within 4 years of this emissions calculation period": "Within 4 years of this emissions calculation period",
+							"Unknown, or more than 4 years of this emissions calculation period": "Unknown, or more than 4 years of this emissions calculation period"
+						}
+					},
+					"WhereIsTheDataSourcedFrom": {
+						"CellType": "select",
+						"Options": {
+							"This location with spatial partitioning": "This location with spatial partitioning",
+							"This location without spatial partitioning": "This location without spatial partitioning",
+							"Regional-level data from a government or industry database/survey": "Regional-level data from a government or industry database/survey",
+							"State-level data from a government or industry database/survey": "State-level data from a government or industry database/survey",
+							"National-level data from a government or industry database/survey": "National-level data from a government or industry database/survey"
+						}
+					},
+					"HowMuchOfTheDataWasFromDirectSamples": {
+						"CellType": "select",
+						"Options": {
+							"Over 90%": "Over 90%",
+							"Between 51% and 90%": "Between 51% and 90%",
+							"Between 21% and 50%": "Between 21% and 50%",
+							"Less than 20%": "Less than 20%",
+							"Unknown": "Unknown"
+						}
+					},
+					"Notes": {
+						"CellType": "text",
+						"Optional": true
+					},
+					"EvidenceFiles": {
+						"CellType": "text",
+						"Optional": true
+					},
+					"Score": {
+						"CellType": "formula"
+					}
+				}
+			},
+			"FixedRows": true,
+			"NumberOfRows": 4,
+			"RowLabels": {
+				"FarmInputPurchases": "Farm input purchases",
+				"InboundFreightUse": "Inbound freight use",
+				"OutboundFreightUse": "Outbound freight use",
+				"SolidWasteGenerationAndTreatment": "Solid waste generation and treatment"
 			}
 		},
 		{
@@ -3876,6 +4155,78 @@
 	"FieldGroups": [
 		[
 			{
+				"Name": "Enterprise",
+				"Items": [
+					"X_Cell_Enteprise_PercentIncomeFromLiveweight",
+					"X_Cell_Enteprise_PercentIncomeFromManure",
+					"X_Cell_Enteprise_PercentManureSold",
+					"X_Cell_Enteprise_PercentManureAppliedAsFertiliserOwnFarm",
+					"Table_Input_Enterprise_PlantingRemovals",
+					"X_Table_Result_CarbonRemovalsFromPlantings_RowsToCols",
+					"X_Table_Result_ActivityPeriodEmissions_RowsToCols"
+				]
+			},
+			{
+				"Name": "Herd production system",
+				"Items": [
+					"X_Cell_PastureBeef_ProductionRegion",
+					"X_Cell_PastureBeef_Breed",
+					"X_Cell_PastureBeef_GrazingProductionSystem",
+					"X_Cell_PastureBeef_GrazingIrrigationMethod",
+					"X_Cell_PastureBeef_FencedWater"
+				]
+			},
+			{
+				"Name": "Herd movement",
+				"Items": [
+					"X_Cell_PastureBeef_Method1OrMethod2",
+					"X_Cell_PastureBeef_HerdMovementMethod",
+					"X_Table_PastureBeef_Head_Method1",
+					"X_Table_PastureBeef_Duration_Method1",
+					"X_Table_PastureBeef_Liveweight_Method1",
+					"X_Table_PastureBeef_LiveweightGain_Method1",
+					"X_Table_PastureBeef_Head_Method2",
+					"X_Table_PastureBeef_Duration_Method2",
+					"X_Table_PastureBeef_Liveweight_Method2",
+					"X_Table_PastureBeef_LiveweightGain_Method2",
+					"Table_Input_LivestockPurchases_Beefcattle",
+					"Table_Input_LivestockSales",
+					"Table_Input_Mortalities",
+					"Table_Input_HerdTransfersIn",
+					"Table_Input_HerdTransfersOut"
+				]
+			},
+			{
+				"Name": "Pasture management",
+				"Items": [
+					"X_Cell_Pasture_PastureType",
+					"X_Cell_Pasture_YieldPerHectare",
+					"X_Cell_Pasture_IrrigationMethod",
+					"X_Cell_Pasture_AreaUnderPasture",
+					"X_Cell_Pasture_AreaRemovedOrRenewed",
+					"Table_Input_InorganicFertiliser_Brands",
+					"Table_Input_InorganicFertiliser_Custom",
+					"Table_Input_Lime",
+					"Table_Input_OrganicFertiliser"
+				]
+			},
+			{
+				"Name": "Herd diet",
+				"Items": [
+					"X_Table_PastureBeef_CrudeProtein_Method1",
+					"X_Table_PastureBeef_DryMatterDigestibility_Method1",
+					"X_Table_PastureBeef_CrudeProtein_Method2",
+					"X_Table_PastureBeef_DryMatterDigestibility_Method2"
+				]
+			},
+			{
+				"Name": "Fuel",
+				"Items": [
+					"Table_Input_Fuel",
+					"X_Cell_Fuel_IsMetroLocation"
+				]
+			},
+			{
 				"Name": "Electricity",
 				"Items": [
 					"X_Cell_Electricity_CalculationMethod",
@@ -3904,29 +4255,43 @@
 				]
 			},
 			{
-				"Name": "Herd",
+				"Name": "Farm input purchases",
 				"Items": [
-					"X_Cell_PastureBeef_ProductionRegion",
-					"X_Cell_PastureBeef_Breed",
-					"X_Cell_PastureBeef_GrazingProductionSystem",
-					"X_Cell_PastureBeef_FencedWater",
-					"X_Cell_PastureBeef_HerdMovementMethod",
-					"Table_Input_LivestockPurchases_Beefcattle",
-					"Table_Input_LivestockSales",
-					"Table_Input_Mortalities",
-					"Table_Input_HerdTransfersIn",
-					"Table_Input_HerdTransfersOut",
-					"X_Cell_PastureBeef_Method1OrMethod2"
+					"X_Cell_FarmInputs_LickBlocks_Mineral",
+					"X_Cell_FarmInputs_LickBlocks_Weaner",
+					"X_Cell_FarmInputs_LickBlocks_DrySeasonMix",
+					"X_Cell_FarmInputs_Misc_AnimalEarTagsLarge",
+					"X_Cell_FarmInputs_Misc_AnimalEarTagsSmall",
+					"Table_Input_Pesticides",
+					"Table_Input_ChemicalsCleaning",
+					"Table_Input_ChemicalsPharmacy",
+					"Table_Input_FeedBlends",
+					"Table_Input_FreightIncoming",
+					"Table_Input_FreightOutgoing",
+					"Table_Input_ServicesAndContractors",
+					"Table_Input_UncategorisedProductsServices"
+				]
+			},
+			{
+				"Name": "Data quality",
+				"Items": [
+					"Table_Input_DataQuality_Enterprise",
+					"Table_Input_DataQuality_PastureBeef",
+					"Table_Input_DataQuality_FarmInputsFreightWaste",
+					"Table_Input_DataQuality_Site",
+					"Table_Input_DataQuality_PastureManagement",
+					"Table_Input_DataQuality_FertiliserApplications",
+					"Table_Input_DataQuality_FuelElectricity"
 				]
 			}
 		]
 	],
 	"FirstClassResults": {
-		"Result_Enterprise_Method1": {
-			"Label": "Emissions for this activity period (Method 1)"
+		"Result_Enterprise_Net_Method1": {
+			"Label": "Net emissions for this activity period (Method 1)"
 		},
-		"Result_Enterprise_Method2": {
-			"Label": "Emissions for this activity period (Method 2)"
+		"Result_Enterprise_Net_Method2": {
+			"Label": "Net emissions for this activity period (Method 2)"
 		}
 	},
 	"ActivityPeriodResultTables": {

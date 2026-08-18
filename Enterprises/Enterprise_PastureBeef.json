@@ -4,17 +4,23 @@
     "id": "PastureBeef",
     "name": "Pasture Beef Enterprise",
     "description": "A grazing beef enterprise: enteric fermentation and manure emissions from the herd, plus the farm's energy, waste and upstream (Scope 3) emissions.",
-    "templateWorkbook": "Enterprise_PastureBeef_Template_WIP_v01.xlsx",
+    "templateWorkbook": "Enterprise_PastureBeef_Clean_WIP_v01.xlsx",
     "outputWorkbook": "Enterprise_PastureBeef_WIP_v01.xlsx",
     "allocatable": false
   },
 
   "customSheets": [
     {
-      "name": "Results",
+      "name": "Results - Activity period",
       "kind": "results",
       "source": "custom",
       "description": "The single enterprise-wide results tab, unique to this enterprise. Module Results tabs are NOT imported; this sheet reads each module's result cells directly by named range."
+    },
+    {
+      "name": "Results - Product EI",
+      "kind": "results",
+      "source": "custom",
+      "description": "The Product EI results tab, unique to this enterprise. Module Results tabs are NOT imported; this sheet reads each module's result cells directly by named range."
     },
     {
       "name": "Input - Site",
@@ -39,6 +45,12 @@
       "kind": "input",
       "source": "custom",
       "description": "Table of livestock sales"
+    },
+    {
+      "name": "Input - Data quality",
+      "kind": "input",
+      "source": "custom",
+      "description": "Table of data quality inputs"
     }
   ],
 
@@ -49,8 +61,10 @@
     },
     {
       "id": "Enteric_BeefPasture",
-      "comment": "Duplicate of the shared input sheet: imported AFTER the canonical ManureManagement_BeefPasture and renamed via renameSheets so it does not collide. The builder leaves Enteric's duplicate name definitions as sheet-scoped shadows (master keeps the workbook-scoped names) and repoints Enteric's own formulas to the renamed copy. Remove this rename once a single enterprise-level input sheet replaces the per-module input sheets.",
-      "renameSheets": { "Input - Pasture Beef": "Input - Pasture Beef (Enteric)" }
+      "comment": "Enteric's 'Input - Pasture Beef' sheet is now identical (same rows) to the canonical copy imported by ManureManagement_BeefPasture, so it is intentionally excluded here via 'include' (only the calculation sheet is imported). Enteric's calculation formulas resolve inputs by workbook-scoped named range, so they still bind correctly to Manure's copy of the sheet.",
+      "include": {
+        "calculation": ["3.2.1.1-2 Enteric Methane"]
+      }
     },
     {
       "id": "Fertiliser",
@@ -100,11 +114,11 @@
       "enabled": true,
       "labels": {
         "Home": "Home",
-        "Results": "Results",
+        "Results - Activity period": "Results - Activity period",
+        "Results - Product EI": "Results - Product Emissions Intensity",
         "Input - Enterprise": "Enterprise",
         "Input - Site": "Site",
         "Input - Pasture Beef": "Pasture Beef",
-        "Input - Pasture Beef (Enteric)": "Pasture Beef (Enteric)",
         "Input - Livestock sales": "Livestock sales",
         "Input - Beef cattle purchases": "Beef cattle purchases",
         "Input - Pasture": "Pasture",
@@ -116,8 +130,10 @@
         "Input - Crop pasture farm input": "Crop pasture farm input",
         "Input - Livestock farm Inputs": "Livestock farm Inputs",
         "Input - Freight": "Freight",
-        "Input - Waste sent off-site": "Waste sent off-site",
+        "Input - Solid waste": "Solid waste",
         "Input - Manure sent off-site": "Manure sent off-site",
+        "Input - Data quality": "Data quality",
+        "3.2.1.1-2 Enteric Methane": "3.2.1.1-2 Enteric Methane",
         "4.2.1.1-2 Methane": "4.2.1.1-2 Manure methane",
         "4.2.1.3-4 Soil direct N20": "4.2.1.3-4 Soil direct N2O",
         "4.2.1.5-6 Soil Atmos Dep": "4.2.1.5-6 Soil atm. deposition",
@@ -132,6 +148,7 @@
         "6.3.1.1-2 Leach runoff pasture": "6.3.1.1-2 Leach & runoff (pasture)",
         "8.1.1.1-2 Transport fuel": "8.1.1.1-2 Transport fuel",
         "8.2.1.1-2 Stationary fuel": "8.2.1.1-2 Stationary fuel",
+        "10.1.1-2 Solid waste treatment": "10.1.1.1-2 Solid waste",
         "14.1.1-2 Purchased electricity": "14.1.1-2 Purchased electricity",
         "15 Scope 3": "15 Scope 3",
         "Calcs - Manure sent off-site": "Calcs - Manure sent off-site",
@@ -142,6 +159,7 @@
         "Constants - Fertiliser": "Constants - Fertiliser",
         "Constants - Fuel": "Constants - Fuel",
         "Constants - Scope 3": "Constants - Scope 3",
+        "Constants - Solid Waste": "Constants - Solid Waste",
         "Constants - Common": "Constants - Common",
         "Acknowledgements": "Acknowledgements"
       }

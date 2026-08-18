@@ -18,6 +18,8 @@
 #   (blank) APPEND. title + one link per appendix sheet
 # Each link is =HYPERLINK("#'Sheet'!A1","Label"). The link to the sheet the menu
 # is drawn on uses that group's 'selected' style; all others use the default.
+# Column A is frozen (panes split at B1) on every sheet so the menu stays
+# visible while the user scrolls.
 function Set-NavMenu {
   param(
     $Target,        # target workbook COM object
@@ -54,7 +56,7 @@ function Set-NavMenu {
   # Group assignment for a sheet.
   $groupOf = {
     param($name)
-    if ($name -eq 'Home' -or $name -eq 'Overview' -or $name -eq 'Results') { return 'untitled' }
+    if ($name -eq 'Home' -or $name -eq 'Overview' -or $name -like 'Results*') { return 'untitled' }
     if ($name -like 'Input*') { return 'inputs' }
     $cat = if ($CategoryMap.ContainsKey($name)) { [string] $CategoryMap[$name] } else { '' }
     if ($cat -eq 'calculation') { return 'equations' }
@@ -76,9 +78,11 @@ function Set-NavMenu {
     $g = & $groupOf $n
     $members[$g] += $n
   }
-  # Untitled group always leads with Home, then Overview, then Results.
+  # Untitled group always leads with Home, then Overview, then any Results* sheets
+  # (in tab order among themselves).
   $ut = @()
-  foreach ($x in @('Home', 'Overview', 'Results')) { if ($members['untitled'] -contains $x) { $ut += $x } }
+  foreach ($x in @('Home', 'Overview')) { if ($members['untitled'] -contains $x) { $ut += $x } }
+  foreach ($x in $members['untitled']) { if ($x -like 'Results*' -and $ut -notcontains $x) { $ut += $x } }
   foreach ($x in $members['untitled']) { if ($ut -notcontains $x) { $ut += $x } }
   $members['untitled'] = $ut
 
@@ -105,6 +109,9 @@ function Set-NavMenu {
   $updated = 0
   foreach ($ws in $Target.Worksheets) {
     $sn = [string] $ws.Name
+
+    # Fix the menu column's width so labels are not clipped.
+    try { $ws.Columns.Item(1).ColumnWidth = 36 } catch { }
 
     # Ensure the A1 logo is present (copy the whole cell incl. in-cell image).
     if ($null -ne $logoDonor) {
@@ -140,6 +147,14 @@ function Set-NavMenu {
       }
       $r++
     }
+
+    # Freeze column A (the nav menu) so it stays visible when the user scrolls.
+    try {
+      $ws.Activate()
+      $ws.Range('B1').Select() | Out-Null
+      $Target.Windows.Item(1).FreezePanes = $true
+    } catch { Write-Warning ("Menu: could not freeze column A on '{0}': {1}" -f $sn, $_.Exception.Message) }
+
     $updated++
   }
 

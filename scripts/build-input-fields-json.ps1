@@ -9,7 +9,9 @@
 
     * InputCells  - workbook-scoped defined names matching ^X_Cell_, resolving each
                     cell's data-validation list into a CellType + Options structure
-                    (including cascading INDIRECT($Parent) dropdowns).
+                    (including cascading INDIRECT($Parent) dropdowns), plus a Unit
+                    when the cell immediately to its right carries a 'Unit' /
+                    'Unit no indent' style.
     * InputTables - ListObjects matching ^X_Table_ or ^Table_Input, describing the
                     per-field CellType / Unit / overwrite metadata and the table's
                     MatrixType (RowsToCols vs ColsToRows).
@@ -125,6 +127,37 @@ function Get-UnitFromHeader {
     }
   }
   return $null
+}
+
+function Get-UnitFromAdjacentCell {
+  # A plain unit label (e.g. 'kg', 't', '%') placed in the cell immediately to
+  # the right of an input cell. Distinguished from ordinary worksheet content
+  # by its own named style ('Unit' / 'Unit no indent') - but that same style is
+  # ALSO reused for arrow-prefixed hint text pointing back at dropdowns/date
+  # fields (e.g. '<- Please select', '<- DD/MM/YYYY'), so those are excluded:
+  # a leading arrow is a hint, never a unit.
+  param(
+    [Parameter(Mandatory = $true)] $Worksheet,
+    [Parameter(Mandatory = $true)] [int] $Row,
+    [Parameter(Mandatory = $true)] [int] $Col
+  )
+  try {
+    $rightCell = $Worksheet.Cells.Item($Row, $Col + 1)
+    $styleName = ''
+    try { $styleName = [string]$rightCell.Style.Name } catch { $styleName = '' }
+    if ($styleName -ne 'Unit' -and $styleName -ne 'Unit no indent') { return $null }
+    $v = $rightCell.Value2
+    if ($null -eq $v) { return $null }
+    $u = ([string]$v).Trim()
+    if ($u -eq '') { return $null }
+    # U+2190/U+2192 = the arrow glyphs Excel uses for hint text (e.g. an arrow
+    # + 'Please select' pointing back at a dropdown). Written as regex \u
+    # escapes (plain ASCII in this file), not literal arrow bytes, because this
+    # file is read as the system ANSI codepage (no BOM) by Windows PowerShell
+    # 5.1, which mangles literal multi-byte UTF-8 characters in source.
+    if ($u -match '^(\u2190|\u2192)') { return $null }   # arrow/hint text, not a unit
+    return $u
+  } catch { return $null }
 }
 
 function Test-IsPeriodLabel {
@@ -1143,6 +1176,14 @@ function Get-InputCells {
     }
     else {
       $cellObj['CellType'] = Get-CellTypeByFormat -Cell $range
+    }
+
+    # Unit comes from the cell immediately to the right of the input cell, when
+    # that cell carries one of the workbook's 'Unit' styles (a plain unit label
+    # such as 'kg' placed beside the input, not part of the header/label text).
+    if ($null -ne $worksheet) {
+      $unit = Get-UnitFromAdjacentCell -Worksheet $worksheet -Row ([int]$range.Row) -Col ([int]$range.Column)
+      if ($null -ne $unit) { $cellObj['Unit'] = $unit }
     }
 
     if ($canOverwrite) { $cellObj['CanOverWriteFormula'] = $true }

@@ -1,7 +1,7 @@
 {
 	"schemaVersion": 1,
 	"generatedFrom": "Enterprise_Dairy_WIP_v01.xlsx",
-	"generatedAt": "2026-08-11T06:34:58Z",
+	"generatedAt": "2026-08-17T10:55:16Z",
 	"InputCells": [
 		{
 			"CellName": "X_Cell_Site_FarmName",
@@ -2111,9 +2111,8 @@
 		{
 			"TableName": "Table_Input_RECSurrendered",
 			"MatrixType": "RowsToCols",
-			"NumberOfCols": 6,
+			"NumberOfCols": 5,
 			"ColumnNames": {
-				"Description": "Description",
 				"Source": "Source (select)",
 				"GenerationDate": "Generation date",
 				"NumberOfCertificates": "Number of certificates",
@@ -2122,9 +2121,6 @@
 			},
 			"Rows": {
 				"Row": {
-					"Description": {
-						"CellType": "text"
-					},
 					"Source": {
 						"CellType": "select",
 						"Options": {
@@ -2145,14 +2141,20 @@
 						"CellType": "formula"
 					}
 				}
+			},
+			"FixedRows": true,
+			"NumberOfRows": 3,
+			"RowLabels": {
+				"DecCerts": "Dec 2020 certs",
+				"JanCerts": "Jan 2022 certs",
+				"Certs": "2024 certs"
 			}
 		},
 		{
 			"TableName": "Table_Input_RECConsumedByEntity",
 			"MatrixType": "RowsToCols",
-			"NumberOfCols": 6,
+			"NumberOfCols": 5,
 			"ColumnNames": {
-				"Description": "Description",
 				"Source": "Source",
 				"GenerationDate": "Generation date",
 				"NumberOfCertificates": "Number of certificates",
@@ -2161,9 +2163,6 @@
 			},
 			"Rows": {
 				"Row": {
-					"Description": {
-						"CellType": "text"
-					},
 					"Source": {
 						"CellType": "formula"
 					},
@@ -2180,6 +2179,13 @@
 						"CellType": "formula"
 					}
 				}
+			},
+			"FixedRows": true,
+			"NumberOfRows": 3,
+			"RowLabels": {
+				"MayGenerated": "May 2022 generated",
+				"Jul24CertsGenerated": "Jul 24 certs generated",
+				"45597": "45597"
 			}
 		},
 		{
@@ -2393,9 +2399,8 @@
 		{
 			"TableName": "Table_Input_FeedBlends",
 			"MatrixType": "RowsToCols",
-			"NumberOfCols": 14,
+			"NumberOfCols": 13,
 			"ColumnNames": {
-				"FeedBlendName": "Feed blend name",
 				"AmountFed": "Amount fed (kg)",
 				"Ingredient1": "Ingredient 1 (select)",
 				"Ingredient1SourceRegion": "Ingredient 1 source region",
@@ -2412,9 +2417,6 @@
 			},
 			"Rows": {
 				"Row": {
-					"FeedBlendName": {
-						"CellType": "text"
-					},
 					"AmountFed": {
 						"CellType": "number",
 						"Unit": "kg"
@@ -2976,6 +2978,11 @@
 						"CellType": "percent"
 					}
 				}
+			},
+			"FixedRows": true,
+			"NumberOfRows": 1,
+			"RowLabels": {
+				"HayBalesInPaddock": "Hay bales in paddock"
 			}
 		},
 		{
@@ -3010,9 +3017,8 @@
 		{
 			"TableName": "Table_Input_FreightIncoming",
 			"MatrixType": "RowsToCols",
-			"NumberOfCols": 5,
+			"NumberOfCols": 4,
 			"ColumnNames": {
-				"RouteName": "Route name",
 				"FreightType": "Freight type (select)",
 				"RouteDistance": "Route distance (km)",
 				"AverageWeightOfFreightPerTrip": "Average weight of freight per trip (t)",
@@ -3020,9 +3026,6 @@
 			},
 			"Rows": {
 				"Row": {
-					"RouteName": {
-						"CellType": "text"
-					},
 					"FreightType": {
 						"CellType": "select",
 						"Options": {
@@ -3046,14 +3049,19 @@
 						"CellType": "number"
 					}
 				}
+			},
+			"FixedRows": true,
+			"NumberOfRows": 2,
+			"RowLabels": {
+				"MelbourneDepotToFarmDepotWeekly": "Melbourne depot to farm depot weekly",
+				"FertiliserSupplierToFarm": "Fertiliser supplier to farm"
 			}
 		},
 		{
 			"TableName": "Table_Input_FreightOutgoing",
 			"MatrixType": "RowsToCols",
-			"NumberOfCols": 5,
+			"NumberOfCols": 4,
 			"ColumnNames": {
-				"RouteName": "Route name",
 				"FreightType": "Freight type (select)",
 				"RouteDistance": "Route distance (km)",
 				"AverageWeightOfFreightPerTrip": "Average weight of freight per trip (t)",
@@ -3061,9 +3069,6 @@
 			},
 			"Rows": {
 				"Row": {
-					"RouteName": {
-						"CellType": "text"
-					},
 					"FreightType": {
 						"CellType": "select",
 						"Options": {
@@ -3087,14 +3092,18 @@
 						"CellType": "number"
 					}
 				}
+			},
+			"FixedRows": true,
+			"NumberOfRows": 1,
+			"RowLabels": {
+				"FarmToBulkHandler": "Farm to bulk handler"
 			}
 		},
 		{
 			"TableName": "Table_Input_SolidWaste",
 			"MatrixType": "RowsToCols",
-			"NumberOfCols": 6,
+			"NumberOfCols": 5,
 			"ColumnNames": {
-				"Description": "Description",
 				"TreatmentType": "Treatment type (select)",
 				"WasteType": "Waste type (select)",
 				"TreatmentLocation": "Treatment location (select)",
@@ -3103,9 +3112,6 @@
 			},
 			"Rows": {
 				"Row": {
-					"Description": {
-						"CellType": "text"
-					},
 					"TreatmentType": {
 						"CellType": "select",
 						"Options": {
@@ -3178,6 +3184,33 @@
 						}
 					}
 				}
+			},
+			"FixedRows": true,
+			"NumberOfRows": 23,
+			"RowLabels": {
+				"CompostPaperAndCardboardOnSite": "Compost paper and cardboard on site (tonnes)",
+				"CompostPaperAndCardboardOnSite2": "Compost paper and cardboard on site (m3)",
+				"CompostFoodWasteOnSite": "Compost food waste on site (tonnes)",
+				"CompostFoodWasteOnSite2": "Compost food waste on site (m3)",
+				"LandfillFoodWasteOffsite": "Landfill food waste offsite (tonnes)",
+				"LandfillFoodWasteOffsite2": "Landfill food waste offsite (m3)",
+				"LandfillFoodWasteOnSite": "Landfill food waste on site (tonnes)",
+				"LandfillFoodWasteOnSite2": "Landfill food waste on site (m3)",
+				"LandfillPaperOffsite": "Landfill Paper offsite (tonnes)",
+				"LandfillPaperWasteOffsite": "Landfill Paper waste offsite (m3)",
+				"LandfillPaperWasteOnSite": "Landfill Paper waste on site (tonnes)",
+				"LandfillPaperOnSite": "Landfill Paper on site (m3)",
+				"LandfillGreenWasteOffsite": "Landfill Green waste offsite (tonnes)",
+				"LandfillGreenWasteOffsite2": "Landfill Green waste offsite (m3)",
+				"LandfillGreenWasteOnSite": "Landfill Green waste on site (tonnes)",
+				"LandfillGreenWasteOnSite2": "Landfill Green waste on site (m3)",
+				"IncinerationPaperAndCardboardOnSite": "Incineration paper and cardboard on site (tonnes)",
+				"IncinerationPaperAndCardboardOnSite2": "Incineration paper and cardboard on site (m3)",
+				"IncinerationGreenWasteOnSite": "Incineration green waste on site (tonnes)",
+				"IncinerationGreenWasteOnSite2": "Incineration green waste on site (m3)",
+				"IncinerationGreenWasteOffsite": "Incineration green waste offsite (tonnes)",
+				"IncinerationGreenWasteOffsite2": "Incineration green waste offsite (m3)",
+				"IncinerationGreenWasteOnSite3": "Incineration green waste on site (m3)"
 			}
 		},
 		{

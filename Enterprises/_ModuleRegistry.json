@@ -14,7 +14,6 @@
     "description": "Sheets and Excel Labs modules included once in every enterprise workbook, regardless of which modules are selected. 'strategy' tells a future builder where each sheet comes from: 'template' = copied from templateWorkbook; 'dedupe' = copied once from the first selected module workbook that contains it (identical across modules); 'generate' = assembled by the enterprise builder from each module's contribution.",
     "sheets": [
       { "name": "Home", "strategy": "template" },
-      { "name": "Overview", "strategy": "template" },
       { "name": "Input - Site", "strategy": "dedupe" },
       { "name": "Constants - Common", "strategy": "dedupe" },
       { "name": "Acknowledgements", "strategy": "template" }

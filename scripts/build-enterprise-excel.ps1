@@ -600,7 +600,7 @@ foreach ($sel in $selectedModules) {
   # Category sheets (with optional per-module include subset).
   foreach ($cat in @('input', 'calculation', 'constants')) {
     $sheets = @($mod.sheets.$cat)
-    if ($null -ne $sel.Include -and $null -ne $sel.Include.$cat) { $sheets = @($sel.Include.$cat) }
+    if ($null -ne $sel.Include -and ($sel.Include.PSObject.Properties.Name -contains $cat) -and $null -ne $sel.Include.$cat) { $sheets = @($sel.Include.$cat) }
     foreach ($sn in $sheets) {
       $orig = [string] $sn
       $newName = $orig
