@@ -3,8 +3,8 @@
   "_usage": "Under 'InputCells' key each entry by its CellName; under 'InputTables' key each entry by its TableName and (optionally) its columns by column key. The properties you set are copied onto the matching field as-is, so you can add whatever the consuming app understands (Label, Group, Order, Hidden, Default, UseDefault, HelpText, ...). Setting an existing generated property (e.g. CellType) replaces it. Use 'FieldGroups' to lay out cells/tables into named groups in any order you like; each group's Items is an array of cell/table names and/or nested subgroups.",
   "_usage_influences": "Use 'Influences' to declare, in ONE place, sets of cells/tables that influence each other (a change to any member affects the others). Each entry's 'Members' is a flat list of cell and/or table names that all mutually influence every other member of the same set - the relationship is undirected, so you never repeat it per field. The consuming app derives each field's influenced/influenced-by list from these sets; do not add per-field Influences/InfluencedBy attributes.",
   "_schema": {
-    "InputCells": { "<CellName>": { "Label": "text", "Group": "text", "ChatHelp": false, "CanRollOver": false, "ExcelExcluded": false, "Order": 0, "Hidden": false, "UseDefault": false, "Default": "value", "DuplicateOf": "value", "CanMarkAsNotUsed": false, "AllowsAttachment": false, "Optional": false, "NotUsedWhen": "condition" } },
-    "InputTables": { "<TableName>": { "Label": "text", "Group": "text", "ChatHelp":false, "CanRollOver": false, "ExcelExcluded": false, "FixedRows": false, "Columns": { "<ColumnKey>": { "Label": "text", "Default": "value", "CanMarkAsNotUsed": false, "AllowsAttachment": false, "Optional": false, "NotUsedWhen": "condition" } } } },
+    "InputCells": { "<CellName>": { "Label": "text", "Group": "text", "ChatHelp": false, "CanRollOver": false, "ExcelExcluded": false, "CanOverWriteFormula":false, "Order": 0, "Hidden": false, "UseDefault": false, "Default": "value", "DuplicateOf": "value", "CanMarkAsNotUsed": false, "AllowsAttachment": false, "Optional": false, "NotUsedWhen": "condition" } },
+    "InputTables": { "<TableName>": { "Label": "text", "Group": "text", "ChatHelp":false, "CanRollOver": false, "ExcelExcluded": false, "FixedRows": false, "Columns": { "<ColumnKey>": { "Label": "text", "Default": "value", "CanMarkAsNotUsed": false, "AllowsAttachment": false, "Optional": false, "CanOverWriteFormula": false, "NotUsedWhen": "condition" } } } },
     "FieldGroups": [ { "Name": "text", "Items": [ "<CellOrTableName>", { "Name": "text", "Items": [ "<CellOrTableName>" ] } ] } ],
     "FirstClassResults": { "<ResultName>": { "Label": "text" } },
     "ActivityPeriodResultTables": { "<TableName>": { "CycleLabelColumn": "<ColumnKey>", "ResultColumns": { "<ResultName>": "<ColumnKey>" } } },
@@ -92,6 +92,7 @@
 	"X_Cell_Pasture_YieldPerHectare": {
         "CanOverWriteFormula": true,
         "AllowsAttachment": true,
+        "ChatHelp": true,
         "DefaultDataDocumentType": "JSON",
         "DefaultDataFile": "node_modules/gaf-veerg-functions/generated-sourcedata/AgResidue_SourceData.sourcedata.json",
         "DefaultDataLocation": null
@@ -131,7 +132,17 @@
   "X_Cell_FarmInputs_Seed_WheatGrain": {
         "Default": 0,
         "Hidden": true
-    }
+    },
+   "X_Cell_Enteprise_LiveweightGrown_Method2": {
+    "Hidden":true,
+    "ExcelExcluded":true,
+    "CanOverWriteFormula":false
+   },
+   "X_Cell_Enteprise_ManureProduced_Method2": {
+    "Hidden":true,
+    "ExcelExcluded":true,
+    "CanOverWriteFormula":false
+   }
   },
 
   "InputTables": {
@@ -168,7 +179,13 @@
     "X_Table_PastureBeef_Head_Method1": {
       "ChatHelp": true,
       "CanRollOver": true,
-      "NotUsedWhen": { "Field": "X_Cell_PastureBeef_Method1OrMethod2", "Equals": "Method 2" }
+      "NotUsedWhen": { "Field": "X_Cell_PastureBeef_Method1OrMethod2", "Equals": "Method 2" },
+      "Columns": {
+        "Spring": { "CanOverWriteFormula": true },
+        "Summer": { "CanOverWriteFormula": true },
+        "Autumn": { "CanOverWriteFormula": true },
+        "Winter": { "CanOverWriteFormula": true }
+      }
     },
     "X_Table_PastureBeef_Liveweight_Method1": {
       "ChatHelp": true,
@@ -188,6 +205,20 @@
       "ChatHelp": true,
       "CanRollOver": true,
       "AllowsAttachment": true,
+      "Columns": {
+        "January": { "CanOverWriteFormula": true },
+        "February": { "CanOverWriteFormula": true },
+        "March": { "CanOverWriteFormula": true },
+        "April": { "CanOverWriteFormula": true },
+        "May": { "CanOverWriteFormula": true },
+        "June": { "CanOverWriteFormula": true },
+        "July": { "CanOverWriteFormula": true },
+        "August": { "CanOverWriteFormula": true },
+        "September": { "CanOverWriteFormula": true },
+        "October": { "CanOverWriteFormula": true },
+        "November": { "CanOverWriteFormula": true },
+        "December": { "CanOverWriteFormula": true }
+      },
       "NotUsedWhen": { "Field": "X_Cell_PastureBeef_Method1OrMethod2", "Equals": "Method 1" },
       "DefaultDataDocumentType": "JSON",
       "DefaultDataFile": "node_modules/gaf-veerg-functions/generated-sourcedata/SourceData_PastureBeef.sourcedata.json",
@@ -196,6 +227,20 @@
     "X_Table_PastureBeef_DryMatterDigestibility_Method2": {
       "ChatHelp": true,
       "AllowsAttachment": true,
+      "Columns": {
+        "January": { "CanOverWriteFormula": true },
+        "February": { "CanOverWriteFormula": true },
+        "March": { "CanOverWriteFormula": true },
+        "April": { "CanOverWriteFormula": true },
+        "May": { "CanOverWriteFormula": true },
+        "June": { "CanOverWriteFormula": true },
+        "July": { "CanOverWriteFormula": true },
+        "August": { "CanOverWriteFormula": true },
+        "September": { "CanOverWriteFormula": true },
+        "October": { "CanOverWriteFormula": true },
+        "November": { "CanOverWriteFormula": true },
+        "December": { "CanOverWriteFormula": true }
+      },
       "NotUsedWhen": { "Field": "X_Cell_PastureBeef_Method1OrMethod2", "Equals": "Method 1" },
       "DefaultDataDocumentType": "JSON",
       "DefaultDataFile": "node_modules/gaf-veerg-functions/generated-sourcedata/SourceData_PastureBeef.sourcedata.json",
@@ -204,6 +249,20 @@
     "X_Table_PastureBeef_Duration_Method2": {
       "ChatHelp": true,
       "CanRollOver": true,
+      "Columns": {
+        "January": { "CanOverWriteFormula": true },
+        "February": { "CanOverWriteFormula": true },
+        "March": { "CanOverWriteFormula": true },
+        "April": { "CanOverWriteFormula": true },
+        "May": { "CanOverWriteFormula": true },
+        "June": { "CanOverWriteFormula": true },
+        "July": { "CanOverWriteFormula": true },
+        "August": { "CanOverWriteFormula": true },
+        "September": { "CanOverWriteFormula": true },
+        "October": { "CanOverWriteFormula": true },
+        "November": { "CanOverWriteFormula": true },
+        "December": { "CanOverWriteFormula": true }
+      },
       "NotUsedWhen": { "Field": "X_Cell_PastureBeef_Method1OrMethod2", "Equals": "Method 1" }
     },
     "X_Table_PastureBeef_Head_Method2": {
@@ -215,6 +274,20 @@
       "ChatHelp": true,
       "CanRollOver": true,
       "AllowsAttachment": true,
+      "Columns": {
+        "January": { "CanOverWriteFormula": true },
+        "February": { "CanOverWriteFormula": true },
+        "March": { "CanOverWriteFormula": true },
+        "April": { "CanOverWriteFormula": true },
+        "May": { "CanOverWriteFormula": true },
+        "June": { "CanOverWriteFormula": true },
+        "July": { "CanOverWriteFormula": true },
+        "August": { "CanOverWriteFormula": true },
+        "September": { "CanOverWriteFormula": true },
+        "October": { "CanOverWriteFormula": true },
+        "November": { "CanOverWriteFormula": true },
+        "December": { "CanOverWriteFormula": true }
+      },
       "NotUsedWhen": { "Field": "X_Cell_PastureBeef_Method1OrMethod2", "Equals": "Method 1" },
       "DefaultDataDocumentType": "JSON",
       "DefaultDataFile": "node_modules/gaf-veerg-functions/generated-sourcedata/SourceData_PastureBeef.sourcedata.json",
@@ -224,6 +297,20 @@
       "ChatHelp": true,
       "CanRollOver": true,
       "AllowsAttachment": true,
+      "Columns": {
+        "January": { "CanOverWriteFormula": true },
+        "February": { "CanOverWriteFormula": true },
+        "March": { "CanOverWriteFormula": true },
+        "April": { "CanOverWriteFormula": true },
+        "May": { "CanOverWriteFormula": true },
+        "June": { "CanOverWriteFormula": true },
+        "July": { "CanOverWriteFormula": true },
+        "August": { "CanOverWriteFormula": true },
+        "September": { "CanOverWriteFormula": true },
+        "October": { "CanOverWriteFormula": true },
+        "November": { "CanOverWriteFormula": true },
+        "December": { "CanOverWriteFormula": true }
+      },
       "NotUsedWhen": { "Field": "X_Cell_PastureBeef_Method1OrMethod2", "Equals": "Method 1" },
       "DefaultDataDocumentType": "JSON",
       "DefaultDataFile": "node_modules/gaf-veerg-functions/generated-sourcedata/SourceData_PastureBeef.sourcedata.json",
@@ -259,27 +346,29 @@
         "DependentOn": ["X_Cell_PastureBeef_Method1OrMethod2", "X_Cell_PastureBeef_HerdMovementMethod"]
     },
     "X_Table_Result_ActivityPeriodEmissions_RowsToCols":{
+      "Hidden": true,
+      "ExcelExcluded": true,
       "FixedRows": true,
       "Columns":{
         "EmissionsCalculationCycle": {
-          "CanOverwriteFormula": true
+          "CanOverWriteFormula": false
         },
         "CO2EEmissionsMethod1": {
-          "CanOverwriteFormula": true
         },
         "CO2EEmissionsMethod2": {
-          "CanOverwriteFormula": true
         }
       }
     },
     "X_Table_Result_CarbonRemovalsFromPlantings_RowsToCols":{
+      "Hidden": true,
+      "ExcelExcluded": true,
       "FixedRows": true,
       "Columns":{
         "EmissionsCalculationCycle": {
-          "CanOverwriteFormula": true
+          "CanOverWriteFormula": false
         },
         "CO2RemovedAttributedToThisEnterprise": {
-          "CanOverwriteFormula": true
+          
         }
       }
     },
@@ -407,9 +496,7 @@
         "X_Cell_Enteprise_PercentIncomeFromManure",
         "X_Cell_Enteprise_PercentManureSold",
         "X_Cell_Enteprise_PercentManureAppliedAsFertiliserOwnFarm",
-        "Table_Input_Enterprise_PlantingRemovals",
-        "X_Table_Result_CarbonRemovalsFromPlantings_RowsToCols",
-        "X_Table_Result_ActivityPeriodEmissions_RowsToCols"
+        "Table_Input_Enterprise_PlantingRemovals"
       ]
     },
     {
@@ -528,10 +615,10 @@
     }
   ],
   "FirstClassResults": {
-    "Result_Enterprise_Net_Method1": {
+    "Result_NetEmissions_Method1": {
       "Label": "Net emissions for this activity period (Method 1)"
     },
-    "Result_Enterprise_Net_Method2": {
+    "Result_NetEmissions_Method2": {
       "Label": "Net emissions for this activity period (Method 2)"
     }
   },

@@ -1,7 +1,7 @@
 {
 	"schemaVersion": 1,
 	"generatedFrom": "11_Wastewater_WIP_v02.xlsx",
-	"generatedAt": "2026-08-17T10:51:04Z",
+	"generatedAt": "2026-08-19T00:05:06Z",
 	"InputCells": [
 		{
 			"CellName": "X_Cell_Wastewater_TreatmentFacilityType",
@@ -18,42 +18,50 @@
 		{
 			"CellName": "X_Cell_Wastewater_QuantityInM3",
 			"Label": "",
-			"CellType": "number"
+			"CellType": "number",
+			"Unit": "m3"
 		},
 		{
 			"CellName": "X_Cell_Wastewater_InletCOD",
 			"Label": "",
-			"CellType": "number"
+			"CellType": "number",
+			"Unit": "kg COD/m3"
 		},
 		{
 			"CellName": "X_Cell_Wastewater_FractionCODRemovedAsSludge",
 			"Label": "",
-			"CellType": "number"
+			"CellType": "number",
+			"Unit": "fraction"
 		},
 		{
 			"CellName": "X_Cell_Wastewater_FractionCODRemovedAndTransferred",
 			"Label": "",
-			"CellType": "number"
+			"CellType": "number",
+			"Unit": "fraction"
 		},
 		{
 			"CellName": "X_Cell_Wastewater_OutletCOD",
 			"Label": "",
-			"CellType": "number"
+			"CellType": "number",
+			"Unit": "kg COD/m3"
 		},
 		{
 			"CellName": "X_Cell_Wastewater_SludgeMethaneCapturedForCombustion",
 			"Label": "",
-			"CellType": "number"
+			"CellType": "number",
+			"Unit": "m3 CH4"
 		},
 		{
 			"CellName": "X_Cell_Wastewater_SludgeMethaneFlared",
 			"Label": "",
-			"CellType": "number"
+			"CellType": "number",
+			"Unit": "m3 CH4"
 		},
 		{
 			"CellName": "X_Cell_Wastewater_SludgeMethaneTransferred",
 			"Label": "",
-			"CellType": "number"
+			"CellType": "number",
+			"Unit": "m3 CH4"
 		}
 	],
 	"InputTables": []

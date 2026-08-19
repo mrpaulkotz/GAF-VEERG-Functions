@@ -1,7 +1,7 @@
 {
 	"schemaVersion": 1,
 	"generatedFrom": "14_Electricity_Scope2_WIP_v02.xlsx",
-	"generatedAt": "2026-08-17T10:51:53Z",
+	"generatedAt": "2026-08-19T00:05:31Z",
 	"InputCells": [
 		{
 			"CellName": "X_Cell_Site_FarmName",
@@ -67,7 +67,8 @@
 		{
 			"CellName": "X_Cell_Electricity_Location_AmountPurchasedInkWh",
 			"Label": "Amount purchased in kWh",
-			"CellType": "number"
+			"CellType": "number",
+			"Unit": "kWh"
 		},
 		{
 			"CellName": "X_Cell_Electricity_Location_GridElectricityPurchasedFrom",
@@ -89,32 +90,38 @@
 		{
 			"CellName": "X_Cell_Electricity_Market_AmountPurchasedExcludingGreenPower",
 			"Label": "Electricity purchased in kWh (excluding GreenPower providers)",
-			"CellType": "number"
+			"CellType": "number",
+			"Unit": "kWh"
 		},
 		{
 			"CellName": "X_Cell_Electricity_Market_RenewablePowerPercentage",
 			"Label": "Renewable Power Percentage",
-			"CellType": "percent"
+			"CellType": "percent",
+			"Unit": "percent"
 		},
 		{
 			"CellName": "X_Cell_Electricity_Market_JurisdictionalRenewablePowerPercentage",
 			"Label": "Jurisdictional renewable power percentage (ACT only)",
-			"CellType": "percent"
+			"CellType": "percent",
+			"Unit": "percent"
 		},
 		{
 			"CellName": "X_Cell_Electricity_Market_AmountPurchasedGreenPower",
 			"Label": "Electricity purchased from an accredited GreenPower provider",
-			"CellType": "number"
+			"CellType": "number",
+			"Unit": "kWh"
 		},
 		{
 			"CellName": "X_Cell_TotalElegibleVoluntarilySurrenderedRECs",
 			"Label": "Total elegible voluntarily surrendered RECs",
-			"CellType": "formula"
+			"CellType": "formula",
+			"Unit": "MWh"
 		},
 		{
 			"CellName": "X_Cell_TotalElegibleRECsForElectricityProducedOnSite",
 			"Label": "Total elegible RECs for electricity produced on-site and consumed by entity",
-			"CellType": "formula"
+			"CellType": "formula",
+			"Unit": "MWh"
 		}
 	],
 	"InputTables": [

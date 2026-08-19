@@ -16,6 +16,18 @@ param(
 Set-StrictMode -Version Latest
 $ErrorActionPreference = 'Stop'
 
+# When this script runs non-interactively (spawned via Node child_process with piped stdio, no real
+# console), PowerShell's default host still wraps long Write-Warning/Write-Host lines at a narrow
+# buffer width - inserting a hard line break mid-message. Only the first physical line carries the
+# "WARNING: " prefix, so the consumer's line-by-line parser (parseGenerationWarnings, conversational-
+# input/server/excelWorkbookService.js) silently drops everything after the wrap point on any long
+# warning (e.g. the per-cell formula-skip details). Widen the buffer so warnings stay on one line.
+try {
+  $Host.UI.RawUI.BufferSize = New-Object System.Management.Automation.Host.Size(4096, $Host.UI.RawUI.BufferSize.Height)
+} catch {
+  # Some hosts (or a fixed window size) reject a buffer resize - not fatal, warnings may still wrap.
+}
+
 # Context distinguishes how the CanOverWriteFormula rule is applied:
 #   Test      - generating a test workbook: overwrite every targeted cell (including
 #               protected formula cells) so all test inputs land in the sheet.

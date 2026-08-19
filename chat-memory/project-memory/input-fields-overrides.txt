@@ -89,5 +89,55 @@ anywhere in the output at all.
 # Name field typing
 - Set-NameFieldTypes runs right after Set-DateFieldTypes: any field whose KEY contains 'name' (case-insensitive) with CellType 'number' becomes 'text'. Root cause: Get-CellTypeByFormat falls back to 'number' when the representative body cell is blank, so free-text label columns (e.g. TransactionName in Table_Input_LivestockSales/Purchases) were mistyped 'number' whenever their sample cell happened to be empty. Leaves select/formula/date alone.
 
+# PLANNED (2026-08-19, not yet implemented - build scheduled for tonight): conditional CannotOverWriteFormula
+Motivating case: `X_Table_Result_ActivityPeriodEmissions_RowsToCols` columns
+`CO2EEmissionsMethod1`/`CO2EEmissionsMethod2` (Enterprise_PastureBeef) have formula
+`=IF(ISBLANK($D55), 0, IF(ISNUMBER(SEARCH("reporting", $D55)), Result_Enterprise_Scope1_Method2, "Enter value"))`
+where `$D55` is that row's `EmissionsCalculationCycle` cell. Static `CanOverWriteFormula: true`
+is too coarse: the SAME column needs a different overwrite decision on different rows (only
+overwriteable when `EmissionsCalculationCycle` does NOT contain "reporting" - blank rows stay
+overwriteable too, since blank never contains "reporting", no separate blank-check needed).
+
+Design was worked out jointly with the developer of the consuming app (sibling package
+`conversational-input`, which independently implements the real write path); this repo's
+`scripts/create-test-excel-from-json.ps1` (`-Context Emissions`) mirrors that path purely for
+local test-population, so both sides need the same change.
+
+- Schema: add `CannotOverWriteFormula` as a conditional EXCEPTION on top of the existing static
+  `CanOverWriteFormula: true`, e.g.:
+  `"CO2EEmissionsMethod1": { "CanOverWriteFormula": true, "CannotOverWriteFormula": { "Column": "EmissionsCalculationCycle", "Contains": "reporting" } }`
+- `Column` (NOT `Field`): every existing `Field` reference in this repo's overrides
+  (`NotUsedWhen`, `DependentOn`) means "search the whole payload/definition set for this name" -
+  wrong for a column name that repeats once per row (e.g. `EmissionsCalculationCycle` appears
+  identically in every row); reusing `Field` would silently resolve the wrong row's value, not
+  just be ambiguous. `Column` = "look at the sibling cell in THIS row".
+- Evaluator: does NOT go anywhere near the existing `NotUsedWhen`/`DependentOn` evaluators (both
+  are unrelated - whole-payload search or UI-only, no row context, no `Contains` predicate today).
+  Purely additive, evaluated INLINE in each RowsToCols table write loop, at the point
+  `$allowFormulaOverwrite` already gets computed - because that's the only place the full row
+  object (this script's `$entryData`, `create-test-excel-from-json.ps1:1475`; the production
+  consumer's equivalent) is actually in scope.
+  - In THIS repo: `scripts/create-test-excel-from-json.ps1`'s RowsToCols write loop
+    (~line 1469-1539, `$entryData` at 1475, `$allowFormulaOverwrite` computed at line 1526 via
+    `Test-AllowFormulaOverwriteTableField`) - add the `CannotOverWriteFormula` check inline there,
+    reading `$entryData.<Column>`. `Test-AllowFormulaOverwriteTableField`/`TableFieldAny`
+    themselves stay name-only (no row context) - they're not the right place for this logic.
+  - `Add-OverwritePolicyFromInputFieldDefinition` (builds the static per-name HashSets from the
+    InputFields JSON) already defensively checks both `CanOverWriteFormula` and misspelled
+    `CanOverwriteFormula` (line 589-592) - unaffected by this change, still handles the static
+    `true`/`false` case; `CannotOverWriteFormula` is read separately, inline, at write time.
+- v1 scope: RowsToCols tables ONLY (covers the actual ActivityPeriodEmissions/
+  CarbonRemovalsFromPlantings case). ColsToRows tables (the Method1/Method2 Head/Duration/
+  Liveweight/etc. named-range tables) go through a DIFFERENT, column-major write loop
+  (~line 1604-1653 in this script) with no equivalent flat sibling-row object in scope -
+  extending this there is explicitly deferred/harder, not started.
+- Still TODO when implementing: (1) update `_schema` doc block in both `_overrides/*.json` files
+  to document `CannotOverWriteFormula`; (2) replace the placeholder `{}` Columns entries on
+  `CO2EEmissionsMethod1`/`CO2EEmissionsMethod2`/`CO2RemovedAttributedToThisEnterprise` in
+  `_overrides/Enterprise_PastureBeef.json` with the real condition; (3) add the inline evaluator
+  in `create-test-excel-from-json.ps1`; (4) `conversational-input` side is a separate repo, out
+  of scope for this repo's changes but must land in lockstep for production behaviour to match
+  the local test script.
+
 # Text-format fallback scan (2026-08, generalises the fix above)
 - The single-cell 'representative body cell' Get-CellTypeByFormat samples (row 2 of a RowsToCols named-range table, first DataBodyRange row of a ListObject column) can be blank with NO explicit format of its own, masking a column the author DID format as Text elsewhere (e.g. Table_Input_DataQuality_*'s Notes/EvidenceFiles columns, freshly authored with no data yet). Get-CellTypeByFormat now accepts an optional -FallbackRange (the REST of that field's data column/row); when the primary cell doesn't already resolve to percent/text, it scans every non-formula cell in the fallback range for an explicit Text ('@' or format text matching 'text') and uses that. Callers wire this through: Get-TableFieldDef passes the WHOLE `$Column.DataBodyRange` (ListObject); the RowsToCols/ColsToRows loops in Get-NamedRangeTables build a `$Worksheet.Range(cell1, cell2)` spanning the rest of that field's rows/columns. Single named InputCells (X_Cell_*) unchanged — no "column" to widen, the one cell's format IS the answer. Verified: Notes/EvidenceFiles stayed 'number' until the underlying Excel cell format was changed General->Text, then correctly flipped to 'text' on rebuild with zero other diffs (confirmed via full-file diff, only those keys changed).

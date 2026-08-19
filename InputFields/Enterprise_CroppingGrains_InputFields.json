@@ -1,7 +1,7 @@
 {
 	"schemaVersion": 1,
 	"generatedFrom": "Enterprise_CroppingGrains_WIP_v01.xlsx",
-	"generatedAt": "2026-08-17T10:54:36Z",
+	"generatedAt": "2026-08-19T00:07:16Z",
 	"InputCells": [
 		{
 			"CellName": "X_Cell_Site_FarmName",
@@ -36,12 +36,14 @@
 		{
 			"CellName": "X_Cell_Enterprise_PercentIncomeFromGrain",
 			"Label": "Percentage of income from grain sold",
-			"CellType": "percent"
+			"CellType": "percent",
+			"Unit": "percent"
 		},
 		{
 			"CellName": "X_Cell_Enterprise_PercentIncomeFromBaledHaySilage",
 			"Label": "Percentage of income from baled hay/silage sold",
-			"CellType": "percent"
+			"CellType": "percent",
+			"Unit": "percent"
 		},
 		{
 			"CellName": "X_Cell_Site_State",
@@ -87,27 +89,32 @@
 		{
 			"CellName": "X_Cell_Site_Elevation",
 			"Label": "Elevation",
-			"CellType": "number"
+			"CellType": "number",
+			"Unit": "Meters"
 		},
 		{
 			"CellName": "X_Cell_Site_AverageTemperature",
 			"Label": "Average temperature for reporting period",
-			"CellType": "number"
+			"CellType": "number",
+			"Unit": "Degrees celsius"
 		},
 		{
 			"CellName": "X_Cell_Site_TotalRainfall",
 			"Label": "Total rainfall for reporting period",
-			"CellType": "number"
+			"CellType": "number",
+			"Unit": "Millimetres"
 		},
 		{
 			"CellName": "X_Cell_Site_PotentialEvapotranspiration",
 			"Label": "Potential evapotranspiration for reporting period",
-			"CellType": "number"
+			"CellType": "number",
+			"Unit": "Millimetres"
 		},
 		{
 			"CellName": "X_Cell_Site_FrostDays",
 			"Label": "Number of frost days for reporting period",
-			"CellType": "number"
+			"CellType": "number",
+			"Unit": "Days"
 		},
 		{
 			"CellName": "X_Cell_Site_MapPetRatio",
@@ -184,42 +191,50 @@
 		{
 			"CellName": "X_Cell_Crop_AreaUnderCropping",
 			"Label": "Area under cropping",
-			"CellType": "number"
+			"CellType": "number",
+			"Unit": "Hectares"
 		},
 		{
 			"CellName": "X_Cell_Crop_YieldPerHectare",
 			"Label": "Cash grain crop yield per hectare¹",
-			"CellType": "number"
+			"CellType": "number",
+			"Unit": "Tonnes grain per hectare"
 		},
 		{
 			"CellName": "X_Cell_Crop_TotalProductionOfCrop",
 			"Label": "Total production of crop³",
-			"CellType": "formula"
+			"CellType": "formula",
+			"Unit": "Tonnes grain"
 		},
 		{
 			"CellName": "X_Cell_Crop_PercentResidueBaled",
 			"Label": "Percentage of residue that was baled",
-			"CellType": "percent"
+			"CellType": "percent",
+			"Unit": "Percent"
 		},
 		{
 			"CellName": "X_Cell_Crop_AverageWeightPerBale",
 			"Label": "Average weight per bale",
-			"CellType": "number"
+			"CellType": "number",
+			"Unit": "Kilograms"
 		},
 		{
 			"CellName": "X_Cell_Crop_NumberOfBales",
 			"Label": "Number of bales",
-			"CellType": "formula"
+			"CellType": "formula",
+			"Unit": "Bales"
 		},
 		{
 			"CellName": "X_Cell_Crop_TotalResidueBaled",
 			"Label": "Total residue baled",
-			"CellType": "formula"
+			"CellType": "formula",
+			"Unit": "Tonnes"
 		},
 		{
 			"CellName": "X_Cell_Crop_PercentResidueBurned",
 			"Label": "Percentage of residue that was burned",
-			"CellType": "percent"
+			"CellType": "percent",
+			"Unit": "Percent"
 		},
 		{
 			"CellName": "X_Cell_Fertiliser_ProductionSystem",
@@ -262,7 +277,8 @@
 		{
 			"CellName": "X_Cell_Electricity_Location_AmountPurchasedInkWh",
 			"Label": "Amount purchased in kWh",
-			"CellType": "number"
+			"CellType": "number",
+			"Unit": "kWh"
 		},
 		{
 			"CellName": "X_Cell_Electricity_Location_GridElectricityPurchasedFrom",
@@ -284,67 +300,80 @@
 		{
 			"CellName": "X_Cell_Electricity_Market_AmountPurchasedExcludingGreenPower",
 			"Label": "Electricity purchased in kWh (excluding GreenPower providers)",
-			"CellType": "number"
+			"CellType": "number",
+			"Unit": "kWh"
 		},
 		{
 			"CellName": "X_Cell_Electricity_Market_RenewablePowerPercentage",
 			"Label": "Renewable Power Percentage",
-			"CellType": "percent"
+			"CellType": "percent",
+			"Unit": "percent"
 		},
 		{
 			"CellName": "X_Cell_Electricity_Market_JurisdictionalRenewablePowerPercentage",
 			"Label": "Jurisdictional renewable power percentage (ACT only)",
-			"CellType": "percent"
+			"CellType": "percent",
+			"Unit": "percent"
 		},
 		{
 			"CellName": "X_Cell_Electricity_Market_AmountPurchasedGreenPower",
 			"Label": "Electricity purchased from an accredited GreenPower provider",
-			"CellType": "number"
+			"CellType": "number",
+			"Unit": "kWh"
 		},
 		{
 			"CellName": "X_Cell_TotalElegibleVoluntarilySurrenderedRECs",
 			"Label": "Total elegible voluntarily surrendered RECs",
-			"CellType": "formula"
+			"CellType": "formula",
+			"Unit": "MWh"
 		},
 		{
 			"CellName": "X_Cell_TotalElegibleRECsForElectricityProducedOnSite",
 			"Label": "Total elegible RECs for electricity produced on-site and consumed by entity",
-			"CellType": "formula"
+			"CellType": "formula",
+			"Unit": "MWh"
 		},
 		{
 			"CellName": "X_Cell_FarmInputs_Seed_BarleyGrain",
 			"Label": "Barley grain (for seed)",
-			"CellType": "number"
+			"CellType": "number",
+			"Unit": "kg"
 		},
 		{
 			"CellName": "X_Cell_FarmInputs_Seed_MaizeGrain",
 			"Label": "Maize grain (for seed)",
-			"CellType": "number"
+			"CellType": "number",
+			"Unit": "kg"
 		},
 		{
 			"CellName": "X_Cell_FarmInputs_Seed_OatGrain",
 			"Label": "Oat grain (for seed)",
-			"CellType": "number"
+			"CellType": "number",
+			"Unit": "kg"
 		},
 		{
 			"CellName": "X_Cell_FarmInputs_Seed_SorghumGrain",
 			"Label": "Sorghum grain (for seed)",
-			"CellType": "number"
+			"CellType": "number",
+			"Unit": "kg"
 		},
 		{
 			"CellName": "X_Cell_FarmInputs_Seed_WheatGrain",
 			"Label": "Wheat grain (for seed)",
-			"CellType": "number"
+			"CellType": "number",
+			"Unit": "kg"
 		},
 		{
 			"CellName": "X_Cell_ManureSentOffsite_MassNitrogenManure_Method1",
 			"Label": "",
-			"CellType": "number"
+			"CellType": "number",
+			"Unit": "kg N"
 		},
 		{
 			"CellName": "X_Cell_ManureSentOffsite_MassNitrogenManure_Method2",
 			"Label": "",
 			"CellType": "number",
+			"Unit": "kg N",
 			"CanOverWriteFormula": true
 		},
 		{

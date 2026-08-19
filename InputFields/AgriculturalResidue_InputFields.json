@@ -1,7 +1,7 @@
 {
 	"schemaVersion": 1,
 	"generatedFrom": "6_AgriculturalResidue_WIP_v04.xlsx",
-	"generatedAt": "2026-08-17T10:53:51Z",
+	"generatedAt": "2026-08-19T00:06:45Z",
 	"InputCells": [
 		{
 			"CellName": "X_Cell_Site_FarmName",
@@ -67,27 +67,32 @@
 		{
 			"CellName": "X_Cell_Site_Elevation",
 			"Label": "Elevation",
-			"CellType": "number"
+			"CellType": "number",
+			"Unit": "Meters"
 		},
 		{
 			"CellName": "X_Cell_Site_AverageTemperature",
 			"Label": "Average temperature for reporting period",
-			"CellType": "number"
+			"CellType": "number",
+			"Unit": "Degrees celsius"
 		},
 		{
 			"CellName": "X_Cell_Site_TotalRainfall",
 			"Label": "Total rainfall for reporting period",
-			"CellType": "number"
+			"CellType": "number",
+			"Unit": "Millimetres"
 		},
 		{
 			"CellName": "X_Cell_Site_PotentialEvapotranspiration",
 			"Label": "Potential evapotranspiration for reporting period",
-			"CellType": "number"
+			"CellType": "number",
+			"Unit": "Millimetres"
 		},
 		{
 			"CellName": "X_Cell_Site_FrostDays",
 			"Label": "Number of frost days for reporting period",
-			"CellType": "number"
+			"CellType": "number",
+			"Unit": "Days"
 		},
 		{
 			"CellName": "X_Cell_Site_MapPetRatio",
@@ -164,42 +169,50 @@
 		{
 			"CellName": "X_Cell_Crop_AreaUnderCropping",
 			"Label": "Area under cropping",
-			"CellType": "number"
+			"CellType": "number",
+			"Unit": "Hectares"
 		},
 		{
 			"CellName": "X_Cell_Crop_YieldPerHectare",
 			"Label": "Cash grain crop yield per hectare¹",
-			"CellType": "number"
+			"CellType": "number",
+			"Unit": "Tonnes grain per hectare"
 		},
 		{
 			"CellName": "X_Cell_Crop_TotalProductionOfCrop",
 			"Label": "Total production of crop³",
-			"CellType": "formula"
+			"CellType": "formula",
+			"Unit": "Tonnes grain"
 		},
 		{
 			"CellName": "X_Cell_Crop_PercentResidueBaled",
 			"Label": "Percentage of residue that was baled",
-			"CellType": "percent"
+			"CellType": "percent",
+			"Unit": "Percent"
 		},
 		{
 			"CellName": "X_Cell_Crop_AverageWeightPerBale",
 			"Label": "Average weight per bale",
-			"CellType": "number"
+			"CellType": "number",
+			"Unit": "Kilograms"
 		},
 		{
 			"CellName": "X_Cell_Crop_NumberOfBales",
 			"Label": "Number of bales",
-			"CellType": "formula"
+			"CellType": "formula",
+			"Unit": "Bales"
 		},
 		{
 			"CellName": "X_Cell_Crop_TotalResidueBaled",
 			"Label": "Total residue baled",
-			"CellType": "formula"
+			"CellType": "formula",
+			"Unit": "Tonnes"
 		},
 		{
 			"CellName": "X_Cell_Crop_PercentResidueBurned",
 			"Label": "Percentage of residue that was burned",
-			"CellType": "percent"
+			"CellType": "percent",
+			"Unit": "Percent"
 		},
 		{
 			"CellName": "X_Cell_Pasture_PastureType",
@@ -228,17 +241,20 @@
 		{
 			"CellName": "X_Cell_Pasture_AreaUnderPasture",
 			"Label": "Area under pasture",
-			"CellType": "number"
+			"CellType": "number",
+			"Unit": "Hectares"
 		},
 		{
 			"CellName": "X_Cell_Pasture_YieldPerHectare",
 			"Label": "Pasture yield",
-			"CellType": "formula"
+			"CellType": "formula",
+			"Unit": "Tonnes dry matter / hectare"
 		},
 		{
 			"CellName": "X_Cell_Pasture_AreaRemovedOrRenewed",
 			"Label": "Area of pasture renewed or removed",
-			"CellType": "number"
+			"CellType": "number",
+			"Unit": "Hectares"
 		}
 	],
 	"InputTables": []

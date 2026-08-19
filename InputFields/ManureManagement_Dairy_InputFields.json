@@ -1,7 +1,7 @@
 {
 	"schemaVersion": 1,
 	"generatedFrom": "4_3_ManureManagement_Dairy_WIP_v12.xlsx",
-	"generatedAt": "2026-08-17T10:53:07Z",
+	"generatedAt": "2026-08-19T00:06:18Z",
 	"InputCells": [
 		{
 			"CellName": "X_Cell_Site_FarmName",
@@ -67,27 +67,32 @@
 		{
 			"CellName": "X_Cell_Site_Elevation",
 			"Label": "Elevation",
-			"CellType": "number"
+			"CellType": "number",
+			"Unit": "Meters"
 		},
 		{
 			"CellName": "X_Cell_Site_AverageTemperature",
 			"Label": "Average temperature for reporting period",
-			"CellType": "number"
+			"CellType": "number",
+			"Unit": "Degrees celsius"
 		},
 		{
 			"CellName": "X_Cell_Site_TotalRainfall",
 			"Label": "Total rainfall for reporting period",
-			"CellType": "number"
+			"CellType": "number",
+			"Unit": "Millimetres"
 		},
 		{
 			"CellName": "X_Cell_Site_PotentialEvapotranspiration",
 			"Label": "Potential evapotranspiration for reporting period",
-			"CellType": "number"
+			"CellType": "number",
+			"Unit": "Millimetres"
 		},
 		{
 			"CellName": "X_Cell_Site_FrostDays",
 			"Label": "Number of frost days for reporting period",
-			"CellType": "number"
+			"CellType": "number",
+			"Unit": "Days"
 		},
 		{
 			"CellName": "X_Cell_Site_MapPetRatio",
@@ -143,7 +148,8 @@
 		{
 			"CellName": "X_Cell_Dairy_MilkProductionAmount",
 			"Label": "Average daily milk production",
-			"CellType": "number"
+			"CellType": "number",
+			"Unit": "litres/head/day"
 		},
 		{
 			"CellName": "X_Cell_Dairy_MilkSolidsFatContent_Method1",
@@ -154,6 +160,7 @@
 			"CellName": "X_Cell_Dairy_MilkSolidsFatContent_Method2",
 			"Label": "0.04",
 			"CellType": "percent",
+			"Unit": "percent",
 			"CanOverWriteFormula": true
 		},
 		{
@@ -165,6 +172,7 @@
 			"CellName": "X_Cell_Dairy_MilkSolidsProteinContent_Method2",
 			"Label": "0.033",
 			"CellType": "percent",
+			"Unit": "percent",
 			"CanOverWriteFormula": true
 		},
 		{

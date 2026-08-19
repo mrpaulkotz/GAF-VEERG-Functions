@@ -1,7 +1,7 @@
 {
 	"schemaVersion": 1,
-	"generatedFrom": "Enterprise_PastureBeef_WIP_v01.xlsx",
-	"generatedAt": "2026-08-19T00:28:04Z",
+	"generatedFrom": "Enterprise_PastureBeef_Clean_WIP_v01.xlsx",
+	"generatedAt": "2026-08-19T00:08:38Z",
 	"InputCells": [
 		{
 			"CellName": "X_Cell_Site_FarmName",
@@ -26,14 +26,12 @@
 		{
 			"CellName": "X_Cell_Enterprise_ProductionTimeframeStart",
 			"Label": "Production timeframe start",
-			"CellType": "number",
-			"Hidden": true
+			"CellType": "number"
 		},
 		{
 			"CellName": "X_Cell_Enterprise_ProductionTimeframeEnd",
 			"Label": "Production timeframe end",
-			"CellType": "number",
-			"Hidden": true
+			"CellType": "number"
 		},
 		{
 			"CellName": "X_Cell_Enterprise_ProductionTimeframeLength",
@@ -303,12 +301,7 @@
 			"CellName": "X_Cell_Pasture_YieldPerHectare",
 			"Label": "Pasture yield",
 			"CellType": "formula",
-			"Unit": "Tonnes dry matter / hectare",
-			"CanOverWriteFormula": true,
-			"AllowsAttachment": true,
-			"DefaultDataDocumentType": "JSON",
-			"DefaultDataFile": "node_modules/gaf-veerg-functions/generated-sourcedata/AgResidue_SourceData.sourcedata.json",
-			"DefaultDataLocation": null
+			"Unit": "Tonnes dry matter / hectare"
 		},
 		{
 			"CellName": "X_Cell_Pasture_AreaRemovedOrRenewed",
@@ -319,32 +312,22 @@
 		{
 			"CellName": "X_Cell_Fertiliser_ProductionSystem",
 			"Label": "Production system",
-			"CellType": "text",
-			"Hidden": true,
-			"UseDefault": true,
-			"Default": "Pasture"
+			"CellType": "number"
 		},
 		{
 			"CellName": "X_Cell_Fertiliser_CropType",
 			"Label": "Crop type",
-			"CellType": "text",
-			"Hidden": true,
-			"UseDefault": true,
-			"Default": "Pasture"
+			"CellType": "number"
 		},
 		{
 			"CellName": "X_Cell_Fertiliser_IrrigationMethod",
 			"Label": "Irrigation method",
-			"CellType": "formula",
-			"Hidden": true,
-			"DuplicateOf": "X_Cell_Pasture_IrrigationMethod"
+			"CellType": "formula"
 		},
 		{
 			"CellName": "X_Cell_Fertiliser_AreaUnderCropping",
 			"Label": "Area under cropping",
-			"CellType": "formula",
-			"Hidden": true,
-			"DuplicateOf": "X_Cell_Pasture_AreaUnderPasture"
+			"CellType": "formula"
 		},
 		{
 			"CellName": "X_Cell_Fuel_IsMetroLocation",
@@ -368,13 +351,7 @@
 			"CellName": "X_Cell_Electricity_Location_AmountPurchasedInkWh",
 			"Label": "Amount purchased in kWh",
 			"CellType": "number",
-			"Unit": "kWh",
-			"AllowsAttachment": true,
-			"DependentOn": "X_Cell_Electricity_CalculationMethod",
-			"NotUsedWhen": {
-				"Field": "X_Cell_Electricity_CalculationMethod",
-				"Equals": "Market-based (More complex)"
-			}
+			"Unit": "kWh"
 		},
 		{
 			"CellName": "X_Cell_Electricity_Location_GridElectricityPurchasedFrom",
@@ -391,61 +368,31 @@
 				"Tasmania": "Tasmania",
 				"Northern Territory - Darwin Katherine Interconnected System (DKIS)": "Northern Territory - Darwin Katherine Interconnected System (DKIS)",
 				"National": "National"
-			},
-			"AllowsAttachment": true,
-			"DependentOn": "X_Cell_Electricity_CalculationMethod",
-			"NotUsedWhen": {
-				"Field": "X_Cell_Electricity_CalculationMethod",
-				"Equals": "Market-based (More complex)"
 			}
 		},
 		{
 			"CellName": "X_Cell_Electricity_Market_AmountPurchasedExcludingGreenPower",
 			"Label": "Electricity purchased in kWh (excluding GreenPower providers)",
 			"CellType": "number",
-			"Unit": "kWh",
-			"AllowsAttachment": true,
-			"DependentOn": "X_Cell_Electricity_CalculationMethod",
-			"NotUsedWhen": {
-				"Field": "X_Cell_Electricity_CalculationMethod",
-				"Equals": "Location-based (Simpler)"
-			}
+			"Unit": "kWh"
 		},
 		{
 			"CellName": "X_Cell_Electricity_Market_RenewablePowerPercentage",
 			"Label": "Renewable Power Percentage",
 			"CellType": "percent",
-			"Unit": "percent",
-			"AllowsAttachment": true,
-			"DependentOn": "X_Cell_Electricity_CalculationMethod",
-			"NotUsedWhen": {
-				"Field": "X_Cell_Electricity_CalculationMethod",
-				"Equals": "Location-based (Simpler)"
-			}
+			"Unit": "percent"
 		},
 		{
 			"CellName": "X_Cell_Electricity_Market_JurisdictionalRenewablePowerPercentage",
 			"Label": "Jurisdictional renewable power percentage (ACT only)",
 			"CellType": "percent",
-			"Unit": "percent",
-			"AllowsAttachment": true,
-			"DependentOn": "X_Cell_Electricity_CalculationMethod",
-			"NotUsedWhen": {
-				"Field": "X_Cell_Electricity_CalculationMethod",
-				"Equals": "Location-based (Simpler)"
-			}
+			"Unit": "percent"
 		},
 		{
 			"CellName": "X_Cell_Electricity_Market_AmountPurchasedGreenPower",
 			"Label": "Electricity purchased from an accredited GreenPower provider",
 			"CellType": "number",
-			"Unit": "kWh",
-			"AllowsAttachment": true,
-			"DependentOn": "X_Cell_Electricity_CalculationMethod",
-			"NotUsedWhen": {
-				"Field": "X_Cell_Electricity_CalculationMethod",
-				"Equals": "Location-based (Simpler)"
-			}
+			"Unit": "kWh"
 		},
 		{
 			"CellName": "X_Cell_TotalElegibleVoluntarilySurrenderedRECs",
@@ -463,41 +410,31 @@
 			"CellName": "X_Cell_FarmInputs_Seed_BarleyGrain",
 			"Label": "Barley grain (for seed)",
 			"CellType": "number",
-			"Unit": "kg",
-			"Default": 0,
-			"Hidden": true
+			"Unit": "kg"
 		},
 		{
 			"CellName": "X_Cell_FarmInputs_Seed_MaizeGrain",
 			"Label": "Maize grain (for seed)",
 			"CellType": "number",
-			"Unit": "kg",
-			"Default": 0,
-			"Hidden": true
+			"Unit": "kg"
 		},
 		{
 			"CellName": "X_Cell_FarmInputs_Seed_OatGrain",
 			"Label": "Oat grain (for seed)",
 			"CellType": "number",
-			"Unit": "kg",
-			"Default": 0,
-			"Hidden": true
+			"Unit": "kg"
 		},
 		{
 			"CellName": "X_Cell_FarmInputs_Seed_SorghumGrain",
 			"Label": "Sorghum grain (for seed)",
 			"CellType": "number",
-			"Unit": "kg",
-			"Default": 0,
-			"Hidden": true
+			"Unit": "kg"
 		},
 		{
 			"CellName": "X_Cell_FarmInputs_Seed_WheatGrain",
 			"Label": "Wheat grain (for seed)",
 			"CellType": "number",
-			"Unit": "kg",
-			"Default": 0,
-			"Hidden": true
+			"Unit": "kg"
 		},
 		{
 			"CellName": "X_Cell_FarmInputs_LickBlocks_DrySeasonMix",
@@ -521,33 +458,25 @@
 			"CellName": "X_Cell_FarmInputs_FeedRations_Chickens",
 			"Label": "Feed for chickens",
 			"CellType": "number",
-			"Unit": "kg",
-			"Default": 0,
-			"Hidden": true
+			"Unit": "kg"
 		},
 		{
 			"CellName": "X_Cell_FarmInputs_FeedRations_DairyCalves",
 			"Label": "Feed for dairy calves",
 			"CellType": "number",
-			"Unit": "kg",
-			"Default": 0,
-			"Hidden": true
+			"Unit": "kg"
 		},
 		{
 			"CellName": "X_Cell_FarmInputs_FeedRations_DairyCows",
 			"Label": "Feed for dairy cows",
 			"CellType": "number",
-			"Unit": "kg",
-			"Default": 0,
-			"Hidden": true
+			"Unit": "kg"
 		},
 		{
 			"CellName": "X_Cell_FarmInputs_FeedRations_Pigs",
 			"Label": "Feed for pigs",
 			"CellType": "number",
-			"Unit": "kg",
-			"Default": 0,
-			"Hidden": true
+			"Unit": "kg"
 		},
 		{
 			"CellName": "X_Cell_FarmInputs_Misc_AnimalEarTagsLarge",
@@ -594,28 +523,6 @@
 				"Surface irrigation": "Surface irrigation",
 				"Other irrigation": "Other irrigation"
 			}
-		},
-		{
-			"CellName": "X_Cell_PastureBeef_Method1OrMethod2",
-			"Label": "Pasture beef input method",
-			"CellType": "select",
-			"ExcelExcluded": true,
-			"Options": {
-				"Method 1": "Method 1",
-				"Method 2": "Method 2"
-			}
-		},
-		{
-			"CellName": "X_Cell_PastureBeef_HerdMovementMethod",
-			"Label": "Herd movement data entry method",
-			"CellType": "select",
-			"ExcelExcluded": true,
-			"HelpText": "Manual: enter every head count by hand (no cross-checking against sales and purchases). Automated: enter only the opening head count for each class at the start of the activity period; the head counts for every month/season are calculated from your purchases and sales, and each sale or purchase is validated against the herd on hand.",
-			"Options": {
-				"Manual": "Manual",
-				"Automated": "Automated"
-			},
-			"Default": "Manual"
 		}
 	],
 	"InputTables": [
@@ -677,10 +584,7 @@
 						"CellType": "formula"
 					}
 				}
-			},
-			"Hidden": true,
-			"ExcelExcluded": true,
-			"FixedRows": true
+			}
 		},
 		{
 			"TableName": "X_Table_Result_CarbonRemovalsFromPlantings_RowsToCols",
@@ -706,10 +610,7 @@
 						"CellType": "formula"
 					}
 				}
-			},
-			"Hidden": true,
-			"ExcelExcluded": true,
-			"FixedRows": true
+			}
 		},
 		{
 			"TableName": "X_Table_PastureBeef_Duration_Method1",
@@ -755,11 +656,6 @@
 						"CellType": "formula"
 					}
 				}
-			},
-			"ChatHelp": true,
-			"NotUsedWhen": {
-				"Field": "X_Cell_PastureBeef_Method1OrMethod2",
-				"Equals": "Method 2"
 			}
 		},
 		{
@@ -788,90 +684,84 @@
 						"CellType": "number",
 						"CanOverWriteFormula": true
 					},
-					"February": {
+					"January2": {
 						"Row": 3,
+						"Col": 2,
+						"Label": "January",
+						"CellType": "number",
+						"CanOverWriteFormula": true
+					},
+					"February": {
+						"Row": 4,
 						"Col": 2,
 						"Label": "February",
 						"CellType": "number",
 						"CanOverWriteFormula": true
 					},
 					"March": {
-						"Row": 4,
+						"Row": 5,
 						"Col": 2,
 						"Label": "March",
 						"CellType": "number",
 						"CanOverWriteFormula": true
 					},
 					"April": {
-						"Row": 5,
+						"Row": 6,
 						"Col": 2,
 						"Label": "April",
 						"CellType": "number",
 						"CanOverWriteFormula": true
 					},
 					"May": {
-						"Row": 6,
+						"Row": 7,
 						"Col": 2,
 						"Label": "May",
 						"CellType": "number",
 						"CanOverWriteFormula": true
 					},
 					"June": {
-						"Row": 7,
+						"Row": 8,
 						"Col": 2,
 						"Label": "June",
 						"CellType": "number",
 						"CanOverWriteFormula": true
 					},
 					"July": {
-						"Row": 8,
+						"Row": 9,
 						"Col": 2,
 						"Label": "July",
 						"CellType": "number",
 						"CanOverWriteFormula": true
 					},
 					"August": {
-						"Row": 9,
+						"Row": 10,
 						"Col": 2,
 						"Label": "August",
 						"CellType": "number",
 						"CanOverWriteFormula": true
 					},
 					"September": {
-						"Row": 10,
+						"Row": 11,
 						"Col": 2,
 						"Label": "September",
 						"CellType": "number",
 						"CanOverWriteFormula": true
 					},
 					"October": {
-						"Row": 11,
+						"Row": 12,
 						"Col": 2,
 						"Label": "October",
 						"CellType": "number",
 						"CanOverWriteFormula": true
 					},
 					"November": {
-						"Row": 12,
+						"Row": 13,
 						"Col": 2,
 						"Label": "November",
 						"CellType": "number",
 						"CanOverWriteFormula": true
-					},
-					"December": {
-						"Row": 13,
-						"Col": 2,
-						"Label": "December",
-						"CellType": "number",
-						"CanOverWriteFormula": true
 					}
 				}
-			},
-			"ChatHelp": true,
-			"CanRollOver": true,
-			"NotUsedWhen": {
-				"Field": "X_Cell_PastureBeef_Method1OrMethod2",
-				"Equals": "Method 1"
 			}
 		},
 		{
@@ -897,37 +787,27 @@
 						"Row": 2,
 						"Col": 2,
 						"Label": "Spring",
-						"CellType": "number",
-						"CanOverWriteFormula": true
+						"CellType": "number"
 					},
 					"Summer": {
 						"Row": 3,
 						"Col": 2,
 						"Label": "Summer",
-						"CellType": "number",
-						"CanOverWriteFormula": true
+						"CellType": "number"
 					},
 					"Autumn": {
 						"Row": 4,
 						"Col": 2,
 						"Label": "Autumn",
-						"CellType": "number",
-						"CanOverWriteFormula": true
+						"CellType": "number"
 					},
 					"Winter": {
 						"Row": 5,
 						"Col": 2,
 						"Label": "Winter",
-						"CellType": "number",
-						"CanOverWriteFormula": true
+						"CellType": "number"
 					}
 				}
-			},
-			"ChatHelp": true,
-			"CanRollOver": true,
-			"NotUsedWhen": {
-				"Field": "X_Cell_PastureBeef_Method1OrMethod2",
-				"Equals": "Method 2"
 			}
 		},
 		{
@@ -956,90 +836,84 @@
 						"CellType": "number",
 						"CanOverWriteFormula": true
 					},
-					"February": {
+					"January2": {
 						"Row": 3,
+						"Col": 2,
+						"Label": "January",
+						"CellType": "number",
+						"CanOverWriteFormula": true
+					},
+					"February": {
+						"Row": 4,
 						"Col": 2,
 						"Label": "February",
 						"CellType": "number",
 						"CanOverWriteFormula": true
 					},
 					"March": {
-						"Row": 4,
+						"Row": 5,
 						"Col": 2,
 						"Label": "March",
 						"CellType": "number",
 						"CanOverWriteFormula": true
 					},
 					"April": {
-						"Row": 5,
+						"Row": 6,
 						"Col": 2,
 						"Label": "April",
 						"CellType": "number",
 						"CanOverWriteFormula": true
 					},
 					"May": {
-						"Row": 6,
+						"Row": 7,
 						"Col": 2,
 						"Label": "May",
 						"CellType": "number",
 						"CanOverWriteFormula": true
 					},
 					"June": {
-						"Row": 7,
+						"Row": 8,
 						"Col": 2,
 						"Label": "June",
 						"CellType": "number",
 						"CanOverWriteFormula": true
 					},
 					"July": {
-						"Row": 8,
+						"Row": 9,
 						"Col": 2,
 						"Label": "July",
 						"CellType": "number",
 						"CanOverWriteFormula": true
 					},
 					"August": {
-						"Row": 9,
+						"Row": 10,
 						"Col": 2,
 						"Label": "August",
 						"CellType": "number",
 						"CanOverWriteFormula": true
 					},
 					"September": {
-						"Row": 10,
+						"Row": 11,
 						"Col": 2,
 						"Label": "September",
 						"CellType": "number",
 						"CanOverWriteFormula": true
 					},
 					"October": {
-						"Row": 11,
+						"Row": 12,
 						"Col": 2,
 						"Label": "October",
 						"CellType": "number",
 						"CanOverWriteFormula": true
 					},
 					"November": {
-						"Row": 12,
+						"Row": 13,
 						"Col": 2,
 						"Label": "November",
 						"CellType": "number",
 						"CanOverWriteFormula": true
-					},
-					"December": {
-						"Row": 13,
-						"Col": 2,
-						"Label": "December",
-						"CellType": "number",
-						"CanOverWriteFormula": true
 					}
 				}
-			},
-			"ChatHelp": true,
-			"CanRollOver": true,
-			"NotUsedWhen": {
-				"Field": "X_Cell_PastureBeef_Method1OrMethod2",
-				"Equals": "Method 1"
 			}
 		},
 		{
@@ -1086,15 +960,7 @@
 						"CellType": "formula"
 					}
 				}
-			},
-			"ChatHelp": true,
-			"NotUsedWhen": {
-				"Field": "X_Cell_PastureBeef_Method1OrMethod2",
-				"Equals": "Method 2"
-			},
-			"DefaultDataDocumentType": "JSON",
-			"DefaultDataFile": "node_modules/gaf-veerg-functions/generated-sourcedata/SourceData_PastureBeef.sourcedata.json",
-			"DefaultDataLocation": null
+			}
 		},
 		{
 			"TableName": "X_Table_PastureBeef_Liveweight_Method2",
@@ -1122,95 +988,85 @@
 						"CellType": "number",
 						"CanOverWriteFormula": true
 					},
-					"February": {
+					"January2": {
 						"Row": 3,
+						"Col": 2,
+						"Label": "January",
+						"CellType": "number",
+						"CanOverWriteFormula": true
+					},
+					"February": {
+						"Row": 4,
 						"Col": 2,
 						"Label": "February",
 						"CellType": "number",
 						"CanOverWriteFormula": true
 					},
 					"March": {
-						"Row": 4,
+						"Row": 5,
 						"Col": 2,
 						"Label": "March",
 						"CellType": "number",
 						"CanOverWriteFormula": true
 					},
 					"April": {
-						"Row": 5,
+						"Row": 6,
 						"Col": 2,
 						"Label": "April",
 						"CellType": "number",
 						"CanOverWriteFormula": true
 					},
 					"May": {
-						"Row": 6,
+						"Row": 7,
 						"Col": 2,
 						"Label": "May",
 						"CellType": "number",
 						"CanOverWriteFormula": true
 					},
 					"June": {
-						"Row": 7,
+						"Row": 8,
 						"Col": 2,
 						"Label": "June",
 						"CellType": "number",
 						"CanOverWriteFormula": true
 					},
 					"July": {
-						"Row": 8,
+						"Row": 9,
 						"Col": 2,
 						"Label": "July",
 						"CellType": "number",
 						"CanOverWriteFormula": true
 					},
 					"August": {
-						"Row": 9,
+						"Row": 10,
 						"Col": 2,
 						"Label": "August",
 						"CellType": "number",
 						"CanOverWriteFormula": true
 					},
 					"September": {
-						"Row": 10,
+						"Row": 11,
 						"Col": 2,
 						"Label": "September",
 						"CellType": "number",
 						"CanOverWriteFormula": true
 					},
 					"October": {
-						"Row": 11,
+						"Row": 12,
 						"Col": 2,
 						"Label": "October",
 						"CellType": "number",
 						"CanOverWriteFormula": true
 					},
 					"November": {
-						"Row": 12,
+						"Row": 13,
 						"Col": 2,
 						"Label": "November",
 						"CellType": "number",
 						"CanOverWriteFormula": true
-					},
-					"December": {
-						"Row": 13,
-						"Col": 2,
-						"Label": "December",
-						"CellType": "number",
-						"CanOverWriteFormula": true
 					}
 				}
-			},
-			"ChatHelp": true,
-			"CanRollOver": true,
-			"AllowsAttachment": true,
-			"NotUsedWhen": {
-				"Field": "X_Cell_PastureBeef_Method1OrMethod2",
-				"Equals": "Method 1"
-			},
-			"DefaultDataDocumentType": "JSON",
-			"DefaultDataFile": "node_modules/gaf-veerg-functions/generated-sourcedata/SourceData_PastureBeef.sourcedata.json",
-			"DefaultDataLocation": null
+			}
 		},
 		{
 			"TableName": "X_Table_PastureBeef_LiveweightGain_Method1",
@@ -1256,15 +1112,7 @@
 						"CellType": "formula"
 					}
 				}
-			},
-			"ChatHelp": true,
-			"NotUsedWhen": {
-				"Field": "X_Cell_PastureBeef_Method1OrMethod2",
-				"Equals": "Method 2"
-			},
-			"DefaultDataDocumentType": "JSON",
-			"DefaultDataFile": "node_modules/gaf-veerg-functions/generated-sourcedata/SourceData_PastureBeef.sourcedata.json",
-			"DefaultDataLocation": null
+			}
 		},
 		{
 			"TableName": "X_Table_PastureBeef_LiveweightGain_Method2",
@@ -1292,95 +1140,85 @@
 						"CellType": "number",
 						"CanOverWriteFormula": true
 					},
-					"February": {
+					"January2": {
 						"Row": 3,
+						"Col": 2,
+						"Label": "January",
+						"CellType": "number",
+						"CanOverWriteFormula": true
+					},
+					"February": {
+						"Row": 4,
 						"Col": 2,
 						"Label": "February",
 						"CellType": "number",
 						"CanOverWriteFormula": true
 					},
 					"March": {
-						"Row": 4,
+						"Row": 5,
 						"Col": 2,
 						"Label": "March",
 						"CellType": "number",
 						"CanOverWriteFormula": true
 					},
 					"April": {
-						"Row": 5,
+						"Row": 6,
 						"Col": 2,
 						"Label": "April",
 						"CellType": "number",
 						"CanOverWriteFormula": true
 					},
 					"May": {
-						"Row": 6,
+						"Row": 7,
 						"Col": 2,
 						"Label": "May",
 						"CellType": "number",
 						"CanOverWriteFormula": true
 					},
 					"June": {
-						"Row": 7,
+						"Row": 8,
 						"Col": 2,
 						"Label": "June",
 						"CellType": "number",
 						"CanOverWriteFormula": true
 					},
 					"July": {
-						"Row": 8,
+						"Row": 9,
 						"Col": 2,
 						"Label": "July",
 						"CellType": "number",
 						"CanOverWriteFormula": true
 					},
 					"August": {
-						"Row": 9,
+						"Row": 10,
 						"Col": 2,
 						"Label": "August",
 						"CellType": "number",
 						"CanOverWriteFormula": true
 					},
 					"September": {
-						"Row": 10,
+						"Row": 11,
 						"Col": 2,
 						"Label": "September",
 						"CellType": "number",
 						"CanOverWriteFormula": true
 					},
 					"October": {
-						"Row": 11,
+						"Row": 12,
 						"Col": 2,
 						"Label": "October",
 						"CellType": "number",
 						"CanOverWriteFormula": true
 					},
 					"November": {
-						"Row": 12,
+						"Row": 13,
 						"Col": 2,
 						"Label": "November",
 						"CellType": "number",
 						"CanOverWriteFormula": true
-					},
-					"December": {
-						"Row": 13,
-						"Col": 2,
-						"Label": "December",
-						"CellType": "number",
-						"CanOverWriteFormula": true
 					}
 				}
-			},
-			"ChatHelp": true,
-			"CanRollOver": true,
-			"AllowsAttachment": true,
-			"NotUsedWhen": {
-				"Field": "X_Cell_PastureBeef_Method1OrMethod2",
-				"Equals": "Method 1"
-			},
-			"DefaultDataDocumentType": "JSON",
-			"DefaultDataFile": "node_modules/gaf-veerg-functions/generated-sourcedata/SourceData_PastureBeef.sourcedata.json",
-			"DefaultDataLocation": null
+			}
 		},
 		{
 			"TableName": "X_Table_PastureBeef_DryMatterDigestibility_Method1",
@@ -1426,15 +1264,7 @@
 						"CellType": "formula"
 					}
 				}
-			},
-			"ChatHelp": true,
-			"NotUsedWhen": {
-				"Field": "X_Cell_PastureBeef_Method1OrMethod2",
-				"Equals": "Method 2"
-			},
-			"DefaultDataDocumentType": "JSON",
-			"DefaultDataFile": "node_modules/gaf-veerg-functions/generated-sourcedata/SourceData_PastureBeef.sourcedata.json",
-			"DefaultDataLocation": null
+			}
 		},
 		{
 			"TableName": "X_Table_PastureBeef_DryMatterDigestibility_Method2",
@@ -1462,94 +1292,85 @@
 						"CellType": "number",
 						"CanOverWriteFormula": true
 					},
-					"February": {
+					"January2": {
 						"Row": 3,
+						"Col": 2,
+						"Label": "January",
+						"CellType": "number",
+						"CanOverWriteFormula": true
+					},
+					"February": {
+						"Row": 4,
 						"Col": 2,
 						"Label": "February",
 						"CellType": "number",
 						"CanOverWriteFormula": true
 					},
 					"March": {
-						"Row": 4,
+						"Row": 5,
 						"Col": 2,
 						"Label": "March",
 						"CellType": "number",
 						"CanOverWriteFormula": true
 					},
 					"April": {
-						"Row": 5,
+						"Row": 6,
 						"Col": 2,
 						"Label": "April",
 						"CellType": "number",
 						"CanOverWriteFormula": true
 					},
 					"May": {
-						"Row": 6,
+						"Row": 7,
 						"Col": 2,
 						"Label": "May",
 						"CellType": "number",
 						"CanOverWriteFormula": true
 					},
 					"June": {
-						"Row": 7,
+						"Row": 8,
 						"Col": 2,
 						"Label": "June",
 						"CellType": "number",
 						"CanOverWriteFormula": true
 					},
 					"July": {
-						"Row": 8,
+						"Row": 9,
 						"Col": 2,
 						"Label": "July",
 						"CellType": "number",
 						"CanOverWriteFormula": true
 					},
 					"August": {
-						"Row": 9,
+						"Row": 10,
 						"Col": 2,
 						"Label": "August",
 						"CellType": "number",
 						"CanOverWriteFormula": true
 					},
 					"September": {
-						"Row": 10,
+						"Row": 11,
 						"Col": 2,
 						"Label": "September",
 						"CellType": "number",
 						"CanOverWriteFormula": true
 					},
 					"October": {
-						"Row": 11,
+						"Row": 12,
 						"Col": 2,
 						"Label": "October",
 						"CellType": "number",
 						"CanOverWriteFormula": true
 					},
 					"November": {
-						"Row": 12,
+						"Row": 13,
 						"Col": 2,
 						"Label": "November",
 						"CellType": "number",
 						"CanOverWriteFormula": true
-					},
-					"December": {
-						"Row": 13,
-						"Col": 2,
-						"Label": "December",
-						"CellType": "number",
-						"CanOverWriteFormula": true
 					}
 				}
-			},
-			"ChatHelp": true,
-			"AllowsAttachment": true,
-			"NotUsedWhen": {
-				"Field": "X_Cell_PastureBeef_Method1OrMethod2",
-				"Equals": "Method 1"
-			},
-			"DefaultDataDocumentType": "JSON",
-			"DefaultDataFile": "node_modules/gaf-veerg-functions/generated-sourcedata/SourceData_PastureBeef.sourcedata.json",
-			"DefaultDataLocation": null
+			}
 		},
 		{
 			"TableName": "X_Table_PastureBeef_CrudeProtein_Method1",
@@ -1595,15 +1416,7 @@
 						"CellType": "formula"
 					}
 				}
-			},
-			"ChatHelp": true,
-			"NotUsedWhen": {
-				"Field": "X_Cell_PastureBeef_Method1OrMethod2",
-				"Equals": "Method 2"
-			},
-			"DefaultDataDocumentType": "JSON",
-			"DefaultDataFile": "node_modules/gaf-veerg-functions/generated-sourcedata/SourceData_PastureBeef.sourcedata.json",
-			"DefaultDataLocation": null
+			}
 		},
 		{
 			"TableName": "X_Table_PastureBeef_CrudeProtein_Method2",
@@ -1631,95 +1444,85 @@
 						"CellType": "number",
 						"CanOverWriteFormula": true
 					},
-					"February": {
+					"January2": {
 						"Row": 3,
+						"Col": 2,
+						"Label": "January",
+						"CellType": "number",
+						"CanOverWriteFormula": true
+					},
+					"February": {
+						"Row": 4,
 						"Col": 2,
 						"Label": "February",
 						"CellType": "number",
 						"CanOverWriteFormula": true
 					},
 					"March": {
-						"Row": 4,
+						"Row": 5,
 						"Col": 2,
 						"Label": "March",
 						"CellType": "number",
 						"CanOverWriteFormula": true
 					},
 					"April": {
-						"Row": 5,
+						"Row": 6,
 						"Col": 2,
 						"Label": "April",
 						"CellType": "number",
 						"CanOverWriteFormula": true
 					},
 					"May": {
-						"Row": 6,
+						"Row": 7,
 						"Col": 2,
 						"Label": "May",
 						"CellType": "number",
 						"CanOverWriteFormula": true
 					},
 					"June": {
-						"Row": 7,
+						"Row": 8,
 						"Col": 2,
 						"Label": "June",
 						"CellType": "number",
 						"CanOverWriteFormula": true
 					},
 					"July": {
-						"Row": 8,
+						"Row": 9,
 						"Col": 2,
 						"Label": "July",
 						"CellType": "number",
 						"CanOverWriteFormula": true
 					},
 					"August": {
-						"Row": 9,
+						"Row": 10,
 						"Col": 2,
 						"Label": "August",
 						"CellType": "number",
 						"CanOverWriteFormula": true
 					},
 					"September": {
-						"Row": 10,
+						"Row": 11,
 						"Col": 2,
 						"Label": "September",
 						"CellType": "number",
 						"CanOverWriteFormula": true
 					},
 					"October": {
-						"Row": 11,
+						"Row": 12,
 						"Col": 2,
 						"Label": "October",
 						"CellType": "number",
 						"CanOverWriteFormula": true
 					},
 					"November": {
-						"Row": 12,
+						"Row": 13,
 						"Col": 2,
 						"Label": "November",
 						"CellType": "number",
 						"CanOverWriteFormula": true
-					},
-					"December": {
-						"Row": 13,
-						"Col": 2,
-						"Label": "December",
-						"CellType": "number",
-						"CanOverWriteFormula": true
 					}
 				}
-			},
-			"ChatHelp": true,
-			"CanRollOver": true,
-			"AllowsAttachment": true,
-			"NotUsedWhen": {
-				"Field": "X_Cell_PastureBeef_Method1OrMethod2",
-				"Equals": "Method 1"
-			},
-			"DefaultDataDocumentType": "JSON",
-			"DefaultDataFile": "node_modules/gaf-veerg-functions/generated-sourcedata/SourceData_PastureBeef.sourcedata.json",
-			"DefaultDataLocation": null
+			}
 		},
 		{
 			"TableName": "Table_Input_LivestockSales",
@@ -1767,12 +1570,7 @@
 						"CellType": "formula"
 					}
 				}
-			},
-			"AllowsAttachment": true,
-			"DependentOn": [
-				"X_Cell_PastureBeef_Method1OrMethod2",
-				"X_Cell_PastureBeef_HerdMovementMethod"
-			]
+			}
 		},
 		{
 			"TableName": "Table_Input_LivestockPurchases_Beefcattle",
@@ -1853,13 +1651,7 @@
 						"Unit": "kg/head"
 					}
 				}
-			},
-			"CanMarkAsNotUsed": true,
-			"AllowsAttachment": true,
-			"DependentOn": [
-				"X_Cell_PastureBeef_Method1OrMethod2",
-				"X_Cell_PastureBeef_HerdMovementMethod"
-			]
+			}
 		},
 		{
 			"TableName": "Table_Input_InorganicFertiliser_Brands",
@@ -2098,9 +1890,7 @@
 						"CellType": "formula"
 					}
 				}
-			},
-			"CanMarkAsNotUsed": true,
-			"AllowsAttachment": true
+			}
 		},
 		{
 			"TableName": "Table_Input_InorganicFertiliser_Custom",
@@ -2271,9 +2061,7 @@
 						}
 					}
 				}
-			},
-			"CanMarkAsNotUsed": true,
-			"AllowsAttachment": true
+			}
 		},
 		{
 			"TableName": "Table_Input_Lime",
@@ -2292,7 +2080,7 @@
 			"Rows": {
 				"Row": {
 					"Product": {
-						"CellType": "text"
+						"CellType": "number"
 					},
 					"AmountApplied": {
 						"CellType": "number",
@@ -2320,9 +2108,7 @@
 						"CellType": "formula"
 					}
 				}
-			},
-			"CanMarkAsNotUsed": true,
-			"AllowsAttachment": true
+			}
 		},
 		{
 			"TableName": "Table_Input_OrganicFertiliser",
@@ -2372,9 +2158,7 @@
 						"Unit": "kg"
 					}
 				}
-			},
-			"CanMarkAsNotUsed": true,
-			"AllowsAttachment": true
+			}
 		},
 		{
 			"TableName": "Table_Input_Fuel",
@@ -2467,9 +2251,7 @@
 						"CellType": "formula"
 					}
 				}
-			},
-			"CanMarkAsNotUsed": true,
-			"AllowsAttachment": true
+			}
 		},
 		{
 			"TableName": "Table_Input_RECSurrendered",
@@ -2511,13 +2293,6 @@
 				"DecCerts": "Dec 2020 certs",
 				"JanCerts": "Jan 2022 certs",
 				"Certs": "2024 certs"
-			},
-			"ChatHelp": true,
-			"AllowsAttachment": true,
-			"DependentOn": "X_Cell_Electricity_CalculationMethod",
-			"NotUsedWhen": {
-				"Field": "X_Cell_Electricity_CalculationMethod",
-				"Equals": "Location-based (Simpler)"
 			}
 		},
 		{
@@ -2556,13 +2331,6 @@
 				"MayGenerated": "May 2022 generated",
 				"Jul24CertsGenerated": "Jul 24 certs generated",
 				"45597": "45597"
-			},
-			"ChatHelp": true,
-			"AllowsAttachment": true,
-			"DependentOn": "X_Cell_Electricity_CalculationMethod",
-			"NotUsedWhen": {
-				"Field": "X_Cell_Electricity_CalculationMethod",
-				"Equals": "Location-based (Simpler)"
 			}
 		},
 		{
@@ -2607,10 +2375,10 @@
 			"Rows": {
 				"Row": {
 					"ServiceProviderContractor": {
-						"CellType": "text"
+						"CellType": "number"
 					},
 					"Activity": {
-						"CellType": "text"
+						"CellType": "number"
 					},
 					"TotalAmount": {
 						"CellType": "number"
@@ -2643,7 +2411,7 @@
 						"CellType": "number"
 					},
 					"AmountUnit": {
-						"CellType": "text"
+						"CellType": "number"
 					}
 				}
 			}
@@ -3471,7 +3239,7 @@
 			"Rows": {
 				"Row": {
 					"Description": {
-						"CellType": "text"
+						"CellType": "number"
 					},
 					"TreatmentType": {
 						"CellType": "select",
@@ -3592,12 +3360,10 @@
 						}
 					},
 					"Notes": {
-						"CellType": "text",
-						"Optional": true
+						"CellType": "text"
 					},
 					"EvidenceFiles": {
-						"CellType": "text",
-						"Optional": true
+						"CellType": "text"
 					},
 					"Score": {
 						"CellType": "formula"
@@ -3660,12 +3426,10 @@
 						}
 					},
 					"Notes": {
-						"CellType": "text",
-						"Optional": true
+						"CellType": "text"
 					},
 					"EvidenceFiles": {
-						"CellType": "text",
-						"Optional": true
+						"CellType": "text"
 					},
 					"Score": {
 						"CellType": "formula"
@@ -3728,12 +3492,10 @@
 						}
 					},
 					"Notes": {
-						"CellType": "text",
-						"Optional": true
+						"CellType": "text"
 					},
 					"EvidenceFiles": {
-						"CellType": "text",
-						"Optional": true
+						"CellType": "text"
 					},
 					"Score": {
 						"CellType": "formula"
@@ -3802,12 +3564,10 @@
 						}
 					},
 					"Notes": {
-						"CellType": "text",
-						"Optional": true
+						"CellType": "text"
 					},
 					"EvidenceFiles": {
-						"CellType": "text",
-						"Optional": true
+						"CellType": "text"
 					},
 					"Score": {
 						"CellType": "formula"
@@ -3869,12 +3629,10 @@
 						}
 					},
 					"Notes": {
-						"CellType": "text",
-						"Optional": true
+						"CellType": "text"
 					},
 					"EvidenceFiles": {
-						"CellType": "text",
-						"Optional": true
+						"CellType": "text"
 					},
 					"Score": {
 						"CellType": "formula"
@@ -3935,12 +3693,10 @@
 						}
 					},
 					"Notes": {
-						"CellType": "text",
-						"Optional": true
+						"CellType": "text"
 					},
 					"EvidenceFiles": {
-						"CellType": "text",
-						"Optional": true
+						"CellType": "text"
 					},
 					"Score": {
 						"CellType": "formula"
@@ -4001,12 +3757,10 @@
 						}
 					},
 					"Notes": {
-						"CellType": "text",
-						"Optional": true
+						"CellType": "text"
 					},
 					"EvidenceFiles": {
-						"CellType": "text",
-						"Optional": true
+						"CellType": "text"
 					},
 					"Score": {
 						"CellType": "formula"
@@ -4021,446 +3775,6 @@
 				"OutboundFreightUse": "Outbound freight use",
 				"SolidWasteGenerationAndTreatment": "Solid waste generation and treatment"
 			}
-		},
-		{
-			"TableName": "Table_Input_Mortalities",
-			"ChatHelp": true,
-			"ExcelExcluded": true,
-			"DependentOn": [
-				"X_Cell_PastureBeef_Method1OrMethod2",
-				"X_Cell_PastureBeef_HerdMovementMethod"
-			],
-			"MatrixType": "RowsToCols",
-			"ColumnNames": {
-				"Class": "Class (select)",
-				"Date": "Date",
-				"HeadCount": "Head count",
-				"Cause": "Cause (optional)"
-			},
-			"Rows": {
-				"Row": {
-					"Class": {
-						"CellType": "select",
-						"Options": {
-							"BullsUnder1Year": "Bulls < 1 year",
-							"BullsOver1Year": "Bulls > 1 year",
-							"CowsUnder1Year": "Cows < 1 year",
-							"Cows1To2Years": "Cows 1-2 years",
-							"Cows2To3Years": "Cows 2-3 years",
-							"CowsOver3Years": "Cows > 3 years",
-							"SteersUnder1Year": "Steers < 1 year",
-							"Steers1To2Years": "Steers 1-2 years",
-							"Steers2To3Years": "Steers 2-3 years",
-							"SteersOver3Years": "Steers >3 years"
-						}
-					},
-					"Date": {
-						"CellType": "date"
-					},
-					"HeadCount": {
-						"CellType": "number"
-					},
-					"Cause": {
-						"CellType": "text"
-					}
-				}
-			}
-		},
-		{
-			"TableName": "Table_Input_HerdTransfersIn",
-			"ChatHelp": true,
-			"ExcelExcluded": true,
-			"DependentOn": [
-				"X_Cell_PastureBeef_Method1OrMethod2",
-				"X_Cell_PastureBeef_HerdMovementMethod"
-			],
-			"MatrixType": "RowsToCols",
-			"ColumnNames": {
-				"Class": "Class (select)",
-				"Date": "Transfer date",
-				"HeadCount": "Head count",
-				"TransferredFrom": "Transferred from (optional)"
-			},
-			"Rows": {
-				"Row": {
-					"Class": {
-						"CellType": "select",
-						"Options": {
-							"BullsUnder1Year": "Bulls < 1 year",
-							"BullsOver1Year": "Bulls > 1 year",
-							"CowsUnder1Year": "Cows < 1 year",
-							"Cows1To2Years": "Cows 1-2 years",
-							"Cows2To3Years": "Cows 2-3 years",
-							"CowsOver3Years": "Cows > 3 years",
-							"SteersUnder1Year": "Steers < 1 year",
-							"Steers1To2Years": "Steers 1-2 years",
-							"Steers2To3Years": "Steers 2-3 years",
-							"SteersOver3Years": "Steers >3 years"
-						}
-					},
-					"Date": {
-						"CellType": "date"
-					},
-					"HeadCount": {
-						"CellType": "number"
-					},
-					"TransferredFrom": {
-						"CellType": "text"
-					}
-				}
-			}
-		},
-		{
-			"TableName": "Table_Input_HerdTransfersOut",
-			"ChatHelp": true,
-			"ExcelExcluded": true,
-			"DependentOn": [
-				"X_Cell_PastureBeef_Method1OrMethod2",
-				"X_Cell_PastureBeef_HerdMovementMethod"
-			],
-			"MatrixType": "RowsToCols",
-			"ColumnNames": {
-				"Class": "Class (select)",
-				"Date": "Transfer date",
-				"HeadCount": "Head count",
-				"TransferredTo": "Transferred to (optional)"
-			},
-			"Rows": {
-				"Row": {
-					"Class": {
-						"CellType": "select",
-						"Options": {
-							"BullsUnder1Year": "Bulls < 1 year",
-							"BullsOver1Year": "Bulls > 1 year",
-							"CowsUnder1Year": "Cows < 1 year",
-							"Cows1To2Years": "Cows 1-2 years",
-							"Cows2To3Years": "Cows 2-3 years",
-							"CowsOver3Years": "Cows > 3 years",
-							"SteersUnder1Year": "Steers < 1 year",
-							"Steers1To2Years": "Steers 1-2 years",
-							"Steers2To3Years": "Steers 2-3 years",
-							"SteersOver3Years": "Steers >3 years"
-						}
-					},
-					"Date": {
-						"CellType": "date"
-					},
-					"HeadCount": {
-						"CellType": "number"
-					},
-					"TransferredTo": {
-						"CellType": "text"
-					}
-				}
-			}
-		}
-	],
-	"FieldGroups": [
-		[
-			{
-				"Name": "Enterprise",
-				"Items": [
-					"X_Cell_Enteprise_PercentIncomeFromLiveweight",
-					"X_Cell_Enteprise_PercentIncomeFromManure",
-					"X_Cell_Enteprise_PercentManureSold",
-					"X_Cell_Enteprise_PercentManureAppliedAsFertiliserOwnFarm",
-					"Table_Input_Enterprise_PlantingRemovals"
-				]
-			},
-			{
-				"Name": "Herd production system",
-				"Items": [
-					"X_Cell_PastureBeef_ProductionRegion",
-					"X_Cell_PastureBeef_Breed",
-					"X_Cell_PastureBeef_GrazingProductionSystem",
-					"X_Cell_PastureBeef_GrazingIrrigationMethod",
-					"X_Cell_PastureBeef_FencedWater"
-				]
-			},
-			{
-				"Name": "Herd movement",
-				"Items": [
-					"X_Cell_PastureBeef_Method1OrMethod2",
-					"X_Cell_PastureBeef_HerdMovementMethod",
-					"X_Table_PastureBeef_Head_Method1",
-					"X_Table_PastureBeef_Duration_Method1",
-					"X_Table_PastureBeef_Liveweight_Method1",
-					"X_Table_PastureBeef_LiveweightGain_Method1",
-					"X_Table_PastureBeef_Head_Method2",
-					"X_Table_PastureBeef_Duration_Method2",
-					"X_Table_PastureBeef_Liveweight_Method2",
-					"X_Table_PastureBeef_LiveweightGain_Method2",
-					"Table_Input_LivestockPurchases_Beefcattle",
-					"Table_Input_LivestockSales",
-					"Table_Input_Mortalities",
-					"Table_Input_HerdTransfersIn",
-					"Table_Input_HerdTransfersOut"
-				]
-			},
-			{
-				"Name": "Pasture management",
-				"Items": [
-					"X_Cell_Pasture_PastureType",
-					"X_Cell_Pasture_YieldPerHectare",
-					"X_Cell_Pasture_IrrigationMethod",
-					"X_Cell_Pasture_AreaUnderPasture",
-					"X_Cell_Pasture_AreaRemovedOrRenewed",
-					"Table_Input_InorganicFertiliser_Brands",
-					"Table_Input_InorganicFertiliser_Custom",
-					"Table_Input_Lime",
-					"Table_Input_OrganicFertiliser"
-				]
-			},
-			{
-				"Name": "Herd diet",
-				"Items": [
-					"X_Table_PastureBeef_CrudeProtein_Method1",
-					"X_Table_PastureBeef_DryMatterDigestibility_Method1",
-					"X_Table_PastureBeef_CrudeProtein_Method2",
-					"X_Table_PastureBeef_DryMatterDigestibility_Method2"
-				]
-			},
-			{
-				"Name": "Fuel",
-				"Items": [
-					"Table_Input_Fuel",
-					"X_Cell_Fuel_IsMetroLocation"
-				]
-			},
-			{
-				"Name": "Electricity",
-				"Items": [
-					"X_Cell_Electricity_CalculationMethod",
-					[
-						{
-							"Name": "Location-based electricity",
-							"Items": [
-								"X_Cell_Electricity_Location_AmountPurchasedInkWh",
-								"X_Cell_Electricity_Location_GridElectricityPurchasedFrom"
-							]
-						}
-					],
-					[
-						{
-							"Name": "Market-based electricity",
-							"Items": [
-								"X_Cell_Electricity_Market_AmountPurchasedExcludingGreenPower",
-								"X_Cell_Electricity_Market_RenewablePowerPercentage",
-								"X_Cell_Electricity_Market_JurisdictionalRenewablePowerPercentage",
-								"X_Cell_Electricity_Market_AmountPurchasedGreenPower",
-								"Table_Input_RECSurrendered",
-								"Table_Input_RECConsumedByEntity"
-							]
-						}
-					]
-				]
-			},
-			{
-				"Name": "Farm input purchases",
-				"Items": [
-					"X_Cell_FarmInputs_LickBlocks_Mineral",
-					"X_Cell_FarmInputs_LickBlocks_Weaner",
-					"X_Cell_FarmInputs_LickBlocks_DrySeasonMix",
-					"X_Cell_FarmInputs_Misc_AnimalEarTagsLarge",
-					"X_Cell_FarmInputs_Misc_AnimalEarTagsSmall",
-					"Table_Input_Pesticides",
-					"Table_Input_ChemicalsCleaning",
-					"Table_Input_ChemicalsPharmacy",
-					"Table_Input_FeedBlends",
-					"Table_Input_FreightIncoming",
-					"Table_Input_FreightOutgoing",
-					"Table_Input_ServicesAndContractors",
-					"Table_Input_UncategorisedProductsServices"
-				]
-			},
-			{
-				"Name": "Data quality",
-				"Items": [
-					"Table_Input_DataQuality_Enterprise",
-					"Table_Input_DataQuality_PastureBeef",
-					"Table_Input_DataQuality_FarmInputsFreightWaste",
-					"Table_Input_DataQuality_Site",
-					"Table_Input_DataQuality_PastureManagement",
-					"Table_Input_DataQuality_FertiliserApplications",
-					"Table_Input_DataQuality_FuelElectricity"
-				]
-			}
-		]
-	],
-	"FirstClassResults": {
-		"Result_NetEmissions_Method1": {
-			"Label": "Net emissions for this activity period (Method 1)"
-		},
-		"Result_NetEmissions_Method2": {
-			"Label": "Net emissions for this activity period (Method 2)"
-		}
-	},
-	"ActivityPeriodResultTables": {
-		"X_Table_Result_ActivityPeriodEmissions_RowsToCols": {
-			"CycleLabelColumn": "EmissionsCalculationCycle",
-			"ResultColumns": {
-				"Result_Enterprise_Method1": "CO2EEmissionsMethod1",
-				"Result_Enterprise_Method2": "CO2EEmissionsMethod2"
-			}
-		},
-		"X_Table_Result_CarbonRemovalsFromPlantings_RowsToCols": {
-			"CycleLabelColumn": "EmissionsCalculationCycle",
-			"CurrentPeriodOnly": true,
-			"ResultColumns": {
-				"Allocated_CarbonRemovalsFromPlantings": "CO2RemovedAttributedToThisEnterprise"
-			}
-		}
-	},
-	"Influences": [
-		{
-			"Members": [
-				"Table_Input_LivestockPurchases_Beefcattle",
-				"Table_Input_LivestockSales",
-				"X_Table_PastureBeef_Liveweight_Method2",
-				"X_Table_PastureBeef_Head_Method2",
-				"X_Table_PastureBeef_Duration_Method2",
-				"X_Table_PastureBeef_Head_Method1"
-			],
-			"Deterministic": [
-				{
-					"Trigger": "Table_Input_LivestockSales",
-					"Targets": [
-						"X_Table_PastureBeef_Head_Method1",
-						"X_Table_PastureBeef_Head_Method2"
-					]
-				}
-			]
-		}
-	],
-	"HerdLedger": {
-		"MovementMethodField": "X_Cell_PastureBeef_HerdMovementMethod",
-		"AutomatedValue": "Automated",
-		"ManualValue": "Manual",
-		"OpeningStore": "__herdOpening",
-		"MethodSwitch": {
-			"Fields": [
-				"X_Cell_PastureBeef_Method1OrMethod2",
-				"DataEntryMethod"
-			],
-			"Method1": "Method 1",
-			"Method2": "Method 2"
-		},
-		"HeadMethod1": {
-			"Table": "X_Table_PastureBeef_Head_Method1",
-			"Period": "season"
-		},
-		"HeadMethod2": {
-			"Table": "X_Table_PastureBeef_Head_Method2",
-			"Period": "month"
-		},
-		"Movements": [
-			{
-				"Table": "Table_Input_LivestockPurchases_Beefcattle",
-				"DateColumn": "PurchaseDate",
-				"ClassColumn": "Class",
-				"AmountColumn": "Quantity",
-				"Sign": 1,
-				"Label": "purchase"
-			},
-			{
-				"Table": "Table_Input_LivestockSales",
-				"DateColumn": "SaleDate",
-				"ClassColumn": "Class",
-				"AmountColumn": "HeadSold",
-				"Sign": -1,
-				"Label": "sale"
-			},
-			{
-				"Table": "Table_Input_Mortalities",
-				"DateColumn": "Date",
-				"ClassColumn": "Class",
-				"AmountColumn": "HeadCount",
-				"Sign": -1,
-				"Label": "mortality"
-			},
-			{
-				"Table": "Table_Input_HerdTransfersIn",
-				"DateColumn": "Date",
-				"ClassColumn": "Class",
-				"AmountColumn": "HeadCount",
-				"Sign": 1,
-				"Label": "transfer in"
-			},
-			{
-				"Table": "Table_Input_HerdTransfersOut",
-				"DateColumn": "Date",
-				"ClassColumn": "Class",
-				"AmountColumn": "HeadCount",
-				"Sign": -1,
-				"Label": "transfer out"
-			}
-		]
-	},
-	"Constraints": [
-		{
-			"Rule": "SalesNotExceedHead",
-			"SalesTable": "Table_Input_LivestockSales",
-			"ClassColumn": "Class",
-			"DateColumn": "SaleDate",
-			"AmountColumn": "HeadSold",
-			"MethodSwitch": {
-				"Fields": [
-					"X_Cell_PastureBeef_Method1OrMethod2",
-					"DataEntryMethod"
-				],
-				"Method1": "Method 1",
-				"Method2": "Method 2"
-			},
-			"HeadMethod1": {
-				"Table": "X_Table_PastureBeef_Head_Method1",
-				"Period": "season"
-			},
-			"HeadMethod2": {
-				"Table": "X_Table_PastureBeef_Head_Method2",
-				"Period": "month"
-			},
-			"Message": "Head sold ({amount}) for {class} in {period} can't exceed the head available ({available})."
-		},
-		{
-			"Rule": "LiveweightWithinTolerance",
-			"SalesTable": "Table_Input_LivestockSales",
-			"ClassColumn": "Class",
-			"DateColumn": "SaleDate",
-			"ValueColumn": "AverageWeightPerHead",
-			"Tolerance": 0.2,
-			"MethodSwitch": {
-				"Fields": [
-					"X_Cell_PastureBeef_Method1OrMethod2",
-					"DataEntryMethod"
-				],
-				"Method1": "Method 1",
-				"Method2": "Method 2"
-			},
-			"ReferenceMethod1": {
-				"Table": "X_Table_PastureBeef_Liveweight_Method1",
-				"Period": "season"
-			},
-			"ReferenceMethod2": {
-				"Table": "X_Table_PastureBeef_Liveweight_Method2",
-				"Period": "month"
-			},
-			"Message": "Average weight per head ({value} kg) for {class} in {period} must be within {tolerancePct}% of the expected liveweight ({reference} kg)."
-		},
-		{
-			"Rule": "DateWithinActivityPeriod",
-			"Tables": [
-				{
-					"Table": "Table_Input_LivestockSales",
-					"DateColumn": "SaleDate",
-					"Label": "Sale"
-				},
-				{
-					"Table": "Table_Input_LivestockPurchases_Beefcattle",
-					"DateColumn": "PurchaseDate",
-					"Label": "Purchase"
-				}
-			],
-			"Message": "{label} date {date} is outside the activity period ({min} to {max})."
 		}
 	]
 }

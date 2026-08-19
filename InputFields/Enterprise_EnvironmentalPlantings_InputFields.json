@@ -1,7 +1,7 @@
 {
 	"schemaVersion": 1,
 	"generatedFrom": "Enterprise_EnvironmentalPlantings_WIP_v01.xlsx",
-	"generatedAt": "2026-08-17T10:55:29Z",
+	"generatedAt": "2026-08-19T00:07:56Z",
 	"InputCells": [
 		{
 			"CellName": "X_Cell_Planting_Latitude",
@@ -91,6 +91,7 @@
 			"CellName": "X_Cell_Fertiliser_AreaUnderCropping",
 			"Label": "Area under cropping",
 			"CellType": "number",
+			"Unit": "hectares",
 			"DuplicateOf": "X_Cell_Planting_PlantingAreaInHectares",
 			"Hidden": true
 		},
@@ -148,27 +149,32 @@
 		{
 			"CellName": "X_Cell_Site_Elevation",
 			"Label": "Elevation",
-			"CellType": "number"
+			"CellType": "number",
+			"Unit": "Meters"
 		},
 		{
 			"CellName": "X_Cell_Site_AverageTemperature",
 			"Label": "Average temperature for reporting period",
-			"CellType": "number"
+			"CellType": "number",
+			"Unit": "Degrees celsius"
 		},
 		{
 			"CellName": "X_Cell_Site_TotalRainfall",
 			"Label": "Total rainfall for reporting period",
-			"CellType": "number"
+			"CellType": "number",
+			"Unit": "Millimetres"
 		},
 		{
 			"CellName": "X_Cell_Site_PotentialEvapotranspiration",
 			"Label": "Potential evapotranspiration for reporting period",
-			"CellType": "number"
+			"CellType": "number",
+			"Unit": "Millimetres"
 		},
 		{
 			"CellName": "X_Cell_Site_FrostDays",
 			"Label": "Number of frost days for reporting period",
-			"CellType": "number"
+			"CellType": "number",
+			"Unit": "Days"
 		},
 		{
 			"CellName": "X_Cell_Site_MapPetRatio",

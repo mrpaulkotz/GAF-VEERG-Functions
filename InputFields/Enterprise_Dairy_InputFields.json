@@ -1,7 +1,7 @@
 {
 	"schemaVersion": 1,
 	"generatedFrom": "Enterprise_Dairy_WIP_v01.xlsx",
-	"generatedAt": "2026-08-17T10:55:16Z",
+	"generatedAt": "2026-08-19T00:07:46Z",
 	"InputCells": [
 		{
 			"CellName": "X_Cell_Site_FarmName",
@@ -82,27 +82,32 @@
 		{
 			"CellName": "X_Cell_Site_Elevation",
 			"Label": "Elevation",
-			"CellType": "number"
+			"CellType": "number",
+			"Unit": "Meters"
 		},
 		{
 			"CellName": "X_Cell_Site_AverageTemperature",
 			"Label": "Average temperature for reporting period",
-			"CellType": "number"
+			"CellType": "number",
+			"Unit": "Degrees celsius"
 		},
 		{
 			"CellName": "X_Cell_Site_TotalRainfall",
 			"Label": "Total rainfall for reporting period",
-			"CellType": "number"
+			"CellType": "number",
+			"Unit": "Millimetres"
 		},
 		{
 			"CellName": "X_Cell_Site_PotentialEvapotranspiration",
 			"Label": "Potential evapotranspiration for reporting period",
-			"CellType": "number"
+			"CellType": "number",
+			"Unit": "Millimetres"
 		},
 		{
 			"CellName": "X_Cell_Site_FrostDays",
 			"Label": "Number of frost days for reporting period",
-			"CellType": "number"
+			"CellType": "number",
+			"Unit": "Days"
 		},
 		{
 			"CellName": "X_Cell_Site_MapPetRatio",
@@ -138,6 +143,7 @@
 			"CellName": "X_Cell_Dairy_MilkSolidsFatContent_Method2",
 			"Label": "0.04",
 			"CellType": "percent",
+			"Unit": "percent",
 			"CanOverWriteFormula": true
 		},
 		{
@@ -149,6 +155,7 @@
 			"CellName": "X_Cell_Dairy_MilkSolidsProteinContent_Method2",
 			"Label": "0.033",
 			"CellType": "percent",
+			"Unit": "percent",
 			"CanOverWriteFormula": true
 		},
 		{
@@ -332,7 +339,8 @@
 		{
 			"CellName": "X_Cell_Dairy_MilkProductionAmount",
 			"Label": "Average daily milk production",
-			"CellType": "number"
+			"CellType": "number",
+			"Unit": "litres/head/day"
 		},
 		{
 			"CellName": "X_Cell_Pasture_PastureType",
@@ -361,17 +369,20 @@
 		{
 			"CellName": "X_Cell_Pasture_AreaUnderPasture",
 			"Label": "Area under pasture",
-			"CellType": "number"
+			"CellType": "number",
+			"Unit": "Hectares"
 		},
 		{
 			"CellName": "X_Cell_Pasture_YieldPerHectare",
 			"Label": "Pasture yield",
-			"CellType": "formula"
+			"CellType": "formula",
+			"Unit": "Tonnes dry matter / hectare"
 		},
 		{
 			"CellName": "X_Cell_Pasture_AreaRemovedOrRenewed",
 			"Label": "Area of pasture renewed or removed",
-			"CellType": "number"
+			"CellType": "number",
+			"Unit": "Hectares"
 		},
 		{
 			"CellName": "X_Cell_Fertiliser_ProductionSystem",
@@ -414,7 +425,8 @@
 		{
 			"CellName": "X_Cell_Electricity_Location_AmountPurchasedInkWh",
 			"Label": "Amount purchased in kWh",
-			"CellType": "number"
+			"CellType": "number",
+			"Unit": "kWh"
 		},
 		{
 			"CellName": "X_Cell_Electricity_Location_GridElectricityPurchasedFrom",
@@ -436,112 +448,134 @@
 		{
 			"CellName": "X_Cell_Electricity_Market_AmountPurchasedExcludingGreenPower",
 			"Label": "Electricity purchased in kWh (excluding GreenPower providers)",
-			"CellType": "number"
+			"CellType": "number",
+			"Unit": "kWh"
 		},
 		{
 			"CellName": "X_Cell_Electricity_Market_RenewablePowerPercentage",
 			"Label": "Renewable Power Percentage",
-			"CellType": "percent"
+			"CellType": "percent",
+			"Unit": "percent"
 		},
 		{
 			"CellName": "X_Cell_Electricity_Market_JurisdictionalRenewablePowerPercentage",
 			"Label": "Jurisdictional renewable power percentage (ACT only)",
-			"CellType": "percent"
+			"CellType": "percent",
+			"Unit": "percent"
 		},
 		{
 			"CellName": "X_Cell_Electricity_Market_AmountPurchasedGreenPower",
 			"Label": "Electricity purchased from an accredited GreenPower provider",
-			"CellType": "number"
+			"CellType": "number",
+			"Unit": "kWh"
 		},
 		{
 			"CellName": "X_Cell_TotalElegibleVoluntarilySurrenderedRECs",
 			"Label": "Total elegible voluntarily surrendered RECs",
-			"CellType": "formula"
+			"CellType": "formula",
+			"Unit": "MWh"
 		},
 		{
 			"CellName": "X_Cell_TotalElegibleRECsForElectricityProducedOnSite",
 			"Label": "Total elegible RECs for electricity produced on-site and consumed by entity",
-			"CellType": "formula"
+			"CellType": "formula",
+			"Unit": "MWh"
 		},
 		{
 			"CellName": "X_Cell_FarmInputs_Seed_BarleyGrain",
 			"Label": "Barley grain (for seed)",
-			"CellType": "number"
+			"CellType": "number",
+			"Unit": "kg"
 		},
 		{
 			"CellName": "X_Cell_FarmInputs_Seed_MaizeGrain",
 			"Label": "Maize grain (for seed)",
-			"CellType": "number"
+			"CellType": "number",
+			"Unit": "kg"
 		},
 		{
 			"CellName": "X_Cell_FarmInputs_Seed_OatGrain",
 			"Label": "Oat grain (for seed)",
-			"CellType": "number"
+			"CellType": "number",
+			"Unit": "kg"
 		},
 		{
 			"CellName": "X_Cell_FarmInputs_Seed_SorghumGrain",
 			"Label": "Sorghum grain (for seed)",
-			"CellType": "number"
+			"CellType": "number",
+			"Unit": "kg"
 		},
 		{
 			"CellName": "X_Cell_FarmInputs_Seed_WheatGrain",
 			"Label": "Wheat grain (for seed)",
-			"CellType": "number"
+			"CellType": "number",
+			"Unit": "kg"
 		},
 		{
 			"CellName": "X_Cell_FarmInputs_LickBlocks_DrySeasonMix",
 			"Label": "Lick block, dry season mix",
-			"CellType": "number"
+			"CellType": "number",
+			"Unit": "kg"
 		},
 		{
 			"CellName": "X_Cell_FarmInputs_LickBlocks_Mineral",
 			"Label": "Lick block, mineral",
-			"CellType": "number"
+			"CellType": "number",
+			"Unit": "kg"
 		},
 		{
 			"CellName": "X_Cell_FarmInputs_LickBlocks_Weaner",
 			"Label": "Lick block, weaner",
-			"CellType": "number"
+			"CellType": "number",
+			"Unit": "kg"
 		},
 		{
 			"CellName": "X_Cell_FarmInputs_FeedRations_Chickens",
 			"Label": "Feed for chickens",
-			"CellType": "number"
+			"CellType": "number",
+			"Unit": "kg"
 		},
 		{
 			"CellName": "X_Cell_FarmInputs_FeedRations_DairyCalves",
 			"Label": "Feed for dairy calves",
-			"CellType": "number"
+			"CellType": "number",
+			"Unit": "kg"
 		},
 		{
 			"CellName": "X_Cell_FarmInputs_FeedRations_DairyCows",
 			"Label": "Feed for dairy cows",
-			"CellType": "number"
+			"CellType": "number",
+			"Unit": "kg"
 		},
 		{
 			"CellName": "X_Cell_FarmInputs_FeedRations_Pigs",
 			"Label": "Feed for pigs",
-			"CellType": "number"
+			"CellType": "number",
+			"Unit": "kg"
 		},
 		{
 			"CellName": "X_Cell_FarmInputs_Misc_AnimalEarTagsLarge",
 			"Label": "Animal ear tags (large)",
-			"CellType": "number"
+			"CellType": "number",
+			"Unit": "tags"
 		},
 		{
 			"CellName": "X_Cell_FarmInputs_Misc_AnimalEarTagsSmall",
 			"Label": "Animal ear tags (small)",
-			"CellType": "number"
+			"CellType": "number",
+			"Unit": "tags"
 		},
 		{
 			"CellName": "X_Cell_ManureSentOffsite_MassNitrogenManure_Method1",
 			"Label": "",
-			"CellType": "number"
+			"CellType": "number",
+			"Unit": "kg N"
 		},
 		{
 			"CellName": "X_Cell_ManureSentOffsite_MassNitrogenManure_Method2",
 			"Label": "",
 			"CellType": "number",
+			"Unit": "kg N",
 			"CanOverWriteFormula": true
 		},
 		{

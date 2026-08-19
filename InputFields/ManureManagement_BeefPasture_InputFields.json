@@ -1,7 +1,7 @@
 {
 	"schemaVersion": 1,
 	"generatedFrom": "4_2_ManureManagement_BeefPasture_WIP_v10.xlsx",
-	"generatedAt": "2026-08-18T07:23:00Z",
+	"generatedAt": "2026-08-19T00:06:10Z",
 	"InputCells": [
 		{
 			"CellName": "X_Cell_Site_FarmName",
@@ -224,25 +224,25 @@
 						"Row": 2,
 						"Col": 2,
 						"Label": "Spring",
-						"CellType": "number"
+						"CellType": "formula"
 					},
 					"Summer": {
 						"Row": 3,
 						"Col": 2,
 						"Label": "Summer",
-						"CellType": "number"
+						"CellType": "formula"
 					},
 					"Autumn": {
 						"Row": 4,
 						"Col": 2,
 						"Label": "Autumn",
-						"CellType": "number"
+						"CellType": "formula"
 					},
 					"Winter": {
 						"Row": 5,
 						"Col": 2,
 						"Label": "Winter",
-						"CellType": "number"
+						"CellType": "formula"
 					}
 				}
 			}
